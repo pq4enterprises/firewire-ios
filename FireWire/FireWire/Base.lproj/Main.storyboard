@@ -32,13 +32,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-et-tPE">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="847.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="851.33333333333337"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="3RO-S9-gVz">
                                                 <rect key="frame" x="0.0" y="0.0" width="402" height="852"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Zs-qn-fCq">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="847.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="851.33333333333337"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="btp-mw-SdZ" userLabel="HeaderStackView">
                                                         <rect key="frame" x="35" y="60.000000000000014" width="323" height="242.33333333333337"/>
@@ -61,7 +61,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxc-fU-tes">
-                                                        <rect key="frame" x="0.0" y="312.33333333333326" width="393" height="535"/>
+                                                        <rect key="frame" x="0.0" y="312.33333333333326" width="393" height="539"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxh-KX-HLe">
                                                                 <rect key="frame" x="40" y="9.9999999999999982" width="313" height="20.333333333333329"/>
@@ -70,33 +70,34 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="EBe-hn-bx8">
-                                                                <rect key="frame" x="40" y="48.333333333333371" width="313" height="60"/>
+                                                                <rect key="frame" x="40" y="48.333333333333371" width="313" height="64"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-JV-nXI">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="60"/>
-                                                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-JV-nXI" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
+                                                                        <rect key="frame" x="2" y="2" width="145.66666666666666" height="60"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="60" id="WvX-qB-RNO"/>
                                                                         </constraints>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="Google"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="google_logo"/>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-0c-f5X">
-                                                                        <rect key="frame" x="165.66666666666663" y="0.0" width="147.33333333333337" height="60"/>
-                                                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-0c-f5X" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
+                                                                        <rect key="frame" x="165.66666666666663" y="2" width="145.33333333333337" height="60"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="Facebook"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="fb_logo"/>
                                                                     </button>
                                                                 </subviews>
+                                                                <directionalEdgeInsets key="directionalLayoutMargins" top="2" leading="2" bottom="2" trailing="2"/>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-zX-mYD">
-                                                                <rect key="frame" x="40" y="116.33333333333337" width="313" height="18.666666666666657"/>
+                                                                <rect key="frame" x="40" y="120.33333333333339" width="313" height="18.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" name="FWTextGrey"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HAS-ni-U8K">
-                                                                <rect key="frame" x="40" y="143" width="313" height="77"/>
+                                                                <rect key="frame" x="40" y="147" width="313" height="77"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-cW-COW">
                                                                         <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
@@ -115,7 +116,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0vh-OP-CcN">
-                                                                <rect key="frame" x="40" y="236.00000000000006" width="313" height="77"/>
+                                                                <rect key="frame" x="40" y="240.00000000000006" width="313" height="77"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9M-4i-Nwl">
                                                                         <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
@@ -134,7 +135,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-rC-UBX">
-                                                                <rect key="frame" x="40" y="352.66666666666669" width="313" height="55"/>
+                                                                <rect key="frame" x="40" y="356.66666666666669" width="313" height="55"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="55" id="xu8-h5-83p"/>
                                                                 </constraints>
@@ -145,13 +146,13 @@
                                                                 </buttonConfiguration>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account? Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2R-Qp-jxE">
-                                                                <rect key="frame" x="40" y="433.66666666666669" width="313" height="19.666666666666686"/>
+                                                                <rect key="frame" x="40" y="437.66666666666669" width="313" height="19.666666666666686"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYI-pn-TAX">
-                                                                <rect key="frame" x="40" y="471.33333333333331" width="313" height="33.666666666666686"/>
+                                                                <rect key="frame" x="40" y="475.33333333333331" width="313" height="33.666666666666686"/>
                                                                 <string key="text">By register or logging into an account you are
 agreeing with our Terms and Conditions</string>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
@@ -159,7 +160,7 @@ agreeing with our Terms and Conditions</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pf-rb-azA">
-                                                                <rect key="frame" x="40" y="323.00000000000006" width="313" height="19.666666666666686"/>
+                                                                <rect key="frame" x="40" y="327.00000000000006" width="313" height="19.666666666666686"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -248,7 +249,17 @@ agreeing with our Terms and Conditions</string>
             <point key="canvasLocation" x="119.84732824427481" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="PWM-0c-f5X">
+            <size key="intrinsicContentSize" width="111" height="30"/>
+        </designable>
+        <designable name="cnt-JV-nXI">
+            <size key="intrinsicContentSize" width="95" height="38"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="fb_logo" width="87" height="16"/>
+        <image name="google_logo" width="71" height="24"/>
         <image name="login_bg" width="430" height="932"/>
         <image name="login_logo" width="132" height="142"/>
         <namedColor name="FWRed">
@@ -259,9 +270,6 @@ agreeing with our Terms and Conditions</string>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

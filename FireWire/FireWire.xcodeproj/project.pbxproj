@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
 		B08236F12CE374D10092AC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236F02CE374D10092AC01 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B08236EE2CE374D10092AC01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B071E01F2CE502B900D09598 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B071E0202CE5036500D09598 /* FWShadowButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B08236E02CE374D10092AC01 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		B08236EB2CE374D10092AC01 /* FireWire */ = {
 			isa = PBXGroup;
 			children = (
+				B071E01F2CE502B900D09598 /* Components */,
 				B082371D2CE37B220092AC01 /* Resources */,
 				B08236EC2CE374D10092AC01 /* AppDelegate.swift */,
 				B08236EE2CE374D10092AC01 /* SceneDelegate.swift */,
@@ -288,6 +299,7 @@
 			files = (
 				B08236F12CE374D10092AC01 /* ViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
+				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
