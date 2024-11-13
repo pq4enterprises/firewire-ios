@@ -7,7 +7,6 @@
 
 import UIKit
 
-@IBDesignable
 public class FWShadowButton: UIButton {
     public override func layoutSubviews() {
         super.layoutSubviews()
