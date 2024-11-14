@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
+		B04682342CE5327D00419C65 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsViewController.swift */; };
+		B04682352CE5327D00419C65 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsViewController.xib */; };
+		B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
+		B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
+		B04682402CE5401100419C65 /* MapListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* MapListViewController.swift */; };
+		B04682412CE5401100419C65 /* MapListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* MapListViewController.xib */; };
+		B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
+		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
+		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
+		B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -42,6 +53,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B04682322CE5327D00419C65 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		B04682332CE5327D00419C65 /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
+		B046823A2CE53B9300419C65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B046823B2CE53B9300419C65 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		B046823E2CE5401100419C65 /* MapListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListViewController.swift; sourceTree = "<group>"; };
+		B046823F2CE5401100419C65 /* MapListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapListViewController.xib; sourceTree = "<group>"; };
+		B04682442CE6685300419C65 /* FWRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedButton.swift; sourceTree = "<group>"; };
+		B04682462CE66B3700419C65 /* FWSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSegmentControl.swift; sourceTree = "<group>"; };
+		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
+		B046824B2CE66F5A00419C65 /* FWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFont.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,10 +110,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B04682292CE52C5A00419C65 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
+				B04682322CE5327D00419C65 /* NewsViewController.swift */,
+				B04682332CE5327D00419C65 /* NewsViewController.xib */,
+				B046823A2CE53B9300419C65 /* MapViewController.swift */,
+				B046823B2CE53B9300419C65 /* MapViewController.xib */,
+				B046823E2CE5401100419C65 /* MapListViewController.swift */,
+				B046823F2CE5401100419C65 /* MapListViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B071E01F2CE502B900D09598 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				B071E0202CE5036500D09598 /* FWShadowButton.swift */,
+				B04682442CE6685300419C65 /* FWRoundedButton.swift */,
+				B04682462CE66B3700419C65 /* FWSegmentControl.swift */,
+				B04682492CE66E4900419C65 /* FWColor.swift */,
+				B046824B2CE66F5A00419C65 /* FWFont.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -119,6 +159,7 @@
 		B08236EB2CE374D10092AC01 /* FireWire */ = {
 			isa = PBXGroup;
 			children = (
+				B04682292CE52C5A00419C65 /* ViewControllers */,
 				B071E01F2CE502B900D09598 /* Components */,
 				B082371D2CE37B220092AC01 /* Resources */,
 				B08236EC2CE374D10092AC01 /* AppDelegate.swift */,
@@ -266,11 +307,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08237212CE37CF80092AC01 /* Colors.xcassets in Resources */,
+				B04682412CE5401100419C65 /* MapListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
 				B08237292CE386730092AC01 /* Teko-Medium.ttf in Resources */,
+				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
 				B082371F2CE37B4C0092AC01 /* Images.xcassets in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B08237312CE389E50092AC01 /* Inter_18pt-Regular.ttf in Resources */,
+				B04682352CE5327D00419C65 /* NewsViewController.xib in Resources */,
 				B08236F42CE374D10092AC01 /* Base in Resources */,
 				B08237332CE38B400092AC01 /* Poppins-Regular.ttf in Resources */,
 			);
@@ -297,10 +341,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */,
+				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
+				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B08236F12CE374D10092AC01 /* ViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
+				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
+				B04682342CE5327D00419C65 /* NewsViewController.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
+				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
+				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,
+				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
