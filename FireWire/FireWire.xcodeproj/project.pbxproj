@@ -18,6 +18,8 @@
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
 		B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
+		B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* PostListViewCell.xib */; };
+		B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* PostListViewCell.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -64,6 +66,8 @@
 		B04682462CE66B3700419C65 /* FWSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSegmentControl.swift; sourceTree = "<group>"; };
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
 		B046824B2CE66F5A00419C65 /* FWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFont.swift; sourceTree = "<group>"; };
+		B046824D2CE6779A00419C65 /* PostListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewCell.swift; sourceTree = "<group>"; };
+		B046824E2CE6779A00419C65 /* PostListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewCell.xib; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B046823E2CE5401100419C65 /* MapListViewController.swift */,
 				B046823F2CE5401100419C65 /* MapListViewController.xib */,
+				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
+				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				B08237292CE386730092AC01 /* Teko-Medium.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
 				B082371F2CE37B4C0092AC01 /* Images.xcassets in Resources */,
+				B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B08237312CE389E50092AC01 /* Inter_18pt-Regular.ttf in Resources */,
 				B04682352CE5327D00419C65 /* NewsViewController.xib in Resources */,
@@ -352,6 +359,7 @@
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,
+				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

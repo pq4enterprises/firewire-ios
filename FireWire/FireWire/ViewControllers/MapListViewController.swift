@@ -9,21 +9,31 @@ import UIKit
 
 class MapListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
 
+    func setupTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        tableView.register(PostListViewCell.nib(), forCellReuseIdentifier: PostListViewCell.identifier)
     }
-    */
+
+}
+
+extension MapListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostListViewCell.identifier, for: indexPath) as! PostListViewCell
+        cell.titleLabel.text = "Title \(indexPath.row)"
+        return cell
+    }
 
 }
