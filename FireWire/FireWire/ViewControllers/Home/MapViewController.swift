@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
 
         if let sheet = navVC.sheetPresentationController {
             sheet.detents = [.medium(), .custom(resolver: {context in
-                0.9 * context.maximumDetentValue
+                0.95 * context.maximumDetentValue
             })]
             sheet.prefersGrabberVisible = true
         }

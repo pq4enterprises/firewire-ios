@@ -117,17 +117,32 @@
 		B04682292CE52C5A00419C65 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
+				B04682522CE67CE900419C65 /* Home */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B04682512CE67CCE00419C65 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
+				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		B04682522CE67CE900419C65 /* Home */ = {
+			isa = PBXGroup;
+			children = (
 				B04682322CE5327D00419C65 /* NewsViewController.swift */,
 				B04682332CE5327D00419C65 /* NewsViewController.xib */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B046823E2CE5401100419C65 /* MapListViewController.swift */,
 				B046823F2CE5401100419C65 /* MapListViewController.xib */,
-				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
-				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		B071E01F2CE502B900D09598 /* Components */ = {
@@ -165,6 +180,7 @@
 		B08236EB2CE374D10092AC01 /* FireWire */ = {
 			isa = PBXGroup;
 			children = (
+				B04682512CE67CCE00419C65 /* TableViewCells */,
 				B04682292CE52C5A00419C65 /* ViewControllers */,
 				B071E01F2CE502B900D09598 /* Components */,
 				B082371D2CE37B220092AC01 /* Resources */,
