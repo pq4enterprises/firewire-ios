@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01B5D932CE8EB24001C5189 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
-		B04682342CE5327D00419C65 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsViewController.swift */; };
-		B04682352CE5327D00419C65 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsViewController.xib */; };
+		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
+		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
 		B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
 		B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
 		B04682402CE5401100419C65 /* MapListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* MapListViewController.swift */; };
@@ -32,9 +33,11 @@
 		B08237102CE374D30092AC01 /* FireWireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */; };
 		B082371F2CE37B4C0092AC01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B082371E2CE37B4C0092AC01 /* Images.xcassets */; };
 		B08237212CE37CF80092AC01 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08237202CE37CF80092AC01 /* Colors.xcassets */; };
-		B08237292CE386730092AC01 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B08237242CE386730092AC01 /* Teko-Medium.ttf */; };
-		B08237312CE389E50092AC01 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B08237302CE389E50092AC01 /* Inter_18pt-Regular.ttf */; };
-		B08237332CE38B400092AC01 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B08237322CE38B400092AC01 /* Poppins-Regular.ttf */; };
+		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
+		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
+		B0BE6EC72CE8E57900E712EA /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */; };
+		B0BE6EC92CE8E58900E712EA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */; };
+		B0BE6ECD2CE8E5B100E712EA /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B04682322CE5327D00419C65 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		B04682332CE5327D00419C65 /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
+		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
 		B046823A2CE53B9300419C65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B046823B2CE53B9300419C65 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B046823E2CE5401100419C65 /* MapListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +88,11 @@
 		B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B082371E2CE37B4C0092AC01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B08237202CE37CF80092AC01 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		B08237242CE386730092AC01 /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
-		B08237302CE389E50092AC01 /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
-		B08237322CE38B400092AC01 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
+		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
+		B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
+		B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,8 @@
 			children = (
 				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
 				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
+				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -134,8 +142,8 @@
 		B04682522CE67CE900419C65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B04682322CE5327D00419C65 /* NewsViewController.swift */,
-				B04682332CE5327D00419C65 /* NewsViewController.xib */,
+				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B046823E2CE5401100419C65 /* MapListViewController.swift */,
@@ -215,9 +223,10 @@
 		B082371D2CE37B220092AC01 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B08237242CE386730092AC01 /* Teko-Medium.ttf */,
-				B08237302CE389E50092AC01 /* Inter_18pt-Regular.ttf */,
-				B08237322CE38B400092AC01 /* Poppins-Regular.ttf */,
+				B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */,
+				B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */,
+				B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */,
+				B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */,
 				B082371E2CE37B4C0092AC01 /* Images.xcassets */,
 				B08237202CE37CF80092AC01 /* Colors.xcassets */,
 			);
@@ -331,15 +340,17 @@
 				B08237212CE37CF80092AC01 /* Colors.xcassets in Resources */,
 				B04682412CE5401100419C65 /* MapListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
-				B08237292CE386730092AC01 /* Teko-Medium.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
+				B01B5D932CE8EB24001C5189 /* Poppins-SemiBold.ttf in Resources */,
 				B082371F2CE37B4C0092AC01 /* Images.xcassets in Resources */,
+				B0BE6EC72CE8E57900E712EA /* Inter_18pt-Regular.ttf in Resources */,
 				B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
-				B08237312CE389E50092AC01 /* Inter_18pt-Regular.ttf in Resources */,
-				B04682352CE5327D00419C65 /* NewsViewController.xib in Resources */,
+				B0BE6ECD2CE8E5B100E712EA /* Teko-Medium.ttf in Resources */,
+				B0BE6EC92CE8E58900E712EA /* Poppins-Regular.ttf in Resources */,
+				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
+				B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */,
 				B08236F42CE374D10092AC01 /* Base in Resources */,
-				B08237332CE38B400092AC01 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,9 +380,10 @@
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B08236F12CE374D10092AC01 /* ViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
+				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
-				B04682342CE5327D00419C65 /* NewsViewController.swift in Sources */,
+				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsListViewController" customModule="FireWire" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="Ko9-jF-rhD" id="QPH-a7-zoe"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-jF-rhD">
+                    <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTQ-xt-hIl">
+                    <rect key="frame" x="0.0" y="119" width="393" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="56 news are listed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95m-ka-uko">
+                            <rect key="frame" x="19.999999999999993" y="0.0" width="103.33333333333331" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w43-Ql-8x4">
+                            <rect key="frame" x="293" y="0.0" width="100" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="qoZ-vJ-Wyx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Filter" image="filter_icon">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="FWGrey"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="w43-Ql-8x4" secondAttribute="bottom" id="1ow-hC-pYA"/>
+                        <constraint firstItem="w43-Ql-8x4" firstAttribute="top" secondItem="PTQ-xt-hIl" secondAttribute="top" id="Wms-qp-Ohz"/>
+                        <constraint firstItem="w43-Ql-8x4" firstAttribute="centerY" secondItem="95m-ka-uko" secondAttribute="centerY" id="Yd5-JR-XPv"/>
+                        <constraint firstAttribute="height" constant="50" id="j6g-wc-TNs"/>
+                        <constraint firstItem="95m-ka-uko" firstAttribute="top" secondItem="PTQ-xt-hIl" secondAttribute="top" id="tGz-cu-eYR"/>
+                        <constraint firstItem="95m-ka-uko" firstAttribute="leading" secondItem="PTQ-xt-hIl" secondAttribute="leading" constant="20" id="tmk-Um-cgT"/>
+                        <constraint firstAttribute="trailing" secondItem="w43-Ql-8x4" secondAttribute="trailing" id="wDC-CH-lKW"/>
+                        <constraint firstAttribute="bottom" secondItem="95m-ka-uko" secondAttribute="bottom" id="x82-NP-2yy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="m2w-Jp-8Bd"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PTQ-xt-hIl" secondAttribute="trailing" id="BaV-A7-LGK"/>
+                <constraint firstAttribute="bottom" secondItem="Ko9-jF-rhD" secondAttribute="bottom" id="FaO-Mx-wir"/>
+                <constraint firstItem="PTQ-xt-hIl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G3c-NA-fc7"/>
+                <constraint firstItem="PTQ-xt-hIl" firstAttribute="top" secondItem="m2w-Jp-8Bd" secondAttribute="top" constant="60" id="IQj-xh-IdC"/>
+                <constraint firstAttribute="trailing" secondItem="Ko9-jF-rhD" secondAttribute="trailing" id="cYA-0z-wz8"/>
+                <constraint firstItem="Ko9-jF-rhD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="en9-G5-JiN"/>
+                <constraint firstItem="Ko9-jF-rhD" firstAttribute="top" secondItem="PTQ-xt-hIl" secondAttribute="bottom" id="qKE-oy-xsV"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="filter_icon" width="16" height="16"/>
+        <namedColor name="FWGrey">
+            <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

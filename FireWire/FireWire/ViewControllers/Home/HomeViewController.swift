@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var segmentControl: FWSegmentControl!
 
     var mapViewController: MapViewController?
-    var newsViewController: NewsViewController?
+    var newsViewController: NewsListViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
 
     func setupView() {
         mapViewController = MapViewController()
-        newsViewController = NewsViewController()
+        newsViewController = NewsListViewController()
 
         switchToViewController(at: 0)
         segmentControl.selectedSegmentIndex = 0
