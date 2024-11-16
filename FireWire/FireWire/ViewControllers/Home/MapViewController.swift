@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     @IBAction func viewListTap(_ sender: UIButton) {
         let mapListView = MapListViewController()
         let navVC = UINavigationController(rootViewController: mapListView)
-        navVC.isModalInPresentation = true
+        navVC.modalPresentationStyle = .pageSheet
 
         if let sheet = navVC.sheetPresentationController {
             sheet.detents = [.medium(), .custom(resolver: {context in
