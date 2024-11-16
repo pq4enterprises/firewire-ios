@@ -14,6 +14,4 @@ class PostListViewCell: UITableViewCell {
         return UINib(nibName: "PostListViewCell", bundle: nil)
     }
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
 }

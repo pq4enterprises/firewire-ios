@@ -32,7 +32,6 @@ extension MapListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostListViewCell.identifier, for: indexPath) as! PostListViewCell
-        cell.titleLabel.text = "Title \(indexPath.row)"
         return cell
     }
 
