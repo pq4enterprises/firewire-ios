@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B01B5D932CE8EB24001C5189 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
@@ -35,7 +34,8 @@
 		B08237212CE37CF80092AC01 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08237202CE37CF80092AC01 /* Colors.xcassets */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
-		B0BE6EC72CE8E57900E712EA /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */; };
+		B0B012BC2CED1A3B001EA5DF /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */; };
+		B0BE6EC72CE8E57900E712EA /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC62CE8E57900E712EA /* Inter-Regular.ttf */; };
 		B0BE6EC92CE8E58900E712EA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */; };
 		B0BE6ECD2CE8E5B100E712EA /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
@@ -43,6 +43,9 @@
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
+		B0F1A7EC2CED215300D9F309 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7EB2CED215300D9F309 /* String+copy.swift */; };
+		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +98,7 @@
 		B08237202CE37CF80092AC01 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
-		B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
+		B0BE6EC62CE8E57900E712EA /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
+		B0F1A7EB2CED215300D9F309 /* String+copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+copy.swift"; sourceTree = "<group>"; };
+		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +178,7 @@
 				B04682462CE66B3700419C65 /* FWSegmentControl.swift */,
 				B04682492CE66E4900419C65 /* FWColor.swift */,
 				B046824B2CE66F5A00419C65 /* FWFont.swift */,
+				B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -235,10 +242,11 @@
 		B082371D2CE37B220092AC01 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B0F1A7EA2CED214400D9F309 /* Extensions */,
 				B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */,
 				B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */,
 				B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */,
-				B0BE6EC62CE8E57900E712EA /* Inter_18pt-Regular.ttf */,
+				B0BE6EC62CE8E57900E712EA /* Inter-Regular.ttf */,
 				B082371E2CE37B4C0092AC01 /* Images.xcassets */,
 				B08237202CE37CF80092AC01 /* Colors.xcassets */,
 			);
@@ -260,8 +268,17 @@
 			children = (
 				B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */,
 				B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */,
+				B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */,
 			);
 			path = FWCommon;
+			sourceTree = "<group>";
+		};
+		B0F1A7EA2CED214400D9F309 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1A7EB2CED215300D9F309 /* String+copy.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,12 +386,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08237212CE37CF80092AC01 /* Colors.xcassets in Resources */,
+				B0B012BC2CED1A3B001EA5DF /* Poppins-SemiBold.ttf in Resources */,
 				B04682412CE5401100419C65 /* MapListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
-				B01B5D932CE8EB24001C5189 /* Poppins-SemiBold.ttf in Resources */,
 				B082371F2CE37B4C0092AC01 /* Images.xcassets in Resources */,
-				B0BE6EC72CE8E57900E712EA /* Inter_18pt-Regular.ttf in Resources */,
+				B0BE6EC72CE8E57900E712EA /* Inter-Regular.ttf in Resources */,
 				B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0BE6ECD2CE8E5B100E712EA /* Teko-Medium.ttf in Resources */,
@@ -410,14 +427,17 @@
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
+				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B08236F12CE374D10092AC01 /* ViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
+				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
+				B0F1A7EC2CED215300D9F309 /* String+copy.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,

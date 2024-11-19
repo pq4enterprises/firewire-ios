@@ -12,10 +12,23 @@ class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
 
     @IBOutlet weak var registerLabel: UILabel!
+    @IBOutlet weak var termsAndConditionsLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         setupActions()
+    }
+
+    func setupUI(){
+        self.registerLabel.colorString(
+            text: .Login.registerText,
+            coloredText: .Login.register
+        )
+        self.termsAndConditionsLabel.colorString(
+            text: .Login.termsAndConditionsText,
+            coloredText: .Login.termsAndConditions
+        )
     }
 
     func setupActions(){

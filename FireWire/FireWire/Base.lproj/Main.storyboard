@@ -9,17 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter_18pt-Regular.ttf">
-            <string>Inter18pt-Regular</string>
-        </array>
         <array key="Poppins-Regular.ttf">
             <string>Poppins-Regular</string>
         </array>
         <array key="Teko-Medium.ttf">
             <string>Teko-Medium</string>
-        </array>
-        <array key="TimesNewRoman.ttf">
-            <string>.SFUI-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -38,19 +32,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-et-tPE">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="843.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="844.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxc-fU-tes">
-                                                <rect key="frame" x="0.0" y="310.66666666666674" width="393" height="533"/>
+                                                <rect key="frame" x="0.0" y="311.99999999999994" width="393" height="532.66666666666652"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxh-KX-HLe">
-                                                        <rect key="frame" x="20" y="20" width="353" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="20" y="20" width="353" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="EBe-hn-bx8">
-                                                        <rect key="frame" x="30" y="50.333333333333314" width="333" height="54"/>
+                                                        <rect key="frame" x="30" y="50" width="333" height="54"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-JV-nXI" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
                                                                 <rect key="frame" x="2" y="2" width="155.66666666666666" height="50"/>
@@ -71,13 +65,13 @@
                                                         <directionalEdgeInsets key="directionalLayoutMargins" top="2" leading="2" bottom="2" trailing="2"/>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-zX-mYD">
-                                                        <rect key="frame" x="20" y="112.33333333333331" width="353" height="18.666666666666657"/>
+                                                        <rect key="frame" x="20" y="112" width="353" height="18.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <color key="textColor" name="FWTextGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HAS-ni-U8K">
-                                                        <rect key="frame" x="30" y="139" width="333" height="77"/>
+                                                        <rect key="frame" x="30" y="138.66666666666669" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-cW-COW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -96,7 +90,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0vh-OP-CcN">
-                                                        <rect key="frame" x="30" y="231.99999999999994" width="333" height="77"/>
+                                                        <rect key="frame" x="30" y="231.66666666666663" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9M-4i-Nwl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -114,28 +108,28 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-rC-UBX">
-                                                        <rect key="frame" x="30" y="358.66666666666669" width="333" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-rC-UBX" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="30" y="358.33333333333337" width="333" height="50"/>
+                                                        <color key="backgroundColor" name="FWRed"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="xu8-h5-83p"/>
                                                         </constraints>
-                                                        <color key="tintColor" name="FWRed"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Sign In">
-                                                            <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
-                                                        </buttonConfiguration>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Sign In"/>
                                                         <connections>
                                                             <action selector="signInTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vKy-xb-7H7"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account? Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2R-Qp-jxE">
-                                                        <rect key="frame" x="20" y="434.66666666666669" width="353" height="19.666666666666686"/>
+                                                        <rect key="frame" x="20" y="434.33333333333337" width="353" height="19.666666666666686"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYI-pn-TAX">
-                                                        <rect key="frame" x="20" y="469.33333333333331" width="353" height="33.666666666666686"/>
+                                                        <rect key="frame" x="20" y="469" width="353" height="33.666666666666686"/>
                                                         <string key="text">By register or logging into an account you are
 agreeing with our Terms and Conditions</string>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
@@ -143,7 +137,7 @@ agreeing with our Terms and Conditions</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pf-rb-azA">
-                                                        <rect key="frame" x="30" y="318.99999999999994" width="333" height="19.666666666666686"/>
+                                                        <rect key="frame" x="30" y="318.66666666666663" width="333" height="19.666666666666686"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -182,7 +176,7 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="btp-mw-SdZ" userLabel="HeaderStackView">
-                                                <rect key="frame" x="40" y="66.999999999999986" width="313" height="233.66666666666663"/>
+                                                <rect key="frame" x="40" y="67" width="313" height="235"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="CYx-7q-gnb">
                                                         <rect key="frame" x="90.666666666666657" y="0.0" width="132" height="142"/>
@@ -194,8 +188,8 @@ agreeing with our Terms and Conditions</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet consectetur. Nibh lacus id ut in vivamus eu egesta." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcX-cd-igr">
-                                                        <rect key="frame" x="3" y="202.33333333333331" width="307.33333333333331" height="31.333333333333343"/>
-                                                        <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="14"/>
+                                                        <rect key="frame" x="12" y="202.33333333333331" width="289.33333333333331" height="32.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -241,6 +235,7 @@ agreeing with our Terms and Conditions</string>
                     <navigationItem key="navigationItem" id="9hH-KG-Xwm"/>
                     <connections>
                         <outlet property="registerLabel" destination="h2R-Qp-jxE" id="0qG-er-HPu"/>
+                        <outlet property="termsAndConditionsLabel" destination="EYI-pn-TAX" id="JBo-Ap-lEB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -340,10 +335,10 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDe-4t-cfk">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="898.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="897.66666666666663"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Qt-rJq">
-                                                <rect key="frame" x="30" y="10" width="333" height="858.66666666666663"/>
+                                                <rect key="frame" x="30" y="10" width="333" height="857.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5d-u1-bmr">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60.333333333333336"/>
@@ -351,14 +346,14 @@ agreeing with our Terms and Conditions</string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please register your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buH-D3-mFj">
-                                                        <rect key="frame" x="0.0" y="77.333333333333343" width="333" height="19.666666666666671"/>
-                                                        <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please register your account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buH-D3-mFj">
+                                                        <rect key="frame" x="0.0" y="77.333333333333343" width="333" height="18.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-FS-xFV">
-                                                        <rect key="frame" x="0.0" y="114" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="113" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1h-t6-Cy0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -377,7 +372,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="066-zh-Pfv">
-                                                        <rect key="frame" x="0.0" y="208" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="207" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Se-uc-2hc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -396,7 +391,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="q93-f0-r13">
-                                                        <rect key="frame" x="0.0" y="302" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="301" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdD-o1-Ovd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -415,7 +410,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x64-kY-BNY">
-                                                        <rect key="frame" x="0.0" y="396" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="395" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91t-Y9-zLc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -434,7 +429,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="57Z-xO-Zkl">
-                                                        <rect key="frame" x="0.0" y="490" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="489" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title / Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGB-gN-DD3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -453,7 +448,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2s0-RK-EBJ">
-                                                        <rect key="frame" x="0.0" y="584" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="583" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K3-cS-sXW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -472,7 +467,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jwD-nc-d2H">
-                                                        <rect key="frame" x="0.0" y="678" width="333" height="77"/>
+                                                        <rect key="frame" x="0.0" y="677" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJK-af-0lI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -490,19 +485,19 @@ agreeing with our Terms and Conditions</string>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pM-LR-NCr">
-                                                        <rect key="frame" x="0.0" y="772" width="333" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pM-LR-NCr" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="771" width="333" height="50"/>
+                                                        <color key="backgroundColor" name="FWRed"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="SDk-fk-Z00"/>
                                                         </constraints>
-                                                        <color key="tintColor" name="FWRed"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Sign Up">
-                                                            <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
-                                                        </buttonConfiguration>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Sign Up"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an Account? Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg6-aA-u1k">
-                                                        <rect key="frame" x="0.0" y="839" width="333" height="19.666666666666629"/>
+                                                        <rect key="frame" x="0.0" y="838" width="333" height="19.666666666666629"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -539,6 +534,9 @@ agreeing with our Terms and Conditions</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qdD-Fa-bLn"/>
+                    <connections>
+                        <outlet property="signInLabel" destination="Lg6-aA-u1k" id="nf6-G2-Bic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqw-S8-1hm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
