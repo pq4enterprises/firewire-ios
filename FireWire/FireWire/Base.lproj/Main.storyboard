@@ -104,7 +104,7 @@
                                                                     <constraint firstAttribute="height" constant="55" id="M8k-Ei-dlo"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -235,6 +235,7 @@ agreeing with our Terms and Conditions</string>
                     <navigationItem key="navigationItem" id="9hH-KG-Xwm"/>
                     <connections>
                         <outlet property="registerLabel" destination="h2R-Qp-jxE" id="0qG-er-HPu"/>
+                        <outlet property="scrollView" destination="G8y-DX-Zd7" id="Oux-lZ-t6m"/>
                         <outlet property="termsAndConditionsLabel" destination="EYI-pn-TAX" id="JBo-Ap-lEB"/>
                     </connections>
                 </viewController>
@@ -535,6 +536,7 @@ agreeing with our Terms and Conditions</string>
                     </view>
                     <navigationItem key="navigationItem" id="qdD-Fa-bLn"/>
                     <connections>
+                        <outlet property="scrollView" destination="efT-ac-f2k" id="acS-GA-Ekk"/>
                         <outlet property="signInLabel" destination="Lg6-aA-u1k" id="nf6-G2-Bic"/>
                     </connections>
                 </viewController>
