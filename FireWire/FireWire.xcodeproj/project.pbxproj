@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9B53CDE72CEE5E79004C12CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDE62CEE5E79004C12CD /* LoginViewController.swift */; };
+		9B53CDEC2CEE5FD8004C12CD /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDEA2CEE5FD8004C12CD /* APIRequest.swift */; };
+		9B53CDED2CEE5FD8004C12CD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDE92CEE5FD8004C12CD /* APIManager.swift */; };
+		9B53CDEE2CEE5FD8004C12CD /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDE82CEE5FD8004C12CD /* APIEndpoints.swift */; };
+		9B53CDF52CEE5FE3004C12CD /* JPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDEF2CEE5FE3004C12CD /* JPAlertController.swift */; };
+		9B53CDF62CEE5FE3004C12CD /* JPLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDF02CEE5FE3004C12CD /* JPLoader.swift */; };
+		9B53CDF72CEE5FE3004C12CD /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDF32CEE5FE3004C12CD /* JPToast.swift */; };
+		9B53CDF82CEE5FE3004C12CD /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDF12CEE5FE3004C12CD /* JPNetworkReachability.swift */; };
+		9B53CDF92CEE5FE3004C12CD /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53CDF22CEE5FE3004C12CD /* JPTextField.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -41,6 +49,14 @@
 
 /* Begin PBXFileReference section */
 		9B53CDE62CEE5E79004C12CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9B53CDE82CEE5FD8004C12CD /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		9B53CDE92CEE5FD8004C12CD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		9B53CDEA2CEE5FD8004C12CD /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		9B53CDEF2CEE5FE3004C12CD /* JPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPAlertController.swift; sourceTree = "<group>"; };
+		9B53CDF02CEE5FE3004C12CD /* JPLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPLoader.swift; sourceTree = "<group>"; };
+		9B53CDF12CEE5FE3004C12CD /* JPNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNetworkReachability.swift; sourceTree = "<group>"; };
+		9B53CDF22CEE5FE3004C12CD /* JPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPTextField.swift; sourceTree = "<group>"; };
+		9B53CDF32CEE5FE3004C12CD /* JPToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPToast.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +103,8 @@
 		9B53CDDF2CED0212004C12CD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9B53CDF42CEE5FE3004C12CD /* CommonClasses */,
+				9B53CDEB2CEE5FD8004C12CD /* API_Manager */,
 				B082371D2CE37B220092AC01 /* Resources */,
 				B071E01F2CE502B900D09598 /* Components */,
 			);
@@ -109,6 +127,28 @@
 				9B53CDE62CEE5E79004C12CD /* LoginViewController.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		9B53CDEB2CEE5FD8004C12CD /* API_Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9B53CDE82CEE5FD8004C12CD /* APIEndpoints.swift */,
+				9B53CDE92CEE5FD8004C12CD /* APIManager.swift */,
+				9B53CDEA2CEE5FD8004C12CD /* APIRequest.swift */,
+			);
+			path = API_Manager;
+			sourceTree = "<group>";
+		};
+		9B53CDF42CEE5FE3004C12CD /* CommonClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9B53CDEF2CEE5FE3004C12CD /* JPAlertController.swift */,
+				9B53CDF02CEE5FE3004C12CD /* JPLoader.swift */,
+				9B53CDF12CEE5FE3004C12CD /* JPNetworkReachability.swift */,
+				9B53CDF22CEE5FE3004C12CD /* JPTextField.swift */,
+				9B53CDF32CEE5FE3004C12CD /* JPToast.swift */,
+			);
+			path = CommonClasses;
 			sourceTree = "<group>";
 		};
 		B071E01F2CE502B900D09598 /* Components */ = {
@@ -314,6 +354,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B53CDE72CEE5E79004C12CD /* LoginViewController.swift in Sources */,
+				9B53CDF52CEE5FE3004C12CD /* JPAlertController.swift in Sources */,
+				9B53CDF62CEE5FE3004C12CD /* JPLoader.swift in Sources */,
+				9B53CDF72CEE5FE3004C12CD /* JPToast.swift in Sources */,
+				9B53CDF82CEE5FE3004C12CD /* JPNetworkReachability.swift in Sources */,
+				9B53CDF92CEE5FE3004C12CD /* JPTextField.swift in Sources */,
+				9B53CDEC2CEE5FD8004C12CD /* APIRequest.swift in Sources */,
+				9B53CDED2CEE5FD8004C12CD /* APIManager.swift in Sources */,
+				9B53CDEE2CEE5FD8004C12CD /* APIEndpoints.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
