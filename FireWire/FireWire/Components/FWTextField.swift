@@ -8,10 +8,11 @@
 import UIKit
 
 public class FWTextField: UITextField {
+    var textPadding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.setRoundedBorderAndColor()
-        self.setLeftPaddingForTextInsets()
     }
 
     func setRoundedBorderAndColor() {
@@ -19,12 +20,6 @@ public class FWTextField: UITextField {
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
         self.layer.borderColor = FWColor.textFieldGrey.cgColor
-    }
-
-    func setLeftPaddingForTextInsets() {
-        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
-        self.leftView = leftPaddingView
-        self.leftViewMode = .always
     }
 
     func addRightIcon(_ image: UIImage, action: (() -> Void)? = nil) {
@@ -44,5 +39,21 @@ public class FWTextField: UITextField {
 
         self.rightViewMode = .always
         self.rightView = outerView
+    }
+
+    // To override the text insets
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+
+    public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
     }
 }
