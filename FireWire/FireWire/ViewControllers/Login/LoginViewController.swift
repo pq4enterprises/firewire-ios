@@ -8,12 +8,13 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
     weak var coordinator: LoginCoordinator?
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var registerLabel: UILabel!
-    @IBOutlet weak var termsAndConditionsLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var registerLabel: UILabel!
+    @IBOutlet var termsAndConditionsLabel: UILabel!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +23,28 @@ class LoginViewController: UIViewController {
         setupKeyboardActions()
     }
 
-    func setupUI(){
-        self.registerLabel.colorString(
+    func setupUI() {
+        passwordTextField.delegate = self
+
+        registerLabel.colorString(
             text: .Login.registerText,
             coloredText: .Login.register
         )
-        self.termsAndConditionsLabel.colorString(
+        termsAndConditionsLabel.colorString(
             text: .Login.termsAndConditionsText,
             coloredText: .Login.termsAndConditions
         )
     }
 
-    func setupActions(){
+    func setupActions() {
+        hideKeyboardWhenTappedAround()
+
         let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(registerTap))
         registerLabel.isUserInteractionEnabled = true
         registerLabel.addGestureRecognizer(labelTapGesture)
     }
 
-    @objc func registerTap(){
+    @objc func registerTap() {
         coordinator?.navigateToRegistration()
     }
 
@@ -47,8 +52,8 @@ class LoginViewController: UIViewController {
         coordinator?.navigateToHome()
     }
 
-    //TODO: Handle in common place
-    func setupKeyboardActions(){
+    // TODO: Handle in common place
+    func setupKeyboardActions() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -84,5 +89,12 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         return viewController
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

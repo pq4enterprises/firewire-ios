@@ -234,6 +234,8 @@ agreeing with our Terms and Conditions</string>
                     </view>
                     <navigationItem key="navigationItem" id="9hH-KG-Xwm"/>
                     <connections>
+                        <outlet property="emailTextField" destination="nQw-4K-tW4" id="lPP-G6-JlK"/>
+                        <outlet property="passwordTextField" destination="9BS-5Y-vJM" id="Ats-wZ-eKJ"/>
                         <outlet property="registerLabel" destination="h2R-Qp-jxE" id="0qG-er-HPu"/>
                         <outlet property="scrollView" destination="G8y-DX-Zd7" id="Oux-lZ-t6m"/>
                         <outlet property="termsAndConditionsLabel" destination="EYI-pn-TAX" id="JBo-Ap-lEB"/>
@@ -482,7 +484,7 @@ agreeing with our Terms and Conditions</string>
                                                                     <constraint firstAttribute="height" constant="55" id="Koi-km-nhH"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -536,6 +538,13 @@ agreeing with our Terms and Conditions</string>
                     </view>
                     <navigationItem key="navigationItem" id="qdD-Fa-bLn"/>
                     <connections>
+                        <outlet property="confirmPasswordTextField" destination="KKs-ti-d53" id="HU0-2u-5TU"/>
+                        <outlet property="emailTextField" destination="ser-c6-aIT" id="J8q-bP-hel"/>
+                        <outlet property="firstNameTextField" destination="cSg-wo-6pW" id="eGK-B8-FVB"/>
+                        <outlet property="lastNameTextField" destination="pNY-Dc-EiH" id="Rdu-cr-Bbq"/>
+                        <outlet property="passwordTextField" destination="mP5-8p-hmd" id="A0v-29-gLx"/>
+                        <outlet property="phoneTextField" destination="Po3-4v-D8P" id="mms-0v-A24"/>
+                        <outlet property="positionTextField" destination="tbM-vt-K84" id="t6X-Z6-p8t"/>
                         <outlet property="scrollView" destination="efT-ac-f2k" id="acS-GA-Ekk"/>
                         <outlet property="signInLabel" destination="Lg6-aA-u1k" id="nf6-G2-Bic"/>
                     </connections>

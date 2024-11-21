@@ -8,27 +8,40 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
-
     var coordinator: LoginCoordinator?
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var signInLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var signInLabel: UILabel!
+    @IBOutlet var firstNameTextField: UITextField!
+    @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var phoneTextField: UITextField!
+    @IBOutlet var positionTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var confirmPasswordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupActions()
         setupKeyboardActions()
     }
 
-    func setupUI(){
-        self.signInLabel.colorString(
+    func setupUI() {
+        confirmPasswordTextField.delegate = self
+
+        signInLabel.colorString(
             text: .Register.signInText,
             coloredText: .Register.signIn
         )
     }
 
-    //TODO: Handle in common place
-    func setupKeyboardActions(){
+    func setupActions() {
+        hideKeyboardWhenTappedAround()
+    }
+
+    // TODO: Handle in common place
+    func setupKeyboardActions() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -64,5 +77,12 @@ class RegistrationViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RegistrationViewController") as! RegistrationViewController
         return viewController
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
