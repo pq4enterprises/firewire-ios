@@ -13,8 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
     @IBOutlet var termsAndConditionsLabel: UILabel!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var emailTextField: FWTextField!
+    @IBOutlet var passwordTextField: FWTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,9 @@ class LoginViewController: UIViewController {
 
     func setupUI() {
         passwordTextField.delegate = self
+        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!){
+            debugPrint("button tapped")
+        }
 
         registerLabel.colorString(
             text: .Login.registerText,

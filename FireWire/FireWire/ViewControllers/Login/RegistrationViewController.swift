@@ -12,13 +12,13 @@ class RegistrationViewController: UIViewController {
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var signInLabel: UILabel!
-    @IBOutlet var firstNameTextField: UITextField!
-    @IBOutlet var lastNameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var phoneTextField: UITextField!
-    @IBOutlet var positionTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var confirmPasswordTextField: UITextField!
+    @IBOutlet var firstNameTextField: FWTextField!
+    @IBOutlet var lastNameTextField: FWTextField!
+    @IBOutlet var emailTextField: FWTextField!
+    @IBOutlet var phoneTextField: FWTextField!
+    @IBOutlet var positionTextField: FWTextField!
+    @IBOutlet var passwordTextField: FWTextField!
+    @IBOutlet var confirmPasswordTextField: FWTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,9 @@ class RegistrationViewController: UIViewController {
     }
 
     func setupUI() {
+        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!)
+        confirmPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!)
+
         confirmPasswordTextField.delegate = self
 
         signInLabel.colorString(
