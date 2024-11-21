@@ -9,6 +9,7 @@ import UIKit
 
 enum CustomColor: String {
     case FWRed
+    case FWTextFieldBorderGrey
 }
 
 extension UIColor {
@@ -19,4 +20,5 @@ extension UIColor {
 
 struct FWColor {
     static let red = UIColor.appColor(CustomColor.FWRed)
+    static let textFieldGrey = UIColor.appColor(CustomColor.FWTextFieldBorderGrey)
 }

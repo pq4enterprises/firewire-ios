@@ -35,6 +35,7 @@
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
+		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0B012BC2CED1A3B001EA5DF /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B01B5D922CE8EB24001C5189 /* Poppins-SemiBold.ttf */; };
 		B0BE6EC72CE8E57900E712EA /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC62CE8E57900E712EA /* Inter-Regular.ttf */; };
 		B0BE6EC92CE8E58900E712EA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */; };
@@ -100,6 +101,7 @@
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0BE6EC62CE8E57900E712EA /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		B0BE6EC82CE8E58900E712EA /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		B0BE6ECC2CE8E5B100E712EA /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				B04682492CE66E4900419C65 /* FWColor.swift */,
 				B046824B2CE66F5A00419C65 /* FWFont.swift */,
 				B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */,
+				B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				B0F1A7EC2CED215300D9F309 /* String+copy.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
+				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,
