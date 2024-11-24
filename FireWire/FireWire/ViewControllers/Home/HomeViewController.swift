@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var segmentControl: FWSegmentControl!
 
+    var coordinator: HomeCoordinator?
     var mapViewController: MapViewController?
     var newsViewController: NewsListViewController?
 
@@ -36,6 +37,14 @@ class HomeViewController: UIViewController {
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         switchToViewController(at: selectedIndex)
+    }
+    
+    @IBAction func menuButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToMenu()
+    }
+    
+    @IBAction func feedsButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToFeeds()
     }
 
     func switchToViewController(at index: Int) {

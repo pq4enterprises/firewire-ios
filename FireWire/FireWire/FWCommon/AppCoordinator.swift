@@ -8,6 +8,7 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
+    var childCoordinators: [any Coordinator]?
     var navigationController: UINavigationController
     var loginCoordinator: LoginCoordinator?
 
