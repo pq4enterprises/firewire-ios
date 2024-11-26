@@ -48,3 +48,14 @@ Thumbs.db
 *.mov
 *.wmv
 
+
+# Xcode Project
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+.idea/
+# Build
+**/.build/
+**/Build/
+DerivedData/
+*.ipa
+
