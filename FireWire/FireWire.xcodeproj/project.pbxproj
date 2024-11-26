@@ -297,16 +297,13 @@
 		B04682522CE67CE900419C65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B09254BC2CF6494E00879B07 /* XIBs */,
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
-				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
-				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B046823E2CE5401100419C65 /* MapListViewController.swift */,
-				B046823F2CE5401100419C65 /* MapListViewController.xib */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
 				B09254B22CF626C100879B07 /* FilterListViewController.swift */,
-				B09254B32CF626C100879B07 /* FilterListViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,6 +369,17 @@
 				B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		B09254BC2CF6494E00879B07 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
+				B046823B2CE53B9300419C65 /* MapViewController.xib */,
+				B046823F2CE5401100419C65 /* MapListViewController.xib */,
+				B09254B32CF626C100879B07 /* FilterListViewController.xib */,
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		B0D12CFE2CED095200EEDDF8 /* Login */ = {
