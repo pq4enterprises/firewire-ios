@@ -221,9 +221,9 @@
 		9B4F51192CF586BF007D319D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9B4B179D2CF58759007517BD /* Images.xcassets */,
 				9B4F51382CF58700007D319D /* Fonts */,
 				9B4F51372CF586EB007D319D /* Extensions */,
+				9B4B179D2CF58759007517BD /* Images.xcassets */,
 				9B4B179C2CF58759007517BD /* Colors.xcassets */,
 			);
 			path = Resources;
