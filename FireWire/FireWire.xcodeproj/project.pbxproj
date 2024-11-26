@@ -57,6 +57,7 @@
 		B09254B42CF626C100879B07 /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* FilterListViewController.swift */; };
 		B09254B52CF626C100879B07 /* FilterListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* FilterListViewController.xib */; };
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
+		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
@@ -140,6 +141,7 @@
 		B09254B22CF626C100879B07 /* FilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
 		B09254B32CF626C100879B07 /* FilterListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
+		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */,
 				B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */,
 				B064D3182CF32B5000CAB161 /* FWView.swift */,
+				B09254BD2CF64BE400879B07 /* FWImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
+				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,

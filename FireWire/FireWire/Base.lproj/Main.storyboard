@@ -324,6 +324,8 @@ agreeing with our Terms and Conditions</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="feedsButton" destination="ZrN-Aq-hWv" id="eRw-67-sHe"/>
+                        <outlet property="menuButton" destination="ZeA-6Q-Hk4" id="TED-xd-ySX"/>
                         <outlet property="segmentControl" destination="BXk-fa-lpu" id="UCO-1j-Zke"/>
                         <outlet property="viewContainer" destination="i71-I2-WcE" id="2SN-6g-9uZ"/>
                     </connections>
