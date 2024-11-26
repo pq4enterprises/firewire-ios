@@ -50,12 +50,11 @@ Thumbs.db
 
 
 # Xcode Project
-**/*.xcodeproj/xcuserdata/
-**/*.xcworkspace/xcuserdata/
+FireWire.xcodeproj/project.xcworkspace/xcuserdata
 .idea/
+
 # Build
-**/.build/
-**/Build/
-DerivedData/
-*.ipa
+Carthage/Build/
+build/
+.ipa
 
