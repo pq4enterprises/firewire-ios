@@ -23,6 +23,11 @@ class MapListViewController: UIViewController {
         tableView.register(PostListViewCell.nib(), forCellReuseIdentifier: PostListViewCell.identifier)
     }
 
+    @IBAction func filterButtonTap(_ sender: UIButton) {
+        debugPrint("Filter tap")
+        self.dismiss(animated: true)
+    }
+    
 }
 
 extension MapListViewController: UITableViewDataSource, UITableViewDelegate {

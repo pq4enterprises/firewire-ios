@@ -14,17 +14,25 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        let mapListView = MapListViewController()
-        let navVC = UINavigationController(rootViewController: mapListView)
-        navVC.modalPresentationStyle = .pageSheet
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: MapListViewController())
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        self.present(bottomSheet, animated: true)
 
-        if let sheet = navVC.sheetPresentationController {
-            sheet.detents = [.medium(), .custom(resolver: {context in
-                0.95 * context.maximumDetentValue
-            })]
-            sheet.prefersGrabberVisible = true
-        }
-        self.present(navVC, animated: true, completion: nil)
+        ///Note: Native way to show bottom sheet, but it has customisation issue
+        ///if custom bottom sheet satisfies the requirement, this code should be removed later.
+        //        let mapListView = MapListViewController()
+        //        let navVC = UINavigationController(rootViewController: mapListView)
+        //        navVC.modalPresentationStyle = .pageSheet
+        //
+        //        if let sheet = navVC.sheetPresentationController {
+        //            sheet.detents = [.medium(), .custom(resolver: {context in
+        //                0.95 * context.maximumDetentValue
+        //            })]
+        //            sheet.prefersGrabberVisible = true
+        //        }
+        //        self.present(navVC, animated: true, completion: nil)
+
     }
     
     /*
