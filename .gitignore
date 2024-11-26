@@ -49,7 +49,7 @@ Thumbs.db
 *.wmv
 
 # Xcode Project
-FireWire.xcodeproj/project.xcworkspace/xcuserdata
+xcuserdata/
 .idea/
 
 # Build
