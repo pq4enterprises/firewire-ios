@@ -49,11 +49,13 @@ Thumbs.db
 *.wmv
 
 # Xcode Project
-xcuserdata/
-.idea/
+FireWire/FireWire.xcodeproj/project.xcworkspace/xcuserdata/
 
 # Build
 Carthage/Build/
-build/
+.build/
 .ipa
+
+
+
 
