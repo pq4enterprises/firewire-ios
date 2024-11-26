@@ -4,10 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Poppins-Regulat.ttf</string>
-		<string>Poppins-SemiBold.ttf</string>
-		<string>Teko-Medium.ttf</string>
-		<string>Inter_18pt-Regular.ttf</string>
+		<string>Resources/Fonts/Inter_18pt-Regular.ttf</string>
+		<string>Resources/Fonts/Inter-Regular.ttf</string>
+		<string>Resources/Fonts/Poppins-Regular.ttf</string>
+		<string>Resources/Fonts/Poppins-SemiBold.ttf</string>
+		<string>Resources/Fonts/Teko-Medium.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
