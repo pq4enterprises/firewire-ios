@@ -51,10 +51,9 @@ Thumbs.db
 # Xcode Project
 FireWire.xcodeproj/project.xcworkspace/xcuserdata
 .idea/
-.ipa
 
 # Build
 Carthage/Build/
 build/
-*.ipa
+.ipa
 
