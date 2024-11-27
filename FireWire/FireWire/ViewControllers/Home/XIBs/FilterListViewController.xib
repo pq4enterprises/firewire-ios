@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,12 +18,56 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ov2-7u-8cB">
+                    <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Areas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ds-8Q-kCm">
+                            <rect key="frame" x="20" y="15" width="148" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdu-Pb-Qfa">
+                            <rect key="frame" x="313" y="0.0" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="EDG-i3-uXq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="tintColor" name="FWRed"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="doneButtonTap:" destination="-1" eventType="touchUpInside" id="OfA-Ob-zpy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="2ds-8Q-kCm" firstAttribute="centerY" secondItem="Ov2-7u-8cB" secondAttribute="centerY" id="4pr-I0-D5E"/>
+                        <constraint firstAttribute="trailing" secondItem="Xdu-Pb-Qfa" secondAttribute="trailing" constant="20" id="DE1-Xu-jYY"/>
+                        <constraint firstItem="Xdu-Pb-Qfa" firstAttribute="centerY" secondItem="2ds-8Q-kCm" secondAttribute="centerY" id="EAm-N0-j0U"/>
+                        <constraint firstAttribute="height" constant="60" id="Rdb-Zg-5vu"/>
+                        <constraint firstItem="2ds-8Q-kCm" firstAttribute="leading" secondItem="Ov2-7u-8cB" secondAttribute="leading" constant="20" id="TyG-x5-6Jg"/>
+                        <constraint firstAttribute="bottom" secondItem="Xdu-Pb-Qfa" secondAttribute="bottom" id="ZMA-fA-KYK"/>
+                        <constraint firstItem="Xdu-Pb-Qfa" firstAttribute="top" secondItem="Ov2-7u-8cB" secondAttribute="top" id="fiz-Y8-jNN"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Ov2-7u-8cB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aWD-Cy-vCr"/>
+                <constraint firstItem="Ov2-7u-8cB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="d7n-AL-LTw"/>
+                <constraint firstItem="Ov2-7u-8cB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mxF-gF-opb"/>
+            </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="FWRed">
+            <color red="0.792156862745098" green="0.2627450980392157" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

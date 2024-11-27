@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
         mapViewController = MapViewController()
+        mapViewController?.coordinator = coordinator
+        
         newsViewController = NewsListViewController()
 
         switchToViewController(at: 0)

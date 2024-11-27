@@ -35,4 +35,28 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
+    func dismissView(){
+        navigationController.dismiss(animated: true)
+    }
+
+    func navigateToMapListView(){
+        let mapListView = MapListViewController()
+        mapListView.coordinator = self
+
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: mapListView)
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        navigationController.present(bottomSheet, animated: true)
+    }
+
+    func navigateToFilterListView(){
+        let filterListView = FilterListViewController()
+        filterListView.coordinator = self
+
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: filterListView)
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        navigationController.present(bottomSheet, animated: true)
+    }
+
 }

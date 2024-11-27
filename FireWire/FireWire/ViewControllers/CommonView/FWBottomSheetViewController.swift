@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum BottomSheetDetent {
+    case medium
+    case large
+}
+
 class FWBottomSheetViewController: UIViewController {
     @IBOutlet var dimmedView: UIView!
     @IBOutlet var containerView: UIView!
@@ -15,7 +20,7 @@ class FWBottomSheetViewController: UIViewController {
 
     let maxDimmedAlpha: CGFloat = 0.6
 
-    let defaultHeight: CGFloat = 400
+    var defaultHeight: CGFloat = 400
     let dismissibleHeight: CGFloat = 200
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
     // keep current new height, initial is default height
@@ -23,6 +28,8 @@ class FWBottomSheetViewController: UIViewController {
 
     var childView = UIViewController()
     var showDimmedView: Bool = false
+    var bottomSheetDetents: [BottomSheetDetent] = [.medium, .large]
+    var shouldAddPanGesture: Bool = true
 
     func configure(with childViewController: UIViewController, showDimmedBackground: Bool = false) {
         childView = childViewController

@@ -11,6 +11,8 @@ class MapListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    var coordinator: HomeCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -24,8 +26,8 @@ class MapListViewController: UIViewController {
     }
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
-        debugPrint("Filter tap")
-        self.dismiss(animated: true)
+        coordinator?.dismissView()
+        coordinator?.navigateToFilterListView()
     }
     
 }

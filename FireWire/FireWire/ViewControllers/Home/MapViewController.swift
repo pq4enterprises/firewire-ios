@@ -12,17 +12,15 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
 
+    var coordinator: HomeCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.overrideUserInterfaceStyle = .dark
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: MapListViewController())
-        bottomSheet.modalPresentationStyle = .overCurrentContext
-        self.present(bottomSheet, animated: true)
-
+        coordinator?.navigateToMapListView()
         ///Note: Native way to show bottom sheet, but it has customisation issue
         ///if custom bottom sheet satisfies the requirement, this code should be removed later.
         //        let mapListView = MapListViewController()
