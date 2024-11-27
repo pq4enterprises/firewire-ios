@@ -17,5 +17,6 @@ class FilterListViewController: UIViewController {
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.dismissView()
+        coordinator?.navigateToMapListView()
     }
 }

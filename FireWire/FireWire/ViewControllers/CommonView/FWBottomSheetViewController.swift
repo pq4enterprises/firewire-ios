@@ -31,9 +31,16 @@ class FWBottomSheetViewController: UIViewController {
     var bottomSheetDetents: [BottomSheetDetent] = [.medium, .large]
     var shouldAddPanGesture: Bool = true
 
-    func configure(with childViewController: UIViewController, showDimmedBackground: Bool = false) {
+    func configure(
+        with childViewController: UIViewController,
+        showDimmedBackground: Bool = false,
+        isDraggableView: Bool = true,
+        bottomSheetDetents: [BottomSheetDetent]
+    ) {
         childView = childViewController
         showDimmedView = showDimmedBackground
+        shouldAddPanGesture = isDraggableView
+        self.bottomSheetDetents = bottomSheetDetents
 
         childView.view.layer.cornerRadius = 10
         childView.view.layer.masksToBounds = false
@@ -46,12 +53,21 @@ class FWBottomSheetViewController: UIViewController {
         if showDimmedView {
             setupDimmedView()
         }
+
+        if shouldAddPanGesture {
+            setupPanGesture()
+        }
+
+        if bottomSheetDetents.count == 1, bottomSheetDetents.contains(.large) {
+            //By default open with max container height
+            animateContainerHeight(UIScreen.main.bounds.height - 150)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        setupPanGesture()
+        //setupPanGesture()
 
         // tap gesture on dimmed view to dismiss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCloseAction))

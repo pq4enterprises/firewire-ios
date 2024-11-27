@@ -44,7 +44,7 @@ class HomeCoordinator: BaseCoordinator {
         mapListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: mapListView)
+        bottomSheet.configure(with: mapListView, bottomSheetDetents: [.medium, .large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
     }
@@ -54,7 +54,7 @@ class HomeCoordinator: BaseCoordinator {
         filterListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: filterListView)
+        bottomSheet.configure(with: filterListView, isDraggableView: false, bottomSheetDetents: [.large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
     }
