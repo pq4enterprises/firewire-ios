@@ -47,6 +47,16 @@ class FWBottomSheetViewController: UIViewController {
 
         childView.view.frame = view.bounds
         containerView.addSubview(childView.view)
+        childView.view.translatesAutoresizingMaskIntoConstraints = false
+
+        // Set constraints for the child view to fill the container
+        NSLayoutConstraint.activate([
+            childView.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            childView.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            childView.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            childView.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+
         addChild(childView)
         childView.didMove(toParent: self)
 
