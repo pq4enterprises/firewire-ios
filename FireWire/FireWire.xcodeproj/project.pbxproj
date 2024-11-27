@@ -24,6 +24,8 @@
 		9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
+		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
+		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
@@ -104,6 +106,8 @@
 		9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
+		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
+		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +262,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B0100CD82CF78DDD004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
+				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		B01BB04D2CF31087003970D7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,10 +303,10 @@
 		B04682512CE67CCE00419C65 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B0100CD82CF78DDD004F6214 /* XIBs */,
 				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
-				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
-				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
+				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -514,6 +528,7 @@
 			files = (
 				B04682412CE5401100419C65 /* MapListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
+				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
@@ -575,6 +590,7 @@
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
+				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
