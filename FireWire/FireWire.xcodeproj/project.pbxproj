@@ -272,6 +272,42 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
+		B0100CDD2CF79975004F6214 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				B0100CDE2CF79984004F6214 /* XIBs */,
+				B046823E2CE5401100419C65 /* PostListViewController.swift */,
+				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		B0100CDE2CF79984004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */,
+				B046823F2CE5401100419C65 /* PostListViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
+		B0100CDF2CF79A03004F6214 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				B0100CE02CF79A0A004F6214 /* XIBs */,
+				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		B0100CE02CF79A0A004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		B01BB04D2CF31087003970D7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +327,8 @@
 		B04682292CE52C5A00419C65 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0100CDF2CF79A03004F6214 /* News */,
+				B0100CDD2CF79975004F6214 /* Posts */,
 				B09254B62CF6372200879B07 /* CommonView */,
 				B01BB0542CF314A4003970D7 /* Feeds */,
 				B01BB04D2CF31087003970D7 /* Menu */,
@@ -315,12 +353,9 @@
 			isa = PBXGroup;
 			children = (
 				B09254BC2CF6494E00879B07 /* XIBs */,
-				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
-				B046823E2CE5401100419C65 /* PostListViewController.swift */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
-				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -391,10 +426,7 @@
 		B09254BC2CF6494E00879B07 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
-				B046823F2CE5401100419C65 /* PostListViewController.xib */,
-				B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
