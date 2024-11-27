@@ -42,4 +42,10 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        debugPrint("select row \(indexPath.row)")
+        coordinator?.dismissView()
+        coordinator?.navigateToPostDetail()
+    }
+
 }

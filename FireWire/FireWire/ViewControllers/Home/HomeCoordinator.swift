@@ -39,6 +39,10 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.dismiss(animated: true)
     }
 
+    func popView(){
+        navigationController.popViewController(animated: true)
+    }
+
     func navigateToPostListView(){
         let postListView = PostListViewController()
         postListView.coordinator = self
@@ -57,6 +61,12 @@ class HomeCoordinator: BaseCoordinator {
         bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
+    }
+
+    func navigateToPostDetail(){
+        let postDetailViewController = PostDetailViewController.instantiate()
+        postDetailViewController.coordinator = self
+        navigationController.pushViewController(postDetailViewController, animated: true)
     }
 
 }

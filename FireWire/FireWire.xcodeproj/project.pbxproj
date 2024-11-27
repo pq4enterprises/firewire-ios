@@ -26,6 +26,7 @@
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
+		B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
@@ -108,6 +109,7 @@
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
+		B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				B0100CDE2CF79984004F6214 /* XIBs */,
 				B046823E2CE5401100419C65 /* PostListViewController.swift */,
 				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
+				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
