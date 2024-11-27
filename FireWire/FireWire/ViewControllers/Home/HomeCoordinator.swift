@@ -39,22 +39,22 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.dismiss(animated: true)
     }
 
-    func navigateToMapListView(){
-        let mapListView = MapListViewController()
-        mapListView.coordinator = self
+    func navigateToPostListView(){
+        let postListView = PostListViewController()
+        postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: mapListView, bottomSheetDetents: [.medium, .large])
+        bottomSheet.configure(with: postListView, bottomSheetDetents: [.medium, .large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
     }
 
-    func navigateToFilterListView(){
-        let filterListView = FilterListViewController()
-        filterListView.coordinator = self
+    func navigateToSelectAreaListView(){
+        let selectAreaListView = SelectAreaListViewController()
+        selectAreaListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: filterListView, isDraggableView: false, bottomSheetDetents: [.large])
+        bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterListViewController: UIViewController {
+class SelectAreaListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,11 +27,11 @@ class FilterListViewController: UIViewController {
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.dismissView()
-        coordinator?.navigateToMapListView()
+        coordinator?.navigateToPostListView()
     }
 }
 
-extension FilterListViewController: UITableViewDataSource, UITableViewDelegate {
+extension SelectAreaListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         20
     }

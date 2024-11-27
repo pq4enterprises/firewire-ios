@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        coordinator?.navigateToMapListView()
+        coordinator?.navigateToPostListView()
         ///Note: Native way to show bottom sheet, but it has customisation issue
         ///if custom bottom sheet satisfies the requirement, this code should be removed later.
         //        let mapListView = MapListViewController()

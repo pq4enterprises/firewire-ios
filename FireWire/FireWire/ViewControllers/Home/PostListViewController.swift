@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapListViewController: UIViewController {
+class PostListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,12 +27,12 @@ class MapListViewController: UIViewController {
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
         coordinator?.dismissView()
-        coordinator?.navigateToFilterListView()
+        coordinator?.navigateToSelectAreaListView()
     }
     
 }
 
-extension MapListViewController: UITableViewDataSource, UITableViewDelegate {
+extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         20
     }
