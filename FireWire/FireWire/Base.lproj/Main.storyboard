@@ -443,7 +443,7 @@ agreeing with our Terms and Conditions</string>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-nm-krm">
                                                 <rect key="frame" x="25" y="75.333333333333343" width="343" height="50.333333333333343"/>
-                                                <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                                                <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
@@ -620,17 +620,54 @@ San Diego, CA 92128, USA
                                 <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL5-Pp-b5S">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="709"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="776.66666666666663"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="News detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldk-V9-Se8">
-                                                <rect key="frame" x="152" y="29" width="89" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="drR-kD-FbO">
+                                                <rect key="frame" x="25" y="0.0" width="343" height="45.333333333333336"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What’s New on FireWire?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldk-V9-Se8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="219.33333333333334" height="23"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08 Oct | 04:20 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTk-Za-Ieq">
+                                                        <rect key="frame" x="0.0" y="30.999999999999996" width="104.33333333333333" height="14.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" name="FWTextGrey 1"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rHv-An-bPE">
+                                                <rect key="frame" x="25" y="55.333333333333343" width="343" height="180"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="nsr-Td-PdV"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-lI-e3o">
+                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333314"/>
+                                                <mutableString key="text">To everyone that’s been using the app, I’m sure you’re aware of some of the new additions already. For those that haven’t hopped on board yet, there’s a bunch of reasons to download now!  Salty Wire:  If you’re a fan of the Gettin’ Salty Podcast and a fan of FireWire, you’re gonna love this!
+We’ve joined forces with Lou and Kubes to give you the ultimate experience. A subscription will get you access to the premium features on the FireWire app, and also never before seen premium content, documentaries, and training videos from the Gettin’ Salty guys. We will also be releasing our rewards program soon to give back to our loyal followers. Stay tuned!
+Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast:  Another great addition to the FireWire family are the boys from Chicago’s Bravest Stories podcast! Listen to interviews with firefighters in Chicago and other areas as they explain in detail some of the wildest alarms they’ve responded to! You can also click their link on the FireWire app to check them out!</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="NLN-lI-e3o" firstAttribute="leading" secondItem="FL5-Pp-b5S" secondAttribute="leading" constant="25" id="9dI-LJ-Zxe"/>
+                                            <constraint firstItem="rHv-An-bPE" firstAttribute="top" secondItem="drR-kD-FbO" secondAttribute="bottom" constant="10" id="A7M-Kv-1n8"/>
+                                            <constraint firstAttribute="trailing" secondItem="drR-kD-FbO" secondAttribute="trailing" constant="25" id="EQT-eb-hzd"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NLN-lI-e3o" secondAttribute="bottom" constant="30" id="QyO-L4-uc1"/>
+                                            <constraint firstItem="drR-kD-FbO" firstAttribute="top" secondItem="FL5-Pp-b5S" secondAttribute="top" id="Zvf-fr-j3X"/>
+                                            <constraint firstItem="drR-kD-FbO" firstAttribute="leading" secondItem="FL5-Pp-b5S" secondAttribute="leading" constant="25" id="cLY-Sx-qZb"/>
+                                            <constraint firstItem="rHv-An-bPE" firstAttribute="leading" secondItem="FL5-Pp-b5S" secondAttribute="leading" constant="25" id="evp-Vy-IoV"/>
+                                            <constraint firstAttribute="trailing" secondItem="NLN-lI-e3o" secondAttribute="trailing" constant="25" id="h4w-jB-mIG"/>
+                                            <constraint firstAttribute="trailing" secondItem="rHv-An-bPE" secondAttribute="trailing" constant="25" id="k7R-T7-QKe"/>
+                                            <constraint firstItem="NLN-lI-e3o" firstAttribute="top" secondItem="rHv-An-bPE" secondAttribute="bottom" constant="10" id="plZ-RN-QAe"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1329,6 +1366,7 @@ San Diego, CA 92128, USA
         <image name="menu_bg" width="430" height="563"/>
         <image name="menu_icon" width="20" height="17"/>
         <image name="news_detail_placeholder" width="384" height="275"/>
+        <image name="news_placeholder" width="384" height="184"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="profile_img01" width="70" height="70"/>
         <image name="profile_img01_1" width="190" height="44"/>
