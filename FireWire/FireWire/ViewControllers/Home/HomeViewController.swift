@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         mapViewController?.coordinator = coordinator
         
         newsViewController = NewsListViewController()
+        newsViewController?.coordinator = coordinator
 
         switchToViewController(at: 0)
         segmentControl.selectedSegmentIndex = 0

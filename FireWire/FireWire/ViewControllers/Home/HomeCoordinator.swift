@@ -69,4 +69,10 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(postDetailViewController, animated: true)
     }
 
+    func navigateToNewsDetail(){
+        let newsDetailViewController = NewsDetailViewController.instantiate()
+        newsDetailViewController.coordinator = self
+        navigationController.pushViewController(newsDetailViewController, animated: true)
+    }
+
 }

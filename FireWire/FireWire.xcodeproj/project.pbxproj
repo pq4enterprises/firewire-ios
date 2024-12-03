@@ -27,6 +27,7 @@
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */; };
+		B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
@@ -110,6 +111,7 @@
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			children = (
 				B0100CE02CF79A0A004F6214 /* XIBs */,
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+				B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
+				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
