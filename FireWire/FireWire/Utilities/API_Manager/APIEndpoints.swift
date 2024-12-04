@@ -10,4 +10,5 @@ import Foundation
 struct APIEndpoints {
     static let baseURL = "https://firewire-api.atomgroups.com/"
     static let login = "api/app/auth/login"
+    static let register = "api/app/auth/register"
 }

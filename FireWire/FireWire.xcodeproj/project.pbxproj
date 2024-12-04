@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		9B4B179F2CF58759007517BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
+		9B4B17A12CF5897B007517BD /* RegisterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B17A02CF5897B007517BD /* RegisterDataModel.swift */; };
 		9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* JPToast.swift */; };
 		9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D02CF57068007D319D /* JPTextField.swift */; };
 		9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
@@ -85,6 +86,7 @@
 /* Begin PBXFileReference section */
 		9B4B179C2CF58759007517BD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9B4B179D2CF58759007517BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9B4B17A02CF5897B007517BD /* RegisterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDataModel.swift; sourceTree = "<group>"; };
 		9B4F50C92CF57068007D319D /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		9B4F50CA2CF57068007D319D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
 				B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */,
+				9B4B17A02CF5897B007517BD /* RegisterDataModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
+				9B4B17A12CF5897B007517BD /* RegisterDataModel.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
 				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
