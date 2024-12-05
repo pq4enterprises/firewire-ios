@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import GoogleMaps
 
 class MapViewController: UIViewController {
 
@@ -19,19 +18,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.overrideUserInterfaceStyle = .dark
-        //setupUI()
-    }
-
-    func setupUI(){
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapOptions = GMSMapViewOptions()
-        mapOptions.camera = camera
-
-        let mapView = GMSMapView(options: mapOptions)
-        mapView.frame = self.contentView.bounds
-        mapView.mapType = .normal
-
-        self.contentView.addSubview(mapView)
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
