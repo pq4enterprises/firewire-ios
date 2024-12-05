@@ -7,7 +7,18 @@
 
 import Foundation
 
-struct APIEndpoints {
+enum APIEndpoints {
     static let baseURL = "https://firewire-api.atomgroups.com/"
     static let login = "api/app/auth/login"
+}
+
+enum APIPayload {
+    case login(email: String, password: String)
+
+    func toDictionary() -> [String: Any] {
+        switch self {
+        case .login(let email, let password):
+            return ["email": email, "password": password]
+        }
+    }
 }

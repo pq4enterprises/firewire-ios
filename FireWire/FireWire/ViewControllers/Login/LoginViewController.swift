@@ -9,26 +9,26 @@ import UIKit
 
 class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
-    
+
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupActions()
         setupKeyboardActions()
     }
-    
+
     func setupUI() {
         passwordTextField.delegate = self
-        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!){
+        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!) {
             debugPrint("button tapped")
         }
-        
+
         registerLabel.colorString(
             text: .Login.registerText,
             coloredText: .Login.register
@@ -38,82 +38,83 @@ class LoginViewController: UIViewController {
             coloredText: .Login.termsAndConditions
         )
     }
-    
+
     func setupActions() {
         hideKeyboardWhenTappedAround()
-        
+
         let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(registerTap))
         registerLabel.isUserInteractionEnabled = true
         registerLabel.addGestureRecognizer(labelTapGesture)
     }
-    
+
     @objc func registerTap() {
         coordinator?.navigateToRegistration()
     }
-    
+
     @IBAction func signInTap(_ sender: UIButton) {
-        callLoginApi();
-        //
+        callLoginApi()
     }
-    
+
     func callLoginApi() {
-        if (emailTextField.text == "" || passwordTextField.text == "") {
-            showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
             }])
         } else {
-            let headers = ["Content-Type":"application/json"]
-            var payload = [String:Any]()
-            payload["email"] = "vimaladevi@atomgroups.com"
-            payload["password"] = "password"
-            APIRequest().callLoginApi(apiEndPoint: APIEndpoints.login, headers: headers, httpMethod: "POST", Accesstoken: "", payload: payload as JSON, expect: LoginDataModel.self) { [self] response, statusCode, error in
+            let loginRequestModel = APIPayload.login(email: "vimaladevi@atomgroups.com", password: "password").toDictionary()
+
+            APIRequest().callApi(
+                apiEndPoint: APIEndpoints.login,
+                httpMethod: APIConstants.POST,
+                payload: loginRequestModel as JSON,
+                expect: LoginDataModel.self) { response, _, _ in
+
                 guard let getResponse = response else {
                     return
                 }
-                
+
                 if let loginDataResponse = getResponse as? LoginDataModel {
-                    print(loginDataResponse.token ?? "")
+                    debugPrint(loginDataResponse)
                     UserDefaults.standard.set(loginDataResponse.token ?? "", forKey: "token")
                     UserDefaults.standard.synchronize()
-                    self.coordinator?.navigateToHome()
                 } else {
                     print("Invalid response object")
                 }
             }
         }
-        
     }
+
     // TODO: Handle in common place
     func setupKeyboardActions() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        
+
         // Calculate the inset of the scroll view
         let keyboardHeight = keyboardFrame.height
-        
+
         // Set the content inset for the scroll view
         var contentInset = scrollView.contentInset
         contentInset.bottom = keyboardHeight
         scrollView.contentInset = contentInset
-        
+
         // Adjust the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         // Reset the content inset when the keyboard hides
         var contentInset = scrollView.contentInset
         contentInset.bottom = 0
         scrollView.contentInset = contentInset
-        
+
         // Reset the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
     }
-    
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> LoginViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

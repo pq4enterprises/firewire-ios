@@ -6,65 +6,41 @@
 //
 
 import UIKit
+
 typealias JSON = [String: Any]
 
 public class APIRequest {
-    typealias DataCompletionBlock = (_ response : Any? ,_ statusCode:Int? , _ error:String?) -> (Void)
-    
-    func callLoginApi<T:Codable>( apiEndPoint: String?, headers:[String:String], httpMethod:String?, Accesstoken: String?, payload: JSON? = nil, expect: T.Type, completionHandler: @escaping DataCompletionBlock) {
+    typealias DataCompletionBlock = (_ response: Any?, _ statusCode: Int?, _ error: String?) -> Void
+
+    // Generic API request handler
+    func callApi<T: Codable>(
+        apiEndPoint: String?,
+        httpMethod: String?,
+        accessToken: String? = "",
+        payload: JSON? = nil,
+        expect: T.Type,
+        completionHandler: @escaping DataCompletionBlock
+    ) {
         let url = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        URLSession.shared.request(url: URL(string: url), httpMethod: httpMethod, authTokenString: Accesstoken ?? "", headers: headers, payload: payload, expecting: expect.self) { result in
+
+        // Perform the API request
+        URLSession.shared.request(url: URL(string: url),
+                                  httpMethod: httpMethod,
+                                  authTokenString: accessToken ?? "",
+                                  headers: APIConstants.headers,
+                                  payload: payload,
+                                  expecting: expect.self)
+        { result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
                     completionHandler(response, nil, nil)
                 }
             case .failure(let error):
-                completionHandler(nil, nil, error.localizedDescription)
-            }
-        }
-    }
-    
-    func callFetchTenants<T:Codable>( apiEndPoint: String?, headers:[String:String], httpMethod:String?, Accesstoken: String?, payload: JSON? = nil, expect: T.Type, completionHandler: @escaping DataCompletionBlock) {
-        let url = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        URLSession.shared.request(url: URL(string: url), httpMethod: httpMethod, authTokenString: Accesstoken ?? "", headers: headers, payload: payload, expecting: expect.self) { result in
-            switch result {
-            case .success(let response):
                 DispatchQueue.main.async {
-                    completionHandler(response, nil, nil)
+                    completionHandler(nil, nil, error.localizedDescription)
                 }
-            case .failure(let error):
-                completionHandler(nil, nil, error.localizedDescription)
-            }
-        }
-    }
-    
-    func callFetchUserData<T:Codable>( apiEndPoint: String?, headers:[String:String], httpMethod:String?, Accesstoken: String?, payload: JSON? = nil, expect: T.Type, completionHandler: @escaping DataCompletionBlock) {
-        let url = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        URLSession.shared.request(url: URL(string: url), httpMethod: httpMethod, authTokenString: Accesstoken ?? "", headers: headers, payload: payload, expecting: expect.self) { result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    completionHandler(response, nil, nil)
-                }
-            case .failure(let error):
-                completionHandler(nil, nil, error.localizedDescription)
-            }
-        }
-    }
-    
-    func callModuleCounts<T:Codable>( apiEndPoint: String?, headers:[String:String], httpMethod:String?, Accesstoken: String?, payload: JSON? = nil, expect: T.Type, completionHandler: @escaping DataCompletionBlock) {
-        let url = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        URLSession.shared.request(url: URL(string: url), httpMethod: httpMethod, authTokenString: Accesstoken ?? "", headers: headers, payload: payload, expecting: expect.self) { result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    completionHandler(response, nil, nil)
-                }
-            case .failure(let error):
-                completionHandler(nil, nil, error.localizedDescription)
             }
         }
     }
 }
-

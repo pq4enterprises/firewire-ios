@@ -64,6 +64,7 @@
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
+		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
@@ -153,6 +154,7 @@
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
+		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				9B4F50C92CF57068007D319D /* APIEndpoints.swift */,
 				9B4F50CA2CF57068007D319D /* APIManager.swift */,
 				9B4F50CB2CF57068007D319D /* APIRequest.swift */,
+				B0AD4B372D01EDEF009B065C /* APIConstants.swift */,
 			);
 			path = API_Manager;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
 				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
+				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
