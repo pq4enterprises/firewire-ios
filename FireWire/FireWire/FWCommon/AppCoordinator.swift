@@ -19,8 +19,9 @@ class AppCoordinator: Coordinator {
 
     func start() {
         if isUserLoggedIn() {
-            homeCoordinator = HomeCoordinator(navigationController: navigationController)
-            homeCoordinator?.start()
+            // Change to home screen
+            loginCoordinator = LoginCoordinator(navigationController: navigationController)
+            loginCoordinator?.start()
         } else {
             loginCoordinator = LoginCoordinator(navigationController: navigationController)
             loginCoordinator?.start()

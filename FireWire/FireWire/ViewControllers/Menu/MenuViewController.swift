@@ -26,9 +26,7 @@ class MenuViewController: UIViewController {
 
     /// Temporary logout
     @objc func profileImageTap() {
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.appCoordinator?.logout()
-        }
+        
     }
 
     @IBAction func closeButtonTap(_ sender: UIButton) {

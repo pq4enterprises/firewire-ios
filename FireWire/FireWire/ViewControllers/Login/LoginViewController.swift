@@ -56,7 +56,9 @@ class LoginViewController: UIViewController {
     }
 
     func callLoginApi() {
+        self.showLoader()
         if emailTextField.text == "" || passwordTextField.text == "" {
+            self.hideLoader()
             showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
             }])
         } else {
@@ -66,7 +68,9 @@ class LoginViewController: UIViewController {
                 apiEndPoint: APIEndpoints.login,
                 httpMethod: APIConstants.POST,
                 payload: loginRequestModel as JSON,
-                expect: LoginDataModel.self) { [weak self] response, _, _ in
+                expect: LoginDataModel.self
+            ) { [weak self] response, _, _ in
+                self?.hideLoader()
 
                 guard let getResponse = response else {
                     return
