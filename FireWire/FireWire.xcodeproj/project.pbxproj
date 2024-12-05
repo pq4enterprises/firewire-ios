@@ -25,6 +25,10 @@
 		9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
+		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
+		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
+		B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */; };
+		B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
@@ -33,8 +37,8 @@
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
 		B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
 		B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
-		B04682402CE5401100419C65 /* MapListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* MapListViewController.swift */; };
-		B04682412CE5401100419C65 /* MapListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* MapListViewController.xib */; };
+		B04682402CE5401100419C65 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* PostListViewController.swift */; };
+		B04682412CE5401100419C65 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* PostListViewController.xib */; };
 		B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
@@ -55,6 +59,10 @@
 		B08237102CE374D30092AC01 /* FireWireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
+		B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */; };
+		B09254B52CF626C100879B07 /* SelectAreaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */; };
+		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
+		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
@@ -62,6 +70,7 @@
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0E115802CFF7B9C00E7D10B /* GoogleMaps */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +111,10 @@
 		9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
+		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
+		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
+		B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +123,8 @@
 		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
 		B046823A2CE53B9300419C65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B046823B2CE53B9300419C65 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		B046823E2CE5401100419C65 /* MapListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListViewController.swift; sourceTree = "<group>"; };
-		B046823F2CE5401100419C65 /* MapListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapListViewController.xib; sourceTree = "<group>"; };
+		B046823E2CE5401100419C65 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
+		B046823F2CE5401100419C65 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
 		B04682442CE6685300419C65 /* FWRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedButton.swift; sourceTree = "<group>"; };
 		B04682462CE66B3700419C65 /* FWSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSegmentControl.swift; sourceTree = "<group>"; };
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
@@ -136,6 +149,10 @@
 		B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
+		B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewController.swift; sourceTree = "<group>"; };
+		B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewController.xib; sourceTree = "<group>"; };
+		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
+		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +224,7 @@
 				B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */,
 				B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */,
 				B064D3182CF32B5000CAB161 /* FWView.swift */,
+				B09254BD2CF64BE400879B07 /* FWImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -251,6 +270,54 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B0100CD82CF78DDD004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
+				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
+		B0100CDD2CF79975004F6214 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				B0100CDE2CF79984004F6214 /* XIBs */,
+				B046823E2CE5401100419C65 /* PostListViewController.swift */,
+				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
+				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		B0100CDE2CF79984004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */,
+				B046823F2CE5401100419C65 /* PostListViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
+		B0100CDF2CF79A03004F6214 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				B0100CE02CF79A0A004F6214 /* XIBs */,
+				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+				B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		B0100CE02CF79A0A004F6214 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		B01BB04D2CF31087003970D7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +337,9 @@
 		B04682292CE52C5A00419C65 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0100CDF2CF79A03004F6214 /* News */,
+				B0100CDD2CF79975004F6214 /* Posts */,
+				B09254B62CF6372200879B07 /* CommonView */,
 				B01BB0542CF314A4003970D7 /* Feeds */,
 				B01BB04D2CF31087003970D7 /* Menu */,
 				B0D12CFE2CED095200EEDDF8 /* Login */,
@@ -281,10 +351,10 @@
 		B04682512CE67CCE00419C65 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B0100CD82CF78DDD004F6214 /* XIBs */,
 				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
-				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
-				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
+				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -292,12 +362,8 @@
 		B04682522CE67CE900419C65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
-				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
+				B09254BC2CF6494E00879B07 /* XIBs */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
-				B046823B2CE53B9300419C65 /* MapViewController.xib */,
-				B046823E2CE5401100419C65 /* MapListViewController.swift */,
-				B046823F2CE5401100419C65 /* MapListViewController.xib */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
 			);
@@ -359,6 +425,22 @@
 			path = FireWireUITests;
 			sourceTree = "<group>";
 		};
+		B09254B62CF6372200879B07 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */,
+			);
+			path = CommonView;
+			sourceTree = "<group>";
+		};
+		B09254BC2CF6494E00879B07 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B046823B2CE53B9300419C65 /* MapViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		B0D12CFE2CED095200EEDDF8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +481,9 @@
 			dependencies = (
 			);
 			name = FireWire;
+			packageProductDependencies = (
+				B0E115802CFF7B9C00E7D10B /* GoogleMaps */,
+			);
 			productName = FireWire;
 			productReference = B08236E92CE374D10092AC01 /* FireWire.app */;
 			productType = "com.apple.product-type.application";
@@ -471,6 +556,9 @@
 				Base,
 			);
 			mainGroup = B08236E02CE374D10092AC01;
+			packageReferences = (
+				B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+			);
 			productRefGroup = B08236EA2CE374D10092AC01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -487,8 +575,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04682412CE5401100419C65 /* MapListViewController.xib in Resources */,
+				B04682412CE5401100419C65 /* PostListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
+				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
@@ -501,6 +590,7 @@
 				9B4B179F2CF58759007517BD /* Images.xcassets in Resources */,
 				B08236F42CE374D10092AC01 /* Base in Resources */,
 				9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */,
+				B09254B52CF626C100879B07 /* SelectAreaListViewController.xib in Resources */,
 				9B4F51332CF586E6007D319D /* Poppins-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +626,7 @@
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
+				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
@@ -548,23 +639,28 @@
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
+				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
+				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
+				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
-				B04682402CE5401100419C65 /* MapListViewController.swift in Sources */,
+				B04682402CE5401100419C65 /* PostListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				9B4B17A12CF5897B007517BD /* RegisterDataModel.swift in Sources */,
+				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
 				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +1001,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0E115802CFF7B9C00E7D10B /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B08236E12CE374D10092AC01 /* Project object */;
 }

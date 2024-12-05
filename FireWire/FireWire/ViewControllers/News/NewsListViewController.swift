@@ -8,6 +8,7 @@
 import UIKit
 
 class NewsListViewController: UIViewController {
+    var coordinator: HomeCoordinator?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,6 +33,11 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsListViewCell.identifier, for: indexPath) as! NewsListViewCell
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        debugPrint("select row \(indexPath.row)")
+        coordinator?.navigateToNewsDetail()
     }
 
 }

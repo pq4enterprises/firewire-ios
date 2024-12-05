@@ -6,25 +6,50 @@
 //
 
 import UIKit
+import MapKit
+import GoogleMaps
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var contentView: UIView!
+    
+    var coordinator: HomeCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.overrideUserInterfaceStyle = .dark
+        //setupUI()
+    }
+
+    func setupUI(){
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mapOptions = GMSMapViewOptions()
+        mapOptions.camera = camera
+
+        let mapView = GMSMapView(options: mapOptions)
+        mapView.frame = self.contentView.bounds
+        mapView.mapType = .normal
+
+        self.contentView.addSubview(mapView)
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        let mapListView = MapListViewController()
-        let navVC = UINavigationController(rootViewController: mapListView)
-        navVC.modalPresentationStyle = .pageSheet
+        coordinator?.navigateToPostListView()
+        ///Note: Native way to show bottom sheet, but it has customisation issue
+        ///if custom bottom sheet satisfies the requirement, this code should be removed later.
+        //        let mapListView = MapListViewController()
+        //        let navVC = UINavigationController(rootViewController: mapListView)
+        //        navVC.modalPresentationStyle = .pageSheet
+        //
+        //        if let sheet = navVC.sheetPresentationController {
+        //            sheet.detents = [.medium(), .custom(resolver: {context in
+        //                0.95 * context.maximumDetentValue
+        //            })]
+        //            sheet.prefersGrabberVisible = true
+        //        }
+        //        self.present(navVC, animated: true, completion: nil)
 
-        if let sheet = navVC.sheetPresentationController {
-            sheet.detents = [.medium(), .custom(resolver: {context in
-                0.95 * context.maximumDetentValue
-            })]
-            sheet.prefersGrabberVisible = true
-        }
-        self.present(navVC, animated: true, completion: nil)
     }
     
     /*

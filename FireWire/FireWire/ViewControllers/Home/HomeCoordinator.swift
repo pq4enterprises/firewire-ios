@@ -35,4 +35,44 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
+    func dismissView(){
+        navigationController.dismiss(animated: true)
+    }
+
+    func popView(){
+        navigationController.popViewController(animated: true)
+    }
+
+    func navigateToPostListView(){
+        let postListView = PostListViewController()
+        postListView.coordinator = self
+
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: postListView, bottomSheetDetents: [.medium, .large])
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        navigationController.present(bottomSheet, animated: true)
+    }
+
+    func navigateToSelectAreaListView(){
+        let selectAreaListView = SelectAreaListViewController()
+        selectAreaListView.coordinator = self
+
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
+        bottomSheet.modalPresentationStyle = .overCurrentContext
+        navigationController.present(bottomSheet, animated: true)
+    }
+
+    func navigateToPostDetail(){
+        let postDetailViewController = PostDetailViewController.instantiate()
+        postDetailViewController.coordinator = self
+        navigationController.pushViewController(postDetailViewController, animated: true)
+    }
+
+    func navigateToNewsDetail(){
+        let newsDetailViewController = NewsDetailViewController.instantiate()
+        newsDetailViewController.coordinator = self
+        navigationController.pushViewController(newsDetailViewController, animated: true)
+    }
+
 }

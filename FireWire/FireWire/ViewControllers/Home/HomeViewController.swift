@@ -11,7 +11,9 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var segmentControl: FWSegmentControl!
-
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var feedsButton: UIButton!
+    
     var coordinator: HomeCoordinator?
     var mapViewController: MapViewController?
     var newsViewController: NewsListViewController?
@@ -25,7 +27,10 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
         mapViewController = MapViewController()
+        mapViewController?.coordinator = coordinator
+        
         newsViewController = NewsListViewController()
+        newsViewController?.coordinator = coordinator
 
         switchToViewController(at: 0)
         segmentControl.selectedSegmentIndex = 0
@@ -60,8 +65,14 @@ class HomeViewController: UIViewController {
         switch index {
         case 0:
             selectedViewController = mapViewController!
+
+            menuButton.setImage(FWImage.menuIconWhite, for: .normal)
+            feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
         case 1:
             selectedViewController = newsViewController!
+
+            menuButton.setImage(FWImage.menuIcon, for: .normal)
+            feedsButton.setImage(FWImage.alertIcon, for: .normal)
         default:
             return
         }

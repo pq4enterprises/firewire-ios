@@ -4,10 +4,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapListViewController" customModule="FireWire" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostListViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="7CC-n5-U0h" id="vEy-Z0-riq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -18,26 +19,32 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7CC-n5-U0h">
+                    <rect key="frame" x="0.0" y="119" width="393" height="733"/>
+                </tableView>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wos-z7-eDU">
-                    <rect key="frame" x="0.0" y="10" width="393" height="50"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 posts are listed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZV-B0-bO8">
-                            <rect key="frame" x="20" y="0.0" width="105" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <rect key="frame" x="20" y="0.0" width="134" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-yn-LiE">
-                            <rect key="frame" x="293" y="0.0" width="100" height="50"/>
+                            <rect key="frame" x="293" y="0.0" width="100" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="6bZ-Mg-DfP"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Filter" image="filter_icon">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="filterButtonTap:" destination="-1" eventType="touchUpInside" id="ZJS-zr-K6Q"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,23 +53,21 @@
                         <constraint firstAttribute="bottom" secondItem="tZV-B0-bO8" secondAttribute="bottom" id="AOL-xQ-nCO"/>
                         <constraint firstItem="tZV-B0-bO8" firstAttribute="top" secondItem="wos-z7-eDU" secondAttribute="top" id="EPy-Xb-UlZ"/>
                         <constraint firstItem="tZV-B0-bO8" firstAttribute="leading" secondItem="wos-z7-eDU" secondAttribute="leading" constant="20" id="by3-5C-cEq"/>
-                        <constraint firstAttribute="height" constant="50" id="f4C-QJ-8DW"/>
+                        <constraint firstAttribute="height" constant="60" id="f4C-QJ-8DW"/>
                         <constraint firstAttribute="trailing" secondItem="tz6-yn-LiE" secondAttribute="trailing" id="fSs-m6-QcL"/>
                         <constraint firstItem="tz6-yn-LiE" firstAttribute="top" secondItem="wos-z7-eDU" secondAttribute="top" id="xIf-WD-RbZ"/>
                         <constraint firstItem="tz6-yn-LiE" firstAttribute="centerY" secondItem="tZV-B0-bO8" secondAttribute="centerY" id="y98-El-vel"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7CC-n5-U0h">
-                    <rect key="frame" x="0.0" y="60" width="393" height="792"/>
-                </tableView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="dac-z8-ioW"/>
             <color key="backgroundColor" name="FWGrey1"/>
             <constraints>
                 <constraint firstItem="7CC-n5-U0h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Byu-Du-kfY"/>
-                <constraint firstItem="wos-z7-eDU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Kyl-WC-Yzd"/>
                 <constraint firstItem="wos-z7-eDU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LGr-58-TnL"/>
                 <constraint firstItem="wos-z7-eDU" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="MvX-uo-gqU"/>
                 <constraint firstAttribute="trailing" secondItem="7CC-n5-U0h" secondAttribute="trailing" id="NpA-qZ-DWj"/>
+                <constraint firstItem="wos-z7-eDU" firstAttribute="top" secondItem="dac-z8-ioW" secondAttribute="top" id="cgx-4x-ag1"/>
                 <constraint firstAttribute="bottom" secondItem="7CC-n5-U0h" secondAttribute="bottom" id="d71-Ly-jCf"/>
                 <constraint firstItem="7CC-n5-U0h" firstAttribute="top" secondItem="wos-z7-eDU" secondAttribute="bottom" id="eeh-wP-2JT"/>
             </constraints>
