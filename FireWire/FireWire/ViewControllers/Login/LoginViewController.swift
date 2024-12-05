@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
                 apiEndPoint: APIEndpoints.login,
                 httpMethod: APIConstants.POST,
                 payload: loginRequestModel as JSON,
-                expect: LoginDataModel.self) { response, _, _ in
+                expect: LoginDataModel.self) { [weak self] response, _, _ in
 
                 guard let getResponse = response else {
                     return
@@ -76,6 +76,7 @@ class LoginViewController: UIViewController {
                     debugPrint(loginDataResponse)
                     UserDefaults.standard.set(loginDataResponse.token ?? "", forKey: "token")
                     UserDefaults.standard.synchronize()
+                    self?.coordinator?.navigateToHome()
                 } else {
                     print("Invalid response object")
                 }

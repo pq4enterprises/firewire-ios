@@ -86,7 +86,7 @@
                                                                     <constraint firstAttribute="height" constant="55" id="Qrp-VG-3Zz"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -105,7 +105,7 @@
                                                                     <constraint firstAttribute="height" constant="55" id="M8k-Ei-dlo"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -646,10 +646,10 @@ San Diego, CA 92128, USA
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-lI-e3o">
-                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333314"/>
-                                                <mutableString key="text">To everyone that’s been using the app, I’m sure you’re aware of some of the new additions already. For those that haven’t hopped on board yet, there’s a bunch of reasons to download now!  Salty Wire:  If you’re a fan of the Gettin’ Salty Podcast and a fan of FireWire, you’re gonna love this!
+                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333326"/>
+                                                <string key="text">To everyone that’s been using the app, I’m sure you’re aware of some of the new additions already. For those that haven’t hopped on board yet, there’s a bunch of reasons to download now!  Salty Wire:  If you’re a fan of the Gettin’ Salty Podcast and a fan of FireWire, you’re gonna love this!
 We’ve joined forces with Lou and Kubes to give you the ultimate experience. A subscription will get you access to the premium features on the FireWire app, and also never before seen premium content, documentaries, and training videos from the Gettin’ Salty guys. We will also be releasing our rewards program soon to give back to our loyal followers. Stay tuned!
-Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast:  Another great addition to the FireWire family are the boys from Chicago’s Bravest Stories podcast! Listen to interviews with firefighters in Chicago and other areas as they explain in detail some of the wildest alarms they’ve responded to! You can also click their link on the FireWire app to check them out!</mutableString>
+Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast:  Another great addition to the FireWire family are the boys from Chicago’s Bravest Stories podcast! Listen to interviews with firefighters in Chicago and other areas as they explain in detail some of the wildest alarms they’ve responded to! You can also click their link on the FireWire app to check them out!</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1085,6 +1085,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="1Kj-bV-cB3" firstAttribute="trailing" secondItem="eQM-dW-GZa" secondAttribute="trailing" constant="20" id="yYi-cr-njJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileImage" destination="YWl-k6-lLx" id="glU-iu-ubi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoT-M8-eAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

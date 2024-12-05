@@ -11,6 +11,7 @@ class AppCoordinator: Coordinator {
     var childCoordinators: [any Coordinator]?
     var navigationController: UINavigationController
     var loginCoordinator: LoginCoordinator?
+    var homeCoordinator: HomeCoordinator?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -18,8 +19,8 @@ class AppCoordinator: Coordinator {
 
     func start() {
         if isUserLoggedIn() {
-            // Navigate to main app flow (if user is logged in)
-            // Example: show home screen, etc.
+            homeCoordinator = HomeCoordinator(navigationController: navigationController)
+            homeCoordinator?.start()
         } else {
             loginCoordinator = LoginCoordinator(navigationController: navigationController)
             loginCoordinator?.start()
@@ -27,7 +28,18 @@ class AppCoordinator: Coordinator {
     }
 
     func isUserLoggedIn() -> Bool {
-        // Check user authentication state (for demo purposes, we'll just return false)
-        return false
+        UserDefaults.standard.object(forKey: "token") != nil
+    }
+
+    func logout() {
+        UserDefaults.standard.removeObject(forKey: "token")
+
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.start()
+    }
+
+    private func clearSessionData() {
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.synchronize()
     }
 }

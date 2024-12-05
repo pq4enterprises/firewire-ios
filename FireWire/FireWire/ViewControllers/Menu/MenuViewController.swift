@@ -11,12 +11,25 @@ class MenuViewController: UIViewController {
 
     var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var profileImage: FWRoundedImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupActions()
     }
     
+    func setupActions(){
+        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTap))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(imageTapGesture)
+    }
+
+    /// Temporary logout
+    @objc func profileImageTap() {
+        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.appCoordinator?.logout()
+        }
+    }
 
     @IBAction func closeButtonTap(_ sender: UIButton) {
         coordinator?.navigateBackToHome(popViewToLeft: true)
