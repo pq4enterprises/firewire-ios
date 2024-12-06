@@ -75,4 +75,10 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(newsDetailViewController, animated: true)
     }
 
+    func navigateToMyAccount(){
+        let myAccountViewController = MyAccountViewController.instantiate()
+        myAccountViewController.coordinator = self
+        navigationController.pushViewController(myAccountViewController, animated: true)
+    }
+
 }

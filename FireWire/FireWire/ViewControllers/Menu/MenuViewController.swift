@@ -11,6 +11,7 @@ class MenuViewController: UIViewController {
 
     var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var myAccountView: FWView!
     @IBOutlet weak var profileImage: FWRoundedImageView!
     
     override func viewDidLoad() {
@@ -19,14 +20,13 @@ class MenuViewController: UIViewController {
     }
     
     func setupActions(){
-        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTap))
-        profileImage.isUserInteractionEnabled = true
-        profileImage.addGestureRecognizer(imageTapGesture)
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(myAccountViewTap))
+        myAccountView.isUserInteractionEnabled = true
+        myAccountView.addGestureRecognizer(viewTapGesture)
     }
 
-    /// Temporary logout
-    @objc func profileImageTap() {
-        
+    @objc func myAccountViewTap() {
+        coordinator?.navigateToMyAccount()
     }
 
     @IBAction func closeButtonTap(_ sender: UIButton) {

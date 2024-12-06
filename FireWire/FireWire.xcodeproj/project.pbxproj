@@ -65,6 +65,7 @@
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
+		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
@@ -155,6 +156,7 @@
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
+				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
