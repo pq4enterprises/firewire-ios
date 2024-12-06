@@ -30,7 +30,7 @@ class AppCoordinator: Coordinator {
     }
 
     func stop(){
-        UserDefaults.standard.removeObject(forKey: "token")
+        clearSessionData()
 
         // Cleanup all child coordinators
         for coordinator in childCoordinators {

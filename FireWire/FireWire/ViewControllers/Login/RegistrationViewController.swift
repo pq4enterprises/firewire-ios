@@ -28,6 +28,8 @@ class RegistrationViewController: UIViewController {
     }
 
     func setupUI() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         passwordTextField.addRightIcon(UIImage(named: "eye_icon")!)
         confirmPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!)
 
@@ -75,6 +77,10 @@ class RegistrationViewController: UIViewController {
         scrollView.scrollIndicatorInsets = contentInset
     }
 
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        coordinator?.pop()
+    }
+    
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> RegistrationViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
