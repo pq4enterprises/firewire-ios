@@ -9,13 +9,14 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get }
-    var childCoordinators: [Coordinator]? { get set }
+    var childCoordinators: [Coordinator] { get set }
     func start()
+    func stop()
 }
 
 class BaseCoordinator: Coordinator {
     var navigationController: UINavigationController
-    var childCoordinators: [Coordinator]? = []
+    var childCoordinators: [Coordinator] = []
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -23,6 +24,10 @@ class BaseCoordinator: Coordinator {
     }
 
     func start() {
+        // This method should be overridden in subclasses
+    }
+
+    func stop() {
         // This method should be overridden in subclasses
     }
 
@@ -39,12 +44,12 @@ class BaseCoordinator: Coordinator {
     }
 
     func addChildCoordinator(_ coordinator: Coordinator) {
-        childCoordinators?.append(coordinator)
+        childCoordinators.append(coordinator)
     }
 
     func removeChildCoordinator(_ coordinator: Coordinator) {
-        if let index = childCoordinators?.firstIndex(where: { $0 === coordinator }) {
-            childCoordinators?.remove(at: index)
+        if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+            childCoordinators.remove(at: index)
         }
     }
 }

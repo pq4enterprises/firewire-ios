@@ -8,6 +8,7 @@
 import Foundation
 
 class HomeCoordinator: BaseCoordinator {
+    weak var parentCoordinator: AppCoordinator?
 
     override func start() {
         let homeViewController = HomeViewController.instantiate()
@@ -81,4 +82,7 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(myAccountViewController, animated: true)
     }
 
+    override func stop(){
+        parentCoordinator?.stop()
+    }
 }

@@ -1430,6 +1430,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="I8d-6m-eO4" id="PN7-jB-P2c"/>
+                        <outlet property="logoutView" destination="5ra-Z1-1ZI" id="vE1-0c-l3t"/>
                         <outlet property="nameLabel" destination="FO5-RN-7wx" id="ifc-dk-Uef"/>
                     </connections>
                 </viewController>

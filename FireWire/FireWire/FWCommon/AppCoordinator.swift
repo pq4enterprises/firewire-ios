@@ -8,10 +8,8 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-    var childCoordinators: [any Coordinator]?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var loginCoordinator: LoginCoordinator?
-    var homeCoordinator: HomeCoordinator?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -19,24 +17,34 @@ class AppCoordinator: Coordinator {
 
     func start() {
         if isUserLoggedIn() {
-            // Change to home screen
-            loginCoordinator = LoginCoordinator(navigationController: navigationController)
-            loginCoordinator?.start()
+            let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+            childCoordinators.append(homeCoordinator)
+            homeCoordinator.parentCoordinator = self
+            homeCoordinator.start()
         } else {
-            loginCoordinator = LoginCoordinator(navigationController: navigationController)
-            loginCoordinator?.start()
+            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+            childCoordinators.append(loginCoordinator)
+            loginCoordinator.parentCoordinator = self
+            loginCoordinator.start()
         }
+    }
+
+    func stop(){
+        UserDefaults.standard.removeObject(forKey: "token")
+
+        // Cleanup all child coordinators
+        for coordinator in childCoordinators {
+            coordinator.stop()
+        }
+        childCoordinators.removeAll()
+
+        navigationController.popToRootViewController(animated: true)
+
+        start() // reset
     }
 
     func isUserLoggedIn() -> Bool {
         UserDefaults.standard.object(forKey: "token") != nil
-    }
-
-    func logout() {
-        UserDefaults.standard.removeObject(forKey: "token")
-
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        loginCoordinator.start()
     }
 
     private func clearSessionData() {

@@ -12,10 +12,12 @@ class MyAccountViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var logoutView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupActions()
     }
 
     func setupUI() {
@@ -24,6 +26,17 @@ class MyAccountViewController: UIViewController {
             nameLabel.text = name
             emailLabel.text = email
         }
+    }
+
+    func setupActions(){
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(logoutViewTap))
+        logoutView.isUserInteractionEnabled = true
+        logoutView.addGestureRecognizer(viewTapGesture)
+    }
+
+    @objc func logoutViewTap() {
+        debugPrint("logout click")
+        coordinator?.stop()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
