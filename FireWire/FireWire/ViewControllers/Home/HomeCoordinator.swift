@@ -45,7 +45,7 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToPostListView(){
-        let postListView = PostListViewController()
+        let postListView = PostListViewController(viewModel: PostListViewModel())
         postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()

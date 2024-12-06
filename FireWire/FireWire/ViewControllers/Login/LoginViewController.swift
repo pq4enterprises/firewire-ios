@@ -66,7 +66,6 @@ class LoginViewController: UIViewController {
 
             APIRequest().callApi(
                 apiEndPoint: APIEndpoints.login,
-                httpMethod: APIConstants.POST,
                 payload: loginRequestModel as JSON,
                 expect: LoginApiResponse.self
             ) { [weak self] response, _, _ in

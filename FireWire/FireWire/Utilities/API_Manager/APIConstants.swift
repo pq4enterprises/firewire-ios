@@ -10,5 +10,6 @@ struct APIConstants {
 
     // Request type
     static let POST = "POST"
+    static let GET = "GET"
 }
 
