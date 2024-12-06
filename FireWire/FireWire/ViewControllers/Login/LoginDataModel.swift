@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct LoginApiResponse: Codable {
+    let message: String
+    let code: String
+    let data: LoginDataModel
+}
+
 struct LoginDataModel: Codable {
     let id: String?
     let firstName: String?

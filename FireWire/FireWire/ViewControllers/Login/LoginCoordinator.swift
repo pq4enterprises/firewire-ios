@@ -8,6 +8,7 @@
 import Foundation
 
 class LoginCoordinator: BaseCoordinator {
+    weak var parentCoordinator: AppCoordinator?
 
     override func start() {
         let loginViewController = LoginViewController.instantiate()
@@ -23,9 +24,9 @@ class LoginCoordinator: BaseCoordinator {
 
     func navigateToHome(){
         let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+        homeCoordinator.parentCoordinator = parentCoordinator
         addChildCoordinator(homeCoordinator)
         homeCoordinator.start()
     }
-
 
 }

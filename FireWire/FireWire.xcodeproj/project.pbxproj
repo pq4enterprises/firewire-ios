@@ -65,6 +65,10 @@
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
+		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
+		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
+		B0CF74B72D038834008935D8 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* PostListViewModel.swift */; };
+		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
@@ -154,6 +158,10 @@
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
+		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		B0CF74B62D038833008935D8 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 				9B4F50C92CF57068007D319D /* APIEndpoints.swift */,
 				9B4F50CA2CF57068007D319D /* APIManager.swift */,
 				9B4F50CB2CF57068007D319D /* APIRequest.swift */,
+				B0AD4B372D01EDEF009B065C /* APIConstants.swift */,
 			);
 			path = API_Manager;
 			sourceTree = "<group>";
@@ -283,6 +292,7 @@
 			children = (
 				B0100CDE2CF79984004F6214 /* XIBs */,
 				B046823E2CE5401100419C65 /* PostListViewController.swift */,
+				B0CF74B62D038833008935D8 /* PostListViewModel.swift */,
 				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
 				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
 			);
@@ -320,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
+				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 		B08236EB2CE374D10092AC01 /* FireWire */ = {
 			isa = PBXGroup;
 			children = (
+				B0CF74B92D038C0B008935D8 /* Model */,
 				9B4F51192CF586BF007D319D /* Resources */,
 				9B4F50D92CF57068007D319D /* Utilities */,
 				B0D12D012CED0C8400EEDDF8 /* FWCommon */,
@@ -437,6 +449,14 @@
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 			);
 			path = XIBs;
+			sourceTree = "<group>";
+		};
+		B0CF74B92D038C0B008935D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B0D12CFE2CED095200EEDDF8 /* Login */ = {
@@ -633,6 +653,7 @@
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
 				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,
 				9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */,
+				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
@@ -654,9 +675,12 @@
 				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
+				B0CF74B72D038834008935D8 /* PostListViewModel.swift in Sources */,
 				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
+				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,18 +865,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FireWire/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireWire;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for the map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.firewire.FireWire;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nyc.FireWire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -868,18 +899,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FireWire/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireWire;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for the map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.firewire.FireWire;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nyc.FireWire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

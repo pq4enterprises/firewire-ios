@@ -8,6 +8,7 @@
 import Foundation
 
 class HomeCoordinator: BaseCoordinator {
+    weak var parentCoordinator: AppCoordinator?
 
     override func start() {
         let homeViewController = HomeViewController.instantiate()
@@ -44,7 +45,7 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToPostListView(){
-        let postListView = PostListViewController()
+        let postListView = PostListViewController(viewModel: PostListViewModel())
         postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
@@ -75,4 +76,13 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(newsDetailViewController, animated: true)
     }
 
+    func navigateToMyAccount(){
+        let myAccountViewController = MyAccountViewController.instantiate()
+        myAccountViewController.coordinator = self
+        navigationController.pushViewController(myAccountViewController, animated: true)
+    }
+
+    override func stop(){
+        parentCoordinator?.stop()
+    }
 }

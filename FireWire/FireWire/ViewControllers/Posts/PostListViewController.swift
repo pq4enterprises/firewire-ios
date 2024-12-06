@@ -12,7 +12,17 @@ class PostListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var coordinator: HomeCoordinator?
+    var viewModel: PostListViewModel
 
+    init(viewModel: PostListViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
