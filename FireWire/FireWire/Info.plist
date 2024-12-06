@@ -29,7 +29,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location for the map</string>
 </dict>
 </plist>
