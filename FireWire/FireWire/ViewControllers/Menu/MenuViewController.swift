@@ -11,14 +11,24 @@ class MenuViewController: UIViewController {
 
     var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var myAccountView: FWView!
-    @IBOutlet weak var profileImage: FWRoundedImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         setupActions()
     }
-    
+
+    func setupUI() {
+        if let name = UserDefaults.standard.string(forKey: "name"),
+            let email = UserDefaults.standard.string(forKey: "email") {
+            nameLabel.text = name
+            emailLabel.text = email
+        }
+    }
+
     func setupActions(){
         let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(myAccountViewTap))
         myAccountView.isUserInteractionEnabled = true

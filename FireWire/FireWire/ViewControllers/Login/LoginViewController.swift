@@ -68,17 +68,19 @@ class LoginViewController: UIViewController {
                 apiEndPoint: APIEndpoints.login,
                 httpMethod: APIConstants.POST,
                 payload: loginRequestModel as JSON,
-                expect: LoginDataModel.self
+                expect: LoginApiResponse.self
             ) { [weak self] response, _, _ in
                 self?.hideLoader()
 
-                guard let getResponse = response else {
+                guard let apiResponse = response else {
                     return
                 }
 
-                if let loginDataResponse = getResponse as? LoginDataModel {
+                if let loginDataResponse = apiResponse as? LoginApiResponse {
                     debugPrint(loginDataResponse)
-                    UserDefaults.standard.set(loginDataResponse.token ?? "", forKey: "token")
+                    UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
+                    UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
+                    UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
                     UserDefaults.standard.synchronize()
                     self?.coordinator?.navigateToHome()
                 } else {
