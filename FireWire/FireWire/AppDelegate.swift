@@ -5,7 +5,6 @@
 //  Created by Sujitha Palanisamy on 12/11/24.
 //
 
-import GoogleMaps
 import UIKit
 
 @main

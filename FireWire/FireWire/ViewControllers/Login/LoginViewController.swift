@@ -52,7 +52,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInTap(_ sender: UIButton) {
-        callLoginApi()
+        coordinator?.navigateToHome()
+        //callLoginApi()
     }
 
     func callLoginApi() {
