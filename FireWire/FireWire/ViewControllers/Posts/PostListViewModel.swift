@@ -9,6 +9,9 @@ import Foundation
 
 final class PostListViewModel {
 
+    var incidentList: [IncidentDataModel] = []
+    var delegate: PostListViewDelegate?
+
     init() {
         getIncidentList()
     }
@@ -27,7 +30,8 @@ final class PostListViewModel {
             }
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
-                debugPrint("incident list \(incidentListResponse.data.count)")
+                self?.incidentList = incidentListResponse.data
+                self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")
             }

@@ -7,8 +7,13 @@
 
 import UIKit
 
-class PostListViewController: UIViewController {
+protocol PostListViewDelegate: AnyObject {
+    func dataReceived()
+}
 
+class PostListViewController: UIViewController, PostListViewDelegate {
+
+    @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     var coordinator: HomeCoordinator?
@@ -17,6 +22,7 @@ class PostListViewController: UIViewController {
     init(viewModel: PostListViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -39,16 +45,21 @@ class PostListViewController: UIViewController {
         coordinator?.dismissView()
         coordinator?.navigateToSelectAreaListView()
     }
-    
+
+    func dataReceived() {
+        tableView.reloadData()
+        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
+    }
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        viewModel.incidentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostListViewCell.identifier, for: indexPath) as! PostListViewCell
+        cell.setupView(viewModel.incidentList[indexPath.row])
         return cell
     }
 
