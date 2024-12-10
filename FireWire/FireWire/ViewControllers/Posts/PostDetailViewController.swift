@@ -7,12 +7,26 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
-    var coordinator: HomeCoordinator?
+protocol PostDetailViewDelegate: AnyObject {
+    func dataReceived()
+}
 
-    @IBOutlet var descriptionLabel: UILabel!
+class PostDetailViewController: UIViewController, PostDetailViewDelegate {
+
+    @IBOutlet weak var incidentTitle: UILabel!
+    @IBOutlet weak var incidentSubTitle: UILabel!
+    @IBOutlet weak var incidentDesc: UILabel!
+    @IBOutlet weak var incidentDateTime: UILabel!
+
+    var coordinator: HomeCoordinator?
+    var viewModel: PostDetailViewModel?
 
     private var isLabelExpanded = false
+
+    func setViewModel(viewModel: PostDetailViewModel){
+        self.viewModel = viewModel
+        self.viewModel?.delegate = self
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +35,27 @@ class PostDetailViewController: UIViewController {
     }
 
     func setupUI() {
-        descriptionLabel.isUserInteractionEnabled = true
+        incidentDesc.isUserInteractionEnabled = true
+    }
+
+    func updateUI(){
+        guard let incidentDetail = viewModel?.incidentDetail else {
+            return
+        }
+        incidentTitle.text = incidentDetail.field1Value
+        incidentSubTitle.text = incidentDetail.field2Value
     }
 
     func setupActions() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleLabel))
-        descriptionLabel.addGestureRecognizer(tapGesture)
+        incidentDesc.addGestureRecognizer(tapGesture)
     }
 
     @objc func toggleLabel() {
         if isLabelExpanded {
-            descriptionLabel.numberOfLines = 3
+            incidentDesc.numberOfLines = 3
         } else {
-            descriptionLabel.numberOfLines = 0
+            incidentDesc.numberOfLines = 0
         }
         isLabelExpanded.toggle()
     }
@@ -47,5 +69,9 @@ class PostDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as! PostDetailViewController
         return viewController
+    }
+
+    func dataReceived() {
+        updateUI()
     }
 }

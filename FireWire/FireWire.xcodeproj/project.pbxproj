@@ -31,6 +31,8 @@
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
+		B01C0E282D08A5C60021A39E /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */; };
+		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
@@ -120,6 +122,8 @@
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
+		B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				B0CF74B62D038833008935D8 /* PostListViewModel.swift */,
 				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
 				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
+				B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
+				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
+				B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */,
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
@@ -660,6 +667,7 @@
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
+				B01C0E282D08A5C60021A39E /* PostDetailViewModel.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,

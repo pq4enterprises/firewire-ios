@@ -11,6 +11,7 @@ enum APIEndpoints {
     static let baseURL = "https://firewire-api.atomgroups.com/"
     static let login = "api/app/auth/login"
     static let incidentList = "/api/admin/incident"
+    static let incidentDetail = "/api/admin/incident/%@"
 }
 
 enum APIPayload {

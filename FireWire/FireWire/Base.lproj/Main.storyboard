@@ -620,7 +620,10 @@ San Diego, CA 92128, USA
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="Thy-nm-krm" id="eQK-sW-7Cf"/>
+                        <outlet property="incidentDateTime" destination="5fo-Mb-JJX" id="51a-ih-uUm"/>
+                        <outlet property="incidentDesc" destination="Thy-nm-krm" id="eQK-sW-7Cf"/>
+                        <outlet property="incidentSubTitle" destination="QEg-gK-fbe" id="Nva-Kg-d6T"/>
+                        <outlet property="incidentTitle" destination="ODZ-xY-RIV" id="wuj-rT-Xpg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuZ-Ea-1yV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1436,7 +1439,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="jdW-No-KSb" firstAttribute="trailing" secondItem="BsD-8x-N0n" secondAttribute="trailing" constant="30" id="ZDp-6h-sY3"/>
                             <constraint firstItem="cNG-Od-Euj" firstAttribute="top" secondItem="coj-yr-NPd" secondAttribute="top" id="cok-BW-3JW"/>
                             <constraint firstItem="mWt-AA-40w" firstAttribute="width" secondItem="BsD-8x-N0n" secondAttribute="width" multiplier="0.945946" id="n1a-Nh-94D"/>
-                            <constraint firstItem="mWt-AA-40w" firstAttribute="height" secondItem="BsD-8x-N0n" secondAttribute="height" multiplier="0.974619" id="z8I-Pd-aKO"/>
                             <constraint firstItem="mWt-AA-40w" firstAttribute="centerX" secondItem="BsD-8x-N0n" secondAttribute="centerX" id="zzz-h0-Nsm"/>
                         </constraints>
                     </view>

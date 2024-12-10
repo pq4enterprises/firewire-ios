@@ -64,8 +64,9 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.present(bottomSheet, animated: true)
     }
 
-    func navigateToPostDetail(){
+    func navigateToPostDetail(_ incidentID: String){
         let postDetailViewController = PostDetailViewController.instantiate()
+        postDetailViewController.setViewModel(viewModel: PostDetailViewModel(incidentID: incidentID))
         postDetailViewController.coordinator = self
         navigationController.pushViewController(postDetailViewController, animated: true)
     }

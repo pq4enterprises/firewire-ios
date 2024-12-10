@@ -64,9 +64,9 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint("select row \(indexPath.row)")
         coordinator?.dismissView()
-        coordinator?.navigateToPostDetail()
+        let selectedIncidentID = viewModel.incidentList[indexPath.row].id
+        coordinator?.navigateToPostDetail(selectedIncidentID)
     }
 
 }

@@ -30,7 +30,7 @@ struct IncidentDataModel: Codable {
 struct Locality: Codable {
     let id, name: String
     let state: String?
-    let latitude, longitude: String
+    let latitude, longitude: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
