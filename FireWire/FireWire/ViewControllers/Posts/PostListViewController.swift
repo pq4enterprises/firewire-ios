@@ -13,6 +13,7 @@ protocol PostListViewDelegate: AnyObject {
 
 class PostListViewController: UIViewController, PostListViewDelegate {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -34,6 +35,11 @@ class PostListViewController: UIViewController, PostListViewDelegate {
         setupTableView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showActivityIndicator(true)
+    }
+
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,8 +53,23 @@ class PostListViewController: UIViewController, PostListViewDelegate {
     }
 
     func dataReceived() {
+        showActivityIndicator(false)
         tableView.reloadData()
         incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
+    }
+
+    func showActivityIndicator(_ value: Bool){
+        if value {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+
+            tableView.isHidden = true
+        }else{
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+
+            tableView.isHidden = false
+        }
     }
 }
 

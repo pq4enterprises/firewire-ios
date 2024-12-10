@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 protocol PostDetailViewDelegate: AnyObject {
     func dataReceived()
