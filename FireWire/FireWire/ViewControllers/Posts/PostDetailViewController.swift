@@ -45,6 +45,9 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
         }
         incidentTitle.text = incidentDetail.field1Value
         incidentSubTitle.text = incidentDetail.field2Value
+        if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt){
+            incidentDateTime.text = formattedDate
+        }
     }
 
     func setupActions() {

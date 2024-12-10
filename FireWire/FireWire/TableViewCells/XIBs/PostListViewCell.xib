@@ -26,13 +26,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="328" height="164"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Fire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-Wy-rUn">
-                        <rect key="frame" x="13" y="10" width="139.66666666666666" height="31"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-Wy-rUn">
+                        <rect key="frame" x="13.000000000000004" y="10" width="47.333333333333343" height="31"/>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fire in a 2 story apartment building" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEZ-Dd-1WM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEZ-Dd-1WM">
                         <rect key="frame" x="13" y="43" width="302" height="24"/>
                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="16"/>
                         <nil key="textColor"/>
@@ -48,7 +48,7 @@
                                     <constraint firstAttribute="height" constant="20" id="hfY-Fs-PsG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Springville, New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-jG-5ui">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-jG-5ui">
                                 <rect key="frame" x="25" y="0.0" width="277" height="20"/>
                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="14"/>
                                 <color key="textColor" name="FWRed"/>
@@ -56,8 +56,8 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Oct | 10:15 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOB-3e-dL8">
-                        <rect key="frame" x="219.33333333333334" y="18.333333333333332" width="95.666666666666657" height="14.666666666666668"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd MMM | hh:mm a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOB-3e-dL8">
+                        <rect key="frame" x="206.33333333333334" y="18.333333333333332" width="108.66666666666666" height="14.666666666666668"/>
                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                         <color key="textColor" name="FWTextGrey"/>
                         <nil key="highlightedColor"/>
@@ -95,10 +95,10 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="M3q-vC-edp">
-                        <rect key="frame" x="136" y="127" width="179" height="10"/>
+                        <rect key="frame" x="147.66666666666663" y="127" width="167.33333333333337" height="10"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wzz-Sa-dg7">
-                                <rect key="frame" x="0.0" y="0.0" width="70.333333333333329" height="10"/>
+                                <rect key="frame" x="0.0" y="0.0" width="66" height="10"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="350-N6-EuE">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -107,8 +107,8 @@
                                             <constraint firstAttribute="height" constant="10" id="S18-d8-EKy"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-9Q-TKh">
-                                        <rect key="frame" x="14.000000000000004" y="0.0" width="56.333333333333343" height="10"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-9Q-TKh">
+                                        <rect key="frame" x="14" y="0.0" width="52" height="10"/>
                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                         <color key="textColor" name="FWTextGrey"/>
                                         <nil key="highlightedColor"/>
@@ -116,13 +116,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PEW-YR-Rsb">
-                                <rect key="frame" x="85.333333333333343" y="0.0" width="93.666666666666657" height="10"/>
+                                <rect key="frame" x="81" y="0.0" width="86.333333333333314" height="10"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_filled" translatesAutoresizingMaskIntoConstraints="NO" id="dyY-2i-bdh">
                                         <rect key="frame" x="0.0" y="0.0" width="11" height="10"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgk-SE-vfb">
-                                        <rect key="frame" x="15" y="0.0" width="78.666666666666671" height="10"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgk-SE-vfb">
+                                        <rect key="frame" x="15" y="0.0" width="71.333333333333329" height="10"/>
                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                         <color key="textColor" name="FWTextGrey"/>
                                         <nil key="highlightedColor"/>

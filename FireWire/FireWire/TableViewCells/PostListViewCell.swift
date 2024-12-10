@@ -25,6 +25,10 @@ class PostListViewCell: UITableViewCell {
         incidentTitle.text = model.field1Value
         incidentDesc.text = model.description
         incidentLocation.text = model.address
+
+        if let formattedDate = FWDateFormatter().formatDateString(model.createdAt){
+            incidentDateTime.text = formattedDate
+        }
     }
 
 }

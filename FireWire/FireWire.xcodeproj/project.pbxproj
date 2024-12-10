@@ -33,6 +33,7 @@
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
 		B01C0E282D08A5C60021A39E /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */; };
 		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
+		B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
@@ -124,6 +125,7 @@
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
+		B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWDateFormatter.swift; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				9B4F50CC2CF57068007D319D /* API_Manager */,
 				9B4F50D22CF57068007D319D /* CommonClasses */,
 				9B4F50D42CF57068007D319D /* Components */,
+				B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
+				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
