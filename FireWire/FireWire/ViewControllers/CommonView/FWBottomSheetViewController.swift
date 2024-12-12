@@ -159,6 +159,7 @@ class FWBottomSheetViewController: UIViewController {
             else if newHeight > defaultHeight && !isDraggingDown {
                 // Condition 4: If new height is below max and going up, set to max height at top
                 animateContainerHeight(maximumContainerHeight)
+                //isSheetFullyExpanded()
             }
         default:
             break
@@ -208,6 +209,11 @@ class FWBottomSheetViewController: UIViewController {
             self.dismiss(animated: true)
         }
     }
+
+    /// To determine sheet is fully expanded
+    //    func isSheetFullyExpanded() {
+    //        delegate?.isSheetFullyExpanded(currentContainerHeight >= maximumContainerHeight)
+    //    }
 
     static func instantiate() -> FWBottomSheetViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

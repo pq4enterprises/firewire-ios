@@ -13,21 +13,20 @@ struct IncidentDetailResponseModel: Codable {
     let latitude, longitude, address: String
     let respondingUnits: [String]
     let featured, sendPushNotification: Bool
-    let postFacebook: [PostFacebook]
-    let postTwitter: PostTwitter?
+    let postFacebook: [PostFacebook]?
+    let postTwitter: [PostTwitter]?
     let field1Value: String?
     let field2Value: String?
     let field3Value: String?
     let field4Value: String?
     let field5Value: String?
-    //let deleted: Bool
-    //let createdBy: CreatedBy
     let createdAt, updatedAt: String
     let v: Int
+    let views: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case locality, subLocality, latitude, longitude, address, respondingUnits, featured, sendPushNotification, postFacebook, postTwitter, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt
+        case locality, subLocality, latitude, longitude, address, respondingUnits, featured, sendPushNotification, postFacebook, postTwitter, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, views
         case v = "__v"
     }
 }
