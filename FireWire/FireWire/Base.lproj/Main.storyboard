@@ -1658,6 +1658,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Sign Up"/>
+                                                        <connections>
+                                                            <action selector="signUpButtonTap:" destination="IRh-tH-7TN" eventType="touchUpInside" id="yDH-RW-aLa"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an Account? Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg6-aA-u1k">
                                                         <rect key="frame" x="0.0" y="839" width="333" height="19.666666666666629"/>

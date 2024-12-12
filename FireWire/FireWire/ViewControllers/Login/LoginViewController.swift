@@ -21,6 +21,9 @@ class LoginViewController: UIViewController {
         setupUI()
         setupActions()
         setupKeyboardActions()
+
+        emailTextField.text = "vimaladevi@atomgroups.com"
+        passwordTextField.text = "password"
     }
 
     func setupUI() {
@@ -56,35 +59,38 @@ class LoginViewController: UIViewController {
     }
 
     func callLoginApi() {
-        self.showLoader()
-        if emailTextField.text == "" || passwordTextField.text == "" {
-            self.hideLoader()
+        showLoader()
+
+        guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
+            hideLoader()
             showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
             }])
-        } else {
-            let loginRequestModel = APIPayload.login(email: "vimaladevi@atomgroups.com", password: "password").toDictionary()
 
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.login,
-                payload: loginRequestModel as JSON,
-                expect: LoginApiResponse.self
-            ) { [weak self] response, _, _ in
-                self?.hideLoader()
+            return
+        }
 
-                guard let apiResponse = response else {
-                    return
-                }
+        let loginRequestModel = APIPayload.login(email: email, password: password).toDictionary()
 
-                if let loginDataResponse = apiResponse as? LoginApiResponse {
-                    debugPrint(loginDataResponse)
-                    UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
-                    UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
-                    UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
-                    UserDefaults.standard.synchronize()
-                    self?.coordinator?.navigateToHome()
-                } else {
-                    print("Invalid response object")
-                }
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.login,
+            payload: loginRequestModel as JSON,
+            expect: LoginApiResponse.self
+        ) { [weak self] response, _, _ in
+            self?.hideLoader()
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if let loginDataResponse = apiResponse as? LoginApiResponse {
+                debugPrint(loginDataResponse)
+                UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
+                UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
+                UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
+                UserDefaults.standard.synchronize()
+                self?.coordinator?.navigateToHome()
+            } else {
+                print("Invalid response object")
             }
         }
     }

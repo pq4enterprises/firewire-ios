@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol RegistrationViewModelDelegate {
+    func registrationSuccess()
+    func registrationFail(errorMessage: String)
+}
+
 class RegistrationViewController: UIViewController {
     var coordinator: LoginCoordinator?
+    var viewModel: RegistrationViewModel?
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var signInLabel: UILabel!
@@ -20,16 +26,20 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var passwordTextField: FWTextField!
     @IBOutlet var confirmPasswordTextField: FWTextField!
 
+    func setViewModel(viewModel: RegistrationViewModel) {}
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupActions()
         setupKeyboardActions()
+
+        viewModel = RegistrationViewModel(delegate: self)
     }
 
     func setupUI() {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         passwordTextField.addRightIcon(UIImage(named: "eye_icon")!)
         confirmPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!)
 
@@ -77,10 +87,42 @@ class RegistrationViewController: UIViewController {
         scrollView.scrollIndicatorInsets = contentInset
     }
 
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "Warning",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Okay"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+    
+    @IBAction func signUpButtonTap(_ sender: UIButton) {
+        showLoader()
+        let requestModel = RegisterRequestModel(
+            firstName: firstNameTextField.text ?? "",
+            email: emailTextField.text ?? "",
+            mobile: phoneTextField.text ?? "",
+            password: passwordTextField.text ?? "",
+            confirmPassword: confirmPasswordTextField.text ?? "",
+            title: positionTextField.text ?? ""
+        )
+
+        let validationResult = viewModel?.validate(requestModel)
+        switch validationResult {
+        case .success:
+            viewModel?.registerNewUser(requestModel)
+        case .failure(let errorMessage):
+            hideLoader()
+            showAlertMessage(errorMessage)
+        default:
+            return
+        }
+    }
+
     @IBAction func backButtonTap(_ sender: UIButton) {
         coordinator?.pop()
     }
-    
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> RegistrationViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -93,5 +135,19 @@ extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension RegistrationViewController: RegistrationViewModelDelegate {
+    func registrationSuccess() {
+        hideLoader()
+        showAlertMessage("New user registered"){
+            self.coordinator?.pop()
+        }
+    }
+
+    func registrationFail(errorMessage: String) {
+        hideLoader()
+        showAlertMessage(errorMessage)
     }
 }

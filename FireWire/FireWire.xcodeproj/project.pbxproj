@@ -50,6 +50,9 @@
 		B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */; };
 		B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B064D3192CF32B5000CAB161 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
+		B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */; };
+		B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */; };
+		B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -142,6 +145,9 @@
 		B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedImageView.swift; sourceTree = "<group>"; };
 		B064D3182CF32B5000CAB161 /* FWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWView.swift; sourceTree = "<group>"; };
+		B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestModel.swift; sourceTree = "<group>"; };
+		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -462,8 +468,10 @@
 		B0CF74B92D038C0B008935D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */,
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
 				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
+				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +483,7 @@
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
 				B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */,
+				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -651,9 +660,12 @@
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
 				B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */,
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
+				B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
+				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
+				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
