@@ -11,7 +11,7 @@ class SelectAreaListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var coordinator: HomeCoordinator?
+    var coordinator: IncidentsCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class SelectAreaListViewController: UIViewController {
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
-        coordinator?.dismissView()
-        coordinator?.navigateToPostListView()
+        coordinator?.popView()
+        coordinator?.start()
     }
 }
 

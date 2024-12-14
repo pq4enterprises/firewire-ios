@@ -8,15 +8,16 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
-    var navigationController: UINavigationController { get }
+    var navigationController: UINavigationController { get set }
     var childCoordinators: [Coordinator] { get set }
     func start()
-    func stop()
+    func backToParentCoordinator()
 }
 
 class BaseCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    var modalPresentationStyle: UIModalPresentationStyle = .none
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -27,20 +28,27 @@ class BaseCoordinator: Coordinator {
         // This method should be overridden in subclasses
     }
 
-    func stop() {
-        // This method should be overridden in subclasses
+    func backToParentCoordinator() {
+        self.navigationController.viewControllers.removeAll()
     }
 
-    func push(_ viewController: UIViewController) {
-        navigationController.pushViewController(viewController, animated: true)
+    func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if modalPresentationStyle != .none {
+            presentView(viewController, animated: animated)
+        }
+
+        navigationController.pushViewController(viewController, animated: animated)
     }
 
-    func pop() {
-        navigationController.popViewController(animated: true)
-    }
-
-    func present(_ viewController: UIViewController, animated: Bool) {
+    private func presentView(_ viewController: UIViewController, animated: Bool) {
         navigationController.present(viewController, animated: animated, completion: nil)
+    }
+
+    func popView() {
+        if modalPresentationStyle != .none {
+            navigationController.dismiss(animated: true)
+        }
+        navigationController.popViewController(animated: true)
     }
 
     func addChildCoordinator(_ coordinator: Coordinator) {
@@ -51,6 +59,10 @@ class BaseCoordinator: Coordinator {
         if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
             childCoordinators.remove(at: index)
         }
+    }
+
+    func dismissView(animated: Bool){
+        navigationController.dismiss(animated: true)
     }
 }
 

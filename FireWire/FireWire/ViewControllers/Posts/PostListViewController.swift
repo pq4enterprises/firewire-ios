@@ -17,7 +17,7 @@ class PostListViewController: UIViewController, PostListViewDelegate {
     @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
-    var coordinator: HomeCoordinator?
+    var coordinator: IncidentsCoordinator?
     var viewModel: PostListViewModel
 
     init(viewModel: PostListViewModel){
@@ -48,7 +48,7 @@ class PostListViewController: UIViewController, PostListViewDelegate {
     }
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
-        coordinator?.dismissView()
+        coordinator?.popView()
         coordinator?.navigateToSelectAreaListView()
     }
 
@@ -85,7 +85,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.dismissView()
+        coordinator?.dismissView(animated: true)
         let selectedIncidentID = viewModel.incidentList[indexPath.row].id
         coordinator?.navigateToPostDetail(selectedIncidentID)
     }

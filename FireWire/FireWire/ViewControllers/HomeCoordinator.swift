@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeCoordinator: BaseCoordinator {
     weak var parentCoordinator: AppCoordinator?
@@ -13,7 +14,7 @@ class HomeCoordinator: BaseCoordinator {
     override func start() {
         let homeViewController = HomeViewController.instantiate()
         homeViewController.coordinator = self
-        navigationController.pushViewController(homeViewController, animated: true)
+        pushViewController(homeViewController, animated: true)
     }
 
     func navigateToMenu(){
@@ -25,7 +26,7 @@ class HomeCoordinator: BaseCoordinator {
     func navigateToFeeds(){
         let feedsViewController = FeedsViewController.instantiate()
         feedsViewController.coordinator = self
-        navigationController.pushViewController(feedsViewController, animated: true)
+        pushViewController(feedsViewController, animated: true)
     }
 
     func navigateBackToHome(popViewToLeft: Bool = false){
@@ -36,54 +37,21 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
-    func dismissView(){
-        navigationController.dismiss(animated: true)
-    }
-
-    func popView(){
-        navigationController.popViewController(animated: true)
-    }
-
-    func navigateToPostListView(){
-        let postListView = PostListViewController(viewModel: PostListViewModel())
-        postListView.coordinator = self
-
-        let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: postListView, bottomSheetDetents: [.medium, .large])
-        bottomSheet.modalPresentationStyle = .overCurrentContext
-        navigationController.present(bottomSheet, animated: true)
-    }
-
-    func navigateToSelectAreaListView(){
-        let selectAreaListView = SelectAreaListViewController()
-        selectAreaListView.coordinator = self
-
-        let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
-        bottomSheet.modalPresentationStyle = .overCurrentContext
-        navigationController.present(bottomSheet, animated: true)
-    }
-
-    func navigateToPostDetail(_ incidentID: String){
-        let postDetailViewController = PostDetailViewController.instantiate()
-        postDetailViewController.setViewModel(viewModel: PostDetailViewModel(incidentID: incidentID))
-        postDetailViewController.coordinator = self
-        navigationController.pushViewController(postDetailViewController, animated: true)
+    func navigateToIncidentList(){
+        let homeCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
+        addChildCoordinator(homeCoordinator)
+        homeCoordinator.start()
     }
 
     func navigateToNewsDetail(){
         let newsDetailViewController = NewsDetailViewController.instantiate()
         newsDetailViewController.coordinator = self
-        navigationController.pushViewController(newsDetailViewController, animated: true)
+        pushViewController(newsDetailViewController, animated: true)
     }
 
     func navigateToMyAccount(){
         let myAccountViewController = MyAccountViewController.instantiate()
         myAccountViewController.coordinator = self
-        navigationController.pushViewController(myAccountViewController, animated: true)
-    }
-
-    override func stop(){
-        parentCoordinator?.stop()
+        pushViewController(myAccountViewController, animated: true)
     }
 }

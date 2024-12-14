@@ -120,7 +120,7 @@ class RegistrationViewController: UIViewController {
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
-        coordinator?.pop()
+        coordinator?.popView()
     }
 
     // A convenience method to instantiate from the storyboard
@@ -142,7 +142,7 @@ extension RegistrationViewController: RegistrationViewModelDelegate {
     func registrationSuccess() {
         hideLoader()
         showAlertMessage("New user registered"){
-            self.coordinator?.pop()
+            self.coordinator?.popView()
         }
     }
 

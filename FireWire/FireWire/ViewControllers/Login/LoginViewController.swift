@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
+    weak var parentCoordinator: AppCoordinator?
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
@@ -88,7 +89,8 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
                 UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
                 UserDefaults.standard.synchronize()
-                self?.coordinator?.navigateToHome()
+                self?.coordinator?.backToParentCoordinator()
+                self?.parentCoordinator?.navigateToHome()
             } else {
                 print("Invalid response object")
             }

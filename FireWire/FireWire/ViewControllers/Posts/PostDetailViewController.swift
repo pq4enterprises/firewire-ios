@@ -19,7 +19,7 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
     @IBOutlet weak var incidentDesc: UILabel!
     @IBOutlet weak var incidentDateTime: UILabel!
 
-    var coordinator: HomeCoordinator?
+    var coordinator: IncidentsCoordinator?
     var viewModel: PostDetailViewModel?
 
     private var isLabelExpanded = false

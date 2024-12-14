@@ -35,7 +35,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        coordinator?.navigateToPostListView()
+        coordinator?.navigateToIncidentList()
         ///Note: Native way to show bottom sheet, but it has customisation issue
         ///if custom bottom sheet satisfies the requirement, this code should be removed later.
         //        let mapListView = MapListViewController()

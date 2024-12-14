@@ -36,7 +36,8 @@ class MyAccountViewController: UIViewController {
 
     @objc func logoutViewTap() {
         debugPrint("logout click")
-        coordinator?.stop()
+        //self.coordinator?.stop()
+        self.coordinator?.backToParentCoordinator()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
