@@ -302,7 +302,7 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
-		B0100CDD2CF79975004F6214 /* Posts */ = {
+		B0100CDD2CF79975004F6214 /* Incidents */ = {
 			isa = PBXGroup;
 			children = (
 				B0100CDE2CF79984004F6214 /* XIBs */,
@@ -312,7 +312,7 @@
 				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */,
 			);
-			path = Posts;
+			path = Incidents;
 			sourceTree = "<group>";
 		};
 		B0100CDE2CF79984004F6214 /* XIBs */ = {
@@ -363,7 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				B0100CDF2CF79A03004F6214 /* News */,
-				B0100CDD2CF79975004F6214 /* Posts */,
+				B0100CDD2CF79975004F6214 /* Incidents */,
 				B09254B62CF6372200879B07 /* CommonView */,
 				B01BB0542CF314A4003970D7 /* Feeds */,
 				B01BB04D2CF31087003970D7 /* Menu */,
