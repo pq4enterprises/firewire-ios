@@ -14,6 +14,12 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var myAccountView: FWView!
+    @IBOutlet weak var saltyWireView: UIView!
+    @IBOutlet weak var submitTipView: UIView!
+    @IBOutlet weak var podcastView: UIView!
+    @IBOutlet weak var fireWireView: UIView!
+    @IBOutlet weak var contactView: UIView!
+    @IBOutlet weak var personalisationView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +36,60 @@ class MenuViewController: UIViewController {
     }
 
     func setupActions(){
-        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(myAccountViewTap))
+        let accountViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(myAccountViewTap))
         myAccountView.isUserInteractionEnabled = true
-        myAccountView.addGestureRecognizer(viewTapGesture)
+        myAccountView.addGestureRecognizer(accountViewTapGesture)
+
+        let saltyWireViewGesture = UITapGestureRecognizer(target: self, action: #selector(saltyWireViewTap))
+        saltyWireView.isUserInteractionEnabled = true
+        saltyWireView.addGestureRecognizer(saltyWireViewGesture)
+
+        let submitTipViewGesture = UITapGestureRecognizer(target: self, action: #selector(submitTipViewTap))
+        submitTipView.isUserInteractionEnabled = true
+        submitTipView.addGestureRecognizer(submitTipViewGesture)
+
+        let podcastViewGesture = UITapGestureRecognizer(target: self, action: #selector(podcastViewTap))
+        podcastView.isUserInteractionEnabled = true
+        podcastView.addGestureRecognizer(podcastViewGesture)
+
+        let fireWireViewGesture = UITapGestureRecognizer(target: self, action: #selector(fireWireViewTap))
+        fireWireView.isUserInteractionEnabled = true
+        fireWireView.addGestureRecognizer(fireWireViewGesture)
+
+        let contactViewGesture = UITapGestureRecognizer(target: self, action: #selector(contactViewTap))
+        contactView.isUserInteractionEnabled = true
+        contactView.addGestureRecognizer(contactViewGesture)
+
+        let personalisationViewGesture = UITapGestureRecognizer(target: self, action: #selector(personalisationViewTap))
+        personalisationView.isUserInteractionEnabled = true
+        personalisationView.addGestureRecognizer(personalisationViewGesture)
     }
 
     @objc func myAccountViewTap() {
         coordinator?.navigateToMyAccount()
     }
+
+    @objc func saltyWireViewTap() {
+        coordinator?.openURL(APIEndpoints.saltyWireUrl)
+    }
+
+    @objc func submitTipViewTap() {
+        coordinator?.openURL(APIEndpoints.submitTipUrl)
+    }
+
+    @objc func podcastViewTap() {
+        coordinator?.openURL(APIEndpoints.chicagoPodcastUrl)
+    }
+
+    @objc func fireWireViewTap() {
+        coordinator?.openURL(APIEndpoints.fireWireUrl)
+    }
+
+    @objc func contactViewTap() {
+        coordinator?.openURL(APIEndpoints.contactUrl)
+    }
+
+    @objc func personalisationViewTap() {}
 
     @IBAction func closeButtonTap(_ sender: UIButton) {
         coordinator?.navigateBackToHome(popViewToLeft: true)

@@ -781,20 +781,20 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="127.66666666666667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-jT-yuP">
-                                                <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="127.66666666666667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="169" height="127.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x1O-nS-N2A">
-                                                        <rect key="frame" x="15" y="20.000000000000007" width="77.666666666666671" height="88.666666666666686"/>
+                                                        <rect key="frame" x="15" y="20" width="139" height="87.666666666666657"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img02" translatesAutoresizingMaskIntoConstraints="NO" id="oPG-Mc-eKw">
-                                                                <rect key="frame" x="14" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="44.666666666666671" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="2EY-Pt-QGi"/>
                                                                     <constraint firstAttribute="height" constant="50" id="8xa-XD-jjk"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit A Tip" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-Mx-ltj">
-                                                                <rect key="frame" x="12.333333333333336" y="55" width="53.000000000000007" height="33.666666666666657"/>
+                                                                <rect key="frame" x="25.333333333333336" y="55" width="88.333333333333314" height="32.666666666666657"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -811,20 +811,20 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LY-BA-ugo">
-                                                <rect key="frame" x="122.66666666666666" y="0.0" width="107.66666666666666" height="127.66666666666667"/>
+                                                <rect key="frame" x="184" y="0.0" width="169" height="127.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KE9-OL-0bx">
-                                                        <rect key="frame" x="15" y="20.000000000000007" width="77.666666666666671" height="88.666666666666686"/>
+                                                        <rect key="frame" x="15" y="20" width="139" height="87.666666666666657"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img03" translatesAutoresizingMaskIntoConstraints="NO" id="HoK-Op-B2R">
-                                                                <rect key="frame" x="14" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="44.666666666666686" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="1S4-Ri-qRT"/>
                                                                     <constraint firstAttribute="height" constant="50" id="hh5-o9-pL8"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago Podcast" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adI-KS-B0p">
-                                                                <rect key="frame" x="9" y="55" width="60" height="33.666666666666657"/>
+                                                                <rect key="frame" x="11.666666666666657" y="55" width="116" height="32.666666666666657"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -840,21 +840,21 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                     <constraint firstAttribute="trailing" secondItem="KE9-OL-0bx" secondAttribute="trailing" constant="15" id="wmT-vL-d8o"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-Iy-mBU">
-                                                <rect key="frame" x="245.33333333333329" y="0.0" width="107.66666666666666" height="127.66666666666667"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-Iy-mBU">
+                                                <rect key="frame" x="353" y="0.0" width="80" height="127.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I0E-Nf-uz8">
-                                                        <rect key="frame" x="15" y="20" width="77.666666666666671" height="87.666666666666671"/>
+                                                        <rect key="frame" x="15" y="20" width="50" height="98"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img04" translatesAutoresizingMaskIntoConstraints="NO" id="Ukh-W0-9Ax">
-                                                                <rect key="frame" x="14" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="1M4-eI-2sy"/>
                                                                     <constraint firstAttribute="height" constant="50" id="Kti-VK-8Pe"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pioneer Applications" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWb-6B-0bK">
-                                                                <rect key="frame" x="1" y="55" width="75.666666666666671" height="32.666666666666657"/>
+                                                                <rect key="frame" x="0.33333333333331439" y="55" width="49.333333333333336" height="43"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1120,9 +1120,15 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contactView" destination="YGQ-iC-KMb" id="wNS-hR-OnG"/>
                         <outlet property="emailLabel" destination="AwC-bL-jdF" id="Zur-HZ-Bdn"/>
+                        <outlet property="fireWireView" destination="ryM-zr-Q6X" id="ZrP-4u-6Hi"/>
                         <outlet property="myAccountView" destination="zoc-9c-ep4" id="OhK-G8-pER"/>
                         <outlet property="nameLabel" destination="Tdk-gM-eb5" id="hIv-CR-UQn"/>
+                        <outlet property="personalisationView" destination="wKA-vH-b01" id="w4t-is-YLo"/>
+                        <outlet property="podcastView" destination="7LY-BA-ugo" id="qSf-P0-4sg"/>
+                        <outlet property="saltyWireView" destination="Hh3-JK-Iyz" id="r2M-NF-RdO"/>
+                        <outlet property="submitTipView" destination="xNa-jT-yuP" id="Knk-kX-ZPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoT-M8-eAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
