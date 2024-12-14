@@ -18,7 +18,12 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
     @IBOutlet weak var incidentSubTitle: UILabel!
     @IBOutlet weak var incidentDesc: UILabel!
     @IBOutlet weak var incidentDateTime: UILabel!
+    @IBOutlet weak var incidentImageView: FWImageView!
+    @IBOutlet weak var incidentAddress: UILabel!
+    @IBOutlet weak var incidentFavourites: UILabel!
+    @IBOutlet weak var incidentComments: UILabel!
 
+    @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     var coordinator: IncidentsCoordinator?
     var viewModel: PostDetailViewModel?
 
@@ -48,6 +53,14 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt){
             incidentDateTime.text = formattedDate
         }
+        incidentDesc.text = incidentDetail.field3Value
+        incidentAddress.text = incidentDetail.address
+
+        if let imageUrl = URL(string: incidentDetail.featuredImageUrl){
+            imageLoadingIndicator.isHidden = true
+            incidentImageView.loadImage(from: imageUrl)
+        }
+
     }
 
     func setupActions() {

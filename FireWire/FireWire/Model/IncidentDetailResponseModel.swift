@@ -22,11 +22,12 @@ struct IncidentDetailResponseModel: Codable {
     let field5Value: String?
     let createdAt, updatedAt: String
     let v: Int
+    let featuredImageUrl: String
     let views: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case locality, subLocality, latitude, longitude, address, respondingUnits, featured, sendPushNotification, postFacebook, postTwitter, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, views
+        case locality, subLocality, latitude, longitude, address, respondingUnits, featured, sendPushNotification, postFacebook, postTwitter, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, views, featuredImageUrl
         case v = "__v"
     }
 }

@@ -24,6 +24,8 @@
 		9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
+		B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
+		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */; };
@@ -120,6 +122,8 @@
 		9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
+		B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */,
 				B064D3182CF32B5000CAB161 /* FWView.swift */,
 				B09254BD2CF64BE400879B07 /* FWImage.swift */,
+				B00A48EB2D0D77DD0088F66F /* FWImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */,
 				B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */,
 				B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */,
+				B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */,
 			);
 			path = FWCommon;
 			sourceTree = "<group>";
@@ -656,6 +662,7 @@
 			files = (
 				B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */,
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
+				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
@@ -675,6 +682,7 @@
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
+				B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
 				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,

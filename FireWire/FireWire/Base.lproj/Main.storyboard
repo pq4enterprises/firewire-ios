@@ -435,53 +435,52 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="685"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="680.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
-                                                <rect key="frame" x="25" y="0.0" width="343" height="70.333333333333329"/>
+                                                <rect key="frame" x="25" y="0.0" width="343" height="116"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Fire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fully involved building on a golf course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEg-gK-fbe">
-                                                        <rect key="frame" x="0.0" y="31" width="260.33333333333331" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEg-gK-fbe">
+                                                        <rect key="frame" x="0.0" y="58" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08 Oct | 04:20 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-Mb-JJX">
-                                                        <rect key="frame" x="0.0" y="56" width="104.33333333333333" height="14.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-Mb-JJX">
+                                                        <rect key="frame" x="0.0" y="66" width="50" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="FWTextGrey 1"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-nm-krm">
-                                                <rect key="frame" x="25" y="75.333333333333343" width="343" height="50.333333333333343"/>
-                                                <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-nm-krm">
+                                                <rect key="frame" x="25" y="121" width="343" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-uT-Bor">
-                                                <rect key="frame" x="25" y="361" width="343" height="200"/>
+                                                <rect key="frame" x="25" y="356.33333333333331" width="343" height="199.99999999999994"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="iT8-Sd-3Nx"/>
                                                 </constraints>
                                                 <standardMapConfiguration key="preferredConfiguration"/>
                                             </mapView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_detail_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2">
-                                                <rect key="frame" x="25" y="146" width="343" height="200"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="141.33333333333334" width="343" height="200.00000000000003"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="FtW-bj-MdV"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ckj-NW-xDd">
-                                                <rect key="frame" x="25" y="584.66666666666663" width="343" height="50.333333333333371"/>
+                                                <rect key="frame" x="25" y="580" width="343" height="50.333333333333371"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire_icon" translatesAutoresizingMaskIntoConstraints="NO" id="oNf-1O-NLy">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="50.333333333333336"/>
@@ -490,11 +489,8 @@ agreeing with our Terms and Conditions</string>
                                                             <constraint firstAttribute="height" constant="50.329999999999998" id="jpL-TL-c4W"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrE-Uv-08Z">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrE-Uv-08Z">
                                                         <rect key="frame" x="30" y="0.0" width="313" height="50.333333333333336"/>
-                                                        <string key="text">Provencal Pl &amp; Rancho Carmel Dr
-San Diego, CA 92128, USA
-</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" name="FWRed"/>
                                                         <nil key="highlightedColor"/>
@@ -502,10 +498,10 @@ San Diego, CA 92128, USA
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mOF-5C-UzC">
-                                                <rect key="frame" x="186" y="650" width="182" height="10"/>
+                                                <rect key="frame" x="199" y="645.33333333333337" width="169" height="10"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MLf-Y5-jHz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.333333333333329" height="10"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="67" height="10"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="csu-78-fKL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -514,8 +510,8 @@ San Diego, CA 92128, USA
                                                                     <constraint firstAttribute="height" constant="10" id="MOK-qi-5Tc"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-VO-u6L">
-                                                                <rect key="frame" x="14.000000000000004" y="0.0" width="58.333333333333343" height="10"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-VO-u6L">
+                                                                <rect key="frame" x="14" y="0.0" width="53" height="10"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" name="FWTextGrey"/>
                                                                 <nil key="highlightedColor"/>
@@ -523,13 +519,13 @@ San Diego, CA 92128, USA
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-X8-i1h">
-                                                        <rect key="frame" x="87.333333333333314" y="0.0" width="94.666666666666686" height="10"/>
+                                                        <rect key="frame" x="82" y="0.0" width="87" height="10"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_filled" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-yi-XIL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="11" height="10"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-HI-WMC">
-                                                                <rect key="frame" x="15" y="0.0" width="79.666666666666671" height="10"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-HI-WMC">
+                                                                <rect key="frame" x="15" y="0.0" width="72" height="10"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" name="FWTextGrey"/>
                                                                 <nil key="highlightedColor"/>
@@ -539,7 +535,7 @@ San Diego, CA 92128, USA
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
-                                                <rect key="frame" x="25" y="645" width="100" height="20"/>
+                                                <rect key="frame" x="25" y="640.33333333333337" width="100" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-dA-eZ3">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -570,6 +566,13 @@ San Diego, CA 92128, USA
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GGe-wF-wsJ">
+                                                <rect key="frame" x="44" y="231.33333333333331" width="305" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="bKK-Zm-eTy"/>
+                                                </constraints>
+                                                <color key="color" name="FWRed"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -579,13 +582,16 @@ San Diego, CA 92128, USA
                                             <constraint firstAttribute="trailing" secondItem="Zdd-uT-Bor" secondAttribute="trailing" constant="25" id="84e-QF-HEp"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="8gH-i9-9ls"/>
                                             <constraint firstItem="yOR-Mu-fTL" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="BII-kH-tXw"/>
+                                            <constraint firstItem="GGe-wF-wsJ" firstAttribute="centerX" secondItem="aWB-EP-eU2" secondAttribute="centerX" id="E5x-1f-GHg"/>
                                             <constraint firstItem="Zdd-uT-Bor" firstAttribute="top" secondItem="aWB-EP-eU2" secondAttribute="bottom" constant="15" id="Fry-1q-c52"/>
                                             <constraint firstAttribute="trailing" secondItem="mOF-5C-UzC" secondAttribute="trailing" constant="25" id="Gb0-3z-jL4"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="top" secondItem="CJd-Io-ide" secondAttribute="top" id="KVc-Ib-pTA"/>
                                             <constraint firstItem="mOF-5C-UzC" firstAttribute="centerY" secondItem="yOR-Mu-fTL" secondAttribute="centerY" id="Oew-gP-RxE"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="R1F-Co-PU4"/>
                                             <constraint firstAttribute="trailing" secondItem="aWB-EP-eU2" secondAttribute="trailing" constant="25" id="VBw-IN-o4G"/>
+                                            <constraint firstItem="GGe-wF-wsJ" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="44" id="Wku-0g-W7V"/>
                                             <constraint firstAttribute="trailing" secondItem="Ckj-NW-xDd" secondAttribute="trailing" constant="25" id="XFi-AG-7uf"/>
+                                            <constraint firstItem="GGe-wF-wsJ" firstAttribute="centerY" secondItem="aWB-EP-eU2" secondAttribute="centerY" id="euG-qk-itA"/>
                                             <constraint firstItem="yOR-Mu-fTL" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="10" id="hVD-Bn-xle"/>
                                             <constraint firstItem="aWB-EP-eU2" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="jMC-On-Jl5"/>
                                             <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="kOd-OK-saK"/>
@@ -620,8 +626,13 @@ San Diego, CA 92128, USA
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageLoadingIndicator" destination="GGe-wF-wsJ" id="VnQ-ps-45M"/>
+                        <outlet property="incidentAddress" destination="HrE-Uv-08Z" id="b0S-lu-9eJ"/>
+                        <outlet property="incidentComments" destination="2JJ-HI-WMC" id="f7i-vg-p5C"/>
                         <outlet property="incidentDateTime" destination="5fo-Mb-JJX" id="51a-ih-uUm"/>
                         <outlet property="incidentDesc" destination="Thy-nm-krm" id="eQK-sW-7Cf"/>
+                        <outlet property="incidentFavourites" destination="28o-VO-u6L" id="gSO-IS-zc9"/>
+                        <outlet property="incidentImageView" destination="aWB-EP-eU2" id="NsW-iq-dc1"/>
                         <outlet property="incidentSubTitle" destination="QEg-gK-fbe" id="Nva-Kg-d6T"/>
                         <outlet property="incidentTitle" destination="ODZ-xY-RIV" id="wuj-rT-Xpg"/>
                     </connections>
@@ -1764,7 +1775,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="logout_icon" width="19" height="20"/>
         <image name="menu_bg" width="430" height="563"/>
         <image name="menu_icon" width="20" height="17"/>
-        <image name="news_detail_placeholder" width="384" height="275"/>
         <image name="news_placeholder" width="384" height="184"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="premium_bg" width="372" height="455"/>
@@ -1779,7 +1789,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="star_icon" width="22" height="21"/>
         <image name="terms_icon" width="21" height="20"/>
         <namedColor name="FWGradient">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FWGrey">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

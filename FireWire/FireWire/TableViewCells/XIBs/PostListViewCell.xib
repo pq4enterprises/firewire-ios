@@ -48,8 +48,11 @@
                                     <constraint firstAttribute="height" constant="20" id="hfY-Fs-PsG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-jG-5ui">
-                                <rect key="frame" x="25" y="0.0" width="277" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-jG-5ui">
+                                <rect key="frame" x="25" y="3" width="277" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="0MC-Dm-3Xv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="14"/>
                                 <color key="textColor" name="FWRed"/>
                                 <nil key="highlightedColor"/>
