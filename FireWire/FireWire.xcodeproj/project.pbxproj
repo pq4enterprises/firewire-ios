@@ -26,6 +26,8 @@
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
 		B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
 		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
+		B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
+		B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
@@ -124,6 +126,8 @@
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
 		B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
+		B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseModel.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 			children = (
 				B0100CE02CF79A0A004F6214 /* XIBs */,
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+				B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */,
 				B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */,
 			);
 			path = News;
@@ -481,6 +486,7 @@
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
 				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
 				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
+				B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
+				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
@@ -697,6 +704,7 @@
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
+				B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,

@@ -14,6 +14,8 @@ enum APIEndpoints {
     static let login = "api/app/auth/login"
     static let incidentList = "/api/admin/incident"
     static let incidentDetail = "/api/admin/incident/%@"
+    static let newsList = "/api/admin/content"
+    static let newsDetail = "/api/admin/content/%@"
 
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
     static let chicagoPodcastUrl = "https://www.chicagosbraveststories.com"
