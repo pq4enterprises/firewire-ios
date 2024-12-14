@@ -43,8 +43,9 @@ class HomeCoordinator: BaseCoordinator {
         homeCoordinator.start()
     }
 
-    func navigateToNewsDetail(){
+    func navigateToNewsDetail(_ newsID: String){
         let newsDetailViewController = NewsDetailViewController.instantiate()
+        newsDetailViewController.setViewModel(viewModel: NewsDetailViewModel(newsID: newsID))
         newsDetailViewController.coordinator = self
         pushViewController(newsDetailViewController, animated: true)
     }

@@ -28,6 +28,8 @@
 		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
 		B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */; };
+		B00A48F22D0D8B840088F66F /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */; };
+		B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
@@ -128,6 +130,8 @@
 		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
 		B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseModel.swift; sourceTree = "<group>"; };
+		B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailResponseModel.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
 				B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */,
 				B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */,
+				B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
 				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
 				B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */,
+				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
 				B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
+				B00A48F22D0D8B840088F66F /* NewsDetailViewModel.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
@@ -723,6 +730,7 @@
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 			);

@@ -672,7 +672,7 @@ agreeing with our Terms and Conditions</string>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rHv-An-bPE">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rHv-An-bPE" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="55.333333333333343" width="343" height="180"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="nsr-Td-PdV"/>
@@ -754,6 +754,11 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="ahJ-Jj-eA6" firstAttribute="leading" secondItem="Wp3-QO-LPW" secondAttribute="leading" id="vrN-rE-qyN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newsDateTime" destination="rTk-Za-Ieq" id="c6r-Bf-I9e"/>
+                        <outlet property="newsImageView" destination="rHv-An-bPE" id="NHG-fy-66n"/>
+                        <outlet property="newsTitle" destination="ldk-V9-Se8" id="Kqe-QL-Fo3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBo-6s-UC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
