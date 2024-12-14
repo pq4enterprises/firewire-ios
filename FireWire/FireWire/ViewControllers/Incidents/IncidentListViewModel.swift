@@ -1,5 +1,5 @@
 //
-//  PostListViewModel.swift
+//  IncidentListViewModel.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 07/12/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PostListViewModel {
+final class IncidentListViewModel {
 
     var incidentList: [IncidentDataModel] = []
     var delegate: PostListViewDelegate?

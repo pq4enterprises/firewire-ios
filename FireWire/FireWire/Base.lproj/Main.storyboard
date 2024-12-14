@@ -395,10 +395,10 @@ agreeing with our Terms and Conditions</string>
             </objects>
             <point key="canvasLocation" x="3506.1068702290077" y="719.71830985915494"/>
         </scene>
-        <!--Post Detail View Controller-->
+        <!--Incident Detail View Controller-->
         <scene sceneID="LP4-Kh-VAp">
             <objects>
-                <viewController storyboardIdentifier="PostDetailViewController" id="Jes-w4-DZT" customClass="PostDetailViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IncidentDetailViewController" id="Jes-w4-DZT" customClass="IncidentDetailViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="05Y-65-ZBU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

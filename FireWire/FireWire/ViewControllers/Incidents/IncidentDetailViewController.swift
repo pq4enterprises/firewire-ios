@@ -1,5 +1,5 @@
 //
-//  PostDetailViewController.swift
+//  IncidentDetailViewController.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 27/11/24.
@@ -12,7 +12,7 @@ protocol PostDetailViewDelegate: AnyObject {
     func dataReceived()
 }
 
-class PostDetailViewController: UIViewController, PostDetailViewDelegate {
+class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
 
     @IBOutlet weak var incidentTitle: UILabel!
     @IBOutlet weak var incidentSubTitle: UILabel!
@@ -25,11 +25,11 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
 
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     var coordinator: IncidentsCoordinator?
-    var viewModel: PostDetailViewModel?
+    var viewModel: IncidentDetailViewModel?
 
     private var isLabelExpanded = false
 
-    func setViewModel(viewModel: PostDetailViewModel){
+    func setViewModel(viewModel: IncidentDetailViewModel){
         self.viewModel = viewModel
         self.viewModel?.delegate = self
     }
@@ -82,9 +82,9 @@ class PostDetailViewController: UIViewController, PostDetailViewDelegate {
     }
 
     // A convenience method to instantiate from the storyboard
-    static func instantiate() -> PostDetailViewController {
+    static func instantiate() -> IncidentDetailViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as! PostDetailViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "IncidentDetailViewController") as! IncidentDetailViewController
         return viewController
     }
 

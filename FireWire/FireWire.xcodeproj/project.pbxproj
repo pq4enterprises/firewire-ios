@@ -28,12 +28,12 @@
 		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
-		B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */; };
+		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
-		B01C0E282D08A5C60021A39E /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */; };
+		B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
 		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
 		B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
@@ -41,14 +41,14 @@
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
 		B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
 		B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
-		B04682402CE5401100419C65 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* PostListViewController.swift */; };
-		B04682412CE5401100419C65 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* PostListViewController.xib */; };
+		B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* IncidentListViewController.swift */; };
+		B04682412CE5401100419C65 /* IncidentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* IncidentListViewController.xib */; };
 		B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
 		B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
-		B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* PostListViewCell.xib */; };
-		B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* PostListViewCell.swift */; };
+		B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
+		B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */; };
 		B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B064D3192CF32B5000CAB161 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
@@ -75,7 +75,7 @@
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
-		B0CF74B72D038834008935D8 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* PostListViewModel.swift */; };
+		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
@@ -126,12 +126,12 @@
 		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
-		B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
 		B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
-		B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewModel.swift; sourceTree = "<group>"; };
 		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
 		B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWDateFormatter.swift; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -139,14 +139,14 @@
 		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
 		B046823A2CE53B9300419C65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B046823B2CE53B9300419C65 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		B046823E2CE5401100419C65 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
-		B046823F2CE5401100419C65 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
+		B046823E2CE5401100419C65 /* IncidentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewController.swift; sourceTree = "<group>"; };
+		B046823F2CE5401100419C65 /* IncidentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewController.xib; sourceTree = "<group>"; };
 		B04682442CE6685300419C65 /* FWRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedButton.swift; sourceTree = "<group>"; };
 		B04682462CE66B3700419C65 /* FWSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSegmentControl.swift; sourceTree = "<group>"; };
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
 		B046824B2CE66F5A00419C65 /* FWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFont.swift; sourceTree = "<group>"; };
-		B046824D2CE6779A00419C65 /* PostListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewCell.swift; sourceTree = "<group>"; };
-		B046824E2CE6779A00419C65 /* PostListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewCell.xib; sourceTree = "<group>"; };
+		B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewCell.swift; sourceTree = "<group>"; };
+		B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewCell.xib; sourceTree = "<group>"; };
 		B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedImageView.swift; sourceTree = "<group>"; };
 		B064D3182CF32B5000CAB161 /* FWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
-		B0CF74B62D038833008935D8 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 		B0100CD82CF78DDD004F6214 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				B046824E2CE6779A00419C65 /* PostListViewCell.xib */,
+				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
 				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
 			);
@@ -311,11 +311,11 @@
 			isa = PBXGroup;
 			children = (
 				B0100CDE2CF79984004F6214 /* XIBs */,
-				B046823E2CE5401100419C65 /* PostListViewController.swift */,
-				B0CF74B62D038833008935D8 /* PostListViewModel.swift */,
+				B046823E2CE5401100419C65 /* IncidentListViewController.swift */,
+				B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */,
 				B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */,
-				B0100CE12CF79A97004F6214 /* PostDetailViewController.swift */,
-				B01C0E272D08A5C60021A39E /* PostDetailViewModel.swift */,
+				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
+				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
 			);
 			path = Incidents;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				B09254B32CF626C100879B07 /* SelectAreaListViewController.xib */,
-				B046823F2CE5401100419C65 /* PostListViewController.xib */,
+				B046823F2CE5401100419C65 /* IncidentListViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -385,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				B0100CD82CF78DDD004F6214 /* XIBs */,
-				B046824D2CE6779A00419C65 /* PostListViewCell.swift */,
+				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
 				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 			);
@@ -619,13 +619,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04682412CE5401100419C65 /* PostListViewController.xib in Resources */,
+				B04682412CE5401100419C65 /* IncidentListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
 				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
-				B046824F2CE6779A00419C65 /* PostListViewCell.xib in Resources */,
+				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
@@ -695,7 +695,7 @@
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
-				B01C0E282D08A5C60021A39E /* PostDetailViewModel.swift in Sources */,
+				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,
@@ -704,19 +704,19 @@
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
-				B04682402CE5401100419C65 /* PostListViewController.swift in Sources */,
+				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
-				B0CF74B72D038834008935D8 /* PostListViewModel.swift in Sources */,
-				B04682502CE6779A00419C65 /* PostListViewCell.swift in Sources */,
+				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
+				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
-				B0100CE22CF79A97004F6214 /* PostDetailViewController.swift in Sources */,
+				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

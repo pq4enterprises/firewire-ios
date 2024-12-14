@@ -10,7 +10,7 @@ import UIKit
 
 class IncidentsCoordinator: BaseCoordinator {
     override func start() {
-        let postListView = PostListViewController(viewModel: PostListViewModel())
+        let postListView = IncidentListViewController(viewModel: IncidentListViewModel())
         postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
@@ -22,8 +22,8 @@ class IncidentsCoordinator: BaseCoordinator {
     }
 
     func navigateToPostDetail(_ incidentID: String){
-        let postDetailViewController = PostDetailViewController.instantiate()
-        postDetailViewController.setViewModel(viewModel: PostDetailViewModel(incidentID: incidentID))
+        let postDetailViewController = IncidentDetailViewController.instantiate()
+        postDetailViewController.setViewModel(viewModel: IncidentDetailViewModel(incidentID: incidentID))
         postDetailViewController.coordinator = self
 
         modalPresentationStyle = .none

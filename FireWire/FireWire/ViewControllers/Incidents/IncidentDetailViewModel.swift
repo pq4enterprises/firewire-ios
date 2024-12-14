@@ -1,5 +1,5 @@
 //
-//  PostDetailViewModel.swift
+//  IncidentDetailViewModel.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 10/12/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PostDetailViewModel {
+final class IncidentDetailViewModel {
 
     var incidentDetail: IncidentDetailResponseModel?
     var delegate: PostDetailViewDelegate?

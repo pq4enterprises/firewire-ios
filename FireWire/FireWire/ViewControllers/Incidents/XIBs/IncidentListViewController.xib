@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostListViewController" customModule="FireWire" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncidentListViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="U8f-g0-u7p" id="YeX-0F-eSb"/>
                 <outlet property="incidentListCount" destination="tZV-B0-bO8" id="ej4-tD-yqt"/>

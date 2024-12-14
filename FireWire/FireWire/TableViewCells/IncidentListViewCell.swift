@@ -1,5 +1,5 @@
 //
-//  PostListViewCell.swift
+//  IncidentListViewCell.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 14/11/24.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class PostListViewCell: UITableViewCell {
-    static let identifier = "PostListViewCell"
+class IncidentListViewCell: UITableViewCell {
+    static let identifier = "IncidentListViewCell"
 
     @IBOutlet weak var incidentTitle: UILabel!
     @IBOutlet weak var incidentDesc: UILabel!
@@ -18,7 +18,7 @@ class PostListViewCell: UITableViewCell {
     @IBOutlet weak var incidentComments: UILabel!
     
     static func nib() -> UINib {
-        return UINib(nibName: "PostListViewCell", bundle: nil)
+        return UINib(nibName: "IncidentListViewCell", bundle: nil)
     }
 
     func setupView(_ model: IncidentDataModel){

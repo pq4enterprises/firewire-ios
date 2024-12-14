@@ -1,5 +1,5 @@
 //
-//  MapListViewController.swift
+//  IncidentListViewController.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 14/11/24.
@@ -11,16 +11,16 @@ protocol PostListViewDelegate: AnyObject {
     func dataReceived()
 }
 
-class PostListViewController: UIViewController, PostListViewDelegate {
+class IncidentListViewController: UIViewController, PostListViewDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     var coordinator: IncidentsCoordinator?
-    var viewModel: PostListViewModel
+    var viewModel: IncidentListViewModel
 
-    init(viewModel: PostListViewModel){
+    init(viewModel: IncidentListViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
@@ -44,7 +44,7 @@ class PostListViewController: UIViewController, PostListViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(PostListViewCell.nib(), forCellReuseIdentifier: PostListViewCell.identifier)
+        tableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
     }
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
@@ -73,13 +73,13 @@ class PostListViewController: UIViewController, PostListViewDelegate {
     }
 }
 
-extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
+extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.incidentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostListViewCell.identifier, for: indexPath) as! PostListViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: IncidentListViewCell.identifier, for: indexPath) as! IncidentListViewCell
         cell.setupView(viewModel.incidentList[indexPath.row])
         return cell
     }
