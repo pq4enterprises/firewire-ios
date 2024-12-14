@@ -8,7 +8,7 @@
 import UIKit
 
 class MyAccountViewController: UIViewController {
-    weak var coordinator: HomeCoordinator?
+    weak var coordinator: AppCoordinator?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -36,7 +36,6 @@ class MyAccountViewController: UIViewController {
 
     @objc func logoutViewTap() {
         debugPrint("logout click")
-        //self.coordinator?.stop()
         self.coordinator?.backToParentCoordinator()
     }
 

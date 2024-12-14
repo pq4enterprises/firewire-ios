@@ -51,7 +51,7 @@ class HomeCoordinator: BaseCoordinator {
 
     func navigateToMyAccount(){
         let myAccountViewController = MyAccountViewController.instantiate()
-        myAccountViewController.coordinator = self
+        myAccountViewController.coordinator = parentCoordinator
         pushViewController(myAccountViewController, animated: true)
     }
 }
