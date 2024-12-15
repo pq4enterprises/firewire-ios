@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Resources/Fonts/Inter_18pt-Regular.ttf</string>
@@ -29,5 +33,28 @@
 			</array>
 		</dict>
 	</dict>
+	<key>GIDClientID</key>
+	<string>226227618866-u07vtgphmbi0kccjhallmd57454pvodr.apps.googleusercontent.com</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.226227618866-u07vtgphmbi0kccjhallmd57454pvodr</string>
+				<string>fb464876333289183</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>464876333289183</string>
+	<key>FacebookClientToken</key>
+	<string>810746e29da1a9dec382f5158a422859</string>
+	<key>FacebookDisplayName</key>
+	<string>Fire-Wire</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
 </dict>
 </plist>

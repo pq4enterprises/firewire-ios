@@ -1,5 +1,5 @@
 //
-//  PostListViewModel.swift
+//  IncidentListViewModel.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 07/12/24.
@@ -7,7 +7,10 @@
 
 import Foundation
 
-final class PostListViewModel {
+final class IncidentListViewModel {
+
+    var incidentList: [IncidentDataModel] = []
+    var delegate: PostListViewDelegate?
 
     init() {
         getIncidentList()
@@ -27,7 +30,8 @@ final class PostListViewModel {
             }
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
-                debugPrint("incident list \(incidentListResponse.data.count)")
+                self?.incidentList = incidentListResponse.data
+                self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")
             }

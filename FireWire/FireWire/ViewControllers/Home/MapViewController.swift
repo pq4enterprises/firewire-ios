@@ -5,25 +5,54 @@
 //  Created by Sujitha Palanisamy on 14/11/24.
 //
 
+import GoogleMaps
 import UIKit
-import MapKit
 
 class MapViewController: UIViewController {
+    @IBOutlet var contentView: UIView!
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var contentView: UIView!
-    
     var coordinator: HomeCoordinator?
+    var mapView: GMSMapView!
+    var mapViewModel: MapViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.overrideUserInterfaceStyle = .dark
+        mapViewModel = MapViewModel()
+        // mapViewModel.getIncidentList()
+
+        setupUI()
+    }
+
+    func setupUI() {
+        let mapManager = MapManager()
+        mapView = mapManager.setupMapView(frame: contentView.bounds)
+
+        mapManager.addMarkers(coordinates: mapViewModel.markersList)
+        fitMarkersToMap()
+        
+        contentView.addSubview(mapView)
+    }
+
+    func fitMarkersToMap() {
+        guard !mapViewModel.markersList.isEmpty else { return }
+
+        var bounds = GMSCoordinateBounds()
+
+        for coordinate in mapViewModel.markersList {
+            let position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            bounds = bounds.includingCoordinate(position)
+        }
+
+        // Update the camera position to fit the markers with a padding
+        let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+        mapView.animate(with: update)
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        coordinator?.navigateToPostListView()
-        ///Note: Native way to show bottom sheet, but it has customisation issue
-        ///if custom bottom sheet satisfies the requirement, this code should be removed later.
+        coordinator?.navigateToIncidentList()
+
+        /// Note: Native way to show bottom sheet, but it has customisation issue
+        /// if custom bottom sheet satisfies the requirement, this code should be removed later.
         //        let mapListView = MapListViewController()
         //        let navVC = UINavigationController(rootViewController: mapListView)
         //        navVC.modalPresentationStyle = .pageSheet
@@ -35,17 +64,5 @@ class MapViewController: UIViewController {
         //            sheet.prefersGrabberVisible = true
         //        }
         //        self.present(navVC, animated: true, completion: nil)
-
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

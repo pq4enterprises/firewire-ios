@@ -9,9 +9,20 @@ import Foundation
 
 enum APIEndpoints {
     static let baseURL = "https://firewire-api.atomgroups.com/"
+
+    static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
      static let register = "api/app/auth/register"
     static let incidentList = "/api/admin/incident"
+    static let incidentDetail = "/api/admin/incident/%@"
+    static let newsList = "/api/admin/content"
+    static let newsDetail = "/api/admin/content/%@"
+
+    static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
+    static let chicagoPodcastUrl = "https://www.chicagosbraveststories.com"
+    static let contactUrl = "https://nycfirewire.net/contact/"
+    static let fireWireUrl = "https://nycfirewire.net/"
+    static let saltyWireUrl = "https://saltywire.com/"
 }
 
 enum APIPayload {

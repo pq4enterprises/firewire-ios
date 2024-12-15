@@ -7,34 +7,35 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
-    var navigationController: UINavigationController
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-
-    func start() {
+class AppCoordinator: BaseCoordinator {
+    override func start() {
         if isUserLoggedIn() {
-            let homeCoordinator = HomeCoordinator(navigationController: navigationController)
-            childCoordinators.append(homeCoordinator)
-            homeCoordinator.parentCoordinator = self
-            homeCoordinator.start()
+            navigateToHome()
         } else {
-            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-            childCoordinators.append(loginCoordinator)
-            loginCoordinator.parentCoordinator = self
-            loginCoordinator.start()
+            navigateToLogin()
         }
     }
 
-    func stop(){
+    func navigateToLogin(){
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        addChildCoordinator(loginCoordinator)
+        loginCoordinator.parentCoordinator = self
+        loginCoordinator.start()
+    }
+
+    func navigateToHome(){
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+        addChildCoordinator(homeCoordinator)
+        homeCoordinator.parentCoordinator = self
+        homeCoordinator.start()
+    }
+
+    override func backToParentCoordinator(){
         clearSessionData()
 
         // Cleanup all child coordinators
         for coordinator in childCoordinators {
-            coordinator.stop()
+            coordinator.backToParentCoordinator()
         }
         childCoordinators.removeAll()
 
@@ -48,7 +49,9 @@ class AppCoordinator: Coordinator {
     }
 
     private func clearSessionData() {
-        UserDefaults.standard.removeObject(forKey: "token")
+        if let _ = UserDefaults.standard.object(forKey: "token"){
+            UserDefaults.standard.removeObject(forKey: "token")
+        }
         UserDefaults.standard.synchronize()
     }
 }

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         mapViewController = MapViewController()
         mapViewController?.coordinator = coordinator
         
-        newsViewController = NewsListViewController()
+        newsViewController = NewsListViewController(viewModel: NewsListViewModel())
         newsViewController?.coordinator = coordinator
 
         switchToViewController(at: 0)
