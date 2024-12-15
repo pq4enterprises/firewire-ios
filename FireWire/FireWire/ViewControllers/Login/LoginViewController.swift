@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
@@ -59,6 +60,13 @@ class LoginViewController: UIViewController {
         callLoginApi()
     }
 
+    @IBAction func googleSignInTap(_ sender: UIButton) {
+        performGoogleLogin()
+    }
+
+    @IBAction func facebookSignInTap(_ sender: UIButton) {
+    }
+    
     func callLoginApi() {
         showLoader()
 
@@ -94,6 +102,26 @@ class LoginViewController: UIViewController {
             } else {
                 print("Invalid response object")
             }
+        }
+    }
+
+    func performGoogleLogin(){
+        GIDSignIn.sharedInstance.signOut()
+
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+
+            guard error == nil else { return }
+
+            // If sign in succeeded, display the app's main content View.
+            guard let signInResult = signInResult else { return }
+            let user = signInResult.user
+
+            let emailAddress = user.profile?.email
+            let fullName = user.profile?.name
+            let familyName = user.profile?.familyName
+            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+
+            debugPrint("Google login details \(emailAddress), \(fullName), \(familyName), \(profilePicUrl)")
         }
     }
 

@@ -64,12 +64,18 @@
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="google_logo"/>
+                                                                <connections>
+                                                                    <action selector="googleSignInTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9SF-hV-Guq"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-0c-f5X" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
                                                                 <rect key="frame" x="175.66666666666663" y="2" width="155.33333333333337" height="50"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="fb_logo"/>
+                                                                <connections>
+                                                                    <action selector="facebookSignInTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b3g-f3-DAS"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <directionalEdgeInsets key="directionalLayoutMargins" top="2" leading="2" bottom="2" trailing="2"/>
