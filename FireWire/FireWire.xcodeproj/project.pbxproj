@@ -77,6 +77,8 @@
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
+		B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304492D0EE799006F851A /* FacebookLogin */; };
+		B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3044B2D0EE799006F851A /* FacebookShare */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -206,6 +208,8 @@
 			files = (
 				B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
+				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
+				B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +549,8 @@
 			packageProductDependencies = (
 				B0E115802CFF7B9C00E7D10B /* GoogleMaps */,
 				B0A304462D0EE35F006F851A /* GoogleSignIn */,
+				B0A304492D0EE799006F851A /* FacebookLogin */,
+				B0A3044B2D0EE799006F851A /* FacebookShare */,
 			);
 			productName = FireWire;
 			productReference = B08236E92CE374D10092AC01 /* FireWire.app */;
@@ -621,6 +627,7 @@
 			packageReferences = (
 				B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				B0A304452D0EE35F006F851A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = B08236EA2CE374D10092AC01 /* Products */;
 			projectDirPath = "";
@@ -1105,6 +1112,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 		B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
@@ -1120,6 +1135,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0A304452D0EE35F006F851A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		B0A304492D0EE799006F851A /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		B0A3044B2D0EE799006F851A /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 		B0E115802CFF7B9C00E7D10B /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -65,6 +66,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func facebookSignInTap(_ sender: UIButton) {
+        performFaceBookLogin()
     }
     
     func callLoginApi() {
@@ -122,6 +124,45 @@ class LoginViewController: UIViewController {
             let profilePicUrl = user.profile?.imageURL(withDimension: 320)
 
             debugPrint("Google login details \(emailAddress), \(fullName), \(familyName), \(profilePicUrl)")
+        }
+    }
+
+    func performFaceBookLogin(){
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile"], from: self) { (result, error) in
+            if let error = error {
+                // Handle login error here
+                print("Error: \(error.localizedDescription)")
+            } else if let result = result, !result.isCancelled {
+                // Login successful, you can access the user's Facebook data here
+                self.fetchFacebookUserData()
+            } else {
+                // Login was canceled by the user
+                print("Login was cancelled.")
+            }
+        }
+    }
+
+    func fetchFacebookUserData() {
+        if AccessToken.current != nil {
+            // You can make a Graph API request here to fetch user data
+            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+                if let error = error {
+                    // Handle API request error here
+                    print("Error: \(error.localizedDescription)")
+                } else if let userData = result as? [String: Any] {
+                    // Access the user data here
+                    let userID = userData["id"] as? String
+                    let name = userData["name"] as? String
+
+                    // Handle the user data as needed
+                    print("User ID: \(userID ?? "")")
+                    print("Name: \(name ?? "")")
+
+                }
+            }
+        } else {
+            print("No active Facebook access token.")
         }
     }
 
