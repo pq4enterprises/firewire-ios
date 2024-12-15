@@ -55,4 +55,16 @@ class HomeCoordinator: BaseCoordinator {
         myAccountViewController.coordinator = parentCoordinator
         pushViewController(myAccountViewController, animated: true)
     }
+
+    func navigateToPersonalisation(){
+        let personalisationViewController = PersonalisationViewController.instantiate()
+        personalisationViewController.coordinator = self
+        pushViewController(personalisationViewController, animated: true)
+    }
+
+    func navigateToNotificationSettings(){
+        let notificationSettingsViewController = NotificationSettingsViewController.instantiate()
+        notificationSettingsViewController.coordinator = self
+        pushViewController(notificationSettingsViewController, animated: true)
+    }
 }

@@ -89,7 +89,9 @@ class MenuViewController: UIViewController {
         coordinator?.openURL(APIEndpoints.contactUrl)
     }
 
-    @objc func personalisationViewTap() {}
+    @objc func personalisationViewTap() {
+        coordinator?.navigateToPersonalisation()
+    }
 
     @IBAction func closeButtonTap(_ sender: UIButton) {
         coordinator?.navigateBackToHome(popViewToLeft: true)
