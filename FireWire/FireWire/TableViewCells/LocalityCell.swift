@@ -12,8 +12,8 @@ class LocalityCell: UITableViewCell {
 
     @IBOutlet var localityTitle: UILabel!
 
-    func setupView() {
-        localityTitle.text = "Long Island"
+    func setupView(_ locality: String) {
+        localityTitle.text = locality
     }
 
 }

@@ -9,7 +9,8 @@ import UIKit
 
 class NotificationSettingsViewController: UIViewController {
     var coordinator: HomeCoordinator?
-    
+    var localityList = ["Long Island", "New York City", "USA"]
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -20,6 +21,10 @@ class NotificationSettingsViewController: UIViewController {
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        coordinator?.popView()
     }
 
     // A convenience method to instantiate from the storyboard
@@ -47,12 +52,12 @@ extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        localityList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocalityCell") as! LocalityCell
-        cell.setupView()
+        cell.setupView(localityList[indexPath.row])
         return cell
     }
 
