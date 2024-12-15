@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		9B4B179F2CF58759007517BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
-		9B4B17A12CF5897B007517BD /* RegisterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4B17A02CF5897B007517BD /* RegisterDataModel.swift */; };
 		9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* JPToast.swift */; };
 		9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D02CF57068007D319D /* JPTextField.swift */; };
 		9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
@@ -89,6 +88,7 @@
 		B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */; };
 		B0A3045C2D0F1C67006F851A /* CityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */; };
 		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
+		B0A304682D0F274E006F851A /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0E115802CFF7B9C00E7D10B /* GoogleMaps */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -124,7 +124,6 @@
 /* Begin PBXFileReference section */
 		9B4B179C2CF58759007517BD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9B4B179D2CF58759007517BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9B4B17A02CF5897B007517BD /* RegisterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDataModel.swift; sourceTree = "<group>"; };
 		9B4F50C92CF57068007D319D /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		9B4F50CA2CF57068007D319D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -225,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */,
+				B0A304682D0F274E006F851A /* GoogleMaps in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
 				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
 				B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */,
@@ -770,7 +769,6 @@
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
-				9B4B17A12CF5897B007517BD /* RegisterDataModel.swift in Sources */,
 				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,

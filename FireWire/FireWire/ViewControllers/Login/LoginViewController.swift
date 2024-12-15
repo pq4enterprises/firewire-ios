@@ -58,8 +58,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInTap(_ sender: UIButton) {
-        coordinator?.navigateToHome()
-        //callLoginApi()
+        callLoginApi()
     }
 
     @IBAction func googleSignInTap(_ sender: UIButton) {

@@ -8,6 +8,7 @@
 import UIKit
 import GoogleSignIn
 import FBSDKCoreKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
