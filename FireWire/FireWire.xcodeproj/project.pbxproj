@@ -84,6 +84,9 @@
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
 		B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */; };
 		B0A304562D0F0E9E006F851A /* LocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* LocalityCell.swift */; };
+		B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
+		B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */; };
+		B0A3045C2D0F1C67006F851A /* CityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -196,6 +199,9 @@
 		B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalisationViewController.swift; sourceTree = "<group>"; };
 		B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		B0A304552D0F0E9E006F851A /* LocalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityCell.swift; sourceTree = "<group>"; };
+		B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewController.swift; sourceTree = "<group>"; };
+		B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityHeaderCell.swift; sourceTree = "<group>"; };
+		B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeaderCell.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 				B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */,
 				B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */,
+				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -421,6 +428,8 @@
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
 				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 				B0A304552D0F0E9E006F851A /* LocalityCell.swift */,
+				B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */,
+				B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -707,6 +716,7 @@
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
+				B0A3045C2D0F1C67006F851A /* CityHeaderCell.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
@@ -721,6 +731,7 @@
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
+				B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
@@ -758,6 +769,7 @@
 				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
+				B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */,
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,

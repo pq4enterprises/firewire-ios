@@ -61,4 +61,8 @@ extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDa
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //coordinator?.navigateToNotificationLocalityView()
+    }
+
 }
