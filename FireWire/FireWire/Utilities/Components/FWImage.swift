@@ -14,6 +14,7 @@ enum FWImageResources: String {
     case alertIconWhite = "alert_icon_white"
     case checkBoxChecked = "checkbox_checked"
     case checkBoxUnChecked = "checkbox_unchecked"
+    case mapMarker = "map_marker"
 }
 
 extension UIImage {
@@ -29,4 +30,5 @@ struct FWImage {
     static let alertIconWhite = UIImage.appImage(.alertIconWhite)
     static let checkBoxChecked = UIImage.appImage(.checkBoxChecked)
     static let checkBoxUnChecked = UIImage.appImage(.checkBoxUnChecked)
+    static let mapMarker = UIImage.appImage(.mapMarker)
 }
