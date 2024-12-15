@@ -1221,7 +1221,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Back" image="back_icon"/>
                                                 <connections>
-                                                    <action selector="backButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="7nr-zh-AZr"/>
                                                     <action selector="backButtonTap:" destination="379-Cb-SNB" eventType="touchUpInside" id="qRp-zV-rkf"/>
                                                 </connections>
                                             </button>
@@ -1474,11 +1473,243 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <outlet property="emailLabel" destination="I8d-6m-eO4" id="PN7-jB-P2c"/>
                         <outlet property="logoutView" destination="5ra-Z1-1ZI" id="vE1-0c-l3t"/>
                         <outlet property="nameLabel" destination="FO5-RN-7wx" id="ifc-dk-Uef"/>
+                        <outlet property="updateProfileView" destination="abt-lP-mdD" id="zxE-6y-sSu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1T-Mj-pev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5929" y="1382"/>
+            <point key="canvasLocation" x="5750" y="1382"/>
+        </scene>
+        <!--Update Profile View Controller-->
+        <scene sceneID="Umi-lA-0dD">
+            <objects>
+                <viewController storyboardIdentifier="UpdateProfileViewController" id="chA-7c-pTG" customClass="UpdateProfileViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y3Y-5m-mqp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6b-Rr-LPL">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heD-Hn-1a2">
+                                        <rect key="frame" x="20" y="0.0" width="60" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="ofm-NG-D75"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="back_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="MQg-ys-2th"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMX-Gn-S8d">
+                                        <rect key="frame" x="138" y="14.999999999999998" width="117" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="heD-Hn-1a2" firstAttribute="top" secondItem="k6b-Rr-LPL" secondAttribute="top" id="0dC-DS-Plb"/>
+                                    <constraint firstAttribute="height" constant="50" id="1bm-JD-XI4"/>
+                                    <constraint firstAttribute="bottom" secondItem="heD-Hn-1a2" secondAttribute="bottom" id="IgW-yH-uR9"/>
+                                    <constraint firstItem="heD-Hn-1a2" firstAttribute="leading" secondItem="k6b-Rr-LPL" secondAttribute="leading" constant="20" id="MJ3-Gj-zHV"/>
+                                    <constraint firstItem="OMX-Gn-S8d" firstAttribute="centerX" secondItem="k6b-Rr-LPL" secondAttribute="centerX" id="YfK-qp-Sxk"/>
+                                    <constraint firstItem="heD-Hn-1a2" firstAttribute="centerY" secondItem="OMX-Gn-S8d" secondAttribute="centerY" id="bOc-ZD-hK2"/>
+                                    <constraint firstItem="OMX-Gn-S8d" firstAttribute="centerY" secondItem="k6b-Rr-LPL" secondAttribute="centerY" id="rQO-rh-Y7p"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1c-bO-KVV">
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D65-hj-uar">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="734.33333333333337"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-ax-zDJ" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
+                                                <rect key="frame" x="146.66666666666666" y="19.000000000000007" width="100" height="98.666666666666686"/>
+                                                <color key="tintColor" name="FWRed"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="g5u-hQ-D8O"/>
+                                                    <constraint firstAttribute="height" constant="100" id="tHR-w9-O8U"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsd-bY-WQD">
+                                                <rect key="frame" x="155.33333333333334" y="125.99999999999999" width="82.333333333333343" height="33.333333333333329"/>
+                                                <color key="tintColor" name="FWRed"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Change">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9xc-hE-ZWY">
+                                                <rect key="frame" x="30" y="179.33333333333331" width="333" height="545"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="05q-ce-mgv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="77"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEU-79-y9K">
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                                <color key="textColor" name="FWTextGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-DX-v6F" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="22" width="333" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="bRE-WZ-9RE"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W5v-S3-UVz">
+                                                        <rect key="frame" x="0.0" y="87" width="333" height="77"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-Ja-VMY">
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                                <color key="textColor" name="FWTextGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdD-Xd-Smv" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="22" width="333" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="KVW-x2-bts"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4lj-lw-2pz">
+                                                        <rect key="frame" x="0.0" y="174" width="333" height="77"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9C-Cd-0qb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                                <color key="textColor" name="FWTextGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-93-S5K" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="22" width="333" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="DmR-1T-XYM"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="H8b-9b-Nqr">
+                                                        <rect key="frame" x="0.0" y="261.00000000000006" width="333" height="77"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-uz-LeU">
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                                <color key="textColor" name="FWTextGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85l-Lg-Ia0" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="22" width="333" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="DtL-jR-7wI"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9dm-pj-qdD">
+                                                        <rect key="frame" x="0.0" y="348.00000000000006" width="333" height="77"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title / Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykk-xe-ZBs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                                <color key="textColor" name="FWTextGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-XH-lJd" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="22" width="333" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="uW7-Ma-Ney"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7m-2p-nGL" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="435.00000000000006" width="333" height="50"/>
+                                                        <color key="backgroundColor" name="FWRed"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="sPH-Th-x6h"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Save and Update"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92O-zN-UMC">
+                                                        <rect key="frame" x="0.0" y="495" width="333" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="92F-mP-KKY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Change Password?">
+                                                            <color key="titleColor" name="FWRed"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="xsd-bY-WQD" firstAttribute="centerX" secondItem="dnZ-ax-zDJ" secondAttribute="centerX" id="AsD-Ye-mUd"/>
+                                            <constraint firstItem="9xc-hE-ZWY" firstAttribute="leading" secondItem="D65-hj-uar" secondAttribute="leading" constant="30" id="HTB-7F-aTc"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9xc-hE-ZWY" secondAttribute="bottom" constant="10" id="HXw-WJ-hEm"/>
+                                            <constraint firstItem="xsd-bY-WQD" firstAttribute="top" secondItem="dnZ-ax-zDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TVE-Kn-I6k"/>
+                                            <constraint firstAttribute="trailing" secondItem="9xc-hE-ZWY" secondAttribute="trailing" constant="30" id="WdP-oi-g1O"/>
+                                            <constraint firstItem="dnZ-ax-zDJ" firstAttribute="top" secondItem="D65-hj-uar" secondAttribute="top" constant="18" id="e1z-h8-g5b"/>
+                                            <constraint firstItem="dnZ-ax-zDJ" firstAttribute="centerX" secondItem="D65-hj-uar" secondAttribute="centerX" id="vY5-oZ-mWN"/>
+                                            <constraint firstItem="9xc-hE-ZWY" firstAttribute="top" secondItem="xsd-bY-WQD" secondAttribute="bottom" constant="20" id="yqN-NC-clk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="D65-hj-uar" firstAttribute="top" secondItem="F1c-bO-KVV" secondAttribute="top" id="JH2-da-Lyg"/>
+                                    <constraint firstItem="D65-hj-uar" firstAttribute="height" secondItem="F1c-bO-KVV" secondAttribute="height" priority="250" id="L50-Eh-7tv"/>
+                                    <constraint firstItem="D65-hj-uar" firstAttribute="width" secondItem="F1c-bO-KVV" secondAttribute="width" id="Rdz-wi-mbJ"/>
+                                    <constraint firstItem="D65-hj-uar" firstAttribute="leading" secondItem="F1c-bO-KVV" secondAttribute="leading" id="V2K-R7-fCu"/>
+                                    <constraint firstAttribute="trailing" secondItem="D65-hj-uar" secondAttribute="trailing" id="dBW-wP-YHM"/>
+                                    <constraint firstAttribute="bottom" secondItem="D65-hj-uar" secondAttribute="bottom" id="ygc-nL-ITI"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PWb-kR-D8p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="k6b-Rr-LPL" firstAttribute="top" secondItem="PWb-kR-D8p" secondAttribute="top" id="PLb-Zi-o5I"/>
+                            <constraint firstItem="F1c-bO-KVV" firstAttribute="top" secondItem="k6b-Rr-LPL" secondAttribute="bottom" id="ZWS-nZ-kjl"/>
+                            <constraint firstItem="F1c-bO-KVV" firstAttribute="leading" secondItem="PWb-kR-D8p" secondAttribute="leading" id="aUc-t4-eIK"/>
+                            <constraint firstItem="k6b-Rr-LPL" firstAttribute="trailing" secondItem="PWb-kR-D8p" secondAttribute="trailing" id="iL8-C2-CFB"/>
+                            <constraint firstItem="k6b-Rr-LPL" firstAttribute="leading" secondItem="PWb-kR-D8p" secondAttribute="leading" id="jUd-T6-U7f"/>
+                            <constraint firstItem="F1c-bO-KVV" firstAttribute="trailing" secondItem="PWb-kR-D8p" secondAttribute="trailing" id="rzl-I6-6Np"/>
+                            <constraint firstItem="F1c-bO-KVV" firstAttribute="bottom" secondItem="PWb-kR-D8p" secondAttribute="bottom" id="zRm-kz-eVh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQS-cS-BUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6487.7862595419847" y="1374.6478873239437"/>
         </scene>
         <!--Personalisation View Controller-->
         <scene sceneID="9f3-OB-nyf">
@@ -1504,9 +1735,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonTap:" destination="379-Cb-SNB" eventType="touchUpInside" id="PnH-mM-Eku"/>
                                             <action selector="backButtonTap:" destination="t9q-fR-v9L" eventType="touchUpInside" id="bzl-68-psA"/>
-                                            <action selector="backButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="luT-6q-Eea"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personalization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtD-ih-0SJ">
@@ -1924,9 +2153,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="Mmb-Zj-KhC"/>
                                             <action selector="backButtonTap:" destination="EoN-1R-fBL" eventType="touchUpInside" id="zZN-TD-T61"/>
-                                            <action selector="backButtonTap:" destination="379-Cb-SNB" eventType="touchUpInside" id="zwd-hd-jus"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-Iw-eb6">
@@ -2032,8 +2259,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="KVH-tT-FJa"/>
-                                            <action selector="backButtonTap:" destination="379-Cb-SNB" eventType="touchUpInside" id="Qfl-oL-9YI"/>
                                             <action selector="backButtonTap:" destination="D4C-AZ-tdr" eventType="touchUpInside" id="vdI-dx-1tK"/>
                                         </connections>
                                     </button>

@@ -8,8 +8,10 @@
 import UIKit
 
 class MyAccountViewController: UIViewController {
-    weak var coordinator: AppCoordinator?
+    weak var appCoordinator: AppCoordinator?
+    var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var updateProfileView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var logoutView: UIStackView!
@@ -32,15 +34,22 @@ class MyAccountViewController: UIViewController {
         let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(logoutViewTap))
         logoutView.isUserInteractionEnabled = true
         logoutView.addGestureRecognizer(viewTapGesture)
+
+        let updateProfileTapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfileViewTap))
+        updateProfileView.isUserInteractionEnabled = true
+        updateProfileView.addGestureRecognizer(updateProfileTapGesture)
     }
 
     @objc func logoutViewTap() {
-        debugPrint("logout click")
-        self.coordinator?.backToParentCoordinator()
+        self.appCoordinator?.backToParentCoordinator()
+    }
+
+    @objc func updateProfileViewTap() {
+        //self.coordinator?.navigateToUpdateProfile()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
-        coordinator?.popView()
+        appCoordinator?.popView()
     }
     
     // A convenience method to instantiate from the storyboard

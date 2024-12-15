@@ -52,7 +52,8 @@ class HomeCoordinator: BaseCoordinator {
 
     func navigateToMyAccount(){
         let myAccountViewController = MyAccountViewController.instantiate()
-        myAccountViewController.coordinator = parentCoordinator
+        myAccountViewController.appCoordinator = parentCoordinator
+        myAccountViewController.coordinator = self
         pushViewController(myAccountViewController, animated: true)
     }
 
@@ -72,5 +73,11 @@ class HomeCoordinator: BaseCoordinator {
         let notificationLocalityViewController = NotificationLocalityViewController.instantiate()
         notificationLocalityViewController.coordinator = self
         pushViewController(notificationLocalityViewController, animated: true)
+    }
+
+    func navigateToUpdateProfile(){
+        let updateProfileViewController = UpdateProfileViewController.instantiate()
+        updateProfileViewController.coordinator = self
+        pushViewController(updateProfileViewController, animated: true)
     }
 }

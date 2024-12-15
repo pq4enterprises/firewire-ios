@@ -87,6 +87,7 @@
 		B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
 		B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */; };
 		B0A3045C2D0F1C67006F851A /* CityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */; };
+		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -202,6 +203,7 @@
 		B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewController.swift; sourceTree = "<group>"; };
 		B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityHeaderCell.swift; sourceTree = "<group>"; };
 		B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeaderCell.swift; sourceTree = "<group>"; };
+		B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */,
 				B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */,
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
+				B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
+				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 			);
