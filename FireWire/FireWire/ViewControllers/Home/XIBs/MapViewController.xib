@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="qNJ-Nx-vd9" id="my2-DX-NKL"/>
-                <outlet property="mapView" destination="eed-2Y-nqh" id="YPe-4z-Uxu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,14 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNJ-Nx-vd9">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNJ-Nx-vd9">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eed-2Y-nqh">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <standardMapConfiguration key="preferredConfiguration"/>
-                </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aef-o4-z5l" customClass="FWRoundedButton" customModule="FireWire" customModuleProvider="target">
                     <rect key="frame" x="131.66666666666666" y="753" width="129.99999999999997" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,12 +47,8 @@
             <constraints>
                 <constraint firstItem="qNJ-Nx-vd9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4Zk-Pq-vNn"/>
                 <constraint firstItem="Aef-o4-z5l" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cgq-QL-uhD"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eed-2Y-nqh" secondAttribute="trailing" id="D5s-A0-9q4"/>
                 <constraint firstItem="qNJ-Nx-vd9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JPy-RC-5kg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Aef-o4-z5l" secondAttribute="bottom" constant="20" id="NeX-PH-RAb"/>
-                <constraint firstItem="eed-2Y-nqh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Pxn-kk-8Aa"/>
-                <constraint firstAttribute="bottom" secondItem="eed-2Y-nqh" secondAttribute="bottom" id="kfB-Nb-NuD"/>
-                <constraint firstItem="eed-2Y-nqh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ky6-WR-8kx"/>
                 <constraint firstItem="qNJ-Nx-vd9" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wu3-YP-dEb"/>
                 <constraint firstItem="qNJ-Nx-vd9" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="zde-pM-A7n"/>
             </constraints>

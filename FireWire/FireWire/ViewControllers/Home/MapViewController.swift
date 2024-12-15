@@ -11,15 +11,14 @@ import GoogleMaps
 
 class MapViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var contentView: UIView!
     
     var coordinator: HomeCoordinator?
+    var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.overrideUserInterfaceStyle = .dark
-        //setupUI()
+        setupUI()
     }
 
     func setupUI(){
@@ -27,11 +26,27 @@ class MapViewController: UIViewController {
         let mapOptions = GMSMapViewOptions()
         mapOptions.camera = camera
 
-        let mapView = GMSMapView(options: mapOptions)
+        mapView = GMSMapView(options: mapOptions)
         mapView.frame = self.contentView.bounds
         mapView.mapType = .normal
 
         self.contentView.addSubview(mapView)
+        loadMapStyle()
+    }
+
+    func loadMapStyle() {
+
+        if let path = Bundle.main.path(forResource: "mapStyle", ofType: "json"){
+            do{
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                if let jsonString = String(data: data, encoding: .utf8) {
+                    mapView.mapStyle = try GMSMapStyle(jsonString: jsonString)
+                }
+
+            }catch{
+                NSLog("Unable to load data")
+            }
+        }
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
@@ -51,15 +66,4 @@ class MapViewController: UIViewController {
         //        self.present(navVC, animated: true, completion: nil)
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

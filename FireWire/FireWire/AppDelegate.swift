@@ -11,7 +11,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyCg9HsL2VpDd6RSRQINPZrG5mSj_KdjfBg")
+        //TODO: This is Dev key from Atom replace it from NYC
+        GMSServices.provideAPIKey("AIzaSyALseex1HWFQ2XSxIk-uYwKegYzc5hgkPg")
         return true
     }
 
