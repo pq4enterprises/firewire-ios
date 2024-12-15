@@ -80,6 +80,7 @@
 		B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304492D0EE799006F851A /* FacebookLogin */; };
 		B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3044B2D0EE799006F851A /* FacebookShare */; };
 		B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */; };
+		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -188,6 +189,7 @@
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				9B4F50D22CF57068007D319D /* CommonClasses */,
 				9B4F50D42CF57068007D319D /* Components */,
 				B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */,
+				B0A3044F2D0EFDE0006F851A /* MapManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
+				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,

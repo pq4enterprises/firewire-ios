@@ -5,8 +5,8 @@
 //  Created by Sujitha Palanisamy on 27/11/24.
 //
 
+import GoogleMaps
 import UIKit
-import SkeletonView
 
 protocol PostDetailViewDelegate: AnyObject {
     func dataReceived()
@@ -22,12 +22,14 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
     @IBOutlet weak var incidentAddress: UILabel!
     @IBOutlet weak var incidentFavourites: UILabel!
     @IBOutlet weak var incidentComments: UILabel!
-
+    @IBOutlet weak var incidentMapView: UIView!
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
+
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
 
     private var isLabelExpanded = false
+    private var mapView: GMSMapView!
 
     func setViewModel(viewModel: IncidentDetailViewModel){
         self.viewModel = viewModel
@@ -60,6 +62,17 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
         }
+
+        let mapManager = MapManager()
+        mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
+
+        if let latitude = Double(incidentDetail.latitude), let longitude = Double(incidentDetail.longitude) {
+            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
+            mapManager.addMarkers(coordinates: [coordinates])
+            mapView.animate(toLocation: coordinates)
+        }
+
+        incidentMapView.addSubview(mapView)
 
     }
 

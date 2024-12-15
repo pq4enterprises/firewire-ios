@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -472,13 +471,6 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-uT-Bor">
-                                                <rect key="frame" x="25" y="356.33333333333331" width="343" height="199.99999999999994"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="iT8-Sd-3Nx"/>
-                                                </constraints>
-                                                <standardMapConfiguration key="preferredConfiguration"/>
-                                            </mapView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="141.33333333333334" width="343" height="200.00000000000003"/>
                                                 <constraints>
@@ -579,33 +571,39 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-cq-G1J">
+                                                <rect key="frame" x="25" y="356" width="343" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="tfL-OJ-17o"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="0f4-0O-zel"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="1mt-J2-uya"/>
+                                            <constraint firstItem="eGY-cq-G1J" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="2Fm-MN-CWT"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="5" id="2Xy-uJ-lEQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="Zdd-uT-Bor" secondAttribute="trailing" constant="25" id="84e-QF-HEp"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="8gH-i9-9ls"/>
                                             <constraint firstItem="yOR-Mu-fTL" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="BII-kH-tXw"/>
+                                            <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="eGY-cq-G1J" secondAttribute="bottom" constant="24" id="CGv-Pg-sZZ"/>
                                             <constraint firstItem="GGe-wF-wsJ" firstAttribute="centerX" secondItem="aWB-EP-eU2" secondAttribute="centerX" id="E5x-1f-GHg"/>
-                                            <constraint firstItem="Zdd-uT-Bor" firstAttribute="top" secondItem="aWB-EP-eU2" secondAttribute="bottom" constant="15" id="Fry-1q-c52"/>
                                             <constraint firstAttribute="trailing" secondItem="mOF-5C-UzC" secondAttribute="trailing" constant="25" id="Gb0-3z-jL4"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="top" secondItem="CJd-Io-ide" secondAttribute="top" id="KVc-Ib-pTA"/>
                                             <constraint firstItem="mOF-5C-UzC" firstAttribute="centerY" secondItem="yOR-Mu-fTL" secondAttribute="centerY" id="Oew-gP-RxE"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="R1F-Co-PU4"/>
                                             <constraint firstAttribute="trailing" secondItem="aWB-EP-eU2" secondAttribute="trailing" constant="25" id="VBw-IN-o4G"/>
+                                            <constraint firstItem="eGY-cq-G1J" firstAttribute="top" secondItem="aWB-EP-eU2" secondAttribute="bottom" constant="14.67" id="VPy-hv-zbP"/>
                                             <constraint firstItem="GGe-wF-wsJ" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="44" id="Wku-0g-W7V"/>
                                             <constraint firstAttribute="trailing" secondItem="Ckj-NW-xDd" secondAttribute="trailing" constant="25" id="XFi-AG-7uf"/>
                                             <constraint firstItem="GGe-wF-wsJ" firstAttribute="centerY" secondItem="aWB-EP-eU2" secondAttribute="centerY" id="euG-qk-itA"/>
                                             <constraint firstItem="yOR-Mu-fTL" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="10" id="hVD-Bn-xle"/>
                                             <constraint firstItem="aWB-EP-eU2" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="jMC-On-Jl5"/>
                                             <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="kOd-OK-saK"/>
+                                            <constraint firstAttribute="trailing" secondItem="eGY-cq-G1J" secondAttribute="trailing" constant="25" id="lPj-Kg-ssW"/>
                                             <constraint firstItem="aWB-EP-eU2" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20.329999999999998" id="qg2-X5-LjP"/>
                                             <constraint firstAttribute="bottom" secondItem="yOR-Mu-fTL" secondAttribute="bottom" constant="20" id="rin-RZ-9an"/>
-                                            <constraint firstItem="Zdd-uT-Bor" firstAttribute="top" secondItem="aWB-EP-eU2" secondAttribute="bottom" constant="15" id="sHg-NE-guY"/>
-                                            <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="Zdd-uT-Bor" secondAttribute="bottom" constant="23.670000000000002" id="uH5-dA-b7A"/>
-                                            <constraint firstItem="Zdd-uT-Bor" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="yBM-St-XJZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -639,6 +637,7 @@ agreeing with our Terms and Conditions</string>
                         <outlet property="incidentDesc" destination="Thy-nm-krm" id="eQK-sW-7Cf"/>
                         <outlet property="incidentFavourites" destination="28o-VO-u6L" id="gSO-IS-zc9"/>
                         <outlet property="incidentImageView" destination="aWB-EP-eU2" id="NsW-iq-dc1"/>
+                        <outlet property="incidentMapView" destination="eGY-cq-G1J" id="BUO-Dh-GBm"/>
                         <outlet property="incidentSubTitle" destination="QEg-gK-fbe" id="Nva-Kg-d6T"/>
                         <outlet property="incidentTitle" destination="ODZ-xY-RIV" id="wuj-rT-Xpg"/>
                     </connections>

@@ -6,7 +6,6 @@
 //
 
 import GoogleMaps
-import MapKit
 import UIKit
 
 class MapViewController: UIViewController {
@@ -25,31 +24,13 @@ class MapViewController: UIViewController {
     }
 
     func setupUI() {
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 10.0)
-        let mapOptions = GMSMapViewOptions()
-        mapOptions.camera = camera
+        let mapManager = MapManager()
+        mapView = mapManager.setupMapView(frame: contentView.bounds)
 
-        mapView = GMSMapView(options: mapOptions)
-        mapView.frame = contentView.bounds
-        mapView.mapType = .normal
-
-        addIncidentMarkers()
-        loadMapStyle()
-        contentView.addSubview(mapView)
-    }
-
-    func addIncidentMarkers() {
-        guard !mapViewModel.markersList.isEmpty else { return }
-
-        for coordinate in mapViewModel.markersList {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            marker.icon = FWImage.mapMarker
-            marker.map = mapView
-        }
-
-        // Once markers are added, fit them to the map
+        mapManager.addMarkers(coordinates: mapViewModel.markersList)
         fitMarkersToMap()
+        
+        contentView.addSubview(mapView)
     }
 
     func fitMarkersToMap() {
@@ -65,25 +46,6 @@ class MapViewController: UIViewController {
         // Update the camera position to fit the markers with a padding
         let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
         mapView.animate(with: update)
-    }
-
-    func loadMapStyle() {
-        if let path = Bundle.main.path(forResource: "mapStyle", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    do {
-                        mapView.mapStyle = try GMSMapStyle(jsonString: jsonString)
-                    } catch {
-                        NSLog("Unable to load map style")
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    NSLog("Unable to load map style data")
-                }
-            }
-        }
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
