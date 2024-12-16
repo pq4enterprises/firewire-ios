@@ -43,13 +43,6 @@ class HomeCoordinator: BaseCoordinator {
         homeCoordinator.start()
     }
 
-    func navigateToNewsDetail(_ newsID: String){
-        let newsDetailViewController = NewsDetailViewController.instantiate()
-        newsDetailViewController.setViewModel(viewModel: NewsDetailViewModel(newsID: newsID))
-        newsDetailViewController.coordinator = self
-        pushViewController(newsDetailViewController, animated: true)
-    }
-
     func navigateToMyAccount(){
         let myAccountViewController = MyAccountViewController.instantiate()
         myAccountViewController.appCoordinator = parentCoordinator

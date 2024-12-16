@@ -13,11 +13,11 @@ class FWDateFormatter {
        // Shared instance of DateFormatter to format the date into the desired string format
        private let outputDateFormatter: DateFormatter
 
-       init() {
+    init(inputDateFormat: String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") {
            // Initialize the input date formatter for ISO 8601 with milliseconds and UTC time zone
            inputDateFormatter = DateFormatter()
-           inputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"  // Match the exact input format
-           inputDateFormatter.timeZone = TimeZone(abbreviation: "UTC")  // Ensure it's in UTC time zone
+           inputDateFormatter.dateFormat = inputDateFormat
+           inputDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 
            // Initialize the output date formatter with the desired format
            outputDateFormatter = DateFormatter()

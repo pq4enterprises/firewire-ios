@@ -28,12 +28,10 @@
 		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
 		B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */; };
-		B00A48F22D0D8B840088F66F /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */; };
 		B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
-		B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsViewController.swift */; };
@@ -88,6 +86,8 @@
 		B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */; };
 		B0A3045C2D0F1C67006F851A /* CityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045B2D0F1C67006F851A /* CityHeaderCell.swift */; };
 		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
+		B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046A2D10A17B006F851A /* XMLCoder */; };
+		B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046F2D10AD56006F851A /* SwiftSoup */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
@@ -143,12 +143,10 @@
 		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
 		B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseModel.swift; sourceTree = "<group>"; };
-		B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
 		B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailResponseModel.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
-		B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -226,8 +224,10 @@
 			files = (
 				B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
+				B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */,
 				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
 				B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */,
+				B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,8 +371,6 @@
 				B0100CE02CF79A0A004F6214 /* XIBs */,
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
 				B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */,
-				B0100CEB2CFF768D004F6214 /* NewsDetailViewController.swift */,
-				B00A48F12D0D8B840088F66F /* NewsDetailViewModel.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -578,6 +576,8 @@
 				B0A304462D0EE35F006F851A /* GoogleSignIn */,
 				B0A304492D0EE799006F851A /* FacebookLogin */,
 				B0A3044B2D0EE799006F851A /* FacebookShare */,
+				B0A3046A2D10A17B006F851A /* XMLCoder */,
+				B0A3046F2D10AD56006F851A /* SwiftSoup */,
 			);
 			productName = FireWire;
 			productReference = B08236E92CE374D10092AC01 /* FireWire.app */;
@@ -655,6 +655,8 @@
 				B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				B0A304452D0EE35F006F851A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = B08236EA2CE374D10092AC01 /* Products */;
 			projectDirPath = "";
@@ -728,7 +730,6 @@
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
 				B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
-				B00A48F22D0D8B840088F66F /* NewsDetailViewModel.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
@@ -760,7 +761,6 @@
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
-				B0100CEC2CFF768D004F6214 /* NewsDetailViewController.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
@@ -1156,6 +1156,22 @@
 				minimumVersion = 14.1.0;
 			};
 		};
+		B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
+		B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.6;
+			};
+		};
 		B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
@@ -1181,6 +1197,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookShare;
+		};
+		B0A3046A2D10A17B006F851A /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+		B0A3046F2D10AD56006F851A /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		B0E115802CFF7B9C00E7D10B /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
