@@ -21,9 +21,9 @@ class IncidentsCoordinator: BaseCoordinator {
         pushViewController(bottomSheet, animated: true)
     }
 
-    func navigateToPostDetail(_ incidentID: String){
+    func navigateToIncidentDetail(_ incidentID: String){
         let postDetailViewController = IncidentDetailViewController.instantiate()
-        postDetailViewController.setViewModel(viewModel: IncidentDetailViewModel(incidentID: incidentID))
+        postDetailViewController.setSelectedIncidentID(incidentID)
         postDetailViewController.coordinator = self
 
         modalPresentationStyle = .none

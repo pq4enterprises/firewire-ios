@@ -28,11 +28,13 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
 
+    private var selectedIncidentID: String?
     private var isLabelExpanded = false
     private var mapView: GMSMapView!
 
-    func setViewModel(viewModel: IncidentDetailViewModel){
-        self.viewModel = viewModel
+    func setSelectedIncidentID(_ id: String){
+        self.selectedIncidentID = id
+        self.viewModel = IncidentDetailViewModel()
         self.viewModel?.delegate = self
     }
 
@@ -46,16 +48,23 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         incidentDesc.isUserInteractionEnabled = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let selectedIncidentID {
+            viewModel?.getIncidentDetail(for: selectedIncidentID)
+        }
+    }
+
     func updateUI(){
         guard let incidentDetail = viewModel?.incidentDetail else {
             return
         }
-        incidentTitle.text = incidentDetail.field1Value
-        incidentSubTitle.text = incidentDetail.field2Value
+        incidentTitle.text = incidentDetail.field1Value ?? ""
+        incidentSubTitle.text = incidentDetail.field2Value ?? ""
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt){
             incidentDateTime.text = formattedDate
         }
-        incidentDesc.text = incidentDetail.field3Value
+        incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 
         if let imageUrl = URL(string: incidentDetail.featuredImageUrl){

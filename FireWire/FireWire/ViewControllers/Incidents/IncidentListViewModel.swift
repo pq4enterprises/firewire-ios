@@ -17,7 +17,7 @@ final class IncidentListViewModel {
     }
 
     func getIncidentList() {
-        let parameters: [String: Any] = ["sortBy": "createdAt", "sortDir": "desc", "offset": 1, "limit": 10]
+        let parameters: [String: Any] = ["sortDir": "desc", "offset": 1, "limit": 10]
 
         APIRequest().callGetApi(
             apiEndPoint: APIEndpoints.incidentList,
@@ -30,7 +30,7 @@ final class IncidentListViewModel {
             }
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
-                self?.incidentList = incidentListResponse.data
+                self?.incidentList = incidentListResponse.data.data
                 self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")

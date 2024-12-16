@@ -23,12 +23,15 @@ class IncidentListViewCell: UITableViewCell {
 
     func setupView(_ model: IncidentDataModel){
         incidentTitle.text = model.field1Value
-        incidentDesc.text = model.description
+        incidentDesc.text = ""
         incidentLocation.text = model.address
 
         if let formattedDate = FWDateFormatter().formatDateString(model.createdAt){
             incidentDateTime.text = formattedDate
         }
+
+        incidentStarred.text = "\(model.likeCount) Starred"
+        incidentComments.text = "\(model.commentCount) Comments"
     }
 
 }

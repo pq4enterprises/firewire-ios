@@ -8,13 +8,8 @@
 import Foundation
 
 final class IncidentDetailViewModel {
-
-    var incidentDetail: IncidentDetailResponseModel?
+    var incidentDetail: IncidentDetailModel?
     var delegate: PostDetailViewDelegate?
-
-    init(incidentID: String) {
-        getIncidentDetail(for: incidentID)
-    }
 
     func getIncidentDetail(for incidentID: String) {
         let requestURL = String.init(format: APIEndpoints.incidentDetail, incidentID)
@@ -30,7 +25,7 @@ final class IncidentDetailViewModel {
             }
 
             if let incidentDetailResponse = apiResponse as? IncidentDetailResponseModel {
-                self?.incidentDetail = incidentDetailResponse
+                self?.incidentDetail = incidentDetailResponse.data[0]
                 self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")

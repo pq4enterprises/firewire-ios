@@ -33,15 +33,15 @@ final class MapViewModel {
             }
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
-                let incidentList = incidentListResponse.data
-                for item in incidentList {
-                    if let latitude = item.locality.latitude, let longitude = item.locality.longitude {
-                        if let lat = Double(latitude), let lon = Double(longitude) {
-                            let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                            self?.markersList.append(coordinates)
-                        }
-                    }
-                }
+                let incidentList = incidentListResponse.data.data
+//                for item in incidentList {
+//                    if let latitude = item.locality.latitude, let longitude = item.locality.longitude {
+//                        if let lat = Double(latitude), let lon = Double(longitude) {
+//                            let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+//                            self?.markersList.append(coordinates)
+//                        }
+//                    }
+//                }
             } else {
                 print("Invalid response object")
             }
