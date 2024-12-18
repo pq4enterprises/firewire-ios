@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectAreaListViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="gHa-lF-ZB1" id="gDg-i3-VBm"/>
                 <outlet property="tableView" destination="wfK-k6-HJ7" id="s4e-to-26d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -58,6 +59,11 @@
                     <rect key="frame" x="0.0" y="119" width="393" height="699"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-lF-ZB1">
+                    <rect key="frame" x="24" y="236" width="344" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="color" name="FWRed"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
