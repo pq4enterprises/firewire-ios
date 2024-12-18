@@ -108,8 +108,6 @@ class LoginViewController: UIViewController {
     }
 
     func performGoogleLogin(){
-        GIDSignIn.sharedInstance.signOut()
-
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
 
             guard error == nil else { return }
@@ -124,6 +122,9 @@ class LoginViewController: UIViewController {
             let profilePicUrl = user.profile?.imageURL(withDimension: 320)
 
             debugPrint("Google login details \(emailAddress), \(fullName), \(familyName), \(profilePicUrl)")
+
+            self.coordinator?.backToParentCoordinator()
+            self.parentCoordinator?.navigateToHome()
         }
     }
 
@@ -159,6 +160,8 @@ class LoginViewController: UIViewController {
                     print("User ID: \(userID ?? "")")
                     print("Name: \(name ?? "")")
 
+                    self.coordinator?.backToParentCoordinator()
+                    self.parentCoordinator?.navigateToHome()
                 }
             }
         } else {
