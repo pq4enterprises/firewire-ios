@@ -37,10 +37,10 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
-    func navigateToIncidentList(){
-        let homeCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
-        addChildCoordinator(homeCoordinator)
-        homeCoordinator.start()
+    func navigateToIncidentList(_ incidentListData: [IncidentDataModel]){
+        let incidentsCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
+        addChildCoordinator(incidentsCoordinator)
+        incidentsCoordinator.start(with: incidentListData)
     }
 
     func navigateToMyAccount(){

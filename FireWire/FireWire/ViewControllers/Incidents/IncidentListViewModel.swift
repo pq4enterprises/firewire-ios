@@ -10,10 +10,11 @@ import Foundation
 final class IncidentListViewModel {
 
     var incidentList: [IncidentDataModel] = []
-    var delegate: PostListViewDelegate?
+    //var delegate: PostListViewDelegate?
 
-    init() {
-        getIncidentList()
+    init(_ incidentList: [IncidentDataModel]) {
+        self.incidentList = incidentList
+        //getIncidentList()
     }
 
     func getIncidentList() {
@@ -31,7 +32,7 @@ final class IncidentListViewModel {
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
                 self?.incidentList = incidentListResponse.data.data
-                self?.delegate?.dataReceived()
+                //self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")
             }

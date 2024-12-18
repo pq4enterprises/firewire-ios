@@ -9,11 +9,14 @@ import Foundation
 import MapKit
 
 final class MapViewModel {
-    // var incidentList: [IncidentDataModel] = []
-    var markersList: [CLLocationCoordinate2D] = [
-        CLLocationCoordinate2D(latitude: 39.1878056, longitude: -76.63167709999999),
-        CLLocationCoordinate2D(latitude: 32.9668022, longitude: -117.0898602)
-    ]
+    //    var markersList: [CLLocationCoordinate2D] = [
+    //        CLLocationCoordinate2D(latitude: 39.1878056, longitude: -76.63167709999999),
+    //        CLLocationCoordinate2D(latitude: 32.9668022, longitude: -117.0898602)
+    //    ]
+
+    var incidentList: [IncidentDataModel] = []
+    var markersList: [CLLocationCoordinate2D] = []
+    var delegate: MapViewDelegate?
 
     init() {
         getIncidentList()
@@ -34,14 +37,15 @@ final class MapViewModel {
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
                 let incidentList = incidentListResponse.data.data
-//                for item in incidentList {
-//                    if let latitude = item.locality.latitude, let longitude = item.locality.longitude {
-//                        if let lat = Double(latitude), let lon = Double(longitude) {
-//                            let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-//                            self?.markersList.append(coordinates)
-//                        }
-//                    }
-//                }
+                self?.incidentList = incidentList
+                
+                for item in incidentList {
+                    if let lat = Double(item.latitude), let lon = Double(item.longitude) {
+                        let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                        self?.markersList.append(coordinates)
+                        self?.delegate?.dataReceived()
+                    }
+                }
             } else {
                 print("Invalid response object")
             }

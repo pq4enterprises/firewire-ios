@@ -13,7 +13,7 @@ class MapManager {
     var mapView: GMSMapView!
 
     func setupMapView(frame: CGRect) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 10.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 2)
         let mapOptions = GMSMapViewOptions()
         mapOptions.camera = camera
 

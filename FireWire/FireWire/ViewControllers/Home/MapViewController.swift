@@ -8,29 +8,36 @@
 import GoogleMaps
 import UIKit
 
-class MapViewController: UIViewController {
+protocol MapViewDelegate: AnyObject {
+    func dataReceived()
+}
+
+class MapViewController: UIViewController, MapViewDelegate {
     @IBOutlet var contentView: UIView!
 
     var coordinator: HomeCoordinator?
     var mapView: GMSMapView!
     var mapViewModel: MapViewModel!
+    var mapManager: MapManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapViewModel = MapViewModel()
-        // mapViewModel.getIncidentList()
+        mapViewModel.delegate = self
+        mapViewModel.getIncidentList()
 
         setupUI()
     }
 
     func setupUI() {
-        let mapManager = MapManager()
+        mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: contentView.bounds)
+        contentView.addSubview(mapView)
+    }
 
+    func addMapMarkers(){
         mapManager.addMarkers(coordinates: mapViewModel.markersList)
         fitMarkersToMap()
-        
-        contentView.addSubview(mapView)
     }
 
     func fitMarkersToMap() {
@@ -49,7 +56,9 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func viewListTap(_ sender: UIButton) {
-        coordinator?.navigateToIncidentList()
+        if mapViewModel.incidentList.count > 0 {
+            coordinator?.navigateToIncidentList(mapViewModel.incidentList)
+        }
 
         /// Note: Native way to show bottom sheet, but it has customisation issue
         /// if custom bottom sheet satisfies the requirement, this code should be removed later.
@@ -64,5 +73,9 @@ class MapViewController: UIViewController {
         //            sheet.prefersGrabberVisible = true
         //        }
         //        self.present(navVC, animated: true, completion: nil)
+    }
+
+    func dataReceived() {
+        addMapMarkers()
     }
 }

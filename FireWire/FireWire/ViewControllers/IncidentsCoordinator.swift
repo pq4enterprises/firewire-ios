@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class IncidentsCoordinator: BaseCoordinator {
-    override func start() {
-        let postListView = IncidentListViewController(viewModel: IncidentListViewModel())
+     func start(with incidentListData: [IncidentDataModel]) {
+         let viewModel = IncidentListViewModel(incidentListData)
+        let postListView = IncidentListViewController(viewModel: viewModel)
         postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
