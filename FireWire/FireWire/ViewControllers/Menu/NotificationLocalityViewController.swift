@@ -56,7 +56,7 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
-            headerView.setupView()
+            headerView.setupView(title: "New York City")
             return headerView
         } else if section == 1 {
             let headerView = tableView.dequeueReusableCell(withIdentifier: LocalityHeaderCell.identifier) as! LocalityHeaderCell

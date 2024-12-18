@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class IncidentsCoordinator: BaseCoordinator {
-     func start(with incidentListData: [IncidentDataModel]) {
-         let viewModel = IncidentListViewModel(incidentListData)
+    func start(with incidentListData: [IncidentDataModel], _ selectedLocalities: SelectedLocalities?) {
+        let viewModel = IncidentListViewModel(incidentListData,selectedLocalities)
         let postListView = IncidentListViewController(viewModel: viewModel)
         postListView.coordinator = self
 

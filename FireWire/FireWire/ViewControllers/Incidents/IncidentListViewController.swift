@@ -7,9 +7,9 @@
 
 import UIKit
 
-//protocol PostListViewDelegate: AnyObject {
-//    func dataReceived()
-//}
+protocol PostListViewDelegate: AnyObject {
+    func filterDataReceived()
+}
 
 class IncidentListViewController: UIViewController {
     @IBOutlet weak var incidentListCount: UILabel!

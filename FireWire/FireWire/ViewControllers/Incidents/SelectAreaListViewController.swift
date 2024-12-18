@@ -17,6 +17,7 @@ class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
 
     var coordinator: IncidentsCoordinator?
     var viewModel: SelectAreaViewModel!
+    var selectedAreas: SelectedLocalities!
 
     init(viewModel: SelectAreaViewModel) {
         self.viewModel = viewModel
@@ -45,11 +46,12 @@ class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
         tableView.dataSource = self
 
         tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
+        tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.popView()
-        coordinator?.start()
+        self.coordinator?.start(with: [], selectedAreas)
     }
 
     func dataReceived() {
@@ -77,22 +79,22 @@ extension SelectAreaListViewController: UITableViewDataSource, UITableViewDelega
         viewModel.localityData.count
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
+        headerView.setupView(title: viewModel.localityData[section].name)
+        return headerView
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.localityData[section].subLocality.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectAreaListViewCell.identifier, for: indexPath) as! SelectAreaListViewCell
-        cell.areaLabel.text = viewModel.localityData[indexPath.section].subLocality[indexPath.row].name
-        cell.selectAreaAction = {
-            debugPrint("Checkbox tap")
-            if cell.selectAreaButton.tag == 0 { // Temp logic to update checkbox
-                cell.selectAreaButton.tag = 1
-                cell.selectAreaButton.setImage(FWImage.checkBoxChecked, for: .normal)
-            } else {
-                cell.selectAreaButton.tag = 0
-                cell.selectAreaButton.setImage(FWImage.checkBoxUnChecked, for: .normal)
-            }
+        cell.setupView(viewModel.localityData[indexPath.section], indexPath)
+
+        cell.selectAreaAction = { selectedArea in
+            self.selectedAreas = selectedArea
         }
         return cell
     }

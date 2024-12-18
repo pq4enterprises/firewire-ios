@@ -10,15 +10,23 @@ import Foundation
 final class IncidentListViewModel {
 
     var incidentList: [IncidentDataModel] = []
-    //var delegate: PostListViewDelegate?
+    var delegate: PostListViewDelegate?
 
-    init(_ incidentList: [IncidentDataModel]) {
-        self.incidentList = incidentList
-        //getIncidentList()
+    init(_ incidentList: [IncidentDataModel] = [], _ selectedLocalities: SelectedLocalities? = nil) {
+        if incidentList.count > 0 {
+            self.incidentList = incidentList
+        }else{
+            filterIncidentList(selectedLocalities: selectedLocalities)
+        }
     }
 
-    func getIncidentList() {
-        let parameters: [String: Any] = ["sortDir": "desc", "offset": 1, "limit": 10]
+    func filterIncidentList(selectedLocalities: SelectedLocalities?) {
+
+        var parameters: [String: Any] = ["sortDir": "desc", "offset": 1, "limit": 10]
+
+        if let selectedLocalities {
+            parameters["query"] = frameAndPassQuery(selectedLocalities)
+        }
 
         APIRequest().callGetApi(
             apiEndPoint: APIEndpoints.incidentList,
@@ -32,10 +40,27 @@ final class IncidentListViewModel {
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
                 self?.incidentList = incidentListResponse.data.data
-                //self?.delegate?.dataReceived()
+                self?.delegate?.filterDataReceived()
             }else{
                 print("Invalid response object")
             }
         }
+    }
+
+    func frameAndPassQuery(_ selectedLocalities: SelectedLocalities) -> String{
+        let query: [String: Any] = [
+            "locality": selectedLocalities.selectedLocalityIDs,
+            "subLocality": selectedLocalities.selectedSubLocalityIDs
+        ]
+
+        if let queryData = try? JSONSerialization.data(withJSONObject: query, options: []),
+               let queryString = String(data: queryData, encoding: .utf8) {
+
+                // URL encode the JSON string to safely pass it as a URL parameter
+                if let encodedQuery = queryString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                   return encodedQuery
+                }
+            }
+        return ""
     }
 }

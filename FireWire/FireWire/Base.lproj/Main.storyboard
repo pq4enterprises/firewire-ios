@@ -2283,76 +2283,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PmL-48-h9u">
                                 <rect key="frame" x="0.0" y="117" width="393" height="701"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityHeaderCell" id="NsN-Xl-t43" customClass="CityHeaderCell" customModule="FireWire" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NsN-Xl-t43" id="i12-gP-PEG">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="46"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExE-iS-z8L">
-                                                    <rect key="frame" x="30" y="11" width="50" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULy-c6-541">
-                                                    <rect key="frame" x="285" y="7.6666666666666679" width="85" height="31.000000000000004"/>
-                                                    <color key="tintColor" name="FWRed"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Select All">
-                                                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
-                                                    </buttonConfiguration>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ULy-c6-541" firstAttribute="centerY" secondItem="ExE-iS-z8L" secondAttribute="centerY" id="0X6-Gz-0EB"/>
-                                                <constraint firstAttribute="trailing" secondItem="ULy-c6-541" secondAttribute="trailing" constant="23" id="5SC-2D-4cV"/>
-                                                <constraint firstItem="ExE-iS-z8L" firstAttribute="top" secondItem="i12-gP-PEG" secondAttribute="topMargin" id="9ez-CI-MMf"/>
-                                                <constraint firstItem="ExE-iS-z8L" firstAttribute="leading" secondItem="i12-gP-PEG" secondAttribute="leadingMargin" constant="10" id="Aku-9S-KHo"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ExE-iS-z8L" secondAttribute="bottom" id="hMP-pG-CY2"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="ExE-iS-z8L" id="afs-OU-PaR"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LocalityHeaderCell" id="2rw-sG-ctk" customClass="LocalityHeaderCell" customModule="FireWire" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101.33333206176758" width="393" height="41.333332061767578"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2rw-sG-ctk" id="ciw-1N-dJq">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.333332061767578"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghu-v3-3Oy">
-                                                    <rect key="frame" x="35" y="10.999999999999998" width="41.333333333333343" height="19.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbg-PX-kjZ">
-                                                    <rect key="frame" x="285" y="5.3333333333333321" width="85" height="30.999999999999996"/>
-                                                    <color key="tintColor" name="FWRed"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Select All">
-                                                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
-                                                    </buttonConfiguration>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ghu-v3-3Oy" firstAttribute="top" secondItem="ciw-1N-dJq" secondAttribute="topMargin" id="5J6-Vu-M5R"/>
-                                                <constraint firstItem="ghu-v3-3Oy" firstAttribute="leading" secondItem="ciw-1N-dJq" secondAttribute="leadingMargin" constant="15" id="BzT-7M-4tz"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ghu-v3-3Oy" secondAttribute="bottom" id="Sbs-2M-sIP"/>
-                                                <constraint firstAttribute="trailing" secondItem="Sbg-PX-kjZ" secondAttribute="trailing" constant="23" id="a7v-oY-CJj"/>
-                                                <constraint firstItem="Sbg-PX-kjZ" firstAttribute="centerY" secondItem="ghu-v3-3Oy" secondAttribute="centerY" id="ha4-We-Pvc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="ghu-v3-3Oy" id="LJD-Dh-OlO"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                             </tableView>
                         </subviews>
