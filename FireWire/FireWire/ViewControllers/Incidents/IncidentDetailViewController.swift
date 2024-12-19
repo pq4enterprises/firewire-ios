@@ -8,22 +8,23 @@
 import GoogleMaps
 import UIKit
 
-protocol PostDetailViewDelegate: AnyObject {
+protocol IncidentDetailViewDelegate: AnyObject {
     func dataReceived()
+    func incidentFavourited(like: Bool)
 }
 
-class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
-
-    @IBOutlet weak var incidentTitle: UILabel!
-    @IBOutlet weak var incidentSubTitle: UILabel!
-    @IBOutlet weak var incidentDesc: UILabel!
-    @IBOutlet weak var incidentDateTime: UILabel!
-    @IBOutlet weak var incidentImageView: FWImageView!
-    @IBOutlet weak var incidentAddress: UILabel!
-    @IBOutlet weak var incidentFavourites: UILabel!
-    @IBOutlet weak var incidentComments: UILabel!
-    @IBOutlet weak var incidentMapView: UIView!
-    @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
+class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate {
+    @IBOutlet var incidentTitle: UILabel!
+    @IBOutlet var incidentSubTitle: UILabel!
+    @IBOutlet var incidentDesc: UILabel!
+    @IBOutlet var incidentDateTime: UILabel!
+    @IBOutlet var incidentImageView: FWImageView!
+    @IBOutlet var incidentAddress: UILabel!
+    @IBOutlet var incidentFavourites: UILabel!
+    @IBOutlet var incidentComments: UILabel!
+    @IBOutlet var incidentMapView: UIView!
+    @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var favouriteButton: UIButton!
 
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
@@ -32,10 +33,10 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
     private var isLabelExpanded = false
     private var mapView: GMSMapView!
 
-    func setSelectedIncidentID(_ id: String){
-        self.selectedIncidentID = id
-        self.viewModel = IncidentDetailViewModel()
-        self.viewModel?.delegate = self
+    func setSelectedIncidentID(_ id: String) {
+        selectedIncidentID = id
+        viewModel = IncidentDetailViewModel()
+        viewModel?.delegate = self
     }
 
     override func viewDidLoad() {
@@ -55,19 +56,23 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         }
     }
 
-    func updateUI(){
+    func updateUI() {
         guard let incidentDetail = viewModel?.incidentDetail else {
             return
         }
         incidentTitle.text = incidentDetail.field1Value ?? ""
         incidentSubTitle.text = incidentDetail.field2Value ?? ""
-        if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt){
+        if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
             incidentDateTime.text = formattedDate
         }
         incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 
-        if let imageUrl = URL(string: incidentDetail.featuredImageUrl){
+        incidentDetail.liked
+            ? favouriteButton.setImage(FWImage.favIcon?.withTintColor(FWColor.red), for: .normal)
+            : favouriteButton.setImage(FWImage.favIcon, for: .normal)
+
+        if let imageUrl = URL(string: incidentDetail.featuredImageUrl) {
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
         }
@@ -76,13 +81,12 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
 
         if let latitude = Double(incidentDetail.latitude), let longitude = Double(incidentDetail.longitude) {
-            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
+            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             mapManager.addMarkers(coordinates: [coordinates])
             mapView.animate(toLocation: coordinates)
         }
 
         incidentMapView.addSubview(mapView)
-
     }
 
     func setupActions() {
@@ -103,14 +107,33 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         coordinator?.popView()
     }
 
+    @IBAction func likeButtonTap(_ sender: UIButton) {
+        let value = viewModel?.incidentDetail?.liked == true ? false : true
+        viewModel?.favouriteIncident(like: value)
+    }
+
+    @IBAction func commentButtonTap(_ sender: UIButton) {}
+
+    @IBAction func shareButtonTap(_ sender: UIButton) {}
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> IncidentDetailViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "IncidentDetailViewController") as! IncidentDetailViewController
         return viewController
     }
+}
 
+// MARK: View model delegates
+
+extension IncidentDetailViewController {
     func dataReceived() {
         updateUI()
+    }
+
+    func incidentFavourited(like: Bool) {
+        like
+            ? favouriteButton.setImage(FWImage.favIcon?.withTintColor(FWColor.red), for: .normal)
+            : favouriteButton.setImage(FWImage.favIcon, for: .normal)
     }
 }

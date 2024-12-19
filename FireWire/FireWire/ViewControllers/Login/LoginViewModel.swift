@@ -24,6 +24,7 @@ final class LoginViewModel {
 
             if let loginDataResponse = apiResponse as? LoginApiResponse {
                 debugPrint(loginDataResponse)
+                UserDefaults.standard.set(loginDataResponse.data.id, forKey: "user_id")
                 UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
                 UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
                 UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
