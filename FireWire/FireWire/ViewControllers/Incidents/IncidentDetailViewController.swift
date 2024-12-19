@@ -114,7 +114,33 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     @IBAction func commentButtonTap(_ sender: UIButton) {}
 
-    @IBAction func shareButtonTap(_ sender: UIButton) {}
+    @IBAction func shareButtonTap(_ sender: UIButton) {
+        guard let incidentDetail = viewModel?.incidentDetail else {
+            return
+        }
+        shareContentToSocialMedia(text: incidentDetail.field1Value ?? "")
+    }
+
+
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+        var items: [Any] = [text]
+
+        if let imageToShare = image {
+            items.append(imageToShare)
+        }
+
+        if let urlToShare = url {
+            items.append(urlToShare)
+        }
+
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude certain activity types if needed (optional)
+        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
+
+        self.present(activityViewController, animated: true)
+    }
 
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> IncidentDetailViewController {
