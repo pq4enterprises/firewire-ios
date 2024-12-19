@@ -68,6 +68,9 @@
 		B08237042CE374D30092AC01 /* FireWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08237032CE374D30092AC01 /* FireWireTests.swift */; };
 		B082370E2CE374D30092AC01 /* FireWireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370D2CE374D30092AC01 /* FireWireUITests.swift */; };
 		B08237102CE374D30092AC01 /* FireWireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */; };
+		B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
+		B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
+		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */; };
@@ -190,6 +193,9 @@
 		B08237092CE374D30092AC01 /* FireWireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireWireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B082370D2CE374D30092AC01 /* FireWireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITests.swift; sourceTree = "<group>"; };
 		B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B086DF572D14918200B20E10 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
+		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B09254B22CF626C100879B07 /* SelectAreaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewController.swift; sourceTree = "<group>"; };
@@ -536,6 +542,8 @@
 				B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */,
 				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
 				B0A304792D134057006F851A /* LocalityResponseModel.swift */,
+				B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */,
+				B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -547,6 +555,7 @@
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
 				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
+				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -755,10 +764,12 @@
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
 				B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
+				B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
 				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,
 				9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */,
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
+				B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */,
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
@@ -794,6 +805,7 @@
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
 				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
+				B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 			);

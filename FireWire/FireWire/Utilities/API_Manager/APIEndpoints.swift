@@ -12,6 +12,7 @@ enum APIEndpoints {
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
+    static let socialLogin = "api/app/auth/social-login"
     static let incidentList = "api/app/incident"
     static let incidentDetail = "api/app/incident/%@"
     static let localityList = "api/app/locality"
@@ -24,13 +25,21 @@ enum APIEndpoints {
     static let saltyWireUrl = "https://saltywire.com/"
 }
 
+enum SocialLoginType: String{
+    case google = "google"
+    case facebook = "facebook"
+}
+
 enum APIPayload {
     case login(email: String, password: String)
+    case socialLogin(token: String, socialType: SocialLoginType, role: String)
 
     func toDictionary() -> [String: Any] {
         switch self {
-        case .login(let email, let password):
+        case let .login(email, password):
             return ["email": email, "password": password]
+        case let .socialLogin(token, socialType, role):
+            return ["token": token, "socialType": socialType, "role": "basic_user"]
         }
     }
 }
