@@ -51,7 +51,7 @@ class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.popView()
-        self.coordinator?.start(with: [], selectedAreas)
+        //self.coordinator?.start(with: [], selectedAreas)
     }
 
     func dataReceived() {

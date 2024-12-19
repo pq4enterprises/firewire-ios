@@ -25,7 +25,10 @@ final class IncidentListViewModel {
         var parameters: [String: Any] = ["sortDir": "desc", "offset": 1, "limit": 10]
 
         if let selectedLocalities {
-            parameters["query"] = frameAndPassQuery(selectedLocalities)
+            parameters["query"] = [
+                "locality": selectedLocalities.selectedLocalityIDs,
+                "subLocality": selectedLocalities.selectedSubLocalityIDs
+            ]
         }
 
         APIRequest().callGetApi(

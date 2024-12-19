@@ -12,9 +12,9 @@ enum APIEndpoints {
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
-    static let incidentList = "/api/app/incident"
-    static let incidentDetail = "/api/app/incident/%@"
-    static let localityList = "/api/app/locality"
+    static let incidentList = "api/app/incident"
+    static let incidentDetail = "api/app/incident/%@"
+    static let localityList = "api/app/locality"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
