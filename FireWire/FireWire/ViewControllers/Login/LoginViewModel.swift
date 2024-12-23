@@ -19,6 +19,7 @@ final class LoginViewModel {
             expect: LoginApiResponse.self
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
+                self?.delegate?.loginFailed(errorMessage: "Invalid response")
                 return
             }
 

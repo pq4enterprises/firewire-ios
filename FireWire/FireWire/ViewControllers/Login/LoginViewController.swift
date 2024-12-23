@@ -214,11 +214,13 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: LoginViewDelegate {
     func loginSuccess() {
+        hideLoader()
         coordinator?.backToParentCoordinator()
         parentCoordinator?.navigateToHome()
     }
 
     func loginFailed(errorMessage: String) {
+        hideLoader()
         showAlert(title: "Login Failed", message: "Technical error at our side!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
     }
 }

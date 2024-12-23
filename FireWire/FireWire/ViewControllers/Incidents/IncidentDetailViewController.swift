@@ -72,9 +72,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             ? favouriteButton.setImage(FWImage.favIcon?.withTintColor(FWColor.red), for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
-        if let imageUrl = URL(string: incidentDetail.featuredImageUrl) {
+        if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
+        } else{
+            imageLoadingIndicator.isHidden = true
         }
 
         let mapManager = MapManager()

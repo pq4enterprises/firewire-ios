@@ -16,7 +16,7 @@ struct IncidentDetailModel: Codable {
     let id: String
     //let locality, subLocality: Locality
     let latitude, longitude, address: String
-    let respondingUnits: [String]
+    let respondingUnits: [String]?
     let featured, sendPushNotification: Bool
     //let postFacebook: [PostFacebook]?
     //let postTwitter: [PostTwitter]?
@@ -27,7 +27,7 @@ struct IncidentDetailModel: Codable {
     let field5Value: String?
     let createdAt, updatedAt: String
     let v: Int
-    let featuredImageUrl: String
+    let featuredImageUrl: String?
     let commentCount, likeCount: Int
     let liked: Bool = true // TODO: Need to get from actual API
 

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -442,22 +442,22 @@ agreeing with our Terms and Conditions</string>
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
-                                                <rect key="frame" x="25" y="0.0" width="343" height="70.333333333333329"/>
+                                                <rect key="frame" x="25" y="0.0" width="343" height="116"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEg-gK-fbe">
-                                                        <rect key="frame" x="0.0" y="31" width="52.666666666666664" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEg-gK-fbe">
+                                                        <rect key="frame" x="0.0" y="58" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-Mb-JJX">
-                                                        <rect key="frame" x="0.0" y="56" width="54.666666666666664" height="14.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-Mb-JJX">
+                                                        <rect key="frame" x="0.0" y="66" width="50" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="FWTextGrey 1"/>
                                                         <nil key="highlightedColor"/>
@@ -469,13 +469,13 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-nm-krm">
-                                                <rect key="frame" x="25" y="75.333333333333343" width="343" height="0.0"/>
+                                                <rect key="frame" x="25" y="121" width="343" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="95.666666666666657" width="343" height="199.99999999999997"/>
+                                                <rect key="frame" x="25" y="141.33333333333334" width="343" height="200.00000000000003"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200.00000000000003" id="2i5-7C-CpQ"/>
                                                 </constraints>
@@ -498,11 +498,11 @@ agreeing with our Terms and Conditions</string>
                                                 </subviews>
                                             </stackView>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GGe-wF-wsJ">
-                                                <rect key="frame" x="44" y="185.66666666666669" width="305" height="20"/>
+                                                <rect key="frame" x="44" y="231.33333333333331" width="305" height="20"/>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-cq-G1J">
-                                                <rect key="frame" x="25" y="310.33333333333331" width="343" height="245.66666666666669"/>
+                                                <rect key="frame" x="25" y="356" width="343" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
