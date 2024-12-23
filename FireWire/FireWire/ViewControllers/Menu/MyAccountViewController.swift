@@ -45,7 +45,7 @@ class MyAccountViewController: UIViewController {
     }
 
     @objc func updateProfileViewTap() {
-        //self.coordinator?.navigateToUpdateProfile()
+        self.coordinator?.navigateToUpdateProfile()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {

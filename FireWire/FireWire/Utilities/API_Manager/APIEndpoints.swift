@@ -17,6 +17,7 @@ enum APIEndpoints {
     static let incidentDetail = "api/app/incident/%@"
     static let localityList = "api/app/locality"
     static let favIncident = "api/app/incident/activity"
+    static let userProfile = "/api/app/user/profile"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -35,6 +36,7 @@ enum APIPayload {
     case login(email: String, password: String)
     case socialLogin(token: String, socialType: SocialLoginType, role: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
+    case updateUserProfile(_ model: UpdateProfileRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -44,6 +46,14 @@ enum APIPayload {
             return ["token": token, "socialType": socialType, "role": role]
         case let .favouriteIncident(userId, incidentId, type):
             return ["userId": userId, "incidentId": incidentId, "type": type]
+        case let .updateUserProfile(model):
+            return [
+                "firstName": model.firstName,
+                "lastName": model.lastName,
+                "email": model.email,
+                "mobile": model.mobile,
+                "title": model.title
+            ]
         }
     }
 }

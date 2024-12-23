@@ -1664,6 +1664,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Save and Update"/>
+                                                        <connections>
+                                                            <action selector="saveButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="d0j-Zn-YWt"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92O-zN-UMC">
                                                         <rect key="frame" x="0.0" y="495" width="333" height="50"/>
@@ -1676,6 +1679,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         <state key="normal" title="Change Password?">
                                                             <color key="titleColor" name="FWRed"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="changePasswordButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="Gqt-BV-uhp"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1715,6 +1721,15 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="F1c-bO-KVV" firstAttribute="bottom" secondItem="PWb-kR-D8p" secondAttribute="bottom" id="zRm-kz-eVh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Li0-93-S5K" id="ROG-Eh-xJR"/>
+                        <outlet property="firstNameTextField" destination="C4i-DX-v6F" id="jXY-ve-G6t"/>
+                        <outlet property="lastNameTextField" destination="jdD-Xd-Smv" id="PH0-6P-VOu"/>
+                        <outlet property="phoneNumberTextField" destination="85l-Lg-Ia0" id="Czq-AC-Ct2"/>
+                        <outlet property="positionTextField" destination="7ER-XH-lJd" id="MW3-3A-d61"/>
+                        <outlet property="profileImageView" destination="dnZ-ax-zDJ" id="0QY-3K-oyk"/>
+                        <outlet property="scrollView" destination="F1c-bO-KVV" id="DE7-72-Ma2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQS-cS-BUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

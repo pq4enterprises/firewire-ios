@@ -18,6 +18,7 @@ public class APIRequest {
         apiEndPoint: String?,
         payload: JSON? = nil,
         expect: T.Type,
+        requestType: String = APIConstants.POST,
         completionHandler: @escaping DataCompletionBlock
     ) {
         let url = APIEndpoints.baseURL + (apiEndPoint ?? "")
@@ -25,7 +26,7 @@ public class APIRequest {
 
         // Perform the API request
         URLSession.shared.request(url: URL(string: url),
-                                  httpMethod: APIConstants.POST,
+                                  httpMethod: requestType,
                                   authTokenString: accessToken ?? "",
                                   headers: APIConstants.headers,
                                   payload: payload,
@@ -47,7 +48,7 @@ public class APIRequest {
     // Generic GET API request handler
     func callGetApi<T: Codable>(
         apiEndPoint: String?,
-        parameters: [String: Any]?, // parameters for GET request
+        parameters: [String: Any]?,
         expect: T.Type,
         completionHandler: @escaping DataCompletionBlock
     ) {

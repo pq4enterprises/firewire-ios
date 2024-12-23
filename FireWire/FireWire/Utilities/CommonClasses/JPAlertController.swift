@@ -7,16 +7,16 @@
 
 import UIKit
 
-extension UIViewController {
-    public func showAlert(title: String,
-                          message: String,
-                          alertStyle:UIAlertController.Style,
-                          actionTitles:[String],
-                          actionStyles:[UIAlertAction.Style],
-                          actions: [((UIAlertAction) -> Void)]){
-
+public extension UIViewController {
+    func showAlert(title: String,
+                   message: String,
+                   alertStyle: UIAlertController.Style,
+                   actionTitles: [String],
+                   actionStyles: [UIAlertAction.Style],
+                   actions: [(UIAlertAction) -> Void])
+    {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
-        for(index, indexTitle) in actionTitles.enumerated(){
+        for (index, indexTitle) in actionTitles.enumerated() {
             let action = UIAlertAction(title: indexTitle, style: actionStyles[index], handler: actions[index])
             alertController.addAction(action)
         }
