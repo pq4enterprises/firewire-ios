@@ -13,6 +13,7 @@ class HomeCoordinator: BaseCoordinator {
 
     override func start() {
         let homeViewController = HomeViewController.instantiate()
+        homeViewController.appCoordinator = parentCoordinator
         homeViewController.coordinator = self
         pushViewController(homeViewController, animated: true)
     }

@@ -10,12 +10,15 @@ import UIKit
 
 protocol MapViewDelegate: AnyObject {
     func dataReceived()
+    func tokenExpired()
 }
 
 class MapViewController: UIViewController, MapViewDelegate {
     @IBOutlet var contentView: UIView!
 
     var coordinator: HomeCoordinator?
+    var appCoordinator: AppCoordinator?
+
     var mapView: GMSMapView!
     var mapViewModel: MapViewModel!
     var mapManager: MapManager!
@@ -77,5 +80,9 @@ class MapViewController: UIViewController, MapViewDelegate {
 
     func dataReceived() {
         addMapMarkers()
+    }
+
+    func tokenExpired() {
+        self.appCoordinator?.backToParentCoordinator()
     }
 }

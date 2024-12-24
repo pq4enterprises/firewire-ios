@@ -29,7 +29,12 @@ final class MapViewModel {
             apiEndPoint: APIEndpoints.incidentList,
             parameters: parameters,
             expect: IncidentResponseModel.self)
-        { [weak self] response, _, _ in
+        { [weak self] response, _, error in
+
+            if error != nil {
+                self?.delegate?.tokenExpired()
+                return
+            }
 
             guard let apiResponse = response else {
                 return

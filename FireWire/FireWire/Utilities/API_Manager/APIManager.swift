@@ -8,13 +8,14 @@ extension URLSession {
     }
     
     enum customError: Error {
-        case invaliedUrl
-        case invaliedData
+        case invalidUrl
+        case invalidData
+        case tokenExpired
     }
     
     func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: JSONData? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(customError.invaliedUrl))
+            completion(.failure(customError.invalidUrl))
             return
         }
         var request = URLRequest(url: url)
@@ -35,7 +36,7 @@ extension URLSession {
                 if let error = error {
                     completion(.failure(error))
                 } else {
-                    completion(.failure(customError.invaliedData))
+                    completion(.failure(customError.invalidData))
                 }
                 return
             }
@@ -43,7 +44,7 @@ extension URLSession {
                 let result = try JSONDecoder().decode(type.self, from: data)                
                 completion(.success(result))
             } catch {
-                completion(.failure(error))
+                completion(.failure(customError.tokenExpired))
             }
         }
         task.resume()
