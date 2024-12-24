@@ -67,6 +67,20 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         coordinator?.popView()
     }
 
+    @IBAction func changeButtonTap(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = false // Allow editing if needed
+            present(picker, animated: true, completion: nil)
+        } else {
+            // Handle case where photo library isn't available (e.g., device doesn't support it)
+            print("Photo Library is not available.")
+        }
+    }
+    
+
     @IBAction func saveButtonTap(_ sender: UIButton) {
         showLoader()
         let requestModel = UpdateProfileRequestModel(
@@ -153,5 +167,18 @@ extension UpdateProfileViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.backgroundColor = FWColor.textFieldBackgroundGrey
+    }
+}
+
+extension UpdateProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            self.profileImageView.image = selectedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

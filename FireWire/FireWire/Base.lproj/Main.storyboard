@@ -1540,7 +1540,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D65-hj-uar">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="734.33333333333337"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-ax-zDJ" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-ax-zDJ" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="146.66666666666666" y="19.000000000000007" width="100" height="98.666666666666686"/>
                                                 <color key="tintColor" name="FWRed"/>
                                                 <constraints>
@@ -1555,6 +1555,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <buttonConfiguration key="configuration" style="plain" title="Change">
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="changeButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="bCk-4e-6id"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9xc-hE-ZWY">
                                                 <rect key="frame" x="30" y="179.33333333333331" width="333" height="545"/>

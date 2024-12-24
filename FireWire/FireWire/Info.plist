@@ -58,5 +58,7 @@
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FireWire need access to your photo library.</string>
 </dict>
 </plist>
