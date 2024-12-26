@@ -34,7 +34,7 @@ enum SocialLoginType: String{
 
 enum APIPayload {
     case login(email: String, password: String)
-    case socialLogin(token: String, socialType: SocialLoginType, role: String)
+    case socialLogin(token: String, socialType: String, role: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
 

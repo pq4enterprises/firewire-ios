@@ -103,14 +103,11 @@ class LoginViewController: UIViewController {
                 guard error == nil else { return }
                 guard let user = user else { return }
 
-                let idToken = user.idToken?.tokenString ?? ""
+                let accessToken = user.accessToken.tokenString
 
-                let requestModel = SocialLoginRequestModel(token: idToken, socialType: .google, role: "basic_user")
-                // self.viewModel?.authenticateSocialLogin(requestModel)
+                let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "basic_user")
+                self.viewModel?.authenticateSocialLogin(requestModel)
             }
-
-            self.coordinator?.backToParentCoordinator()
-            self.parentCoordinator?.navigateToHome()
         }
     }
 

@@ -42,7 +42,7 @@ final class LoginViewModel {
     func authenticateSocialLogin(_ requestModel: SocialLoginRequestModel) {
         let loginRequestModel = APIPayload.socialLogin(
             token: requestModel.token,
-            socialType: requestModel.socialType,
+            socialType: requestModel.socialType.rawValue,
             role: requestModel.role
         ).toDictionary()
 
@@ -50,7 +50,7 @@ final class LoginViewModel {
             apiEndPoint: APIEndpoints.socialLogin,
             payload: loginRequestModel as JSON,
             expect: LoginApiResponse.self
-        ) { response, _, _ in
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 return
@@ -58,6 +58,13 @@ final class LoginViewModel {
 
             if let loginDataResponse = apiResponse as? LoginApiResponse {
                 debugPrint(loginDataResponse)
+                UserDefaults.standard.set(loginDataResponse.data.id, forKey: "user_id")
+                UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
+                UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
+                UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
+                UserDefaults.standard.synchronize()
+
+                self?.delegate?.loginSuccess()
             } else {
                 print("Invalid response object")
             }
