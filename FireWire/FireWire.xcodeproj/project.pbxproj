@@ -59,6 +59,7 @@
 		B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */; };
 		B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
 		B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
+		B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -183,6 +184,7 @@
 		B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestModel.swift; sourceTree = "<group>"; };
 		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsCoordinator.swift; sourceTree = "<group>"; };
+		B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				B0A304772D133FBF006F851A /* SelectAreaViewModel.swift */,
 				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
+				B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */,
 			);
 			path = Incidents;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 			files = (
 				B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */,
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
+				B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
