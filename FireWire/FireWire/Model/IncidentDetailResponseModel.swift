@@ -29,7 +29,6 @@ struct IncidentDetailModel: Codable {
     let v: Int
     let featuredImageUrl: String?
     let commentCount, likeCount: Int
-    let liked: Bool = true // TODO: Need to get from actual API
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

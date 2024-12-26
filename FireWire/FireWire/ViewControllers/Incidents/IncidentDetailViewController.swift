@@ -68,8 +68,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 
-        incidentDetail.liked
-            ? favouriteButton.setImage(FWImage.favIcon?.withTintColor(FWColor.red), for: .normal)
+        incidentDetail.likeCount > 0
+            ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
@@ -110,7 +110,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     @IBAction func likeButtonTap(_ sender: UIButton) {
-        let value = viewModel?.incidentDetail?.liked == true ? false : true
+        let value = viewModel?.incidentDetail?.likeCount ?? 0 > 0 ? false : true
         viewModel?.favouriteIncident(like: value)
     }
 
@@ -161,7 +161,7 @@ extension IncidentDetailViewController {
 
     func incidentFavourited(like: Bool) {
         like
-            ? favouriteButton.setImage(FWImage.favIcon?.withTintColor(FWColor.red), for: .normal)
+            ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
     }
 }
