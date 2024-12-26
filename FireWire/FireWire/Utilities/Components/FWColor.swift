@@ -11,6 +11,7 @@ enum CustomColor: String {
     case FWRed
     case FWTextFieldBorderGrey
     case FWPink
+    case FWGrey1
 }
 
 extension UIColor {
@@ -23,4 +24,5 @@ struct FWColor {
     static let red = UIColor.appColor(CustomColor.FWRed)
     static let textFieldGrey = UIColor.appColor(CustomColor.FWTextFieldBorderGrey)
     static let pink = UIColor.appColor(CustomColor.FWPink)
+    static let textFieldBackgroundGrey = UIColor.appColor(CustomColor.FWGrey1)
 }

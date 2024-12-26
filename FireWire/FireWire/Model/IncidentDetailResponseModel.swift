@@ -8,13 +8,18 @@
 import Foundation
 
 struct IncidentDetailResponseModel: Codable {
+    let message, code: String
+    let data: [IncidentDetailModel]
+}
+
+struct IncidentDetailModel: Codable {
     let id: String
-    let locality, subLocality: Locality
+    //let locality, subLocality: Locality
     let latitude, longitude, address: String
-    let respondingUnits: [String]
+    let respondingUnits: [String]?
     let featured, sendPushNotification: Bool
-    let postFacebook: [PostFacebook]?
-    let postTwitter: [PostTwitter]?
+    //let postFacebook: [PostFacebook]?
+    //let postTwitter: [PostTwitter]?
     let field1Value: String?
     let field2Value: String?
     let field3Value: String?
@@ -22,13 +27,14 @@ struct IncidentDetailResponseModel: Codable {
     let field5Value: String?
     let createdAt, updatedAt: String
     let v: Int
-    let featuredImageUrl: String
-    let views: Int
+    let featuredImageUrl: String?
+    let commentCount, likeCount: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case locality, subLocality, latitude, longitude, address, respondingUnits, featured, sendPushNotification, postFacebook, postTwitter, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, views, featuredImageUrl
+        case latitude, longitude, address, respondingUnits, featured, sendPushNotification, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, featuredImageUrl
         case v = "__v"
+        case commentCount, likeCount
     }
 }
 

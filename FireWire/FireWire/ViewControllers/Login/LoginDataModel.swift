@@ -16,6 +16,7 @@ struct LoginApiResponse: Codable {
 struct LoginDataModel: Codable {
     let id: String?
     let firstName: String?
+    let lastName: String?
     let email: String?
     let mobile: String?
     let role: String?
@@ -27,6 +28,7 @@ struct LoginDataModel: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
+        case lastName
         case email
         case mobile
         case role

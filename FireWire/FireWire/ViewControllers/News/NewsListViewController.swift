@@ -78,7 +78,6 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedNewsID = viewModel.newsList[indexPath.row].id
-        coordinator?.navigateToNewsDetail(selectedNewsID)
+        coordinator?.openURL(viewModel.newsList[indexPath.row].link )
     }
 }

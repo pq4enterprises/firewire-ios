@@ -8,32 +8,35 @@
 import GoogleMaps
 import UIKit
 
-protocol PostDetailViewDelegate: AnyObject {
+protocol IncidentDetailViewDelegate: AnyObject {
     func dataReceived()
+    func incidentFavourited(like: Bool)
 }
 
-class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
-
-    @IBOutlet weak var incidentTitle: UILabel!
-    @IBOutlet weak var incidentSubTitle: UILabel!
-    @IBOutlet weak var incidentDesc: UILabel!
-    @IBOutlet weak var incidentDateTime: UILabel!
-    @IBOutlet weak var incidentImageView: FWImageView!
-    @IBOutlet weak var incidentAddress: UILabel!
-    @IBOutlet weak var incidentFavourites: UILabel!
-    @IBOutlet weak var incidentComments: UILabel!
-    @IBOutlet weak var incidentMapView: UIView!
-    @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
+class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate {
+    @IBOutlet var incidentTitle: UILabel!
+    @IBOutlet var incidentSubTitle: UILabel!
+    @IBOutlet var incidentDesc: UILabel!
+    @IBOutlet var incidentDateTime: UILabel!
+    @IBOutlet var incidentImageView: FWImageView!
+    @IBOutlet var incidentAddress: UILabel!
+    @IBOutlet var incidentFavourites: UILabel!
+    @IBOutlet var incidentComments: UILabel!
+    @IBOutlet var incidentMapView: UIView!
+    @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var favouriteButton: UIButton!
 
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
 
+    private var selectedIncidentID: String?
     private var isLabelExpanded = false
     private var mapView: GMSMapView!
 
-    func setViewModel(viewModel: IncidentDetailViewModel){
-        self.viewModel = viewModel
-        self.viewModel?.delegate = self
+    func setSelectedIncidentID(_ id: String) {
+        selectedIncidentID = id
+        viewModel = IncidentDetailViewModel()
+        viewModel?.delegate = self
     }
 
     override func viewDidLoad() {
@@ -46,34 +49,46 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         incidentDesc.isUserInteractionEnabled = true
     }
 
-    func updateUI(){
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let selectedIncidentID {
+            viewModel?.getIncidentDetail(for: selectedIncidentID)
+        }
+    }
+
+    func updateUI() {
         guard let incidentDetail = viewModel?.incidentDetail else {
             return
         }
-        incidentTitle.text = incidentDetail.field1Value
-        incidentSubTitle.text = incidentDetail.field2Value
-        if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt){
+        incidentTitle.text = incidentDetail.field1Value ?? ""
+        incidentSubTitle.text = incidentDetail.field2Value ?? ""
+        if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
             incidentDateTime.text = formattedDate
         }
-        incidentDesc.text = incidentDetail.field3Value
+        incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 
-        if let imageUrl = URL(string: incidentDetail.featuredImageUrl){
+        incidentDetail.likeCount > 0
+            ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
+            : favouriteButton.setImage(FWImage.favIcon, for: .normal)
+
+        if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
+        } else{
+            imageLoadingIndicator.isHidden = true
         }
 
         let mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
 
         if let latitude = Double(incidentDetail.latitude), let longitude = Double(incidentDetail.longitude) {
-            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
+            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             mapManager.addMarkers(coordinates: [coordinates])
             mapView.animate(toLocation: coordinates)
         }
 
         incidentMapView.addSubview(mapView)
-
     }
 
     func setupActions() {
@@ -94,14 +109,65 @@ class IncidentDetailViewController: UIViewController, PostDetailViewDelegate {
         coordinator?.popView()
     }
 
+    @IBAction func likeButtonTap(_ sender: UIButton) {
+        let value = viewModel?.incidentDetail?.likeCount ?? 0 > 0 ? false : true
+        viewModel?.favouriteIncident(like: value)
+    }
+
+    @IBAction func commentButtonTap(_ sender: UIButton) {
+        if let selectedIncidentID {
+            coordinator?.navigateToIncidentComments(selectedIncidentID)
+        }
+    }
+
+    @IBAction func shareButtonTap(_ sender: UIButton) {
+        guard let incidentDetail = viewModel?.incidentDetail else {
+            return
+        }
+
+        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
+        shareContentToSocialMedia(text: shareContent, image: FWImage.appLogo)
+    }
+
+
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+        var items: [Any] = [text]
+
+        if let imageToShare = image {
+            items.append(imageToShare)
+        }
+
+        if let urlToShare = url {
+            items.append(urlToShare)
+        }
+
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude certain activity types if needed (optional)
+        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
+
+        self.present(activityViewController, animated: true)
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> IncidentDetailViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "IncidentDetailViewController") as! IncidentDetailViewController
         return viewController
     }
+}
 
+// MARK: View model delegates
+
+extension IncidentDetailViewController {
     func dataReceived() {
         updateUI()
+    }
+
+    func incidentFavourited(like: Bool) {
+        like
+            ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
+            : favouriteButton.setImage(FWImage.favIcon, for: .normal)
     }
 }

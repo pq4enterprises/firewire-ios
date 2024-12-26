@@ -16,15 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: This is Dev key from Atom replace it from NYC
         GMSServices.provideAPIKey("AIzaSyALseex1HWFQ2XSxIk-uYwKegYzc5hgkPg")
 
-        /// Google sign-in
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error != nil || user == nil {
-              // Show the app's signed-out state.
-            } else {
-              // Show the app's signed-in state.
-            }
-          }
-
         /// Facebook SDK initialisation
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

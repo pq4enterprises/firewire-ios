@@ -8,20 +8,28 @@
 import Foundation
 
 struct NewsResponseModel: Codable {
-    let data: [NewsDataModel]
-    let pageInfo: PageInfo
+    var channel: Channel
 }
 
-// MARK: - Datum
-struct NewsDataModel: Codable {
-    let id, title: String
+struct Channel: Codable {
+    let title: String
+    let item: [NewsItem]
+}
+
+struct Image: Codable {
+    let url: String
+    let title: String
     let link: String
-    let url: String?
-    let type: String?
-    let createdAt: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case title, link, url, type, createdAt
-    }
+    let width, height: String
 }
+
+struct NewsItem: Codable {
+    let title: String
+    let link: String
+    let pubDate: String
+    let category: [String]
+    let description: String
+}
+
+
+

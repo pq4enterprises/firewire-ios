@@ -9,6 +9,12 @@ import Foundation
 
 // MARK: - IncidentResponseModel
 struct IncidentResponseModel: Codable {
+    let message: String
+    let code: String
+    let data: IncidentDataResponseModel
+}
+
+struct IncidentDataResponseModel: Codable {
     let data: [IncidentDataModel]
     let pageInfo: PageInfo
 }
@@ -16,26 +22,24 @@ struct IncidentResponseModel: Codable {
 // MARK: - Datum
 struct IncidentDataModel: Codable {
     let id: String
-    let locality, subLocality: Locality
-    let latitude, address, field1Value, createdAt: String
-    let description, box: String?
+    let locality, subLocality: [Locality]
+    let latitude, longitude, address, field1Value, createdAt: String
+    let featuredImageURL: String?
+    let commentCount, likeCount: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case locality, subLocality, latitude, address, field1Value, createdAt, description, box
+        case locality = "localityDetails"
+        case subLocality = "subLocalityDetails"
+        case latitude, longitude, address, field1Value, createdAt
+        case featuredImageURL = "featuredImageUrl"
+        case commentCount, likeCount
     }
 }
 
 // MARK: - Locality
 struct Locality: Codable {
-    let id, name: String
-    let state: String?
-    let latitude, longitude: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case name, state, latitude, longitude
-    }
+    let name: String
 }
 
 // MARK: - PageInfo

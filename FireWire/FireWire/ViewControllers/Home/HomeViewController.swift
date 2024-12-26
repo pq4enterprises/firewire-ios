@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var feedsButton: UIButton!
     
     var coordinator: HomeCoordinator?
+    var appCoordinator: AppCoordinator?
     var mapViewController: MapViewController?
     var newsViewController: NewsListViewController?
 
@@ -27,6 +28,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
         mapViewController = MapViewController()
+        mapViewController?.appCoordinator = appCoordinator
         mapViewController?.coordinator = coordinator
         
         newsViewController = NewsListViewController(viewModel: NewsListViewModel())

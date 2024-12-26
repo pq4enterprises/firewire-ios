@@ -13,6 +13,7 @@ class HomeCoordinator: BaseCoordinator {
 
     override func start() {
         let homeViewController = HomeViewController.instantiate()
+        homeViewController.appCoordinator = parentCoordinator
         homeViewController.coordinator = self
         pushViewController(homeViewController, animated: true)
     }
@@ -37,17 +38,10 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
-    func navigateToIncidentList(){
-        let homeCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
-        addChildCoordinator(homeCoordinator)
-        homeCoordinator.start()
-    }
-
-    func navigateToNewsDetail(_ newsID: String){
-        let newsDetailViewController = NewsDetailViewController.instantiate()
-        newsDetailViewController.setViewModel(viewModel: NewsDetailViewModel(newsID: newsID))
-        newsDetailViewController.coordinator = self
-        pushViewController(newsDetailViewController, animated: true)
+    func navigateToIncidentList(_ incidentListData: [IncidentDataModel]){
+        let incidentsCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
+        addChildCoordinator(incidentsCoordinator)
+        incidentsCoordinator.start(with: incidentListData, nil)
     }
 
     func navigateToMyAccount(){

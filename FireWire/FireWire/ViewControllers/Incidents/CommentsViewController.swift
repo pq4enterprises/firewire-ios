@@ -1,0 +1,67 @@
+//
+//  CommentsViewController.swift
+//  FireWire
+//
+//  Created by Sujitha Palanisamy on 26/12/24.
+//
+
+import UIKit
+
+protocol CommentsListViewDelegate: AnyObject {
+    func dataReceived()
+}
+
+class CommentsViewController: UIViewController, CommentsListViewDelegate {
+    @IBOutlet var commentsListCount: UILabel!
+    @IBOutlet var tableView: UITableView!
+
+    var viewModel: CommentsListViewModel!
+    private var selectedIncidentID: String?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+    }
+
+    func setSelectedIncidentID(_ id: String) {
+        selectedIncidentID = id
+        viewModel = CommentsListViewModel()
+        viewModel?.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let selectedIncidentID {
+            viewModel?.getCommentsList(for: selectedIncidentID)
+        }
+    }
+
+    func dataReceived() {
+        tableView.reloadData()
+    }
+
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
+    }
+
+    static func instantiate() -> CommentsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        return viewController
+    }
+}
+
+extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
+        //cell.setupView(viewModel.commentsList[indexPath.row])
+        return cell
+    }
+}

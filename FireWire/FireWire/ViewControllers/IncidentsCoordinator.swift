@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class IncidentsCoordinator: BaseCoordinator {
-    override func start() {
-        let postListView = IncidentListViewController(viewModel: IncidentListViewModel())
+    func start(with incidentListData: [IncidentDataModel], _ selectedLocalities: SelectedLocalities?) {
+        let viewModel = IncidentListViewModel(incidentListData,selectedLocalities)
+        let postListView = IncidentListViewController(viewModel: viewModel)
         postListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
@@ -21,9 +22,9 @@ class IncidentsCoordinator: BaseCoordinator {
         pushViewController(bottomSheet, animated: true)
     }
 
-    func navigateToPostDetail(_ incidentID: String){
+    func navigateToIncidentDetail(_ incidentID: String){
         let postDetailViewController = IncidentDetailViewController.instantiate()
-        postDetailViewController.setViewModel(viewModel: IncidentDetailViewModel(incidentID: incidentID))
+        postDetailViewController.setSelectedIncidentID(incidentID)
         postDetailViewController.coordinator = self
 
         modalPresentationStyle = .none
@@ -31,12 +32,28 @@ class IncidentsCoordinator: BaseCoordinator {
     }
 
     func navigateToSelectAreaListView(){
-        let selectAreaListView = SelectAreaListViewController()
+        let selectAreaListView = SelectAreaListViewController(viewModel: SelectAreaViewModel())
         selectAreaListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
         bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
+    }
+
+    func navigateToIncidentComments(_ incidentID: String){
+        let commentsList = CommentsViewController.instantiate()
+        commentsList.setSelectedIncidentID(incidentID)
+        
+        let navVC = UINavigationController(rootViewController: commentsList)
+        navVC.modalPresentationStyle = .pageSheet
+
+        if let sheet = navVC.sheetPresentationController {
+            sheet.detents = [.medium(), .custom(resolver: {context in
+                0.95 * context.maximumDetentValue
+            })]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(navVC, animated: true)
     }
 }

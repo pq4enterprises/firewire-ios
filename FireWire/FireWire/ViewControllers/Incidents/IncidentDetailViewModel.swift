@@ -8,13 +8,8 @@
 import Foundation
 
 final class IncidentDetailViewModel {
-
-    var incidentDetail: IncidentDetailResponseModel?
-    var delegate: PostDetailViewDelegate?
-
-    init(incidentID: String) {
-        getIncidentDetail(for: incidentID)
-    }
+    var incidentDetail: IncidentDetailModel?
+    var delegate: IncidentDetailViewDelegate?
 
     func getIncidentDetail(for incidentID: String) {
         let requestURL = String.init(format: APIEndpoints.incidentDetail, incidentID)
@@ -30,10 +25,35 @@ final class IncidentDetailViewModel {
             }
 
             if let incidentDetailResponse = apiResponse as? IncidentDetailResponseModel {
-                self?.incidentDetail = incidentDetailResponse
+                self?.incidentDetail = incidentDetailResponse.data[0]
                 self?.delegate?.dataReceived()
             }else{
                 print("Invalid response object")
+            }
+        }
+    }
+
+    func favouriteIncident(like: Bool){
+        guard let incidentDetail = incidentDetail else { return }
+
+        let requestModel = APIPayload.favouriteIncident(
+            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            incidentId: incidentDetail.id,
+            type: like == true ? "like" : "unlike"
+        ).toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.favIncident,
+            payload: requestModel as JSON,
+            expect: SuccessResponseModel.self)
+        {response, _, _ in
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if apiResponse is SuccessResponseModel {
+                self.delegate?.incidentFavourited(like: like)
             }
         }
     }

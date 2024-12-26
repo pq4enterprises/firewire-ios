@@ -8,12 +8,10 @@
 import UIKit
 
 protocol PostListViewDelegate: AnyObject {
-    func dataReceived()
+    func filterDataReceived()
 }
 
-class IncidentListViewController: UIViewController, PostListViewDelegate {
-
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+class IncidentListViewController: UIViewController {
     @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -23,7 +21,7 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
     init(viewModel: IncidentListViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        viewModel.delegate = self
+        //viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +35,7 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showActivityIndicator(true)
+        //showActivityIndicator(true)
     }
 
     func setupTableView(){
@@ -52,25 +50,25 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
         coordinator?.navigateToSelectAreaListView()
     }
 
-    func dataReceived() {
-        showActivityIndicator(false)
-        tableView.reloadData()
-        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
-    }
+    //    func dataReceived() {
+    //        showActivityIndicator(false)
+    //        tableView.reloadData()
+    //        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
+    //    }
 
-    func showActivityIndicator(_ value: Bool){
-        if value {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
-
-            tableView.isHidden = true
-        }else{
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-
-            tableView.isHidden = false
-        }
-    }
+    //    func showActivityIndicator(_ value: Bool){
+    //        if value {
+    //            activityIndicator.isHidden = false
+    //            activityIndicator.startAnimating()
+    //
+    //            tableView.isHidden = true
+    //        }else{
+    //            activityIndicator.stopAnimating()
+    //            activityIndicator.isHidden = true
+    //
+    //            tableView.isHidden = false
+    //        }
+    //    }
 }
 
 extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -87,7 +85,7 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.dismissView(animated: true)
         let selectedIncidentID = viewModel.incidentList[indexPath.row].id
-        coordinator?.navigateToPostDetail(selectedIncidentID)
+        coordinator?.navigateToIncidentDetail(selectedIncidentID)
     }
 
 }

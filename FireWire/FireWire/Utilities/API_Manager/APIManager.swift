@@ -8,23 +8,26 @@ extension URLSession {
     }
     
     enum customError: Error {
-        case invaliedUrl
-        case invaliedData
+        case invalidUrl
+        case invalidData
+        case tokenExpired
     }
     
     func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: JSONData? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(customError.invaliedUrl))
+            completion(.failure(customError.invalidUrl))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.allHTTPHeaderFields = headers
         request.addValue("Bearer " + authTokenString, forHTTPHeaderField: "Authorization")
+        
         print("request: ----- \(request)")
+        
         if payload?.isEmpty == false {
             guard let body = try? JSONSerialization.data(withJSONObject: payload ?? [:], options: .prettyPrinted) else {
-                print("\n serilization falied")
+                print("\n Serialization failed")
                 return
             }
             request.httpBody = body
@@ -35,15 +38,26 @@ extension URLSession {
                 if let error = error {
                     completion(.failure(error))
                 } else {
-                    completion(.failure(customError.invaliedData))
+                    completion(.failure(customError.invalidData))
                 }
                 return
             }
+
+            // Check for HTTP response status code
+            if let httpResponse = response as? HTTPURLResponse {
+                // Handle token expiration case (401 Unauthorized)
+                if httpResponse.statusCode == 401 {
+                    completion(.failure(customError.tokenExpired))
+                    return
+                }
+            }
+
             do {
                 let result = try JSONDecoder().decode(type.self, from: data)                
                 completion(.success(result))
             } catch {
-                completion(.failure(error))
+                print("Decoding error: \(error.localizedDescription)")
+                completion(.failure(customError.invalidData))
             }
         }
         task.resume()

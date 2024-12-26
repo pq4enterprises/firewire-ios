@@ -5,28 +5,37 @@
 //  Created by Sujitha Palanisamy on 16/11/24.
 //
 
-import UIKit
-import GoogleSignIn
 import FBSDKLoginKit
+import GoogleSignIn
+import UIKit
+
+protocol LoginViewDelegate: AnyObject {
+    func loginSuccess()
+    func loginFailed(errorMessage: String)
+}
 
 class LoginViewController: UIViewController {
     weak var coordinator: LoginCoordinator?
     weak var parentCoordinator: AppCoordinator?
+    var viewModel: LoginViewModel?
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupActions()
         setupKeyboardActions()
 
-        emailTextField.text = "vimaladevi@atomgroups.com"
-        passwordTextField.text = "password"
+        //emailTextField.text = "vimaladevi@atomgroups.com"
+        //passwordTextField.text = "password"
+
+        viewModel = LoginViewModel()
+        viewModel?.delegate = self
     }
 
     func setupUI() {
@@ -68,74 +77,58 @@ class LoginViewController: UIViewController {
     @IBAction func facebookSignInTap(_ sender: UIButton) {
         performFaceBookLogin()
     }
-    
+
     func callLoginApi() {
         showLoader()
 
         guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
             hideLoader()
-            showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
-            }])
-
+            showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
             return
         }
 
-        let loginRequestModel = APIPayload.login(email: email, password: password).toDictionary()
-
-        APIRequest().callApi(
-            apiEndPoint: APIEndpoints.login,
-            payload: loginRequestModel as JSON,
-            expect: LoginApiResponse.self
-        ) { [weak self] response, _, _ in
-            self?.hideLoader()
-
-            guard let apiResponse = response else {
-                return
-            }
-
-            if let loginDataResponse = apiResponse as? LoginApiResponse {
-                debugPrint(loginDataResponse)
-                UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
-                UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
-                UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
-                UserDefaults.standard.synchronize()
-                self?.coordinator?.backToParentCoordinator()
-                self?.parentCoordinator?.navigateToHome()
-            } else {
-                print("Invalid response object")
-            }
-        }
+        let loginRequestModel = LoginRequestModel(email: email, password: password)
+        viewModel?.performUserLogin(loginRequestModel)
     }
 
-    func performGoogleLogin(){
-        GIDSignIn.sharedInstance.signOut()
-
+    func performGoogleLogin() {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
 
             guard error == nil else { return }
 
             // If sign in succeeded, display the app's main content View.
             guard let signInResult = signInResult else { return }
-            let user = signInResult.user
 
-            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-            let familyName = user.profile?.familyName
-            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+            signInResult.user.refreshTokensIfNeeded { user, error in
+                guard error == nil else { return }
+                guard let user = user else { return }
 
-            debugPrint("Google login details \(emailAddress), \(fullName), \(familyName), \(profilePicUrl)")
+                let accessToken = user.accessToken.tokenString
+
+                let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "basic_user")
+                self.viewModel?.authenticateSocialLogin(requestModel)
+            }
         }
     }
 
-    func performFaceBookLogin(){
+    func performFaceBookLogin() {
         let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["public_profile"], from: self) { (result, error) in
+        loginManager.logOut()
+            let cookies = HTTPCookieStorage.shared
+            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
+            for cookie in facebookCookies! {
+                cookies.deleteCookie(cookie )
+            }
+
+        loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
             if let error = error {
                 // Handle login error here
                 print("Error: \(error.localizedDescription)")
             } else if let result = result, !result.isCancelled {
                 // Login successful, you can access the user's Facebook data here
-                self.fetchFacebookUserData()
+                //self.fetchFacebookUserData()
+                let requestModel = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
+                //self.viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 // Login was canceled by the user
                 print("Login was cancelled.")
@@ -143,6 +136,7 @@ class LoginViewController: UIViewController {
         }
     }
 
+    // TODO: Remove this if facebook user data is not required
     func fetchFacebookUserData() {
         if AccessToken.current != nil {
             // You can make a Graph API request here to fetch user data
@@ -159,6 +153,8 @@ class LoginViewController: UIViewController {
                     print("User ID: \(userID ?? "")")
                     print("Name: \(name ?? "")")
 
+                    self.coordinator?.backToParentCoordinator()
+                    self.parentCoordinator?.navigateToHome()
                 }
             }
         } else {
@@ -210,5 +206,18 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func loginSuccess() {
+        hideLoader()
+        coordinator?.backToParentCoordinator()
+        parentCoordinator?.navigateToHome()
+    }
+
+    func loginFailed(errorMessage: String) {
+        hideLoader()
+        showAlert(title: "Login Failed", message: "Technical error at our side!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
     }
 }
