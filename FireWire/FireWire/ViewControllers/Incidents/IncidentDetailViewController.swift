@@ -120,7 +120,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         guard let incidentDetail = viewModel?.incidentDetail else {
             return
         }
-        shareContentToSocialMedia(text: incidentDetail.field1Value ?? "")
+
+        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
+        shareContentToSocialMedia(text: shareContent, image: FWImage.appLogo)
     }
 
 

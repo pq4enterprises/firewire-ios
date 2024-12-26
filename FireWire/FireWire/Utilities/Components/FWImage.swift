@@ -8,6 +8,7 @@
 import UIKit
 
 enum FWImageResources: String {
+    case appLogo = "app_logo"
     case menuIcon = "menu_icon"
     case menuIconWhite = "menu_icon_white"
     case alertIcon = "alert_icon"
@@ -26,6 +27,7 @@ extension UIImage {
 }
 
 struct FWImage {
+    static let appLogo = UIImage.appImage(.appLogo)
     static let menuIcon = UIImage.appImage(.menuIcon)
     static let menuIconWhite = UIImage.appImage(.menuIconWhite)
     static let alertIcon = UIImage.appImage(.alertIcon)
