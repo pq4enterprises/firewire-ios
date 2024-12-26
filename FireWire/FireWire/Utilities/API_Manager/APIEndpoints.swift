@@ -18,6 +18,7 @@ enum APIEndpoints {
     static let localityList = "api/app/locality"
     static let favIncident = "api/app/incident/activity"
     static let userProfile = "/api/app/user/profile"
+    static let commentsList = "api/app/comment/%@"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"

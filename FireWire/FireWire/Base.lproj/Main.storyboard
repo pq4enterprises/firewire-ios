@@ -664,21 +664,36 @@ agreeing with our Terms and Conditions</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPq-eX-lHc">
-                                <rect key="frame" x="28" y="85" width="129" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPq-eX-lHc">
+                                <rect key="frame" x="23" y="59" width="142" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-WU-xYH">
+                                <rect key="frame" x="0.0" y="106" width="393" height="712"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s9x-l9-bnn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KPq-eX-lHc" firstAttribute="leading" secondItem="s9x-l9-bnn" secondAttribute="leading" constant="23" id="4GZ-s8-43O"/>
+                            <constraint firstItem="3KU-WU-xYH" firstAttribute="trailing" secondItem="s9x-l9-bnn" secondAttribute="trailing" id="4vG-GO-SqO"/>
+                            <constraint firstItem="KPq-eX-lHc" firstAttribute="top" secondItem="s9x-l9-bnn" secondAttribute="top" id="Coe-b3-kzo"/>
+                            <constraint firstItem="3KU-WU-xYH" firstAttribute="leading" secondItem="s9x-l9-bnn" secondAttribute="leading" id="K5j-aE-g78"/>
+                            <constraint firstItem="s9x-l9-bnn" firstAttribute="bottom" secondItem="3KU-WU-xYH" secondAttribute="bottom" id="PcH-7M-Cib"/>
+                            <constraint firstItem="3KU-WU-xYH" firstAttribute="top" secondItem="KPq-eX-lHc" secondAttribute="bottom" constant="20" id="vxP-sn-cpA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="commentsListCount" destination="KPq-eX-lHc" id="vws-EH-zpd"/>
+                        <outlet property="tableView" destination="3KU-WU-xYH" id="dM3-us-CSP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSB-uQ-Wfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5003" y="732"/>
+            <point key="canvasLocation" x="5002.2900763358775" y="731.69014084507046"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="pFO-ig-3Gy">

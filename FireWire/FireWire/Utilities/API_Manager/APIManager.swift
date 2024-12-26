@@ -22,10 +22,12 @@ extension URLSession {
         request.httpMethod = httpMethod
         request.allHTTPHeaderFields = headers
         request.addValue("Bearer " + authTokenString, forHTTPHeaderField: "Authorization")
+        
         print("request: ----- \(request)")
+        
         if payload?.isEmpty == false {
             guard let body = try? JSONSerialization.data(withJSONObject: payload ?? [:], options: .prettyPrinted) else {
-                print("\n serilization falied")
+                print("\n Serialization failed")
                 return
             }
             request.httpBody = body
@@ -40,11 +42,22 @@ extension URLSession {
                 }
                 return
             }
+
+            // Check for HTTP response status code
+            if let httpResponse = response as? HTTPURLResponse {
+                // Handle token expiration case (401 Unauthorized)
+                if httpResponse.statusCode == 401 {
+                    completion(.failure(customError.tokenExpired))
+                    return
+                }
+            }
+
             do {
                 let result = try JSONDecoder().decode(type.self, from: data)                
                 completion(.success(result))
             } catch {
-                completion(.failure(customError.tokenExpired))
+                print("Decoding error: \(error.localizedDescription)")
+                completion(.failure(customError.invalidData))
             }
         }
         task.resume()

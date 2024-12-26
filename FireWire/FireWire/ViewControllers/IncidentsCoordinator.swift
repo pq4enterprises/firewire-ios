@@ -40,4 +40,20 @@ class IncidentsCoordinator: BaseCoordinator {
         bottomSheet.modalPresentationStyle = .overCurrentContext
         navigationController.present(bottomSheet, animated: true)
     }
+
+    func navigateToIncidentComments(_ incidentID: String){
+        let commentsList = CommentsViewController.instantiate()
+        commentsList.setSelectedIncidentID(incidentID)
+        
+        let navVC = UINavigationController(rootViewController: commentsList)
+        navVC.modalPresentationStyle = .pageSheet
+
+        if let sheet = navVC.sheetPresentationController {
+            sheet.detents = [.medium(), .custom(resolver: {context in
+                0.95 * context.maximumDetentValue
+            })]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(navVC, animated: true)
+    }
 }

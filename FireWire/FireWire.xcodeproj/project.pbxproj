@@ -60,6 +60,10 @@
 		B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
 		B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
 		B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
+		B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */; };
+		B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */; };
+		B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
+		B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
@@ -185,6 +189,10 @@
 		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsCoordinator.swift; sourceTree = "<group>"; };
 		B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewCell.swift; sourceTree = "<group>"; };
+		B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsListViewCell.xib; sourceTree = "<group>"; };
+		B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewModel.swift; sourceTree = "<group>"; };
+		B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +368,7 @@
 				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
 				B0A304822D134937006F851A /* CityHeaderCell.xib */,
+				B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
 				B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */,
+				B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */,
 			);
 			path = Incidents;
 			sourceTree = "<group>";
@@ -455,6 +465,7 @@
 				B0A304552D0F0E9E006F851A /* LocalityCell.swift */,
 				B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */,
 				B0A304812D134937006F851A /* CityHeaderCell.swift */,
+				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -556,6 +567,7 @@
 				B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */,
 				B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */,
 				B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */,
+				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -714,6 +726,7 @@
 				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */,
+				B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */,
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
 				B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */,
@@ -775,6 +788,7 @@
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
+				B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */,
 				B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */,
 				B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
@@ -802,6 +816,7 @@
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
+				B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
@@ -821,6 +836,7 @@
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
 				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
+				B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */,
 				B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,

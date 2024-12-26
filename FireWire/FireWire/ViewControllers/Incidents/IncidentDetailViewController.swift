@@ -114,7 +114,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         viewModel?.favouriteIncident(like: value)
     }
 
-    @IBAction func commentButtonTap(_ sender: UIButton) {}
+    @IBAction func commentButtonTap(_ sender: UIButton) {
+        if let selectedIncidentID {
+            coordinator?.navigateToIncidentComments(selectedIncidentID)
+        }
+    }
 
     @IBAction func shareButtonTap(_ sender: UIButton) {
         guard let incidentDetail = viewModel?.incidentDetail else {
