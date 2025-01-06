@@ -14,5 +14,6 @@ class NotificationLocalityHeaderView: UITableViewHeaderFooterView {
         return UINib(nibName: "NotificationLocalityHeaderView", bundle: nil)
     }
 
+    @IBOutlet weak var btnSelectAll: UIButton!
     @IBOutlet weak var cityTitle: UILabel!
 }

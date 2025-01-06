@@ -3,28 +3,47 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
+            <connections>
+                <outlet property="btnSelectAll" destination="mQL-xI-7kR" id="q6Q-XF-eCF"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="NotificationLocalityHeaderView" id="hAo-t5-njK" customClass="NotificationLocalityHeaderView" customModule="FireWire" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feU-UH-a4Q">
-                    <rect key="frame" x="10" y="2" width="373" height="54"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feU-UH-a4Q">
+                    <rect key="frame" x="20" y="2" width="287" height="54"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQL-xI-7kR">
+                    <rect key="frame" x="317" y="12" width="70" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="Eqa-Vl-mBD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Select All">
+                        <color key="titleColor" name="FWRed"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="feU-UH-a4Q" firstAttribute="leading" secondItem="hAo-t5-njK" secondAttribute="leading" constant="10" id="IRN-WY-l9m"/>
+                <constraint firstItem="feU-UH-a4Q" firstAttribute="leading" secondItem="hAo-t5-njK" secondAttribute="leading" constant="20" id="IRN-WY-l9m"/>
+                <constraint firstAttribute="trailing" secondItem="mQL-xI-7kR" secondAttribute="trailing" constant="6" id="IUd-OY-bHa"/>
+                <constraint firstItem="mQL-xI-7kR" firstAttribute="top" secondItem="hAo-t5-njK" secondAttribute="top" constant="12" id="LIb-TN-7nK"/>
                 <constraint firstAttribute="bottom" secondItem="feU-UH-a4Q" secondAttribute="bottom" constant="2" id="MXN-5t-OhK"/>
-                <constraint firstAttribute="trailing" secondItem="feU-UH-a4Q" secondAttribute="trailing" constant="10" id="tda-12-UZk"/>
+                <constraint firstItem="mQL-xI-7kR" firstAttribute="leading" secondItem="feU-UH-a4Q" secondAttribute="trailing" constant="10" id="MZf-bM-8oi"/>
+                <constraint firstAttribute="bottom" secondItem="mQL-xI-7kR" secondAttribute="bottom" constant="11" id="Ma9-lY-L3s"/>
                 <constraint firstItem="feU-UH-a4Q" firstAttribute="top" secondItem="hAo-t5-njK" secondAttribute="top" constant="2" id="zUt-oN-8G8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -35,6 +54,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="FWRed">
+            <color red="0.792156862745098" green="0.2627450980392157" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

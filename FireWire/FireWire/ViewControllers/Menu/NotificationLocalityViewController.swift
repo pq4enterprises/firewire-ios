@@ -79,8 +79,10 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
             if let units = localityData.unit, units.count > 0 {
                 headerView.cityTitle.text = localitySubHeadings[1]
                 headerView.cityTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
+                headerView.btnSelectAll.isHidden = false
             }else{
                 headerView.cityTitle.text = ""
+                headerView.btnSelectAll.isHidden = true
             }
         }
 
