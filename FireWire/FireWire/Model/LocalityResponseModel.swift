@@ -22,10 +22,11 @@ struct LocalityResponseData: Codable {
     let name: String
     let state: String
     let subLocality: [SubLocality]
+    let unit: [UnitDataModel]?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case name, state, subLocality
+        case name, state, subLocality, unit
     }
 }
 
@@ -35,5 +36,15 @@ struct SubLocality: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name, latitude, longitude
+    }
+}
+
+struct UnitDataModel: Codable {
+    let id: String
+    let unitName: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case unitName
     }
 }

@@ -7,20 +7,28 @@
 
 import UIKit
 
-class NotificationSettingsViewController: UIViewController {
+class NotificationSettingsViewController: UIViewController, SelectAreaViewDelegate {
     var coordinator: HomeCoordinator?
-    var localityList = ["Long Island", "New York City", "USA"]
+    var viewModel: SelectAreaViewModel!
 
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = SelectAreaViewModel()
+        viewModel.delegate = self
+        viewModel.getLocalities()
+
         setupTableView()
     }
     
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    func dataReceived() {
+        tableView.reloadData()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -38,31 +46,22 @@ class NotificationSettingsViewController: UIViewController {
 
 extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionLabel = UILabel()
-        sectionLabel.frame = CGRect(x: 20, y: sectionLabel.frame.origin.y, width: sectionLabel.frame.size.width, height: sectionLabel.frame.size.height)
-        sectionLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        sectionLabel.textColor = UIColor.black
-        sectionLabel.text = "Choose a Locality"
-        sectionLabel.sizeToFit()
-
-        let headerView = UIView()
-        headerView.addSubview(sectionLabel)
-
+        let headerView = tableView.dequeueReusableCell(withIdentifier: NotificationChooseLocalityHeaderCell.identifier) as! NotificationChooseLocalityHeaderCell
         return headerView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        localityList.count
+        viewModel.localityData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocalityCell") as! LocalityCell
-        cell.setupView(localityList[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: NotificationLocalityCell.identifier) as! NotificationLocalityCell
+        cell.setupView(viewModel.localityData[indexPath.row].name)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //coordinator?.navigateToNotificationLocalityView()
+        coordinator?.navigateToNotificationLocalityView(viewModel.localityData[indexPath.row])
     }
 
 }

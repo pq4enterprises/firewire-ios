@@ -31,8 +31,8 @@ class LoginViewController: UIViewController {
         setupActions()
         setupKeyboardActions()
 
-        //emailTextField.text = "vimaladevi@atomgroups.com"
-        //passwordTextField.text = "password"
+        emailTextField.text = "vimaladevi@atomgroups.com"
+        passwordTextField.text = "password"
 
         viewModel = LoginViewModel()
         viewModel?.delegate = self

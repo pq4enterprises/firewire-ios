@@ -9,6 +9,8 @@ import UIKit
 
 class NotificationLocalityViewController: UIViewController {
     var coordinator: HomeCoordinator?
+    var localityData: LocalityResponseData?
+    var localitySubHeadings = ["Sublocalities", "Units"]
 
     @IBOutlet var tableView: UITableView!
 
@@ -22,6 +24,7 @@ class NotificationLocalityViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
+        tableView.register(NotificationLocalityHeaderView.nib(), forHeaderFooterViewReuseIdentifier: NotificationLocalityHeaderView.identifier)
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -41,34 +44,54 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
         3
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40.0
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2 {
-            return 5
-        } else {
+        guard let localityData else { return 0 }
+
+        if section == 1 {
+            debugPrint("section 1 count -- \(localityData.subLocality.count)")
+            return localityData.subLocality.count
+        }else if section == 2 {
+            debugPrint("section 2 count -- \(localityData.unit?.count ?? 0)")
+            return localityData.unit?.count ?? 0
+        }else{
             return 0
         }
     }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        54.0
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
-            headerView.setupView(title: "New York City")
-            return headerView
-        } else if section == 1 {
-            let headerView = tableView.dequeueReusableCell(withIdentifier: LocalityHeaderCell.identifier) as! LocalityHeaderCell
-            headerView.setupView()
-            return headerView
-        } else {
+        guard let localityData else { return nil }
+
+        // Dequeue the custom header view
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NotificationLocalityHeaderView.identifier) as? NotificationLocalityHeaderView else {
             return nil
         }
+
+        if section == 0 {
+            headerView.cityTitle.text = localityData.name
+        } else if section == 1 {
+            headerView.cityTitle.text = localitySubHeadings[0]
+            headerView.cityTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
+        }else if section == 2 {
+            if let units = localityData.unit, units.count > 0 {
+                headerView.cityTitle.text = localitySubHeadings[1]
+                headerView.cityTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
+            }else{
+                headerView.cityTitle.text = ""
+            }
+        }
+
+        return headerView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectAreaListViewCell") as! SelectAreaListViewCell
+        guard let localityData else { return UITableViewCell() }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectAreaListViewCell.identifier) as! SelectAreaListViewCell
+        cell.setupView(localityData, indexPath)
         return cell
     }
 }

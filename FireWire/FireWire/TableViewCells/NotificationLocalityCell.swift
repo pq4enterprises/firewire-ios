@@ -7,8 +7,8 @@
 
 import UIKit
 
-class LocalityCell: UITableViewCell {
-    static let identifier = "LocalityCell"
+class NotificationLocalityCell: UITableViewCell {
+    static let identifier = "NotificationLocalityCell"
 
     @IBOutlet var localityTitle: UILabel!
 

@@ -63,8 +63,9 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(notificationSettingsViewController, animated: true)
     }
 
-    func navigateToNotificationLocalityView(){
+    func navigateToNotificationLocalityView(_ localityResponseData: LocalityResponseData){
         let notificationLocalityViewController = NotificationLocalityViewController.instantiate()
+        notificationLocalityViewController.localityData = localityResponseData
         notificationLocalityViewController.coordinator = self
         pushViewController(notificationLocalityViewController, animated: true)
     }

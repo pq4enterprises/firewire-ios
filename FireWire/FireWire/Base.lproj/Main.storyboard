@@ -2242,41 +2242,62 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3a5-Fq-sZQ">
-                                <rect key="frame" x="0.0" y="117" width="393" height="701"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LocalityCell" id="yyF-DD-3C7" customClass="LocalityCell" customModule="FireWire" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationChooseLocalityHeaderCell" id="yyF-DD-3C7" customClass="NotificationChooseLocalityHeaderCell" customModule="FireWire" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yyF-DD-3C7" id="PAQ-Vs-Rr4">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-7r-gik">
-                                                    <rect key="frame" x="40" y="10.999999999999998" width="39.666666666666657" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Locality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-7r-gik">
+                                                    <rect key="frame" x="30" y="10.999999999999998" width="133.33333333333334" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Xpq-7r-gik" secondAttribute="bottom" id="CyJ-ve-R2o"/>
+                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="leading" secondItem="PAQ-Vs-Rr4" secondAttribute="leadingMargin" constant="10" id="Mzd-5b-ojm"/>
+                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="top" secondItem="PAQ-Vs-Rr4" secondAttribute="topMargin" id="vx9-dQ-8qs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationLocalityCell" id="366-Eo-xIC" customClass="NotificationLocalityCell" customModule="FireWire" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="91.333332061767578" width="393" height="41.333332061767578"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="366-Eo-xIC" id="3Qy-46-blA">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.333332061767578"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekD-pD-cdS">
+                                                    <rect key="frame" x="29.999999999999996" y="10.999999999999998" width="39.666666666666657" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="FWTextGrey2"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="YGv-J7-duW">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fVX-Sn-HrT">
                                                     <rect key="frame" x="348" y="13.333333333333336" width="5" height="15"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="Cf1-Qf-UWw"/>
-                                                        <constraint firstAttribute="width" constant="5" id="hwg-AT-ffO"/>
+                                                        <constraint firstAttribute="width" constant="5" id="Lki-YQ-YmL"/>
+                                                        <constraint firstAttribute="height" constant="15" id="bxt-Za-yY2"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YGv-J7-duW" firstAttribute="centerY" secondItem="Xpq-7r-gik" secondAttribute="centerY" id="CCM-Gg-cuC"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Xpq-7r-gik" secondAttribute="bottom" id="CyJ-ve-R2o"/>
-                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="leading" secondItem="PAQ-Vs-Rr4" secondAttribute="leadingMargin" constant="20" id="Mzd-5b-ojm"/>
-                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="top" secondItem="PAQ-Vs-Rr4" secondAttribute="topMargin" id="vx9-dQ-8qs"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="YGv-J7-duW" secondAttribute="trailing" constant="20" id="zK5-Qn-9nh"/>
+                                                <constraint firstItem="fVX-Sn-HrT" firstAttribute="centerY" secondItem="ekD-pD-cdS" secondAttribute="centerY" id="7yd-db-qGs"/>
+                                                <constraint firstItem="ekD-pD-cdS" firstAttribute="top" secondItem="3Qy-46-blA" secondAttribute="topMargin" id="ZM9-2a-0yX"/>
+                                                <constraint firstItem="ekD-pD-cdS" firstAttribute="leading" secondItem="3Qy-46-blA" secondAttribute="leadingMargin" constant="10" id="aEE-zS-auc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fVX-Sn-HrT" secondAttribute="trailing" constant="20" id="lig-yC-dYh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ekD-pD-cdS" secondAttribute="bottom" id="ufE-K2-e1A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="localityTitle" destination="Xpq-7r-gik" id="G15-Np-HlY"/>
+                                            <outlet property="localityTitle" destination="ekD-pD-cdS" id="IKA-Ya-6Qc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2290,7 +2311,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="lQ4-PR-a9h" firstAttribute="top" secondItem="MQS-FH-Q8u" secondAttribute="top" id="H0a-bK-ciP"/>
                             <constraint firstItem="3a5-Fq-sZQ" firstAttribute="trailing" secondItem="MQS-FH-Q8u" secondAttribute="trailing" id="cw6-L2-oq3"/>
                             <constraint firstItem="lQ4-PR-a9h" firstAttribute="trailing" secondItem="MQS-FH-Q8u" secondAttribute="trailing" id="jjL-ex-mXI"/>
-                            <constraint firstItem="3a5-Fq-sZQ" firstAttribute="top" secondItem="lQ4-PR-a9h" secondAttribute="bottom" constant="8" symbolic="YES" id="pbY-p0-Aff"/>
+                            <constraint firstItem="3a5-Fq-sZQ" firstAttribute="top" secondItem="lQ4-PR-a9h" secondAttribute="bottom" id="pbY-p0-Aff"/>
                             <constraint firstItem="lQ4-PR-a9h" firstAttribute="leading" secondItem="MQS-FH-Q8u" secondAttribute="leading" id="u7u-Cs-gT6"/>
                         </constraints>
                     </view>
@@ -2371,7 +2392,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puQ-ad-WkU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4946" y="1382"/>
+            <point key="canvasLocation" x="4945.801526717557" y="1381.6901408450706"/>
         </scene>
     </scenes>
     <resources>

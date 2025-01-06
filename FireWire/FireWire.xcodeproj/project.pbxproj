@@ -38,6 +38,10 @@
 		B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
 		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
 		B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
+		B01D51A42D1EFCEF00D4CBB1 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0E115802CFF7B9C00E7D10B /* GoogleMaps */; };
+		B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */; };
+		B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */; };
+		B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
 		B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
@@ -90,9 +94,8 @@
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
 		B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */; };
-		B0A304562D0F0E9E006F851A /* LocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* LocalityCell.swift */; };
+		B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */; };
 		B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
-		B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */; };
 		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046A2D10A17B006F851A /* XMLCoder */; };
 		B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046F2D10AD56006F851A /* SwiftSoup */; };
@@ -113,7 +116,6 @@
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
-		B0E115812CFF7B9C00E7D10B /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0E115802CFF7B9C00E7D10B /* GoogleMaps */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -167,6 +169,9 @@
 		B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewModel.swift; sourceTree = "<group>"; };
 		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
 		B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWDateFormatter.swift; sourceTree = "<group>"; };
+		B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationChooseLocalityHeaderCell.swift; sourceTree = "<group>"; };
+		B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityHeaderView.swift; sourceTree = "<group>"; };
+		B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationLocalityHeaderView.xib; sourceTree = "<group>"; };
 		B043CEAB2D0EDD0D007430B7 /* mapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapStyle.json; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
@@ -220,9 +225,8 @@
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalisationViewController.swift; sourceTree = "<group>"; };
 		B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
-		B0A304552D0F0E9E006F851A /* LocalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityCell.swift; sourceTree = "<group>"; };
+		B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityCell.swift; sourceTree = "<group>"; };
 		B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewController.swift; sourceTree = "<group>"; };
-		B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityHeaderCell.swift; sourceTree = "<group>"; };
 		B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		B0A304772D133FBF006F851A /* SelectAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaViewModel.swift; sourceTree = "<group>"; };
 		B0A304792D134057006F851A /* LocalityResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityResponseModel.swift; sourceTree = "<group>"; };
@@ -250,7 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A304682D0F274E006F851A /* GoogleMaps in Frameworks */,
+				B01D51A42D1EFCEF00D4CBB1 /* GoogleMaps in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
 				B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */,
 				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
@@ -426,6 +430,8 @@
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
 				B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */,
 				B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */,
+				B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */,
+				B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -462,10 +468,10 @@
 				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
 				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
-				B0A304552D0F0E9E006F851A /* LocalityCell.swift */,
-				B0A304592D0F1506006F851A /* LocalityHeaderCell.swift */,
+				B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */,
 				B0A304812D134937006F851A /* CityHeaderCell.swift */,
 				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
+				B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -724,6 +730,7 @@
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
 				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
 				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
+				B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */,
 				B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */,
@@ -776,6 +783,7 @@
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
+				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
@@ -785,6 +793,7 @@
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
+				B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */,
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
@@ -826,12 +835,11 @@
 				B09254B42CF626C100879B07 /* SelectAreaListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsViewController.swift in Sources */,
-				B0A3045A2D0F1506006F851A /* LocalityHeaderCell.swift in Sources */,
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
-				B0A304562D0F0E9E006F851A /* LocalityCell.swift in Sources */,
+				B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,

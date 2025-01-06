@@ -51,7 +51,11 @@ class SelectAreaListViewCell: UITableViewCell {
         localityData = model
         self.indexPath = indexPath
 
-        areaLabel.text = model.subLocality[indexPath.row].name
+        if indexPath.section == 1 {
+            areaLabel.text = model.subLocality[indexPath.row].name
+        }else if indexPath.section == 2, let units = model.unit {
+            areaLabel.text = units[indexPath.row].unitName
+        }
     }
 
     func addLocality(){
