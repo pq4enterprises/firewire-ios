@@ -16,7 +16,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
     @IBOutlet var commentsListCount: UILabel!
     @IBOutlet weak var noCommentsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var viewModel: CommentsListViewModel!
     private var selectedIncidentID: String?
 
@@ -33,22 +34,37 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showActivityIndicator(true)
         if let selectedIncidentID {
             viewModel?.getCommentsList(for: selectedIncidentID)
         }
     }
 
     func dataReceived() {
+        showActivityIndicator(false)
         tableView.isHidden = false
         commentsListCount.isHidden = false
         noCommentsLabel.isHidden = true
+
+        commentsListCount.text = "\(viewModel.commentsList.count) Comments"
         tableView.reloadData()
     }
 
     func noCommentsForIncident() {
+        showActivityIndicator(false)
         tableView.isHidden = true
         commentsListCount.isHidden = true
         noCommentsLabel.isHidden = false
+    }
+
+    func showActivityIndicator(_ value: Bool) {
+        if value {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        }
     }
 
     func setupTableView() {

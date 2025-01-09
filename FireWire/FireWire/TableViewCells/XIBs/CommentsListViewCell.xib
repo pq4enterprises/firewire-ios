@@ -5,16 +5,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentsListViewCell" rowHeight="166" id="KGk-i7-Jjw" customClass="CommentsListViewCell" customModule="FireWire" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentsListViewCell" rowHeight="283" id="KGk-i7-Jjw" customClass="CommentsListViewCell" customModule="FireWire" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-yX-Hd1" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
@@ -42,22 +43,34 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2M-39-R9W">
-                        <rect key="frame" x="16" y="74" width="284" height="67"/>
-                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" name="FWTextGrey2"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08 Oct | 05:10 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-dX-E7n">
                         <rect key="frame" x="197.66666666666666" y="31.999999999999996" width="102.33333333333334" height="14.333333333333332"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="FWTextGrey"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ShQ-j3-vfa">
+                        <rect key="frame" x="10" y="72" width="300" height="100"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="9oZ-YW-xTR"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aej-dP-IwU">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2M-39-R9W">
+                        <rect key="frame" x="16" y="177" width="284" height="67"/>
+                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="FWTextGrey2"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="T2M-39-R9W" firstAttribute="top" secondItem="W2k-yX-Hd1" secondAttribute="bottom" constant="10" id="67F-Uq-rBH"/>
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="leading" secondItem="W2k-yX-Hd1" secondAttribute="trailing" constant="10" id="JwS-69-Vip"/>
                     <constraint firstItem="g0g-dX-E7n" firstAttribute="centerY" secondItem="cKk-cE-dNe" secondAttribute="centerY" id="LaP-j3-otr"/>
                     <constraint firstItem="T2M-39-R9W" firstAttribute="trailing" secondItem="g0g-dX-E7n" secondAttribute="trailing" id="Uxn-zw-qX6"/>
@@ -66,7 +79,11 @@
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="centerY" secondItem="W2k-yX-Hd1" secondAttribute="centerY" id="bJa-8t-k1H"/>
                     <constraint firstItem="T2M-39-R9W" firstAttribute="leading" secondItem="W2k-yX-Hd1" secondAttribute="leading" id="djV-bE-X6e"/>
                     <constraint firstItem="W2k-yX-Hd1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="dlf-jF-3Fs"/>
+                    <constraint firstItem="ShQ-j3-vfa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="nGI-3x-hzA"/>
+                    <constraint firstItem="T2M-39-R9W" firstAttribute="top" secondItem="ShQ-j3-vfa" secondAttribute="bottom" constant="5" id="nOb-JP-Ysk"/>
                     <constraint firstAttribute="trailing" secondItem="g0g-dX-E7n" secondAttribute="trailing" constant="20" id="oaf-Le-FNL"/>
+                    <constraint firstItem="ShQ-j3-vfa" firstAttribute="top" secondItem="W2k-yX-Hd1" secondAttribute="bottom" constant="8" symbolic="YES" id="plo-LE-Trc"/>
+                    <constraint firstAttribute="trailing" secondItem="ShQ-j3-vfa" secondAttribute="trailing" constant="10" id="uU6-tB-zcJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -74,10 +91,11 @@
                 <outlet property="cityLabel" destination="rrt-rr-dnZ" id="pPY-bp-hrE"/>
                 <outlet property="dateTimeLabel" destination="g0g-dX-E7n" id="BNT-I8-T6o"/>
                 <outlet property="descriptionLabel" destination="T2M-39-R9W" id="gG4-HP-Z1R"/>
+                <outlet property="imageCollectionView" destination="ShQ-j3-vfa" id="TNj-l3-17V"/>
                 <outlet property="nameLabel" destination="Efy-3K-B4e" id="85i-0S-QcD"/>
                 <outlet property="userImageView" destination="W2k-yX-Hd1" id="jVN-fr-okv"/>
             </connections>
-            <point key="canvasLocation" x="141.98473282442748" y="19.718309859154932"/>
+            <point key="canvasLocation" x="141.98473282442748" y="60.91549295774648"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -91,5 +109,8 @@
         <namedColor name="FWTextGrey2">
             <color red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

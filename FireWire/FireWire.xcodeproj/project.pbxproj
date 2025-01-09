@@ -58,6 +58,8 @@
 		B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
 		B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
+		B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */; };
+		B060817B2D3062A10031CE38 /* CommentsImageViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */; };
 		B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */; };
 		B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B064D3192CF32B5000CAB161 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
@@ -190,6 +192,8 @@
 		B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewCell.xib; sourceTree = "<group>"; };
 		B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListItem.swift; sourceTree = "<group>"; };
 		B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListItem.xib; sourceTree = "<group>"; };
+		B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsImageViewItem.swift; sourceTree = "<group>"; };
+		B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsImageViewItem.xib; sourceTree = "<group>"; };
 		B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedImageView.swift; sourceTree = "<group>"; };
 		B064D3182CF32B5000CAB161 /* FWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWView.swift; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
 				B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */,
 				B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */,
+				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
+				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */,
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */,
+				B060817B2D3062A10031CE38 /* CommentsImageViewItem.xib in Resources */,
 				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
 				B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */,
 				9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */,
@@ -796,6 +803,7 @@
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
 				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
 				B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */,
+				B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
