@@ -8,8 +8,7 @@
 import Foundation
 
 public final class CommentsListViewModel {
-
-    var commentsList: [CommentsDataModel] = []
+    var commentsList: [CommentsData] = []
     var delegate: CommentsListViewDelegate?
 
     func getCommentsList(for incidentID: String) {
@@ -27,7 +26,7 @@ public final class CommentsListViewModel {
             }
 
             if let commentsResponse = apiResponse as? CommentsResponseModel {
-                self?.commentsList = commentsResponse.data.compactMap { $0 }
+                self?.commentsList = commentsResponse.data.data
                 DispatchQueue.main.async {
                     self?.delegate?.dataReceived()
                 }

@@ -21,14 +21,14 @@ class CommentsListViewCell: UITableViewCell {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    func setupView(_ model: CommentsDataModel) {
-        //nameLabel.text = model.userID?.firstName
+    func setupView(_ model: CommentsData) {
+        nameLabel.text = model.userID.firstName
 
-//        if model.userID.subLocality.count > 0, let locality = model.userID.subLocality[0] {
-//            cityLabel.text = locality.name
-//        }
-//
-//        descriptionLabel.text = model.comment
+        if model.userID.subLocality.count > 0, let locality = model.userID.subLocality[0] {
+            cityLabel.text = locality.name
+        }
+
+        descriptionLabel.text = model.comment
     }
 
 }
