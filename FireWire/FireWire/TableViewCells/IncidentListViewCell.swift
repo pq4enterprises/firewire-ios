@@ -31,7 +31,7 @@ class IncidentListViewCell: UITableViewCell {
             incidentDateTime.text = formattedDate
         }
 
-        model.likeCount > 0
+        model.isLiked
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 

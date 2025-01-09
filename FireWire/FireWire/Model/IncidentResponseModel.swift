@@ -26,6 +26,7 @@ struct IncidentDataModel: Codable {
     let latitude, longitude, address, field1Value, createdAt: String
     let featuredImageURL: String?
     let commentCount, likeCount: Int
+    let isLiked: Bool
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -33,7 +34,7 @@ struct IncidentDataModel: Codable {
         case subLocality = "subLocalityDetails"
         case latitude, longitude, address, field1Value, createdAt
         case featuredImageURL = "featuredImageUrl"
-        case commentCount, likeCount
+        case commentCount, likeCount, isLiked
     }
 }
 

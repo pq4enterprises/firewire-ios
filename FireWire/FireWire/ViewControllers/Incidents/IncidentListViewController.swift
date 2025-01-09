@@ -43,6 +43,8 @@ class IncidentListViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
+
+        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
     }
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
