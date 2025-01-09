@@ -9,10 +9,12 @@ import UIKit
 
 protocol CommentsListViewDelegate: AnyObject {
     func dataReceived()
+    func noCommentsForIncident()
 }
 
 class CommentsViewController: UIViewController, CommentsListViewDelegate {
     @IBOutlet var commentsListCount: UILabel!
+    @IBOutlet weak var noCommentsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
 
     var viewModel: CommentsListViewModel!
@@ -37,7 +39,16 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
     }
 
     func dataReceived() {
+        tableView.isHidden = false
+        commentsListCount.isHidden = false
+        noCommentsLabel.isHidden = true
         tableView.reloadData()
+    }
+
+    func noCommentsForIncident() {
+        tableView.isHidden = true
+        commentsListCount.isHidden = true
+        noCommentsLabel.isHidden = false
     }
 
     func setupTableView() {
@@ -56,12 +67,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
 
 extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        viewModel.commentsList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
-        //cell.setupView(viewModel.commentsList[indexPath.row])
+        cell.setupView(viewModel.commentsList[indexPath.row])
         return cell
     }
 }

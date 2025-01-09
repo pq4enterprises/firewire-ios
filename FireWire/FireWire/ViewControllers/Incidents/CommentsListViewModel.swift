@@ -22,11 +22,12 @@ public final class CommentsListViewModel {
         { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
+                self?.delegate?.noCommentsForIncident()
                 return
             }
 
             if let commentsResponse = apiResponse as? CommentsResponseModel {
-                self?.commentsList = commentsResponse.data
+                self?.commentsList = commentsResponse.data.compactMap { $0 }
                 DispatchQueue.main.async {
                     self?.delegate?.dataReceived()
                 }

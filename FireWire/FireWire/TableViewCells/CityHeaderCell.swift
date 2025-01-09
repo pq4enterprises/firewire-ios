@@ -15,8 +15,13 @@ class CityHeaderCell: UITableViewCell {
         return UINib(nibName: "CityHeaderCell", bundle: nil)
     }
 
-    @IBOutlet var titleLabel: UILabel!
+    var selectAllAction: (() -> Void)?
 
+    @IBOutlet var titleLabel: UILabel!
+    @IBAction func selectAllButtonTap(_ sender: UIButton) {
+        selectAllAction?()
+    }
+    
     func setupView(title: String) {
         titleLabel.text = title
     }

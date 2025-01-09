@@ -52,7 +52,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
 
     func dataLoaded(_ model: LoginDataModel) {
         firstNameTextField.text = model.firstName
-        lastNameTextField.text = model.lastName
+        //lastNameTextField.text = model.lastName
         emailTextField.text = model.email
         phoneNumberTextField.text = model.mobile
         positionTextField.text = model.role

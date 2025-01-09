@@ -7,15 +7,15 @@
 
 import UIKit
 
-class NotificationSettingsViewController: UIViewController, SelectAreaViewDelegate {
+class NotificationSettingsViewController: UIViewController, IncidentLocalityListViewDelegate {
     var coordinator: HomeCoordinator?
-    var viewModel: SelectAreaViewModel!
+    var viewModel: IncidentLocalityListViewModel!
 
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = SelectAreaViewModel()
+        viewModel = IncidentLocalityListViewModel()
         viewModel.delegate = self
         viewModel.getLocalities()
 

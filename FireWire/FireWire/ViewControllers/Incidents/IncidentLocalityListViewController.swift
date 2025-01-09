@@ -1,5 +1,5 @@
 //
-//  FilterListViewController.swift
+//  IncidentLocalityListViewController.swift
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 26/11/24.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol SelectAreaViewDelegate: AnyObject {
+protocol IncidentLocalityListViewDelegate: AnyObject {
     func dataReceived()
 }
 
-class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
+class IncidentLocalityListViewController: UIViewController, IncidentLocalityListViewDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
 
     var coordinator: IncidentsCoordinator?
-    var viewModel: SelectAreaViewModel!
+    var viewModel: IncidentLocalityListViewModel!
     var selectedAreas: SelectedLocalities!
 
-    init(viewModel: SelectAreaViewModel) {
+    init(viewModel: IncidentLocalityListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
@@ -45,12 +45,13 @@ class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
+        tableView.register(IncidentLocalityListItem.nib(), forCellReuseIdentifier: IncidentLocalityListItem.identifier)
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.popView()
+        debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
         //self.coordinator?.start(with: [], selectedAreas)
     }
 
@@ -74,7 +75,7 @@ class SelectAreaListViewController: UIViewController, SelectAreaViewDelegate {
     }
 }
 
-extension SelectAreaListViewController: UITableViewDataSource, UITableViewDelegate {
+extension IncidentLocalityListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.localityData.count
     }
@@ -82,6 +83,11 @@ extension SelectAreaListViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
         headerView.setupView(title: viewModel.localityData[section].name)
+        headerView.selectAllAction = {
+            self.viewModel.toggleSelectAll(forSection: section)
+            tableView.reloadSections([section], with: .automatic)
+            tableView.reloadData()
+        }
         return headerView
     }
 
@@ -90,12 +96,14 @@ extension SelectAreaListViewController: UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectAreaListViewCell.identifier, for: indexPath) as! SelectAreaListViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: IncidentLocalityListItem.identifier, for: indexPath) as! IncidentLocalityListItem
         cell.setupView(viewModel.localityData[indexPath.section], indexPath)
-
-        cell.selectAreaAction = { selectedArea in
-            self.selectedAreas = selectedArea
+        cell.onCheckboxToggled = { [weak self] indexPath in
+            self?.viewModel.toggleSelection(at: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
         }
+
         return cell
     }
 }

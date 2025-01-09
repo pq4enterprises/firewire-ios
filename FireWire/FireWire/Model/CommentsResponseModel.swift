@@ -9,18 +9,18 @@ import Foundation
 
 struct CommentsResponseModel: Codable {
     let message, code: String
-    let data: [CommentsDataModel]
+    let data: [CommentsDataModel?]
 }
 
 struct CommentsDataModel: Codable {
     let id: String
-    let userID: UserIDModel
+    //let userID: UserIDModel?
     //let img: [String?]
     //let comment: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case userID = "userId"
+        //case userID = "userId"
         //case img, comment
     }
 }
