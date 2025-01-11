@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
     }
 
     @objc func forgotTap() {
-        coordinator?.navigateToOtpVerification()
+        coordinator?.navigateToForgotPassword()
     }
 
     @IBAction func signInTap(_ sender: UIButton) {

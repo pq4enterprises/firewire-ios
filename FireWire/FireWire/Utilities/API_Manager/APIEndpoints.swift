@@ -13,6 +13,9 @@ enum APIEndpoints {
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
+    static let forgotPassword = "api/app/auth/forgot-password"
+    static let verifyOtp = "api/app/auth/otp-verify"
+    static let resetPassword = "api/app/auth/reset-password"
     static let socialLogin = "api/app/auth/social-login"
     static let incidentList = "api/app/incident"
     static let incidentDetail = "api/app/incident/%@"
@@ -37,6 +40,9 @@ enum SocialLoginType: String{
 enum APIPayload {
     case login(email: String, password: String)
     case socialLogin(token: String, socialType: String, role: String)
+    case forgotPassword(email: String)
+    case verifyOtp(email: String, otp: String)
+    case resetPassword(resetToken: String, password: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
     case incidentList(_ model: IncidentRequestModel)
@@ -48,6 +54,12 @@ enum APIPayload {
             return ["email": email, "password": password]
         case let .socialLogin(token, socialType, role):
             return ["token": token, "socialType": socialType, "role": role]
+        case let .forgotPassword(email):
+            return ["email": email]
+        case let .verifyOtp(email, otp):
+            return ["email": email, "otp": otp]
+        case let .resetPassword(resetToken, password):
+            return ["resetToken": resetToken, "password": password]
         case let .favouriteIncident(userId, incidentId, type):
             return ["userId": userId, "incidentId": incidentId, "type": type]
         case let .updateUserProfile(model):

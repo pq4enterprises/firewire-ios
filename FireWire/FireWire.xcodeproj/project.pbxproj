@@ -124,6 +124,8 @@
 		B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
 		B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */; };
 		B0EDF0422D32769200767EAB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */; };
+		B0EDF0442D32B07100767EAB /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */; };
+		B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -261,6 +263,8 @@
 		B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityRequestModel.swift; sourceTree = "<group>"; };
 		B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
 		B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordResponseModel.swift; sourceTree = "<group>"; };
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -598,6 +602,7 @@
 				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
 				B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */,
 				B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */,
+				B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */,
 				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
 				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
+				B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -833,6 +839,7 @@
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
 				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
 				B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */,
+				B0EDF0442D32B07100767EAB /* ForgotPasswordViewController.swift in Sources */,
 				B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
@@ -874,6 +881,7 @@
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
+				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
