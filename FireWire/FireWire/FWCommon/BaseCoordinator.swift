@@ -51,6 +51,10 @@ class BaseCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
 
+    func popToRootView(){
+        navigationController.popToRootViewController(animated: true)
+    }
+
     func addChildCoordinator(_ coordinator: Coordinator) {
         childCoordinators.append(coordinator)
     }

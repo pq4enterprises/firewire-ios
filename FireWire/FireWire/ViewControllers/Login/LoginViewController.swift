@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
+    @IBOutlet weak var forgotPasswordLabel: UILabel!
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
@@ -60,10 +61,18 @@ class LoginViewController: UIViewController {
         let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(registerTap))
         registerLabel.isUserInteractionEnabled = true
         registerLabel.addGestureRecognizer(labelTapGesture)
+
+        let forgotLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(forgotTap))
+        forgotPasswordLabel.isUserInteractionEnabled = true
+        forgotPasswordLabel.addGestureRecognizer(forgotLabelTapGesture)
     }
 
     @objc func registerTap() {
         coordinator?.navigateToRegistration()
+    }
+
+    @objc func forgotTap() {
+        coordinator?.navigateToOtpVerification()
     }
 
     @IBAction func signInTap(_ sender: UIButton) {
