@@ -793,6 +793,9 @@ agreeing with our Terms and Conditions</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="whatsapp_icon"/>
+                                                <connections>
+                                                    <action selector="whatsappButtonTap:" destination="FmE-8n-Y2y" eventType="touchUpInside" id="Ede-yn-CTp"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhatsApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbD-G9-ylg">
                                                 <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>
@@ -809,6 +812,9 @@ agreeing with our Terms and Conditions</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="facebook_icon"/>
+                                                <connections>
+                                                    <action selector="facebookButtonTap:" destination="FmE-8n-Y2y" eventType="touchUpInside" id="qln-VM-sfa"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5o-3b-0xi">
                                                 <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>
@@ -825,6 +831,9 @@ agreeing with our Terms and Conditions</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="62"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="instagram_icon"/>
+                                                <connections>
+                                                    <action selector="instagramButtonTap:" destination="FmE-8n-Y2y" eventType="touchUpInside" id="gzU-Ye-BSg"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TX-3L-nOv">
                                                 <rect key="frame" x="0.0" y="70.000000000000014" width="73" height="17"/>
@@ -841,6 +850,9 @@ agreeing with our Terms and Conditions</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="twitter_icon"/>
+                                                <connections>
+                                                    <action selector="twitterButtonTap:" destination="FmE-8n-Y2y" eventType="touchUpInside" id="1Xf-Aw-43H"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-HH-Dc7">
                                                 <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>

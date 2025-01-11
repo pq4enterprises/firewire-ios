@@ -56,7 +56,10 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
+		<string>fb</string>
+		<string>whatsapp</string>
+		<string>instagram</string>
+		<string>twitter</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>FireWire need access to your photo library.</string>

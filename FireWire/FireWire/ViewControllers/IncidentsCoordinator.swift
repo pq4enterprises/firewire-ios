@@ -57,8 +57,10 @@ class IncidentsCoordinator: BaseCoordinator {
         navigationController.present(navVC, animated: true)
     }
 
-    func navigateToShareView(){
+    func navigateToShareView(shareMessage: String){
         let shareViewController = IncidentShareViewController.instantiate()
+        shareViewController.shareMessage = shareMessage
+        
         let navVC = UINavigationController(rootViewController: shareViewController)
         navVC.modalPresentationStyle = .pageSheet
 
