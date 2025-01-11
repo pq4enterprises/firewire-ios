@@ -21,40 +21,51 @@ class CommentsListViewCell: UITableViewCell {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageCollectionView: UICollectionView!
-
+    @IBOutlet weak var imgCollectionHeightConstraint: NSLayoutConstraint!
+    
     private var model: CommentsData!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         imageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
+
     }
 
     func setupView(_ model: CommentsData) {
         self.model = model
-        nameLabel.text = model.userID.firstName
+        nameLabel.text = model.userID?.firstName
 
-        if model.userID.subLocality.count > 0, let locality = model.userID.subLocality[0] {
+        if model.userID?.subLocality.count ?? 0 > 0, let locality = model.userID?.subLocality[0] {
             cityLabel.text = locality.name
         }
 
         descriptionLabel.text = model.comment
+
+        if model.img?.count ?? 0 > 0 {
+            imgCollectionHeightConstraint.constant = 100.0
+            imageCollectionView.isHidden = false
+            imageCollectionView.dataSource = self
+            imageCollectionView.delegate = self
+        }else{
+            imgCollectionHeightConstraint.constant = 0
+            imageCollectionView.isHidden = true
+        }
     }
 
 }
 
 extension CommentsListViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.img.count
+        return model.img?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentsImageViewItem.identifier, for: indexPath) as! CommentsImageViewItem
 
-        let image = model.img[indexPath.row]
-        cell.configure(with: image)
+        if let image = model.img?[indexPath.row]{
+            cell.configure(with: image)
+        }
 
         return cell
     }

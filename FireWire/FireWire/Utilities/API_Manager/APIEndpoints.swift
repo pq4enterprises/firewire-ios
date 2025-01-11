@@ -23,6 +23,7 @@ enum APIEndpoints {
     static let favIncident = "api/app/incident/activity"
     static let userProfile = "/api/app/user/profile"
     static let commentsList = "api/app/incident/comment/%@"
+    static let addComment = "api/app/incident/activity"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -47,6 +48,8 @@ enum APIPayload {
     case updateUserProfile(_ model: UpdateProfileRequestModel)
     case incidentList(_ model: IncidentRequestModel)
     case incidentLocalityList(_ model: IncidentLocalityRequestModel)
+    case addComment(_ model: AddCommentRequestModel)
+    case commentsList(_ model: IncidentLocalityRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -84,6 +87,21 @@ enum APIPayload {
 
             return dictionary
         case let .incidentLocalityList(model):
+            return [
+                "sortBy": model.sortBy,
+                "sortDir": model.sortDir,
+                "offset": model.offset,
+                "limit": model.limit
+            ]
+        case let .addComment(model):
+            return [
+                "userId": model.userId,
+                "incidentId": model.incidentId,
+                "type": model.type,
+                "comment": model.comment,
+                "url": model.url
+            ]
+        case let .commentsList(model):
             return [
                 "sortBy": model.sortBy,
                 "sortDir": model.sortDir,

@@ -10,12 +10,15 @@ import UIKit
 protocol CommentsListViewDelegate: AnyObject {
     func dataReceived()
     func noCommentsForIncident()
+    func commentAdded()
 }
 
-class CommentsViewController: UIViewController, CommentsListViewDelegate {
+class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextFieldDelegate {
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var commentsListCount: UILabel!
     @IBOutlet weak var noCommentsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var addCommentTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: CommentsListViewModel!
@@ -23,6 +26,9 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addCommentTextField.delegate = self
+        setupActions()
+        setupKeyboardActions()
         setupTableView()
     }
 
@@ -38,6 +44,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
         if let selectedIncidentID {
             viewModel?.getCommentsList(for: selectedIncidentID)
         }
+    }
+
+    func setupActions() {
+        hideKeyboardWhenTappedAround()
     }
 
     func dataReceived() {
@@ -57,6 +67,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
         noCommentsLabel.isHidden = false
     }
 
+    func commentAdded() {
+        if let selectedIncidentID {
+            viewModel?.getCommentsList(for: selectedIncidentID)
+        }
+    }
+
     func showActivityIndicator(_ value: Bool) {
         if value {
             activityIndicator.isHidden = false
@@ -72,6 +88,53 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate {
         tableView.dataSource = self
 
         tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let requestModel = AddCommentRequestModel(
+            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            incidentId: selectedIncidentID ?? "",
+            type: "comment",
+            comment: textField.text ?? "",
+            url: ""
+        )
+
+        viewModel.addComment(requestModel)
+        textField.text = ""
+        textField.resignFirstResponder()
+        return true
+    }
+
+    // TODO: Handle in common place
+    func setupKeyboardActions() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        // Calculate the inset of the scroll view
+        let keyboardHeight = keyboardFrame.height
+
+        // Set the content inset for the scroll view
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = keyboardHeight
+        scrollView.contentInset = contentInset
+
+        // Adjust the scroll indicator inset
+        scrollView.scrollIndicatorInsets = contentInset
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        // Reset the content inset when the keyboard hides
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = 0
+        scrollView.contentInset = contentInset
+
+        // Reset the scroll indicator inset
+        scrollView.scrollIndicatorInsets = contentInset
     }
 
     static func instantiate() -> CommentsViewController {

@@ -92,6 +92,7 @@
                 <outlet property="dateTimeLabel" destination="g0g-dX-E7n" id="BNT-I8-T6o"/>
                 <outlet property="descriptionLabel" destination="T2M-39-R9W" id="gG4-HP-Z1R"/>
                 <outlet property="imageCollectionView" destination="ShQ-j3-vfa" id="TNj-l3-17V"/>
+                <outlet property="imgCollectionHeightConstraint" destination="9oZ-YW-xTR" id="Sa4-7P-vpS"/>
                 <outlet property="nameLabel" destination="Efy-3K-B4e" id="85i-0S-QcD"/>
                 <outlet property="userImageView" destination="W2k-yX-Hd1" id="jVN-fr-okv"/>
             </connections>

@@ -20,14 +20,15 @@ struct CommentsDataModel: Codable {
 
 struct CommentsData: Codable {
     let id: String
-    let userID: UserIdModel
-    let img: [String]
+    let userID: UserIdModel?
+    let img: [String]?
     let comment: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case userID = "userId"
-        case img, comment
+        case img
+        case comment
     }
 }
 

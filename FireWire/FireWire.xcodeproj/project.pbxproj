@@ -42,6 +42,7 @@
 		B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */; };
 		B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */; };
 		B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
+		B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
 		B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
@@ -183,6 +184,7 @@
 		B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationChooseLocalityHeaderCell.swift; sourceTree = "<group>"; };
 		B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityHeaderView.swift; sourceTree = "<group>"; };
 		B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationLocalityHeaderView.xib; sourceTree = "<group>"; };
+		B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentRequestModel.swift; sourceTree = "<group>"; };
 		B043CEAB2D0EDD0D007430B7 /* mapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapStyle.json; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */,
 				B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */,
 				B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */,
+				B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
+				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
