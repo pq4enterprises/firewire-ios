@@ -126,6 +126,7 @@
 		B0EDF0422D32769200767EAB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */; };
 		B0EDF0442D32B07100767EAB /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */; };
 		B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
+		B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -265,6 +266,7 @@
 		B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordResponseModel.swift; sourceTree = "<group>"; };
+		B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOtpResponseModel.swift; sourceTree = "<group>"; };
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -645,6 +647,7 @@
 				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
 				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
 				B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */,
+				B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
+				B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */,
 				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,
 				9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */,
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,

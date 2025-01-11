@@ -35,15 +35,17 @@ class LoginCoordinator: BaseCoordinator {
         pushViewController(forgotPasswordViewController, animated: true)
     }
 
-    func navigateToOtpVerification(){
+    func navigateToOtpVerification(email: String){
         let otpVerificationViewController = OtpVerificationViewController.instantiate()
+        otpVerificationViewController.email = email
         otpVerificationViewController.coordinator = self
         pushViewController(otpVerificationViewController, animated: true)
     }
 
-    func navigateToResetPassword(){
+    func navigateToResetPassword(token: String){
         let resetPasswordViewController = ResetPasswordViewController.instantiate()
         resetPasswordViewController.coordinator = self
+        resetPasswordViewController.resetToken = token
         pushViewController(resetPasswordViewController, animated: true)
     }
 

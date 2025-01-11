@@ -8,15 +8,16 @@
 import UIKit
 
 class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var value1Text: UITextField!
-    @IBOutlet weak var value2Text: UITextField!
-    @IBOutlet weak var value3Text: UITextField!
-    @IBOutlet weak var value4Text: UITextField!
-    @IBOutlet weak var value5Text: UITextField!
-    @IBOutlet weak var value6Text: UITextField!
+    @IBOutlet var value1Text: UITextField!
+    @IBOutlet var value2Text: UITextField!
+    @IBOutlet var value3Text: UITextField!
+    @IBOutlet var value4Text: UITextField!
+    @IBOutlet var value5Text: UITextField!
+    @IBOutlet var value6Text: UITextField!
 
     var otpTextFields: [UITextField] = []
     var coordinator: LoginCoordinator?
+    var email: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +38,9 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         coordinator?.popView()
     }
 
-    // A convenience method to instantiate from the storyboard
-    static func instantiate() -> OtpVerificationViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
-        return viewController
-    }
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        var boolSubmitOtp = false
         guard string.count <= 1 else {
             return false
         }
@@ -58,15 +54,62 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
                 otpTextFields[currentIndex + 1].becomeFirstResponder()
             } else {
                 otpTextFields[currentIndex].resignFirstResponder()
-                coordinator?.navigateToResetPassword()
+                boolSubmitOtp = true
             }
-        }else if string.isEmpty, textField.text?.count == 1 {
+        } else if string.isEmpty, textField.text?.count == 1 {
             if currentIndex > 0 {
                 otpTextFields[currentIndex - 1].becomeFirstResponder()
             }
         }
 
         textField.text = string
+        if boolSubmitOtp { submitOtp() }
         return false
+    }
+
+    func submitOtp() {
+        showLoader()
+
+        guard let email = email else { return }
+
+        let otp = otpTextFields.compactMap { $0.text }.joined()
+        if otp.count == otpTextFields.count {
+            APIRequest().callApi(
+                apiEndPoint: APIEndpoints.verifyOtp,
+                payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
+                expect: VerifyOtpResponseModel.self
+            ) { [weak self] response, _, _ in
+
+                self?.hideLoader()
+                guard let apiResponse = response else {
+                    self?.showAlertMessage("Technical error, please try again!")
+                    return
+                }
+
+                if let response = apiResponse as? VerifyOtpResponseModel {
+                    if response.code.lowercased() == "success" {
+                        self?.coordinator?.navigateToResetPassword(token: response.data?.resetToken ?? "")
+                    } else {
+                        self?.showAlertMessage(response.message)
+                    }
+                }
+            }
+        }
+    }
+
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+
+    // A convenience method to instantiate from the storyboard
+    static func instantiate() -> OtpVerificationViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
+        return viewController
     }
 }

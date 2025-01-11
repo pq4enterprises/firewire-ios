@@ -2669,6 +2669,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="rb7-Y7-4nf" firstAttribute="bottom" secondItem="cEy-1z-suQ" secondAttribute="bottom" id="lXC-zi-iIG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="dw3-QD-Yte" id="e0M-Ba-ehS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHe-Iw-slN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,10 +8,10 @@
 import UIKit
 
 class ForgotPasswordViewController: UIViewController {
-    @IBOutlet weak var emailTextField: FWTextField!
+    @IBOutlet var emailTextField: FWTextField!
 
     var coordinator: LoginCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -37,7 +37,7 @@ class ForgotPasswordViewController: UIViewController {
             apiEndPoint: APIEndpoints.forgotPassword,
             payload: APIPayload.forgotPassword(email: email).toDictionary(),
             expect: ForgotPasswordResponseModel.self
-        ){ [weak self] response, _, _ in
+        ) { [weak self] response, _, _ in
 
             self?.hideLoader()
             guard let apiResponse = response else {
@@ -46,15 +46,13 @@ class ForgotPasswordViewController: UIViewController {
             }
 
             if let response = apiResponse as? ForgotPasswordResponseModel {
-                if response.code.lowercased() == "success"{
-                    self?.coordinator?.navigateToOtpVerification()
-                }else{
+                if response.code.lowercased() == "success" {
+                    self?.coordinator?.navigateToOtpVerification(email: email)
+                } else {
                     self?.showAlertMessage(response.message)
                 }
             }
-
         }
-
     }
 
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
