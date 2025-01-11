@@ -25,6 +25,7 @@ extension UIViewController {
         activityIndicator.tag = 999 // Tag to identify the activity indicator later
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
+        activityIndicator.color = FWColor.red
 
         // Add the activity indicator to the view
         view.addSubview(activityIndicator)
