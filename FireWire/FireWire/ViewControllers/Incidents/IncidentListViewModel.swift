@@ -21,8 +21,7 @@ final class IncidentListViewModel {
     }
 
     func filterIncidentList(selectedLocalities: SelectedLocalities?) {
-
-        var requestModel = IncidentListRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        var requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
         let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
         if let selectedLocalities {

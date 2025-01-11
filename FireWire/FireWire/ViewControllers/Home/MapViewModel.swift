@@ -23,7 +23,7 @@ final class MapViewModel {
     }
 
     func getIncidentList() {
-        let requestModel = IncidentListRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
         let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
         APIRequest().callApi(

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IncidentListRequestModel {
+struct IncidentRequestModel {
     public var sortBy: String
     public var sortDir: String
     public var offset: Int

@@ -39,7 +39,8 @@ enum APIPayload {
     case socialLogin(token: String, socialType: String, role: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
-    case incidentList(_ model: IncidentListRequestModel)
+    case incidentList(_ model: IncidentRequestModel)
+    case incidentLocalityList(_ model: IncidentLocalityRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -70,6 +71,13 @@ enum APIPayload {
             }
 
             return dictionary
+        case let .incidentLocalityList(model):
+            return [
+                "sortBy": model.sortBy,
+                "sortDir": model.sortDir,
+                "offset": model.offset,
+                "limit": model.limit
+            ]
         }
     }
 }

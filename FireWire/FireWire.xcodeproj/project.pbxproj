@@ -120,7 +120,8 @@
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
-		B0EDF03A2D325F7400767EAB /* IncidentListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */; };
+		B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
+		B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -254,7 +255,8 @@
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestModel.swift; sourceTree = "<group>"; };
-		B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListRequestModel.swift; sourceTree = "<group>"; };
+		B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentRequestModel.swift; sourceTree = "<group>"; };
+		B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityRequestModel.swift; sourceTree = "<group>"; };
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -576,19 +578,8 @@
 		B0CF74B92D038C0B008935D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */,
-				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
-				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
-				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
-				B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */,
-				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
-				B0A304792D134057006F851A /* LocalityResponseModel.swift */,
-				B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */,
-				B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */,
-				B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */,
-				B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */,
-				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
-				B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */,
+				B0EDF03E2D32678300767EAB /* ResponseModel */,
+				B0EDF03D2D32677B00767EAB /* RequestModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -616,6 +607,34 @@
 				B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */,
 			);
 			path = FWCommon;
+			sourceTree = "<group>";
+		};
+		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */,
+				B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */,
+				B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */,
+				B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */,
+				B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */,
+				B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		B0EDF03E2D32678300767EAB /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
+				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
+				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
+				B0A304792D134057006F851A /* LocalityResponseModel.swift */,
+				B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */,
+				B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */,
+				B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */,
+				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
+			);
+			path = ResponseModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -786,6 +805,7 @@
 			files = (
 				B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */,
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
+				B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */,
 				B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
@@ -833,7 +853,7 @@
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
-				B0EDF03A2D325F7400767EAB /* IncidentListRequestModel.swift in Sources */,
+				B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */,
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
