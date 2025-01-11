@@ -56,4 +56,19 @@ class IncidentsCoordinator: BaseCoordinator {
         }
         navigationController.present(navVC, animated: true)
     }
+
+    func navigateToShareView(){
+        let shareViewController = IncidentShareViewController.instantiate()
+        let navVC = UINavigationController(rootViewController: shareViewController)
+        navVC.modalPresentationStyle = .pageSheet
+
+        if let sheet = navVC.sheetPresentationController {
+            sheet.detents = [.custom(resolver: {context in
+                0.30 * context.maximumDetentValue
+            })]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(navVC, animated: true)
+
+    }
 }

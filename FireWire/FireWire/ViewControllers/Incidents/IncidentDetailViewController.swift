@@ -121,12 +121,14 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     @IBAction func shareButtonTap(_ sender: UIButton) {
-        guard let incidentDetail = viewModel?.incidentDetail else {
-            return
-        }
+    //        guard let incidentDetail = viewModel?.incidentDetail else {
+    //            return
+    //        }
+    //
+    //        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
+    //        shareContentToSocialMedia(text: shareContent, image: FWImage.appLogo)
 
-        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
-        shareContentToSocialMedia(text: shareContent, image: FWImage.appLogo)
+        coordinator?.navigateToShareView()
     }
 
 

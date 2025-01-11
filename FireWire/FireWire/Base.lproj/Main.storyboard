@@ -769,6 +769,105 @@ agreeing with our Terms and Conditions</string>
             </objects>
             <point key="canvasLocation" x="5002.2900763358775" y="731.69014084507046"/>
         </scene>
+        <!--Incident Share View Controller-->
+        <scene sceneID="TSJ-CX-Rmi">
+            <objects>
+                <viewController storyboardIdentifier="IncidentShareViewController" id="FmE-8n-Y2y" customClass="IncidentShareViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Do9-Uu-dgd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0i-56-8Fp">
+                                <rect key="frame" x="28.000000000000007" y="65" width="86.666666666666686" height="26.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="exP-Vj-MRv">
+                                <rect key="frame" x="20" y="111.33333333333331" width="353" height="87"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="29w-Ke-0iN">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1i-SY-u0N">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="whatsapp_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhatsApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbD-G9-ylg">
+                                                <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-wn-w3G">
+                                        <rect key="frame" x="93.333333333333343" y="0.0" width="73.333333333333343" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isQ-MU-AiS">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="facebook_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5o-3b-0xi">
+                                                <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YfL-J5-HY2">
+                                        <rect key="frame" x="186.66666666666666" y="0.0" width="72.999999999999972" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHM-pa-fxv">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="62"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="instagram_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TX-3L-nOv">
+                                                <rect key="frame" x="0.0" y="70.000000000000014" width="73" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7bm-qe-6gu">
+                                        <rect key="frame" x="279.66666666666669" y="0.0" width="73.333333333333314" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHg-2V-m3j">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="62"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="twitter_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-HH-Dc7">
+                                                <rect key="frame" x="0.0" y="70.000000000000014" width="73.333333333333329" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DHG-MT-gpG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="exP-Vj-MRv" firstAttribute="top" secondItem="X0i-56-8Fp" secondAttribute="bottom" constant="20" id="9JR-TM-dKs"/>
+                            <constraint firstItem="DHG-MT-gpG" firstAttribute="trailing" secondItem="exP-Vj-MRv" secondAttribute="trailing" constant="20" id="DAb-zt-Wbl"/>
+                            <constraint firstItem="X0i-56-8Fp" firstAttribute="leading" secondItem="DHG-MT-gpG" secondAttribute="leading" constant="28" id="NJh-vQ-Vqv"/>
+                            <constraint firstItem="X0i-56-8Fp" firstAttribute="top" secondItem="DHG-MT-gpG" secondAttribute="top" constant="6" id="X9p-o7-fZK"/>
+                            <constraint firstItem="exP-Vj-MRv" firstAttribute="leading" secondItem="DHG-MT-gpG" secondAttribute="leading" constant="20" id="xEU-fe-NzN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhm-ua-o1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5694" y="732"/>
+        </scene>
         <!--News Detail View Controller-->
         <scene sceneID="pFO-ig-3Gy">
             <objects>
@@ -890,7 +989,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBo-6s-UC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5749" y="720"/>
+            <point key="canvasLocation" x="6488" y="732"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="NFd-Sa-GHa">
@@ -2869,10 +2968,12 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="close_icon" width="13" height="13"/>
         <image name="comment_filled" width="11" height="9"/>
         <image name="comment_icon" width="22" height="20"/>
+        <image name="facebook_icon" width="62" height="62"/>
         <image name="fb_logo" width="87" height="16"/>
         <image name="feed_areas" width="20" height="20"/>
         <image name="fire_icon" width="15" height="20"/>
         <image name="google_logo" width="71" height="24"/>
+        <image name="instagram_icon" width="62" height="62"/>
         <image name="login_bg" width="430" height="932"/>
         <image name="login_logo" width="132" height="142"/>
         <image name="logout_icon" width="19" height="20"/>
@@ -2895,6 +2996,8 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="star_filled" width="11" height="11"/>
         <image name="star_icon" width="22" height="21"/>
         <image name="terms_icon" width="21" height="20"/>
+        <image name="twitter_icon" width="62" height="62"/>
+        <image name="whatsapp_icon" width="62" height="62"/>
         <namedColor name="FWGradient">
             <color red="0.99607843137254903" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
