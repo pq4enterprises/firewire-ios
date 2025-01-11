@@ -14,10 +14,10 @@ public final class CommentsListViewModel {
     func getCommentsList(for incidentID: String) {
         let requestURL = String.init(format: APIEndpoints.commentsList, incidentID)
 
-        APIRequest().callGetApi(
+        APIRequest().callApi(
             apiEndPoint: requestURL,
-            parameters: nil,
-            expect: CommentsResponseModel.self)
+            expect: CommentsResponseModel.self,
+            requestType: APIConstants.GET)
         { [weak self] response, _, _ in
 
             guard let apiResponse = response else {

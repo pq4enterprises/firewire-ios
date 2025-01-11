@@ -11,10 +11,10 @@ final class UpdateProfileViewModel {
     public var delegate: UpdateProfileViewDelegate?
 
     func getUserProfile() {
-        APIRequest().callGetApi(
+        APIRequest().callApi(
             apiEndPoint: APIEndpoints.userProfile,
-            parameters: nil,
-            expect: LoginApiResponse.self
+            expect: LoginApiResponse.self,
+            requestType: APIConstants.GET
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
                 return

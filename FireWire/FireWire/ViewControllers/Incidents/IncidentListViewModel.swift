@@ -22,19 +22,21 @@ final class IncidentListViewModel {
 
     func filterIncidentList(selectedLocalities: SelectedLocalities?) {
 
-        var parameters: [String: Any] = ["sortDir": "desc", "offset": 1, "limit": 10]
+        var requestModel = IncidentListRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
         if let selectedLocalities {
-            parameters["query"] = [
-                "locality": selectedLocalities.selectedLocalityIDs,
-                "subLocality": selectedLocalities.selectedSubLocalityIDs
-            ]
+            requestModel.query = QueryModel(
+                locality: selectedLocalities.selectedLocalityIDs,
+                subLocality: selectedLocalities.selectedSubLocalityIDs
+            )
         }
 
-        APIRequest().callGetApi(
+        APIRequest().callApi(
             apiEndPoint: APIEndpoints.incidentList,
-            parameters: parameters,
-            expect: IncidentResponseModel.self)
+            payload: getIncidentRequestModel,
+            expect: IncidentResponseModel.self,
+            requestType: APIConstants.GET)
         { [weak self] response, _, _ in
             
             guard let apiResponse = response else {

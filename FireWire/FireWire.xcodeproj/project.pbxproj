@@ -120,6 +120,7 @@
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
+		B0EDF03A2D325F7400767EAB /* IncidentListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -253,6 +254,7 @@
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestModel.swift; sourceTree = "<group>"; };
+		B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListRequestModel.swift; sourceTree = "<group>"; };
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -586,6 +588,7 @@
 				B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */,
 				B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */,
 				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
+				B0EDF0392D325F7400767EAB /* IncidentListRequestModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
+				B0EDF03A2D325F7400767EAB /* IncidentListRequestModel.swift in Sources */,
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,

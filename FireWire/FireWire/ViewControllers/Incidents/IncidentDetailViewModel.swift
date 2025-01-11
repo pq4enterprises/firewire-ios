@@ -14,10 +14,10 @@ final class IncidentDetailViewModel {
     func getIncidentDetail(for incidentID: String) {
         let requestURL = String.init(format: APIEndpoints.incidentDetail, incidentID)
 
-        APIRequest().callGetApi(
+        APIRequest().callApi(
             apiEndPoint: requestURL,
-            parameters: nil,
-            expect: IncidentDetailResponseModel.self)
+            expect: IncidentDetailResponseModel.self,
+            requestType: APIConstants.GET)
         { [weak self] response, _, _ in
 
             guard let apiResponse = response else {

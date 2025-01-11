@@ -23,7 +23,7 @@ extension URLSession {
         request.allHTTPHeaderFields = headers
         request.addValue("Bearer " + authTokenString, forHTTPHeaderField: "Authorization")
         
-        print("request: ----- \(request)")
+        print("API request: ----- \(request)")
         
         if payload?.isEmpty == false {
             guard let body = try? JSONSerialization.data(withJSONObject: payload ?? [:], options: .prettyPrinted) else {

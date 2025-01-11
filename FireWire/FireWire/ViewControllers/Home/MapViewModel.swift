@@ -23,12 +23,14 @@ final class MapViewModel {
     }
 
     func getIncidentList() {
-        let parameters: [String: Any] = ["sortBy": "createdAt", "sortDir": "desc", "offset": 1, "limit": 10]
+        let requestModel = IncidentListRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
-        APIRequest().callGetApi(
+        APIRequest().callApi(
             apiEndPoint: APIEndpoints.incidentList,
-            parameters: parameters,
-            expect: IncidentResponseModel.self)
+            payload: getIncidentRequestModel,
+            expect: IncidentResponseModel.self,
+            requestType: APIConstants.GET)
         { [weak self] response, _, error in
 
             if error != nil {

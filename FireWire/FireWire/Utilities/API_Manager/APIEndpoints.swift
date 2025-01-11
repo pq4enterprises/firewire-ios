@@ -39,6 +39,7 @@ enum APIPayload {
     case socialLogin(token: String, socialType: String, role: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
+    case incidentList(_ model: IncidentListRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -56,6 +57,19 @@ enum APIPayload {
                 "mobile": model.mobile,
                 "title": model.title
             ]
+        case let .incidentList(model):
+            var dictionary: [String: Any] = [
+                "sortBy": model.sortBy,
+                "sortDir": model.sortDir,
+                "offset": model.offset,
+                "limit": model.limit
+            ]
+
+            if let query = model.query {
+                dictionary["query"] = query.toDictionary()
+            }
+
+            return dictionary
         }
     }
 }
