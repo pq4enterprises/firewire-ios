@@ -25,6 +25,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var incidentMapView: UIView!
     @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var favouriteButton: UIButton!
+    @IBOutlet weak var activityVerticalConstraint: NSLayoutConstraint!
 
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
@@ -65,6 +66,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
             incidentDateTime.text = formattedDate
         }
+
+        if let desc = incidentDetail.field3Value, desc.isEmpty {
+            activityVerticalConstraint.constant = activityVerticalConstraint.constant + 20
+        }
+
         incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 

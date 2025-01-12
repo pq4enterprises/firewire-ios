@@ -436,7 +436,7 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="704.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="711"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
                                                 <rect key="frame" x="25" y="0.0" width="343" height="116"/>
@@ -510,7 +510,7 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="seD-YZ-ALe">
-                                                <rect key="frame" x="25" y="626" width="343" height="35"/>
+                                                <rect key="frame" x="25" y="656" width="343" height="35"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
                                                         <rect key="frame" x="0.0" y="0.0" width="123" height="35"/>
@@ -594,14 +594,14 @@ agreeing with our Terms and Conditions</string>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="seD-YZ-ALe" secondAttribute="bottom" constant="43.329999999999998" id="0Rz-Y4-oui"/>
+                                            <constraint firstAttribute="bottom" secondItem="seD-YZ-ALe" secondAttribute="bottom" constant="20" id="0Rz-Y4-oui"/>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="1qI-iT-WKD"/>
                                             <constraint firstItem="aWB-EP-eU2" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="ALg-rp-fKc"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="top" secondItem="CJd-Io-ide" secondAttribute="top" id="Dym-02-UMu"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="eGY-cq-G1J" secondAttribute="bottom" constant="20" id="E2U-MU-SLw"/>
                                             <constraint firstItem="aWB-EP-eU2" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="Fc6-PC-nio"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
-                                            <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="20" id="TYA-74-YC5"/>
+                                            <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="50" id="TYA-74-YC5"/>
                                             <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="USR-s8-jOR"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="YEw-TC-5Pe"/>
                                             <constraint firstAttribute="trailing" secondItem="eGY-cq-G1J" secondAttribute="trailing" constant="25" id="f1P-Md-Puq"/>
@@ -640,6 +640,7 @@ agreeing with our Terms and Conditions</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityVerticalConstraint" destination="TYA-74-YC5" id="Gku-YS-0lz"/>
                         <outlet property="favouriteButton" destination="0jy-dA-eZ3" id="WBY-3I-Tjw"/>
                         <outlet property="imageLoadingIndicator" destination="GGe-wF-wsJ" id="VnQ-ps-45M"/>
                         <outlet property="incidentAddress" destination="HrE-Uv-08Z" id="b0S-lu-9eJ"/>
