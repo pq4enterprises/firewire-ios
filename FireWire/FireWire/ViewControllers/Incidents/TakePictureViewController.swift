@@ -8,15 +8,12 @@
 import Photos
 import UIKit
 
-protocol TakePictureViewProtocol: AnyObject {
-    func selectedImage(url: [String])
-}
-
 class TakePictureViewController: UIViewController {
     @IBOutlet var takePhotoView: FWView!
     @IBOutlet var galleryView: FWView!
 
-    weak var delegate: TakePictureViewProtocol?
+    var coordinator: IncidentsCoordinator?
+    var selectedIncidentID: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,21 +103,25 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
     }
 
     func requestImageUpload(_ image: UIImage) {
+        showLoader()
         APIRequest().uploadImage(
             apiEndPoint: APIEndpoints.uploadImage,
             image: image,
             expect: UploadImageResponseModel.self
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
+                self?.hideLoader()
                 return
             }
 
             if let response = apiResponse as? UploadImageResponseModel {
                 if response.code.lowercased() == "success" {
+                    self?.hideLoader()
                     DispatchQueue.main.async {
-                        if let imageLink = response.data?.link {
-                            self?.delegate?.selectedImage(url: imageLink)
-                            self?.dismiss(animated: true)
+                        if let imageUrl = response.data?.url, let incidentId = self?.selectedIncidentID {
+                            self?.dismiss(animated: true, completion: {
+                                self?.coordinator?.navigateToIncidentComments(incidentId, imageUrl)
+                            })
                         } else {
                             self?.showAlertMessage("Upload image failed")
                         }

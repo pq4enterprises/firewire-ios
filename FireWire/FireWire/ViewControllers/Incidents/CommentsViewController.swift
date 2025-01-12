@@ -16,21 +16,46 @@ protocol CommentsListViewDelegate: AnyObject {
 class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextFieldDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var commentsListCount: UILabel!
-    @IBOutlet weak var noCommentsLabel: UILabel!
+    @IBOutlet var noCommentsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var addCommentTextField: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet var addCommentTextField: UITextField!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var previewImageCollectionView: UICollectionView!
+    @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
+
     var coordinator: IncidentsCoordinator?
     var viewModel: CommentsListViewModel!
+    var attachedImages: [String] = []
+
     private var selectedIncidentID: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addCommentTextField.delegate = self
+        setupView()
         setupActions()
         setupKeyboardActions()
         setupTableView()
+    }
+
+    func setupView() {
+        previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
+
+        if attachedImages.count > 0 {
+            collectionViewHeightConstraint.constant = 100.0
+            previewImageCollectionView.dataSource = self
+            previewImageCollectionView.delegate = self
+            previewImageCollectionView.isHidden = false
+
+            if let layout = previewImageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = .horizontal
+                layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+            }
+            previewImageCollectionView.reloadData()
+        }else{
+            collectionViewHeightConstraint.constant = 0
+            previewImageCollectionView.isHidden = true
+        }
     }
 
     func setSelectedIncidentID(_ id: String) {
@@ -92,17 +117,23 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let imageUrl = attachedImages.count > 0 ? attachedImages[0] : ""
+
         let requestModel = AddCommentRequestModel(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
             comment: textField.text ?? "",
-            url: ""
+            url: imageUrl
         )
 
         viewModel.addComment(requestModel)
+        
+        // clear text and preview image
         textField.text = ""
         textField.resignFirstResponder()
+        attachedImages.removeAll()
+        collectionViewHeightConstraint.constant = 0
         return true
     }
 
@@ -112,12 +143,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
-    
     @IBAction func cameraButtonTap(_ sender: UIButton) {
-        self.dismiss(animated: true)
-        coordinator?.navigateToTakePicture()
+        dismiss(animated: true)
+        coordinator?.navigateToTakePicture(forIncident: selectedIncidentID ?? "")
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
@@ -159,6 +189,19 @@ extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
         cell.setupView(viewModel.commentsList[indexPath.row])
+        return cell
+    }
+}
+
+extension CommentsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return attachedImages.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentsImageViewItem.identifier, for: indexPath) as! CommentsImageViewItem
+        cell.configure(with: attachedImages[indexPath.row])
+
         return cell
     }
 }

@@ -47,6 +47,12 @@ class CommentsListViewCell: UITableViewCell {
             imageCollectionView.isHidden = false
             imageCollectionView.dataSource = self
             imageCollectionView.delegate = self
+
+            if let layout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = .horizontal
+                layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+            }
+            imageCollectionView.reloadData()
         }else{
             imgCollectionHeightConstraint.constant = 0
             imageCollectionView.isHidden = true

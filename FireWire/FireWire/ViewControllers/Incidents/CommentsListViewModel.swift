@@ -14,7 +14,7 @@ public final class CommentsListViewModel {
     func getCommentsList(for incidentID: String) {
         let requestURL = String.init(format: APIEndpoints.commentsList, incidentID)
 
-        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
         let getCommentsRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 
 

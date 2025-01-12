@@ -41,9 +41,10 @@ class IncidentsCoordinator: BaseCoordinator {
         navigationController.present(bottomSheet, animated: true)
     }
 
-    func navigateToIncidentComments(_ incidentID: String){
+    func navigateToIncidentComments(_ incidentID: String, _ attachedImages: [String] = []){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentID)
+        commentsList.attachedImages = attachedImages
         commentsList.coordinator = self
 
         let navVC = UINavigationController(rootViewController: commentsList)
@@ -75,8 +76,11 @@ class IncidentsCoordinator: BaseCoordinator {
 
     }
 
-    func navigateToTakePicture(){
+    func navigateToTakePicture(forIncident incidentID: String){
         let takePictureViewController = TakePictureViewController.instantiate()
+        takePictureViewController.coordinator = self
+        takePictureViewController.selectedIncidentID = incidentID
+        takePictureViewController.isModalInPresentation = true  // Disable dismissing by tapping outside
 
         let navVC = UINavigationController(rootViewController: takePictureViewController)
         navVC.modalPresentationStyle = .pageSheet

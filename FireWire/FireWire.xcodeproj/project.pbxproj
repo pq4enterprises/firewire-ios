@@ -404,6 +404,7 @@
 				B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */,
 				B0A304822D134937006F851A /* CityHeaderCell.xib */,
 				B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */,
+				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -507,7 +508,6 @@
 				B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */,
 				B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */,
 				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
-				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
