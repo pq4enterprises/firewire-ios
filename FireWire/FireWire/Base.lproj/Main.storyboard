@@ -673,7 +673,7 @@ agreeing with our Terms and Conditions</string>
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPq-eX-lHc">
-                                                <rect key="frame" x="25" y="7.9999999999999982" width="129" height="26.333333333333329"/>
+                                                <rect key="frame" x="25" y="0.0" width="129" height="26.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -691,7 +691,7 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-WU-xYH">
-                                                <rect key="frame" x="0.0" y="54.333333333333314" width="393" height="644.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="46.333333333333314" width="393" height="652.66666666666674"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-n8-nDp">
@@ -705,6 +705,9 @@ agreeing with our Terms and Conditions</string>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="camera_icon"/>
+                                                        <connections>
+                                                            <action selector="cameraButtonTap:" destination="CH1-gc-xmC" eventType="touchUpInside" id="xt0-CC-cwJ"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
                                                         <rect key="frame" x="61" y="5" width="312" height="50"/>
@@ -730,7 +733,7 @@ agreeing with our Terms and Conditions</string>
                                             <constraint firstItem="3KU-WU-xYH" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" id="3yz-ms-oYo"/>
                                             <constraint firstItem="KPq-eX-lHc" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" constant="25" id="91K-40-TlQ"/>
                                             <constraint firstItem="yXN-n8-nDp" firstAttribute="top" secondItem="3KU-WU-xYH" secondAttribute="bottom" id="HIs-Is-fRY"/>
-                                            <constraint firstItem="KPq-eX-lHc" firstAttribute="top" secondItem="wsf-J7-dOc" secondAttribute="top" constant="8" id="IDb-JN-kuh"/>
+                                            <constraint firstItem="KPq-eX-lHc" firstAttribute="top" secondItem="wsf-J7-dOc" secondAttribute="top" id="IDb-JN-kuh"/>
                                             <constraint firstAttribute="bottom" secondItem="yXN-n8-nDp" secondAttribute="bottom" id="XHj-Zv-CO2"/>
                                             <constraint firstItem="yXN-n8-nDp" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" id="c59-Qc-BTj"/>
                                             <constraint firstItem="3KU-WU-xYH" firstAttribute="top" secondItem="KPq-eX-lHc" secondAttribute="bottom" constant="20" id="nGH-kz-0p7"/>
@@ -881,6 +884,101 @@ agreeing with our Terms and Conditions</string>
             </objects>
             <point key="canvasLocation" x="5694" y="732"/>
         </scene>
+        <!--Take Picture View Controller-->
+        <scene sceneID="9oN-qE-2G2">
+            <objects>
+                <viewController storyboardIdentifier="TakePictureViewController" id="fcK-YZ-2HV" customClass="TakePictureViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWQ-pc-OsT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tm6-CS-GoQ">
+                                <rect key="frame" x="30" y="69" width="333" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Alt-MZ-7OS" customClass="FWView" customModule="FireWire" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.66666666666666" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKf-j9-h28">
+                                                <rect key="frame" x="56.666666666666671" y="20" width="38" height="33"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="takephoto_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6X-kX-jH7">
+                                                <rect key="frame" x="39.999999999999993" y="63" width="71.333333333333314" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="h6X-kX-jH7" firstAttribute="top" secondItem="WKf-j9-h28" secondAttribute="bottom" constant="10" id="EWw-er-4ek"/>
+                                            <constraint firstItem="WKf-j9-h28" firstAttribute="centerX" secondItem="Alt-MZ-7OS" secondAttribute="centerX" id="RNA-Gq-F0y"/>
+                                            <constraint firstItem="WKf-j9-h28" firstAttribute="top" secondItem="Alt-MZ-7OS" secondAttribute="top" constant="20" id="avb-1d-nla"/>
+                                            <constraint firstItem="h6X-kX-jH7" firstAttribute="centerX" secondItem="WKf-j9-h28" secondAttribute="centerX" id="lRa-g7-8hN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2K-b7-D47" customClass="FWView" customModule="FireWire" customModuleProvider="target">
+                                        <rect key="frame" x="181.66666666666663" y="0.0" width="151.33333333333337" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxI-fJ-PXP">
+                                                <rect key="frame" x="57.666666666666657" y="20" width="36" height="33"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="gallery_icon"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSz-5z-LT9">
+                                                <rect key="frame" x="53.000000000000028" y="63" width="45.333333333333343" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="iSz-5z-LT9" firstAttribute="top" secondItem="QxI-fJ-PXP" secondAttribute="bottom" constant="10" id="H55-H8-DGc"/>
+                                            <constraint firstItem="QxI-fJ-PXP" firstAttribute="top" secondItem="E2K-b7-D47" secondAttribute="top" constant="20" id="Nwi-DE-JuV"/>
+                                            <constraint firstItem="iSz-5z-LT9" firstAttribute="centerX" secondItem="QxI-fJ-PXP" secondAttribute="centerX" id="bgb-Ns-c1q"/>
+                                            <constraint firstItem="QxI-fJ-PXP" firstAttribute="centerX" secondItem="E2K-b7-D47" secondAttribute="centerX" id="pFS-6L-5hU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ytu-nc-YPM"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9C-Cz-cCV">
+                                <rect key="frame" x="30" y="179" width="333" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Acb-Au-KAJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTap:" destination="fcK-YZ-2HV" eventType="touchUpInside" id="3Q2-Sl-3Of"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LeG-YM-jkU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Z9C-Cz-cCV" firstAttribute="top" secondItem="tm6-CS-GoQ" secondAttribute="bottom" constant="10" id="4KM-wf-dwR"/>
+                            <constraint firstItem="Z9C-Cz-cCV" firstAttribute="leading" secondItem="LeG-YM-jkU" secondAttribute="leading" constant="30" id="DG5-Ty-CIz"/>
+                            <constraint firstItem="tm6-CS-GoQ" firstAttribute="leading" secondItem="LeG-YM-jkU" secondAttribute="leading" constant="30" id="SSt-Mb-wZA"/>
+                            <constraint firstItem="LeG-YM-jkU" firstAttribute="trailing" secondItem="tm6-CS-GoQ" secondAttribute="trailing" constant="30" id="XYF-bO-ji4"/>
+                            <constraint firstItem="tm6-CS-GoQ" firstAttribute="top" secondItem="LeG-YM-jkU" secondAttribute="top" constant="10" id="ZsZ-mp-7Xf"/>
+                            <constraint firstItem="LeG-YM-jkU" firstAttribute="trailing" secondItem="Z9C-Cz-cCV" secondAttribute="trailing" constant="30" id="nt4-NK-cbn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="galleryView" destination="E2K-b7-D47" id="t3t-wK-Hm5"/>
+                        <outlet property="takePhotoView" destination="Alt-MZ-7OS" id="bnC-QR-cCE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0tj-XK-uqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6382.4427480916029" y="731.69014084507046"/>
+        </scene>
         <!--News Detail View Controller-->
         <scene sceneID="pFO-ig-3Gy">
             <objects>
@@ -1002,7 +1100,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBo-6s-UC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6488" y="732"/>
+            <point key="canvasLocation" x="7097" y="732"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="NFd-Sa-GHa">
@@ -2985,6 +3083,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="fb_logo" width="87" height="16"/>
         <image name="feed_areas" width="20" height="20"/>
         <image name="fire_icon" width="15" height="20"/>
+        <image name="gallery_icon" width="36" height="33"/>
         <image name="google_logo" width="71" height="24"/>
         <image name="instagram_icon" width="62" height="62"/>
         <image name="login_bg" width="430" height="932"/>
@@ -3008,6 +3107,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="share_icon" width="21" height="20"/>
         <image name="star_filled" width="11" height="11"/>
         <image name="star_icon" width="22" height="21"/>
+        <image name="takephoto_icon" width="38" height="33"/>
         <image name="terms_icon" width="21" height="20"/>
         <image name="twitter_icon" width="62" height="62"/>
         <image name="whatsapp_icon" width="62" height="62"/>

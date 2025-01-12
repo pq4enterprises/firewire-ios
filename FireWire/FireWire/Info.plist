@@ -63,5 +63,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>FireWire need access to your photo library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>FireWire need access to your camera to take pictures.</string>
 </dict>
 </plist>

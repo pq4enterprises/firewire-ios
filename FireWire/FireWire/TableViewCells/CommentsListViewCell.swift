@@ -51,6 +51,9 @@ class CommentsListViewCell: UITableViewCell {
             imgCollectionHeightConstraint.constant = 0
             imageCollectionView.isHidden = true
         }
+
+        cityLabel.text = ""
+        dateTimeLabel.text = ""
     }
 
 }

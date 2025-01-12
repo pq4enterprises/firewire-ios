@@ -33,6 +33,8 @@ class MenuViewController: UIViewController {
             nameLabel.text = name
             emailLabel.text = email
         }
+
+        myAccountView.setCornerRadiusAndShadow()
     }
 
     func setupActions(){

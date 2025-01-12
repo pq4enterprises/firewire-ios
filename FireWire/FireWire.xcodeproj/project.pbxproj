@@ -89,6 +89,7 @@
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
+		B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
 		B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
 		B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
@@ -236,6 +237,7 @@
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
+		B08FAA572D339559000BCD27 /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewController.swift; sourceTree = "<group>"; };
 		B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */,
 				B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */,
 				B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */,
+				B08FAA572D339559000BCD27 /* TakePictureViewController.swift */,
 			);
 			path = Incidents;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
+				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,

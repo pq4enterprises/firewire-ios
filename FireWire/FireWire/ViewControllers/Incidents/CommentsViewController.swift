@@ -21,6 +21,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBOutlet weak var addCommentTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var coordinator: IncidentsCoordinator?
     var viewModel: CommentsListViewModel!
     private var selectedIncidentID: String?
 
@@ -111,6 +112,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
+    
+    @IBAction func cameraButtonTap(_ sender: UIButton) {
+        self.dismiss(animated: true)
+        coordinator?.navigateToTakePicture()
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }

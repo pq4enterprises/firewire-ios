@@ -44,7 +44,8 @@ class IncidentsCoordinator: BaseCoordinator {
     func navigateToIncidentComments(_ incidentID: String){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentID)
-        
+        commentsList.coordinator = self
+
         let navVC = UINavigationController(rootViewController: commentsList)
         navVC.modalPresentationStyle = .pageSheet
 
@@ -62,6 +63,22 @@ class IncidentsCoordinator: BaseCoordinator {
         shareViewController.shareMessage = shareMessage
         
         let navVC = UINavigationController(rootViewController: shareViewController)
+        navVC.modalPresentationStyle = .pageSheet
+
+        if let sheet = navVC.sheetPresentationController {
+            sheet.detents = [.custom(resolver: {context in
+                0.30 * context.maximumDetentValue
+            })]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(navVC, animated: true)
+
+    }
+
+    func navigateToTakePicture(){
+        let takePictureViewController = TakePictureViewController.instantiate()
+
+        let navVC = UINavigationController(rootViewController: takePictureViewController)
         navVC.modalPresentationStyle = .pageSheet
 
         if let sheet = navVC.sheetPresentationController {
