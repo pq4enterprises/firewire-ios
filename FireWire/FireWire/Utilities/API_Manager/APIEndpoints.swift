@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum APIEndpoints {
     static let baseURL = "https://dev-firewire-api.atomgroups.work/"
@@ -24,6 +25,7 @@ enum APIEndpoints {
     static let userProfile = "/api/app/user/profile"
     static let commentsList = "api/app/incident/comment/%@"
     static let addComment = "api/app/incident/activity"
+    static let uploadImage = "/api/common/upload"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"

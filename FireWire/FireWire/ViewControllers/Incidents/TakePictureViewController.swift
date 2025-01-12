@@ -5,11 +5,11 @@
 //  Created by Sujitha Palanisamy on 12/01/25.
 //
 
-import UIKit
 import Photos
+import UIKit
 
 protocol TakePictureViewProtocol: AnyObject {
-    func selectedImageFromGallery(image: [UIImage])
+    func selectedImage(url: [String])
 }
 
 class TakePictureViewController: UIViewController {
@@ -70,7 +70,7 @@ class TakePictureViewController: UIViewController {
     }
 
     @IBAction func cancelButtonTap(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
@@ -91,13 +91,11 @@ class TakePictureViewController: UIViewController {
 
 extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // Delegate method when image is picked
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             // Do something with the selected image, e.g., display it in an ImageView
-            //imageView.image = selectedImage
-            self.dismiss(animated: true, completion: {
-                //self.delegate?.selectedImageFromGallery(image: [selectedImage])
-            })
+            // imageView.image = selectedImage
+            requestImageUpload(selectedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -107,4 +105,30 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true, completion: nil)
     }
 
+    func requestImageUpload(_ image: UIImage) {
+        APIRequest().uploadImage(
+            apiEndPoint: APIEndpoints.uploadImage,
+            image: image,
+            expect: UploadImageResponseModel.self
+        ) { [weak self] response, _, _ in
+            guard let apiResponse = response else {
+                return
+            }
+
+            if let response = apiResponse as? UploadImageResponseModel {
+                if response.code.lowercased() == "success" {
+                    DispatchQueue.main.async {
+                        if let imageLink = response.data?.link {
+                            self?.delegate?.selectedImage(url: imageLink)
+                            self?.dismiss(animated: true)
+                        } else {
+                            self?.showAlertMessage("Upload image failed")
+                        }
+                    }
+                } else {
+                    self?.showAlertMessage(response.message)
+                }
+            }
+        }
+    }
 }

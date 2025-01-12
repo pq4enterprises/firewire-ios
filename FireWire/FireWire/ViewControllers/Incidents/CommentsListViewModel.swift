@@ -52,7 +52,7 @@ public final class CommentsListViewModel {
                 return
             }
 
-            if let commentsResponse = apiResponse as? SuccessResponseModel {
+            if apiResponse is SuccessResponseModel {
                 DispatchQueue.main.async {
                     self?.delegate?.commentAdded()
                 }

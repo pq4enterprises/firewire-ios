@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 extension URLSession {
     typealias JSONData = [String: Any]

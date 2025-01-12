@@ -90,6 +90,7 @@
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
 		B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
+		B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
 		B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
 		B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
@@ -238,6 +239,7 @@
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
 		B08FAA572D339559000BCD27 /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
+		B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageResponseModel.swift; sourceTree = "<group>"; };
 		B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewController.swift; sourceTree = "<group>"; };
 		B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
 				B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */,
 				B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */,
+				B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
+				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
 				B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */,
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
