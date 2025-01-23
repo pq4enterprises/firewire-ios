@@ -25,4 +25,13 @@ struct QueryModel {
             "subLocality": subLocality
         ]
     }
+
+    func toJsonString() -> String? {
+        let dict = self.toDictionary()
+        if let data = try? JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed),
+           let jsonString = String(data: data, encoding: .utf8) {
+            return jsonString
+        }
+        return nil
+    }
 }

@@ -85,7 +85,9 @@ enum APIPayload {
             ]
 
             if let query = model.query {
-                dictionary["query"] = query.toDictionary()
+                if let queryJsonString = query.toJsonString() {
+                    dictionary["query"] = queryJsonString
+                }
             }
 
             return dictionary

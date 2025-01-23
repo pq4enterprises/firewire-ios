@@ -52,7 +52,7 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
     @IBAction func doneButtonTap(_ sender: UIButton) {
         coordinator?.popView()
         debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
-        //self.coordinator?.start(with: [], selectedAreas)
+        self.coordinator?.start(with: [], viewModel.getSelectedIds())
     }
 
     func dataReceived() {

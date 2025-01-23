@@ -11,7 +11,7 @@ protocol PostListViewDelegate: AnyObject {
     func filterDataReceived()
 }
 
-class IncidentListViewController: UIViewController {
+class IncidentListViewController: UIViewController, PostListViewDelegate {
     @IBOutlet weak var incidentListCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -21,7 +21,7 @@ class IncidentListViewController: UIViewController {
     init(viewModel: IncidentListViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        //viewModel.delegate = self
+        viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -52,25 +52,10 @@ class IncidentListViewController: UIViewController {
         coordinator?.navigateToSelectAreaListView()
     }
 
-    //    func dataReceived() {
-    //        showActivityIndicator(false)
-    //        tableView.reloadData()
-    //        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
-    //    }
-
-    //    func showActivityIndicator(_ value: Bool){
-    //        if value {
-    //            activityIndicator.isHidden = false
-    //            activityIndicator.startAnimating()
-    //
-    //            tableView.isHidden = true
-    //        }else{
-    //            activityIndicator.stopAnimating()
-    //            activityIndicator.isHidden = true
-    //
-    //            tableView.isHidden = false
-    //        }
-    //    }
+    func filterDataReceived() {
+        tableView.reloadData()
+        incidentListCount.text = "\(viewModel.incidentList.count) posts are listed"
+    }
 }
 
 extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate {

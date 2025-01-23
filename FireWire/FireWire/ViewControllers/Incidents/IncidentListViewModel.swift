@@ -13,23 +13,23 @@ final class IncidentListViewModel {
     var delegate: PostListViewDelegate?
 
     init(_ incidentList: [IncidentDataModel] = [], _ selectedLocalities: SelectedLocalities? = nil) {
-        if incidentList.count > 0 {
-            self.incidentList = incidentList
-        }else{
+        if selectedLocalities != nil {
             filterIncidentList(selectedLocalities: selectedLocalities)
+        }else{
+            self.incidentList = incidentList
         }
     }
 
     func filterIncidentList(selectedLocalities: SelectedLocalities?) {
         var requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
-        let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
-
         if let selectedLocalities {
             requestModel.query = QueryModel(
                 locality: selectedLocalities.selectedLocalityIDs,
                 subLocality: selectedLocalities.selectedSubLocalityIDs
             )
         }
+
+        let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.incidentList,

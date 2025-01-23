@@ -94,7 +94,7 @@ final class IncidentLocalityListViewModel {
     }
 
     // To get selected IDs at any point
-    func getSelectedIds() -> (localityIds: [String], subLocalityIds: [String]) {
-        return (selectedLocalities, selectedSubLocalities)
+    func getSelectedIds() -> SelectedLocalities {
+        return SelectedLocalities(selectedLocalityIDs: selectedLocalities, selectedSubLocalityIDs: selectedSubLocalities)
     }
 }
