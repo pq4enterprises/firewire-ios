@@ -25,7 +25,7 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToFeeds(){
-        let feedsViewController = FeedsViewController.instantiate()
+        let feedsViewController = FeedsListViewController.instantiate()
         feedsViewController.coordinator = self
         pushViewController(feedsViewController, animated: true)
     }

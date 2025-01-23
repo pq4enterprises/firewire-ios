@@ -270,10 +270,10 @@ agreeing with our Terms and Conditions</string>
             </objects>
             <point key="canvasLocation" x="2721.3740458015268" y="-4.2253521126760569"/>
         </scene>
-        <!--Feeds View Controller-->
+        <!--Feeds List View Controller-->
         <scene sceneID="LeT-8d-qie">
             <objects>
-                <viewController storyboardIdentifier="FeedsViewController" id="s5f-K0-Ekz" customClass="FeedsViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedsViewController" id="s5f-K0-Ekz" customClass="FeedsListViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VPy-a3-HZj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,10 +314,15 @@ agreeing with our Terms and Conditions</string>
                                     <constraint firstAttribute="trailing" secondItem="SZf-gy-6Yt" secondAttribute="trailing" constant="8" id="vBB-6m-6gj"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Pd-BB6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Pd-BB6">
                                 <rect key="frame" x="0.0" y="117" width="393" height="701"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="0wq-su-jc8">
+                                <rect key="frame" x="27" y="181" width="339" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" name="FWRed"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xkd-cR-aKC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -331,6 +336,10 @@ agreeing with our Terms and Conditions</string>
                             <constraint firstItem="vrc-eW-uTX" firstAttribute="trailing" secondItem="Emb-Pd-BB6" secondAttribute="trailing" id="Qhg-wr-siB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0wq-su-jc8" id="qWb-0w-J13"/>
+                        <outlet property="tableView" destination="Emb-Pd-BB6" id="P2e-tO-lP2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mp-Qe-oSI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

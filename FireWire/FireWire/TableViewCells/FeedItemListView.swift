@@ -14,4 +14,8 @@ class FeedItemListView: UITableViewCell {
         return UINib(nibName: "FeedItemListView", bundle: nil)
     }
     @IBOutlet var titleLabel: UILabel!
+
+    func setupView(_ model: FeedListData){
+        titleLabel.text = model.name
+    }
 }

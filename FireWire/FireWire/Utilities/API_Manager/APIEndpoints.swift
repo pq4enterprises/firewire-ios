@@ -53,6 +53,7 @@ enum APIPayload {
     case incidentLocalityList(_ model: IncidentLocalityRequestModel)
     case addComment(_ model: AddCommentRequestModel)
     case commentsList(_ model: IncidentLocalityRequestModel)
+    case feedList(_ model: IncidentLocalityRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -107,6 +108,13 @@ enum APIPayload {
                 "url": model.url
             ]
         case let .commentsList(model):
+            return [
+                "sortBy": model.sortBy,
+                "sortDir": model.sortDir,
+                "offset": model.offset,
+                "limit": model.limit
+            ]
+        case let .feedList(model):
             return [
                 "sortBy": model.sortBy,
                 "sortDir": model.sortDir,
