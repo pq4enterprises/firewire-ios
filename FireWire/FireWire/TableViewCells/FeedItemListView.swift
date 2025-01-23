@@ -13,7 +13,8 @@ class FeedItemListView: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "FeedItemListView", bundle: nil)
     }
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var playIcon: UIImageView!
 
     func setupView(_ model: FeedListData){
         titleLabel.text = model.name

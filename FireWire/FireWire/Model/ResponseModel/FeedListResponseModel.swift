@@ -17,6 +17,7 @@ struct FeedListData: Codable {
     let name: String
     let url: String
     let createdAt: String
+    var isPlaying: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

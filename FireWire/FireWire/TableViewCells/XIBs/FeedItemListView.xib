@@ -63,7 +63,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="titleLabel" destination="p6R-jB-GcV" id="MhG-12-UcF"/>
+                <outlet property="playIcon" destination="6dR-Ae-bFp" id="lJz-QW-7WX"/>
+                <outlet property="titleLabel" destination="p6R-jB-GcV" id="9pC-fo-mes"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="28.52112676056338"/>
         </tableViewCell>

@@ -18,6 +18,7 @@ enum FWImageResources: String {
     case mapMarker = "map_marker"
     case favIcon = "star_icon"
     case favIconSelected = "star_selected"
+    case playIcon = "play_icon"
 }
 
 extension UIImage {
@@ -37,4 +38,5 @@ struct FWImage {
     static let mapMarker = UIImage.appImage(.mapMarker)
     static let favIcon = UIImage.appImage(.favIcon)
     static let favIconSelected = UIImage.appImage(.favIconSelected)
+    static let playIcon = UIImage.appImage(.playIcon)
 }
