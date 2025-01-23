@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -269,6 +269,72 @@ agreeing with our Terms and Conditions</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2721.3740458015268" y="-4.2253521126760569"/>
+        </scene>
+        <!--Feeds View Controller-->
+        <scene sceneID="LeT-8d-qie">
+            <objects>
+                <viewController storyboardIdentifier="FeedsViewController" id="s5f-K0-Ekz" customClass="FeedsViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VPy-a3-HZj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrc-eW-uTX">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZf-gy-6Yt">
+                                        <rect key="frame" x="305" y="2" width="80" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Jgo-ed-t6H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Close" image="close_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonTap:" destination="s5f-K0-Ekz" eventType="touchUpInside" id="iR7-49-C4h"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mh-yp-ncn">
+                                        <rect key="frame" x="171" y="14" width="51" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3OV-tu-x3m"/>
+                                    <constraint firstItem="SZf-gy-6Yt" firstAttribute="top" secondItem="vrc-eW-uTX" secondAttribute="top" constant="2" id="a6z-BJ-Spo"/>
+                                    <constraint firstItem="3Mh-yp-ncn" firstAttribute="centerX" secondItem="vrc-eW-uTX" secondAttribute="centerX" id="grd-ak-itn"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZf-gy-6Yt" secondAttribute="bottom" constant="8" id="ooD-5E-25f"/>
+                                    <constraint firstItem="3Mh-yp-ncn" firstAttribute="centerY" secondItem="vrc-eW-uTX" secondAttribute="centerY" id="pe4-V0-kft"/>
+                                    <constraint firstAttribute="trailing" secondItem="SZf-gy-6Yt" secondAttribute="trailing" constant="8" id="vBB-6m-6gj"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Pd-BB6">
+                                <rect key="frame" x="0.0" y="117" width="393" height="701"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Xkd-cR-aKC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Emb-Pd-BB6" firstAttribute="top" secondItem="vrc-eW-uTX" secondAttribute="bottom" constant="8" symbolic="YES" id="BiB-dv-THO"/>
+                            <constraint firstItem="Emb-Pd-BB6" firstAttribute="leading" secondItem="Xkd-cR-aKC" secondAttribute="leading" id="EDH-Cq-V24"/>
+                            <constraint firstItem="Emb-Pd-BB6" firstAttribute="bottom" secondItem="Xkd-cR-aKC" secondAttribute="bottom" id="Gfy-fh-Flb"/>
+                            <constraint firstItem="Emb-Pd-BB6" firstAttribute="trailing" secondItem="Xkd-cR-aKC" secondAttribute="trailing" id="H9m-d3-PFL"/>
+                            <constraint firstItem="vrc-eW-uTX" firstAttribute="leading" secondItem="Xkd-cR-aKC" secondAttribute="leading" id="IV3-9i-pHd"/>
+                            <constraint firstItem="vrc-eW-uTX" firstAttribute="top" secondItem="Xkd-cR-aKC" secondAttribute="top" id="KlC-Sb-RaP"/>
+                            <constraint firstItem="vrc-eW-uTX" firstAttribute="trailing" secondItem="Emb-Pd-BB6" secondAttribute="trailing" id="Qhg-wr-siB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mp-Qe-oSI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922.9007633587785" y="719.71830985915494"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="BDt-LG-3Ya">
@@ -1375,7 +1441,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 <rect key="frame" x="20" y="165" width="353" height="110"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YWl-k6-lLx" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="21" width="70" height="68.666666666666671"/>
+                                        <rect key="frame" x="20" y="20.666666666666664" width="70" height="68.666666666666686"/>
                                         <color key="tintColor" name="FWRed"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="0of-Ed-Czg"/>
@@ -1511,7 +1577,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         <rect key="frame" x="0.0" y="118" width="393" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="B4l-Gh-cd8" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="16" width="70" height="68.666666666666671"/>
+                                                <rect key="frame" x="20" y="15.666666666666664" width="70" height="68.666666666666686"/>
                                                 <color key="tintColor" name="FWRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="C4g-fr-SGL"/>
@@ -1882,7 +1948,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="734.33333333333337"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-ax-zDJ" customClass="FWRoundedImageView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="146.66666666666666" y="19.000000000000007" width="100" height="98.666666666666686"/>
+                                                <rect key="frame" x="146.66666666666666" y="18.666666666666664" width="100" height="98.666666666666686"/>
                                                 <color key="tintColor" name="FWRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="g5u-hQ-D8O"/>
@@ -2199,40 +2265,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucc-RS-Je3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3462" y="1382"/>
-        </scene>
-        <!--Feeds View Controller-->
-        <scene sceneID="odQ-tu-Xnf">
-            <objects>
-                <viewController storyboardIdentifier="FeedsViewController" id="YMu-cI-pK2" customClass="FeedsViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LG7-CJ-HOf">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="News Audio Feeds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcc-Ud-aYF">
-                                <rect key="frame" x="110" y="414" width="173" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-FY-9YE">
-                                <rect key="frame" x="310" y="59" width="67" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonTap:" destination="YMu-cI-pK2" eventType="touchUpInside" id="WVn-fA-5kh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="uuv-EC-4Wl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vrn-O5-8we" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2700" y="2052.816901408451"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="6bt-Uv-7ea">
