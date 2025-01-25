@@ -8,14 +8,19 @@
 import AVFAudio
 import Foundation
 
-final class FeedsListViewModel {
-    var feedList: [FeedListData] = []
+final class FeedsListViewModel: PaginatableViewModel {
+    typealias DataType = FeedListData
+
+    var currentPage: Int = 1
+    var totalPages: Int = 1
+    var limit: Int = 10
+    var items: [FeedListData] = []
     var delegate: FeedListViewDelegate?
     var audioPlayer: AVAudioPlayer?
     var currentIndex: IndexPath?  // Track which row is currently playing
 
-    func getFeedList() {
-        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+    func fetchData(forPage page: Int, completion: @escaping (Result<[FeedListData], any Error>) -> Void) {
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
         let getFeedRequestModel = APIPayload.feedList(requestModel).toDictionary()
 
         APIRequest().callApi(
@@ -30,10 +35,29 @@ final class FeedsListViewModel {
             }
 
             if let feedListResponse = apiResponse as? FeedListResponseModel {
-                self?.feedList = feedListResponse.data
-                self?.delegate?.dataReceived()
+                let newItems = feedListResponse.data
+                self?.totalPages = feedListResponse.pageInfo.totalCount
+                DispatchQueue.main.async {
+                    completion(.success(newItems))
+                }
             } else {
                 print("Invalid response object")
+            }
+        }
+    }
+
+    func didFetchData(_ data: [FeedListData]) {
+        items.append(contentsOf: data) // Append new items to existing list
+        delegate?.dataReceived()
+    }
+
+    func getFeedList(){
+        fetchData(forPage: currentPage) { [weak self] result in
+            switch result {
+            case .success(let newItems):
+                self?.didFetchData(newItems)
+            case .failure(let error):
+                print("Error fetching incidents: \(error)")
             }
         }
     }

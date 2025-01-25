@@ -18,12 +18,16 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
     
     var coordinator: HomeCoordinator?
     var viewModel: FeedsListViewModel!
+    var paginationHandler: PaginationHandler<FeedsListViewModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = FeedsListViewModel()
         viewModel.getFeedList()
         viewModel.delegate = self
+        
+        paginationHandler = PaginationHandler(viewModel: viewModel)
+
         setupTableView()
     }
 
@@ -72,7 +76,18 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
     @IBAction func closeButtonTap(_ sender: Any) {
         coordinator?.navigateBackToHome()
     }
-    
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        let scrollOffset = scrollView.contentOffset.y
+        let screenHeight = scrollView.frame.size.height
+
+        if contentHeight - scrollOffset <= screenHeight {
+            // Load the next page when the user scrolls to the bottom
+            paginationHandler.loadNextPage()
+        }
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> FeedsListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -84,17 +99,17 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 
 extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.feedList.count
+        viewModel.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedItemListView.identifier, for: indexPath) as! FeedItemListView
-        cell.setupView(viewModel.feedList[indexPath.row])
+        cell.setupView(viewModel.items[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = viewModel.feedList[indexPath.row].url
+        let urlString = viewModel.items[indexPath.row].url
         viewModel.playAudio(urlString, index: indexPath)
     }
 
