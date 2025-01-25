@@ -429,10 +429,11 @@
 		B0100CDD2CF79975004F6214 /* Incidents */ = {
 			isa = PBXGroup;
 			children = (
-				B0100CDE2CF79984004F6214 /* XIBs */,
 				B046823E2CE5401100419C65 /* IncidentListViewController.swift */,
+				B046823F2CE5401100419C65 /* IncidentListViewController.xib */,
 				B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */,
 				B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */,
+				B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */,
 				B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */,
 				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
@@ -444,31 +445,14 @@
 			path = Incidents;
 			sourceTree = "<group>";
 		};
-		B0100CDE2CF79984004F6214 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */,
-				B046823F2CE5401100419C65 /* IncidentListViewController.xib */,
-			);
-			path = XIBs;
-			sourceTree = "<group>";
-		};
 		B0100CDF2CF79A03004F6214 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				B0100CE02CF79A0A004F6214 /* XIBs */,
 				B04682322CE5327D00419C65 /* NewsListViewController.swift */,
+				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
 				B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */,
 			);
 			path = News;
-			sourceTree = "<group>";
-		};
-		B0100CE02CF79A0A004F6214 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				B04682332CE5327D00419C65 /* NewsListViewController.xib */,
-			);
-			path = XIBs;
 			sourceTree = "<group>";
 		};
 		B01BB04D2CF31087003970D7 /* Menu */ = {
@@ -526,8 +510,8 @@
 		B04682522CE67CE900419C65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B09254BC2CF6494E00879B07 /* XIBs */,
 				B046823A2CE53B9300419C65 /* MapViewController.swift */,
+				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 			);
@@ -596,14 +580,6 @@
 				B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */,
 			);
 			path = CommonView;
-			sourceTree = "<group>";
-		};
-		B09254BC2CF6494E00879B07 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				B046823B2CE53B9300419C65 /* MapViewController.xib */,
-			);
-			path = XIBs;
 			sourceTree = "<group>";
 		};
 		B0CF74B92D038C0B008935D8 /* Model */ = {
