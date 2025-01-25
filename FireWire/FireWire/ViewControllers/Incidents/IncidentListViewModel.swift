@@ -7,22 +7,26 @@
 
 import Foundation
 
-final class IncidentListViewModel {
+final class IncidentListViewModel: PaginatableViewModel {
+    typealias DataType = IncidentDataModel
 
-    var incidentList: [IncidentDataModel] = []
+    var currentPage: Int = 1
+    var totalPages: Int = 1
+    var limit: Int = 10
+    var items: [IncidentDataModel] = []
+    var selectedLocalities: SelectedLocalities?
     var delegate: PostListViewDelegate?
 
     init(_ incidentList: [IncidentDataModel] = [], _ selectedLocalities: SelectedLocalities? = nil) {
-        if selectedLocalities != nil {
-            filterIncidentList(selectedLocalities: selectedLocalities)
-        }else{
-            self.incidentList = incidentList
-        }
+        self.selectedLocalities = selectedLocalities
+        filterIncidentList(selectedLocalities: selectedLocalities)
     }
 
-    func filterIncidentList(selectedLocalities: SelectedLocalities?) {
-        var requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
-        if let selectedLocalities {
+    func fetchData(forPage page: Int, completion: @escaping (Result<[IncidentDataModel], any Error>) -> Void) {
+        var requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
+
+        // Add filters if available
+        if let selectedLocalities = selectedLocalities {
             requestModel.query = QueryModel(
                 locality: selectedLocalities.selectedLocalityIDs,
                 subLocality: selectedLocalities.selectedSubLocalityIDs
@@ -31,40 +35,42 @@ final class IncidentListViewModel {
 
         let getIncidentRequestModel = APIPayload.incidentList(requestModel).toDictionary()
 
+        // Perform API call
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.incidentList,
             payload: getIncidentRequestModel,
             expect: IncidentResponseModel.self,
-            requestType: APIConstants.GET)
-        { [weak self] response, _, _ in
-            
+            requestType: APIConstants.GET
+        ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])))
                 return
             }
 
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
-                self?.incidentList = incidentListResponse.data.data
-                self?.delegate?.filterDataReceived()
-            }else{
-                print("Invalid response object")
+                let newItems = incidentListResponse.data.data
+                self?.totalPages = incidentListResponse.data.pageInfo.totalCount
+                completion(.success(newItems))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response"])))
             }
         }
     }
 
-    func frameAndPassQuery(_ selectedLocalities: SelectedLocalities) -> String{
-        let query: [String: Any] = [
-            "locality": selectedLocalities.selectedLocalityIDs,
-            "subLocality": selectedLocalities.selectedSubLocalityIDs
-        ]
+    func didFetchData(_ data: [IncidentDataModel]) {
+        items.append(contentsOf: data) // Append new items to existing list
+        delegate?.filterDataReceived()
+    }
 
-        if let queryData = try? JSONSerialization.data(withJSONObject: query, options: []),
-               let queryString = String(data: queryData, encoding: .utf8) {
-
-                // URL encode the JSON string to safely pass it as a URL parameter
-                if let encodedQuery = queryString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-                   return encodedQuery
-                }
+    // Public method to trigger data fetching
+    func filterIncidentList(selectedLocalities: SelectedLocalities?) {
+        fetchData(forPage: currentPage) { [weak self] result in
+            switch result {
+            case .success(let newItems):
+                self?.didFetchData(newItems)
+            case .failure(let error):
+                print("Error fetching incidents: \(error)")
             }
-        return ""
+        }
     }
 }

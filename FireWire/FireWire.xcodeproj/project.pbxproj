@@ -137,6 +137,7 @@
 		B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */; };
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
+		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,7 @@
 		B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOtpResponseModel.swift; sourceTree = "<group>"; };
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +334,7 @@
 		9B4F50D22CF57068007D319D /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
+				B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */,
 				9B4F50CD2CF57068007D319D /* JPAlertController.swift */,
 				9B4F50CE2CF57068007D319D /* JPLoader.swift */,
 				9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */,
@@ -883,6 +886,7 @@
 				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
 				B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */,
+				B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */,
 				B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
