@@ -406,14 +406,22 @@
 		B0100CD82CF78DDD004F6214 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				B0D737842D3FD59600D82F2C /* FeedItemListView.xib */,
-				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
-				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
-				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
+				B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */,
 				B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */,
-				B0A304822D134937006F851A /* CityHeaderCell.xib */,
-				B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */,
+				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
 				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
+				B0D737832D3FD59600D82F2C /* FeedItemListView.swift */,
+				B0D737842D3FD59600D82F2C /* FeedItemListView.xib */,
+				B0A304812D134937006F851A /* CityHeaderCell.swift */,
+				B0A304822D134937006F851A /* CityHeaderCell.xib */,
+				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
+				B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */,
+				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
+				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
+				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
+				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
+				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
+				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -509,16 +517,8 @@
 			isa = PBXGroup;
 			children = (
 				B0100CD82CF78DDD004F6214 /* XIBs */,
-				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
-				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
-				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 				B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */,
-				B0A304812D134937006F851A /* CityHeaderCell.swift */,
-				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
 				B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */,
-				B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */,
-				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
-				B0D737832D3FD59600D82F2C /* FeedItemListView.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
