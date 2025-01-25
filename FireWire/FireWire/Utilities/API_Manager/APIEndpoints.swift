@@ -22,7 +22,7 @@ enum APIEndpoints {
     static let incidentDetail = "api/app/incident/%@"
     static let localityList = "api/app/locality"
     static let favIncident = "api/app/incident/activity"
-    static let userProfile = "/api/app/user/profile"
+    static let userProfile = "api/app/user/profile"
     static let commentsList = "api/app/incident/comment/%@"
     static let addComment = "api/app/incident/activity"
     static let uploadImage = "api/common/upload"

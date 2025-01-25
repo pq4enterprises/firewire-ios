@@ -34,7 +34,7 @@ public class APIRequest {
                                   httpMethod: requestType,
                                   authTokenString: accessToken ?? "",
                                   headers: APIConstants.headers,
-                                  payload: requestType == APIConstants.POST ? payload : nil,
+                                  payload: requestType == APIConstants.GET ? nil : payload,
                                   expecting: expect.self)
         { result in
             switch result {
