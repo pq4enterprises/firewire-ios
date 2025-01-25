@@ -21,7 +21,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
         guard let selectedIncidentID else { return }
         let requestURL = String(format: APIEndpoints.commentsList, selectedIncidentID)
 
-        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
         let getCommentsRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 
         APIRequest().callApi(
