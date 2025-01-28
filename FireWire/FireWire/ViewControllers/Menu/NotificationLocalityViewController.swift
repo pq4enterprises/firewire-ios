@@ -11,11 +11,14 @@ class NotificationLocalityViewController: UIViewController {
     var coordinator: HomeCoordinator?
     var localityData: LocalityResponseData?
     var localitySubHeadings = ["Sublocalities", "Units"]
+    var viewModel: NotificationLocalityViewModel?
 
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = NotificationLocalityViewModel()
+        viewModel?.localityData = localityData
         setupTableView()
     }
 
@@ -23,8 +26,8 @@ class NotificationLocalityViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
         tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
-        tableView.register(NotificationLocalityHeaderView.nib(), forHeaderFooterViewReuseIdentifier: NotificationLocalityHeaderView.identifier)
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -45,15 +48,13 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let localityData else { return 0 }
+        guard let localityData = viewModel?.localityData else { return 0 }
 
         if section == 1 {
-            debugPrint("section 1 count -- \(localityData.subLocality.count)")
             return localityData.subLocality.count
-        }else if section == 2 {
-            debugPrint("section 2 count -- \(localityData.unit?.count ?? 0)")
+        } else if section == 2 {
             return localityData.unit?.count ?? 0
-        }else{
+        } else {
             return 0
         }
     }
@@ -63,26 +64,29 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let localityData else { return nil }
+        guard let localityData = viewModel?.localityData else { return nil }
 
-        // Dequeue the custom header view
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NotificationLocalityHeaderView.identifier) as? NotificationLocalityHeaderView else {
-            return nil
-        }
+        let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
 
         if section == 0 {
-            headerView.cityTitle.text = localityData.name
+            headerView.setupView(title: localityData.name)
         } else if section == 1 {
-            headerView.cityTitle.text = localitySubHeadings[0]
-            headerView.cityTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
-        }else if section == 2 {
+            headerView.setupView(title: localitySubHeadings[0])
+            headerView.selectAllAction = {
+                self.viewModel?.toggleSelectAllSubLocalities()
+                tableView.reloadData()
+            }
+        } else if section == 2 {
             if let units = localityData.unit, units.count > 0 {
-                headerView.cityTitle.text = localitySubHeadings[1]
-                headerView.cityTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
-                headerView.btnSelectAll.isHidden = false
-            }else{
-                headerView.cityTitle.text = ""
-                headerView.btnSelectAll.isHidden = true
+                headerView.setupView(title: localitySubHeadings[1])
+                headerView.selectAllButton.isHidden = false
+                headerView.selectAllAction = {
+                    self.viewModel?.toggleSelectAllUnits()
+                    tableView.reloadData()
+                }
+            } else {
+                headerView.setupView(title: "")
+                headerView.selectAllButton.isHidden = true
             }
         }
 
@@ -90,10 +94,15 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let localityData else { return UITableViewCell() }
+        guard let localityData = viewModel?.localityData else { return UITableViewCell() }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectAreaListViewCell.identifier) as! SelectAreaListViewCell
         cell.setupView(localityData, indexPath)
+        cell.onCheckboxToggled = { [weak self] indexPath in
+            self?.viewModel?.toggleSelection(at: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
         return cell
     }
 }

@@ -15,7 +15,7 @@ final class IncidentLocalityListViewModel {
     var selectedSubLocalities: [String] = []
 
     func getLocalities() {
-        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 
 

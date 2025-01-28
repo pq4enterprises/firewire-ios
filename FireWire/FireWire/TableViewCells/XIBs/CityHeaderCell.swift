@@ -17,7 +17,9 @@ class CityHeaderCell: UITableViewCell {
 
     var selectAllAction: (() -> Void)?
 
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var selectAllButton: UIButton!
+
     @IBAction func selectAllButtonTap(_ sender: UIButton) {
         selectAllAction?()
     }

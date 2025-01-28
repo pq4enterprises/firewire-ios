@@ -22,7 +22,7 @@ struct LocalityResponseData: Codable {
     let name: String
     let state: String
     var subLocality: [SubLocality]
-    let unit: [UnitDataModel]?
+    var unit: [UnitDataModel]?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -43,6 +43,7 @@ struct SubLocality: Codable {
 struct UnitDataModel: Codable {
     let id: String
     let unitName: String
+    var isChecked: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

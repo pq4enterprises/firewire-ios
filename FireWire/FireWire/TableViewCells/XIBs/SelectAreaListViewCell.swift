@@ -23,6 +23,7 @@ class SelectAreaListViewCell: UITableViewCell {
     var indexPath: IndexPath?
     var selectedLocalities: [String] = []
     var selectedSubLocalities: [String] = []
+    var onCheckboxToggled: ((IndexPath) -> Void)?
 
     var selectAreaAction: ((SelectedLocalities) -> Void)? = nil
 
@@ -30,21 +31,8 @@ class SelectAreaListViewCell: UITableViewCell {
     @IBOutlet weak var selectAreaButton: UIButton!
     
     @IBAction func checkButton(_ sender: UIButton) {
-        if sender.tag == 0 {
-            addLocality()
-            selectAreaButton.tag = 1
-            selectAreaButton.setImage(FWImage.checkBoxChecked, for: .normal)
-        } else {
-            removeLocality()
-            selectAreaButton.tag = 0
-            selectAreaButton.setImage(FWImage.checkBoxUnChecked, for: .normal)
-        }
-
-        let selectedLocalities = SelectedLocalities(
-            selectedLocalityIDs: selectedLocalities,
-            selectedSubLocalityIDs: selectedSubLocalities
-        )
-        selectAreaAction?(selectedLocalities)
+        guard let indexPath = indexPath else { return }
+        onCheckboxToggled?(indexPath)
     }
 
     func setupView(_ model: LocalityResponseData, _ indexPath: IndexPath){
@@ -56,31 +44,21 @@ class SelectAreaListViewCell: UITableViewCell {
         }else if indexPath.section == 2, let units = model.unit {
             areaLabel.text = units[indexPath.row].unitName
         }
+
+        updateCheckboxState()
     }
 
-    func addLocality(){
-        guard let model = localityData, let indexPath = indexPath else { return }
+    func updateCheckboxState() {
+        guard let locality = localityData, let indexPath = indexPath else { return }
 
-        let subLocalityId = model.subLocality[indexPath.row].id
-        selectedSubLocalities.append(subLocalityId)
-
-        // If this is the first time, add the locality itself as well
-        if !selectedLocalities.contains(model.id) {
-            selectedLocalities.append(model.id)
-        }
-    }
-
-    func removeLocality(){
-        guard let model = localityData, let indexPath = indexPath else { return }
-
-        let subLocalityId = model.subLocality[indexPath.row].id
-        if let index = selectedSubLocalities.firstIndex(of: subLocalityId) {
-            selectedSubLocalities.remove(at: index)
-        }
-
-        // If no sub-localities are selected for this locality, remove the locality
-        if selectedSubLocalities.isEmpty, let localityIndex = selectedLocalities.firstIndex(of: model.id) {
-            selectedLocalities.remove(at: localityIndex)
+        if indexPath.section == 1 {
+            let subLocality = locality.subLocality[indexPath.row]
+            let image = subLocality.isSelected ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
+            selectAreaButton.setImage(image, for: .normal)
+        }else if indexPath.section == 2, let units = locality.unit {
+            let unit = units[indexPath.row]
+            let image = unit.isChecked ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
+            selectAreaButton.setImage(image, for: .normal)
         }
     }
 }

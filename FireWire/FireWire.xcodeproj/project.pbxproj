@@ -115,6 +115,7 @@
 		B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A304822D134937006F851A /* CityHeaderCell.xib */; };
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
+		B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
@@ -264,6 +265,7 @@
 		B0A304822D134937006F851A /* CityHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityHeaderCell.xib; sourceTree = "<group>"; };
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
+		B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewModel.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */,
 				B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */,
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
+				B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */,
 				B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */,
 				B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */,
 				B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */,
@@ -875,6 +878,7 @@
 				B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
+				B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
 				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,

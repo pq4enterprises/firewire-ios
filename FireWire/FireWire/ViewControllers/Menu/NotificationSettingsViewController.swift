@@ -17,17 +17,20 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
         super.viewDidLoad()
         viewModel = IncidentLocalityListViewModel()
         viewModel.delegate = self
+
+        showLoader()
         viewModel.getLocalities()
 
         setupTableView()
     }
-    
+
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
     }
 
     func dataReceived() {
+        hideLoader()
         tableView.reloadData()
     }
 

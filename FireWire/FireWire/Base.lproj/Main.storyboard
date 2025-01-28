@@ -2741,7 +2741,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Locality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-7r-gik">
-                                                    <rect key="frame" x="30" y="10.999999999999998" width="133.33333333333334" height="19.333333333333329"/>
+                                                    <rect key="frame" x="25" y="10.999999999999998" width="133.33333333333334" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2749,7 +2749,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Xpq-7r-gik" secondAttribute="bottom" id="CyJ-ve-R2o"/>
-                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="leading" secondItem="PAQ-Vs-Rr4" secondAttribute="leadingMargin" constant="10" id="Mzd-5b-ojm"/>
+                                                <constraint firstItem="Xpq-7r-gik" firstAttribute="leading" secondItem="PAQ-Vs-Rr4" secondAttribute="leadingMargin" constant="5" id="Mzd-5b-ojm"/>
                                                 <constraint firstItem="Xpq-7r-gik" firstAttribute="top" secondItem="PAQ-Vs-Rr4" secondAttribute="topMargin" id="vx9-dQ-8qs"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2762,7 +2762,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekD-pD-cdS">
-                                                    <rect key="frame" x="29.999999999999996" y="10.999999999999998" width="39.666666666666657" height="19.333333333333329"/>
+                                                    <rect key="frame" x="24.999999999999996" y="10.999999999999998" width="39.666666666666657" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="FWTextGrey2"/>
                                                     <nil key="highlightedColor"/>
@@ -2779,7 +2779,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <constraints>
                                                 <constraint firstItem="fVX-Sn-HrT" firstAttribute="centerY" secondItem="ekD-pD-cdS" secondAttribute="centerY" id="7yd-db-qGs"/>
                                                 <constraint firstItem="ekD-pD-cdS" firstAttribute="top" secondItem="3Qy-46-blA" secondAttribute="topMargin" id="ZM9-2a-0yX"/>
-                                                <constraint firstItem="ekD-pD-cdS" firstAttribute="leading" secondItem="3Qy-46-blA" secondAttribute="leadingMargin" constant="10" id="aEE-zS-auc"/>
+                                                <constraint firstItem="ekD-pD-cdS" firstAttribute="leading" secondItem="3Qy-46-blA" secondAttribute="leadingMargin" constant="5" id="aEE-zS-auc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="fVX-Sn-HrT" secondAttribute="trailing" constant="20" id="lig-yC-dYh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ekD-pD-cdS" secondAttribute="bottom" id="ufE-K2-e1A"/>
                                             </constraints>
@@ -2856,7 +2856,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <constraint firstAttribute="bottom" secondItem="tqM-5q-LVI" secondAttribute="bottom" id="rXd-GZ-2pL"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PmL-48-h9u">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PmL-48-h9u">
                                 <rect key="frame" x="0.0" y="117" width="393" height="701"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
