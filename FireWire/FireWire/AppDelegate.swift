@@ -9,6 +9,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKCoreKit
 import GoogleMaps
+import StoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         /// Facebook SDK initialisation
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        // In-App Purchase
+        SubscriptionManager.shared.fetchProducts()
+
         return true
     }
 

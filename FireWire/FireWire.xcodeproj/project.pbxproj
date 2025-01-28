@@ -116,6 +116,8 @@
 		B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
 		B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
 		B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */; };
+		B0A9D7BA2D49614100DB34A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
+		B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
@@ -266,6 +268,8 @@
 		B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTextField.swift; sourceTree = "<group>"; };
 		B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewModel.swift; sourceTree = "<group>"; };
+		B0A9D7B92D49614100DB34A6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B01D51A42D1EFCEF00D4CBB1 /* GoogleMaps in Frameworks */,
+				B0A9D7BA2D49614100DB34A6 /* StoreKit.framework in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
 				B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */,
 				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
@@ -530,6 +535,7 @@
 				B08236EB2CE374D10092AC01 /* FireWire */,
 				B08237022CE374D30092AC01 /* FireWireTests */,
 				B082370C2CE374D30092AC01 /* FireWireUITests */,
+				B0A9D7B82D49614000DB34A6 /* Frameworks */,
 				B08236EA2CE374D10092AC01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 		B08236EB2CE374D10092AC01 /* FireWire */ = {
 			isa = PBXGroup;
 			children = (
+				B0A9D7BB2D4961D400DB34A6 /* InAppPurchase */,
 				B0CF74B92D038C0B008935D8 /* Model */,
 				9B4F51192CF586BF007D319D /* Resources */,
 				9B4F50D92CF57068007D319D /* Utilities */,
@@ -586,6 +593,22 @@
 				B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		B0A9D7B82D49614000DB34A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0A9D7B92D49614100DB34A6 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0A9D7BB2D4961D400DB34A6 /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */,
+			);
+			path = InAppPurchase;
 			sourceTree = "<group>";
 		};
 		B0CF74B92D038C0B008935D8 /* Model */ = {
@@ -901,6 +924,7 @@
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
+				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
