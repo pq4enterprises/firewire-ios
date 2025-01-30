@@ -67,12 +67,6 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
         noIncidentsLabel.isHidden = false
     }
 
-    func noIncidentData() {
-        showActivityIndicator(false)
-        tableView.isHidden = true
-        noIncidentsLabel.isHidden = false
-    }
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentHeight = scrollView.contentSize.height
         let scrollOffset = scrollView.contentOffset.y
