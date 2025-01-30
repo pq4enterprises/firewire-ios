@@ -43,7 +43,7 @@ final class IncidentListViewModel: PaginatableViewModel {
             requestType: APIConstants.GET
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])))
+                self?.delegate?.noIncidentData()
                 return
             }
 
