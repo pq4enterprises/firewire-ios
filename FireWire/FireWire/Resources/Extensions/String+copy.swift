@@ -17,4 +17,27 @@ public extension String {
         public static let signInText = "Already have an Account? Sign In"
         public static let signIn = "Sign In"
     }
+
+    struct VerifyOtp {
+        public static let info = "Verification code has been sent to you registered email id %@"
+    }
+}
+
+public extension String {
+
+    var maskEmail: String {
+        let email = self
+        let components = email.components(separatedBy: "@")
+        var maskEmail = ""
+        if let first = components.first {
+            maskEmail = String(first.enumerated().map { index, char in
+                return [0, 1, first.count - 1, first.count - 2].contains(index) ?
+                char : "*"
+            })
+        }
+        if let last = components.last {
+            maskEmail = maskEmail + "@" + last
+        }
+        return maskEmail
+    }
 }

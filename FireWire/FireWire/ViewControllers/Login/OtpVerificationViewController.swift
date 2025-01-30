@@ -14,7 +14,8 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var value4Text: UITextField!
     @IBOutlet var value5Text: UITextField!
     @IBOutlet var value6Text: UITextField!
-
+    @IBOutlet weak var verifyOtpInfo: UILabel!
+    
     var otpTextFields: [UITextField] = []
     var coordinator: LoginCoordinator?
     var email: String?
@@ -32,6 +33,11 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         otpTextFields.forEach { $0.keyboardType = .numberPad }
 
         value1Text.becomeFirstResponder()
+
+        if let email {
+            let maskedEmail = email.maskEmail
+            verifyOtpInfo.text = String.init(format: .VerifyOtp.info, maskedEmail)
+        }
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {

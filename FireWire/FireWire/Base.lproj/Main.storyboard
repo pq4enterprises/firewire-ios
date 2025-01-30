@@ -2678,6 +2678,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <outlet property="value4Text" destination="Kfj-Lf-C5T" id="kNS-Ha-YRn"/>
                         <outlet property="value5Text" destination="07s-iy-Nf2" id="sut-bc-KaL"/>
                         <outlet property="value6Text" destination="Ny1-fX-fWk" id="A9O-ZX-O1r"/>
+                        <outlet property="verifyOtpInfo" destination="MQ6-Y7-7GR" id="htz-aU-Hsx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xfx-cx-cxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
