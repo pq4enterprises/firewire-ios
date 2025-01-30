@@ -9,13 +9,15 @@ import UIKit
 
 protocol PostListViewDelegate: AnyObject {
     func filterDataReceived()
+    func noIncidentData()
 }
 
 class IncidentListViewController: UIViewController, PostListViewDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var incidentListCount: UILabel!
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var noIncidentsLabel: UILabel!
+    
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentListViewModel
     var paginationHandler: PaginationHandler<IncidentListViewModel>!
@@ -56,6 +58,12 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
         showActivityIndicator(false)
         tableView.reloadData()
         incidentListCount.text = "\(viewModel.items.count) posts are listed"
+    }
+
+    func noIncidentData() {
+        showActivityIndicator(false)
+        tableView.isHidden = true
+        noIncidentsLabel.isHidden = false
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
