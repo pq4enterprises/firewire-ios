@@ -15,7 +15,9 @@ class MyAccountViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var logoutView: UIStackView!
-    
+    @IBOutlet weak var termsStackView: UIStackView!
+    @IBOutlet weak var privacyPolicyStackView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -31,9 +33,17 @@ class MyAccountViewController: UIViewController {
     }
 
     func setupActions(){
-        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(logoutViewTap))
+        let logoutViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(logoutViewTap))
         logoutView.isUserInteractionEnabled = true
-        logoutView.addGestureRecognizer(viewTapGesture)
+        logoutView.addGestureRecognizer(logoutViewTapGesture)
+
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsViewTap))
+        termsStackView.isUserInteractionEnabled = true
+        termsStackView.addGestureRecognizer(termsTapGesture)
+
+        let privacyPolicyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyViewTap))
+        privacyPolicyStackView.isUserInteractionEnabled = true
+        privacyPolicyStackView.addGestureRecognizer(privacyPolicyTapGesture)
 
         let updateProfileTapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfileViewTap))
         updateProfileView.isUserInteractionEnabled = true
@@ -42,6 +52,14 @@ class MyAccountViewController: UIViewController {
 
     @objc func logoutViewTap() {
         self.appCoordinator?.backToParentCoordinator()
+    }
+
+    @objc func termsViewTap() {
+        self.coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
+    }
+
+    @objc func privacyPolicyViewTap() {
+        self.coordinator?.openURL(APIEndpoints.privacyPolicyUrl)
     }
 
     @objc func updateProfileViewTap() {
