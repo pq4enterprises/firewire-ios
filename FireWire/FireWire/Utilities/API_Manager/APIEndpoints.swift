@@ -34,6 +34,7 @@ enum APIEndpoints {
     static let contactUrl = "https://nycfirewire.net/contact/"
     static let fireWireUrl = "https://nycfirewire.net/"
     static let saltyWireUrl = "https://saltywire.com/"
+    static let termsAndConditionUrl = "https://nycfirewire.net/terms"
 }
 
 enum SocialLoginType: String{

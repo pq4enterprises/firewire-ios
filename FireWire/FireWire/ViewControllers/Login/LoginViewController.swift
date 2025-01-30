@@ -65,6 +65,10 @@ class LoginViewController: UIViewController {
         let forgotLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(forgotTap))
         forgotPasswordLabel.isUserInteractionEnabled = true
         forgotPasswordLabel.addGestureRecognizer(forgotLabelTapGesture)
+
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTap))
+        termsAndConditionsLabel.isUserInteractionEnabled = true
+        termsAndConditionsLabel.addGestureRecognizer(termsTapGesture)
     }
 
     @objc func registerTap() {
@@ -73,6 +77,10 @@ class LoginViewController: UIViewController {
 
     @objc func forgotTap() {
         coordinator?.navigateToForgotPassword()
+    }
+
+    @objc func termsAndConditionsTap() {
+        coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
     }
 
     @IBAction func signInTap(_ sender: UIButton) {
