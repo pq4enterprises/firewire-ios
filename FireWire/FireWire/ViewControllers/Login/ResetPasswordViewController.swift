@@ -9,6 +9,7 @@ import UIKit
 
 class ResetPasswordViewController: UIViewController {
     @IBOutlet var passwordTextField: FWTextField!
+    @IBOutlet weak var confirmPasswordTextField: FWTextField!
 
     var coordinator: LoginCoordinator?
     var resetToken: String?
@@ -24,9 +25,15 @@ class ResetPasswordViewController: UIViewController {
 
     @IBAction func submitButton(_ sender: UIButton) {
         showLoader()
-        guard let newPassword = passwordTextField.text, !newPassword.isEmpty, let resetToken = resetToken else {
+        guard let newPassword = passwordTextField.text, !newPassword.isEmpty, let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty, let resetToken = resetToken else {
             hideLoader()
             showAlertMessage("Please enter valid password")
+            return
+        }
+
+        if newPassword != confirmPassword {
+            hideLoader()
+            showAlertMessage("One of the password is not matching")
             return
         }
 

@@ -2930,8 +2930,27 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-BE-zML">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="701"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="I58-nh-9ZV">
+                                                <rect key="frame" x="30" y="38" width="333" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-KC-Qfz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dw3-QD-Yte" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="333" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="Muj-F6-Flf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-tT-mzb" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="164" width="333" height="50"/>
+                                                <rect key="frame" x="30" y="283" width="333" height="50"/>
                                                 <color key="backgroundColor" name="FWRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Agz-Hn-Dln"/>
@@ -2944,44 +2963,47 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                     <action selector="submitButton:" destination="daa-6t-Y7q" eventType="touchUpInside" id="ZNr-wp-HFB"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s8H-ir-1ec">
+                                                <rect key="frame" x="30" y="149" width="333" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnc-ZM-079">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-4q-6QZ" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="333" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="RUk-u5-Zfl"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="I58-nh-9ZV" secondAttribute="trailing" constant="30" id="FDz-co-ibK"/>
+                                            <constraint firstAttribute="trailing" secondItem="s8H-ir-1ec" secondAttribute="trailing" constant="30" id="OJw-nu-MNj"/>
+                                            <constraint firstItem="I58-nh-9ZV" firstAttribute="top" secondItem="mgs-BE-zML" secondAttribute="top" constant="38" id="WsO-wM-ybx"/>
+                                            <constraint firstItem="s8H-ir-1ec" firstAttribute="top" secondItem="I58-nh-9ZV" secondAttribute="bottom" constant="15" id="XZg-Oo-lIR"/>
                                             <constraint firstItem="tfq-tT-mzb" firstAttribute="leading" secondItem="mgs-BE-zML" secondAttribute="leading" constant="30" id="YTA-bn-19f"/>
                                             <constraint firstAttribute="trailing" secondItem="tfq-tT-mzb" secondAttribute="trailing" constant="30" id="hyA-A8-9ir"/>
+                                            <constraint firstItem="s8H-ir-1ec" firstAttribute="leading" secondItem="mgs-BE-zML" secondAttribute="leading" constant="30" id="jC4-UI-sYd"/>
+                                            <constraint firstItem="I58-nh-9ZV" firstAttribute="leading" secondItem="mgs-BE-zML" secondAttribute="leading" constant="30" id="rG6-7x-Dbk"/>
+                                            <constraint firstItem="tfq-tT-mzb" firstAttribute="top" secondItem="s8H-ir-1ec" secondAttribute="bottom" constant="38" id="vbi-0e-n9K"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="I58-nh-9ZV">
-                                        <rect key="frame" x="30" y="30" width="333" height="96"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-KC-Qfz">
-                                                <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
-                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
-                                                <color key="textColor" name="FWTextGrey2"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dw3-QD-Yte" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="41" width="333" height="55"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="55" id="Muj-F6-Flf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="I58-nh-9ZV" secondAttribute="trailing" constant="30" id="0BZ-pd-uGu"/>
                                     <constraint firstAttribute="bottom" secondItem="mgs-BE-zML" secondAttribute="bottom" id="1yj-RJ-8DA"/>
-                                    <constraint firstItem="tfq-tT-mzb" firstAttribute="top" secondItem="dw3-QD-Yte" secondAttribute="bottom" constant="38" id="2nm-O5-QrZ"/>
                                     <constraint firstItem="mgs-BE-zML" firstAttribute="height" secondItem="rb7-Y7-4nf" secondAttribute="height" priority="250" id="3eS-nr-48v"/>
                                     <constraint firstItem="mgs-BE-zML" firstAttribute="top" secondItem="rb7-Y7-4nf" secondAttribute="top" id="41h-5C-WgM"/>
-                                    <constraint firstItem="I58-nh-9ZV" firstAttribute="top" secondItem="rb7-Y7-4nf" secondAttribute="top" constant="30" id="7j4-Y1-bVS"/>
                                     <constraint firstAttribute="trailing" secondItem="mgs-BE-zML" secondAttribute="trailing" id="KXa-tg-6LQ"/>
                                     <constraint firstItem="mgs-BE-zML" firstAttribute="leading" secondItem="rb7-Y7-4nf" secondAttribute="leading" id="hXo-yI-J7j"/>
                                     <constraint firstItem="mgs-BE-zML" firstAttribute="width" secondItem="rb7-Y7-4nf" secondAttribute="width" id="m17-0Y-Jgq"/>
-                                    <constraint firstItem="I58-nh-9ZV" firstAttribute="leading" secondItem="rb7-Y7-4nf" secondAttribute="leading" constant="30" id="uJu-aY-tc4"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2998,6 +3020,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="confirmPasswordTextField" destination="SSh-4q-6QZ" id="50R-cW-T0J"/>
                         <outlet property="passwordTextField" destination="dw3-QD-Yte" id="e0M-Ba-ehS"/>
                     </connections>
                 </viewController>
