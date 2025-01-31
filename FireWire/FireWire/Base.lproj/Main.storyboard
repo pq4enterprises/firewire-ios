@@ -2639,10 +2639,20 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                     <constraint firstAttribute="height" constant="60" id="Yx6-CO-6ea"/>
                                                 </constraints>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJf-L9-MQa">
+                                                <rect key="frame" x="137.33333333333334" y="258.33333333333331" width="118.33333333333334" height="34.333333333333314"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Resend OTP"/>
+                                                <connections>
+                                                    <action selector="resentOTPTap:" destination="dvQ-eR-k9V" eventType="touchUpInside" id="ISK-L3-5It"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="faG-rZ-ZZl" firstAttribute="top" secondItem="MQ6-Y7-7GR" secondAttribute="bottom" constant="70" id="8IY-pN-Rmo"/>
+                                            <constraint firstItem="IJf-L9-MQa" firstAttribute="top" secondItem="faG-rZ-ZZl" secondAttribute="bottom" constant="45" id="HOL-N2-mjW"/>
+                                            <constraint firstItem="IJf-L9-MQa" firstAttribute="centerX" secondItem="faG-rZ-ZZl" secondAttribute="centerX" id="Hzm-JD-kNh"/>
                                             <constraint firstItem="faG-rZ-ZZl" firstAttribute="leading" secondItem="aXM-xa-lkh" secondAttribute="leading" constant="30" id="YRp-5f-Rvw"/>
                                             <constraint firstItem="MQ6-Y7-7GR" firstAttribute="leading" secondItem="aXM-xa-lkh" secondAttribute="leading" constant="30" id="bSd-fx-NCj"/>
                                             <constraint firstAttribute="trailing" secondItem="faG-rZ-ZZl" secondAttribute="trailing" constant="30" id="e7v-7M-ekM"/>

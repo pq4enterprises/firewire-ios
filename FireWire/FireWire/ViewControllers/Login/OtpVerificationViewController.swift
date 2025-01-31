@@ -14,8 +14,8 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var value4Text: UITextField!
     @IBOutlet var value5Text: UITextField!
     @IBOutlet var value6Text: UITextField!
-    @IBOutlet weak var verifyOtpInfo: UILabel!
-    
+    @IBOutlet var verifyOtpInfo: UILabel!
+
     var otpTextFields: [UITextField] = []
     var coordinator: LoginCoordinator?
     var email: String?
@@ -36,7 +36,7 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
 
         if let email {
             let maskedEmail = email.maskEmail
-            verifyOtpInfo.text = String.init(format: .VerifyOtp.info, maskedEmail)
+            verifyOtpInfo.text = String(format: .VerifyOtp.info, maskedEmail)
         }
     }
 
@@ -44,8 +44,11 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         coordinator?.popView()
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    @IBAction func resentOTPTap(_ sender: UIButton) {
+        requestOtp()
+    }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var boolSubmitOtp = false
         guard string.count <= 1 else {
             return false
@@ -73,6 +76,26 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         return false
     }
 
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+
+    // A convenience method to instantiate from the storyboard
+    static func instantiate() -> OtpVerificationViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
+        return viewController
+    }
+}
+
+// MARK: - API calls
+
+extension OtpVerificationViewController {
     func submitOtp() {
         showLoader()
 
@@ -103,19 +126,28 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
-    }
+    func requestOtp() {
+        showLoader()
 
-    // A convenience method to instantiate from the storyboard
-    static func instantiate() -> OtpVerificationViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
-        return viewController
+        guard let email = email else { return }
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.forgotPassword,
+            payload: APIPayload.forgotPassword(email: email).toDictionary(),
+            expect: ForgotPasswordResponseModel.self
+        ) { [weak self] response, _, _ in
+
+            self?.hideLoader()
+            guard let apiResponse = response else {
+                self?.showAlertMessage("Technical error, please try again!")
+                return
+            }
+
+            if let response = apiResponse as? ForgotPasswordResponseModel {
+                if response.code.lowercased() != "success" {
+                    self?.showAlertMessage(response.message)
+                }
+            }
+        }
     }
 }
