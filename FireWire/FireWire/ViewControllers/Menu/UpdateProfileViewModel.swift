@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class UpdateProfileViewModel {
     public var delegate: UpdateProfileViewDelegate?
@@ -54,6 +55,23 @@ final class UpdateProfileViewModel {
                 self?.delegate?.profileUpdated("Profile Updated")
             } else {
                 self?.delegate?.profileUpdated("Profile update failed, try again after sometime")
+            }
+        }
+    }
+
+    func requestImageUpload(_ image: UIImage) {
+        APIRequest().uploadImage(
+            apiEndPoint: APIEndpoints.uploadImage,
+            image: image,
+            expect: UploadImageResponseModel.self
+        ) { response, _, _ in
+            if let response = response as? UploadImageResponseModel {
+                if response.code.lowercased() == "success", let imageUrl = response.data?.url {
+                    UserDefaults.standard.set(imageUrl, forKey: "profile_image")
+                    self.delegate?.profileImageUpdated(imageUrl[0])
+                }else{
+                    self.delegate?.error(message: response.message)
+                }
             }
         }
     }

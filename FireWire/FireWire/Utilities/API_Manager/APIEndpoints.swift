@@ -77,7 +77,8 @@ enum APIPayload {
                 "lastName": model.lastName,
                 "email": model.email,
                 "mobile": model.mobile,
-                "title": model.title
+                "title": model.title,
+                "img": model.img
             ]
         case let .incidentList(model):
             var dictionary: [String: Any] = [

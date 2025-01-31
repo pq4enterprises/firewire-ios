@@ -13,18 +13,21 @@ struct UpdateProfileRequestModel {
     public var email: String
     public var mobile: String
     public var title: String
+    public var img: String
 
     public init(
         firstName: String,
         lastName: String,
         email: String,
         mobile: String,
-        title: String
+        title: String,
+        img: String
     ) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.mobile = mobile
         self.title = title
+        self.img = img
     }
 }

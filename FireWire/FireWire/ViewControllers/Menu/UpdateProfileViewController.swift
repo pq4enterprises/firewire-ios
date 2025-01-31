@@ -11,6 +11,7 @@ protocol UpdateProfileViewDelegate: AnyObject {
     func error(message: String)
     func dataLoaded(_ model: UserProfileData)
     func profileUpdated(_ message: String)
+    func profileImageUpdated(_ url: String)
 }
 
 class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
@@ -25,6 +26,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
 
     var coordinator: HomeCoordinator?
     var viewModel: UpdateProfileViewModel?
+    var uploadedImageUrl: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +66,18 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
     }
 
     func error(message: String) {
+        hideLoader()
         showAlertMessage(message)
     }
 
     func profileUpdated(_ message: String) {
         hideLoader()
         showToast(message: message)
+    }
+
+    func profileImageUpdated(_ url: String){
+        self.uploadedImageUrl = url
+        hideLoader()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -97,7 +105,8 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
             lastName: lastNameTextField.text ?? "",
             email: emailTextField.text ?? "",
             mobile: phoneNumberTextField.text ?? "",
-            title: positionTextField.text ?? ""
+            title: positionTextField.text ?? "",
+            img: uploadedImageUrl ?? ""
         )
 
         let validationResult = viewModel?.validate(requestModel)
@@ -183,6 +192,8 @@ extension UpdateProfileViewController: UIImagePickerControllerDelegate, UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             self.profileImageView.image = selectedImage
+            self.showLoader()
+            self.viewModel?.requestImageUpload(selectedImage)
         }
         dismiss(animated: true, completion: nil)
     }
