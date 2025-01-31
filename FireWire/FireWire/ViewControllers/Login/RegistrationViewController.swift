@@ -102,6 +102,7 @@ class RegistrationViewController: UIViewController {
         showLoader()
         let requestModel = RegisterRequestModel(
             firstName: firstNameTextField.text ?? "",
+            lastName: lastNameTextField.text ?? "",
             email: emailTextField.text ?? "",
             mobile: phoneTextField.text ?? "",
             password: passwordTextField.text ?? "",

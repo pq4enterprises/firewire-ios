@@ -22,6 +22,7 @@ final class RegistrationViewModel {
     public func registerNewUser(_ model: RegisterRequestModel) {
         let parameters: [String: Any] = [
             "firstName": model.firstName,
+            "lastName": model.lastName,
             "email": model.email,
             "mobile": model.mobile,
             "password": model.password,
