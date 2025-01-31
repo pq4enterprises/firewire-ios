@@ -20,6 +20,7 @@ class HomeCoordinator: BaseCoordinator {
 
     func navigateToMenu(){
         let menuViewController = MenuViewController.instantiate()
+        menuViewController.appCoordinator = parentCoordinator
         menuViewController.coordinator = self
         navigationController.pushViewControllerFromLeft(controller: menuViewController, animated: false)
     }

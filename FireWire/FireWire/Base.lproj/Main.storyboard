@@ -1194,6 +1194,123 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
             </objects>
             <point key="canvasLocation" x="7097" y="732"/>
         </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="lmO-sn-76g">
+            <objects>
+                <viewController storyboardIdentifier="FeedbackViewController" id="fXo-VL-ICs" customClass="FeedbackViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VGG-lS-iqN">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysv-nz-mOu">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvA-AE-qon">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-XV-ggk" customClass="FWView" customModule="FireWire" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="189.66666666666663" width="353" height="380"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pF-GF-zV8" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="285.33333333333337" width="323" height="50"/>
+                                                        <color key="backgroundColor" name="FWRed"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="gRO-zr-bW6"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Submit"/>
+                                                        <connections>
+                                                            <action selector="submitButtonTap:" destination="fXo-VL-ICs" eventType="touchUpInside" id="M3k-Mg-OuI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZk-wi-wSQ">
+                                                        <rect key="frame" x="15" y="105.33333333333334" width="328" height="150"/>
+                                                        <color key="backgroundColor" name="FWGrey"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="XxE-eS-PLs"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help us improve by sharing the reason for deleting your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ll8-Ku-xMz">
+                                                        <rect key="frame" x="10" y="47.000000000000028" width="333" height="38.333333333333343"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSg-oJ-eJe">
+                                                        <rect key="frame" x="262" y="8.0000000000000284" width="85" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="85" id="A0h-AI-0VJ"/>
+                                                            <constraint firstAttribute="height" constant="35" id="qtF-zo-sSX"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Close" image="close_icon"/>
+                                                        <connections>
+                                                            <action selector="closeButtonTap:" destination="fXo-VL-ICs" eventType="touchUpInside" id="Q2V-81-8Sw"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="zSg-oJ-eJe" secondAttribute="trailing" constant="6" id="4iu-B4-MdN"/>
+                                                    <constraint firstItem="zSg-oJ-eJe" firstAttribute="top" secondItem="YU5-XV-ggk" secondAttribute="top" constant="8" id="FLO-8u-QJh"/>
+                                                    <constraint firstItem="HZk-wi-wSQ" firstAttribute="leading" secondItem="YU5-XV-ggk" secondAttribute="leading" constant="15" id="KMr-sl-HP5"/>
+                                                    <constraint firstItem="0pF-GF-zV8" firstAttribute="top" secondItem="HZk-wi-wSQ" secondAttribute="bottom" constant="30" id="OfZ-bZ-9xl"/>
+                                                    <constraint firstItem="ll8-Ku-xMz" firstAttribute="leading" secondItem="YU5-XV-ggk" secondAttribute="leading" constant="10" id="RLD-7g-8pF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ll8-Ku-xMz" secondAttribute="trailing" constant="10" id="XSL-Zz-cFM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HZk-wi-wSQ" secondAttribute="trailing" constant="10" id="Ybo-Gp-OhK"/>
+                                                    <constraint firstItem="HZk-wi-wSQ" firstAttribute="top" secondItem="ll8-Ku-xMz" secondAttribute="bottom" constant="20" id="aow-nK-Ggy"/>
+                                                    <constraint firstItem="0pF-GF-zV8" firstAttribute="leading" secondItem="YU5-XV-ggk" secondAttribute="leading" constant="15" id="bry-yZ-wjx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0pF-GF-zV8" secondAttribute="trailing" constant="15" id="g5L-Ph-Mop"/>
+                                                    <constraint firstAttribute="height" constant="380" id="gaY-bK-19s"/>
+                                                    <constraint firstItem="ll8-Ku-xMz" firstAttribute="top" secondItem="zSg-oJ-eJe" secondAttribute="bottom" constant="4" id="q70-XW-RsG"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerY" secondItem="DvA-AE-qon" secondAttribute="centerY" id="2RU-UR-1XM"/>
+                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="leading" secondItem="DvA-AE-qon" secondAttribute="leading" constant="20" id="H9z-fq-3Nf"/>
+                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerX" secondItem="DvA-AE-qon" secondAttribute="centerX" id="t82-qr-Trj"/>
+                                            <constraint firstAttribute="trailing" secondItem="YU5-XV-ggk" secondAttribute="trailing" constant="20" id="xcO-lh-coU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DvA-AE-qon" secondAttribute="trailing" id="7WC-UE-jAL"/>
+                                    <constraint firstItem="DvA-AE-qon" firstAttribute="width" secondItem="ysv-nz-mOu" secondAttribute="width" id="aJU-ZF-nbT"/>
+                                    <constraint firstItem="DvA-AE-qon" firstAttribute="height" secondItem="ysv-nz-mOu" secondAttribute="height" id="oPs-Yq-3Y9"/>
+                                    <constraint firstItem="DvA-AE-qon" firstAttribute="leading" secondItem="ysv-nz-mOu" secondAttribute="leading" id="rfv-OC-wIR"/>
+                                    <constraint firstAttribute="bottom" secondItem="DvA-AE-qon" secondAttribute="bottom" id="seK-Dn-vky"/>
+                                    <constraint firstItem="DvA-AE-qon" firstAttribute="top" secondItem="ysv-nz-mOu" secondAttribute="top" id="xFC-CL-0me"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jWB-VG-9ms"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ysv-nz-mOu" firstAttribute="top" secondItem="jWB-VG-9ms" secondAttribute="top" id="2Ka-8o-5iE"/>
+                            <constraint firstItem="ysv-nz-mOu" firstAttribute="trailing" secondItem="jWB-VG-9ms" secondAttribute="trailing" id="Dv9-mM-2DY"/>
+                            <constraint firstItem="ysv-nz-mOu" firstAttribute="leading" secondItem="jWB-VG-9ms" secondAttribute="leading" id="Ixe-MM-QD1"/>
+                            <constraint firstItem="ysv-nz-mOu" firstAttribute="bottom" secondItem="jWB-VG-9ms" secondAttribute="bottom" id="aA0-9W-ZMr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="feedBackTextView" destination="HZk-wi-wSQ" id="a6d-bJ-1bR"/>
+                        <outlet property="feedbackView" destination="YU5-XV-ggk" id="c0p-4Z-F3R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NpY-G3-vTe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1954.9618320610687" y="1381.6901408450706"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="NFd-Sa-GHa">
             <objects>
@@ -1509,6 +1626,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 <color key="tintColor" name="FWRed"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Delete Account"/>
+                                <connections>
+                                    <action selector="deleleAccountTap:" destination="cak-43-fKR" eventType="touchUpInside" id="TQg-kW-Dya"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQM-dW-GZa">
                                 <rect key="frame" x="288" y="59" width="85" height="35"/>
@@ -3231,6 +3351,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <namedColor name="FWYellow">
             <color red="0.9137254901960784" green="0.75686274509803919" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -27,6 +27,7 @@ enum APIEndpoints {
     static let addComment = "api/app/incident/activity"
     static let uploadImage = "api/common/upload"
     static let feedList = "api/app/feed"
+    static let deleteAccount = "api/app/user/profile"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -56,6 +57,8 @@ enum APIPayload {
     case addComment(_ model: AddCommentRequestModel)
     case commentsList(_ model: IncidentLocalityRequestModel)
     case feedList(_ model: IncidentLocalityRequestModel)
+    case postReasonToAccountDelete(reason: String)
+    case deleteAccount
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -123,6 +126,14 @@ enum APIPayload {
                 "sortDir": model.sortDir,
                 "offset": model.offset,
                 "limit": model.limit
+            ]
+        case let .postReasonToAccountDelete(reason):
+            return [
+                "text": reason
+            ]
+        case .deleteAccount:
+            return [
+                "deleted": true
             ]
         }
     }

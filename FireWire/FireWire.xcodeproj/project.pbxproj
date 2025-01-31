@@ -142,6 +142,7 @@
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
 		B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
+		B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +296,7 @@
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
 		B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseModel.swift; sourceTree = "<group>"; };
+		B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +472,7 @@
 		B01BB04D2CF31087003970D7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
 				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 				B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */,
@@ -870,6 +873,7 @@
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
+				B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */,
 				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
 				B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */,

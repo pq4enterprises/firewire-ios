@@ -23,4 +23,9 @@ public class FWView: UIImageView {
         self.layer.borderColor = FWColor.textFieldGrey.cgColor
         self.layer.masksToBounds = true
     }
+
+    func setCornerRadius(){
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+    }
 }
