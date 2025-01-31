@@ -10,6 +10,7 @@ import UIKit
 protocol FeedListViewDelegate: AnyObject {
     func dataReceived()
     func errorPlayingAudio()
+    func playingAudio()
 }
 
 class FeedsListViewController: UIViewController, FeedListViewDelegate {
@@ -57,6 +58,10 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
             actionStyles: [.default],
             actions: [{ _ in }]
         )
+    }
+
+    func playingAudio(){
+        tableView.reloadData() // to update play status
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -109,16 +114,14 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = viewModel.items[indexPath.row].url
-        viewModel.playAudio(urlString, index: indexPath)
-    }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if viewModel.currentIndex == indexPath {
-            viewModel.stopAudio()
+        let feedData = viewModel.items[indexPath.row]
+        if feedData.isPlaying {
+            viewModel.stopAudio(index: indexPath)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }else{
+            viewModel.playAudio(feedData.url, index: indexPath)
         }
     }
 }

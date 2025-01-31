@@ -18,5 +18,6 @@ class FeedItemListView: UITableViewCell {
 
     func setupView(_ model: FeedListData){
         titleLabel.text = model.name
+        playIcon.image = model.isPlaying ? FWImage.pauseIcon : FWImage.playIcon
     }
 }

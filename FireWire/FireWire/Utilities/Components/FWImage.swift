@@ -19,6 +19,7 @@ enum FWImageResources: String {
     case favIcon = "star_icon"
     case favIconSelected = "star_selected"
     case playIcon = "play_icon"
+    case pauseIcon = "pause_icon"
 }
 
 extension UIImage {
@@ -39,4 +40,5 @@ struct FWImage {
     static let favIcon = UIImage.appImage(.favIcon)
     static let favIconSelected = UIImage.appImage(.favIconSelected)
     static let playIcon = UIImage.appImage(.playIcon)
+    static let pauseIcon = UIImage.appImage(.pauseIcon)
 }

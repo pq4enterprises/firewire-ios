@@ -84,6 +84,8 @@ final class FeedsListViewModel: PaginatableViewModel {
                     self?.audioPlayer = try AVAudioPlayer(data: data)
                     self?.audioPlayer?.prepareToPlay()
                     self?.audioPlayer?.play()
+                    self?.items[index.row].isPlaying = true
+                    self?.delegate?.playingAudio()
                 } catch {
                     self?.delegate?.errorPlayingAudio()
                     print("Error playing audio from URL: \(error.localizedDescription)")
@@ -94,9 +96,10 @@ final class FeedsListViewModel: PaginatableViewModel {
         task.resume()
     }
 
-    func stopAudio() {
+    func stopAudio(index: IndexPath) {
         audioPlayer?.stop()
         audioPlayer = nil
         currentIndex = nil
+        items[index.row].isPlaying = false
     }
 }
