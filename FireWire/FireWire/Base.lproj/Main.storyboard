@@ -2323,34 +2323,35 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <constraint firstItem="Sff-Nb-ElA" firstAttribute="centerY" secondItem="LtD-ih-0SJ" secondAttribute="centerY" id="y7K-oP-ape"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="03e-tO-zpJ">
-                                <rect key="frame" x="30" y="134" width="333" height="20"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="03e-tO-zpJ">
+                                <rect key="frame" x="30" y="134" width="333" height="0.0"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_areas" translatesAutoresizingMaskIntoConstraints="NO" id="mQz-1N-00q">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Xme-SX-Xzf"/>
-                                            <constraint firstAttribute="height" constant="20" id="cZC-eK-L24"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed Areas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZa-a6-lha">
-                                        <rect key="frame" x="35" y="0.33333333333334281" width="278" height="19.333333333333332"/>
+                                        <rect key="frame" x="35" y="0.0" width="278" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Aif-ye-mKu">
-                                        <rect key="frame" x="328" y="2" width="5" height="16"/>
+                                        <rect key="frame" x="328" y="0.0" width="5" height="0.0"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="8gk-ul-urc"/>
                                             <constraint firstAttribute="width" constant="5" id="AqR-qG-sE7"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="CV4-FU-9Tn"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fuh-k6-aTR">
-                                <rect key="frame" x="30" y="174" width="333" height="20"/>
+                                <rect key="frame" x="30" y="134" width="333" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notifications" translatesAutoresizingMaskIntoConstraints="NO" id="POb-jS-HsC">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -2383,7 +2384,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="ySJ-kU-cs8" firstAttribute="top" secondItem="5uA-Ks-a2t" secondAttribute="top" id="KFB-zE-n12"/>
                             <constraint firstItem="5uA-Ks-a2t" firstAttribute="trailing" secondItem="fuh-k6-aTR" secondAttribute="trailing" constant="30" id="ULM-gN-OLw"/>
                             <constraint firstItem="5uA-Ks-a2t" firstAttribute="trailing" secondItem="03e-tO-zpJ" secondAttribute="trailing" constant="30" id="awh-X9-jLP"/>
-                            <constraint firstItem="fuh-k6-aTR" firstAttribute="top" secondItem="03e-tO-zpJ" secondAttribute="bottom" constant="20" id="ioC-91-zSY"/>
+                            <constraint firstItem="fuh-k6-aTR" firstAttribute="top" secondItem="03e-tO-zpJ" secondAttribute="bottom" id="ioC-91-zSY"/>
                             <constraint firstItem="ySJ-kU-cs8" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" id="j0C-4Z-nlh"/>
                             <constraint firstItem="03e-tO-zpJ" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" constant="30" id="lME-D0-ACf"/>
                             <constraint firstItem="fuh-k6-aTR" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" constant="30" id="mWe-5h-7Te"/>
