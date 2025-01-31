@@ -57,6 +57,7 @@ class MyAccountViewController: UIViewController {
     }
 
     @objc func logoutViewTap() {
+        clearUserDefaults()
         self.appCoordinator?.backToParentCoordinator()
     }
 
@@ -75,7 +76,14 @@ class MyAccountViewController: UIViewController {
     @IBAction func backButtonTap(_ sender: UIButton) {
         appCoordinator?.popView()
     }
-    
+
+    func clearUserDefaults(){
+        ["user_id", "name", "email", "token", "profile_image"].forEach {
+            UserDefaults.standard.removeObject(forKey: $0)
+        }
+        UserDefaults.standard.synchronize()
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> MyAccountViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
