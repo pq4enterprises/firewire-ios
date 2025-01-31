@@ -11,6 +11,7 @@ import GoogleMaps
 class MapManager {
 
     var mapView: GMSMapView!
+    var markers = [GMSMarker]()
 
     func setupMapView(frame: CGRect) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 2)
@@ -53,7 +54,15 @@ class MapManager {
             marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
             marker.icon = FWImage.mapMarker
             marker.map = mapView
+            markers.append(marker)
         }
+    }
+
+    func removeAllMapMarker(){
+        for marker in markers {
+            marker.map = nil
+        }
+        markers.removeAll()
     }
 
 }

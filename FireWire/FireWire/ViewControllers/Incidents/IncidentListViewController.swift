@@ -7,6 +7,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let incidentListDidChange = Notification.Name("incidentListDidChange")
+}
+
 protocol PostListViewDelegate: AnyObject {
     func filterDataReceived()
     func noIncidentData()
@@ -59,6 +63,7 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
         tableView.reloadData()
         incidentListCount.text = "\(viewModel.items.count) posts are listed"
         noIncidentsLabel.isHidden = true
+        postNotification()
     }
 
     func noIncidentData() {
@@ -90,6 +95,10 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
 
             tableView.isHidden = false
         }
+    }
+
+    @objc func postNotification() {
+        NotificationCenter.default.post(name: .incidentListDidChange, object: nil, userInfo: ["newData": viewModel.items])
     }
 }
 

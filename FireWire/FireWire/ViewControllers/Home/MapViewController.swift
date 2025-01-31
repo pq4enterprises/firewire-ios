@@ -29,6 +29,8 @@ class MapViewController: UIViewController, MapViewDelegate {
         mapViewModel.delegate = self
         mapViewModel.getIncidentList()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDataChange(_:)), name: .incidentListDidChange, object: nil)
+
         setupUI()
     }
 
@@ -38,7 +40,17 @@ class MapViewController: UIViewController, MapViewDelegate {
         contentView.addSubview(mapView)
     }
 
-    func addMapMarkers(){
+    @objc func handleDataChange(_ notification: Notification) {
+        if let userInfo = notification.userInfo, let newData = userInfo["newData"] as? [IncidentDataModel] {
+            //reset the markers
+            mapManager.removeAllMapMarker()
+            mapViewModel.markersList.removeAll()
+            mapViewModel.frameMarkerCoordinates(incidentList: newData)
+            print("Received notification with data: \(newData.count)")
+        }
+    }
+
+    func addMapMarkers() {
         mapManager.addMarkers(coordinates: mapViewModel.markersList)
         fitMarkersToMap()
     }
@@ -83,6 +95,10 @@ class MapViewController: UIViewController, MapViewDelegate {
     }
 
     func tokenExpired() {
-        self.appCoordinator?.backToParentCoordinator()
+        appCoordinator?.backToParentCoordinator()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .incidentListDidChange, object: nil)
     }
 }

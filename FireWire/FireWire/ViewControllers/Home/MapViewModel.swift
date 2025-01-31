@@ -45,16 +45,20 @@ final class MapViewModel {
             if let incidentListResponse = apiResponse as? IncidentResponseModel {
                 let incidentList = incidentListResponse.data.data
                 self?.incidentList = incidentList
-                
-                for item in incidentList {
-                    if let lat = Double(item.latitude), let lon = Double(item.longitude) {
-                        let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                        self?.markersList.append(coordinates)
-                        self?.delegate?.dataReceived()
-                    }
-                }
+
+                self?.frameMarkerCoordinates(incidentList: incidentList)
             } else {
                 print("Invalid response object")
+            }
+        }
+    }
+
+    func frameMarkerCoordinates(incidentList: [IncidentDataModel]){
+        for item in incidentList {
+            if let lat = Double(item.latitude), let lon = Double(item.longitude) {
+                let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                self.markersList.append(coordinates)
+                self.delegate?.dataReceived()
             }
         }
     }
