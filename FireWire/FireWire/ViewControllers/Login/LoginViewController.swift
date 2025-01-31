@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
 
         guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
             hideLoader()
-            showAlert(title: "Warning", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
+            showAlert(title: "", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
             return
         }
 

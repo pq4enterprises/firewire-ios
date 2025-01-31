@@ -105,7 +105,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
 
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
         showAlert(
-            title: "Warning",
+            title: "",
             message: errorMessage,
             alertStyle: .alert, actionTitles: ["Okay"],
             actionStyles: [.default], actions: [{ _ in action?() }]
