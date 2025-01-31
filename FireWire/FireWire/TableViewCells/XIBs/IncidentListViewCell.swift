@@ -18,11 +18,18 @@ class IncidentListViewCell: UITableViewCell {
     @IBOutlet weak var incidentComments: UILabel!
     @IBOutlet var favouriteButton: UIButton!
 
+    var selectedIncidentId: String?
+
+    var favAction: (() -> Void)?
+    var commentAction: ((String?) -> Void)?
+    var shareAction: (() -> Void)?
+
     static func nib() -> UINib {
         return UINib(nibName: "IncidentListViewCell", bundle: nil)
     }
 
     func setupView(_ model: IncidentDataModel){
+        selectedIncidentId = model.id
         incidentTitle.text = model.field1Value
         incidentDesc.text = ""
         incidentLocation.text = model.address
@@ -37,6 +44,18 @@ class IncidentListViewCell: UITableViewCell {
 
         incidentStarred.text = "\(model.likeCount) Starred"
         incidentComments.text = "\(model.commentCount) Comments"
+    }
+
+    @IBAction func favButtonTap(_ sender: UIButton) {
+        favAction?()
+    }
+
+    @IBAction func commentButtonTap(_ sender: UIButton) {
+        commentAction?(selectedIncidentId)
+    }
+
+    @IBAction func shareButtonTap(_ sender: UIButton) {
+        shareAction?()
     }
 
 }

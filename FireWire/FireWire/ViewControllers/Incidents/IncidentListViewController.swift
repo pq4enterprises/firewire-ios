@@ -16,8 +16,8 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var incidentListCount: UILabel!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var noIncidentsLabel: UILabel!
-    
+    @IBOutlet var noIncidentsLabel: UILabel!
+
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentListViewModel
     var paginationHandler: PaginationHandler<IncidentListViewModel>!
@@ -100,6 +100,20 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IncidentListViewCell.identifier, for: indexPath) as! IncidentListViewCell
+
+        //TODO: Need to check the requirement for action from list view
+        cell.commentAction = { selectedIncidentID in
+            if let selectedIncidentID {
+                self.coordinator?.popView()
+                self.coordinator?.navigateToIncidentComments(selectedIncidentID)
+            }
+        }
+        cell.favAction = {
+            self.showToast(message: "fav action")
+        }
+        cell.shareAction = {
+            self.showToast(message: "share action")
+        }
         cell.setupView(viewModel.items[indexPath.row])
         return cell
     }
