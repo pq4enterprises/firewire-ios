@@ -20,8 +20,8 @@ final class UpdateProfileViewModel {
                 return
             }
 
-            if let loginDataResponse = apiResponse as? LoginApiResponse {
-                self?.delegate?.dataLoaded(loginDataResponse.data)
+            if let loginDataResponse = apiResponse as? LoginApiResponse, let loginData = loginDataResponse.data {
+                self?.delegate?.dataLoaded(loginData)
             }
         }
     }

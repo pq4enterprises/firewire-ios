@@ -8,11 +8,13 @@
 import UIKit
 
 protocol RegistrationViewModelDelegate {
-    func registrationSuccess()
     func registrationFail(errorMessage: String)
+    func loginSuccess()
+    func loginFailed(errorMessage: String)
 }
 
 class RegistrationViewController: UIViewController {
+    weak var parentCoordinator: AppCoordinator?
     var coordinator: LoginCoordinator?
     var viewModel: RegistrationViewModel?
 
@@ -91,7 +93,7 @@ class RegistrationViewController: UIViewController {
         showAlert(
             title: "",
             message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Okay"],
+            alertStyle: .alert, actionTitles: ["Ok"],
             actionStyles: [.default], actions: [{ _ in action?() }]
         )
     }
@@ -147,6 +149,17 @@ extension RegistrationViewController: RegistrationViewModelDelegate {
     }
 
     func registrationFail(errorMessage: String) {
+        hideLoader()
+        showAlertMessage(errorMessage)
+    }
+
+    func loginSuccess() {
+        hideLoader()
+        coordinator?.backToParentCoordinator()
+        parentCoordinator?.navigateToHome()
+    }
+
+    func loginFailed(errorMessage: String) {
         hideLoader()
         showAlertMessage(errorMessage)
     }

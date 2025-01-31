@@ -32,8 +32,8 @@ class LoginViewController: UIViewController {
         setupActions()
         setupKeyboardActions()
 
-        emailTextField.text = "vimaladevi@atomgroups.com"
-        passwordTextField.text = "password"
+        emailTextField.text = "atom.sujitha@gmail.com"
+        passwordTextField.text = "12345678"
 
         viewModel = LoginViewModel()
         viewModel?.delegate = self
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
             } else if let result = result, !result.isCancelled {
                 // Login successful, you can access the user's Facebook data here
                 //self.fetchFacebookUserData()
-                let requestModel = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
+                _ = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
                 //self.viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 // Login was canceled by the user
@@ -235,6 +235,12 @@ extension LoginViewController: LoginViewDelegate {
 
     func loginFailed(errorMessage: String) {
         hideLoader()
-        showAlert(title: "Login Failed", message: "Technical error at our side!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
+        showAlert(
+            title: "Login Failed",
+            message: errorMessage,
+            alertStyle: .alert,
+            actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in }]
+        )
     }
 }

@@ -20,6 +20,7 @@ class LoginCoordinator: BaseCoordinator {
     func navigateToRegistration() {
         let registrationViewController = RegistrationViewController.instantiate()
         registrationViewController.coordinator = self
+        registrationViewController.parentCoordinator = parentCoordinator
         pushViewController(registrationViewController, animated: true)
     }
 

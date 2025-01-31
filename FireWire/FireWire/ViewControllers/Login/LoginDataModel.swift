@@ -10,7 +10,7 @@ import UIKit
 struct LoginApiResponse: Codable {
     let message: String
     let code: String
-    let data: LoginDataModel
+    let data: LoginDataModel?
 }
 
 struct LoginDataModel: Codable {

@@ -18,23 +18,29 @@ final class LoginViewModel {
             payload: loginRequestModel as JSON,
             expect: LoginApiResponse.self
         ) { [weak self] response, _, _ in
-            guard let apiResponse = response else {
-                self?.delegate?.loginFailed(errorMessage: "Invalid response")
+            guard let apiResponse = response as? LoginApiResponse else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self?.delegate?.loginFailed(errorMessage: errorMessage)
                 return
             }
 
-            if let loginDataResponse = apiResponse as? LoginApiResponse {
-                debugPrint(loginDataResponse)
-                UserDefaults.standard.set(loginDataResponse.data.id, forKey: "user_id")
-                UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
-                UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
-                UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
-                UserDefaults.standard.synchronize()
-
-                self?.delegate?.loginSuccess()
-            } else {
-                self?.delegate?.loginFailed(errorMessage: "Invalid response")
+            if apiResponse.code != "success" {
+                self?.delegate?.loginFailed(errorMessage: apiResponse.message)
+                return
             }
+
+            guard let loginData = apiResponse.data else {
+                self?.delegate?.loginFailed(errorMessage: "Missing login data")
+                return
+            }
+
+            UserDefaults.standard.set(loginData.id, forKey: "user_id")
+            UserDefaults.standard.set(loginData.firstName, forKey: "name")
+            UserDefaults.standard.set(loginData.email, forKey: "email")
+            UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
+            UserDefaults.standard.synchronize()
+
+            self?.delegate?.loginSuccess()
         }
     }
 
@@ -56,12 +62,12 @@ final class LoginViewModel {
                 return
             }
 
-            if let loginDataResponse = apiResponse as? LoginApiResponse {
+            if let loginDataResponse = apiResponse as? LoginApiResponse, let loginData = loginDataResponse.data {
                 debugPrint(loginDataResponse)
-                UserDefaults.standard.set(loginDataResponse.data.id, forKey: "user_id")
-                UserDefaults.standard.set(loginDataResponse.data.firstName, forKey: "name")
-                UserDefaults.standard.set(loginDataResponse.data.email, forKey: "email")
-                UserDefaults.standard.set(loginDataResponse.data.token ?? "", forKey: "token")
+                UserDefaults.standard.set(loginData.id, forKey: "user_id")
+                UserDefaults.standard.set(loginData.firstName, forKey: "name")
+                UserDefaults.standard.set(loginData.email, forKey: "email")
+                UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
                 UserDefaults.standard.synchronize()
 
                 self?.delegate?.loginSuccess()
