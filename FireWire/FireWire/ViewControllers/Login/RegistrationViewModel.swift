@@ -45,18 +45,6 @@ final class RegistrationViewModel {
             }else{
                 self?.performLogin(model) // Perform automatic login after successful registration
             }
-
-
-
-//            if registerResponse.error != nil {
-//                self?.delegate?.registrationFail(errorMessage: registerResponse.error ?? "Error registering new user")
-//            } else {
-//                if registerResponse.message?.lowercased() == "success" {
-//                    self?.performLogin(model) // Perform automatic login after successful registration
-//                } else {
-//                    self?.delegate?.registrationFail(errorMessage: "Error registering new user")
-//                }
-//            }
         }
     }
 
