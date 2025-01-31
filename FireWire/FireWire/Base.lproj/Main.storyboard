@@ -1563,6 +1563,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <outlet property="nameLabel" destination="Tdk-gM-eb5" id="hIv-CR-UQn"/>
                         <outlet property="personalisationView" destination="wKA-vH-b01" id="w4t-is-YLo"/>
                         <outlet property="podcastView" destination="7LY-BA-ugo" id="qSf-P0-4sg"/>
+                        <outlet property="profileImageView" destination="YWl-k6-lLx" id="Ey6-8X-LKo"/>
                         <outlet property="saltyWireView" destination="Hh3-JK-Iyz" id="r2M-NF-RdO"/>
                         <outlet property="submitTipView" destination="xNa-jT-yuP" id="Knk-kX-ZPh"/>
                     </connections>
@@ -1899,6 +1900,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <outlet property="logoutView" destination="5ra-Z1-1ZI" id="vE1-0c-l3t"/>
                         <outlet property="nameLabel" destination="FO5-RN-7wx" id="ifc-dk-Uef"/>
                         <outlet property="privacyPolicyStackView" destination="5tN-Dm-PnV" id="fH3-Eu-fxQ"/>
+                        <outlet property="profileImageView" destination="B4l-Gh-cd8" id="y3c-yb-ogq"/>
                         <outlet property="termsStackView" destination="ytp-XH-yse" id="vhz-Em-yBd"/>
                         <outlet property="updateProfileView" destination="abt-lP-mdD" id="zxE-6y-sSu"/>
                     </connections>

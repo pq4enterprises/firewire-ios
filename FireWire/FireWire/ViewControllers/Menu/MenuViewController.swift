@@ -11,6 +11,7 @@ class MenuViewController: UIViewController {
 
     var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var profileImageView: FWRoundedImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var myAccountView: FWView!
@@ -32,6 +33,11 @@ class MenuViewController: UIViewController {
             let email = UserDefaults.standard.string(forKey: "email") {
             nameLabel.text = name
             emailLabel.text = email
+        }
+
+        if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
+            let imageUrl = URL(string: profileImage) {
+            profileImageView.loadImage(from: imageUrl)
         }
 
         myAccountView.setCornerRadiusAndShadow()

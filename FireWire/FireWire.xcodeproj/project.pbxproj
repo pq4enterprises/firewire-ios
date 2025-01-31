@@ -141,6 +141,7 @@
 		B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
 		B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
+		B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +294,7 @@
 		B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFilledButton.swift; sourceTree = "<group>"; };
 		B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
+		B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,6 +667,7 @@
 		B0EDF03E2D32678300767EAB /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */,
 				B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */,
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
 				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
@@ -874,6 +877,7 @@
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
 				B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */,
 				B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */,
+				B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */,
 				B0EDF0442D32B07100767EAB /* ForgotPasswordViewController.swift in Sources */,
 				B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,

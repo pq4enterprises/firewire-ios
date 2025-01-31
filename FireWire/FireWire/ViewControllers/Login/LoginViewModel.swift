@@ -40,7 +40,22 @@ final class LoginViewModel {
             UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
             UserDefaults.standard.synchronize()
 
+            self?.getUserProfile()
             self?.delegate?.loginSuccess()
+        }
+    }
+
+    func getUserProfile() {
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.userProfile,
+            expect: GetUserProfileResponseModel.self,
+            requestType: APIConstants.GET
+        ) { response, _, _ in
+            if let apiResponse = response as? GetUserProfileResponseModel, let userData = apiResponse.data {
+                if let profileImage = userData.img {
+                    UserDefaults.standard.set(profileImage, forKey: "profile_image")
+                }
+            }
         }
     }
 

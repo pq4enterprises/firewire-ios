@@ -13,16 +13,26 @@ final class UpdateProfileViewModel {
     func getUserProfile() {
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.userProfile,
-            expect: LoginApiResponse.self,
+            expect: GetUserProfileResponseModel.self,
             requestType: APIConstants.GET
         ) { [weak self] response, _, _ in
-            guard let apiResponse = response else {
+            guard let apiResponse = response as? GetUserProfileResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self?.delegate?.error(message: errorMessage)
                 return
             }
 
-            if let loginDataResponse = apiResponse as? LoginApiResponse, let loginData = loginDataResponse.data {
-                self?.delegate?.dataLoaded(loginData)
+            if apiResponse.code != "success" {
+                self?.delegate?.error(message: apiResponse.message)
+                return
             }
+
+            guard let userData = apiResponse.data else {
+                self?.delegate?.error(message: "Missing user data")
+                return
+            }
+
+            self?.delegate?.dataLoaded(userData)
         }
     }
 

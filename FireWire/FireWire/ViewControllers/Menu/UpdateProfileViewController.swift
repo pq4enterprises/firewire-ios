@@ -8,7 +8,8 @@
 import UIKit
 
 protocol UpdateProfileViewDelegate: AnyObject {
-    func dataLoaded(_ model: LoginDataModel)
+    func error(message: String)
+    func dataLoaded(_ model: UserProfileData)
     func profileUpdated(_ message: String)
 }
 
@@ -50,12 +51,20 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         positionTextField.delegate = self
     }
 
-    func dataLoaded(_ model: LoginDataModel) {
+    func dataLoaded(_ model: UserProfileData) {
         firstNameTextField.text = model.firstName
         lastNameTextField.text = model.lastName
         emailTextField.text = model.email
         phoneNumberTextField.text = model.mobile
         positionTextField.text = model.role
+
+        if let profileImage = model.img, let imageUrl = URL(string: profileImage) {
+            profileImageView.loadImage(from: imageUrl)
+        }
+    }
+
+    func error(message: String) {
+        showAlertMessage(message)
     }
 
     func profileUpdated(_ message: String) {

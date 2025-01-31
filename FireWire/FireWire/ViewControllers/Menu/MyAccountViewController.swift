@@ -11,6 +11,7 @@ class MyAccountViewController: UIViewController {
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
+    @IBOutlet weak var profileImageView: FWRoundedImageView!
     @IBOutlet weak var updateProfileView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -29,6 +30,11 @@ class MyAccountViewController: UIViewController {
             let email = UserDefaults.standard.string(forKey: "email") {
             nameLabel.text = name
             emailLabel.text = email
+        }
+
+        if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
+            let imageUrl = URL(string: profileImage) {
+            profileImageView.loadImage(from: imageUrl)
         }
     }
 
