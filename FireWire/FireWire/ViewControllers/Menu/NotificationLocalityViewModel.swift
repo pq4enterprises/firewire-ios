@@ -30,14 +30,13 @@ final class NotificationLocalityViewModel {
 
     func toggleSelectAllUnits() {
         guard let units = localityData.unit else { return }
-        let allSelected = units.allSatisfy { $0.isChecked }
+        let allSelected = units.compactMap { $0?.isChecked }.allSatisfy { $0 }
 
         /// If not all selected, select all items
         if !allSelected {
             for i in 0..<units.count {
-                let unit = units[i]
-                if !unit.isChecked {
-                    localityData.unit?[i].isChecked = true
+                if let unit = units[i], !unit.isChecked {
+                    localityData.unit?[i]?.isChecked = true
                     // Update selection arrays for the selected units
                     updateSelectionArrays(for: localityData.unit?[i])
                 }
@@ -81,7 +80,7 @@ final class NotificationLocalityViewModel {
             self.localityData.subLocality[indexPath.row] = subLocality
         } else if indexPath.section == 2, let units = localityData.unit {
             var unit = units[indexPath.row]
-            unit.isChecked.toggle()
+            unit?.isChecked.toggle()
             updateSelectionArrays(for: unit)
             self.localityData.unit?[indexPath.row] = unit
         }

@@ -42,7 +42,7 @@ class SelectAreaListViewCell: UITableViewCell {
         if indexPath.section == 1 {
             areaLabel.text = model.subLocality[indexPath.row].name
         }else if indexPath.section == 2, let units = model.unit {
-            areaLabel.text = units[indexPath.row].unitName
+            areaLabel.text = units[indexPath.row]?.unitName
         }
 
         updateCheckboxState()
@@ -57,7 +57,7 @@ class SelectAreaListViewCell: UITableViewCell {
             selectAreaButton.setImage(image, for: .normal)
         }else if indexPath.section == 2, let units = locality.unit {
             let unit = units[indexPath.row]
-            let image = unit.isChecked ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
+            let image = unit?.isChecked ?? false ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
             selectAreaButton.setImage(image, for: .normal)
         }
     }

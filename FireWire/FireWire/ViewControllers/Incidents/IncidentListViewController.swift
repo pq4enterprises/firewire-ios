@@ -60,9 +60,16 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
 
     func filterDataReceived() {
         showActivityIndicator(false)
-        tableView.reloadData()
         incidentListCount.text = "\(viewModel.items.count) posts are listed"
-        noIncidentsLabel.isHidden = true
+
+        if viewModel.items.count > 0 {
+            noIncidentsLabel.isHidden = true
+            tableView.isHidden = false
+            tableView.reloadData()
+        }else{
+            tableView.isHidden = true
+            noIncidentsLabel.isHidden = false
+        }
         postNotification()
     }
 
