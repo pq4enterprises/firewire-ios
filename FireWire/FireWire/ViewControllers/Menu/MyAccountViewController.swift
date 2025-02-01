@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyAccountViewController: UIViewController {
+class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
@@ -30,6 +30,11 @@ class MyAccountViewController: UIViewController {
             let email = UserDefaults.standard.string(forKey: "email") {
             nameLabel.text = name
             emailLabel.text = email
+        }
+        
+        if UserDefaults.standard.bool(forKey: "isPremiumUser"){
+            let premiumStatus = String.init(format: "%@ | Premium User", nameLabel.text ?? "")
+            nameLabel.text = premiumStatus
         }
 
         if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
@@ -77,6 +82,29 @@ class MyAccountViewController: UIViewController {
         appCoordinator?.popView()
     }
 
+    @IBAction func premiumButtonTapAction(_ sender: UIButton) {
+        SubscriptionManager.shared.delegate = self
+        SubscriptionManager.shared.purchaseMyProduct()
+    }
+    
+    func purchaseTransactionCompleted(success: Bool) {
+        if success {
+            showAlertMessage("Your premium scubscription is Success!")
+        }else{
+            showAlertMessage("Purchase failed, please try again!")
+        }
+    }
+    
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+    
+    
     func clearUserDefaults(){
         ["user_id", "name", "email", "token", "profile_image"].forEach {
             UserDefaults.standard.removeObject(forKey: $0)
