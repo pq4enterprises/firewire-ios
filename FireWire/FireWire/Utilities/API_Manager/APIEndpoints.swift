@@ -111,7 +111,7 @@ enum APIPayload {
                 "incidentId": model.incidentId,
                 "type": model.type,
                 "comment": model.comment,
-                "url": model.url
+                "img": model.img
             ]
         case let .commentsList(model):
             return [

@@ -12,5 +12,5 @@ struct AddCommentRequestModel {
     public var incidentId: String
     public var type: String
     public var comment: String
-    public var url: String
+    public var img: String
 }

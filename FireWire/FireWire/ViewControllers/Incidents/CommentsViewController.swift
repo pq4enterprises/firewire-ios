@@ -128,7 +128,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             incidentId: selectedIncidentID ?? "",
             type: "comment",
             comment: textField.text ?? "",
-            url: imageUrl
+            img: imageUrl
         )
 
         viewModel.addComment(requestModel)
