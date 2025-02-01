@@ -40,6 +40,13 @@ class CommentsListViewCell: UITableViewCell {
             cityLabel.text = locality.name
         }
 
+        if let profileImage = model.userID?.img, let imageUrl = URL(string: profileImage) {
+            userImageView.loadImage(from: imageUrl)
+        }else{
+            let defaultImage = UIImage(systemName: "person.crop.circle")
+            userImageView.image = defaultImage
+        }
+
         descriptionLabel.text = model.comment
 
         if model.img?.count ?? 0 > 0 {

@@ -17,6 +17,9 @@ class CommentsImageViewItem: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 
     func configure(with imageUrl: String) {
+        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
+
         if let imageUrl = URL(string: imageUrl) {
             imageView.loadImage(from: imageUrl)
         }

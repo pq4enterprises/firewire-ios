@@ -37,10 +37,11 @@ struct UserIdModel: Codable {
     let firstName: String
     let locality, subLocality: [Locality?]
     let lastName: String?
-    //let img: String?
+    let img: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName, lastName, locality, subLocality
+        case img
     }
 }
