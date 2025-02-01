@@ -37,6 +37,11 @@ class LoginViewController: UIViewController {
     }
 
     func setupUI() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        emailTextField.text = "atom.sujitha@gmail.com"
+        passwordTextField.text = "12345678"
+
         passwordTextField.delegate = self
         passwordTextField.addRightIcon(UIImage(named: "eye_icon")!) {
             debugPrint("button tapped")
