@@ -8,6 +8,7 @@
 import GoogleSignIn
 import UIKit
 import FBSDKLoginKit
+import OneSignalFramework
 
 class AppCoordinator: BaseCoordinator {
     override func start() {
@@ -81,5 +82,8 @@ class AppCoordinator: BaseCoordinator {
 
         //Facebook logout
         AccessToken.current = nil
+
+        //Notification logout
+        OneSignal.logout()
     }
 }

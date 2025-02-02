@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OneSignalFramework
 
 enum ValidationError: Error {
     case success
@@ -71,6 +72,10 @@ final class RegistrationViewModel {
             guard let loginData = apiResponse.data else {
                 self?.delegate?.loginFailed(errorMessage: "Missing login data")
                 return
+            }
+
+            if let userId = loginData.id {
+                OneSignal.login(userId)
             }
 
             UserDefaults.standard.set(loginData.id, forKey: "user_id")

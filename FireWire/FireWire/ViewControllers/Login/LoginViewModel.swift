@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OneSignalFramework
 
 final class LoginViewModel {
     weak var delegate: LoginViewDelegate?
@@ -34,6 +35,10 @@ final class LoginViewModel {
                 return
             }
 
+            if let userId = loginData.id {
+                OneSignal.login(userId)
+            }
+            
             UserDefaults.standard.set(loginData.id, forKey: "user_id")
             UserDefaults.standard.set(loginData.firstName, forKey: "name")
             UserDefaults.standard.set(loginData.email, forKey: "email")
