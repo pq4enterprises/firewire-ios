@@ -120,6 +120,145 @@
 		B0A9D7BA2D49614100DB34A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
 		B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
+		B0B1AE742D4F8A42007371A9 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE732D4F8A42007371A9 /* OneSignalExtension */; };
+		B0B1AE762D4F8A42007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE752D4F8A42007371A9 /* OneSignalFramework */; };
+		B0B1AE782D4F8A42007371A9 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */; };
+		B0B1AE8B2D4F8DB6007371A9 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
+		B0B1AE8C2D4F8DB6007371A9 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
+		B0B1AE8D2D4F8DB6007371A9 /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
+		B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */; };
+		B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
+		B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
+		B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
+		B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
+		B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
+		B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
+		B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
+		B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
+		B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
+		B0B1AE982D4F8DB6007371A9 /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
+		B0B1AE992D4F8DB6007371A9 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
+		B0B1AE9A2D4F8DB6007371A9 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */; };
+		B0B1AE9B2D4F8DB6007371A9 /* FWFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7E72CED1F9200D9F309 /* FWFilledButton.swift */; };
+		B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
+		B0B1AE9D2D4F8DB6007371A9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */; };
+		B0B1AE9E2D4F8DB6007371A9 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */; };
+		B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */; };
+		B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */; };
+		B0B1AEA12D4F8DB6007371A9 /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */; };
+		B0B1AEA22D4F8DB6007371A9 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
+		B0B1AEA32D4F8DB6007371A9 /* CityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304812D134937006F851A /* CityHeaderCell.swift */; };
+		B0B1AEA42D4F8DB6007371A9 /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */; };
+		B0B1AEA52D4F8DB6007371A9 /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
+		B0B1AEA62D4F8DB6007371A9 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
+		B0B1AEA72D4F8DB6007371A9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */; };
+		B0B1AEA82D4F8DB6007371A9 /* CommentsImageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */; };
+		B0B1AEA92D4F8DB6007371A9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */; };
+		B0B1AEAA2D4F8DB6007371A9 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
+		B0B1AEAB2D4F8DB6007371A9 /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
+		B0B1AEAC2D4F8DB6007371A9 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
+		B0B1AEAD2D4F8DB6007371A9 /* NotificationLocalityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */; };
+		B0B1AEAE2D4F8DB6007371A9 /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
+		B0B1AEAF2D4F8DB6007371A9 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
+		B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */; };
+		B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
+		B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */; };
+		B0B1AEB32D4F8DB6007371A9 /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
+		B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
+		B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
+		B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
+		B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* JPToast.swift */; };
+		B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
+		B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */; };
+		B0B1AEBA2D4F8DB6007371A9 /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D02CF57068007D319D /* JPTextField.swift */; };
+		B0B1AEBB2D4F8DB6007371A9 /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
+		B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
+		B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
+		B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
+		B0B1AEBF2D4F8DB6007371A9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */; };
+		B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
+		B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
+		B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */; };
+		B0B1AEC32D4F8DB6007371A9 /* JPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* JPAlertController.swift */; };
+		B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
+		B0B1AEC52D4F8DB6007371A9 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
+		B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
+		B0B1AEC72D4F8DB6007371A9 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
+		B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
+		B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
+		B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
+		B0B1AECB2D4F8DB6007371A9 /* JPLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* JPLoader.swift */; };
+		B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304792D134057006F851A /* LocalityResponseModel.swift */; };
+		B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
+		B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
+		B0B1AECF2D4F8DB6007371A9 /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */; };
+		B0B1AED02D4F8DB6007371A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
+		B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
+		B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */; };
+		B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
+		B0B1AED42D4F8DB6007371A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
+		B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
+		B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
+		B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
+		B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
+		B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* IncidentListViewController.swift */; };
+		B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
+		B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
+		B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
+		B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
+		B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
+		B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
+		B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
+		B0B1AEE22D4F8DB6007371A9 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
+		B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
+		B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
+		B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
+		B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
+		B0B1AEE72D4F8DB6007371A9 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
+		B0B1AEE82D4F8DB6007371A9 /* NotificationLocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */; };
+		B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
+		B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
+		B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
+		B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
+		B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
+		B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
+		B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
+		B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
+		B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */; };
+		B0B1AEF32D4F8DB6007371A9 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */; };
+		B0B1AEF42D4F8DB6007371A9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
+		B0B1AEF52D4F8DB6007371A9 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE892D4F8DB6007371A9 /* OneSignalInAppMessages */; };
+		B0B1AEF62D4F8DB6007371A9 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7E2D4F8DB6007371A9 /* GoogleSignIn */; };
+		B0B1AEF72D4F8DB6007371A9 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE832D4F8DB6007371A9 /* XMLCoder */; };
+		B0B1AEF82D4F8DB6007371A9 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE822D4F8DB6007371A9 /* FacebookShare */; };
+		B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE802D4F8DB6007371A9 /* FacebookLogin */; };
+		B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE852D4F8DB6007371A9 /* SwiftSoup */; };
+		B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
+		B0B1AEFD2D4F8DB6007371A9 /* IncidentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* IncidentListViewController.xib */; };
+		B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08236F52CE374D30092AC01 /* Assets.xcassets */; };
+		B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
+		B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
+		B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
+		B0B1AF022D4F8DB6007371A9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
+		B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
+		B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
+		B0B1AF052D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F82CE374D30092AC01 /* Base */; };
+		B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A304822D134937006F851A /* CityHeaderCell.xib */; };
+		B0B1AF072D4F8DB6007371A9 /* CommentsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */; };
+		B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */; };
+		B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
+		B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */; };
+		B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
+		B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
+		B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
+		B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
+		B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F32CE374D10092AC01 /* Base */; };
+		B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
+		B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
+		B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */; };
+		B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
+		B0B1AF152D4F8DB6007371A9 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
@@ -168,6 +307,13 @@
 			remoteGlobalIDString = B08236E82CE374D10092AC01;
 			remoteInfo = FireWire;
 		};
+		B0B1AE7B2D4F8DB6007371A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B08236E12CE374D10092AC01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73C3E9EE2D4F83F800FF1352;
+			remoteInfo = NotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -178,6 +324,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				73C3E9F62D4F83F800FF1352 /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B1AF142D4F8DB6007371A9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B0B1AF152D4F8DB6007371A9 /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +454,8 @@
 		B0A9D7B92D49614100DB34A6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B1AF1A2D4F8DB6007371A9 /* Info-Dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Dev.plist"; path = "/Users/suji/Documents/Personal/firewire-ios/FireWire/FireWire/Info-Dev.plist"; sourceTree = "<absolute>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
@@ -342,6 +501,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B1AE742D4F8A42007371A9 /* OneSignalExtension in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,8 +509,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B1AE762D4F8A42007371A9 /* OneSignalFramework in Frameworks */,
 				B01D51A42D1EFCEF00D4CBB1 /* GoogleMaps in Frameworks */,
 				B0A9D7BA2D49614100DB34A6 /* StoreKit.framework in Frameworks */,
+				B0B1AE782D4F8A42007371A9 /* OneSignalInAppMessages in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
 				B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */,
 				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
@@ -370,6 +532,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B1AEF12D4F8DB6007371A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */,
+				B0B1AEF32D4F8DB6007371A9 /* GoogleMaps in Frameworks */,
+				B0B1AEF42D4F8DB6007371A9 /* StoreKit.framework in Frameworks */,
+				B0B1AEF52D4F8DB6007371A9 /* OneSignalInAppMessages in Frameworks */,
+				B0B1AEF62D4F8DB6007371A9 /* GoogleSignIn in Frameworks */,
+				B0B1AEF72D4F8DB6007371A9 /* XMLCoder in Frameworks */,
+				B0B1AEF82D4F8DB6007371A9 /* FacebookShare in Frameworks */,
+				B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */,
+				B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +776,7 @@
 				B08236FF2CE374D30092AC01 /* FireWireTests.xctest */,
 				B08237092CE374D30092AC01 /* FireWireUITests.xctest */,
 				73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */,
+				B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -619,6 +798,7 @@
 				B08236F72CE374D30092AC01 /* LaunchScreen.storyboard */,
 				B08236F52CE374D30092AC01 /* Assets.xcassets */,
 				B08236FA2CE374D30092AC01 /* Info.plist */,
+				B0B1AF1A2D4F8DB6007371A9 /* Info-Dev.plist */,
 			);
 			path = FireWire;
 			sourceTree = "<group>";
@@ -755,6 +935,7 @@
 			);
 			name = NotificationServiceExtension;
 			packageProductDependencies = (
+				B0B1AE732D4F8A42007371A9 /* OneSignalExtension */,
 			);
 			productName = NotificationServiceExtension;
 			productReference = 73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */;
@@ -782,6 +963,8 @@
 				B0A3044B2D0EE799006F851A /* FacebookShare */,
 				B0A3046A2D10A17B006F851A /* XMLCoder */,
 				B0A3046F2D10AD56006F851A /* SwiftSoup */,
+				B0B1AE752D4F8A42007371A9 /* OneSignalFramework */,
+				B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */,
 			);
 			productName = FireWire;
 			productReference = B08236E92CE374D10092AC01 /* FireWire.app */;
@@ -822,6 +1005,35 @@
 			productName = FireWireUITests;
 			productReference = B08237092CE374D30092AC01 /* FireWireUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B0B1AE792D4F8DB6007371A9 /* FireWire-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0B1AF162D4F8DB6007371A9 /* Build configuration list for PBXNativeTarget "FireWire-Dev" */;
+			buildPhases = (
+				B0B1AE8A2D4F8DB6007371A9 /* Sources */,
+				B0B1AEF12D4F8DB6007371A9 /* Frameworks */,
+				B0B1AEFB2D4F8DB6007371A9 /* Resources */,
+				B0B1AF142D4F8DB6007371A9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0B1AE7A2D4F8DB6007371A9 /* PBXTargetDependency */,
+			);
+			name = "FireWire-Dev";
+			packageProductDependencies = (
+				B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */,
+				B0B1AE7E2D4F8DB6007371A9 /* GoogleSignIn */,
+				B0B1AE802D4F8DB6007371A9 /* FacebookLogin */,
+				B0B1AE822D4F8DB6007371A9 /* FacebookShare */,
+				B0B1AE832D4F8DB6007371A9 /* XMLCoder */,
+				B0B1AE852D4F8DB6007371A9 /* SwiftSoup */,
+				B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */,
+				B0B1AE892D4F8DB6007371A9 /* OneSignalInAppMessages */,
+			);
+			productName = FireWire;
+			productReference = B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -864,12 +1076,14 @@
 				B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 			);
 			productRefGroup = B08236EA2CE374D10092AC01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B08236E82CE374D10092AC01 /* FireWire */,
+				B0B1AE792D4F8DB6007371A9 /* FireWire-Dev */,
 				B08236FE2CE374D30092AC01 /* FireWireTests */,
 				B08237082CE374D30092AC01 /* FireWireUITests */,
 				73C3E9EE2D4F83F800FF1352 /* NotificationServiceExtension */,
@@ -927,6 +1141,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B1AEFB2D4F8DB6007371A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */,
+				B0B1AEFD2D4F8DB6007371A9 /* IncidentListViewController.xib in Resources */,
+				B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */,
+				B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */,
+				B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */,
+				B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */,
+				B0B1AF022D4F8DB6007371A9 /* MapViewController.xib in Resources */,
+				B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */,
+				B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */,
+				B0B1AF052D4F8DB6007371A9 /* Base in Resources */,
+				B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */,
+				B0B1AF072D4F8DB6007371A9 /* CommentsListViewCell.xib in Resources */,
+				B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */,
+				B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */,
+				B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */,
+				B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */,
+				B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */,
+				B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */,
+				B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */,
+				B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */,
+				B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */,
+				B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */,
+				B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */,
+				B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,6 +1311,115 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0B1AE8A2D4F8DB6007371A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B1AE8B2D4F8DB6007371A9 /* FWSegmentControl.swift in Sources */,
+				B0B1AE8C2D4F8DB6007371A9 /* FWRoundedButton.swift in Sources */,
+				B0B1AE8D2D4F8DB6007371A9 /* IncidentLocalityRequestModel.swift in Sources */,
+				B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */,
+				B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */,
+				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,
+				B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */,
+				B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */,
+				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
+				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
+				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
+				B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */,
+				B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */,
+				B0B1AE982D4F8DB6007371A9 /* IncidentDetailResponseModel.swift in Sources */,
+				B0B1AE992D4F8DB6007371A9 /* BaseCoordinator.swift in Sources */,
+				B0B1AE9A2D4F8DB6007371A9 /* RegistrationViewModel.swift in Sources */,
+				B0B1AE9B2D4F8DB6007371A9 /* FWFilledButton.swift in Sources */,
+				B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */,
+				B0B1AE9D2D4F8DB6007371A9 /* UIViewController+Extension.swift in Sources */,
+				B0B1AE9E2D4F8DB6007371A9 /* FeedbackViewController.swift in Sources */,
+				B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
+				B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */,
+				B0B1AEA12D4F8DB6007371A9 /* OtpVerificationViewController.swift in Sources */,
+				B0B1AEA22D4F8DB6007371A9 /* FWBottomSheetViewController.swift in Sources */,
+				B0B1AEA32D4F8DB6007371A9 /* CityHeaderCell.swift in Sources */,
+				B0B1AEA42D4F8DB6007371A9 /* RegisterRequestModel.swift in Sources */,
+				B0B1AEA52D4F8DB6007371A9 /* NotificationLocalityViewController.swift in Sources */,
+				B0B1AEA62D4F8DB6007371A9 /* GetUserProfileResponseModel.swift in Sources */,
+				B0B1AEA72D4F8DB6007371A9 /* ForgotPasswordViewController.swift in Sources */,
+				B0B1AEA82D4F8DB6007371A9 /* CommentsImageViewItem.swift in Sources */,
+				B0B1AEA92D4F8DB6007371A9 /* UINavigationController+Extension.swift in Sources */,
+				B0B1AEAA2D4F8DB6007371A9 /* NewsListViewModel.swift in Sources */,
+				B0B1AEAB2D4F8DB6007371A9 /* NewsListViewCell.swift in Sources */,
+				B0B1AEAC2D4F8DB6007371A9 /* FWColor.swift in Sources */,
+				B0B1AEAD2D4F8DB6007371A9 /* NotificationLocalityHeaderView.swift in Sources */,
+				B0B1AEAE2D4F8DB6007371A9 /* FWDateFormatter.swift in Sources */,
+				B0B1AEAF2D4F8DB6007371A9 /* FWShadowButton.swift in Sources */,
+				B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */,
+				B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */,
+				B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */,
+				B0B1AEB32D4F8DB6007371A9 /* FWImageView.swift in Sources */,
+				B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */,
+				B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */,
+				B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */,
+				B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */,
+				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
+				B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */,
+				B0B1AEBA2D4F8DB6007371A9 /* JPTextField.swift in Sources */,
+				B0B1AEBB2D4F8DB6007371A9 /* JPNetworkReachability.swift in Sources */,
+				B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */,
+				B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */,
+				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
+				B0B1AEBF2D4F8DB6007371A9 /* MapViewModel.swift in Sources */,
+				B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */,
+				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
+				B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */,
+				B0B1AEC32D4F8DB6007371A9 /* JPAlertController.swift in Sources */,
+				B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */,
+				B0B1AEC52D4F8DB6007371A9 /* SelectAreaListViewCell.swift in Sources */,
+				B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */,
+				B0B1AEC72D4F8DB6007371A9 /* FWImage.swift in Sources */,
+				B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */,
+				B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */,
+				B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */,
+				B0B1AECB2D4F8DB6007371A9 /* JPLoader.swift in Sources */,
+				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
+				B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */,
+				B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */,
+				B0B1AECF2D4F8DB6007371A9 /* NewsResponseModel.swift in Sources */,
+				B0B1AED02D4F8DB6007371A9 /* SceneDelegate.swift in Sources */,
+				B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */,
+				B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */,
+				B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */,
+				B0B1AED42D4F8DB6007371A9 /* MapViewController.swift in Sources */,
+				B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */,
+				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
+				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
+				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
+				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
+				B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */,
+				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
+				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
+				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
+				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
+				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
+				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
+				B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */,
+				B0B1AEE22D4F8DB6007371A9 /* IncidentListViewModel.swift in Sources */,
+				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
+				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
+				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,
+				B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */,
+				B0B1AEE72D4F8DB6007371A9 /* APIConstants.swift in Sources */,
+				B0B1AEE82D4F8DB6007371A9 /* NotificationLocalityCell.swift in Sources */,
+				B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */,
+				B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */,
+				B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */,
+				B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */,
+				B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */,
+				B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */,
+				B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */,
+				B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1083,6 +1437,11 @@
 			isa = PBXTargetDependency;
 			target = B08236E82CE374D10092AC01 /* FireWire */;
 			targetProxy = B082370A2CE374D30092AC01 /* PBXContainerItemProxy */;
+		};
+		B0B1AE7A2D4F8DB6007371A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73C3E9EE2D4F83F800FF1352 /* NotificationServiceExtension */;
+			targetProxy = B0B1AE7B2D4F8DB6007371A9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1308,6 +1667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 12.0;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1348,6 +1708,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 12.0;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1433,6 +1794,89 @@
 			};
 			name = Release;
 		};
+		B0B1AF172D4F8DB6007371A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FireWire/FireWire.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 120000;
+				DEVELOPMENT_TEAM = GZ55QHPVX2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FireWire/Info-Dev.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FireWire-Dev";
+				INFOPLIST_KEY_NSCameraUsageDescription = "FireWire need access to your camera to take pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for the map";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "FireWire need access to your photo library.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 12.0;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEV DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B0B1AF182D4F8DB6007371A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FireWire/FireWire.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 120000;
+				DEVELOPMENT_TEAM = GZ55QHPVX2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FireWire/Info-Dev.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FireWire-Dev";
+				INFOPLIST_KEY_NSCameraUsageDescription = "FireWire need access to your camera to take pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for the map";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "FireWire need access to your photo library.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 12.0;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1481,6 +1925,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B0B1AF162D4F8DB6007371A9 /* Build configuration list for PBXNativeTarget "FireWire-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B1AF172D4F8DB6007371A9 /* Debug */,
+				B0B1AF182D4F8DB6007371A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1514,6 +1967,62 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.7.6;
+			};
+		};
+		B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.9;
+			};
+		};
+		B0B1AE7D2D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+		B0B1AE7F2D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+		B0B1AE842D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
+		B0B1AE862D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.6;
+			};
+		};
+		B0B1AE882D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.9;
 			};
 		};
 		B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
@@ -1551,6 +2060,61 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		B0B1AE732D4F8A42007371A9 /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
+		};
+		B0B1AE752D4F8A42007371A9 /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
+		};
+		B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalInAppMessages;
+		};
+		B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE7D2D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
+		};
+		B0B1AE7E2D4F8DB6007371A9 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE7F2D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		B0B1AE802D4F8DB6007371A9 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		B0B1AE822D4F8DB6007371A9 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		B0B1AE832D4F8DB6007371A9 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE842D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+		B0B1AE852D4F8DB6007371A9 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE862D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE882D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
+		};
+		B0B1AE892D4F8DB6007371A9 /* OneSignalInAppMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B1AE882D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalInAppMessages;
 		};
 		B0E115802CFF7B9C00E7D10B /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
