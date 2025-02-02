@@ -7,7 +7,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.490891362156-s8ji2l7mtvpu4723volthb4pr7lnb49t</string>
+				<string>com.googleusercontent.apps.490891362156-topte40tf0nb1ijbq0kv4bcv5lo95ukd</string>
 				<string>fb891535999464182</string>
 			</array>
 		</dict>
@@ -21,7 +21,7 @@
 	<key>FacebookDisplayName</key>
 	<string>Fire-Wire</string>
 	<key>GIDClientID</key>
-	<string>490891362156-s8ji2l7mtvpu4723volthb4pr7lnb49t.apps.googleusercontent.com</string>
+	<string>490891362156-topte40tf0nb1ijbq0kv4bcv5lo95ukd.apps.googleusercontent.com</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
