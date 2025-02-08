@@ -108,19 +108,23 @@ extension OtpVerificationViewController {
                 payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
                 expect: VerifyOtpResponseModel.self
             ) { [weak self] response, _, _ in
-
                 self?.hideLoader()
-                guard let apiResponse = response else {
-                    self?.showAlertMessage("Technical error, please try again!")
+
+                guard let apiResponse = response as? VerifyOtpResponseModel else {
+                    let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
+                    self?.showAlertMessage(errorMessage)
                     return
                 }
 
-                if let response = apiResponse as? VerifyOtpResponseModel {
-                    if response.code.lowercased() == "success" {
-                        self?.coordinator?.navigateToResetPassword(token: response.data?.resetToken ?? "")
-                    } else {
-                        self?.showAlertMessage(response.message)
-                    }
+                if apiResponse.code != "success" {
+                    self?.showAlertMessage(apiResponse.message)
+                    return
+                }
+
+                if let otpData = apiResponse.data  {
+                    self?.coordinator?.navigateToResetPassword(token: otpData.resetToken)
+                }else{
+                    self?.showAlertMessage("Technical error, please try again!")
                 }
             }
         }
