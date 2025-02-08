@@ -31,6 +31,7 @@ enum APIEndpoints {
     static let uploadImage = "api/common/upload"
     static let feedList = "api/app/feed"
     static let deleteAccount = "api/app/user/profile"
+    static let updatePassword = "api/app/auth/update-password"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -62,6 +63,7 @@ enum APIPayload {
     case feedList(_ model: IncidentLocalityRequestModel)
     case postReasonToAccountDelete(reason: String)
     case deleteAccount
+    case updatePassword(_ model: UpdatePasswordRequestModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -137,6 +139,12 @@ enum APIPayload {
         case .deleteAccount:
             return [
                 "deleted": true
+            ]
+        case let .updatePassword(model):
+            return [
+                "oldPassword": model.oldPassword,
+                "newPassword": model.newPassword,
+                "confirmPassword": model.confirmPassword
             ]
         }
     }

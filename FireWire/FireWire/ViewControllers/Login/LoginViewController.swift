@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
 
         passwordTextField.delegate = self
         passwordTextField.addRightIcon(UIImage(named: "eye_icon")!) {
-            debugPrint("button tapped")
+            self.passwordTextField.isSecureTextEntry.toggle()
         }
 
         registerLabel.colorString(

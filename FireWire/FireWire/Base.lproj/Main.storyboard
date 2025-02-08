@@ -3352,6 +3352,177 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
             </objects>
             <point key="canvasLocation" x="4150" y="-4"/>
         </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="69H-me-Hjr">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="G0L-ZR-wEl" customClass="ChangePasswordViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qZx-TS-iQG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-61-zxI">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yd-2j-hnO">
+                                        <rect key="frame" x="15" y="5" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="iTt-vN-bHH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="back_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="G0L-ZR-wEl" eventType="touchUpInside" id="Yfa-17-oef"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVz-X6-vKg">
+                                        <rect key="frame" x="132" y="15" width="151" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="SsV-XP-Vuf"/>
+                                    <constraint firstAttribute="bottom" secondItem="8yd-2j-hnO" secondAttribute="bottom" constant="5" id="b81-Qn-wNa"/>
+                                    <constraint firstItem="8yd-2j-hnO" firstAttribute="leading" secondItem="1MC-61-zxI" secondAttribute="leading" constant="15" id="geQ-BV-RU1"/>
+                                    <constraint firstAttribute="height" constant="50" id="hO3-Ca-WJT"/>
+                                    <constraint firstItem="8yd-2j-hnO" firstAttribute="top" secondItem="1MC-61-zxI" secondAttribute="top" constant="5" id="jkL-3a-gld"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-Iq-mvO">
+                                <rect key="frame" x="0.0" y="117" width="393" height="701"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-JT-bK6">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="701"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-fI-sXu">
+                                                <rect key="frame" x="30" y="260" width="333" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nC-tN-YBT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdT-Wg-D1c" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="333" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="ftj-Rv-b6t"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="T93-cG-9cF">
+                                                <rect key="frame" x="30" y="38" width="333" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3j-9C-zWB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oF-5C-4tv" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="333" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="ac1-oZ-hYA"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MYt-FZ-XyL">
+                                                <rect key="frame" x="30" y="149" width="333" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkV-tx-qI6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <color key="textColor" name="FWTextGrey2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="............" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-wX-iNp" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41" width="333" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="soz-c7-udX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hwh-Bv-sYO" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                                <rect key="frame" x="30" y="386" width="333" height="50"/>
+                                                <color key="backgroundColor" name="FWRed"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="GXz-BW-pa7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="submitButton:" destination="G0L-ZR-wEl" eventType="touchUpInside" id="aly-2q-T4o"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Hwh-Bv-sYO" secondAttribute="trailing" constant="30" id="19a-CO-hZf"/>
+                                            <constraint firstAttribute="trailing" secondItem="nyk-fI-sXu" secondAttribute="trailing" constant="30" id="6ML-4L-Q76"/>
+                                            <constraint firstItem="MYt-FZ-XyL" firstAttribute="leading" secondItem="CoN-JT-bK6" secondAttribute="leading" constant="30" id="8Lm-Qj-fi1"/>
+                                            <constraint firstAttribute="trailing" secondItem="MYt-FZ-XyL" secondAttribute="trailing" constant="30" id="F2C-TD-ydp"/>
+                                            <constraint firstItem="MYt-FZ-XyL" firstAttribute="top" secondItem="T93-cG-9cF" secondAttribute="bottom" constant="15" id="HAj-hi-YWO"/>
+                                            <constraint firstItem="nyk-fI-sXu" firstAttribute="leading" secondItem="CoN-JT-bK6" secondAttribute="leading" constant="30" id="Qtm-Ji-Mqu"/>
+                                            <constraint firstItem="T93-cG-9cF" firstAttribute="top" secondItem="CoN-JT-bK6" secondAttribute="top" constant="38" id="VTU-xd-tHu"/>
+                                            <constraint firstItem="Hwh-Bv-sYO" firstAttribute="top" secondItem="nyk-fI-sXu" secondAttribute="bottom" constant="30" id="d3G-QN-78I"/>
+                                            <constraint firstItem="nyk-fI-sXu" firstAttribute="top" secondItem="MYt-FZ-XyL" secondAttribute="bottom" constant="15" id="dxQ-IF-D8L"/>
+                                            <constraint firstItem="Hwh-Bv-sYO" firstAttribute="leading" secondItem="CoN-JT-bK6" secondAttribute="leading" constant="30" id="gF6-1c-ihk"/>
+                                            <constraint firstItem="T93-cG-9cF" firstAttribute="leading" secondItem="CoN-JT-bK6" secondAttribute="leading" constant="30" id="hWZ-vj-qc4"/>
+                                            <constraint firstAttribute="trailing" secondItem="T93-cG-9cF" secondAttribute="trailing" constant="30" id="ud3-77-Nzi"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CoN-JT-bK6" secondAttribute="trailing" id="4xa-BX-8rw"/>
+                                    <constraint firstItem="CoN-JT-bK6" firstAttribute="width" secondItem="XR0-Iq-mvO" secondAttribute="width" id="J9B-Ds-vmk"/>
+                                    <constraint firstItem="CoN-JT-bK6" firstAttribute="height" secondItem="XR0-Iq-mvO" secondAttribute="height" priority="250" id="heg-6E-Cmf"/>
+                                    <constraint firstItem="CoN-JT-bK6" firstAttribute="top" secondItem="XR0-Iq-mvO" secondAttribute="top" id="k4t-PK-Qid"/>
+                                    <constraint firstAttribute="bottom" secondItem="CoN-JT-bK6" secondAttribute="bottom" id="qg3-C8-3T6"/>
+                                    <constraint firstItem="CoN-JT-bK6" firstAttribute="leading" secondItem="XR0-Iq-mvO" secondAttribute="leading" id="w5V-yz-AjA"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wpC-sa-kTV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XR0-Iq-mvO" firstAttribute="bottom" secondItem="wpC-sa-kTV" secondAttribute="bottom" id="I60-Eb-fg0"/>
+                            <constraint firstItem="XR0-Iq-mvO" firstAttribute="top" secondItem="1MC-61-zxI" secondAttribute="bottom" constant="8" symbolic="YES" id="M2T-4p-BkR"/>
+                            <constraint firstItem="XR0-Iq-mvO" firstAttribute="leading" secondItem="wpC-sa-kTV" secondAttribute="leading" id="Nsv-HB-lqI"/>
+                            <constraint firstItem="1MC-61-zxI" firstAttribute="leading" secondItem="wpC-sa-kTV" secondAttribute="leading" id="Pff-iL-0hu"/>
+                            <constraint firstItem="1MC-61-zxI" firstAttribute="trailing" secondItem="wpC-sa-kTV" secondAttribute="trailing" id="Sq4-JP-6fH"/>
+                            <constraint firstItem="XR0-Iq-mvO" firstAttribute="trailing" secondItem="wpC-sa-kTV" secondAttribute="trailing" id="Tkd-lo-yJE"/>
+                            <constraint firstItem="1MC-61-zxI" firstAttribute="top" secondItem="wpC-sa-kTV" secondAttribute="top" id="hpt-f6-jVh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="3ba-wX-iNp" id="KvI-sM-slI"/>
+                        <outlet property="currentPasswordTextField" destination="2oF-5C-4tv" id="i7I-eh-52r"/>
+                        <outlet property="newPasswordTextField" destination="fdT-Wg-D1c" id="Y01-Fr-Bmo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rrg-80-o1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7245" y="1382"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alert_icon" width="20" height="28"/>

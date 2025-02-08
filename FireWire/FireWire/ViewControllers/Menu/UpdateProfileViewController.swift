@@ -130,7 +130,9 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         )
     }
 
-    @IBAction func changePasswordButtonTap(_ sender: UIButton) {}
+    @IBAction func changePasswordButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToChangePassword()
+    }
 
 
     func setupActions() {

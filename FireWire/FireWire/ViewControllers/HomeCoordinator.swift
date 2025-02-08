@@ -76,4 +76,10 @@ class HomeCoordinator: BaseCoordinator {
         updateProfileViewController.coordinator = self
         pushViewController(updateProfileViewController, animated: true)
     }
+
+    func navigateToChangePassword(){
+        let changePasswordViewController = ChangePasswordViewController.instantiate()
+        changePasswordViewController.coordinator = self
+        pushViewController(changePasswordViewController, animated: true)
+    }
 }
