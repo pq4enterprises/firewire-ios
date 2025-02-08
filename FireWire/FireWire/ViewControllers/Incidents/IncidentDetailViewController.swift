@@ -137,11 +137,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             return
         }
 
-        //        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
-        //        shareContentToSocialMedia(text: shareContent, image: FWImage.appLogo)
+        let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
+        shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
 
-        let shareContent = "\(incidentDetail.field1Value ?? "") \n \(incidentDetail.address)"
-        coordinator?.navigateToShareView(shareMessage: shareContent)
+        //let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
+        //coordinator?.navigateToShareView(shareMessage: shareContent)
     }
 
 
