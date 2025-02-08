@@ -52,7 +52,15 @@ class MapViewController: UIViewController, MapViewDelegate {
 
     func addMapMarkers() {
         mapManager.addMarkers(coordinates: mapViewModel.markersList)
-        fitMarkersToMap()
+        //fitMarkersToMap()
+        focusOnFirstMarker()
+    }
+
+    func focusOnFirstMarker(){
+        guard !mapViewModel.markersList.isEmpty else { return }
+        let firstLocation = mapViewModel.markersList[0]
+        let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
+        mapView.animate(to: camera)
     }
 
     func fitMarkersToMap() {
