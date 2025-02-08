@@ -48,13 +48,18 @@ final class IncidentDetailViewModel {
             expect: SuccessResponseModel.self)
         {response, _, _ in
 
-            guard let apiResponse = response else {
+            guard let apiResponse = response as? SuccessResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self.delegate?.error(message: errorMessage)
                 return
             }
 
-            if apiResponse is SuccessResponseModel {
+            if apiResponse.code != "success" {
+                self.delegate?.error(message: apiResponse.message)
+            }else{
                 self.delegate?.incidentFavourited(like: like)
             }
+
         }
     }
 }

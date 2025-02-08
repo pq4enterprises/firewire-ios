@@ -21,7 +21,6 @@ class IncidentListViewCell: UITableViewCell {
     var selectedIncidentId: String?
 
     var favAction: (() -> Void)?
-    var commentAction: ((String?) -> Void)?
     var shareAction: (() -> Void)?
 
     static func nib() -> UINib {
@@ -48,10 +47,6 @@ class IncidentListViewCell: UITableViewCell {
 
     @IBAction func favButtonTap(_ sender: UIButton) {
         favAction?()
-    }
-
-    @IBAction func commentButtonTap(_ sender: UIButton) {
-        commentAction?(selectedIncidentId)
     }
 
     @IBAction func shareButtonTap(_ sender: UIButton) {

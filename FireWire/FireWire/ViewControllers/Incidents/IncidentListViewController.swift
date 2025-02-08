@@ -14,6 +14,7 @@ extension Notification.Name {
 protocol PostListViewDelegate: AnyObject {
     func filterDataReceived()
     func noIncidentData()
+    func error(message: String)
 }
 
 class IncidentListViewController: UIViewController, PostListViewDelegate {
@@ -117,20 +118,20 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IncidentListViewCell.identifier, for: indexPath) as! IncidentListViewCell
 
-        //TODO: Need to check the requirement for action from list view
-        cell.commentAction = { selectedIncidentID in
-            if let selectedIncidentID {
-                self.coordinator?.popView()
-                self.coordinator?.navigateToIncidentComments(selectedIncidentID)
-            }
-        }
+        let selectedIncident = viewModel.items[indexPath.row]
+
         cell.favAction = {
-            self.showToast(message: "fav action")
+            let value = selectedIncident.likeCount > 0 ? false : true
+            self.viewModel.favouriteIncident(incidentId: selectedIncident.id, like: value) { result in
+                if result {
+                    tableView.reloadData()
+                }
+            }
         }
         cell.shareAction = {
             self.showToast(message: "share action")
         }
-        cell.setupView(viewModel.items[indexPath.row])
+        cell.setupView(selectedIncident)
         return cell
     }
 
@@ -138,5 +139,13 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
         coordinator?.dismissView(animated: true)
         let selectedIncidentID = viewModel.items[indexPath.row].id
         coordinator?.navigateToIncidentDetail(selectedIncidentID)
+    }
+}
+
+// MARK: View model delegates
+
+extension IncidentListViewController {
+    func error(message: String) {
+        self.showToast(message: message)
     }
 }

@@ -73,4 +73,33 @@ final class IncidentListViewModel: PaginatableViewModel {
             }
         }
     }
+
+    func favouriteIncident(incidentId: String, like: Bool, completion: @escaping (Bool) -> Void){
+
+        let requestModel = APIPayload.favouriteIncident(
+            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            incidentId: incidentId,
+            type: like == true ? "like" : "unlike"
+        ).toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.favIncident,
+            payload: requestModel as JSON,
+            expect: SuccessResponseModel.self)
+        {response, _, _ in
+
+            guard let apiResponse = response as? SuccessResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self.delegate?.error(message: errorMessage)
+                return
+            }
+
+            if apiResponse.code != "success" {
+                self.delegate?.error(message: apiResponse.message)
+            }else{
+                completion(true)
+            }
+
+        }
+    }
 }

@@ -11,6 +11,7 @@ import UIKit
 protocol IncidentDetailViewDelegate: AnyObject {
     func dataReceived()
     func incidentFavourited(like: Bool)
+    func error(message: String)
 }
 
 class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate {
@@ -178,5 +179,9 @@ extension IncidentDetailViewController {
         like
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
+    }
+
+    func error(message: String) {
+        self.showToast(message: message)
     }
 }
