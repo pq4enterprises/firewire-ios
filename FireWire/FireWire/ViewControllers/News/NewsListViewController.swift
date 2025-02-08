@@ -64,6 +64,27 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
             tableView.isHidden = false
         }
     }
+    
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+        var items: [Any] = [text]
+
+        if let imageToShare = image {
+            items.append(imageToShare)
+        }
+
+        if let urlToShare = url {
+            items.append("Checkout: \(urlToShare)")
+        }
+
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude certain activity types if needed (optional)
+        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
+
+        self.present(activityViewController, animated: true)
+    }
+
 }
 
 extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -73,7 +94,12 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsListViewCell.identifier, for: indexPath) as! NewsListViewCell
-        cell.setupView(viewModel.newsList[indexPath.row])
+        let newsDetail = viewModel.newsList[indexPath.row]
+        cell.setupView(newsDetail)
+        cell.shareAction = {
+            let shareContent = "\(newsDetail.title) \nFind out: \(newsDetail.link)"
+            self.shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
+        }
         return cell
     }
 

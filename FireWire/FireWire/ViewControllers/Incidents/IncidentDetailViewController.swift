@@ -153,7 +153,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         if let urlToShare = url {
-            items.append(urlToShare)
+            items.append("Checkout: \(urlToShare)")
         }
 
         // Create an instance of UIActivityViewController

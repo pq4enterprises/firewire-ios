@@ -17,6 +17,7 @@ class NewsListViewCell: UITableViewCell {
     @IBOutlet var newsImageView: FWImageView!
 
     var newsExternalUrl: String?
+    var shareAction: (() -> Void)?
 
     static func nib() -> UINib {
         return UINib(nibName: "NewsListViewCell", bundle: nil)
@@ -49,5 +50,9 @@ class NewsListViewCell: UITableViewCell {
         if let formattedDate = FWDateFormatter(inputDateFormat: "EEE, dd MMM yyyy HH:mm:ss Z").formatDateString(model.pubDate) {
             newsDateTime.text = formattedDate
         }
+    }
+    
+    @IBAction func shareButtonTap(_ sender: UIButton) {
+        shareAction?()
     }
 }
