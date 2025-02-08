@@ -123,6 +123,8 @@ class LoginViewController: UIViewController {
                 guard let user = user else { return }
 
                 let accessToken = user.accessToken.tokenString
+                
+                self.showLoader()
 
                 let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "basic_user")
                 self.viewModel?.authenticateSocialLogin(requestModel)

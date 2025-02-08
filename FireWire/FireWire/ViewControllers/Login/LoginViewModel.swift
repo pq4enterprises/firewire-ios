@@ -78,22 +78,30 @@ final class LoginViewModel {
             expect: LoginApiResponse.self
         ) { [weak self] response, _, _ in
 
-            guard let apiResponse = response else {
+            guard let loginDataResponse = response as? LoginApiResponse else {
+                let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
+                self?.delegate?.loginFailed(errorMessage: errorMessage)
                 return
             }
-
-            if let loginDataResponse = apiResponse as? LoginApiResponse, let loginData = loginDataResponse.data {
-                debugPrint(loginDataResponse)
-                UserDefaults.standard.set(loginData.id, forKey: "user_id")
-                UserDefaults.standard.set(loginData.firstName, forKey: "name")
-                UserDefaults.standard.set(loginData.email, forKey: "email")
-                UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
-                UserDefaults.standard.synchronize()
-
-                self?.delegate?.loginSuccess()
-            } else {
-                print("Invalid response object")
+            
+            if loginDataResponse.code.lowercased() != "success"{
+                self?.delegate?.loginFailed(errorMessage: loginDataResponse.message)
+                return
             }
+            
+            guard let loginData = loginDataResponse.data else {
+                self?.delegate?.loginFailed(errorMessage: "Missing login data")
+                return
+            }
+            
+            UserDefaults.standard.set(loginData.id, forKey: "user_id")
+            UserDefaults.standard.set(loginData.firstName, forKey: "name")
+            UserDefaults.standard.set(loginData.email, forKey: "email")
+            UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
+            UserDefaults.standard.synchronize()
+            
+            self?.delegate?.loginSuccess()
+            
         }
     }
 }
