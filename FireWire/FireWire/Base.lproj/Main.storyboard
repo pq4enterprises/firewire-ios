@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -574,7 +574,7 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="711"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="729"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
                                                 <rect key="frame" x="25" y="0.0" width="343" height="116"/>
@@ -605,21 +605,23 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="156" width="343" height="180"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-lj-gWP">
+                                                <rect key="frame" x="25" y="156" width="343" height="400"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="195"/>
+                                                    </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-cq-G1J">
+                                                        <rect key="frame" x="0.0" y="205" width="343" height="195"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="WxL-je-G9D"/>
+                                                    <constraint firstAttribute="height" constant="400" id="gaO-r3-9zh"/>
                                                 </constraints>
-                                            </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-cq-G1J">
-                                                <rect key="frame" x="25" y="356" width="343" height="180"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="Krs-8p-yW7"/>
-                                                </constraints>
-                                            </view>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ckj-NW-xDd">
-                                                <rect key="frame" x="25" y="556" width="343" height="50"/>
+                                                <rect key="frame" x="25" y="574" width="343" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire_icon" translatesAutoresizingMaskIntoConstraints="NO" id="oNf-1O-NLy">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="50"/>
@@ -648,7 +650,7 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="seD-YZ-ALe">
-                                                <rect key="frame" x="25" y="656" width="343" height="35"/>
+                                                <rect key="frame" x="25" y="674" width="343" height="35"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
                                                         <rect key="frame" x="0.0" y="0.0" width="123" height="35"/>
@@ -734,21 +736,18 @@ agreeing with our Terms and Conditions</string>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="seD-YZ-ALe" secondAttribute="bottom" constant="20" id="0Rz-Y4-oui"/>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="1qI-iT-WKD"/>
-                                            <constraint firstItem="aWB-EP-eU2" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="ALg-rp-fKc"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="top" secondItem="CJd-Io-ide" secondAttribute="top" id="Dym-02-UMu"/>
-                                            <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="eGY-cq-G1J" secondAttribute="bottom" constant="20" id="E2U-MU-SLw"/>
-                                            <constraint firstItem="aWB-EP-eU2" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="Fc6-PC-nio"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="50" id="TYA-74-YC5"/>
                                             <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="USR-s8-jOR"/>
+                                            <constraint firstItem="uyb-lj-gWP" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="UXd-im-3RV"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="YEw-TC-5Pe"/>
-                                            <constraint firstAttribute="trailing" secondItem="eGY-cq-G1J" secondAttribute="trailing" constant="25" id="f1P-Md-Puq"/>
+                                            <constraint firstItem="uyb-lj-gWP" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="fBw-A3-udZ"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="20" id="fRt-Th-dmR"/>
-                                            <constraint firstItem="eGY-cq-G1J" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="lQw-GA-qjj"/>
-                                            <constraint firstItem="eGY-cq-G1J" firstAttribute="top" secondItem="aWB-EP-eU2" secondAttribute="bottom" constant="20" id="n46-Rv-oiB"/>
+                                            <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="uyb-lj-gWP" secondAttribute="bottom" constant="18" id="kGq-la-Q0b"/>
                                             <constraint firstAttribute="trailing" secondItem="seD-YZ-ALe" secondAttribute="trailing" constant="25" id="oEL-4a-fjn"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="pRL-8L-sst"/>
-                                            <constraint firstAttribute="trailing" secondItem="aWB-EP-eU2" secondAttribute="trailing" constant="25" id="v51-7T-oEi"/>
+                                            <constraint firstAttribute="trailing" secondItem="uyb-lj-gWP" secondAttribute="trailing" constant="25" id="rUf-5f-tQs"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="yTY-Qs-jUw"/>
                                             <constraint firstAttribute="trailing" secondItem="Ckj-NW-xDd" secondAttribute="trailing" constant="25" id="yyh-9A-XEy"/>
                                         </constraints>
@@ -781,6 +780,7 @@ agreeing with our Terms and Conditions</string>
                         <outlet property="activityVerticalConstraint" destination="TYA-74-YC5" id="Gku-YS-0lz"/>
                         <outlet property="favouriteButton" destination="0jy-dA-eZ3" id="WBY-3I-Tjw"/>
                         <outlet property="imageLoadingIndicator" destination="GGe-wF-wsJ" id="VnQ-ps-45M"/>
+                        <outlet property="imageMapStackView" destination="uyb-lj-gWP" id="dvp-25-kwM"/>
                         <outlet property="incidentAddress" destination="HrE-Uv-08Z" id="b0S-lu-9eJ"/>
                         <outlet property="incidentComments" destination="2JJ-HI-WMC" id="f7i-vg-p5C"/>
                         <outlet property="incidentDateTime" destination="5fo-Mb-JJX" id="51a-ih-uUm"/>
@@ -3405,7 +3405,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-fI-sXu">
                                                 <rect key="frame" x="30" y="260" width="333" height="96"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nC-tN-YBT">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nC-tN-YBT">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="21"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
                                                         <color key="textColor" name="FWTextGrey2"/>

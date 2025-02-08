@@ -27,6 +27,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var favouriteButton: UIButton!
     @IBOutlet weak var activityVerticalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageMapStackView: UIStackView!
 
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentDetailViewModel?
@@ -82,8 +83,12 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
+            imageMapStackView.distribution = .fillEqually
         } else{
             imageLoadingIndicator.isHidden = true
+            incidentImageView.isHidden = true
+            imageMapStackView.distribution = .fill
+            view.layoutIfNeeded()
         }
 
         let mapManager = MapManager()
