@@ -39,6 +39,29 @@ final class IncidentLocalityListViewModel {
         }
     }
 
+//TODO: Send selected area in following json format once API is ready
+//    func setSelectedLocalities() {
+//        let selectedArea = [
+//            SelectedAreas(userId: "1", localityId: "1234", sublocalityId: "567"),
+//            SelectedAreas(userId: "2", localityId: "1234", sublocalityId: "567")
+//        ]
+//
+//        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10, selectedAreas: selectedArea)
+//
+//        print("request \(APIPayload.incidentLocalityList(requestModel).toDictionary())")
+//
+//        APIRequest().callApi(
+//            apiEndPoint: APIEndpoints.localityList,
+//            payload: APIPayload.incidentLocalityList(requestModel).toDictionary(),
+//            expect: SuccessResponseModel.self)
+//        { [weak self] response, _, _ in
+//
+//            guard let apiResponse = response else {
+//                return
+//            }
+//        }
+//    }
+
     func toggleSelection(at indexPath: IndexPath) {
         var subLocality = localityData[indexPath.section].subLocality[indexPath.row]
         subLocality.isSelected.toggle()

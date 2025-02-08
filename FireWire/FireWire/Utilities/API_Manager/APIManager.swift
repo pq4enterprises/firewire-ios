@@ -31,6 +31,11 @@ extension URLSession {
                 print("\n Serialization failed")
                 return
             }
+
+            if let jsonString = String(data: body, encoding: .utf8) {
+                print("POST Payload: \(jsonString)")
+            }
+
             request.httpBody = body
         }
         

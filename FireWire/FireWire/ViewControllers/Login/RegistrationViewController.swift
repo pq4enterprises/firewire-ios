@@ -156,8 +156,9 @@ extension RegistrationViewController: RegistrationViewModelDelegate {
 
     func loginSuccess() {
         hideLoader()
-        coordinator?.backToParentCoordinator()
-        parentCoordinator?.navigateToHome()
+        coordinator?.navigateToSelectArea()
+        //coordinator?.backToParentCoordinator()
+        //parentCoordinator?.navigateToHome()
     }
 
     func loginFailed(errorMessage: String) {

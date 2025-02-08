@@ -120,6 +120,8 @@
 		B0A9D7BA2D49614100DB34A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
 		B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
 		B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD4B372D01EDEF009B065C /* APIConstants.swift */; };
+		B0ADB6A92D5747650086AC83 /* SelectAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */; };
+		B0ADB6AA2D5747650086AC83 /* SelectAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */; };
 		B0B1AE742D4F8A42007371A9 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE732D4F8A42007371A9 /* OneSignalExtension */; };
 		B0B1AE762D4F8A42007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE752D4F8A42007371A9 /* OneSignalFramework */; };
 		B0B1AE782D4F8A42007371A9 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */; };
@@ -455,6 +457,7 @@
 		B0A9D7B92D49614100DB34A6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		B0AD4B372D01EDEF009B065C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaViewController.swift; sourceTree = "<group>"; };
 		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
@@ -864,6 +867,7 @@
 				B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */,
 				B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */,
 				B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */,
+				B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1200,6 +1204,7 @@
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
+				B0ADB6A92D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
 				B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */,
@@ -1326,6 +1331,7 @@
 				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
 				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
 				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
+				B0ADB6AA2D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */,
 				B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */,
 				B0B1AE982D4F8DB6007371A9 /* IncidentDetailResponseModel.swift in Sources */,

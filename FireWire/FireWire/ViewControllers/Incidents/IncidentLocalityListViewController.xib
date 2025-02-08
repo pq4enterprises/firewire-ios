@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncidentLocalityListViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="gHa-lF-ZB1" id="gDg-i3-VBm"/>
+                <outlet property="selectAreaHeaderHConstraint" destination="Rdb-Zg-5vu" id="LEt-4D-rtI"/>
+                <outlet property="selectedAreasHeader" destination="Ov2-7u-8cB" id="oXW-Dz-fU3"/>
                 <outlet property="tableView" destination="wfK-k6-HJ7" id="s4e-to-26d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -69,10 +71,10 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="wfK-k6-HJ7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2y7-S6-Afg"/>
+                <constraint firstItem="wfK-k6-HJ7" firstAttribute="top" secondItem="Ov2-7u-8cB" secondAttribute="bottom" id="4uA-AZ-8xN"/>
                 <constraint firstItem="Ov2-7u-8cB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aWD-Cy-vCr"/>
                 <constraint firstItem="Ov2-7u-8cB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="d7n-AL-LTw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wfK-k6-HJ7" secondAttribute="bottom" id="kyH-77-Ino"/>
-                <constraint firstItem="wfK-k6-HJ7" firstAttribute="top" secondItem="Ov2-7u-8cB" secondAttribute="bottom" id="ldn-iq-ftn"/>
                 <constraint firstItem="Ov2-7u-8cB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mxF-gF-opb"/>
                 <constraint firstItem="wfK-k6-HJ7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pA8-Nv-3sa"/>
             </constraints>

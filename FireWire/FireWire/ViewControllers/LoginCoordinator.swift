@@ -50,4 +50,10 @@ class LoginCoordinator: BaseCoordinator {
         pushViewController(resetPasswordViewController, animated: true)
     }
 
+    func navigateToSelectArea(){
+        let selectAreaViewController = SelectAreaViewController.instantiate()
+        selectAreaViewController.parentCoordinator = parentCoordinator
+        pushViewController(selectAreaViewController, animated: true)
+    }
+
 }
