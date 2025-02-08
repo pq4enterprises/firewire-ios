@@ -12,8 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncidentLocalityListViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="gHa-lF-ZB1" id="gDg-i3-VBm"/>
-                <outlet property="selectAreaHeaderHConstraint" destination="Rdb-Zg-5vu" id="LEt-4D-rtI"/>
-                <outlet property="selectedAreasHeader" destination="Ov2-7u-8cB" id="oXW-Dz-fU3"/>
                 <outlet property="tableView" destination="wfK-k6-HJ7" id="s4e-to-26d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
