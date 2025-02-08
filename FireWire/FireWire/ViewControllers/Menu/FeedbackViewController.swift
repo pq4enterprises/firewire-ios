@@ -36,8 +36,12 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func submitButtonTap(_ sender: UIButton) {
         let feedbackText = feedBackTextView.text ?? ""
-        submitFeedback?(feedbackText)
-        dismiss(animated: true, completion: nil)
+        if feedbackText.isEmpty {
+            showToast(message: "Please enter your reason")
+        }else{
+            submitFeedback?(feedbackText)
+            dismiss(animated: true, completion: nil)
+        }
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
