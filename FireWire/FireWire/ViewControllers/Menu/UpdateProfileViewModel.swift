@@ -33,6 +33,13 @@ final class UpdateProfileViewModel {
                 return
             }
 
+            UserDefaults.standard.set(userData.firstName, forKey: "name")
+            UserDefaults.standard.set(userData.email, forKey: "email")
+
+            if let profileImage = userData.img {
+                UserDefaults.standard.set(profileImage, forKey: "profile_image")
+            }
+
             self?.delegate?.dataLoaded(userData)
         }
     }
@@ -52,9 +59,28 @@ final class UpdateProfileViewModel {
             }
 
             if apiResponse is SuccessResponseModel {
+                self?.getUserProfileAndUpdateLocalStorage()
                 self?.delegate?.profileUpdated("Profile Updated")
             } else {
                 self?.delegate?.profileUpdated("Profile update failed, try again after sometime")
+            }
+        }
+    }
+
+    func getUserProfileAndUpdateLocalStorage() {
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.userProfile,
+            expect: GetUserProfileResponseModel.self,
+            requestType: APIConstants.GET
+        ) { response, _, _ in
+            if let apiResponse = response as? GetUserProfileResponseModel, let userData = apiResponse.data {
+
+                UserDefaults.standard.set(userData.firstName, forKey: "name")
+                UserDefaults.standard.set(userData.email, forKey: "email")
+
+                if let profileImage = userData.img {
+                    UserDefaults.standard.set(profileImage, forKey: "profile_image")
+                }
             }
         }
     }

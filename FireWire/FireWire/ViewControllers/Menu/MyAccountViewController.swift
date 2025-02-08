@@ -19,8 +19,8 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     @IBOutlet weak var termsStackView: UIStackView!
     @IBOutlet weak var privacyPolicyStackView: UIStackView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupUI()
         setupActions()
     }

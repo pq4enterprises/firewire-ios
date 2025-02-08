@@ -22,8 +22,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var personalisationView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupUI()
         setupActions()
     }
