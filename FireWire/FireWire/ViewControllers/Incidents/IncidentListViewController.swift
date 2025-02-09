@@ -108,6 +108,27 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
     @objc func postNotification() {
         NotificationCenter.default.post(name: .incidentListDidChange, object: nil, userInfo: ["newData": viewModel.items])
     }
+    
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+        var items: [Any] = [text]
+
+        if let imageToShare = image {
+            items.append(imageToShare)
+        }
+
+        if let urlToShare = url {
+            items.append("Checkout: \(urlToShare)")
+        }
+
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude certain activity types if needed (optional)
+        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
+
+        self.present(activityViewController, animated: true)
+    }
+
 }
 
 extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -117,7 +138,6 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IncidentListViewCell.identifier, for: indexPath) as! IncidentListViewCell
-
         let selectedIncident = viewModel.items[indexPath.row]
 
         cell.favAction = {
@@ -128,8 +148,10 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
                 }
             }
         }
+        
         cell.shareAction = {
-            self.showToast(message: "share action")
+            let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
+            self.shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
         }
         cell.setupView(selectedIncident)
         return cell

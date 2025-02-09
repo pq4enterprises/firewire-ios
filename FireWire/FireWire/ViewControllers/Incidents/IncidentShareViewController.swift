@@ -8,7 +8,7 @@
 import UIKit
 
 class IncidentShareViewController: UIViewController {
-    var appStoreUrl = "https://www.apple.com/in/app-store/"
+    var appStoreUrl = "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"
     var shareMessage: String = ""
 
     override func viewDidLoad() {
