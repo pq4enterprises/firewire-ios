@@ -126,6 +126,12 @@
 		B0ADB6AD2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */; };
 		B0ADB6AF2D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6AE2D5767D40086AC83 /* UpdatePasswordRequestModel.swift */; };
 		B0ADB6B02D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6AE2D5767D40086AC83 /* UpdatePasswordRequestModel.swift */; };
+		B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6CD2D58D97D0086AC83 /* IncidentsViewController.swift */; };
+		B0ADB6D02D58D97D0086AC83 /* IncidentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ADB6CE2D58D97D0086AC83 /* IncidentsViewController.xib */; };
+		B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6CD2D58D97D0086AC83 /* IncidentsViewController.swift */; };
+		B0ADB6D22D58D97D0086AC83 /* IncidentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ADB6CE2D58D97D0086AC83 /* IncidentsViewController.xib */; };
+		B0ADB6D42D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */; };
+		B0ADB6D52D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */; };
 		B0B1AE742D4F8A42007371A9 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE732D4F8A42007371A9 /* OneSignalExtension */; };
 		B0B1AE762D4F8A42007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE752D4F8A42007371A9 /* OneSignalFramework */; };
 		B0B1AE782D4F8A42007371A9 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */; };
@@ -464,6 +470,9 @@
 		B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaViewController.swift; sourceTree = "<group>"; };
 		B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B0ADB6AE2D5767D40086AC83 /* UpdatePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordRequestModel.swift; sourceTree = "<group>"; };
+		B0ADB6CD2D58D97D0086AC83 /* IncidentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsViewController.swift; sourceTree = "<group>"; };
+		B0ADB6CE2D58D97D0086AC83 /* IncidentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentsViewController.xib; sourceTree = "<group>"; };
+		B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsViewModel.swift; sourceTree = "<group>"; };
 		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
@@ -763,6 +772,9 @@
 				B046823B2CE53B9300419C65 /* MapViewController.xib */,
 				B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
+				B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */,
+				B0ADB6CD2D58D97D0086AC83 /* IncidentsViewController.swift */,
+				B0ADB6CE2D58D97D0086AC83 /* IncidentsViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1126,6 +1138,7 @@
 				B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */,
+				B0ADB6D02D58D97D0086AC83 /* IncidentsViewController.xib in Resources */,
 				B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */,
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */,
@@ -1171,6 +1184,7 @@
 				B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */,
 				B0B1AF052D4F8DB6007371A9 /* Base in Resources */,
 				B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */,
+				B0ADB6D22D58D97D0086AC83 /* IncidentsViewController.xib in Resources */,
 				B0B1AF072D4F8DB6007371A9 /* CommentsListViewCell.xib in Resources */,
 				B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */,
 				B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */,
@@ -1222,6 +1236,7 @@
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */,
+				B0ADB6D52D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
 				B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */,
@@ -1247,6 +1262,7 @@
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
 				B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
+				B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
 				B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */,
 				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,
@@ -1351,6 +1367,7 @@
 				B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */,
 				B0B1AE9D2D4F8DB6007371A9 /* UIViewController+Extension.swift in Sources */,
 				B0B1AE9E2D4F8DB6007371A9 /* FeedbackViewController.swift in Sources */,
+				B0ADB6D42D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */,
 				B0B1AEA12D4F8DB6007371A9 /* OtpVerificationViewController.swift in Sources */,
@@ -1376,6 +1393,7 @@
 				B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */,
 				B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */,
 				B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */,
+				B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
 				B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */,
 				B0B1AEBA2D4F8DB6007371A9 /* JPTextField.swift in Sources */,
