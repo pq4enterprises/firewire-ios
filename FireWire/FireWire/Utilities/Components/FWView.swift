@@ -28,4 +28,10 @@ public class FWView: UIImageView {
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
     }
+
+    func setTopCornersRadius(radius: CGFloat = 10) {
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top-left and top-right corners
+        self.layer.masksToBounds = true
+    }
 }

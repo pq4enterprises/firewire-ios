@@ -16,7 +16,8 @@ class HomeViewController: UIViewController {
     
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
-    var mapViewController: MapViewController?
+    //var mapViewController: MapViewController?
+    var incidentsViewController: IncidentsViewController?
     var newsViewController: NewsListViewController?
 
     override func viewDidLoad() {
@@ -27,10 +28,13 @@ class HomeViewController: UIViewController {
     func setupView() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
-        mapViewController = MapViewController()
-        mapViewController?.appCoordinator = appCoordinator
-        mapViewController?.coordinator = coordinator
-        
+        //mapViewController = MapViewController()
+        //mapViewController?.appCoordinator = appCoordinator
+        //mapViewController?.coordinator = coordinator
+
+        incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
+        incidentsViewController?.coordinator = coordinator
+
         newsViewController = NewsListViewController(viewModel: NewsListViewModel())
         newsViewController?.coordinator = coordinator
 
@@ -66,7 +70,8 @@ class HomeViewController: UIViewController {
 
         switch index {
         case 0:
-            selectedViewController = mapViewController!
+            //selectedViewController = mapViewController!
+            selectedViewController = incidentsViewController!
 
             menuButton.setImage(FWImage.menuIconWhite, for: .normal)
             feedsButton.setImage(FWImage.alertIconWhite, for: .normal)

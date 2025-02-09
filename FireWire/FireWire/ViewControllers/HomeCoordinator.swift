@@ -18,6 +18,13 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(homeViewController, animated: true)
     }
 
+    func navigateToIncidentDetail(_ incidentID: String){
+        let postDetailViewController = IncidentDetailViewController.instantiate()
+        postDetailViewController.setSelectedIncidentID(incidentID)
+        postDetailViewController.coordinator = self
+        pushViewController(postDetailViewController, animated: true)
+    }
+
     func navigateToMenu(){
         let menuViewController = MenuViewController.instantiate()
         menuViewController.appCoordinator = parentCoordinator

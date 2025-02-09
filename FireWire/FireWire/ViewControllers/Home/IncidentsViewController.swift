@@ -16,10 +16,11 @@ protocol IncidentsViewViewDelegate: AnyObject {
 
 class IncidentsViewController: UIViewController {
     @IBOutlet weak var mapHConstraint: NSLayoutConstraint!
-    @IBOutlet weak var incidentContainerView: UIView!
+    @IBOutlet weak var incidentContainerView: FWView!
     @IBOutlet weak var mapContentView: UIView!
     @IBOutlet weak var incidentTableView: UITableView!
-
+    @IBOutlet weak var incidentsCountLabel: UILabel!
+    
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
     var incidentsViewModel: IncidentsViewModel!
@@ -47,7 +48,6 @@ class IncidentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        incidentsViewModel.getIncidentList()
         paginationHandler = PaginationHandler(viewModel: incidentsViewModel)
         setupUI()
     }
@@ -63,6 +63,7 @@ class IncidentsViewController: UIViewController {
         mapView = mapManager.setupMapView(frame: mapContentView.bounds)
         mapContentView.addSubview(mapView)
 
+        incidentContainerView.setTopCornersRadius(radius: 20)
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
@@ -73,6 +74,7 @@ class IncidentsViewController: UIViewController {
     }
 
     func loadIncidentList(){
+        incidentsCountLabel.text = "\(incidentsViewModel.items.count) posts are listed"
         if incidentsViewModel.items.count > 0 {
             //noIncidentsLabel.isHidden = true
             incidentTableView.isHidden = false
@@ -93,8 +95,10 @@ class IncidentsViewController: UIViewController {
         mapView.animate(to: camera)
     }
 
+    @IBAction func filterButtonTap(_ sender: UIButton) {
+    }
+
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        // Get the translation of the gesture (distance the user has moved their finger)
         let translation = gesture.translation(in: incidentTableView)
 
         let newHeight = initialMapViewHeight + translation.y
@@ -109,6 +113,24 @@ class IncidentsViewController: UIViewController {
 
         if gesture.state == .ended || gesture.state == .cancelled {
             initialMapViewHeight = finalHeight
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        let scrollOffset = scrollView.contentOffset.y
+        let screenHeight = scrollView.frame.size.height
+
+        if contentHeight - scrollOffset <= screenHeight {
+            // Load the next page when the user scrolls to the bottom
+            paginationHandler.loadNextPage()
+        }
+
+        print("scroll view offset \(scrollOffset)")
+
+        if scrollOffset <= 1 {
+            panGestureRecognizer.isEnabled = true
+            incidentTableView.isScrollEnabled = false
         }
     }
 }
@@ -141,7 +163,7 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.dismissView(animated: true)
         let selectedIncidentID = incidentsViewModel.items[indexPath.row].id
-        //coordinator?.navigateToIncidentDetail(selectedIncidentID)
+        coordinator?.navigateToIncidentDetail(selectedIncidentID)
     }
 }
 

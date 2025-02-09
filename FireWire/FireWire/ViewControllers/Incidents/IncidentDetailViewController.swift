@@ -29,7 +29,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet weak var activityVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageMapStackView: UIStackView!
 
-    var coordinator: IncidentsCoordinator?
+    //var coordinator: IncidentsCoordinator?
+    var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
 
     private var selectedIncidentID: String?
@@ -128,7 +129,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     @IBAction func commentButtonTap(_ sender: UIButton) {
         if let selectedIncidentID {
-            coordinator?.navigateToIncidentComments(selectedIncidentID)
+            //coordinator?.navigateToIncidentComments(selectedIncidentID)
         }
     }
 
