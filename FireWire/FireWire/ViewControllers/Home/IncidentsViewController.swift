@@ -161,6 +161,7 @@ class IncidentsViewController: UIViewController {
         self.incidentContainerView.isHidden = false
         self.mapContentView.isHidden = true
         self.incidentListExpanded?(true)
+        self.incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
 
