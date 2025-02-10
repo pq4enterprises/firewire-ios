@@ -14,7 +14,7 @@ extension URLSession {
         case tokenExpired
     }
     
-    func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: JSONData? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+    func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: Any? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = url else {
             completion(.failure(customError.invalidUrl))
             return
@@ -26,8 +26,8 @@ extension URLSession {
         
         print("API request: ----- \(request)")
         
-        if payload?.isEmpty == false {
-            guard let body = try? JSONSerialization.data(withJSONObject: payload ?? [:], options: .prettyPrinted) else {
+        if let payload = payload, isEmptyPayload(payload) == false {
+            guard let body = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted) else {
                 print("\n Serialization failed")
                 return
             }
@@ -93,5 +93,15 @@ extension URLSession {
 
         }
         task.resume()
+    }
+
+    // Helper function to check if payload is empty (whether it is a dictionary or array)
+    func isEmptyPayload(_ payload: Any) -> Bool {
+        if let dict = payload as? [String: Any] {
+            return dict.isEmpty
+        } else if let array = payload as? [Any] {
+            return array.isEmpty
+        }
+        return false
     }
 }

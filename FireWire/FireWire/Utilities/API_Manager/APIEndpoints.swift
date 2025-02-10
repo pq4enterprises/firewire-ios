@@ -32,6 +32,7 @@ enum APIEndpoints {
     static let feedList = "api/app/feed"
     static let deleteAccount = "api/app/user/profile"
     static let updatePassword = "api/app/auth/update-password"
+    static let setSelectedArea = "api/app/user/area"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -108,7 +109,8 @@ enum APIPayload {
                 "sortBy": model.sortBy,
                 "sortDir": model.sortDir,
                 "offset": model.offset,
-                "limit": model.limit
+                "limit": model.limit,
+                "area": model.listType
             ]
         case let .addComment(model):
             return [

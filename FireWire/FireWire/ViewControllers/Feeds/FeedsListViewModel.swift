@@ -20,7 +20,7 @@ final class FeedsListViewModel: PaginatableViewModel {
     var currentIndex: IndexPath?  // Track which row is currently playing
 
     func fetchData(forPage page: Int, completion: @escaping (Result<[FeedListData], any Error>) -> Void) {
-        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit, listType: "area")
         let getFeedRequestModel = APIPayload.feedList(requestModel).toDictionary()
 
         APIRequest().callApi(

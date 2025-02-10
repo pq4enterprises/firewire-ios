@@ -271,6 +271,10 @@
 		B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */; };
 		B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0B1AF152D4F8DB6007371A9 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
+		B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
+		B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
+		B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
@@ -474,6 +478,8 @@
 		B0ADB6CE2D58D97D0086AC83 /* IncidentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentsViewController.xib; sourceTree = "<group>"; };
 		B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsViewModel.swift; sourceTree = "<group>"; };
 		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAreaModel.swift; sourceTree = "<group>"; };
+		B0B836752D5A744200C71D8F /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
@@ -907,6 +913,8 @@
 		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				B0B836752D5A744200C71D8F /* CommonRequestModel.swift */,
+				B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */,
 				B0ADB6AE2D5767D40086AC83 /* UpdatePasswordRequestModel.swift */,
 				B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */,
 				B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */,
@@ -1292,6 +1300,7 @@
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0EDF0422D32769200767EAB /* ResetPasswordViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
+				B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
 				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
@@ -1300,6 +1309,7 @@
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
+				B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
 				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
@@ -1423,6 +1433,7 @@
 				B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */,
 				B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */,
 				B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */,
+				B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
 				B0B1AED42D4F8DB6007371A9 /* MapViewController.swift in Sources */,
 				B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */,
 				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
@@ -1431,6 +1442,7 @@
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
 				B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
+				B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
 				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,

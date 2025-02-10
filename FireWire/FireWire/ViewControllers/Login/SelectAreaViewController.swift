@@ -7,16 +7,20 @@
 
 import UIKit
 
-class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelegate {
+protocol SelectAreaDelegate: AnyObject {
+    func confirmSelectArea()
+}
+
+class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelegate, SelectAreaDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var confirmButton: FWFilledButton!
+    @IBOutlet var confirmButton: FWFilledButton!
 
     weak var parentCoordinator: AppCoordinator?
     var coordinator: IncidentsCoordinator?
     var viewModel: IncidentLocalityListViewModel!
     var selectedAreas: SelectedLocalities!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -24,6 +28,7 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         showActivityIndicator(true)
         viewModel = IncidentLocalityListViewModel()
         viewModel.delegate = self
+        viewModel.selectAreaDelegate = self
         viewModel.getLocalities()
     }
 
@@ -55,11 +60,16 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
     }
 
     @IBAction func confirmButtonTap(_ sender: UIButton) {
-        //viewModel.setSelectedLocalities()
+        showLoader()
+        viewModel.setSelectedLocalities()
+    }
+
+    func confirmSelectArea() {
+        hideLoader()
         coordinator?.backToParentCoordinator()
         parentCoordinator?.navigateToHome()
     }
-    
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> SelectAreaViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

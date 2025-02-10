@@ -10,12 +10,14 @@ import Foundation
 final class IncidentLocalityListViewModel {
     var localityData: [LocalityResponseData] = []
     var delegate: IncidentLocalityListViewDelegate?
+    var selectAreaDelegate: SelectAreaDelegate?
 
+    var selectedAreas: [SelectedAreaModel] = []
     var selectedLocalities: [String] = []
     var selectedSubLocalities: [String] = []
 
     func getLocalities() {
-        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10, listType: "area")
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 
 
@@ -39,28 +41,23 @@ final class IncidentLocalityListViewModel {
         }
     }
 
-//TODO: Send selected area in following json format once API is ready
-//    func setSelectedLocalities() {
-//        let selectedArea = [
-//            SelectedAreas(userId: "1", localityId: "1234", sublocalityId: "567"),
-//            SelectedAreas(userId: "2", localityId: "1234", sublocalityId: "567")
-//        ]
-//
-//        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10, selectedAreas: selectedArea)
-//
-//        print("request \(APIPayload.incidentLocalityList(requestModel).toDictionary())")
-//
-//        APIRequest().callApi(
-//            apiEndPoint: APIEndpoints.localityList,
-//            payload: APIPayload.incidentLocalityList(requestModel).toDictionary(),
-//            expect: SuccessResponseModel.self)
-//        { [weak self] response, _, _ in
-//
-//            guard let apiResponse = response else {
-//                return
-//            }
-//        }
-//    }
+    func setSelectedLocalities() {
+        let requestModel: [[String: Any]] = selectedAreas.map { $0.toDictionary() }
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.setSelectedArea,
+            payload:  requestModel,
+            expect: SuccessResponseModel.self)
+        { [weak self] response, _, _ in
+
+            guard let apiResponse = response as? SuccessResponseModel else {
+                return
+            }
+
+            if apiResponse.code.lowercased() == "updated"{
+                self?.selectAreaDelegate?.confirmSelectArea()
+            }
+        }
+    }
 
     func toggleSelection(at indexPath: IndexPath) {
         var subLocality = localityData[indexPath.section].subLocality[indexPath.row]
@@ -69,35 +66,55 @@ final class IncidentLocalityListViewModel {
         localityData[indexPath.section].subLocality[indexPath.row] = subLocality
     }
 
-    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
     func updateSelectionArrays(for subLocality: SubLocality, localityId: String) {
-        // Update selected sub-localities
+        // Create an area model for the selected sub-locality and locality
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let selectedArea = SelectedAreaModel(userId: userId, localityId: localityId, subLocalityId: subLocality.id)
+
         if subLocality.isSelected {
-            if !selectedSubLocalities.contains(subLocality.id) {
-                selectedSubLocalities.append(subLocality.id)
+            // If the sub-locality is selected, add it to the selected areas if not already present
+            if !selectedAreas.contains(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId}) {
+                selectedAreas.append(selectedArea)
             }
         } else {
-            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
-                selectedSubLocalities.remove(at: index)
+            // If the sub-locality is de-selected, remove it from the selected areas
+            if let index = selectedAreas.firstIndex(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId}) {
+                selectedAreas.remove(at: index)
             }
         }
 
-        // Update selected localities (only if sub-localities are selected)
-        if subLocality.isSelected {
-            // If this sub-locality is selected, add the locality ID to the selected localities
-            if !selectedLocalities.contains(localityId) {
-                selectedLocalities.append(localityId)
-            }
-        } else {
-            // If no sub-localities are selected for this locality, remove the locality ID
-            let isAnySubLocalitySelected = localityData.contains { locality in
-                locality.subLocality.contains { $0.isSelected && $0.id != subLocality.id }
-            }
-            if !isAnySubLocalitySelected, let localityIndex = selectedLocalities.firstIndex(of: localityId) {
-                selectedLocalities.remove(at: localityIndex)
-            }
-        }
     }
+
+
+//    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
+//    func updateSelectionArrays(for subLocality: SubLocality, localityId: String) {
+//        // Update selected sub-localities
+//        if subLocality.isSelected {
+//            if !selectedSubLocalities.contains(subLocality.id) {
+//                selectedSubLocalities.append(subLocality.id)
+//            }
+//        } else {
+//            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
+//                selectedSubLocalities.remove(at: index)
+//            }
+//        }
+//
+//        // Update selected localities (only if sub-localities are selected)
+//        if subLocality.isSelected {
+//            // If this sub-locality is selected, add the locality ID to the selected localities
+//            if !selectedLocalities.contains(localityId) {
+//                selectedLocalities.append(localityId)
+//            }
+//        } else {
+//            // If no sub-localities are selected for this locality, remove the locality ID
+//            let isAnySubLocalitySelected = localityData.contains { locality in
+//                locality.subLocality.contains { $0.isSelected && $0.id != subLocality.id }
+//            }
+//            if !isAnySubLocalitySelected, let localityIndex = selectedLocalities.firstIndex(of: localityId) {
+//                selectedLocalities.remove(at: localityIndex)
+//            }
+//        }
+//    }
 
     // Handle "Select All" for a section
     func toggleSelectAll(forSection section: Int) {

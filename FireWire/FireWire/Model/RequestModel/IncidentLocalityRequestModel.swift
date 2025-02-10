@@ -12,6 +12,7 @@ struct IncidentLocalityRequestModel {
     public var sortDir: String
     public var offset: Int
     public var limit: Int
+    public var listType: String
 }
 
 //    public var selectedAreas: [SelectedAreas]

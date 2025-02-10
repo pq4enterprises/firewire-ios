@@ -14,7 +14,7 @@ public class APIRequest {
 
     func callApi<T: Codable>(
         apiEndPoint: String?,
-        payload: JSON? = nil,
+        payload: Any? = nil,
         expect: T.Type,
         requestType: String = APIConstants.POST, // Default to POST if not specified
         completionHandler: @escaping DataCompletionBlock
@@ -23,7 +23,7 @@ public class APIRequest {
         let accessToken = UserDefaults.standard.string(forKey: "token")
 
         // For GET request, append parameters to the URL if provided
-        if requestType == APIConstants.GET, let payload = payload, !payload.isEmpty {
+        if requestType == APIConstants.GET, let payload = payload as? [String: Any], isEmptyPayload(payload) == false {
             var urlComponents = URLComponents(string: urlString)
             urlComponents?.queryItems = payload.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
             urlString = urlComponents?.url?.absoluteString ?? urlString
@@ -142,5 +142,15 @@ public class APIRequest {
                 }
             }
         }.resume()
+    }
+
+    // Helper function to check if payload is empty (whether it is a dictionary or array)
+    func isEmptyPayload(_ payload: Any) -> Bool {
+        if let dict = payload as? [String: Any] {
+            return dict.isEmpty
+        } else if let array = payload as? [Any] {
+            return array.isEmpty
+        }
+        return false
     }
 }
