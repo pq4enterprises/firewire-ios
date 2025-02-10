@@ -141,7 +141,7 @@ class LoginViewController: UIViewController {
                 cookies.deleteCookie(cookie )
             }
 
-        loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
+        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
             if let error = error {
                 // Handle login error here
                 print("Error: \(error.localizedDescription)")
