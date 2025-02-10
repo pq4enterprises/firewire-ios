@@ -31,9 +31,11 @@ class IncidentsViewController: UIViewController {
     var mapManager: MapManager!
 
     var incidentView: IncidentListViewController!
-    
+    var incidentListExpanded: ((Bool) -> Void)?
+
     var initialMapViewHeight: CGFloat = 500
-    var minMapViewHeight: CGFloat = 60
+    var minMapViewHeight: CGFloat = 50
+
 
     init(viewModel: IncidentsViewModel) {
         self.incidentsViewModel = viewModel
@@ -54,8 +56,9 @@ class IncidentsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        panGestureRecognizer.isEnabled = true
-        incidentTableView.isScrollEnabled = false
+        /// Note: Enable to pull down table view feature
+        //panGestureRecognizer.isEnabled = true
+        //incidentTableView.isScrollEnabled = false
     }
 
     func setupUI() {
@@ -104,15 +107,24 @@ class IncidentsViewController: UIViewController {
         let newHeight = initialMapViewHeight + translation.y
         let finalHeight = max(newHeight, minMapViewHeight)
 
-        mapHConstraint.constant = finalHeight
+        if mapHConstraint.constant != finalHeight {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                self.mapHConstraint.constant = finalHeight
+                self.mapView.frame = self.view.bounds
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
 
-        if mapHConstraint.constant == minMapViewHeight {
+        // When the map is at its minimum height, disable the pan gesture and allow table view scrolling
+        if finalHeight == minMapViewHeight && gesture.state != .ended && gesture.state != .cancelled {
             gesture.isEnabled = false
             incidentTableView.isScrollEnabled = true
+            incidentListExpanded?(true)
         }
 
         if gesture.state == .ended || gesture.state == .cancelled {
             initialMapViewHeight = finalHeight
+            incidentTableView.isScrollEnabled = true
         }
     }
 
@@ -128,10 +140,26 @@ class IncidentsViewController: UIViewController {
 
         print("scroll view offset \(scrollOffset)")
 
-        if scrollOffset <= 1 {
-            panGestureRecognizer.isEnabled = true
-            incidentTableView.isScrollEnabled = false
+        /// Note: Enable to pull down table view feature
+        //        if scrollOffset <= 1 {
+        //            panGestureRecognizer.isEnabled = true
+        //            incidentTableView.isScrollEnabled = false
+        //        }
+    }
+
+    func expandMap(){
+        self.incidentContainerView.isHidden = true
+        self.mapContentView.isHidden = false
+        if (self.mapHConstraint != nil) {
+            self.mapHConstraint.isActive = false
         }
+        self.incidentListExpanded?(false)
+    }
+
+    func expandList(){
+        self.incidentContainerView.isHidden = false
+        self.mapContentView.isHidden = true
+        self.incidentListExpanded?(true)
     }
 }
 

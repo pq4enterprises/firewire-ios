@@ -13,12 +13,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var segmentControl: FWSegmentControl!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var feedsButton: UIButton!
-    
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var changeViewButton: FWRoundedButton!
+
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
     //var mapViewController: MapViewController?
     var incidentsViewController: IncidentsViewController?
     var newsViewController: NewsListViewController?
+
+    var isIncidentListExpanded: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,10 @@ class HomeViewController: UIViewController {
 
         incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
         incidentsViewController?.coordinator = coordinator
+        incidentsViewController?.incidentListExpanded = { listExpanded in
+            self.isIncidentListExpanded = listExpanded
+            self.updateUI(listExpanded)
+        }
 
         newsViewController = NewsListViewController(viewModel: NewsListViewModel())
         newsViewController?.coordinator = coordinator
@@ -42,8 +50,29 @@ class HomeViewController: UIViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentControl.layer.cornerRadius = 20
         segmentControl.layer.masksToBounds = true
+
+        changeViewButton.setupShadow()
+        changeViewButton.isHidden = true
     }
 
+    func updateUI(_ listExpanded: Bool){
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            self.headerView.backgroundColor = .white
+            self.menuButton.setImage(FWImage.menuIcon, for: .normal)
+            self.feedsButton.setImage(FWImage.alertIcon, for: .normal)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+
+        self.changeViewButton.isHidden = false
+
+        if listExpanded {
+            self.changeViewButton.setTitle("View map", for: .normal)
+            self.changeViewButton.setImage(FWImage.viewMapIcon, for: .normal)
+        }else{
+            self.changeViewButton.setTitle("View list", for: .normal)
+            self.changeViewButton.setImage(FWImage.menuIconRed, for: .normal)
+        }
+    }
 
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
@@ -58,6 +87,12 @@ class HomeViewController: UIViewController {
         coordinator?.navigateToFeeds()
     }
 
+    @IBAction func changeViewButtonTap(_ sender: UIButton) {
+        isIncidentListExpanded
+            ? incidentsViewController?.expandMap()
+            : incidentsViewController?.expandList()
+    }
+    
     func switchToViewController(at index: Int) {
         // Remove the currently visible child view controller
         for child in children {

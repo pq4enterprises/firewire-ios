@@ -11,6 +11,7 @@ enum FWImageResources: String {
     case appLogo = "app_logo"
     case menuIcon = "menu_icon"
     case menuIconWhite = "menu_icon_white"
+    case menuIconRed = "menu_red_icon"
     case alertIcon = "alert_icon"
     case alertIconWhite = "alert_icon_white"
     case checkBoxChecked = "checkbox_checked"
@@ -20,6 +21,7 @@ enum FWImageResources: String {
     case favIconSelected = "star_selected"
     case playIcon = "play_icon"
     case pauseIcon = "pause_icon"
+    case viewMapIcon = "view_map_icon"
 }
 
 extension UIImage {
@@ -32,6 +34,7 @@ struct FWImage {
     static let appLogo = UIImage.appImage(.appLogo)
     static let menuIcon = UIImage.appImage(.menuIcon)
     static let menuIconWhite = UIImage.appImage(.menuIconWhite)
+    static let menuIconRed = UIImage.appImage(.menuIconRed)
     static let alertIcon = UIImage.appImage(.alertIcon)
     static let alertIconWhite = UIImage.appImage(.alertIconWhite)
     static let checkBoxChecked = UIImage.appImage(.checkBoxChecked)
@@ -41,4 +44,5 @@ struct FWImage {
     static let favIconSelected = UIImage.appImage(.favIconSelected)
     static let playIcon = UIImage.appImage(.playIcon)
     static let pauseIcon = UIImage.appImage(.pauseIcon)
+    static let viewMapIcon = UIImage.appImage(.viewMapIcon)
 }

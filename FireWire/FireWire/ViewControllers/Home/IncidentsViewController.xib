@@ -77,10 +77,8 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="G9t-4y-qaw" firstAttribute="top" secondItem="aDS-1O-oJE" secondAttribute="bottom" id="6Bp-9V-VkY"/>
                         <constraint firstAttribute="trailing" secondItem="aDS-1O-oJE" secondAttribute="trailing" id="6mD-OI-eY7"/>
                         <constraint firstItem="G9t-4y-qaw" firstAttribute="leading" secondItem="peT-SO-bDV" secondAttribute="leading" id="EDh-tZ-Q99"/>
-                        <constraint firstItem="aDS-1O-oJE" firstAttribute="top" secondItem="peT-SO-bDV" secondAttribute="top" id="M71-tI-cfM"/>
                         <constraint firstAttribute="bottom" secondItem="G9t-4y-qaw" secondAttribute="bottom" id="Olu-6V-dA5"/>
                         <constraint firstItem="G9t-4y-qaw" firstAttribute="top" secondItem="aDS-1O-oJE" secondAttribute="bottom" id="dDp-3L-mS6"/>
                         <constraint firstItem="aDS-1O-oJE" firstAttribute="leading" secondItem="peT-SO-bDV" secondAttribute="leading" id="nrZ-JZ-FsQ"/>
