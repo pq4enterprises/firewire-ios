@@ -108,12 +108,10 @@ class IncidentsViewController: UIViewController {
         let finalHeight = max(newHeight, minMapViewHeight)
 
         if mapHConstraint.constant != finalHeight {
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-                self.mapHConstraint.constant = finalHeight
-                self.mapView.frame = self.view.bounds
-                self.view.layoutIfNeeded()
-            }, completion: nil)
+            mapHConstraint.constant = finalHeight
         }
+
+        mapView.frame = view.bounds
 
         // When the map is at its minimum height, disable the pan gesture and allow table view scrolling
         if finalHeight == minMapViewHeight && gesture.state != .ended && gesture.state != .cancelled {
@@ -123,8 +121,11 @@ class IncidentsViewController: UIViewController {
         }
 
         if gesture.state == .ended || gesture.state == .cancelled {
-            initialMapViewHeight = finalHeight
-            incidentTableView.isScrollEnabled = true
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                self.initialMapViewHeight = finalHeight
+                self.incidentTableView.isScrollEnabled = true
+                self.view.layoutIfNeeded()
+            }, completion: nil)
         }
     }
 
