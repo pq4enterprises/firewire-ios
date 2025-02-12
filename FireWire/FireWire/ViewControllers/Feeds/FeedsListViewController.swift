@@ -9,12 +9,14 @@ import UIKit
 
 protocol FeedListViewDelegate: AnyObject {
     func dataReceived()
+    func errorReceived(message: String)
     func errorPlayingAudio()
     func playingAudio()
 }
 
 class FeedsListViewController: UIViewController, FeedListViewDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noFeedsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
     var coordinator: HomeCoordinator?
@@ -30,6 +32,8 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         paginationHandler = PaginationHandler(viewModel: viewModel)
 
         setupTableView()
+
+        noFeedsLabel.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +48,12 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         tableView.register(FeedItemListView.nib(), forCellReuseIdentifier: FeedItemListView.identifier)
     }
 
+    func errorReceived(message: String) {
+        showActivityIndicator(false)
+        tableView.isHidden = true
+        noFeedsLabel.isHidden = false
+    }
+    
     func dataReceived() {
         showActivityIndicator(false)
         tableView.reloadData()

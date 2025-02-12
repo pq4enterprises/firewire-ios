@@ -60,8 +60,8 @@ enum APIPayload {
     case incidentList(_ model: IncidentRequestModel)
     case incidentLocalityList(_ model: IncidentLocalityRequestModel)
     case addComment(_ model: AddCommentRequestModel)
-    case commentsList(_ model: IncidentLocalityRequestModel)
-    case feedList(_ model: IncidentLocalityRequestModel)
+    case commentsList(_ model: CommonRequestModel)
+    case feedList(_ model: CommonRequestModel)
     case postReasonToAccountDelete(reason: String)
     case deleteAccount
     case updatePassword(_ model: UpdatePasswordRequestModel)

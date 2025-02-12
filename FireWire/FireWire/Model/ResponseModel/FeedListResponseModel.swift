@@ -6,7 +6,7 @@
 //
 
 struct FeedListResponseModel: Codable {
-    let data: [FeedListData]
+    let data: [FeedListData]?
     let pageInfo: PageInfo
 }
 

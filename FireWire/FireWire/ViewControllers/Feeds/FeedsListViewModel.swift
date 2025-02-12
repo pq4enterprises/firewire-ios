@@ -17,10 +17,10 @@ final class FeedsListViewModel: PaginatableViewModel {
     var items: [FeedListData] = []
     var delegate: FeedListViewDelegate?
     var audioPlayer: AVAudioPlayer?
-    var currentIndex: IndexPath?  // Track which row is currently playing
+    var currentIndex: IndexPath? // Track which row is currently playing
 
     func fetchData(forPage page: Int, completion: @escaping (Result<[FeedListData], any Error>) -> Void) {
-        let requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit, listType: "area")
+        let requestModel = CommonRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
         let getFeedRequestModel = APIPayload.feedList(requestModel).toDictionary()
 
         APIRequest().callApi(
@@ -30,18 +30,19 @@ final class FeedsListViewModel: PaginatableViewModel {
             requestType: APIConstants.GET)
         { [weak self] response, _, _ in
 
-            guard let apiResponse = response else {
+            guard let feedListResponse = response as? FeedListResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
+                self?.delegate?.errorReceived(message: errorMessage)
                 return
             }
 
-            if let feedListResponse = apiResponse as? FeedListResponseModel {
-                let newItems = feedListResponse.data
+            if let newsList = feedListResponse.data {
                 self?.totalPages = feedListResponse.pageInfo.totalCount
                 DispatchQueue.main.async {
-                    completion(.success(newItems))
+                    completion(.success(newsList))
                 }
-            } else {
-                print("Invalid response object")
+            }else {
+                self?.delegate?.errorReceived(message: "Invalid response")
             }
         }
     }
@@ -51,7 +52,7 @@ final class FeedsListViewModel: PaginatableViewModel {
         delegate?.dataReceived()
     }
 
-    func getFeedList(){
+    func getFeedList() {
         fetchData(forPage: currentPage) { [weak self] result in
             switch result {
             case .success(let newItems):
@@ -64,22 +65,22 @@ final class FeedsListViewModel: PaginatableViewModel {
 
     func playAudio(_ urlString: String, index: IndexPath) {
         guard let url = URL(string: urlString) else {
-            self.delegate?.errorPlayingAudio()
+            delegate?.errorPlayingAudio()
             return
         }
 
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             DispatchQueue.main.async {
                 if error != nil {
                     self?.delegate?.errorPlayingAudio()
                     return
                 }
-                
+
                 guard let data = data else {
                     self?.delegate?.errorPlayingAudio()
                     return
                 }
-                
+
                 do {
                     self?.audioPlayer = try AVAudioPlayer(data: data)
                     self?.audioPlayer?.prepareToPlay()
