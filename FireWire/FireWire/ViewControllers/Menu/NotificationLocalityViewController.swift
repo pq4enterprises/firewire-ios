@@ -26,6 +26,8 @@ class NotificationLocalityViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.sectionHeaderTopPadding = 0  // iOS 15+ to avoid space above section headers
+
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
         tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
     }
@@ -69,11 +71,12 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
         let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
 
         if section == 0 {
-            headerView.setupView(title: localityData.name)
+            headerView.setupView(title: localityData.name, hideSelectAll: true)
         } else if section == 1 {
             headerView.setupView(title: localitySubHeadings[0])
             headerView.selectAllAction = {
                 self.viewModel?.toggleSelectAllSubLocalities()
+                self.viewModel?.setSelectedLocalities()
                 tableView.reloadData()
             }
         } else if section == 2 {
@@ -82,6 +85,7 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
                 headerView.selectAllButton.isHidden = false
                 headerView.selectAllAction = {
                     self.viewModel?.toggleSelectAllUnits()
+                    self.viewModel?.setSelectedLocalities()
                     tableView.reloadData()
                 }
             } else {
@@ -100,6 +104,7 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
         cell.setupView(localityData, indexPath)
         cell.onCheckboxToggled = { [weak self] indexPath in
             self?.viewModel?.toggleSelection(at: indexPath)
+            self?.viewModel?.setSelectedLocalities()
             tableView.reloadRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }

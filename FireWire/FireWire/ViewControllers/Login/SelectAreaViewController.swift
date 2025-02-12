@@ -29,7 +29,7 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         viewModel = IncidentLocalityListViewModel()
         viewModel.delegate = self
         viewModel.selectAreaDelegate = self
-        viewModel.getLocalities()
+        viewModel.getLocalities(forType: .area)
     }
 
     func setupTableView() {

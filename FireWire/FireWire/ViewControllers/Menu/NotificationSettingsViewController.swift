@@ -19,7 +19,7 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
         viewModel.delegate = self
 
         showLoader()
-        viewModel.getLocalities()
+        viewModel.getLocalities(forType: .notification)
 
         setupTableView()
     }
@@ -27,6 +27,8 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+
+        tableView.sectionHeaderTopPadding = 0  // iOS 15+ to avoid space above section headers
     }
 
     func dataReceived() {

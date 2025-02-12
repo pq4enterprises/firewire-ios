@@ -32,7 +32,7 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.getLocalities()
+        viewModel?.getLocalities(forType: .area)
         setupTableView()
     }
 

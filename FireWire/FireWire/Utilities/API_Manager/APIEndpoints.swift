@@ -33,6 +33,7 @@ enum APIEndpoints {
     static let deleteAccount = "api/app/user/profile"
     static let updatePassword = "api/app/auth/update-password"
     static let setSelectedArea = "api/app/user/area"
+    static let setNotificationArea = "api/app/user/notification"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"

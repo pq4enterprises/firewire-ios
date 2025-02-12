@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum LocalityListType: String {
+    case area = "area"
+    case notification = "notification"
+}
+
 final class IncidentLocalityListViewModel {
     var localityData: [LocalityResponseData] = []
     var delegate: IncidentLocalityListViewDelegate?
@@ -16,9 +21,9 @@ final class IncidentLocalityListViewModel {
     var selectedLocalities: [String] = []
     var selectedSubLocalities: [String] = []
 
-    func getLocalities() {
+    func getLocalities(forType type: LocalityListType) {
         var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
-        requestModel.listType = ListType(type: "area")
+        requestModel.listType = ListType(type: type.rawValue)
 
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 

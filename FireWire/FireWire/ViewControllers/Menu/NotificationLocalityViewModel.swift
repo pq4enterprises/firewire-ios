@@ -9,6 +9,7 @@ import Foundation
 
 final class NotificationLocalityViewModel {
     var localityData: LocalityResponseData!
+    var selectedNotificationArea: [SelectedNotificationModel] = []
     var selectedSubLocalities: [String] = []
     var selectedUnits: [String] = []
 
@@ -44,33 +45,84 @@ final class NotificationLocalityViewModel {
         }
     }
 
-    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
     func updateSelectionArrays(for subLocality: SubLocality) {
-        // Update selected sub-localities
+        // Create an area model for the selected sub-locality and locality
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let selectedArea = SelectedNotificationModel(userId: userId, notificationId: subLocality.id, type: "subLocality")
+
         if subLocality.isChecked {
-            if !selectedSubLocalities.contains(subLocality.id) {
-                selectedSubLocalities.append(subLocality.id)
+            // If the sub-locality is selected, add it to the selected areas if not already present
+            if !selectedNotificationArea.contains(where: { $0.notificationId == subLocality.id }) {
+                selectedNotificationArea.append(selectedArea)
             }
         } else {
-            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
-                selectedSubLocalities.remove(at: index)
+            // If the sub-locality is de-selected, remove it from the selected areas
+            if let index = selectedNotificationArea.firstIndex(where: { $0.notificationId == subLocality.id }) {
+                selectedNotificationArea.remove(at: index)
             }
         }
     }
 
     func updateSelectionArrays(for unit: UnitDataModel?) {
         guard let unit else { return }
-        
+
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let selectedArea = SelectedNotificationModel(userId: userId, notificationId: unit.id, type: "unit")
+
         if unit.isChecked {
-            if !selectedUnits.contains(unit.id) {
-                selectedUnits.append(unit.id)
+            if !selectedNotificationArea.contains(where: { $0.notificationId == unit.id }) {
+                selectedNotificationArea.append(selectedArea)
             }
         } else {
-            if let index = selectedUnits.firstIndex(of: unit.id) {
-                selectedUnits.remove(at: index)
+            if let index = selectedNotificationArea.firstIndex(where: { $0.notificationId == unit.id }) {
+                selectedNotificationArea.remove(at: index)
             }
         }
     }
+
+    func setSelectedLocalities() {
+        if !selectedNotificationArea.isEmpty {
+            let requestModel: [[String: Any]] = selectedNotificationArea.map { $0.toDictionary() }
+            APIRequest().callApi(
+                apiEndPoint: APIEndpoints.setNotificationArea,
+                payload: requestModel,
+                expect: SuccessResponseModel.self)
+            { response, _, _ in
+
+                if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
+                    debugPrint("Notification selection response \(apiResponse.message)")
+                }
+            }
+        }
+    }
+
+//    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
+//    func updateSelectionArrays(for subLocality: SubLocality) {
+//        // Update selected sub-localities
+//        if subLocality.isChecked {
+//            if !selectedSubLocalities.contains(subLocality.id) {
+//                selectedSubLocalities.append(subLocality.id)
+//            }
+//        } else {
+//            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
+//                selectedSubLocalities.remove(at: index)
+//            }
+//        }
+//    }
+
+//    func updateSelectionArrays(for unit: UnitDataModel?) {
+//        guard let unit else { return }
+//
+//        if unit.isChecked {
+//            if !selectedUnits.contains(unit.id) {
+//                selectedUnits.append(unit.id)
+//            }
+//        } else {
+//            if let index = selectedUnits.firstIndex(of: unit.id) {
+//                selectedUnits.remove(at: index)
+//            }
+//        }
+//    }
 
     func toggleSelection(at indexPath: IndexPath) {
         if indexPath.section == 1, let localityData { // for sublocalities
@@ -82,7 +134,7 @@ final class NotificationLocalityViewModel {
             var unit = units[indexPath.row]
             unit?.isChecked.toggle()
             updateSelectionArrays(for: unit)
-            self.localityData.unit?[indexPath.row] = unit
+            localityData.unit?[indexPath.row] = unit
         }
     }
 }

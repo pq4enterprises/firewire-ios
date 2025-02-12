@@ -24,8 +24,9 @@ class CityHeaderCell: UITableViewCell {
         selectAllAction?()
     }
     
-    func setupView(title: String) {
+    func setupView(title: String, hideSelectAll: Bool = false) {
         titleLabel.text = title
+        selectAllButton.isHidden = hideSelectAll
     }
 
 }

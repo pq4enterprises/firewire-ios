@@ -34,6 +34,8 @@
 		B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
 		B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */; };
 		B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */; };
+		B00EDAF52D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */; };
+		B00EDAF62D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
@@ -388,6 +390,7 @@
 		B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseModel.swift; sourceTree = "<group>"; };
 		B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailResponseModel.swift; sourceTree = "<group>"; };
 		B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNotificationModel.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
@@ -917,6 +920,7 @@
 		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */,
 				B0B836752D5A744200C71D8F /* CommonRequestModel.swift */,
 				B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */,
 				B0ADB6AE2D5767D40086AC83 /* UpdatePasswordRequestModel.swift */,
@@ -1269,6 +1273,7 @@
 				B006D91A2D42B6600082E59E /* FeedsListViewModel.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
 				B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */,
+				B00EDAF52D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
 				B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */,
 				B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
@@ -1403,6 +1408,7 @@
 				B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */,
 				B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */,
 				B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */,
+				B00EDAF62D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
 				B0B1AEB32D4F8DB6007371A9 /* FWImageView.swift in Sources */,
 				B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */,
 				B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */,
