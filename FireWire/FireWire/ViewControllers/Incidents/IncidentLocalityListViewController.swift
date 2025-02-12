@@ -15,7 +15,7 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
 
-    var coordinator: IncidentsCoordinator?
+    var coordinator: HomeCoordinator?
     var viewModel: IncidentLocalityListViewModel!
     var selectedAreas: SelectedLocalities!
 
@@ -50,9 +50,15 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
-        coordinator?.popView()
-        debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
-        self.coordinator?.start(with: [], viewModel.getSelectedIds())
+        viewModel.setSelectedLocalities()
+        postNotification()
+        coordinator?.dismissView(animated: true)
+        //debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
+        //self.coordinator?.start(with: [], viewModel.getSelectedIds())
+    }
+
+    @objc func postNotification() {
+        NotificationCenter.default.post(name: .selectAreaDidChange, object: nil)
     }
 
     func dataReceived() {

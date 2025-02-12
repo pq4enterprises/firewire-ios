@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,6 +39,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VSJ-DI-Xkg" secondAttribute="trailing" constant="16" id="2cb-m8-EOM"/>
                     <constraint firstItem="dcG-Fp-60Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5Kf-ma-iSQ"/>
@@ -49,6 +51,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <connections>
                 <outlet property="selectAllButton" destination="dcG-Fp-60Z" id="Yeu-QC-uT6"/>
                 <outlet property="titleLabel" destination="VSJ-DI-Xkg" id="QCI-E2-j6g"/>
@@ -60,5 +63,8 @@
         <namedColor name="FWRed">
             <color red="0.792156862745098" green="0.2627450980392157" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

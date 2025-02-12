@@ -12,7 +12,24 @@ struct IncidentLocalityRequestModel {
     public var sortDir: String
     public var offset: Int
     public var limit: Int
-    public var listType: String
+    public var listType: ListType?
+}
+
+struct ListType {
+    public var type: String
+
+    func toDictionary() -> [String: Any] {
+        return ["type": type]
+    }
+
+    func toJsonString() -> String? {
+        let dict = self.toDictionary()
+        if let data = try? JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed),
+           let jsonString = String(data: data, encoding: .utf8) {
+            return jsonString
+        }
+        return nil
+    }
 }
 
 //    public var selectedAreas: [SelectedAreas]

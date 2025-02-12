@@ -41,7 +41,7 @@ class IncidentLocalityListItem: UITableViewCell {
     func updateCheckboxState() {
         guard let locality = localityData, let indexPath = indexPath else { return }
         let subLocality = locality.subLocality[indexPath.row]
-        let image = subLocality.isSelected ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
+        let image = subLocality.isChecked ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
         selectSubLocalityButton.setImage(image, for: .normal)
     }
 }

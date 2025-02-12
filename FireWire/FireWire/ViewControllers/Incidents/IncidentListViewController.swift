@@ -7,10 +7,6 @@
 
 import UIKit
 
-extension Notification.Name {
-    static let incidentListDidChange = Notification.Name("incidentListDidChange")
-}
-
 protocol PostListViewDelegate: AnyObject {
     func filterDataReceived()
     func noIncidentData()

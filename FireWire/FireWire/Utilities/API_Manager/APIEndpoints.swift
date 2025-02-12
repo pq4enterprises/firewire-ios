@@ -110,7 +110,7 @@ enum APIPayload {
                 "sortDir": model.sortDir,
                 "offset": model.offset,
                 "limit": model.limit,
-                "area": model.listType
+                "query": model.listType?.toJsonString() ?? ""
             ]
         case let .addComment(model):
             return [

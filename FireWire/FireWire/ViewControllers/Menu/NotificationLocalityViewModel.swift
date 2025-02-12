@@ -13,14 +13,14 @@ final class NotificationLocalityViewModel {
     var selectedUnits: [String] = []
 
     func toggleSelectAllSubLocalities() {
-        let allSelected = localityData.subLocality.allSatisfy { $0.isSelected }
+        let allSelected = localityData.subLocality.allSatisfy { $0.isChecked }
 
         /// If not all selected, select all items
         if !allSelected {
             for i in 0..<localityData.subLocality.count {
                 let subLocality = localityData.subLocality[i]
-                if !subLocality.isSelected {
-                    localityData.subLocality[i].isSelected = true
+                if !subLocality.isChecked {
+                    localityData.subLocality[i].isChecked = true
                     // Update selection arrays for the selected sub-locality
                     updateSelectionArrays(for: localityData.subLocality[i])
                 }
@@ -47,7 +47,7 @@ final class NotificationLocalityViewModel {
     // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
     func updateSelectionArrays(for subLocality: SubLocality) {
         // Update selected sub-localities
-        if subLocality.isSelected {
+        if subLocality.isChecked {
             if !selectedSubLocalities.contains(subLocality.id) {
                 selectedSubLocalities.append(subLocality.id)
             }
@@ -75,7 +75,7 @@ final class NotificationLocalityViewModel {
     func toggleSelection(at indexPath: IndexPath) {
         if indexPath.section == 1, let localityData { // for sublocalities
             var subLocality = localityData.subLocality[indexPath.row]
-            subLocality.isSelected.toggle()
+            subLocality.isChecked.toggle()
             updateSelectionArrays(for: subLocality)
             self.localityData.subLocality[indexPath.row] = subLocality
         } else if indexPath.section == 2, let units = localityData.unit {

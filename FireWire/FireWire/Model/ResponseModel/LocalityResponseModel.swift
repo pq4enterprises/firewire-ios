@@ -32,11 +32,12 @@ struct LocalityResponseData: Codable {
 
 struct SubLocality: Codable {
     let id, name, latitude, longitude: String
-    var isSelected: Bool = false
+    var isChecked: Bool
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name, latitude, longitude
+        case isChecked
     }
 }
 

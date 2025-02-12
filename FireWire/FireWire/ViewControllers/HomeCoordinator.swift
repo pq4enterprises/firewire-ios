@@ -89,4 +89,16 @@ class HomeCoordinator: BaseCoordinator {
         changePasswordViewController.coordinator = self
         pushViewController(changePasswordViewController, animated: true)
     }
+
+    func navigateToSelectAreaListView(){
+        let selectAreaListView = IncidentLocalityListViewController(viewModel: IncidentLocalityListViewModel())
+        selectAreaListView.coordinator = self
+
+        let bottomSheet = FWBottomSheetViewController.instantiate()
+        bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
+        bottomSheet.showDimmedView = true
+        bottomSheet.modalPresentationStyle = .pageSheet
+        navigationController.present(bottomSheet, animated: true)
+    }
+
 }

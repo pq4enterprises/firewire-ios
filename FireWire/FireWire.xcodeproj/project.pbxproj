@@ -32,6 +32,8 @@
 		B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
 		B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */; };
 		B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
+		B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */; };
+		B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */; };
 		B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
@@ -385,6 +387,7 @@
 		B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		B00A48EF2D0D850A0088F66F /* NewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseModel.swift; sourceTree = "<group>"; };
 		B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailResponseModel.swift; sourceTree = "<group>"; };
+		B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaListViewCell.swift; sourceTree = "<group>"; };
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
@@ -900,6 +903,7 @@
 		B0D12D012CED0C8400EEDDF8 /* FWCommon */ = {
 			isa = PBXGroup;
 			children = (
+				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
 				B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */,
 				B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */,
 				B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */,
@@ -1311,6 +1315,7 @@
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
+				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
 				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
@@ -1444,6 +1449,7 @@
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
 				B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
+				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
 				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,

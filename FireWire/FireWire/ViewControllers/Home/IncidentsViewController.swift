@@ -20,7 +20,8 @@ class IncidentsViewController: UIViewController {
     @IBOutlet weak var mapContentView: UIView!
     @IBOutlet weak var incidentTableView: UITableView!
     @IBOutlet weak var incidentsCountLabel: UILabel!
-    
+    @IBOutlet weak var noIncidentsLabel: UILabel!
+
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
     var incidentsViewModel: IncidentsViewModel!
@@ -52,6 +53,8 @@ class IncidentsViewController: UIViewController {
         super.viewDidLoad()
         paginationHandler = PaginationHandler(viewModel: incidentsViewModel)
         setupUI()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +62,10 @@ class IncidentsViewController: UIViewController {
         /// Note: Enable to pull down table view feature
         //panGestureRecognizer.isEnabled = true
         //incidentTableView.isScrollEnabled = false
+    }
+
+    @objc func selectAreaDidChange(_ notification: Notification) {
+        incidentsViewModel.getIncidentList()
     }
 
     func setupUI() {
@@ -79,12 +86,12 @@ class IncidentsViewController: UIViewController {
     func loadIncidentList(){
         incidentsCountLabel.text = "\(incidentsViewModel.items.count) posts are listed"
         if incidentsViewModel.items.count > 0 {
-            //noIncidentsLabel.isHidden = true
+            noIncidentsLabel.isHidden = true
             incidentTableView.isHidden = false
             incidentTableView.reloadData()
         }else{
             incidentTableView.isHidden = true
-            //noIncidentsLabel.isHidden = false
+            noIncidentsLabel.isHidden = false
         }
     }
 
@@ -99,6 +106,7 @@ class IncidentsViewController: UIViewController {
     }
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToSelectAreaListView()
     }
 
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -162,6 +170,10 @@ class IncidentsViewController: UIViewController {
         self.mapContentView.isHidden = true
         self.incidentListExpanded?(true)
         self.incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
     }
 }
 

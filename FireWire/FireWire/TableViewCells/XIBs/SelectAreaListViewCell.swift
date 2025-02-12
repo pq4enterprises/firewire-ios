@@ -53,7 +53,7 @@ class SelectAreaListViewCell: UITableViewCell {
 
         if indexPath.section == 1 {
             let subLocality = locality.subLocality[indexPath.row]
-            let image = subLocality.isSelected ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
+            let image = subLocality.isChecked ? FWImage.checkBoxChecked : FWImage.checkBoxUnChecked
             selectAreaButton.setImage(image, for: .normal)
         }else if indexPath.section == 2, let units = locality.unit {
             let unit = units[indexPath.row]

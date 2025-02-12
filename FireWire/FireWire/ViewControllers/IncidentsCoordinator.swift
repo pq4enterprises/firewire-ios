@@ -33,7 +33,7 @@ class IncidentsCoordinator: BaseCoordinator {
 
     func navigateToSelectAreaListView(){
         let selectAreaListView = IncidentLocalityListViewController(viewModel: IncidentLocalityListViewModel())
-        selectAreaListView.coordinator = self
+        //selectAreaListView.coordinator = self
 
         let bottomSheet = FWBottomSheetViewController.instantiate()
         bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])

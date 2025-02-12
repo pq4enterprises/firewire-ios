@@ -14,7 +14,7 @@ struct SelectedAreaModel {
         return [
             "userId": userId,
             "localityId": localityId,
-            "sublocalityId": subLocalityId
+            "subLocalityId": subLocalityId
         ]
     }
 }
