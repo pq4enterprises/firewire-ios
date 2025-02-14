@@ -166,7 +166,7 @@
                                                                     <constraint firstAttribute="height" constant="55" id="Qrp-VG-3Zz"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2211,7 +2211,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="bRE-WZ-9RE"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2230,7 +2230,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="KVW-x2-bts"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2249,7 +2249,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="DmR-1T-XYM"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2287,7 +2287,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="uW7-Ma-Ney"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2538,7 +2538,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="hnm-jM-iic"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2557,7 +2557,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="oCX-zO-VQJ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2576,7 +2576,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="m1y-Vt-aib"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2595,7 +2595,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="08q-Pb-rlB"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2614,7 +2614,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="fJL-fo-h4D"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2633,7 +2633,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="Zi8-Mr-OJG"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2652,7 +2652,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="Koi-km-nhH"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>

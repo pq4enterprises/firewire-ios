@@ -36,6 +36,10 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
         tableView.reloadData()
     }
 
+    func error(message: String) {
+        hideLoader() // TODO: Show no data label
+    }
+
     @IBAction func backButtonTap(_ sender: UIButton) {
         coordinator?.popView()
     }

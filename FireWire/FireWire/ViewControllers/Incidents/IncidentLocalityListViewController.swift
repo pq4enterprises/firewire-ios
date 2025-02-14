@@ -9,6 +9,7 @@ import UIKit
 
 protocol IncidentLocalityListViewDelegate: AnyObject {
     func dataReceived()
+    func error(message: String)
 }
 
 class IncidentLocalityListViewController: UIViewController, IncidentLocalityListViewDelegate {
@@ -66,6 +67,11 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
         tableView.reloadData()
     }
 
+    func error(message: String) {
+        showActivityIndicator(false)
+        showAlertMessage(message)
+    }
+
     func showActivityIndicator(_ value: Bool) {
         if value {
             activityIndicator.isHidden = false
@@ -78,6 +84,15 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
             tableView.isHidden = false
         }
+    }
+
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
     }
 }
 

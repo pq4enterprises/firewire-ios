@@ -9,7 +9,7 @@ import Foundation
 
 struct LocalityResponseModel: Codable {
     let message, code: String
-    let data: LocalityResponseDataModel
+    let data: LocalityResponseDataModel?
 }
 
 struct LocalityResponseDataModel: Codable {
@@ -44,11 +44,20 @@ struct SubLocality: Codable {
 struct UnitDataModel: Codable {
     let id: String
     let unitName: String?
-    var isChecked: Bool
+    var isChecked: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case unitName
         case isChecked
+    }
+
+    // Custom initializer to handle the case when `isChecked` is missing
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        unitName = try container.decodeIfPresent(String.self, forKey: .unitName)
+        // Provide default value false if isChecked is missing
+        isChecked = (try? container.decode(Bool.self, forKey: .isChecked)) ?? false
     }
 }

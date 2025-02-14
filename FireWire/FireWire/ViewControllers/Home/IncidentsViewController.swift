@@ -15,6 +15,7 @@ protocol IncidentsViewViewDelegate: AnyObject {
 }
 
 class IncidentsViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapHConstraint: NSLayoutConstraint!
     @IBOutlet weak var incidentContainerView: FWView!
     @IBOutlet weak var mapContentView: UIView!
@@ -55,6 +56,8 @@ class IncidentsViewController: UIViewController {
         setupUI()
 
         NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
+
+        showLoader()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +68,7 @@ class IncidentsViewController: UIViewController {
     }
 
     @objc func selectAreaDidChange(_ notification: Notification) {
+        incidentsViewModel.items.removeAll() // refresh the list
         incidentsViewModel.getIncidentList()
     }
 
@@ -175,6 +179,26 @@ class IncidentsViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
     }
+
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+        var items: [Any] = [text]
+
+        if let imageToShare = image {
+            items.append(imageToShare)
+        }
+
+        if let urlToShare = url {
+            items.append("Checkout: \(urlToShare)")
+        }
+
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude certain activity types if needed (optional)
+        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
+
+        self.present(activityViewController, animated: true)
+    }
 }
 
 extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -196,7 +220,8 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.shareAction = {
-            self.showToast(message: "share action")
+            let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
+            self.shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
         }
         cell.setupView(selectedIncident)
         return cell
@@ -211,15 +236,16 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension IncidentsViewController: IncidentsViewViewDelegate{
     func incidentDataLoaded() {
+        hideLoader()
         loadIncidentList()
         addMapMarkers()
     }
 
     func noIncidentData() {
-
+        hideLoader()
     }
 
     func error(message: String) {
-        
+        hideLoader()
     }
 }

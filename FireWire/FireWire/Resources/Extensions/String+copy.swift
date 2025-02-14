@@ -21,6 +21,10 @@ public extension String {
     struct VerifyOtp {
         public static let info = "Verification code has been sent to you registered email id %@"
     }
+
+    struct CommonError {
+        public static let techError = "Technical error at our end please try again."
+    }
 }
 
 public extension String {

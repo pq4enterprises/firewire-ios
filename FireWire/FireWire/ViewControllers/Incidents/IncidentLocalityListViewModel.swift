@@ -35,17 +35,28 @@ final class IncidentLocalityListViewModel {
             requestType: APIConstants.GET)
         { [weak self] response, _, _ in
 
-            guard let apiResponse = response else {
+            guard let localityResponse = response as? LocalityResponseModel else {
+                let errorMessage = (response == nil) ? .CommonError.techError : "Unexpected response format"
+                if self?.selectAreaDelegate != nil {
+                    self?.selectAreaDelegate?.error(message: errorMessage)
+                }else{
+                    self?.delegate?.error(message: errorMessage)
+                }
                 return
             }
 
-            if let localityResponse = apiResponse as? LocalityResponseModel {
-                self?.localityData = localityResponse.data.data
-                self?.saveSelectedArea()
-                self?.delegate?.dataReceived()
-            }else{
-                print("Invalid response object")
+            guard let localityData = localityResponse.data else {
+                if self?.selectAreaDelegate != nil {
+                    self?.selectAreaDelegate?.error(message: .CommonError.techError)
+                }else{
+                    self?.delegate?.error(message: .CommonError.techError)
+                }
+                return
             }
+
+            self?.localityData = localityData.data
+            self?.saveSelectedArea()
+            self?.delegate?.dataReceived()
         }
     }
 

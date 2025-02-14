@@ -9,6 +9,7 @@ import UIKit
 
 protocol SelectAreaDelegate: AnyObject {
     func confirmSelectArea()
+    func error(message: String)
 }
 
 class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelegate, SelectAreaDelegate {
@@ -68,6 +69,19 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         hideLoader()
         coordinator?.backToParentCoordinator()
         parentCoordinator?.navigateToHome()
+    }
+
+    func error(message: String) {
+        showAlertMessage(message)
+    }
+
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
     }
 
     // A convenience method to instantiate from the storyboard
