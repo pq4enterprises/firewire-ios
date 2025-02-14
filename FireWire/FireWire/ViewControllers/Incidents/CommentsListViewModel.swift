@@ -40,7 +40,11 @@ public final class CommentsListViewModel: PaginatableViewModel {
                 let newItems = commentsResponse.data.data
                 self?.totalPages = commentsResponse.data.pageInfo.totalCount
                 DispatchQueue.main.async {
-                    completion(.success(newItems))
+                    if newItems.count > 0 {
+                        completion(.success(newItems))
+                    }else{
+                        self?.delegate?.noCommentsForIncident()
+                    }
                 }
             } else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response"])))
