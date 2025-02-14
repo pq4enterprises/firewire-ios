@@ -26,7 +26,7 @@ extension URLSession {
         
         print("API request: ----- \(request)")
         
-        if let payload = payload, isEmptyPayload(payload) == false {
+        if let payload = payload {
             guard let body = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted) else {
                 print("\n Serialization failed")
                 return
