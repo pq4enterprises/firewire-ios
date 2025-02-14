@@ -97,7 +97,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         if let latitude = Double(incidentDetail.latitude), let longitude = Double(incidentDetail.longitude) {
             let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            mapManager.addMarkers(coordinates: [coordinates])
+            let mapModel = MapMarkerModel(coordinates: coordinates, address: incidentDetail.address)
+            mapManager.addMarkers(mapModel: [mapModel])
             mapView.animate(toLocation: coordinates)
         }
 

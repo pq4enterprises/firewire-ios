@@ -15,7 +15,7 @@ final class IncidentsViewModel: PaginatableViewModel {
     var totalPages: Int = 1
     var limit: Int = 10
     var items: [IncidentDataModel] = []
-    var markersList: [CLLocationCoordinate2D] = []
+    var markersList: [MapMarkerModel] = []
 
     var selectedLocalities: SelectedLocalities?
     var delegate: IncidentsViewViewDelegate?
@@ -69,7 +69,8 @@ final class IncidentsViewModel: PaginatableViewModel {
                 // for map markers
                 if let lat = Double(item.latitude), let lon = Double(item.longitude) {
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    self.markersList.append(coordinates)
+                    let mapModel = MapMarkerModel(coordinates: coordinates, address: item.address)
+                    self.markersList.append(mapModel)
                 }
             }
         }

@@ -46,12 +46,13 @@ class MapManager {
         }
     }
 
-    func addMarkers(coordinates: [CLLocationCoordinate2D]) {
-        guard !coordinates.isEmpty else { return }
+    func addMarkers(mapModel: [MapMarkerModel]) {
+        guard !mapModel.isEmpty else { return }
 
-        for coordinate in coordinates {
+        for item in mapModel {
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            marker.position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
+            marker.snippet = item.address
             marker.icon = FWImage.mapMarker
             marker.map = mapView
             markers.append(marker)

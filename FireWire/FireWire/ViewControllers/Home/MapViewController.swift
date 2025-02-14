@@ -51,14 +51,14 @@ class MapViewController: UIViewController, MapViewDelegate {
     }
 
     func addMapMarkers() {
-        mapManager.addMarkers(coordinates: mapViewModel.markersList)
+        mapManager.addMarkers(mapModel: mapViewModel.markersList)
         //fitMarkersToMap()
         focusOnFirstMarker()
     }
 
     func focusOnFirstMarker(){
         guard !mapViewModel.markersList.isEmpty else { return }
-        let firstLocation = mapViewModel.markersList[0]
+        let firstLocation = mapViewModel.markersList[0].coordinates
         let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
         mapView.animate(to: camera)
     }
@@ -68,8 +68,8 @@ class MapViewController: UIViewController, MapViewDelegate {
 
         var bounds = GMSCoordinateBounds()
 
-        for coordinate in mapViewModel.markersList {
-            let position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        for item in mapViewModel.markersList {
+            let position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
             bounds = bounds.includingCoordinate(position)
         }
 

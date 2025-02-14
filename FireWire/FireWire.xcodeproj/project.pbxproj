@@ -49,6 +49,8 @@
 		B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */; };
 		B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */; };
 		B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
+		B01FC7DA2D5F724A006D7450 /* MapMarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */; };
+		B01FC7DB2D5F724A006D7450 /* MapMarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */; };
 		B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
 		B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
@@ -403,6 +405,7 @@
 		B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationChooseLocalityHeaderCell.swift; sourceTree = "<group>"; };
 		B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityHeaderView.swift; sourceTree = "<group>"; };
 		B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationLocalityHeaderView.xib; sourceTree = "<group>"; };
+		B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerModel.swift; sourceTree = "<group>"; };
 		B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentRequestModel.swift; sourceTree = "<group>"; };
 		B043CEAB2D0EDD0D007430B7 /* mapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapStyle.json; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -881,6 +884,7 @@
 		B0CF74B92D038C0B008935D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */,
 				B0EDF03E2D32678300767EAB /* ResponseModel */,
 				B0EDF03D2D32677B00767EAB /* RequestModel */,
 			);
@@ -1247,6 +1251,7 @@
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
 				B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */,
 				B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */,
+				B01FC7DB2D5F724A006D7450 /* MapMarkerModel.swift in Sources */,
 				B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
@@ -1382,6 +1387,7 @@
 				B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */,
 				B0B1AE982D4F8DB6007371A9 /* IncidentDetailResponseModel.swift in Sources */,
 				B0B1AE992D4F8DB6007371A9 /* BaseCoordinator.swift in Sources */,
+				B01FC7DA2D5F724A006D7450 /* MapMarkerModel.swift in Sources */,
 				B0B1AE9A2D4F8DB6007371A9 /* RegistrationViewModel.swift in Sources */,
 				B0B1AE9B2D4F8DB6007371A9 /* FWFilledButton.swift in Sources */,
 				B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */,

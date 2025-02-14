@@ -100,11 +100,11 @@ class IncidentsViewController: UIViewController {
     }
 
     func addMapMarkers() {
-        mapManager.addMarkers(coordinates: incidentsViewModel.markersList)
+        mapManager.addMarkers(mapModel: incidentsViewModel.markersList)
 
         // focus on first marker
         guard !incidentsViewModel.markersList.isEmpty else { return }
-        let firstLocation = incidentsViewModel.markersList[0]
+        let firstLocation = incidentsViewModel.markersList[0].coordinates
         let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
         mapView.animate(to: camera)
     }

@@ -15,7 +15,7 @@ final class MapViewModel {
     //    ]
 
     var incidentList: [IncidentDataModel] = []
-    var markersList: [CLLocationCoordinate2D] = []
+    var markersList: [MapMarkerModel] = []
     var delegate: MapViewDelegate?
 
     init() {
@@ -57,7 +57,8 @@ final class MapViewModel {
         for item in incidentList {
             if let lat = Double(item.latitude), let lon = Double(item.longitude) {
                 let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                self.markersList.append(coordinates)
+                let mapModel = MapMarkerModel(coordinates: coordinates, address: item.address)
+                self.markersList.append(mapModel)
                 self.delegate?.dataReceived()
             }
         }
