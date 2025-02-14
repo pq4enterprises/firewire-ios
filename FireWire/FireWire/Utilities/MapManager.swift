@@ -13,8 +13,8 @@ class MapManager {
     var mapView: GMSMapView!
     var markers = [GMSMarker]()
 
-    func setupMapView(frame: CGRect) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 2)
+    func setupMapView(frame: CGRect, zoom: Float = 15.0) -> GMSMapView {
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: zoom)
         let mapOptions = GMSMapViewOptions()
         mapOptions.camera = camera
 
@@ -53,7 +53,7 @@ class MapManager {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
             marker.snippet = item.address
-            marker.icon = FWImage.mapMarker
+            marker.icon = item.markerType == .incident ? FWImage.mapMarker : FWImage.mapFireMarker
             marker.map = mapView
             markers.append(marker)
         }

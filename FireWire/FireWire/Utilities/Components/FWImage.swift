@@ -17,6 +17,7 @@ enum FWImageResources: String {
     case checkBoxChecked = "checkbox_checked"
     case checkBoxUnChecked = "checkbox_unchecked"
     case mapMarker = "map_marker"
+    case mapFireMarker = "map_fire_marker"
     case favIcon = "star_icon"
     case favIconSelected = "star_selected"
     case playIcon = "play_icon"
@@ -40,6 +41,7 @@ struct FWImage {
     static let checkBoxChecked = UIImage.appImage(.checkBoxChecked)
     static let checkBoxUnChecked = UIImage.appImage(.checkBoxUnChecked)
     static let mapMarker = UIImage.appImage(.mapMarker)
+    static let mapFireMarker = UIImage.appImage(.mapFireMarker)
     static let favIcon = UIImage.appImage(.favIcon)
     static let favIconSelected = UIImage.appImage(.favIconSelected)
     static let playIcon = UIImage.appImage(.playIcon)

@@ -29,12 +29,30 @@ struct IncidentDetailModel: Codable {
     let v: Int
     let featuredImageUrl: String?
     let commentCount, likeCount: Int
+    let points: [Point]?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case latitude, longitude, address, respondingUnits, featured, sendPushNotification, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, featuredImageUrl
         case v = "__v"
         case commentCount, likeCount
+        case points
+    }
+}
+
+struct Point: Codable {
+    let id: String
+    let locality: String?
+    let latitude: String?
+    let longitude: String?
+    let address: String?
+    let name: String?
+    let notes: String?
+    let deleted: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case locality, latitude, longitude, address, name, notes, deleted
     }
 }
 

@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import MapKit
 
 final class IncidentDetailViewModel {
     var incidentDetail: IncidentDetailModel?
     var delegate: IncidentDetailViewDelegate?
+    var markersList: [MapMarkerModel] = []
 
     func getIncidentDetail(for incidentID: String) {
-        let requestURL = String.init(format: APIEndpoints.incidentDetail, incidentID)
+        let requestURL = String(format: APIEndpoints.incidentDetail, incidentID)
 
         APIRequest().callApi(
             apiEndPoint: requestURL,
@@ -26,27 +28,45 @@ final class IncidentDetailViewModel {
 
             if let incidentDetailResponse = apiResponse as? IncidentDetailResponseModel {
                 self?.incidentDetail = incidentDetailResponse.data[0]
-                self?.delegate?.dataReceived()
-            }else{
+                self?.createMarkerCoordinates(incidentDetail: incidentDetailResponse.data[0])
+            } else {
                 print("Invalid response object")
             }
         }
     }
 
-    func favouriteIncident(like: Bool){
+    func createMarkerCoordinates(incidentDetail: IncidentDetailModel) {
+        if let lat = Double(incidentDetail.latitude), let lon = Double(incidentDetail.longitude) {
+            let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            let mapModel = MapMarkerModel(coordinates: coordinates, address: incidentDetail.address, markerType: .incident)
+            self.markersList.append(mapModel)
+        }
+
+        if let points = incidentDetail.points {
+            for point in points {
+                if let latitude = point.latitude, let longitude = point.longitude, let lat = Double(latitude), let lon = Double(longitude) {
+                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    let mapModel = MapMarkerModel(coordinates: coordinates, address: point.address ?? "", markerType: .points)
+                    self.markersList.append(mapModel)
+                }
+            }
+        }
+        self.delegate?.dataReceived()
+    }
+
+    func favouriteIncident(like: Bool) {
         guard let incidentDetail = incidentDetail else { return }
 
         let requestModel = APIPayload.favouriteIncident(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: incidentDetail.id,
-            type: like == true ? "like" : "unlike"
-        ).toDictionary()
+            type: like == true ? "like" : "unlike").toDictionary()
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.favIncident,
             payload: requestModel as JSON,
             expect: SuccessResponseModel.self)
-        {response, _, _ in
+        { response, _, _ in
 
             guard let apiResponse = response as? SuccessResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
@@ -56,10 +76,9 @@ final class IncidentDetailViewModel {
 
             if apiResponse.code != "success" {
                 self.delegate?.error(message: apiResponse.message)
-            }else{
+            } else {
                 self.delegate?.incidentFavourited(like: like)
             }
-
         }
     }
 }

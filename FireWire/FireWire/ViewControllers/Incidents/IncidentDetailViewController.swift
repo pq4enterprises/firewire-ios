@@ -94,15 +94,25 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         let mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
+        mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
+        incidentMapView.addSubview(mapView)
 
-        if let latitude = Double(incidentDetail.latitude), let longitude = Double(incidentDetail.longitude) {
-            let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let mapModel = MapMarkerModel(coordinates: coordinates, address: incidentDetail.address)
-            mapManager.addMarkers(mapModel: [mapModel])
-            mapView.animate(toLocation: coordinates)
+        fitMarkersToMap()
+    }
+
+    func fitMarkersToMap() {
+        guard let viewModel, !viewModel.markersList.isEmpty else { return }
+
+        var bounds = GMSCoordinateBounds()
+
+        for item in viewModel.markersList {
+            let position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
+            bounds = bounds.includingCoordinate(position)
         }
 
-        incidentMapView.addSubview(mapView)
+        // Update the camera position to fit the markers with a padding
+        let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+        mapView.animate(with: update)
     }
 
     func setupActions() {
