@@ -97,7 +97,7 @@ final class IncidentsViewModel: PaginatableViewModel {
         let requestModel = APIPayload.favouriteIncident(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: incidentId,
-            type: like == true ? "like" : "unlike"
+            type: like == true ? "unlike" : "like"
         ).toDictionary()
 
         APIRequest().callApi(
@@ -112,10 +112,10 @@ final class IncidentsViewModel: PaginatableViewModel {
                 return
             }
 
-            if apiResponse.code != "success" || apiResponse.code != "already_liked"{
-                self.delegate?.error(message: apiResponse.message)
-            }else{
+            if apiResponse.code == "unlike_success" || apiResponse.code == "like_success" {
                 completion(true)
+            }else{
+                self.delegate?.error(message: apiResponse.message)
             }
 
         }

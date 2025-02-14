@@ -125,13 +125,14 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feedData = viewModel.items[indexPath.row]
-        if feedData.isPlaying {
-            viewModel.stopAudio(index: indexPath)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }else{
-            viewModel.playAudio(feedData.url, index: indexPath)
-        }
+        coordinator?.openURL(feedData.url)
+        //        if feedData.isPlaying {
+        //            viewModel.stopAudio(index: indexPath)
+        //            DispatchQueue.main.async {
+        //                self.tableView.reloadData()
+        //            }
+        //        }else{
+        //            viewModel.playAudio(feedData.url, index: indexPath)
+        //        }
     }
 }

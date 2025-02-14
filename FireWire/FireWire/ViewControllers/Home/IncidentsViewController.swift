@@ -214,11 +214,13 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 
         let selectedIncident = incidentsViewModel.items[indexPath.row]
 
-        cell.favAction = {
-            let value = selectedIncident.likeCount > 0 ? false : true
-            self.incidentsViewModel.favouriteIncident(incidentId: selectedIncident.id, like: value) { result in
+        cell.favAction = {[weak self] in
+            self?.showLoader()
+            self?.incidentsViewModel.favouriteIncident(incidentId: selectedIncident.id, like: selectedIncident.isLiked) { result in
+                self?.hideLoader()
                 if result {
-                    tableView.reloadData()
+                    self?.incidentsViewModel.items[indexPath.row].isLiked = !selectedIncident.isLiked
+                    self?.incidentTableView.reloadData()
                 }
             }
         }
