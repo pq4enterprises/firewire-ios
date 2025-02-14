@@ -110,11 +110,13 @@ class HomeViewController: UIViewController {
 
             menuButton.setImage(FWImage.menuIconWhite, for: .normal)
             feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
+            changeViewButton.isHidden = false
         case 1:
             selectedViewController = newsViewController!
 
             menuButton.setImage(FWImage.menuIcon, for: .normal)
             feedsButton.setImage(FWImage.alertIcon, for: .normal)
+            changeViewButton.isHidden = true
         default:
             return
         }
