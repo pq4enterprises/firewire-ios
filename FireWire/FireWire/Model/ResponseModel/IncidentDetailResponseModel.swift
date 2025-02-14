@@ -30,6 +30,7 @@ struct IncidentDetailModel: Codable {
     let featuredImageUrl: String?
     let commentCount, likeCount: Int
     let points: [Point]?
+    var isLiked: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -37,6 +38,36 @@ struct IncidentDetailModel: Codable {
         case v = "__v"
         case commentCount, likeCount
         case points
+        case isLiked
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(String.self, forKey: .id)
+        latitude = try container.decode(String.self, forKey: .latitude)
+        longitude = try container.decode(String.self, forKey: .longitude)
+        address = try container.decode(String.self, forKey: .address)
+        featured = try container.decode(Bool.self, forKey: .featured)
+        sendPushNotification = try container.decode(Bool.self, forKey: .sendPushNotification)
+        createdAt = try container.decode(String.self, forKey: .createdAt)
+        updatedAt = try container.decode(String.self, forKey: .updatedAt)
+        v = try container.decode(Int.self, forKey: .v)
+        commentCount = try container.decode(Int.self, forKey: .commentCount)
+        likeCount = try container.decode(Int.self, forKey: .likeCount)
+
+        // Use decodeIfPresent for optional properties (will return nil if key is missing)
+        respondingUnits = try container.decodeIfPresent([String].self, forKey: .respondingUnits)
+        field1Value = try container.decodeIfPresent(String.self, forKey: .field1Value)
+        field2Value = try container.decodeIfPresent(String.self, forKey: .field2Value)
+        field3Value = try container.decodeIfPresent(String.self, forKey: .field3Value)
+        field4Value = try container.decodeIfPresent(String.self, forKey: .field4Value)
+        field5Value = try container.decodeIfPresent(String.self, forKey: .field5Value)
+        featuredImageUrl = try container.decodeIfPresent(String.self, forKey: .featuredImageUrl)
+        points = try container.decodeIfPresent([Point].self, forKey: .points)
+
+        // Handle the isLiked flag with a default value if not present
+        isLiked = (try? container.decode(Bool.self, forKey: .isLiked)) ?? false
     }
 }
 

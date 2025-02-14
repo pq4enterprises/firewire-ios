@@ -26,10 +26,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var incidentMapView: UIView!
     @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var favouriteButton: UIButton!
-    @IBOutlet weak var activityVerticalConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageMapStackView: UIStackView!
+    @IBOutlet var activityVerticalConstraint: NSLayoutConstraint!
+    @IBOutlet var imageMapStackView: UIStackView!
 
-    //var coordinator: IncidentsCoordinator?
+    // var coordinator: IncidentsCoordinator?
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
 
@@ -77,7 +77,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentDesc.text = incidentDetail.field3Value ?? ""
         incidentAddress.text = incidentDetail.address
 
-        incidentDetail.likeCount > 0
+        incidentDetail.isLiked
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
@@ -85,7 +85,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
             imageMapStackView.distribution = .fillEqually
-        } else{
+        } else {
             imageLoadingIndicator.isHidden = true
             incidentImageView.isHidden = true
             imageMapStackView.distribution = .fill
@@ -134,13 +134,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     @IBAction func likeButtonTap(_ sender: UIButton) {
-        let value = viewModel?.incidentDetail?.likeCount ?? 0 > 0 ? false : true
+        let value = viewModel?.incidentDetail?.isLiked == true ? true : false
         viewModel?.favouriteIncident(like: value)
     }
 
     @IBAction func commentButtonTap(_ sender: UIButton) {
         if let selectedIncidentID {
-            //coordinator?.navigateToIncidentComments(selectedIncidentID)
+            // coordinator?.navigateToIncidentComments(selectedIncidentID)
         }
     }
 
@@ -152,10 +152,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
         shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
 
-        //let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
-        //coordinator?.navigateToShareView(shareMessage: shareContent)
+        // let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
+        // coordinator?.navigateToShareView(shareMessage: shareContent)
     }
-
 
     func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
         var items: [Any] = [text]
@@ -174,7 +173,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         // Exclude certain activity types if needed (optional)
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
-        self.present(activityViewController, animated: true)
+        present(activityViewController, animated: true)
     }
 
     // A convenience method to instantiate from the storyboard
@@ -199,6 +198,6 @@ extension IncidentDetailViewController {
     }
 
     func error(message: String) {
-        self.showToast(message: message)
+        showToast(message: message)
     }
 }

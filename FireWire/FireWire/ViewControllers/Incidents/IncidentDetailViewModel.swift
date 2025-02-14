@@ -60,7 +60,7 @@ final class IncidentDetailViewModel {
         let requestModel = APIPayload.favouriteIncident(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: incidentDetail.id,
-            type: like == true ? "like" : "unlike").toDictionary()
+            type: like == true ? "unlike" : "like").toDictionary()
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.favIncident,
@@ -74,10 +74,10 @@ final class IncidentDetailViewModel {
                 return
             }
 
-            if apiResponse.code != "success" {
-                self.delegate?.error(message: apiResponse.message)
-            } else {
+            if apiResponse.code == "unlike_success" || apiResponse.code == "like_success" {
                 self.delegate?.incidentFavourited(like: like)
+            }else{
+                self.delegate?.error(message: apiResponse.message)
             }
         }
     }
