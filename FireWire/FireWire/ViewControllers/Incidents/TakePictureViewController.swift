@@ -12,7 +12,8 @@ class TakePictureViewController: UIViewController {
     @IBOutlet var takePhotoView: FWView!
     @IBOutlet var galleryView: FWView!
 
-    var coordinator: IncidentsCoordinator?
+    //var coordinator: IncidentsCoordinator?
+    var coordinator: HomeCoordinator?
     var selectedIncidentID: String?
 
     override func viewDidLoad() {

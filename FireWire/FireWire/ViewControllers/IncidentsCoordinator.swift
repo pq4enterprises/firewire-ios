@@ -45,7 +45,7 @@ class IncidentsCoordinator: BaseCoordinator {
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentID)
         commentsList.attachedImages = attachedImages
-        commentsList.coordinator = self
+        //commentsList.coordinator = self
 
         let navVC = UINavigationController(rootViewController: commentsList)
         navVC.modalPresentationStyle = .pageSheet
@@ -78,7 +78,7 @@ class IncidentsCoordinator: BaseCoordinator {
 
     func navigateToTakePicture(forIncident incidentID: String){
         let takePictureViewController = TakePictureViewController.instantiate()
-        takePictureViewController.coordinator = self
+        //takePictureViewController.coordinator = self
         takePictureViewController.selectedIncidentID = incidentID
         takePictureViewController.isModalInPresentation = true  // Disable dismissing by tapping outside
 

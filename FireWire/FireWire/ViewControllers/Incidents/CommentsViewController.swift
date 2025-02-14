@@ -23,7 +23,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBOutlet var previewImageCollectionView: UICollectionView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
 
-    var coordinator: IncidentsCoordinator?
+    //var coordinator: IncidentsCoordinator?
+    var coordinator: HomeCoordinator?
     var viewModel: CommentsListViewModel!
     var attachedImages: [String] = []
     var paginationHandler: PaginationHandler<CommentsListViewModel>!
