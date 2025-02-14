@@ -30,8 +30,16 @@ class IncidentListViewCell: UITableViewCell {
     func setupView(_ model: IncidentDataModel){
         selectedIncidentId = model.id
         incidentTitle.text = model.field1Value
-        incidentDesc.text = ""
-        incidentLocation.text = model.address
+        incidentDesc.text = model.field2Value
+
+        var address = model.field3Value
+        if let subLocalityName = model.subLocality.first?.name, !subLocalityName.isEmpty {
+            if !address.isEmpty {
+                address.append(", ")
+            }
+            address.append(subLocalityName)
+        }
+        incidentLocation.text = address
 
         if let formattedDate = FWDateFormatter().formatDateString(model.createdAt){
             incidentDateTime.text = formattedDate

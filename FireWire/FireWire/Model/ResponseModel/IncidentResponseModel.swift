@@ -23,7 +23,8 @@ struct IncidentDataResponseModel: Codable {
 struct IncidentDataModel: Codable {
     let id: String
     let locality, subLocality: [Locality]
-    let latitude, longitude, address, field1Value, createdAt: String
+    let latitude, longitude, address, createdAt: String
+    let field1Value, field2Value, field3Value: String
     let featuredImageURL: String?
     let commentCount, likeCount: Int
     var isLiked: Bool
@@ -32,7 +33,8 @@ struct IncidentDataModel: Codable {
         case id = "_id"
         case locality = "localityDetails"
         case subLocality = "subLocalityDetails"
-        case latitude, longitude, address, field1Value, createdAt
+        case latitude, longitude, address, createdAt
+        case field1Value, field2Value, field3Value
         case featuredImageURL = "featuredImageUrl"
         case commentCount, likeCount, isLiked
     }

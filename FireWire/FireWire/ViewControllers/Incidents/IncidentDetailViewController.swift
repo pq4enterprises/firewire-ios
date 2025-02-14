@@ -74,7 +74,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             activityVerticalConstraint.constant = activityVerticalConstraint.constant + 20
         }
 
-        incidentDesc.text = incidentDetail.field3Value ?? ""
+        incidentDesc.text = ""
         incidentAddress.text = incidentDetail.address
 
         incidentDetail.isLiked
@@ -140,7 +140,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     @IBAction func commentButtonTap(_ sender: UIButton) {
         if let selectedIncidentID {
-            // coordinator?.navigateToIncidentComments(selectedIncidentID)
+            coordinator?.navigateToIncidentComments(selectedIncidentID)
         }
     }
 
