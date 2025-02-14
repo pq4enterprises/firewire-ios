@@ -43,6 +43,7 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
 
     func dataReceived() {
         showActivityIndicator(false)
+        enableConfirmButton()
         tableView.reloadData()
     }
 
@@ -84,6 +85,10 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         )
     }
 
+    func enableConfirmButton(){
+        confirmButton.isEnabled = viewModel.selectedAreas.count > 0
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> SelectAreaViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -102,6 +107,7 @@ extension SelectAreaViewController: UITableViewDataSource, UITableViewDelegate {
         headerView.setupView(title: viewModel.localityData[section].name)
         headerView.selectAllAction = {
             self.viewModel.toggleSelectAll(forSection: section)
+            self.enableConfirmButton()
             tableView.reloadSections([section], with: .automatic)
             tableView.reloadData()
         }
@@ -117,6 +123,7 @@ extension SelectAreaViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupView(viewModel.localityData[indexPath.section], indexPath)
         cell.onCheckboxToggled = { [weak self] indexPath in
             self?.viewModel.toggleSelection(at: indexPath)
+            self?.enableConfirmButton()
             tableView.reloadRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }
