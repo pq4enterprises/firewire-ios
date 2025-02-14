@@ -52,14 +52,9 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         viewModel.setSelectedLocalities()
-        postNotification()
         coordinator?.dismissView(animated: true)
         //debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
         //self.coordinator?.start(with: [], viewModel.getSelectedIds())
-    }
-
-    @objc func postNotification() {
-        NotificationCenter.default.post(name: .selectAreaDidChange, object: nil)
     }
 
     func dataReceived() {

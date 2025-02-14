@@ -69,21 +69,25 @@ final class IncidentLocalityListViewModel {
     }
 
     func setSelectedLocalities() {
-        if !selectedAreas.isEmpty {
-            let requestModel: [[String: Any]] = selectedAreas.map { $0.toDictionary() }
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.setSelectedArea,
-                payload:  requestModel,
-                expect: SuccessResponseModel.self)
-            { [weak self] response, _, _ in
+        let requestModel: [[String: Any]] = selectedAreas.map { $0.toDictionary() }
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.setSelectedArea,
+            payload:  requestModel,
+            expect: SuccessResponseModel.self)
+        { [weak self] response, _, _ in
 
-                if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated"{
-                    if self?.selectAreaDelegate != nil {
-                        self?.selectAreaDelegate?.confirmSelectArea()
-                    }
+            if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated"{
+                if self?.selectAreaDelegate != nil {
+                    self?.selectAreaDelegate?.confirmSelectArea()
                 }
+
+                self?.postNotification()
             }
         }
+    }
+
+    @objc func postNotification() {
+        NotificationCenter.default.post(name: .selectAreaDidChange, object: nil)
     }
 
     func toggleSelection(at indexPath: IndexPath) {

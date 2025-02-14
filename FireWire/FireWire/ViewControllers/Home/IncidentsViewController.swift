@@ -15,7 +15,6 @@ protocol IncidentsViewViewDelegate: AnyObject {
 }
 
 class IncidentsViewController: UIViewController {
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapHConstraint: NSLayoutConstraint!
     @IBOutlet weak var incidentContainerView: FWView!
     @IBOutlet weak var mapContentView: UIView!
@@ -68,7 +67,8 @@ class IncidentsViewController: UIViewController {
     }
 
     @objc func selectAreaDidChange(_ notification: Notification) {
-        incidentsViewModel.items.removeAll() // refresh the list
+        showLoader()
+        incidentsViewModel.items.removeAll()
         incidentsViewModel.getIncidentList()
     }
 
@@ -170,6 +170,9 @@ class IncidentsViewController: UIViewController {
     }
 
     func expandList(){
+        let topConstraint = incidentContainerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
+        NSLayoutConstraint.activate([topConstraint])
+
         self.incidentContainerView.isHidden = false
         self.mapContentView.isHidden = true
         self.incidentListExpanded?(true)
@@ -243,6 +246,9 @@ extension IncidentsViewController: IncidentsViewViewDelegate{
 
     func noIncidentData() {
         hideLoader()
+        incidentsCountLabel.text = "\(incidentsViewModel.items.count) posts are listed"
+        incidentTableView.isHidden = true
+        noIncidentsLabel.isHidden = false
     }
 
     func error(message: String) {

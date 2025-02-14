@@ -61,17 +61,22 @@ final class IncidentsViewModel: PaginatableViewModel {
     }
 
     func didFetchData(_ data: [IncidentDataModel]) {
-        items.append(contentsOf: data) // Append new items to existing list
-
-        // for map markers
         for item in data {
-            if let lat = Double(item.latitude), let lon = Double(item.longitude) {
-                let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                self.markersList.append(coordinates)
+            // Append new items to existing list
+            if !items.contains(where: { $0.id == item.id }) {
+                items.append(item)
+
+                // for map markers
+                if let lat = Double(item.latitude), let lon = Double(item.longitude) {
+                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    self.markersList.append(coordinates)
+                }
             }
         }
 
-        delegate?.incidentDataLoaded()
+        items.count > 0
+            ? delegate?.incidentDataLoaded()
+            : delegate?.noIncidentData()
     }
 
     // Public method to trigger data fetching
