@@ -112,7 +112,7 @@ final class IncidentsViewModel: PaginatableViewModel {
                 return
             }
 
-            if apiResponse.code != "success" {
+            if apiResponse.code != "success" || apiResponse.code != "already_liked"{
                 self.delegate?.error(message: apiResponse.message)
             }else{
                 completion(true)
