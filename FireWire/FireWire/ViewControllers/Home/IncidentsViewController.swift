@@ -61,9 +61,7 @@ class IncidentsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        /// Note: Enable to pull down table view feature
-        //panGestureRecognizer.isEnabled = true
-        //incidentTableView.isScrollEnabled = false
+        mapView.frame = mapContentView.bounds // refresh the map view margins
     }
 
     @objc func selectAreaDidChange(_ notification: Notification) {
@@ -150,14 +148,6 @@ class IncidentsViewController: UIViewController {
             // Load the next page when the user scrolls to the bottom
             paginationHandler.loadNextPage()
         }
-
-        print("scroll view offset \(scrollOffset)")
-
-        /// Note: Enable to pull down table view feature
-        //        if scrollOffset <= 1 {
-        //            panGestureRecognizer.isEnabled = true
-        //            incidentTableView.isScrollEnabled = false
-        //        }
     }
 
     func expandMap(){
