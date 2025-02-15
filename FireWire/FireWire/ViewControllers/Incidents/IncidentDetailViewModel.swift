@@ -54,6 +54,32 @@ final class IncidentDetailViewModel {
         self.delegate?.dataReceived()
     }
 
+    func postIncidentDetailViewCount() {
+        guard let incidentDetail = incidentDetail else { return }
+
+        let requestModel = APIPayload.favouriteIncident(
+            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            incidentId: incidentDetail.id,
+            type: "view").toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.favIncident,
+            payload: requestModel as JSON,
+            expect: SuccessResponseModel.self)
+        { response, _, _ in
+
+            guard let apiResponse = response as? SuccessResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self.delegate?.error(message: errorMessage)
+                return
+            }
+
+            if apiResponse.code != "success" {
+                self.delegate?.error(message: apiResponse.message)
+            }
+        }
+    }
+
     func favouriteIncident(like: Bool) {
         guard let incidentDetail = incidentDetail else { return }
 

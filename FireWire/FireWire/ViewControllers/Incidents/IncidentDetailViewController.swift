@@ -189,6 +189,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 extension IncidentDetailViewController {
     func dataReceived() {
         updateUI()
+        viewModel?.postIncidentDetailViewCount()
     }
 
     func incidentFavourited(like: Bool) {
