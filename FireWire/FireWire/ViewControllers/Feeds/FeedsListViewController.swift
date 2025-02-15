@@ -45,6 +45,7 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
         tableView.register(FeedItemListView.nib(), forCellReuseIdentifier: FeedItemListView.identifier)
     }
 
@@ -113,26 +114,29 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 }
 
 extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.items.count
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
+        headerView.setupView(title: viewModel.items[section].localityName, hideSelectAll: true)
+        return headerView
+    }
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.items[section].feedList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedItemListView.identifier, for: indexPath) as! FeedItemListView
-        cell.setupView(viewModel.items[indexPath.row])
+        cell.setupView(viewModel.items[indexPath.section].feedList[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let feedData = viewModel.items[indexPath.row]
+        let feedData = viewModel.items[indexPath.section].feedList[indexPath.row]
         coordinator?.openURL(feedData.url)
-        //        if feedData.isPlaying {
-        //            viewModel.stopAudio(index: indexPath)
-        //            DispatchQueue.main.async {
-        //                self.tableView.reloadData()
-        //            }
-        //        }else{
-        //            viewModel.playAudio(feedData.url, index: indexPath)
-        //        }
     }
 }

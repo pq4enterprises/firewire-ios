@@ -24,3 +24,8 @@ struct FeedListData: Codable {
         case locality, name, url, createdAt
     }
 }
+
+struct FeedGroupedData {
+    let localityName: String
+    let feedList: [FeedListData]
+}

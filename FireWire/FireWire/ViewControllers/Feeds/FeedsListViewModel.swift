@@ -9,17 +9,17 @@ import AVFAudio
 import Foundation
 
 final class FeedsListViewModel: PaginatableViewModel {
-    typealias DataType = FeedListData
+    typealias DataType = FeedGroupedData
 
     var currentPage: Int = 1
     var totalPages: Int = 1
     var limit: Int = 10
-    var items: [FeedListData] = []
+    var items: [FeedGroupedData] = []
     var delegate: FeedListViewDelegate?
     var audioPlayer: AVAudioPlayer?
     var currentIndex: IndexPath? // Track which row is currently playing
 
-    func fetchData(forPage page: Int, completion: @escaping (Result<[FeedListData], any Error>) -> Void) {
+    func fetchData(forPage page: Int, completion: @escaping (Result<[FeedGroupedData], any Error>) -> Void) {
         let requestModel = CommonRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
         let getFeedRequestModel = APIPayload.feedList(requestModel).toDictionary()
 
@@ -36,10 +36,11 @@ final class FeedsListViewModel: PaginatableViewModel {
                 return
             }
 
-            if let newsList = feedListResponse.data {
+            if let feedList = feedListResponse.data {
                 self?.totalPages = feedListResponse.pageInfo.totalCount
                 DispatchQueue.main.async {
-                    completion(.success(newsList))
+                    let newList = self?.groupFeedDataByLocality(feedListDataArray: feedList)
+                    completion(.success(newList ?? []))
                 }
             }else {
                 self?.delegate?.errorReceived(message: "Invalid response")
@@ -47,7 +48,7 @@ final class FeedsListViewModel: PaginatableViewModel {
         }
     }
 
-    func didFetchData(_ data: [FeedListData]) {
+    func didFetchData(_ data: [FeedGroupedData]) {
         items.append(contentsOf: data) // Append new items to existing list
         delegate?.dataReceived()
     }
@@ -63,44 +64,20 @@ final class FeedsListViewModel: PaginatableViewModel {
         }
     }
 
-    func playAudio(_ urlString: String, index: IndexPath) {
-        guard let url = URL(string: urlString) else {
-            delegate?.errorPlayingAudio()
-            return
+    func groupFeedDataByLocality(feedListDataArray: [FeedListData]) -> [FeedGroupedData] {
+        var groupedData = [FeedGroupedData]()
+
+        // Grouping the feed list data by locality name
+        let grouped = Dictionary(grouping: feedListDataArray) { $0.locality.name }
+
+        for (localityName, feeds) in grouped {
+            // Create the FeedGroupedData for each locality
+            let feedGrouped = FeedGroupedData(localityName: localityName, feedList: feeds)
+
+            // Add the grouped data into the result array
+            groupedData.append(feedGrouped)
         }
 
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            DispatchQueue.main.async {
-                if error != nil {
-                    self?.delegate?.errorPlayingAudio()
-                    return
-                }
-
-                guard let data = data else {
-                    self?.delegate?.errorPlayingAudio()
-                    return
-                }
-
-                do {
-                    self?.audioPlayer = try AVAudioPlayer(data: data)
-                    self?.audioPlayer?.prepareToPlay()
-                    self?.audioPlayer?.play()
-                    self?.items[index.row].isPlaying = true
-                    self?.delegate?.playingAudio()
-                } catch {
-                    self?.delegate?.errorPlayingAudio()
-                    print("Error playing audio from URL: \(error.localizedDescription)")
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func stopAudio(index: IndexPath) {
-        audioPlayer?.stop()
-        audioPlayer = nil
-        currentIndex = nil
-        items[index.row].isPlaying = false
+        return groupedData
     }
 }
