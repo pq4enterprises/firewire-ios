@@ -23,6 +23,8 @@ enum FWImageResources: String {
     case playIcon = "play_icon"
     case pauseIcon = "pause_icon"
     case viewMapIcon = "view_map_icon"
+    case showPasswordIcon = "eye_icon"
+    case hidePasswordIcon = "hidepassword_icon"
 }
 
 extension UIImage {
@@ -47,4 +49,6 @@ struct FWImage {
     static let playIcon = UIImage.appImage(.playIcon)
     static let pauseIcon = UIImage.appImage(.pauseIcon)
     static let viewMapIcon = UIImage.appImage(.viewMapIcon)
+    static let showPasswordIcon = UIImage.appImage(.showPasswordIcon)
+    static let hidePasswordIcon = UIImage.appImage(.hidePasswordIcon)
 }

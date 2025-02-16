@@ -42,8 +42,15 @@ class RegistrationViewController: UIViewController {
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!)
-        confirmPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!)
+        passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
+            guard let self else { return }
+            self.togglePasswordVisibility(self.passwordTextField)
+        }
+
+        confirmPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
+            guard let self else { return }
+            self.togglePasswordVisibility(self.confirmPasswordTextField)
+        }
 
         confirmPasswordTextField.delegate = self
 
@@ -51,6 +58,22 @@ class RegistrationViewController: UIViewController {
             text: .Register.signInText,
             coloredText: .Register.signIn
         )
+        let signInTapGesture = UITapGestureRecognizer(target: self, action: #selector(signInTap))
+        signInLabel.isUserInteractionEnabled = true
+        signInLabel.addGestureRecognizer(signInTapGesture)
+    }
+
+    func togglePasswordVisibility(_ textField: UITextField) {
+        textField.isSecureTextEntry.toggle()
+        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
+
+        if let button = textField.rightView as? UIButton {
+            button.setImage(icon, for: .normal)
+        }
+    }
+
+    @objc func signInTap() {
+        coordinator?.popView()
     }
 
     func setupActions() {
@@ -97,7 +120,7 @@ class RegistrationViewController: UIViewController {
             actionStyles: [.default], actions: [{ _ in action?() }]
         )
     }
-    
+
     @IBAction func signUpButtonTap(_ sender: UIButton) {
         showLoader()
         let requestModel = RegisterRequestModel(
@@ -144,7 +167,7 @@ extension RegistrationViewController: UITextFieldDelegate {
 extension RegistrationViewController: RegistrationViewModelDelegate {
     func registrationSuccess() {
         hideLoader()
-        showAlertMessage("New user registered"){
+        showAlertMessage("New user registered") {
             self.coordinator?.popView()
         }
     }
@@ -157,8 +180,8 @@ extension RegistrationViewController: RegistrationViewModelDelegate {
     func loginSuccess() {
         hideLoader()
         coordinator?.navigateToSelectArea()
-        //coordinator?.backToParentCoordinator()
-        //parentCoordinator?.navigateToHome()
+        // coordinator?.backToParentCoordinator()
+        // parentCoordinator?.navigateToHome()
     }
 
     func loginFailed(errorMessage: String) {

@@ -23,13 +23,13 @@ public class FWTextField: UITextField {
     }
 
     func addRightIcon(_ image: UIImage, action: (() -> Void)? = nil) {
-        let frame = CGRect(x: 0, y: 0, width: image.size.width + 30, height: image.size.height + 30)
-
-        let outerView = UIView(frame: frame)
         let button = UIButton(type: .custom)
-        button.frame = frame
-        button.setImage(image, for: .normal)
-        outerView.addSubview(button)
+
+        var config = UIButton.Configuration.plain()
+        config.image = image
+        config.imagePadding = 8
+
+        button.configuration = config
 
         if let action = action {
             button.addAction(UIAction(handler: { _ in
@@ -38,22 +38,22 @@ public class FWTextField: UITextField {
         }
 
         self.rightViewMode = .always
-        self.rightView = outerView
+        self.rightView = button
     }
 
     // To override the text insets
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
+        return rect.inset(by: self.textPadding)
     }
 
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
+        return rect.inset(by: self.textPadding)
     }
 
-    public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
+        return rect.inset(by: self.textPadding)
     }
 }

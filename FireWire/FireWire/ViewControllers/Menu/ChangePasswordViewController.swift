@@ -22,17 +22,17 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        currentPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!) { [weak self] in
+        currentPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
             guard let self else { return }
             self.togglePasswordVisibility(self.currentPasswordTextField)
         }
 
-        newPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!) { [weak self] in
+        newPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
             guard let self else { return }
             self.togglePasswordVisibility(self.newPasswordTextField)
         }
 
-        confirmPasswordTextField.addRightIcon(UIImage(named: "eye_icon")!) { [weak self] in
+        confirmPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
             guard let self else { return }
             self.togglePasswordVisibility(self.confirmPasswordTextField)
         }
@@ -41,6 +41,11 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
 
     func togglePasswordVisibility(_ textField: UITextField) {
         textField.isSecureTextEntry.toggle()
+        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
+
+        if let button = textField.rightView as? UIButton {
+            button.setImage(icon, for: .normal)
+        }
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {

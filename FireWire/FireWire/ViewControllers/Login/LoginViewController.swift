@@ -43,8 +43,13 @@ class LoginViewController: UIViewController {
         passwordTextField.text = "12345678"
 
         passwordTextField.delegate = self
-        passwordTextField.addRightIcon(UIImage(named: "eye_icon")!) {
+        passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) {
             self.passwordTextField.isSecureTextEntry.toggle()
+            let icon = self.passwordTextField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
+
+            if let button = self.passwordTextField.rightView as? UIButton {
+                button.setImage(icon, for: .normal)
+            }
         }
 
         registerLabel.colorString(
