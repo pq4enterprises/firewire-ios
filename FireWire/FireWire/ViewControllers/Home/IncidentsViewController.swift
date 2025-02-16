@@ -122,6 +122,7 @@ class IncidentsViewController: UIViewController {
 
     @objc func selectAreaDidChange(_ notification: Notification) {
         showLoader()
+        incidentsViewModel.currentPage = 1
         incidentsViewModel.items.removeAll()
         incidentsViewModel.getIncidentList()
     }
