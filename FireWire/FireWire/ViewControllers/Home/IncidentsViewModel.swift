@@ -44,7 +44,13 @@ final class IncidentsViewModel: PaginatableViewModel {
             payload: getIncidentRequestModel,
             expect: IncidentResponseModel.self,
             requestType: APIConstants.GET
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+
+            if error != nil && self?.delegate != nil{
+                self?.delegate?.tokenExpired()
+                return
+            }
+            
             guard let apiResponse = response else {
                 self?.delegate?.noIncidentData()
                 return

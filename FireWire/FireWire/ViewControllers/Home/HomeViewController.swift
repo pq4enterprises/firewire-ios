@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
 
         incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
         incidentsViewController?.coordinator = coordinator
+        incidentsViewController?.appCoordinator = appCoordinator
         incidentsViewController?.incidentListExpanded = { listExpanded in
             self.isIncidentListExpanded = listExpanded
             self.updateUI(listExpanded)

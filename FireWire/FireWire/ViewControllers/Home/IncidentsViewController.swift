@@ -12,6 +12,7 @@ protocol IncidentsViewViewDelegate: AnyObject {
     func incidentDataLoaded()
     func noIncidentData()
     func error(message: String)
+    func tokenExpired()
 }
 
 class IncidentsViewController: UIViewController {
@@ -230,6 +231,10 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension IncidentsViewController: IncidentsViewViewDelegate{
+    func tokenExpired() {
+        appCoordinator?.backToParentCoordinator()
+    }
+    
     func incidentDataLoaded() {
         hideLoader()
         loadIncidentList()
