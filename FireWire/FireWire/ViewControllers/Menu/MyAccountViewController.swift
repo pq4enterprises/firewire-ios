@@ -18,6 +18,14 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     @IBOutlet weak var logoutView: UIStackView!
     @IBOutlet weak var termsStackView: UIStackView!
     @IBOutlet weak var privacyPolicyStackView: UIStackView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Task {
+            await SubscriptionManager.shared.fetchProducts()
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -84,14 +92,18 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
 
     @IBAction func premiumButtonTapAction(_ sender: UIButton) {
         SubscriptionManager.shared.delegate = self
-        SubscriptionManager.shared.purchaseMyProduct()
+        Task {
+            await SubscriptionManager.shared.purchaseMyProduct()
+        }
     }
     
     func purchaseTransactionCompleted(success: Bool) {
-        if success {
-            showAlertMessage("Your premium scubscription is Success!")
-        }else{
-            showAlertMessage("Purchase failed, please try again!")
+        DispatchQueue.main.async {
+            if success {
+                self.showAlertMessage("Your premium scubscription is Success!")
+            }else{
+                self.showAlertMessage("Purchase failed, please try again!")
+            }
         }
     }
     
