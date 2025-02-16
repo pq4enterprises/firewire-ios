@@ -134,6 +134,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     @IBAction func likeButtonTap(_ sender: UIButton) {
+        showLoader()
         let value = viewModel?.incidentDetail?.isLiked == true ? true : false
         viewModel?.favouriteIncident(like: value)
     }
@@ -193,6 +194,8 @@ extension IncidentDetailViewController {
     }
 
     func incidentFavourited(like: Bool) {
+        hideLoader()
+        viewModel?.incidentDetail?.isLiked = like
         like
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)

@@ -100,8 +100,10 @@ final class IncidentDetailViewModel {
                 return
             }
 
-            if apiResponse.code == "unlike_success" || apiResponse.code == "like_success" {
-                self.delegate?.incidentFavourited(like: like)
+            if apiResponse.code == "like_success" {
+                self.delegate?.incidentFavourited(like: true)
+            }else if apiResponse.code == "unlike_success" {
+                self.delegate?.incidentFavourited(like: false)
             }else{
                 self.delegate?.error(message: apiResponse.message)
             }
