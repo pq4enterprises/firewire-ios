@@ -46,7 +46,7 @@ final class LoginViewModel {
             UserDefaults.standard.synchronize()
 
             self?.getUserProfile()
-            self?.delegate?.loginSuccess()
+            self?.delegate?.loginSuccess(.general)
         }
     }
 
@@ -99,8 +99,9 @@ final class LoginViewModel {
             UserDefaults.standard.set(loginData.email, forKey: "email")
             UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
             UserDefaults.standard.synchronize()
-            
-            self?.delegate?.loginSuccess()
+           
+            let type: LoginType = requestModel.socialType == .google ? .google : .facebook
+            self?.delegate?.loginSuccess(type)
             
         }
     }

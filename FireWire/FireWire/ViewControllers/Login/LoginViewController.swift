@@ -9,8 +9,14 @@ import FBSDKLoginKit
 import GoogleSignIn
 import UIKit
 
+enum LoginType: Int {
+    case google
+    case facebook
+    case general
+}
+
 protocol LoginViewDelegate: AnyObject {
-    func loginSuccess()
+    func loginSuccess(_ type: LoginType)
     func loginFailed(errorMessage: String)
 }
 
@@ -236,9 +242,14 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController: LoginViewDelegate {
-    func loginSuccess() {
+    func loginSuccess(_ type: LoginType) {
         hideLoader()
-        coordinator?.navigateToSelectArea()
+        if type == .google || type == .facebook{
+            coordinator?.navigateToSelectArea()
+        }else {
+            coordinator?.backToParentCoordinator()
+            parentCoordinator?.navigateToHome()
+        }
     }
 
     func loginFailed(errorMessage: String) {
