@@ -22,6 +22,7 @@ class IncidentsViewController: UIViewController {
     @IBOutlet var incidentTableView: UITableView!
     @IBOutlet var incidentsCountLabel: UILabel!
     @IBOutlet var noIncidentsLabel: UILabel!
+    @IBOutlet var changeViewButton: FWRoundedButton!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -37,6 +38,9 @@ class IncidentsViewController: UIViewController {
 
     var initialMapViewHeight: CGFloat = 500
     var minMapViewHeight: CGFloat = 50
+
+    var isMapViewExpanded: Bool = false
+    var isListViewExpanded: Bool = false
 
     init(viewModel: IncidentsViewModel) {
         self.incidentsViewModel = viewModel
@@ -57,17 +61,22 @@ class IncidentsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
 
         showLoader()
+
+        changeViewButton.setupShadow()
+        changeViewButton.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         mapView.frame = mapContentView.bounds // refresh the map view margins
-    }
 
-    @objc func selectAreaDidChange(_ notification: Notification) {
-        showLoader()
-        incidentsViewModel.items.removeAll()
-        incidentsViewModel.getIncidentList()
+        if isMapViewExpanded {
+            incidentContainerView.isHidden = true
+        }
+
+        if isListViewExpanded {
+            incidentContainerView.isHidden = false
+        }
     }
 
     func setupUI() {
@@ -75,7 +84,7 @@ class IncidentsViewController: UIViewController {
         mapView = mapManager.setupMapView(frame: mapContentView.bounds)
         mapContentView.addSubview(mapView)
 
-        incidentContainerView.setTopCornersRadius(radius: 20)
+        // incidentContainerView.setTopCornersRadius(radius: 20)
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
@@ -111,6 +120,67 @@ class IncidentsViewController: UIViewController {
         coordinator?.navigateToSelectAreaListView()
     }
 
+    @objc func selectAreaDidChange(_ notification: Notification) {
+        showLoader()
+        incidentsViewModel.items.removeAll()
+        incidentsViewModel.getIncidentList()
+    }
+
+    @IBAction func changeViewButtonTap(_ sender: UIButton) {
+        updateChangeViewButton()
+
+        if sender.currentTitle == "View list" {
+            expandList()
+        } else {
+            expandMap()
+        }
+    }
+
+
+    func expandMap() {
+        incidentContainerView.isHidden = true
+        mapContentView.isHidden = false
+        mapView.frame = view.bounds
+        if mapHConstraint != nil {
+            mapHConstraint.isActive = false
+        }
+
+        incidentListExpanded?(false)
+        isListViewExpanded = false
+        isMapViewExpanded = true
+        updateChangeViewButton()
+    }
+
+    func expandList() {
+        let topConstraint = incidentContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60)
+        NSLayoutConstraint.activate([topConstraint])
+
+        incidentContainerView.isHidden = false
+        mapContentView.isHidden = true
+
+        incidentListExpanded?(true)
+        isListViewExpanded = true
+        isMapViewExpanded = false
+        updateChangeViewButton()
+        incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+
+    func updateChangeViewButton() {
+        if isListViewExpanded {
+            changeViewButton.isHidden = false
+            changeViewButton.setTitle("View map", for: .normal)
+            changeViewButton.setImage(FWImage.viewMapIcon, for: .normal)
+        }
+
+        if isMapViewExpanded {
+            changeViewButton.isHidden = false
+            changeViewButton.setTitle("View list", for: .normal)
+            changeViewButton.setImage(FWImage.menuIconRed, for: .normal)
+        }
+    }
+
+    // MARK: - pan gesture
+
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: incidentTableView)
 
@@ -128,6 +198,8 @@ class IncidentsViewController: UIViewController {
             gesture.isEnabled = false
             incidentTableView.isScrollEnabled = true
             incidentListExpanded?(true)
+            isListViewExpanded = true
+            updateChangeViewButton()
         }
 
         if gesture.state == .ended || gesture.state == .cancelled {
@@ -150,29 +222,6 @@ class IncidentsViewController: UIViewController {
         }
     }
 
-    func expandMap() {
-        incidentContainerView.isHidden = true
-        mapContentView.isHidden = false
-        if mapHConstraint != nil {
-            mapHConstraint.isActive = false
-        }
-        incidentListExpanded?(false)
-    }
-
-    func expandList() {
-        let topConstraint = incidentContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
-        NSLayoutConstraint.activate([topConstraint])
-
-        incidentContainerView.isHidden = false
-        mapContentView.isHidden = true
-        incidentListExpanded?(true)
-        incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
-    }
-
     func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
         var items: [Any] = [text]
 
@@ -191,6 +240,10 @@ class IncidentsViewController: UIViewController {
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
         present(activityViewController, animated: true)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
     }
 }
 

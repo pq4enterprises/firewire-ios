@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var feedsButton: UIButton!
     @IBOutlet var headerView: UIView!
-    @IBOutlet var changeViewButton: FWRoundedButton!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -31,10 +30,6 @@ class HomeViewController: UIViewController {
     func setupView() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        // mapViewController = MapViewController()
-        // mapViewController?.appCoordinator = appCoordinator
-        // mapViewController?.coordinator = coordinator
-
         incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
         incidentsViewController?.coordinator = coordinator
         incidentsViewController?.appCoordinator = appCoordinator
@@ -50,28 +45,21 @@ class HomeViewController: UIViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentControl.layer.cornerRadius = 20
         segmentControl.layer.masksToBounds = true
-
-        changeViewButton.setupShadow()
-        changeViewButton.isHidden = true
     }
 
     func updateUI(_ listExpanded: Bool) {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-            self.headerView.backgroundColor = .white
-            self.menuButton.setImage(FWImage.menuIcon, for: .normal)
-            self.feedsButton.setImage(FWImage.alertIcon, for: .normal)
-            self.view.layoutIfNeeded()
+            if listExpanded {
+                self.headerView.backgroundColor = .white
+                self.menuButton.setImage(FWImage.menuIcon, for: .normal)
+                self.feedsButton.setImage(FWImage.alertIcon, for: .normal)
+            } else {
+                self.headerView.backgroundColor = .clear
+                self.menuButton.setImage(FWImage.menuIconWhite, for: .normal)
+                self.feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
+            }
+            self.view.layoutSubviews()
         }, completion: nil)
-
-        changeViewButton.isHidden = false
-
-        if listExpanded {
-            changeViewButton.setTitle("View map", for: .normal)
-            changeViewButton.setImage(FWImage.viewMapIcon, for: .normal)
-        } else {
-            changeViewButton.setTitle("View list", for: .normal)
-            changeViewButton.setImage(FWImage.menuIconRed, for: .normal)
-        }
     }
 
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
@@ -105,18 +93,17 @@ class HomeViewController: UIViewController {
 
         switch index {
         case 0:
-            // selectedViewController = mapViewController!
             selectedViewController = incidentsViewController!
 
             menuButton.setImage(FWImage.menuIconWhite, for: .normal)
             feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
-            changeViewButton.isHidden = !(isIncidentListExpanded ?? true)
+            updateUI(isIncidentListExpanded)
         case 1:
             selectedViewController = newsViewController!
 
             menuButton.setImage(FWImage.menuIcon, for: .normal)
             feedsButton.setImage(FWImage.alertIcon, for: .normal)
-            changeViewButton.isHidden = true
+            updateUI(true)
         default:
             return
         }
