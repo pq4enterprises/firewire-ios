@@ -49,24 +49,34 @@ class CommentsListViewCell: UITableViewCell {
 
         descriptionLabel.text = model.comment
 
-        if model.img?.count ?? 0 > 0 {
-            imgCollectionHeightConstraint.constant = 100.0
-            imageCollectionView.isHidden = false
-            imageCollectionView.dataSource = self
-            imageCollectionView.delegate = self
+        if let commentsImage = model.img, commentsImage.count > 0{
+            for img in commentsImage {
+                if img.isEmpty {
+                    imgCollectionHeightConstraint.constant = 0
+                    imageCollectionView.isHidden = true
+                }else{
+                    imgCollectionHeightConstraint.constant = 100.0
+                    imageCollectionView.isHidden = false
+                    imageCollectionView.dataSource = self
+                    imageCollectionView.delegate = self
 
-            if let layout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                layout.scrollDirection = .horizontal
-                layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+                    if let layout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                        layout.scrollDirection = .horizontal
+                        layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+                    }
+                    imageCollectionView.reloadData()
+                }
             }
-            imageCollectionView.reloadData()
         }else{
             imgCollectionHeightConstraint.constant = 0
             imageCollectionView.isHidden = true
         }
 
+        if let formattedDate = FWDateFormatter().formatDateString(model.createdAt) {
+            dateTimeLabel.text = formattedDate
+        }
+
         cityLabel.text = ""
-        dateTimeLabel.text = ""
     }
 
 }
