@@ -16,12 +16,12 @@ protocol IncidentsViewViewDelegate: AnyObject {
 }
 
 class IncidentsViewController: UIViewController {
-    @IBOutlet weak var mapHConstraint: NSLayoutConstraint!
-    @IBOutlet weak var incidentContainerView: FWView!
-    @IBOutlet weak var mapContentView: UIView!
-    @IBOutlet weak var incidentTableView: UITableView!
-    @IBOutlet weak var incidentsCountLabel: UILabel!
-    @IBOutlet weak var noIncidentsLabel: UILabel!
+    @IBOutlet var mapHConstraint: NSLayoutConstraint!
+    @IBOutlet var incidentContainerView: FWView!
+    @IBOutlet var mapContentView: UIView!
+    @IBOutlet var incidentTableView: UITableView!
+    @IBOutlet var incidentsCountLabel: UILabel!
+    @IBOutlet var noIncidentsLabel: UILabel!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -37,7 +37,6 @@ class IncidentsViewController: UIViewController {
 
     var initialMapViewHeight: CGFloat = 500
     var minMapViewHeight: CGFloat = 50
-
 
     init(viewModel: IncidentsViewModel) {
         self.incidentsViewModel = viewModel
@@ -86,13 +85,13 @@ class IncidentsViewController: UIViewController {
         incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
     }
 
-    func loadIncidentList(){
+    func loadIncidentList() {
         incidentsCountLabel.text = "\(incidentsViewModel.items.count) posts are listed"
         if incidentsViewModel.items.count > 0 {
             noIncidentsLabel.isHidden = true
             incidentTableView.isHidden = false
             incidentTableView.reloadData()
-        }else{
+        } else {
             incidentTableView.isHidden = true
             noIncidentsLabel.isHidden = false
         }
@@ -151,23 +150,23 @@ class IncidentsViewController: UIViewController {
         }
     }
 
-    func expandMap(){
-        self.incidentContainerView.isHidden = true
-        self.mapContentView.isHidden = false
-        if (self.mapHConstraint != nil) {
-            self.mapHConstraint.isActive = false
+    func expandMap() {
+        incidentContainerView.isHidden = true
+        mapContentView.isHidden = false
+        if mapHConstraint != nil {
+            mapHConstraint.isActive = false
         }
-        self.incidentListExpanded?(false)
+        incidentListExpanded?(false)
     }
 
-    func expandList(){
-        let topConstraint = incidentContainerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
+    func expandList() {
+        let topConstraint = incidentContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
         NSLayoutConstraint.activate([topConstraint])
 
-        self.incidentContainerView.isHidden = false
-        self.mapContentView.isHidden = true
-        self.incidentListExpanded?(true)
-        self.incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        incidentContainerView.isHidden = false
+        mapContentView.isHidden = true
+        incidentListExpanded?(true)
+        incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 
     deinit {
@@ -191,7 +190,7 @@ class IncidentsViewController: UIViewController {
         // Exclude certain activity types if needed (optional)
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
-        self.present(activityViewController, animated: true)
+        present(activityViewController, animated: true)
     }
 }
 
@@ -205,7 +204,7 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 
         let selectedIncident = incidentsViewModel.items[indexPath.row]
 
-        cell.favAction = {[weak self] in
+        cell.favAction = { [weak self] in
             self?.showLoader()
             self?.incidentsViewModel.favouriteIncident(incidentId: selectedIncident.id, like: selectedIncident.isLiked) { result in
                 self?.hideLoader()
@@ -230,11 +229,11 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension IncidentsViewController: IncidentsViewViewDelegate{
+extension IncidentsViewController: IncidentsViewViewDelegate {
     func tokenExpired() {
         appCoordinator?.backToParentCoordinator()
     }
-    
+
     func incidentDataLoaded() {
         hideLoader()
         loadIncidentList()
