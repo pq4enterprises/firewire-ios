@@ -238,8 +238,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: LoginViewDelegate {
     func loginSuccess() {
         hideLoader()
-        coordinator?.backToParentCoordinator()
-        parentCoordinator?.navigateToHome()
+        coordinator?.navigateToSelectArea()
     }
 
     func loginFailed(errorMessage: String) {
