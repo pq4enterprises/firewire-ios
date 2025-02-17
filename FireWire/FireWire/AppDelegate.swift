@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Facebook SDK initialisation
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        // In-App Purchase
-        SubscriptionManager.shared.fetchProducts()
-
         // Remove this method to stop OneSignal Debugging
         OneSignal.Debug.setLogLevel(.LL_VERBOSE)
         OneSignal.initialize(AppDelegate.oneSignalAppId, withLaunchOptions: launchOptions)

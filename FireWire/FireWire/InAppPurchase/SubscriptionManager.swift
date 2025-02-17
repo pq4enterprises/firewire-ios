@@ -11,95 +11,108 @@ protocol SubscriptionManagerDelegate {
     func purchaseTransactionCompleted(success: Bool)
 }
 
-class SubscriptionManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+class SubscriptionManager: NSObject {
     let AUTORENEW_SUBSCRIBE_PURCHASE_PRODUCT_ID = "com.nycfirewire.monthautorenew"
     static let shared = SubscriptionManager()
     
-    fileprivate var iapProducts = [SKProduct()]
+    fileprivate var iapProducts: [Product] = []
     
     var delegate: SubscriptionManagerDelegate?
-
+    
     private override init() {
         super.init()
-        SKPaymentQueue.default().add(self)
     }
-
-    func purchaseMyProduct(){
-        if iapProducts.count == 0 { return }
-        
-        if self.canMakePurcahse(){
-            let payment = SKPayment(product: iapProducts[0])
-            SKPaymentQueue.default().add(payment)
+    
+    // Fetch products using StoreKit 2
+    func fetchProducts() async {
+        do {
+            // Request products using StoreKit 2 async/await API
+            let products = try await Product.products(for: [AUTORENEW_SUBSCRIBE_PURCHASE_PRODUCT_ID])
+            self.iapProducts = products
             
-            print("PRODUCT TO PURCHASE: \(iapProducts[0].productIdentifier)")
+            // Optionally, you can display product info here
+            for product in products {
+                print("Product found: \(product.displayName) - \(product.displayPrice)")
+            }
+        } catch {
+            print("Failed to fetch products: \(error)")
         }
     }
     
-    func canMakePurcahse() -> Bool {
-        AppStore.canMakePayments
-    }
-
-    // Fetch products from App Store
-    func fetchProducts() {
-        let productIDs = Set([AUTORENEW_SUBSCRIBE_PURCHASE_PRODUCT_ID]) // Your subscription product ID(s)
-        let request = SKProductsRequest(productIdentifiers: productIDs)
-        request.delegate = self
-        request.start()
-    }
-
-    // Handle received products
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("DID RECEIVE RESPONSE FOR PRODUCT REQUEST: \(response)")
-        print(": \(response.invalidProductIdentifiers)")
-        print(": \(response.products)")
+    // Purchase product using StoreKit 2
+    func purchaseMyProduct() async {
+        guard !iapProducts.isEmpty else { return }
         
-        if (response.products.count > 0){
-            iapProducts = response.products
-        }
-        
-        for product in response.products {
-            // This is where you would display the product info (name, price, etc.) in your app
-            print("Product found: \(product.localizedTitle) - \(product.price)")
-        }
-    }
-
-    // Handle transaction updates (purchase success, failure, restore, etc.)
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for transaction in transactions {
-            switch transaction.transactionState {
-            case .purchased:
-                print("Purchase successful!")
-                // Unlock premium features, such as removing ads
-                unlockPremiumFeatures()
-                SKPaymentQueue.default().finishTransaction(transaction)
-                delegate?.purchaseTransactionCompleted(success: true)
-
-            case .failed:
-                print("Purchase failed!")
-                SKPaymentQueue.default().finishTransaction(transaction)
+        let product = iapProducts[0]  // Assuming first product for simplicity
+        do {
+            // Start the purchase process using StoreKit 2's async purchase method
+            let result = try await product.purchase()
+            
+            // Handle the result of the purchase
+            switch result {
+            case .success(let verificationResult):
+                // Handle the successful purchase
+                switch verificationResult {
+                case .verified(let transaction):
+                    print("Purchase successful: \(transaction)")
+                    await unlockPremiumFeatures(transaction: transaction)
+                    delegate?.purchaseTransactionCompleted(success: true)
+                case .unverified:
+                    print("Transaction verification failed.")
+                    delegate?.purchaseTransactionCompleted(success: false)
+                }
+            case .userCancelled:
+                print("User cancelled the purchase.")
                 delegate?.purchaseTransactionCompleted(success: false)
-
-            case .restored:
-                print("Purchase restored!")
-                unlockPremiumFeatures()
-                SKPaymentQueue.default().finishTransaction(transaction)
+            case .pending:
+                print("Purchase is pending.")
                 delegate?.purchaseTransactionCompleted(success: false)
-
-            default:
-                break
+            @unknown default:
+                delegate?.purchaseTransactionCompleted(success: false)
             }
+        } catch {
+            print("Purchase failed: \(error)")
+            delegate?.purchaseTransactionCompleted(success: false)
         }
     }
-
-    //TODO: Temporary status to find premium user, this needs to be updated
+    
     // Unlock premium features (e.g., removing ads)
-    func unlockPremiumFeatures() {
-        UserDefaults.standard.set(true, forKey: "isPremiumUser") // Save this flag
+    func unlockPremiumFeatures(transaction: Transaction) async {
+        // Store the premium status
+        UserDefaults.standard.set(true, forKey: "isPremiumUser")
+        
+        // Optionally, handle expiration and check if the subscription is still valid
+        if let expirationDate = transaction.expirationDate, expirationDate > Date() {
+            // Subscription is active
+            print("User's subscription is still active.")
+        } else {
+            // Subscription has expired
+            print("User's subscription has expired.")
+        }
+        
         NotificationCenter.default.post(name: Notification.Name("PremiumStatusChanged"), object: nil)
     }
-
-    // Check if the user has an active subscription
+    
+    // Check if the user has an active subscription (based on UserDefaults)
     func checkSubscriptionStatus() -> Bool {
         return UserDefaults.standard.bool(forKey: "isPremiumUser")
     }
+    
+    func checkActiveSubscriptions() async {
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result else {
+                continue
+            }
+            
+            if transaction.productID == AUTORENEW_SUBSCRIBE_PURCHASE_PRODUCT_ID {
+                // Handle the active subscription
+                if let expirationDate = transaction.expirationDate, expirationDate > Date() {
+                    print("Subscription is active.")
+                } else {
+                    print("Subscription has expired.")
+                }
+            }
+        }
+    }
+    
 }
