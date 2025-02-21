@@ -23,7 +23,8 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var phoneNumberTextField: FWTextField!
     @IBOutlet var positionTextField: FWTextField!
-
+    @IBOutlet weak var changePasswordButton: UIButton!
+    
     var coordinator: HomeCoordinator?
     var viewModel: UpdateProfileViewModel?
     var uploadedImageUrl: String?
@@ -63,6 +64,8 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         if let profileImage = model.img, let imageUrl = URL(string: profileImage) {
             profileImageView.loadImage(from: imageUrl)
         }
+
+        changePasswordButton.isHidden = model.type != "Email"
     }
 
     func error(message: String) {

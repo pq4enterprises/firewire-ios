@@ -2341,6 +2341,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changePasswordButton" destination="92O-zN-UMC" id="kWL-dF-pYd"/>
                         <outlet property="emailTextField" destination="Li0-93-S5K" id="ROG-Eh-xJR"/>
                         <outlet property="firstNameTextField" destination="C4i-DX-v6F" id="jXY-ve-G6t"/>
                         <outlet property="lastNameTextField" destination="jdD-Xd-Smv" id="PH0-6P-VOu"/>
