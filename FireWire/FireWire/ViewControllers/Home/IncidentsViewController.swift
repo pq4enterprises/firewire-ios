@@ -76,7 +76,7 @@ class IncidentsViewController: UIViewController {
             incidentContainerView.isHidden = false
         }
 
-        // mapView.frame = mapContentView.bounds // refresh the map view margins
+        mapView.frame = mapContentView.bounds // refresh the map view margins
     }
 
     //MARK: - View setup

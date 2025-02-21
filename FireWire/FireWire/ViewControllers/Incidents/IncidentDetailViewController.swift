@@ -28,6 +28,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var favouriteButton: UIButton!
     @IBOutlet var activityVerticalConstraint: NSLayoutConstraint!
     @IBOutlet var imageMapStackView: UIStackView!
+    @IBOutlet weak var mapStyleSegment: UISegmentedControl!
 
     // var coordinator: IncidentsCoordinator?
     var coordinator: HomeCoordinator?
@@ -65,7 +66,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             return
         }
         incidentTitle.text = incidentDetail.field1Value ?? ""
-        incidentSubTitle.text = incidentDetail.field2Value ?? ""
+        incidentDesc.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
             incidentDateTime.text = formattedDate
         }
@@ -74,7 +75,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             activityVerticalConstraint.constant = activityVerticalConstraint.constant + 20
         }
 
-        incidentDesc.text = ""
         incidentAddress.text = incidentDetail.address
 
         incidentDetail.isLiked
@@ -178,6 +178,19 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
         present(activityViewController, animated: true)
+    }
+
+    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .normal
+        case 1:
+            mapView.mapType = .satellite
+        case 3:
+            mapView.mapType = .hybrid
+        default:
+            mapView.mapType = .normal
+        }
     }
 
     // A convenience method to instantiate from the storyboard
