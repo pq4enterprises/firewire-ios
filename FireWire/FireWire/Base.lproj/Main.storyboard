@@ -1345,9 +1345,9 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerY" secondItem="DvA-AE-qon" secondAttribute="centerY" id="2RU-UR-1XM"/>
                                             <constraint firstItem="YU5-XV-ggk" firstAttribute="leading" secondItem="DvA-AE-qon" secondAttribute="leading" constant="20" id="H9z-fq-3Nf"/>
-                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerX" secondItem="DvA-AE-qon" secondAttribute="centerX" id="t82-qr-Trj"/>
+                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerX" secondItem="DvA-AE-qon" secondAttribute="centerX" id="PnR-cQ-nqE"/>
+                                            <constraint firstItem="YU5-XV-ggk" firstAttribute="centerY" secondItem="DvA-AE-qon" secondAttribute="centerY" id="gbS-6n-J7T"/>
                                             <constraint firstAttribute="trailing" secondItem="YU5-XV-ggk" secondAttribute="trailing" constant="20" id="xcO-lh-coU"/>
                                         </constraints>
                                     </view>
@@ -1375,6 +1375,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                     <connections>
                         <outlet property="feedBackTextView" destination="HZk-wi-wSQ" id="a6d-bJ-1bR"/>
                         <outlet property="feedbackView" destination="YU5-XV-ggk" id="c0p-4Z-F3R"/>
+                        <outlet property="scrollView" destination="ysv-nz-mOu" id="gJp-hu-D1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NpY-G3-vTe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2341,6 +2342,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changePasswordButton" destination="92O-zN-UMC" id="xqN-fp-jYv"/>
                         <outlet property="emailTextField" destination="Li0-93-S5K" id="ROG-Eh-xJR"/>
                         <outlet property="firstNameTextField" destination="C4i-DX-v6F" id="jXY-ve-G6t"/>
                         <outlet property="lastNameTextField" destination="jdD-Xd-Smv" id="PH0-6P-VOu"/>
