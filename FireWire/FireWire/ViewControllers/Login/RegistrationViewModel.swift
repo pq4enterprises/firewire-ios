@@ -42,7 +42,8 @@ final class RegistrationViewModel {
             }
 
             if registerResponse.code != "success" {
-                self?.delegate?.registrationFail(errorMessage: registerResponse.message ?? "Error registering new user")
+                let errorMessage = registerResponse.message ?? registerResponse.error ?? "Error registering new user"
+                self?.delegate?.registrationFail(errorMessage: errorMessage)
                 return
             }else{
                 self?.performLogin(model) // Perform automatic login after successful registration
