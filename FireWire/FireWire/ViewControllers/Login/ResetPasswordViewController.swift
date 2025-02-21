@@ -39,13 +39,13 @@ class ResetPasswordViewController: UIViewController {
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.resetPassword,
-            payload: APIPayload.resetPassword(resetToken: resetToken, password: newPassword).toDictionary(),
+            payload: APIPayload.resetPassword(resetToken: resetToken, password: newPassword, confirmPassword: confirmPassword).toDictionary(),
             expect: SuccessResponseModel.self
         ) { [weak self] response, _, _ in
 
             self?.hideLoader()
             guard let apiResponse = response else {
-                self?.showAlertMessage("Technical error, please try again!")
+                self?.showAlertMessage(.CommonError.techError)
                 return
             }
 
@@ -54,7 +54,7 @@ class ResetPasswordViewController: UIViewController {
                     self?.showToast(message: "Reset password success")
                     self?.coordinator?.popToRootView()
                 } else {
-                    self?.showAlertMessage(response.message)
+                    self?.showAlertMessage(response.message.isEmpty ? .CommonError.techError : response.message )
                 }
             }
         }

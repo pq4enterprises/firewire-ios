@@ -55,7 +55,7 @@ enum APIPayload {
     case socialLogin(token: String, socialType: String, role: String)
     case forgotPassword(email: String)
     case verifyOtp(email: String, otp: String)
-    case resetPassword(resetToken: String, password: String)
+    case resetPassword(resetToken: String, password: String, confirmPassword: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
     case incidentList(_ model: IncidentRequestModel)
@@ -77,8 +77,8 @@ enum APIPayload {
             return ["email": email]
         case let .verifyOtp(email, otp):
             return ["email": email, "otp": otp]
-        case let .resetPassword(resetToken, password):
-            return ["resetToken": resetToken, "password": password]
+        case let .resetPassword(resetToken, password, confirmPassword):
+            return ["resetToken": resetToken, "password": password, "confirmPassword": confirmPassword]
         case let .favouriteIncident(userId, incidentId, type):
             return ["userId": userId, "incidentId": incidentId, "type": type]
         case let .updateUserProfile(model):
