@@ -20,11 +20,6 @@ final class IncidentsViewModel: PaginatableViewModel {
     var selectedLocalities: SelectedLocalities?
     var delegate: IncidentsViewViewDelegate?
 
-    init(_ incidentList: [IncidentDataModel] = [], _ selectedLocalities: SelectedLocalities? = nil) {
-        self.selectedLocalities = selectedLocalities
-        getIncidentList(selectedLocalities: selectedLocalities)
-    }
-
     func fetchData(forPage page: Int, completion: @escaping (Result<[IncidentDataModel], any Error>) -> Void) {
         var requestModel = IncidentRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)
 
@@ -46,11 +41,11 @@ final class IncidentsViewModel: PaginatableViewModel {
             requestType: APIConstants.GET
         ) { [weak self] response, _, error in
 
-            if error != nil && self?.delegate != nil{
+            if error != nil && self?.delegate != nil {
                 self?.delegate?.tokenExpired()
                 return
             }
-            
+
             guard let apiResponse = response else {
                 self?.delegate?.noIncidentData()
                 return
@@ -68,8 +63,10 @@ final class IncidentsViewModel: PaginatableViewModel {
 
     func didFetchData(_ data: [IncidentDataModel]) {
         for item in data {
-            // Append new items to existing list
-            if !items.contains(where: { $0.id == item.id }) {
+            // if the item already exists in the list update the existing item at the same position
+            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                items[index] = item
+            } else {
                 items.append(item)
 
                 // for map markers
@@ -92,7 +89,7 @@ final class IncidentsViewModel: PaginatableViewModel {
                         address: address,
                         markerType: .incident
                     )
-                    self.markersList.append(mapModel)
+                    markersList.append(mapModel)
                 }
             }
         }
@@ -114,8 +111,7 @@ final class IncidentsViewModel: PaginatableViewModel {
         }
     }
 
-    func favouriteIncident(incidentId: String, like: Bool, completion: @escaping (Bool) -> Void){
-
+    func favouriteIncident(incidentId: String, like: Bool, completion: @escaping (Bool) -> Void) {
         let requestModel = APIPayload.favouriteIncident(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: incidentId,
@@ -125,8 +121,8 @@ final class IncidentsViewModel: PaginatableViewModel {
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.favIncident,
             payload: requestModel as JSON,
-            expect: SuccessResponseModel.self)
-        {response, _, _ in
+            expect: SuccessResponseModel.self
+        ) { response, _, _ in
 
             guard let apiResponse = response as? SuccessResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
@@ -136,10 +132,9 @@ final class IncidentsViewModel: PaginatableViewModel {
 
             if apiResponse.code == "unlike_success" || apiResponse.code == "like_success" {
                 completion(true)
-            }else{
+            } else {
                 self.delegate?.error(message: apiResponse.message)
             }
-
         }
     }
 

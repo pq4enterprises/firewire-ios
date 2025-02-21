@@ -92,6 +92,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             view.layoutIfNeeded()
         }
 
+        incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
+        incidentComments.text = "\(incidentDetail.commentCount) Comments"
+
         let mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
         mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])

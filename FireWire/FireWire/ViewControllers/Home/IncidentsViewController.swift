@@ -56,18 +56,18 @@ class IncidentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         paginationHandler = PaginationHandler(viewModel: incidentsViewModel)
+        setupMap()
         setupUI()
 
         NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
-
-        showLoader()
-
-        changeViewButton.setupShadow()
-        changeViewButton.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showLoader()
+        incidentsViewModel.getIncidentList()
+        setupIncidentList()
+
         if isMapViewExpanded {
             incidentContainerView.isHidden = true
         }
@@ -76,15 +76,23 @@ class IncidentsViewController: UIViewController {
             incidentContainerView.isHidden = false
         }
 
-        mapView.frame = mapContentView.bounds // refresh the map view margins
+        // mapView.frame = mapContentView.bounds // refresh the map view margins
     }
 
+    //MARK: - View setup
     func setupUI() {
+        changeViewButton.setupShadow()
+        changeViewButton.isHidden = true
+    }
+
+    func setupMap() {
         mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: mapContentView.bounds)
         mapView.delegate = self
         mapContentView.addSubview(mapView)
+    }
 
+    func setupIncidentList() {
         // incidentContainerView.setTopCornersRadius(radius: 20)
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
@@ -96,7 +104,7 @@ class IncidentsViewController: UIViewController {
     }
 
     func loadIncidentList() {
-        incidentsCountLabel.text = "\(incidentsViewModel.items.count) posts are listed"
+        incidentsCountLabel.text = "\(incidentsViewModel.totalPages) posts are listed"
         if incidentsViewModel.items.count > 0 {
             noIncidentsLabel.isHidden = true
             incidentTableView.isHidden = false
@@ -117,6 +125,7 @@ class IncidentsViewController: UIViewController {
         mapView.animate(to: camera)
     }
 
+    // MARK: - Actions
     @IBAction func filterButtonTap(_ sender: UIButton) {
         coordinator?.navigateToSelectAreaListView()
     }
@@ -137,7 +146,6 @@ class IncidentsViewController: UIViewController {
             expandMap()
         }
     }
-
 
     func expandMap() {
         incidentContainerView.isHidden = true
@@ -308,7 +316,8 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         if let markerTitle = marker.title,
-           let selectedIncidentID = incidentsViewModel.getSelectedIncidentIdFromMapTitle(title: markerTitle){
+           let selectedIncidentID = incidentsViewModel.getSelectedIncidentIdFromMapTitle(title: markerTitle)
+        {
             coordinator?.navigateToIncidentDetail(selectedIncidentID)
         }
     }
