@@ -26,10 +26,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var incidentMapView: UIView!
     @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var favouriteButton: UIButton!
-    @IBOutlet var activityVerticalConstraint: NSLayoutConstraint!
     @IBOutlet var imageMapStackView: UIStackView!
-    @IBOutlet weak var mapStyleSegment: UISegmentedControl!
-
+    @IBOutlet weak var unitsView: FWView!
+    @IBOutlet weak var unitsLabel: UILabel!
+    
     // var coordinator: IncidentsCoordinator?
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
@@ -52,6 +52,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     func setupUI() {
         incidentDesc.isUserInteractionEnabled = true
+        unitsView.setCornerRadius()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,13 +67,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             return
         }
         incidentTitle.text = incidentDetail.field1Value ?? ""
-        incidentDesc.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        incidentDesc.text = incidentDetail.field2Value ?? ""
+
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
             incidentDateTime.text = formattedDate
-        }
-
-        if let desc = incidentDetail.field3Value, desc.isEmpty {
-            activityVerticalConstraint.constant = activityVerticalConstraint.constant + 20
         }
 
         incidentAddress.text = incidentDetail.address
@@ -99,6 +97,14 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
         mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
         incidentMapView.addSubview(mapView)
+
+        if let units = incidentDetail.respondingUnits{
+            let unitsString = "[ " + units.joined(separator: ", ") + " ]"
+            unitsView.isHidden = false
+            unitsLabel.text = unitsString
+        }else{
+            unitsView.isHidden = true
+        }
 
         fitMarkersToMap()
     }

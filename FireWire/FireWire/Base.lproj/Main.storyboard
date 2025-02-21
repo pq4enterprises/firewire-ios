@@ -580,7 +580,7 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="109" width="402" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="721"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="402" height="802"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
                                                 <rect key="frame" x="25" y="0.0" width="352" height="108"/>
@@ -671,8 +671,37 @@ agreeing with our Terms and Conditions</string>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T45-af-lub" customClass="FWView" customModule="FireWire" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="636" width="352" height="86"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JbC-Ad-GtL">
+                                                        <rect key="frame" x="10" y="15" width="332" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-z6-XM2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="332" height="23"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[E333, e4444, Eeee,]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LML-Qu-KEe">
+                                                                <rect key="frame" x="0.0" y="33" width="332" height="23"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="FWGrey"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="JbC-Ad-GtL" secondAttribute="trailing" constant="10" id="A3z-Md-8aJ"/>
+                                                    <constraint firstItem="JbC-Ad-GtL" firstAttribute="top" secondItem="T45-af-lub" secondAttribute="top" constant="15" id="Drz-Wy-n5p"/>
+                                                    <constraint firstItem="JbC-Ad-GtL" firstAttribute="leading" secondItem="T45-af-lub" secondAttribute="leading" constant="10" id="JD5-zk-rz2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="JbC-Ad-GtL" secondAttribute="bottom" constant="15" id="xsS-wk-Z1k"/>
+                                                </constraints>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="seD-YZ-ALe">
-                                                <rect key="frame" x="25" y="666" width="352" height="35"/>
+                                                <rect key="frame" x="25" y="747" width="352" height="35"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
                                                         <rect key="frame" x="0.0" y="0.0" width="142" height="35"/>
@@ -757,16 +786,19 @@ agreeing with our Terms and Conditions</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="seD-YZ-ALe" secondAttribute="bottom" constant="20" id="0Rz-Y4-oui"/>
+                                            <constraint firstItem="T45-af-lub" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="20" id="1B4-Qk-MQ8"/>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="1qI-iT-WKD"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="top" secondItem="CJd-Io-ide" secondAttribute="top" id="Dym-02-UMu"/>
+                                            <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="T45-af-lub" secondAttribute="bottom" constant="25" id="Lro-ia-4l1"/>
+                                            <constraint firstAttribute="trailing" secondItem="T45-af-lub" secondAttribute="trailing" constant="25" id="Pal-dG-53O"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
-                                            <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="Ckj-NW-xDd" secondAttribute="bottom" constant="50" id="TYA-74-YC5"/>
                                             <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="USR-s8-jOR"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="UXd-im-3RV"/>
                                             <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="YEw-TC-5Pe"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="fBw-A3-udZ"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="20" id="fRt-Th-dmR"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="uyb-lj-gWP" secondAttribute="bottom" constant="18" id="kGq-la-Q0b"/>
+                                            <constraint firstItem="T45-af-lub" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="lpb-lO-biW"/>
                                             <constraint firstAttribute="trailing" secondItem="seD-YZ-ALe" secondAttribute="trailing" constant="25" id="oEL-4a-fjn"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="pRL-8L-sst"/>
                                             <constraint firstAttribute="trailing" secondItem="uyb-lj-gWP" secondAttribute="trailing" constant="25" id="rUf-5f-tQs"/>
@@ -799,7 +831,6 @@ agreeing with our Terms and Conditions</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityVerticalConstraint" destination="TYA-74-YC5" id="Gku-YS-0lz"/>
                         <outlet property="favouriteButton" destination="0jy-dA-eZ3" id="WBY-3I-Tjw"/>
                         <outlet property="imageLoadingIndicator" destination="GGe-wF-wsJ" id="VnQ-ps-45M"/>
                         <outlet property="imageMapStackView" destination="uyb-lj-gWP" id="dvp-25-kwM"/>
@@ -812,6 +843,8 @@ agreeing with our Terms and Conditions</string>
                         <outlet property="incidentMapView" destination="eGY-cq-G1J" id="BUO-Dh-GBm"/>
                         <outlet property="incidentSubTitle" destination="QEg-gK-fbe" id="Nva-Kg-d6T"/>
                         <outlet property="incidentTitle" destination="ODZ-xY-RIV" id="wuj-rT-Xpg"/>
+                        <outlet property="unitsLabel" destination="LML-Qu-KEe" id="yi8-Ss-4bL"/>
+                        <outlet property="unitsView" destination="T45-af-lub" id="Ko2-8d-XIM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuZ-Ea-1yV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
