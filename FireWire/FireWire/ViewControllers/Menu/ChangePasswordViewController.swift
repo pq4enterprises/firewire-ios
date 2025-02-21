@@ -22,6 +22,8 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
+        [currentPasswordTextField, newPasswordTextField, confirmPasswordTextField].forEach { $0.delegate = self }
+
         currentPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
             guard let self else { return }
             self.togglePasswordVisibility(self.currentPasswordTextField)
@@ -46,6 +48,14 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         if let button = textField.rightView as? UIButton {
             button.setImage(icon, for: .normal)
         }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Prevent spaces
+        if string.contains(" ") {
+            return false
+        }
+        return true
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {

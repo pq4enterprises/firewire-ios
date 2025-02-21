@@ -1281,7 +1281,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <rect key="frame" x="20" y="189.66666666666663" width="353" height="380"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pF-GF-zV8" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="288.33333333333337" width="323" height="50"/>
+                                                        <rect key="frame" x="15" y="299.33333333333337" width="323" height="50"/>
                                                         <color key="backgroundColor" name="FWRed"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="gRO-zr-bW6"/>
@@ -1295,7 +1295,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         </connections>
                                                     </button>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZk-wi-wSQ">
-                                                        <rect key="frame" x="15" y="108.33333333333334" width="328" height="150.00000000000003"/>
+                                                        <rect key="frame" x="15" y="119.33333333333334" width="328" height="150.00000000000003"/>
                                                         <color key="backgroundColor" name="FWGrey"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="XxE-eS-PLs"/>
@@ -1305,7 +1305,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help us improve by sharing the reason for deleting your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ll8-Ku-xMz">
-                                                        <rect key="frame" x="10" y="47.000000000000028" width="333" height="41.333333333333343"/>
+                                                        <rect key="frame" x="10" y="58.000000000000028" width="333" height="41.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="17"/>
                                                         <color key="textColor" name="FWTextGrey2"/>
                                                         <nil key="highlightedColor"/>
@@ -1339,7 +1339,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                     <constraint firstItem="0pF-GF-zV8" firstAttribute="leading" secondItem="YU5-XV-ggk" secondAttribute="leading" constant="15" id="bry-yZ-wjx"/>
                                                     <constraint firstAttribute="trailing" secondItem="0pF-GF-zV8" secondAttribute="trailing" constant="15" id="g5L-Ph-Mop"/>
                                                     <constraint firstAttribute="height" constant="380" id="gaY-bK-19s"/>
-                                                    <constraint firstItem="ll8-Ku-xMz" firstAttribute="top" secondItem="zSg-oJ-eJe" secondAttribute="bottom" constant="4" id="q70-XW-RsG"/>
+                                                    <constraint firstItem="ll8-Ku-xMz" firstAttribute="top" secondItem="zSg-oJ-eJe" secondAttribute="bottom" constant="15" id="q70-XW-RsG"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -2250,7 +2250,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                     <constraint firstAttribute="height" constant="55" id="DtL-jR-7wI"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
