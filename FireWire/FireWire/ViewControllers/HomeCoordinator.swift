@@ -101,6 +101,14 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.present(bottomSheet, animated: true)
     }
 
+    /// Copy of IncidentLocalityListViewController, just using different view controller for UI & navigation purpose
+    func navigateToFeedAreaListView(){
+        let feedAreaListView = FeedAreaListViewController.instantiate()
+        feedAreaListView.viewModel = IncidentLocalityListViewModel()
+        feedAreaListView.coordinator = self
+        navigationController.pushViewController(feedAreaListView, animated: true)
+    }
+
     func navigateToIncidentComments(_ incidentID: String, _ attachedImages: [String] = []){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentID)

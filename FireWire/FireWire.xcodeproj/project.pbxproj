@@ -289,6 +289,8 @@
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
+		B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
 		B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
 		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
@@ -497,6 +499,7 @@
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAreaListViewController.swift; sourceTree = "<group>"; };
 		B0D737832D3FD59600D82F2C /* FeedItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemListView.swift; sourceTree = "<group>"; };
 		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -728,6 +731,7 @@
 		B01BB04D2CF31087003970D7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */,
 				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
 				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
@@ -1324,6 +1328,7 @@
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
+				B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
@@ -1460,6 +1465,7 @@
 				B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
 				B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
+				B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
 				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
 				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,

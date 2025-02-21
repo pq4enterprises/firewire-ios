@@ -2450,35 +2450,32 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <constraint firstItem="Sff-Nb-ElA" firstAttribute="centerY" secondItem="LtD-ih-0SJ" secondAttribute="centerY" id="y7K-oP-ape"/>
                                 </constraints>
                             </view>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="03e-tO-zpJ">
-                                <rect key="frame" x="30" y="134" width="333" height="0.0"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="03e-tO-zpJ">
+                                <rect key="frame" x="30" y="134" width="333" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_areas" translatesAutoresizingMaskIntoConstraints="NO" id="mQz-1N-00q">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Xme-SX-Xzf"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed Areas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZa-a6-lha">
-                                        <rect key="frame" x="35" y="0.0" width="278" height="0.0"/>
+                                        <rect key="frame" x="35" y="0.33333333333334281" width="278" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Aif-ye-mKu">
-                                        <rect key="frame" x="328" y="0.0" width="5" height="0.0"/>
+                                        <rect key="frame" x="328" y="4" width="5" height="12"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="AqR-qG-sE7"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="CV4-FU-9Tn"/>
-                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fuh-k6-aTR">
-                                <rect key="frame" x="30" y="134" width="333" height="20"/>
+                                <rect key="frame" x="30" y="174" width="333" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notifications" translatesAutoresizingMaskIntoConstraints="NO" id="POb-jS-HsC">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -2488,7 +2485,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJa-OW-x6B">
-                                        <rect key="frame" x="35" y="0.33333333333334281" width="278" height="19.666666666666668"/>
+                                        <rect key="frame" x="35" y="0.33333333333334281" width="278" height="19.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2508,10 +2505,10 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ySJ-kU-cs8" firstAttribute="trailing" secondItem="5uA-Ks-a2t" secondAttribute="trailing" id="0X2-wG-lWn"/>
+                            <constraint firstItem="fuh-k6-aTR" firstAttribute="top" secondItem="03e-tO-zpJ" secondAttribute="bottom" constant="20" id="I6e-4Y-NPh"/>
                             <constraint firstItem="ySJ-kU-cs8" firstAttribute="top" secondItem="5uA-Ks-a2t" secondAttribute="top" id="KFB-zE-n12"/>
                             <constraint firstItem="5uA-Ks-a2t" firstAttribute="trailing" secondItem="fuh-k6-aTR" secondAttribute="trailing" constant="30" id="ULM-gN-OLw"/>
                             <constraint firstItem="5uA-Ks-a2t" firstAttribute="trailing" secondItem="03e-tO-zpJ" secondAttribute="trailing" constant="30" id="awh-X9-jLP"/>
-                            <constraint firstItem="fuh-k6-aTR" firstAttribute="top" secondItem="03e-tO-zpJ" secondAttribute="bottom" id="ioC-91-zSY"/>
                             <constraint firstItem="ySJ-kU-cs8" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" id="j0C-4Z-nlh"/>
                             <constraint firstItem="03e-tO-zpJ" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" constant="30" id="lME-D0-ACf"/>
                             <constraint firstItem="fuh-k6-aTR" firstAttribute="leading" secondItem="5uA-Ks-a2t" secondAttribute="leading" constant="30" id="mWe-5h-7Te"/>
@@ -3597,6 +3594,99 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrg-80-o1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7245" y="1382"/>
+        </scene>
+        <!--Feed Area List View Controller-->
+        <scene sceneID="joh-Mu-LIE">
+            <objects>
+                <viewController storyboardIdentifier="FeedAreaListViewController" id="0kK-Ec-3Zw" customClass="FeedAreaListViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HxZ-nq-2NF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPN-qd-PuA">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wq-sS-fIO">
+                                        <rect key="frame" x="20" y="0.0" width="60" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="oJ9-vB-alB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="back_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="0kK-Ec-3Zw" eventType="touchUpInside" id="xlF-ZW-eEe"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Areas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-j8-S0K">
+                                        <rect key="frame" x="152.33333333333334" y="9.3333333333333304" width="88.333333333333343" height="31.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Mfj-j8-S0K" firstAttribute="centerY" secondItem="RPN-qd-PuA" secondAttribute="centerY" id="1L7-pc-7O2"/>
+                                    <constraint firstItem="0Wq-sS-fIO" firstAttribute="leading" secondItem="RPN-qd-PuA" secondAttribute="leading" constant="20" id="6mf-4J-UCz"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Wq-sS-fIO" secondAttribute="bottom" id="A5u-Y1-4YW"/>
+                                    <constraint firstItem="0Wq-sS-fIO" firstAttribute="top" secondItem="RPN-qd-PuA" secondAttribute="top" id="JbM-ag-QQ6"/>
+                                    <constraint firstItem="0Wq-sS-fIO" firstAttribute="centerY" secondItem="Mfj-j8-S0K" secondAttribute="centerY" id="cre-XV-QHz"/>
+                                    <constraint firstAttribute="height" constant="50" id="dFH-js-Op1"/>
+                                    <constraint firstItem="Mfj-j8-S0K" firstAttribute="centerX" secondItem="RPN-qd-PuA" secondAttribute="centerX" id="k0z-PA-ndW"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-Tm-aSO">
+                                <rect key="frame" x="0.0" y="117" width="393" height="621"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZC-b1-LHv" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
+                                <rect key="frame" x="30" y="748" width="333" height="50"/>
+                                <color key="backgroundColor" name="FWRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cOW-SV-iKR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="doneButtonTap:" destination="0kK-Ec-3Zw" eventType="touchUpInside" id="36l-6p-4HH"/>
+                                    <action selector="saveButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="CVR-oZ-12a"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-Sd-fmc">
+                                <rect key="frame" x="58" y="183" width="276" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KqI-qY-hYc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RPN-qd-PuA" firstAttribute="top" secondItem="KqI-qY-hYc" secondAttribute="top" id="575-wB-Qmm"/>
+                            <constraint firstItem="Nyy-Tm-aSO" firstAttribute="leading" secondItem="KqI-qY-hYc" secondAttribute="leading" id="EtB-9U-ASv"/>
+                            <constraint firstItem="pZC-b1-LHv" firstAttribute="leading" secondItem="KqI-qY-hYc" secondAttribute="leading" constant="30" id="NK0-0G-QYO"/>
+                            <constraint firstItem="Nyy-Tm-aSO" firstAttribute="top" secondItem="RPN-qd-PuA" secondAttribute="bottom" constant="8" symbolic="YES" id="ZM5-5d-5zv"/>
+                            <constraint firstItem="RPN-qd-PuA" firstAttribute="trailing" secondItem="KqI-qY-hYc" secondAttribute="trailing" id="ZiQ-iJ-y6X"/>
+                            <constraint firstItem="Nyy-Tm-aSO" firstAttribute="trailing" secondItem="KqI-qY-hYc" secondAttribute="trailing" id="bR4-MH-qbG"/>
+                            <constraint firstItem="KqI-qY-hYc" firstAttribute="bottom" secondItem="pZC-b1-LHv" secondAttribute="bottom" constant="20" id="flK-Yw-VWU"/>
+                            <constraint firstItem="KqI-qY-hYc" firstAttribute="trailing" secondItem="pZC-b1-LHv" secondAttribute="trailing" constant="30" id="llI-LW-PWU"/>
+                            <constraint firstItem="RPN-qd-PuA" firstAttribute="leading" secondItem="KqI-qY-hYc" secondAttribute="leading" id="skO-dk-Mqz"/>
+                            <constraint firstItem="pZC-b1-LHv" firstAttribute="top" secondItem="Nyy-Tm-aSO" secondAttribute="bottom" constant="10" id="vah-6G-PkD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="2OH-Sd-fmc" id="YDE-0H-ZjK"/>
+                        <outlet property="tableView" destination="Nyy-Tm-aSO" id="HSI-Bu-KVP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wb0-rX-pbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3461.8320610687019" y="2079.5774647887324"/>
         </scene>
     </scenes>
     <resources>

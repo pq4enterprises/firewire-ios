@@ -28,7 +28,9 @@ class PersonalisationViewController: UIViewController {
         notificationView.addGestureRecognizer(notificationGesture)
     }
 
-    @objc func feedAreaTap() {    }
+    @objc func feedAreaTap() {
+        coordinator?.navigateToFeedAreaListView()
+    }
 
     @objc func notificationTap() {
         coordinator?.navigateToNotificationSettings()
