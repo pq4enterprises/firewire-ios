@@ -100,8 +100,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             }
 
             if apiResponse.code.lowercased() == "success" {
-                self?.showToast(message: "Update password success")
-                self?.coordinator?.popView()
+                self?.showAlertMessage("Your password has been successfully updated") {
+                    self?.coordinator?.popView()
+                }
             } else {
                 self?.showAlertMessage("Technical error, please try again!")
             }
