@@ -57,7 +57,7 @@ final class MapViewModel {
         for item in incidentList {
             if let lat = Double(item.latitude), let lon = Double(item.longitude) {
                 let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                let mapModel = MapMarkerModel(coordinates: coordinates, address: item.address, markerType: .incident)
+                let mapModel = MapMarkerModel(incidentId: item.id, coordinates: coordinates, title: item.field1Value, address: item.address, markerType: .incident)
                 self.markersList.append(mapModel)
                 self.delegate?.dataReceived()
             }

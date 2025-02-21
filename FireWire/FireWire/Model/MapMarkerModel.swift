@@ -13,7 +13,9 @@ enum MarkerType {
 }
 
 struct MapMarkerModel {
+    let incidentId: String
     let coordinates: CLLocationCoordinate2D
+    let title: String
     let address: String
     let markerType: MarkerType
 }

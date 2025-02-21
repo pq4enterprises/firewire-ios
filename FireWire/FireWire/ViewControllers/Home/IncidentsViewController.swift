@@ -68,8 +68,6 @@ class IncidentsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mapView.frame = mapContentView.bounds // refresh the map view margins
-
         if isMapViewExpanded {
             incidentContainerView.isHidden = true
         }
@@ -77,11 +75,14 @@ class IncidentsViewController: UIViewController {
         if isListViewExpanded {
             incidentContainerView.isHidden = false
         }
+
+        mapView.frame = mapContentView.bounds // refresh the map view margins
     }
 
     func setupUI() {
         mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: mapContentView.bounds)
+        mapView.delegate = self
         mapContentView.addSubview(mapView)
 
         // incidentContainerView.setTopCornersRadius(radius: 20)
@@ -283,7 +284,7 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension IncidentsViewController: IncidentsViewViewDelegate {
+extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate {
     func tokenExpired() {
         appCoordinator?.backToParentCoordinator()
     }
@@ -303,5 +304,12 @@ extension IncidentsViewController: IncidentsViewViewDelegate {
 
     func error(message: String) {
         hideLoader()
+    }
+
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        if let markerTitle = marker.title,
+           let selectedIncidentID = incidentsViewModel.getSelectedIncidentIdFromMapTitle(title: markerTitle){
+            coordinator?.navigateToIncidentDetail(selectedIncidentID)
+        }
     }
 }

@@ -52,6 +52,7 @@ class MapManager {
         for item in mapModel {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
+            marker.title = item.title
             marker.snippet = item.address
             marker.icon = item.markerType == .incident ? FWImage.mapMarker : FWImage.mapFireMarker
             marker.map = mapView

@@ -38,7 +38,7 @@ final class IncidentDetailViewModel {
     func createMarkerCoordinates(incidentDetail: IncidentDetailModel) {
         if let lat = Double(incidentDetail.latitude), let lon = Double(incidentDetail.longitude) {
             let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            let mapModel = MapMarkerModel(coordinates: coordinates, address: incidentDetail.address, markerType: .incident)
+            let mapModel = MapMarkerModel(incidentId: incidentDetail.id, coordinates: coordinates, title: incidentDetail.field1Value ?? "", address: incidentDetail.address, markerType: .incident)
             self.markersList.append(mapModel)
         }
 
@@ -46,7 +46,7 @@ final class IncidentDetailViewModel {
             for point in points {
                 if let latitude = point.latitude, let longitude = point.longitude, let lat = Double(latitude), let lon = Double(longitude) {
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    let mapModel = MapMarkerModel(coordinates: coordinates, address: point.address ?? "", markerType: .points)
+                    let mapModel = MapMarkerModel(incidentId: point.id, coordinates: coordinates, title: point.name ?? "", address: point.address ?? "", markerType: .points)
                     self.markersList.append(mapModel)
                 }
             }

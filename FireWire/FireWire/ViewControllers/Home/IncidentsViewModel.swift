@@ -75,7 +75,23 @@ final class IncidentsViewModel: PaginatableViewModel {
                 // for map markers
                 if let lat = Double(item.latitude), let lon = Double(item.longitude) {
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    let mapModel = MapMarkerModel(coordinates: coordinates, address: item.address, markerType: .incident)
+
+                    /// snippet for map icon:  field3value + sub locality name
+                    var address = item.field3Value
+                    if let subLocalityName = item.subLocality.first?.name, !subLocalityName.isEmpty {
+                        if !address.isEmpty {
+                            address.append(", ")
+                        }
+                        address.append(subLocalityName)
+                    }
+
+                    let mapModel = MapMarkerModel(
+                        incidentId: item.id,
+                        coordinates: coordinates,
+                        title: item.field1Value,
+                        address: address,
+                        markerType: .incident
+                    )
                     self.markersList.append(mapModel)
                 }
             }
@@ -125,5 +141,9 @@ final class IncidentsViewModel: PaginatableViewModel {
             }
 
         }
+    }
+
+    func getSelectedIncidentIdFromMapTitle(title: String) -> String? {
+        markersList.first { $0.title.lowercased() == title.lowercased() }?.incidentId
     }
 }
