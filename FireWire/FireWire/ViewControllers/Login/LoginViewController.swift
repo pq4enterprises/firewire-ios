@@ -66,8 +66,6 @@ class LoginViewController: UIViewController {
             coloredText: .Login.termsAndConditions
         )
 
-        socialLoginStack.axis = .vertical
-
         let appleButton = ASAuthorizationAppleIDButton()
         appleButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
         appleButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
