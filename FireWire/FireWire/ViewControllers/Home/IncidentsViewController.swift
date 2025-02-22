@@ -75,7 +75,10 @@ class IncidentsViewController: UIViewController {
         if isListViewExpanded {
             incidentContainerView.isHidden = false
         }
+    }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         mapView.frame = mapContentView.bounds // refresh the map view margins
     }
 
