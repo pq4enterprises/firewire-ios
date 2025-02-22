@@ -23,6 +23,87 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Domain View Controller-->
+        <scene sceneID="e0r-Jq-UYi">
+            <objects>
+                <viewController storyboardIdentifier="DomainViewController" id="JTh-Sf-VeV" customClass="DomainViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SH1-az-j49">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://dev-firewire-api.atomgroups.work/" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWR-9h-UsB">
+                                <rect key="frame" x="30" y="159" width="333" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PBq-v1-5HD">
+                                <rect key="frame" x="40" y="252" width="313" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvE-8y-Uhv">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.66666666666666" height="40"/>
+                                        <color key="backgroundColor" name="FWRed"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Dev">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="devButtonTap:" destination="JTh-Sf-VeV" eventType="touchUpInside" id="kS7-So-syu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5v-Dv-6b2">
+                                        <rect key="frame" x="161.66666666666663" y="0.0" width="151.33333333333337" height="40"/>
+                                        <color key="backgroundColor" name="FWRed"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Live">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="liveButtonTap:" destination="JTh-Sf-VeV" eventType="touchUpInside" id="zNz-C5-3C6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3ko-LO-jtC"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjt-K5-Lxb">
+                                <rect key="frame" x="30" y="337" width="333" height="40"/>
+                                <color key="backgroundColor" name="FWGrey"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ImK-u1-c1F"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" name="FWRed"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTap:" destination="JTh-Sf-VeV" eventType="touchUpInside" id="ah2-O3-oBc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="86y-Sd-MHt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PBq-v1-5HD" firstAttribute="top" secondItem="lWR-9h-UsB" secondAttribute="bottom" constant="50" id="AEy-Ov-NlE"/>
+                            <constraint firstItem="PBq-v1-5HD" firstAttribute="leading" secondItem="86y-Sd-MHt" secondAttribute="leading" constant="40" id="JbA-29-u7t"/>
+                            <constraint firstItem="86y-Sd-MHt" firstAttribute="trailing" secondItem="Pjt-K5-Lxb" secondAttribute="trailing" constant="30" id="Ozj-sJ-ZV3"/>
+                            <constraint firstItem="86y-Sd-MHt" firstAttribute="trailing" secondItem="PBq-v1-5HD" secondAttribute="trailing" constant="40" id="RtK-aE-hOE"/>
+                            <constraint firstItem="lWR-9h-UsB" firstAttribute="leading" secondItem="86y-Sd-MHt" secondAttribute="leading" constant="30" id="VTj-3b-pvz"/>
+                            <constraint firstItem="Pjt-K5-Lxb" firstAttribute="top" secondItem="PBq-v1-5HD" secondAttribute="bottom" constant="45" id="YAe-wh-lum"/>
+                            <constraint firstItem="Pjt-K5-Lxb" firstAttribute="leading" secondItem="86y-Sd-MHt" secondAttribute="leading" constant="30" id="j7p-YV-zbg"/>
+                            <constraint firstItem="lWR-9h-UsB" firstAttribute="top" secondItem="86y-Sd-MHt" secondAttribute="top" constant="100" id="qq2-HZ-Upn"/>
+                            <constraint firstItem="86y-Sd-MHt" firstAttribute="trailing" secondItem="lWR-9h-UsB" secondAttribute="trailing" constant="30" id="t7t-7g-cip"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="urlLabel" destination="lWR-9h-UsB" id="Um3-4i-aCL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x2h-9r-N1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983.96946564885491" y="-4.2253521126760569"/>
+        </scene>
         <!--Select Area View Controller-->
         <scene sceneID="l3Z-40-uNe">
             <objects>

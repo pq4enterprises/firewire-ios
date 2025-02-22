@@ -17,6 +17,12 @@ class LoginCoordinator: BaseCoordinator {
         pushViewController(loginViewController, animated: false)
     }
 
+    func setDomainView(){
+        let domainVC = DomainViewController.instantiate()
+        domainVC.coordinator = self
+        pushViewController(domainVC, animated: false)
+    }
+
     func navigateToRegistration() {
         let registrationViewController = RegistrationViewController.instantiate()
         registrationViewController.coordinator = self

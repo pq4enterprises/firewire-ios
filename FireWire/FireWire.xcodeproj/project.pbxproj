@@ -291,6 +291,8 @@
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
 		B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
+		B0D4B0ED2D6986F3009A1BD1 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */; };
+		B0D4B0EE2D6986F3009A1BD1 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */; };
 		B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
 		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
@@ -500,6 +502,7 @@
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAreaListViewController.swift; sourceTree = "<group>"; };
+		B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainViewController.swift; sourceTree = "<group>"; };
 		B0D737832D3FD59600D82F2C /* FeedItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemListView.swift; sourceTree = "<group>"; };
 		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -770,6 +773,7 @@
 				B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
 				B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */,
+				B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1341,6 +1345,7 @@
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
 				B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */,
+				B0D4B0EE2D6986F3009A1BD1 /* DomainViewController.swift in Sources */,
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
@@ -1478,6 +1483,7 @@
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
 				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,
 				B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */,
+				B0D4B0ED2D6986F3009A1BD1 /* DomainViewController.swift in Sources */,
 				B0B1AEE72D4F8DB6007371A9 /* APIConstants.swift in Sources */,
 				B0B1AEE82D4F8DB6007371A9 /* NotificationLocalityCell.swift in Sources */,
 				B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */,
