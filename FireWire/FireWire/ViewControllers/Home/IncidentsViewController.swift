@@ -57,6 +57,7 @@ class IncidentsViewController: UIViewController {
         super.viewDidLoad()
         paginationHandler = PaginationHandler(viewModel: incidentsViewModel)
         setupMap()
+        setupIncidentList()
         setupUI()
 
         NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
@@ -66,7 +67,6 @@ class IncidentsViewController: UIViewController {
         super.viewDidAppear(animated)
         showLoader()
         incidentsViewModel.getIncidentList()
-        setupIncidentList()
 
         if isMapViewExpanded {
             incidentContainerView.isHidden = true
@@ -75,11 +75,9 @@ class IncidentsViewController: UIViewController {
         if isListViewExpanded {
             incidentContainerView.isHidden = false
         }
-    }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         mapView.frame = mapContentView.bounds // refresh the map view margins
+        self.view.layoutIfNeeded()
     }
 
     //MARK: - View setup
