@@ -200,7 +200,7 @@
                                                         <rect key="frame" x="30" y="52.666666666666686" width="333" height="54"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-JV-nXI" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
-                                                                <rect key="frame" x="2" y="2" width="155.66666666666666" height="50"/>
+                                                                <rect key="frame" x="2" y="2" width="329" height="50"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="WvX-qB-RNO"/>
@@ -211,8 +211,8 @@
                                                                     <action selector="googleSignInTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9SF-hV-Guq"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-0c-f5X" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
-                                                                <rect key="frame" x="175.66666666666663" y="2" width="155.33333333333337" height="50"/>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-0c-f5X" customClass="FWShadowButton" customModule="FireWire" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="2" width="0.0" height="50"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="fb_logo"/>
@@ -404,6 +404,7 @@ agreeing with our Terms and Conditions</string>
                         <outlet property="passwordTextField" destination="9BS-5Y-vJM" id="Ats-wZ-eKJ"/>
                         <outlet property="registerLabel" destination="h2R-Qp-jxE" id="0qG-er-HPu"/>
                         <outlet property="scrollView" destination="G8y-DX-Zd7" id="Oux-lZ-t6m"/>
+                        <outlet property="socialLoginStack" destination="EBe-hn-bx8" id="sXf-zE-3JM"/>
                         <outlet property="termsAndConditionsLabel" destination="EYI-pn-TAX" id="JBo-Ap-lEB"/>
                     </connections>
                 </viewController>

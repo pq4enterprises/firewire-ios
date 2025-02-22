@@ -50,6 +50,7 @@ enum APIEndpoints {
 enum SocialLoginType: String{
     case google = "google"
     case facebook = "facebook"
+    case apple = "apple"
 }
 
 enum APIPayload {

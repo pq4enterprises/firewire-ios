@@ -5,6 +5,7 @@
 //  Created by Sujitha Palanisamy on 16/11/24.
 //
 
+import AuthenticationServices
 import FBSDKLoginKit
 import GoogleSignIn
 import UIKit
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController {
     weak var parentCoordinator: AppCoordinator?
     var viewModel: LoginViewModel?
 
+    @IBOutlet weak var socialLoginStack: UIStackView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
     @IBOutlet weak var forgotPasswordLabel: UILabel!
@@ -63,6 +65,14 @@ class LoginViewController: UIViewController {
             text: .Login.termsAndConditionsText,
             coloredText: .Login.termsAndConditions
         )
+
+        socialLoginStack.axis = .vertical
+
+        let appleButton = ASAuthorizationAppleIDButton()
+        appleButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
+        appleButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        appleButton.center = view.center
+        socialLoginStack.addArrangedSubview(appleButton)
     }
 
     func setupActions() {
@@ -103,6 +113,17 @@ class LoginViewController: UIViewController {
 
     @IBAction func facebookSignInTap(_ sender: UIButton) {
         performFaceBookLogin()
+    }
+
+    @objc func handleAppleSignIn() {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
 
     func callLoginApi() {
@@ -260,3 +281,30 @@ extension LoginViewController: LoginViewDelegate {
         )
     }
 }
+
+// MARK: Apple login delegate
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            if let identityToken = appleIDCredential.identityToken,
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+
+                self.showLoader()
+
+                let requestModel = SocialLoginRequestModel(token: tokenString, socialType: .apple, role: "basic_user")
+                self.viewModel?.authenticateSocialLogin(requestModel)
+            } else {
+                print("Failed to get identity token.")
+            }
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Authorization Error: \(error.localizedDescription)")
+    }
+
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+}
+
