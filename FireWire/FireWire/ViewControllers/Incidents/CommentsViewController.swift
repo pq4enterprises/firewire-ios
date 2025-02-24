@@ -11,6 +11,7 @@ protocol CommentsListViewDelegate: AnyObject {
     func dataReceived()
     func noCommentsForIncident()
     func commentAdded()
+    func error(message: String)
 }
 
 class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextFieldDelegate {
@@ -22,11 +23,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var previewImageCollectionView: UICollectionView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var commentsView: FWView!
 
-    //var coordinator: IncidentsCoordinator?
     var coordinator: HomeCoordinator?
     var viewModel: CommentsListViewModel!
-    var attachedImages: [String] = []
+    var attachedImages: [UIImage] = []
     var paginationHandler: PaginationHandler<CommentsListViewModel>!
 
     private var selectedIncidentID: String?
@@ -43,6 +44,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     func setupView() {
         previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
 
+        commentsView.setTopShadow()
+
         if attachedImages.count > 0 {
             collectionViewHeightConstraint.constant = 100.0
             previewImageCollectionView.dataSource = self
@@ -51,10 +54,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
             if let layout = previewImageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                 layout.scrollDirection = .horizontal
-                layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+                layout.itemSize = CGSize(width: 80, height: 80) // Set item size
             }
             previewImageCollectionView.reloadData()
-        }else{
+        } else {
             collectionViewHeightConstraint.constant = 0
             previewImageCollectionView.isHidden = true
         }
@@ -86,7 +89,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         commentsListCount.isHidden = false
         noCommentsLabel.isHidden = true
 
-        commentsListCount.text = "\(viewModel.items.count) Comments"
+        commentsListCount.text = "\(viewModel.totalPages) Comments"
         tableView.reloadData()
     }
 
@@ -98,10 +101,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func commentAdded() {
-        if let selectedIncidentID {
-            viewModel.currentPage = 1
-            viewModel?.getCommentsList(for: selectedIncidentID)
-        }
+        hideLoader()
+    }
+
+    func error(message: String) {
+        showAlertMessage(message)
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -122,24 +126,44 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let imageUrl = attachedImages.count > 0 ? attachedImages[0] : ""
+        if let image = attachedImages.count > 0 ? attachedImages[0] : nil {
+            showLoader()
+            viewModel.requestImageUpload(image) { imageUrl in
+                self.hideLoader()
+                self.comment(withImage: imageUrl)
+            }
+        } else {
+            comment(withImage: nil)
+        }
+        return true
+    }
 
+    func comment(withImage urlString: String?) {
+        showLoader()
         let requestModel = AddCommentRequestModel(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
-            comment: textField.text ?? "",
-            img: imageUrl
+            comment: addCommentTextField.text ?? "",
+            img: urlString ?? ""
         )
 
         viewModel.addComment(requestModel)
-        
-        // clear text and preview image
-        textField.text = ""
-        textField.resignFirstResponder()
+
+        // Clear text, hide keyboard, and reset UI
+        addCommentTextField.text = ""
+        addCommentTextField.resignFirstResponder()
         attachedImages.removeAll()
         collectionViewHeightConstraint.constant = 0
-        return true
+    }
+
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
     }
 
     // TODO: Handle in common place
@@ -189,7 +213,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             paginationHandler.loadNextPage()
         }
     }
-    
+
     static func instantiate() -> CommentsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController

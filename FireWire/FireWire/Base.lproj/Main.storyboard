@@ -969,7 +969,7 @@ agreeing with our Terms and Conditions</string>
                                                 <rect key="frame" x="0.0" y="51.666666666666686" width="393" height="617.33333333333326"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-n8-nDp">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-n8-nDp" customClass="FWView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="669" width="393" height="90"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vso-o2-OjG">
@@ -986,7 +986,7 @@ agreeing with our Terms and Conditions</string>
                                                         </collectionViewFlowLayout>
                                                         <cells/>
                                                     </collectionView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
                                                         <rect key="frame" x="56" y="25" width="317" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="5ib-eX-uKP"/>
@@ -1055,6 +1055,7 @@ agreeing with our Terms and Conditions</string>
                         <outlet property="addCommentTextField" destination="Fn3-Id-iGX" id="iSL-3R-zGp"/>
                         <outlet property="collectionViewHeightConstraint" destination="vmm-Xz-wfa" id="2hr-DJ-Zu4"/>
                         <outlet property="commentsListCount" destination="KPq-eX-lHc" id="vws-EH-zpd"/>
+                        <outlet property="commentsView" destination="yXN-n8-nDp" id="YpV-5d-KVn"/>
                         <outlet property="noCommentsLabel" destination="iqo-6b-L8R" id="Byu-nG-Lc5"/>
                         <outlet property="previewImageCollectionView" destination="vso-o2-OjG" id="QZm-f5-LQg"/>
                         <outlet property="scrollView" destination="rUF-vU-l83" id="0L7-Mt-5Mb"/>

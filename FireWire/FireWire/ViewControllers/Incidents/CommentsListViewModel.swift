@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public final class CommentsListViewModel: PaginatableViewModel {
     typealias DataType = CommentsData
@@ -42,7 +43,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
                 DispatchQueue.main.async {
                     if newItems.count > 0 {
                         completion(.success(newItems))
-                    }else{
+                    } else {
                         self?.delegate?.noCommentsForIncident()
                     }
                 }
@@ -53,8 +54,10 @@ public final class CommentsListViewModel: PaginatableViewModel {
     }
 
     func didFetchData(_ data: [CommentsData]) {
-        items.append(contentsOf: data) // Append new items to existing list
-        delegate?.dataReceived()
+        if !data.isEmpty{
+            items.append(contentsOf: data) // Append new items to existing list
+            delegate?.dataReceived()
+        }
     }
 
     func getCommentsList(for incidentID: String) {
@@ -83,12 +86,39 @@ public final class CommentsListViewModel: PaginatableViewModel {
             if apiResponse is SuccessResponseModel {
                 if let incidentId = self?.selectedIncidentID {
                     // Reset the items list and append new items
+                    self?.delegate?.commentAdded()
                     self?.currentPage = 1
                     self?.items.removeAll()
                     self?.getCommentsList(for: incidentId)
                 }
             } else {
                 print("Invalid response object")
+            }
+        }
+    }
+
+    func requestImageUpload(_ image: UIImage, onImageUploaded: @escaping (String) -> Void) {
+        APIRequest().uploadImage(
+            apiEndPoint: APIEndpoints.uploadImage,
+            image: image,
+            expect: UploadImageResponseModel.self)
+        { [weak self] response, _, _ in
+            guard let apiResponse = response as? UploadImageResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
+                self?.delegate?.error(message: errorMessage)
+                return
+            }
+
+            if apiResponse.code.lowercased() == "success" {
+                DispatchQueue.main.async {
+                    if let imageUrl = apiResponse.data?.url {
+                        onImageUploaded(imageUrl[0])
+                    } else {
+                        self?.delegate?.error(message: "Image upload failed")
+                    }
+                }
+            } else {
+                self?.delegate?.error(message: apiResponse.message)
             }
         }
     }

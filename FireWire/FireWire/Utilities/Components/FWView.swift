@@ -34,4 +34,14 @@ public class FWView: UIImageView {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top-left and top-right corners
         self.layer.masksToBounds = true
     }
+
+    func setTopShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: -4)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 7.0
+
+        let shadowRect = CGRect(x: 0, y: 0, width: bounds.width, height: 5)
+        layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+    }
 }

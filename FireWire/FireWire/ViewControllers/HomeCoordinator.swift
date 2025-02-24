@@ -109,7 +109,7 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(feedAreaListView, animated: true)
     }
 
-    func navigateToIncidentComments(_ incidentID: String, _ attachedImages: [String] = []){
+    func navigateToIncidentComments(_ incidentID: String, _ attachedImages: [UIImage] = []){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentID)
         commentsList.attachedImages = attachedImages

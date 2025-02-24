@@ -24,4 +24,10 @@ class CommentsImageViewItem: UICollectionViewCell {
             imageView.loadImage(from: imageUrl)
         }
     }
+
+    func configure(with image: UIImage) {
+        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
+        imageView.image = image
+    }
 }

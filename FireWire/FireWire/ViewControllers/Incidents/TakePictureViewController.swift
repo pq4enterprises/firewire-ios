@@ -12,7 +12,6 @@ class TakePictureViewController: UIViewController {
     @IBOutlet var takePhotoView: FWView!
     @IBOutlet var galleryView: FWView!
 
-    //var coordinator: IncidentsCoordinator?
     var coordinator: HomeCoordinator?
     var selectedIncidentID: String?
 
@@ -90,12 +89,20 @@ class TakePictureViewController: UIViewController {
 extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // Delegate method when image is picked
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
+        if let selectedImage = info[.originalImage] as? UIImage, let incidentId = selectedIncidentID {
             // Do something with the selected image, e.g., display it in an ImageView
-            // imageView.image = selectedImage
-            requestImageUpload(selectedImage)
+            // requestImageUpload(selectedImage)
+
+            picker.dismiss(animated: true) { [weak self] in
+                guard let self = self else { return }
+
+                self.dismiss(animated: true) {
+                    self.coordinator?.navigateToIncidentComments(incidentId, [selectedImage])
+                }
+            }
+        } else {
+            picker.dismiss(animated: true, completion: nil)
         }
-        picker.dismiss(animated: true, completion: nil)
     }
 
     // Delegate method if the user cancels the picker
@@ -103,6 +110,7 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true, completion: nil)
     }
 
+    //TODO: Upload image is happening along with comment, this can be removed after testing
     func requestImageUpload(_ image: UIImage) {
         showLoader()
         APIRequest().uploadImage(
@@ -121,7 +129,7 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
                     DispatchQueue.main.async {
                         if let imageUrl = response.data?.url, let incidentId = self?.selectedIncidentID {
                             self?.dismiss(animated: true, completion: {
-                                self?.coordinator?.navigateToIncidentComments(incidentId, imageUrl)
+                                // self?.coordinator?.navigateToIncidentComments(incidentId, imageUrl)
                             })
                         } else {
                             self?.showAlertMessage("Upload image failed")
