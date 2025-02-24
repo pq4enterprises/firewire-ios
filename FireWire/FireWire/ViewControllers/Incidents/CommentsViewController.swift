@@ -139,12 +139,17 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func comment(withImage urlString: String?) {
+        guard let commentMessage = addCommentTextField.text, !commentMessage.isEmpty else {
+            showAlertMessage("Comments cannot be empty")
+            return
+        }
+
         showLoader()
         let requestModel = AddCommentRequestModel(
             userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
-            comment: addCommentTextField.text ?? "",
+            comment: commentMessage,
             img: urlString ?? ""
         )
 
