@@ -12,15 +12,14 @@ import OneSignalFramework
 
 class AppCoordinator: BaseCoordinator {
     override func start() {
-//        isUserLoggedIn { isLoggedIn in
-//            if isLoggedIn {
-//                self.navigateToHome()
-//            } else {
-//                self.navigateToLogin()
-//            }
-//        }
-
-        self.navigateToSetDomain()
+        isUserLoggedIn { isLoggedIn in
+            if isLoggedIn {
+                self.navigateToHome()
+            } else {
+                //self.navigateToLogin()
+                self.navigateToSetDomain()
+            }
+        }
     }
 
     func navigateToSetDomain(){
