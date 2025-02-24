@@ -7,10 +7,14 @@
 
 import UIKit
 
-class NotificationLocalityViewController: UIViewController {
+protocol NotificationLocalityDelegate: AnyObject {
+    func setNotification(message: String)
+}
+
+class NotificationLocalityViewController: UIViewController, NotificationLocalityDelegate {
     var coordinator: HomeCoordinator?
     var localityData: LocalityResponseData?
-    var localitySubHeadings = ["Sublocalities", "Units"]
+    var localitySubHeadings = ["Sublocalities", "Units", "Incident Types"]
     var viewModel: NotificationLocalityViewModel?
 
     @IBOutlet var tableView: UITableView!
@@ -19,6 +23,7 @@ class NotificationLocalityViewController: UIViewController {
         super.viewDidLoad()
         viewModel = NotificationLocalityViewModel()
         viewModel?.localityData = localityData
+        viewModel?.delegate = self
         setupTableView()
     }
 
@@ -26,7 +31,7 @@ class NotificationLocalityViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.sectionHeaderTopPadding = 0  // iOS 15+ to avoid space above section headers
+        tableView.sectionHeaderTopPadding = 0 // iOS 15+ to avoid space above section headers
 
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
         tableView.register(SelectAreaListViewCell.nib(), forCellReuseIdentifier: SelectAreaListViewCell.identifier)
@@ -34,6 +39,16 @@ class NotificationLocalityViewController: UIViewController {
 
     @IBAction func backButtonTap(_ sender: UIButton) {
         coordinator?.popView()
+    }
+
+    @IBAction func saveButtonTap(_ sender: UIButton) {
+        showLoader()
+        viewModel?.setSelectedLocalities()
+    }
+
+    func setNotification(message: String) {
+        hideLoader()
+        showToast(message: message)
     }
 
     // A convenience method to instantiate from the storyboard
@@ -46,7 +61,7 @@ class NotificationLocalityViewController: UIViewController {
 
 extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +71,8 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
             return localityData.subLocality.count
         } else if section == 2 {
             return localityData.unit?.count ?? 0
+        } else if section == 3 {
+            return localityData.incidentType?.count ?? 0
         } else {
             return 0
         }
@@ -85,7 +102,18 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
                 headerView.selectAllButton.isHidden = false
                 headerView.selectAllAction = {
                     self.viewModel?.toggleSelectAllUnits()
-                    self.viewModel?.setSelectedLocalities()
+                    tableView.reloadData()
+                }
+            } else {
+                headerView.setupView(title: "")
+                headerView.selectAllButton.isHidden = true
+            }
+        } else if section == 3 {
+            if let incidentType = localityData.incidentType, incidentType.count > 0 {
+                headerView.setupView(title: localitySubHeadings[2])
+                headerView.selectAllButton.isHidden = false
+                headerView.selectAllAction = {
+                    self.viewModel?.toggleSelectAllIncidentTypes()
                     tableView.reloadData()
                 }
             } else {
@@ -104,7 +132,6 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
         cell.setupView(localityData, indexPath)
         cell.onCheckboxToggled = { [weak self] indexPath in
             self?.viewModel?.toggleSelection(at: indexPath)
-            self?.viewModel?.setSelectedLocalities()
             tableView.reloadRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }

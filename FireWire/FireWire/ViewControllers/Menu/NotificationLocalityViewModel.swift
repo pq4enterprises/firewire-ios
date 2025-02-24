@@ -12,6 +12,7 @@ final class NotificationLocalityViewModel {
     var selectedNotificationArea: [SelectedNotificationModel] = []
     var selectedSubLocalities: [String] = []
     var selectedUnits: [String] = []
+    var delegate: NotificationLocalityDelegate?
 
     func toggleSelectAllSubLocalities() {
         let allSelected = localityData.subLocality.allSatisfy { $0.isChecked }
@@ -40,6 +41,22 @@ final class NotificationLocalityViewModel {
                     localityData.unit?[i]?.isChecked = true
                     // Update selection arrays for the selected units
                     updateSelectionArrays(for: localityData.unit?[i])
+                }
+            }
+        }
+    }
+
+    func toggleSelectAllIncidentTypes() {
+        guard let incidentTypes = localityData.incidentType else { return }
+        let allSelected = incidentTypes.compactMap { $0?.isChecked }.allSatisfy { $0 }
+
+        /// If not all selected, select all items
+        if !allSelected {
+            for i in 0..<incidentTypes.count {
+                if let incidentType = incidentTypes[i], !incidentType.isChecked {
+                    localityData.incidentType?[i]?.isChecked = true
+                    // Update selection arrays for the selected incident type
+                    updateSelectionArrays(for: localityData.incidentType?[i])
                 }
             }
         }
@@ -80,6 +97,23 @@ final class NotificationLocalityViewModel {
         }
     }
 
+    func updateSelectionArrays(for incidentType: IncidentTypeModel?) {
+        guard let incidentType else { return }
+
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let selectedArea = SelectedNotificationModel(userId: userId, notificationId: incidentType.id, type: "incident_type")
+
+        if incidentType.isChecked {
+            if !selectedNotificationArea.contains(where: { $0.notificationId == incidentType.id }) {
+                selectedNotificationArea.append(selectedArea)
+            }
+        } else {
+            if let index = selectedNotificationArea.firstIndex(where: { $0.notificationId == incidentType.id }) {
+                selectedNotificationArea.remove(at: index)
+            }
+        }
+    }
+
     func setSelectedLocalities() {
         if !selectedNotificationArea.isEmpty {
             let requestModel: [[String: Any]] = selectedNotificationArea.map { $0.toDictionary() }
@@ -90,7 +124,7 @@ final class NotificationLocalityViewModel {
             { response, _, _ in
 
                 if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
-                    debugPrint("Notification selection response \(apiResponse.message)")
+                    self.delegate?.setNotification(message: apiResponse.message)
                 }
             }
         }
@@ -135,6 +169,11 @@ final class NotificationLocalityViewModel {
             unit?.isChecked.toggle()
             updateSelectionArrays(for: unit)
             localityData.unit?[indexPath.row] = unit
+        } else if indexPath.section == 3, let incidentType = localityData.incidentType {
+            var incidentType = incidentType[indexPath.row]
+            incidentType?.isChecked.toggle()
+            updateSelectionArrays(for: incidentType)
+            localityData.incidentType?[indexPath.row] = incidentType
         }
     }
 }
