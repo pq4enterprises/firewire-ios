@@ -90,16 +90,28 @@ final class RegistrationViewModel {
     }
 
     func validate(_ model: RegisterRequestModel) -> ValidationError {
-        if model.firstName.isEmpty {
+        if model.firstName.trimmingCharacters(in: .whitespaces).isEmpty {
             return .failure(message: "First name is required")
+        }
+
+        if model.lastName.trimmingCharacters(in: .whitespaces).isEmpty {
+            return .failure(message: "Last name is required")
         }
 
         if model.email.isEmpty {
             return .failure(message: "Email is required")
         }
 
+        if !isValidEmail(model.email) {
+            return .failure(message: "Enter a valid email")
+        }
+
         if model.mobile.isEmpty {
             return .failure(message: "Phone number is required")
+        }
+
+        if model.mobile.count < 10 {
+            return .failure(message: "Enter a valid phone number")
         }
 
         if model.title.isEmpty {
@@ -108,6 +120,10 @@ final class RegistrationViewModel {
 
         if model.password.isEmpty {
             return .failure(message: "Password is required")
+        }
+
+        if model.password.count < 8 {
+            return .failure(message: "Password should be at least 8 character long")
         }
 
         if model.confirmPassword.isEmpty {
@@ -119,5 +135,11 @@ final class RegistrationViewModel {
         }
 
         return .success
+    }
+
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
 }

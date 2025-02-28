@@ -52,6 +52,8 @@ class RegistrationViewController: UIViewController {
             self.togglePasswordVisibility(self.confirmPasswordTextField)
         }
 
+        phoneTextField.delegate = self
+        passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
         signInLabel.colorString(
@@ -160,6 +162,22 @@ class RegistrationViewController: UIViewController {
 extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentText = textField.text ?? ""
+        let newLength = currentText.count + string.count - range.length
+
+        if textField == phoneTextField {
+            return newLength <= 15
+        }else if textField == passwordTextField || textField == confirmPasswordTextField {
+            if string == " " {
+                return false  // Reject space
+            }
+            return newLength <= 15
+        }
         return true
     }
 }
