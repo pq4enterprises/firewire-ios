@@ -8,7 +8,7 @@
 import StoreKit
 
 protocol SubscriptionManagerDelegate {
-    func purchaseTransactionCompleted(success: Bool)
+    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?)
 }
 
 class SubscriptionManager: NSObject {
@@ -56,23 +56,23 @@ class SubscriptionManager: NSObject {
                 case .verified(let transaction):
                     print("Purchase successful: \(transaction)")
                     await unlockPremiumFeatures(transaction: transaction)
-                    delegate?.purchaseTransactionCompleted(success: true)
+                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
                 case .unverified:
                     print("Transaction verification failed.")
-                    delegate?.purchaseTransactionCompleted(success: false)
+                    delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
                 }
             case .userCancelled:
                 print("User cancelled the purchase.")
-                delegate?.purchaseTransactionCompleted(success: false)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
             case .pending:
                 print("Purchase is pending.")
-                delegate?.purchaseTransactionCompleted(success: false)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
             @unknown default:
-                delegate?.purchaseTransactionCompleted(success: false)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
             }
         } catch {
             print("Purchase failed: \(error)")
-            delegate?.purchaseTransactionCompleted(success: false)
+            delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
         }
     }
     

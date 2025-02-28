@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import StoreKit
 
-class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
+protocol MyAccountViewDelegate: AnyObject {
+    func success(message: String)
+}
+
+class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, MyAccountViewDelegate {
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
@@ -18,7 +23,9 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     @IBOutlet weak var logoutView: UIStackView!
     @IBOutlet weak var termsStackView: UIStackView!
     @IBOutlet weak var privacyPolicyStackView: UIStackView!
-    
+
+    var viewModel: MyAccountViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +38,9 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
         super.viewDidAppear(animated)
         setupUI()
         setupActions()
+
+        viewModel = MyAccountViewModel()
+        viewModel?.delegate = self
     }
 
     func setupUI() {
@@ -97,16 +107,22 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
         }
     }
     
-    func purchaseTransactionCompleted(success: Bool) {
+    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?) {
         DispatchQueue.main.async {
             if success {
-                self.showAlertMessage("Your premium scubscription is Success!")
+                //self.showAlertMessage("Your premium scubscription is Success!")
+                self.viewModel?.submitPayment(transaction: transaction)
             }else{
                 self.showAlertMessage("Purchase failed, please try again!")
             }
         }
     }
-    
+
+    func success(message: String) {
+        showAlertMessage(message)
+    }
+
+
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
         showAlert(
             title: "",

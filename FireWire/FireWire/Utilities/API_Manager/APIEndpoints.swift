@@ -36,6 +36,7 @@ enum APIEndpoints {
     static let updatePassword = "api/app/auth/update-password"
     static let setSelectedArea = "api/app/user/area"
     static let setNotificationArea = "api/app/user/notification"
+    static let submitSubscriptionDetails = "api/app/payment"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -69,6 +70,7 @@ enum APIPayload {
     case postReasonToAccountDelete(reason: String)
     case deleteAccount
     case updatePassword(_ model: UpdatePasswordRequestModel)
+    case submitSubscriptionDetails(_ model: SubmitSubscriptionModel)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -151,6 +153,19 @@ enum APIPayload {
                 "oldPassword": model.oldPassword,
                 "newPassword": model.newPassword,
                 "confirmPassword": model.confirmPassword
+            ]
+        case let .submitSubscriptionDetails(model):
+            return [
+                "userId": model.userId,
+                "paymentMethod": model.paymentMethod,
+                "paymentToken": model.paymentToken,
+                "transactionId": model.transactionId,
+                "amount": model.amount,
+                "currency": model.currency,
+                "status": model.status,
+                "purchaseDate": model.purchaseDate,
+                "expiredDate": model.expiredDate,
+                "type": model.type
             ]
         }
     }

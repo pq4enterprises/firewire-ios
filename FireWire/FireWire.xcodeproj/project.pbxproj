@@ -297,6 +297,10 @@
 		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
+		B0E879FB2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */; };
+		B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */; };
+		B0E879FE2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */; };
+		B0E879FF2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */; };
 		B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
 		B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
 		B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */; };
@@ -507,6 +511,8 @@
 		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestModel.swift; sourceTree = "<group>"; };
+		B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitSubscriptionModel.swift; sourceTree = "<group>"; };
 		B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentRequestModel.swift; sourceTree = "<group>"; };
 		B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityRequestModel.swift; sourceTree = "<group>"; };
 		B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
@@ -738,6 +744,7 @@
 				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
 				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
+				B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */,
 				B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */,
 				B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */,
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
@@ -932,6 +939,7 @@
 		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */,
 				B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */,
 				B0B836752D5A744200C71D8F /* CommonRequestModel.swift */,
 				B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */,
@@ -1336,6 +1344,7 @@
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
+				B0E879FB2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
 				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */,
@@ -1356,6 +1365,7 @@
 				B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */,
 				B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */,
 				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
+				B0E879FF2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1474,6 +1484,7 @@
 				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
 				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
+				B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
 				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
 				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
@@ -1494,6 +1505,7 @@
 				B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */,
 				B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */,
 				B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */,
+				B0E879FE2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
