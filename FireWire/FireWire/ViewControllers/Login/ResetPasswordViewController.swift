@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordTextField: FWTextField!
-    @IBOutlet weak var confirmPasswordTextField: FWTextField!
+    @IBOutlet var confirmPasswordTextField: FWTextField!
 
     var coordinator: LoginCoordinator?
     var resetToken: String?
@@ -21,6 +21,39 @@ class ResetPasswordViewController: UIViewController {
 
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
+
+        [passwordTextField, confirmPasswordTextField].forEach { $0.delegate = self }
+
+        passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
+            guard let self else { return }
+            self.togglePasswordVisibility(self.passwordTextField)
+        }
+
+        confirmPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
+            guard let self else { return }
+            self.togglePasswordVisibility(self.confirmPasswordTextField)
+        }
+    }
+
+    func togglePasswordVisibility(_ textField: UITextField) {
+        textField.isSecureTextEntry.toggle()
+        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
+
+        if let button = textField.rightView as? UIButton {
+            button.setImage(icon, for: .normal)
+        }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentText = textField.text ?? ""
+        let newLength = currentText.count + string.count - range.length
+        
+        if string.contains(" ") {
+            return false
+        }
+
+        return newLength <= 15
     }
 
     @IBAction func submitButton(_ sender: UIButton) {
@@ -28,6 +61,12 @@ class ResetPasswordViewController: UIViewController {
         guard let newPassword = passwordTextField.text, !newPassword.isEmpty, let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty, let resetToken = resetToken else {
             hideLoader()
             showAlertMessage("Please enter valid password")
+            return
+        }
+
+        if newPassword.count < 8 && confirmPassword.count < 8 {
+            hideLoader()
+            showAlertMessage("Password should be at least 8 character long")
             return
         }
 
@@ -54,7 +93,7 @@ class ResetPasswordViewController: UIViewController {
                     self?.showToast(message: "Reset password success")
                     self?.coordinator?.popToRootView()
                 } else {
-                    self?.showAlertMessage(response.message.isEmpty ? .CommonError.techError : response.message )
+                    self?.showAlertMessage(response.message.isEmpty ? .CommonError.techError : response.message)
                 }
             }
         }
