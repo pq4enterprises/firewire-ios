@@ -45,7 +45,7 @@ final class MyAccountViewModel {
             }
 
             if apiResponse is SuccessResponseModel {
-                self?.delegate?.success(message: "Payment detail submitted")
+                self?.delegate?.success(message: "Your premium subscription is Success!")
             } else {
                 self?.delegate?.success(message: "Payment detail submission failed")
             }
