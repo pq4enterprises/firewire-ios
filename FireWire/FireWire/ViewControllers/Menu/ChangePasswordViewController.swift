@@ -55,7 +55,10 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         if string.contains(" ") {
             return false
         }
-        return true
+
+        let currentText = textField.text ?? ""
+        let newLength = currentText.count + string.count - range.length
+        return newLength <= 15
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -70,6 +73,12 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         else {
             hideLoader()
             showAlertMessage("Please enter valid password")
+            return
+        }
+
+        if newPassword.count < 8 && confirmPassword.count < 8 {
+            hideLoader()
+            showAlertMessage("Password should be at least 8 character long")
             return
         }
 
