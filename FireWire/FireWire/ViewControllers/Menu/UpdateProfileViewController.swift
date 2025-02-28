@@ -63,6 +63,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
 
         if let profileImage = model.img, let imageUrl = URL(string: profileImage) {
             profileImageView.loadImage(from: imageUrl)
+            uploadedImageUrl = model.img
         }
 
         changePasswordButton.isHidden = model.type != "Email"
