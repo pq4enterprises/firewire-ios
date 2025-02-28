@@ -21,8 +21,27 @@ class SubscriptionManager: NSObject {
     
     private override init() {
         super.init()
+        observeTransactionUpdates()
     }
-    
+
+    func observeTransactionUpdates() {
+        Task {
+            for await result in Transaction.updates {
+
+                if case .verified(let transaction) = result {
+                    // Deliver the content to the user
+                    await unlockPremiumFeatures(transaction: transaction)
+                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
+                    // Mark the transaction as finished
+                    await transaction.finish()
+                } else {
+                    print("Transaction verification failed.")
+                }
+
+            }
+        }
+    }
+
     // Fetch products using StoreKit 2
     func fetchProducts() async {
         do {
