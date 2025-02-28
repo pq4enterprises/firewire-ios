@@ -26,10 +26,10 @@ class LoginViewController: UIViewController {
     weak var parentCoordinator: AppCoordinator?
     var viewModel: LoginViewModel?
 
-    @IBOutlet weak var socialLoginStack: UIStackView!
+    @IBOutlet var socialLoginStack: UIStackView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
-    @IBOutlet weak var forgotPasswordLabel: UILabel!
+    @IBOutlet var forgotPasswordLabel: UILabel!
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
+        emailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) {
             self.passwordTextField.isSecureTextEntry.toggle()
@@ -129,12 +130,21 @@ class LoginViewController: UIViewController {
 
         guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
             hideLoader()
-            showAlert(title: "", message: "Please enter email and password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in }])
+            showAlertMessage("Enter valid email and password")
             return
         }
 
-        let loginRequestModel = LoginRequestModel(email: email, password: password)
-        viewModel?.performUserLogin(loginRequestModel)
+        let validationResult = viewModel?.validate(email: email, password: password)
+        switch validationResult {
+        case .success:
+            let loginRequestModel = LoginRequestModel(email: email, password: password)
+            viewModel?.performUserLogin(loginRequestModel)
+        case .failure(let errorMessage):
+            hideLoader()
+            showAlertMessage(errorMessage)
+        default:
+            return
+        }
     }
 
     func performGoogleLogin() {
@@ -150,7 +160,7 @@ class LoginViewController: UIViewController {
                 guard let user = user else { return }
 
                 let accessToken = user.accessToken.tokenString
-                
+
                 self.showLoader()
 
                 let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "basic_user")
@@ -162,11 +172,11 @@ class LoginViewController: UIViewController {
     func performFaceBookLogin() {
         let loginManager = LoginManager()
         loginManager.logOut()
-            let cookies = HTTPCookieStorage.shared
-            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
-            for cookie in facebookCookies! {
-                cookies.deleteCookie(cookie )
-            }
+        let cookies = HTTPCookieStorage.shared
+        let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
+        for cookie in facebookCookies! {
+            cookies.deleteCookie(cookie)
+        }
 
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
             if let error = error {
@@ -174,9 +184,9 @@ class LoginViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             } else if let result = result, !result.isCancelled {
                 // Login successful, you can access the user's Facebook data here
-                //self.fetchFacebookUserData()
+                // self.fetchFacebookUserData()
                 _ = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
-                //self.viewModel?.authenticateSocialLogin(requestModel)
+                // self.viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 // Login was canceled by the user
                 print("Login was cancelled.")
@@ -188,7 +198,7 @@ class LoginViewController: UIViewController {
     func fetchFacebookUserData() {
         if AccessToken.current != nil {
             // You can make a Graph API request here to fetch user data
-            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { _, result, error in
                 if let error = error {
                     // Handle API request error here
                     print("Error: \(error.localizedDescription)")
@@ -255,14 +265,26 @@ extension LoginViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == " " {
+            return false // Reject space
+        }
+        if textField == passwordTextField {
+            let currentText = textField.text ?? ""
+            let newLength = currentText.count + string.count - range.length
+            return newLength <= 15
+        }
+        return true
+    }
 }
 
 extension LoginViewController: LoginViewDelegate {
     func loginSuccess(_ type: LoginType) {
         hideLoader()
-        if type == .google || type == .facebook{
+        if type == .google || type == .facebook {
             coordinator?.navigateToSelectArea()
-        }else {
+        } else {
             coordinator?.backToParentCoordinator()
             parentCoordinator?.navigateToHome()
         }
@@ -278,19 +300,29 @@ extension LoginViewController: LoginViewDelegate {
             actionStyles: [.default], actions: [{ _ in }]
         )
     }
+
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Ok"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
 }
 
 // MARK: Apple login delegate
+
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             if let identityToken = appleIDCredential.identityToken,
-               let tokenString = String(data: identityToken, encoding: .utf8) {
-
-                self.showLoader()
+               let tokenString = String(data: identityToken, encoding: .utf8)
+            {
+                showLoader()
 
                 let requestModel = SocialLoginRequestModel(token: tokenString, socialType: .apple, role: "basic_user")
-                self.viewModel?.authenticateSocialLogin(requestModel)
+                viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 print("Failed to get identity token.")
             }
@@ -302,7 +334,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     }
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+        return view.window!
     }
 }
-
