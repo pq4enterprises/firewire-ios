@@ -26,7 +26,7 @@ struct IncidentDataModel: Codable {
     let latitude, longitude, address, createdAt: String
     let field1Value, field2Value, field3Value: String
     let featuredImageURL: String?
-    let commentCount, likeCount: Int
+    var commentCount, likeCount: Int
     var isLiked: Bool
 
     enum CodingKeys: String, CodingKey {

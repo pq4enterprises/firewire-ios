@@ -274,6 +274,7 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.hideLoader()
                 if result {
                     self?.incidentsViewModel.items[indexPath.row].isLiked = !selectedIncident.isLiked
+                    self?.incidentsViewModel.items[indexPath.row].likeCount += !selectedIncident.isLiked ? 1 : -1
                     self?.incidentTableView.reloadData()
                 }
             }

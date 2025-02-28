@@ -28,7 +28,7 @@ struct IncidentDetailModel: Codable {
     let createdAt, updatedAt: String
     let v: Int
     let featuredImageUrl: String?
-    let commentCount, likeCount: Int
+    var commentCount, likeCount: Int
     let points: [Point]?
     var isLiked: Bool = false
 

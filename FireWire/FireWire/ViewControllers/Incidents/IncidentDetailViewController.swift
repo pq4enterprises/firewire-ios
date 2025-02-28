@@ -199,6 +199,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
     }
 
+    @IBAction func feedButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToFeeds()
+    }
+    
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> IncidentDetailViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -221,6 +225,11 @@ extension IncidentDetailViewController {
         like
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
+
+        if let currentLikeCount = viewModel?.incidentDetail?.likeCount {
+            viewModel?.incidentDetail?.likeCount = max(0, currentLikeCount + (like ? 1 : -1))
+        }
+        incidentFavourites.text = "\(viewModel?.incidentDetail?.likeCount ?? 0) Starred"
     }
 
     func error(message: String) {

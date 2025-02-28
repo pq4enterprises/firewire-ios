@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -638,12 +638,14 @@ agreeing with our Terms and Conditions</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jm-z5-iv7">
                                 <rect key="frame" x="0.0" y="59" width="402" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmr-wM-bar">
-                                        <rect key="frame" x="15" y="5" width="60" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmr-wM-bar">
+                                        <rect key="frame" x="15" y="13.666666666666671" width="60" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="JFe-CM-saf"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Back" image="back_icon">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -652,10 +654,26 @@ agreeing with our Terms and Conditions</string>
                                             <action selector="backButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="SXC-hW-O4g"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-m8-qsn">
+                                        <rect key="frame" x="342" y="3" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="BdL-sy-K5u"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="alert_icon"/>
+                                        <connections>
+                                            <action selector="feedButtonTap:" destination="Jes-w4-DZT" eventType="touchUpInside" id="GPP-ov-0QG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Vn7-m8-qsn" secondAttribute="trailing" priority="10" constant="10" id="Ax2-rP-qKz"/>
+                                    <constraint firstItem="Dmr-wM-bar" firstAttribute="centerY" secondItem="6Jm-z5-iv7" secondAttribute="centerY" id="Ooe-JK-qeQ"/>
+                                    <constraint firstItem="Dmr-wM-bar" firstAttribute="leading" secondItem="6Jm-z5-iv7" secondAttribute="leading" constant="15" id="YqC-oQ-8KB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vn7-m8-qsn" secondAttribute="bottom" constant="3" id="h0u-Ia-uvH"/>
                                     <constraint firstAttribute="height" constant="50" id="iaY-kV-Ub5"/>
+                                    <constraint firstItem="Vn7-m8-qsn" firstAttribute="top" secondItem="6Jm-z5-iv7" secondAttribute="top" constant="3" id="pn9-ds-W3m"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXq-w5-hVy">
@@ -665,7 +683,7 @@ agreeing with our Terms and Conditions</string>
                                         <rect key="frame" x="0.0" y="0.0" width="402" height="802"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
-                                                <rect key="frame" x="25" y="0.0" width="352" height="108"/>
+                                                <rect key="frame" x="15" y="0.0" width="372" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -874,9 +892,9 @@ agreeing with our Terms and Conditions</string>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="T45-af-lub" secondAttribute="bottom" constant="25" id="Lro-ia-4l1"/>
                                             <constraint firstAttribute="trailing" secondItem="T45-af-lub" secondAttribute="trailing" constant="25" id="Pal-dG-53O"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
-                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="25" id="USR-s8-jOR"/>
+                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="15" id="USR-s8-jOR"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="UXd-im-3RV"/>
-                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="YEw-TC-5Pe"/>
+                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="15" id="YEw-TC-5Pe"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="fBw-A3-udZ"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="20" id="fRt-Th-dmR"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="uyb-lj-gWP" secondAttribute="bottom" constant="18" id="kGq-la-Q0b"/>
