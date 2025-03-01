@@ -44,7 +44,9 @@ public final class CommentsListViewModel: PaginatableViewModel {
                     if newItems.count > 0 {
                         completion(.success(newItems))
                     } else {
-                        self?.delegate?.noCommentsForIncident()
+                        if self?.items.isEmpty == true && newItems.isEmpty {
+                            self?.delegate?.noCommentsForIncident()
+                        }
                     }
                 }
             } else {
@@ -56,6 +58,12 @@ public final class CommentsListViewModel: PaginatableViewModel {
     func didFetchData(_ data: [CommentsData]) {
         if !data.isEmpty{
             items.append(contentsOf: data) // Append new items to existing list
+
+            if items.isEmpty {
+                delegate?.noCommentsForIncident()
+                return
+            }
+
             delegate?.dataReceived()
         }
     }
@@ -66,8 +74,8 @@ public final class CommentsListViewModel: PaginatableViewModel {
             switch result {
             case .success(let newItems):
                 self?.didFetchData(newItems)
-            case .failure(let error):
-                print("Error fetching incidents: \(error)")
+            case .failure(_):
+                self?.delegate?.noCommentsForIncident()
             }
         }
     }

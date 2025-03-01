@@ -636,7 +636,7 @@ agreeing with our Terms and Conditions</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jm-z5-iv7">
-                                <rect key="frame" x="0.0" y="59" width="402" height="50"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmr-wM-bar">
                                         <rect key="frame" x="15" y="13.666666666666671" width="60" height="23"/>
@@ -655,7 +655,7 @@ agreeing with our Terms and Conditions</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-m8-qsn">
-                                        <rect key="frame" x="342" y="3" width="50" height="44"/>
+                                        <rect key="frame" x="333" y="3" width="50" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="BdL-sy-K5u"/>
                                         </constraints>
@@ -677,13 +677,13 @@ agreeing with our Terms and Conditions</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXq-w5-hVy">
-                                <rect key="frame" x="0.0" y="109" width="402" height="709"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="802"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="802"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
-                                                <rect key="frame" x="15" y="0.0" width="372" height="108"/>
+                                                <rect key="frame" x="5" y="0.0" width="383" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -706,26 +706,26 @@ agreeing with our Terms and Conditions</string>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-nm-krm">
-                                                <rect key="frame" x="25" y="128" width="352" height="0.0"/>
+                                                <rect key="frame" x="25" y="128" width="343" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-lj-gWP">
-                                                <rect key="frame" x="25" y="148" width="352" height="400"/>
+                                                <rect key="frame" x="25" y="148" width="343" height="400"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWB-EP-eU2" customClass="FWImageView" customModule="FireWire" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="352" height="195"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="195"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xET-3S-ReP">
-                                                        <rect key="frame" x="0.0" y="205" width="352" height="195"/>
+                                                        <rect key="frame" x="0.0" y="205" width="343" height="195"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-cq-G1J">
-                                                                <rect key="frame" x="0.0" y="0.0" width="352" height="154"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="154"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             </view>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hd1-dz-qwN">
-                                                                <rect key="frame" x="0.0" y="164" width="352" height="32"/>
+                                                                <rect key="frame" x="0.0" y="164" width="343" height="32"/>
                                                                 <segments>
                                                                     <segment title="Street"/>
                                                                     <segment title="Satellite"/>
@@ -743,7 +743,7 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ckj-NW-xDd">
-                                                <rect key="frame" x="25" y="566" width="352" height="50"/>
+                                                <rect key="frame" x="25" y="566" width="343" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire_icon" translatesAutoresizingMaskIntoConstraints="NO" id="oNf-1O-NLy">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="50"/>
@@ -753,7 +753,7 @@ agreeing with our Terms and Conditions</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrE-Uv-08Z">
-                                                        <rect key="frame" x="30" y="0.0" width="322" height="50"/>
+                                                        <rect key="frame" x="30" y="0.0" width="313" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" name="FWRed"/>
                                                         <nil key="highlightedColor"/>
@@ -772,19 +772,19 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T45-af-lub" customClass="FWView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="636" width="352" height="86"/>
+                                                <rect key="frame" x="25" y="636" width="343" height="86"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JbC-Ad-GtL">
-                                                        <rect key="frame" x="10" y="15" width="332" height="56"/>
+                                                        <rect key="frame" x="10" y="15" width="323" height="56"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-z6-XM2">
-                                                                <rect key="frame" x="0.0" y="0.0" width="332" height="23"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="323" height="23"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[E333, e4444, Eeee,]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LML-Qu-KEe">
-                                                                <rect key="frame" x="0.0" y="33" width="332" height="23"/>
+                                                                <rect key="frame" x="0.0" y="33" width="323" height="23"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -801,13 +801,13 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="seD-YZ-ALe">
-                                                <rect key="frame" x="25" y="747" width="352" height="35"/>
+                                                <rect key="frame" x="25" y="747" width="343" height="35"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="133" height="35"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-dA-eZ3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="35"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="43" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="pat-wl-2QI"/>
                                                                     <constraint firstAttribute="height" constant="35" id="rxY-ME-lOp"/>
@@ -819,7 +819,7 @@ agreeing with our Terms and Conditions</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pt-0T-HcO">
-                                                                <rect key="frame" x="48" y="0.0" width="46" height="35"/>
+                                                                <rect key="frame" x="45" y="0.0" width="43" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="38P-bT-Cah"/>
                                                                     <constraint firstAttribute="width" constant="39" id="QDF-cF-jfb"/>
@@ -831,7 +831,7 @@ agreeing with our Terms and Conditions</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAi-cp-3uK">
-                                                                <rect key="frame" x="96" y="0.0" width="46" height="35"/>
+                                                                <rect key="frame" x="90" y="0.0" width="43" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="O3E-77-EFM"/>
                                                                     <constraint firstAttribute="width" constant="45" id="OX6-dv-iSy"/>
@@ -845,7 +845,7 @@ agreeing with our Terms and Conditions</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mOF-5C-UzC">
-                                                        <rect key="frame" x="182" y="0.0" width="170" height="35"/>
+                                                        <rect key="frame" x="173" y="0.0" width="170" height="35"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MLf-Y5-jHz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="68" height="35"/>
@@ -892,9 +892,9 @@ agreeing with our Terms and Conditions</string>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="T45-af-lub" secondAttribute="bottom" constant="25" id="Lro-ia-4l1"/>
                                             <constraint firstAttribute="trailing" secondItem="T45-af-lub" secondAttribute="trailing" constant="25" id="Pal-dG-53O"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
-                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="15" id="USR-s8-jOR"/>
+                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="5" id="USR-s8-jOR"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="UXd-im-3RV"/>
-                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="15" id="YEw-TC-5Pe"/>
+                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="5" id="YEw-TC-5Pe"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="fBw-A3-udZ"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="20" id="fRt-Th-dmR"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="uyb-lj-gWP" secondAttribute="bottom" constant="18" id="kGq-la-Q0b"/>
@@ -1005,7 +1005,7 @@ agreeing with our Terms and Conditions</string>
                                                         <cells/>
                                                     </collectionView>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
-                                                        <rect key="frame" x="56" y="25" width="317" height="50"/>
+                                                        <rect key="frame" x="56" y="25" width="261" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="5ib-eX-uKP"/>
                                                         </constraints>
@@ -1020,14 +1020,25 @@ agreeing with our Terms and Conditions</string>
                                                             <action selector="cameraButtonTap:" destination="CH1-gc-xmC" eventType="touchUpInside" id="xt0-CC-cwJ"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpF-4V-vJe">
+                                                        <rect key="frame" x="322" y="32.666666666666629" width="51" height="35"/>
+                                                        <color key="tintColor" name="FWTextGrey2"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="paperplane" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sendButtonTap:" destination="CH1-gc-xmC" eventType="touchUpInside" id="re8-x6-OMH"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="Fn3-Id-iGX" firstAttribute="top" secondItem="vso-o2-OjG" secondAttribute="bottom" constant="15" id="2v7-Ca-OFC"/>
                                                     <constraint firstAttribute="bottom" secondItem="Fn3-Id-iGX" secondAttribute="bottom" constant="15" id="5fg-CH-YHo"/>
                                                     <constraint firstItem="Z6n-WV-Ytm" firstAttribute="leading" secondItem="yXN-n8-nDp" secondAttribute="leading" constant="20" id="8UD-UD-ogm"/>
+                                                    <constraint firstItem="rpF-4V-vJe" firstAttribute="centerY" secondItem="Fn3-Id-iGX" secondAttribute="centerY" id="Gk2-8M-CTB"/>
                                                     <constraint firstItem="Fn3-Id-iGX" firstAttribute="leading" secondItem="Z6n-WV-Ytm" secondAttribute="trailing" constant="10" id="Ila-zf-jMw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Fn3-Id-iGX" secondAttribute="trailing" constant="20" id="Iww-f9-4h3"/>
+                                                    <constraint firstItem="rpF-4V-vJe" firstAttribute="leading" secondItem="Fn3-Id-iGX" secondAttribute="trailing" constant="5" id="R12-yu-1f2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rpF-4V-vJe" secondAttribute="trailing" constant="20" symbolic="YES" id="U45-To-9ZL"/>
                                                     <constraint firstAttribute="trailing" secondItem="vso-o2-OjG" secondAttribute="trailing" constant="20" id="VVQ-vd-5wj"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="top" secondItem="yXN-n8-nDp" secondAttribute="top" constant="10" id="XeG-nz-ixR"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="leading" secondItem="yXN-n8-nDp" secondAttribute="leading" constant="20" id="Ypj-uN-IuG"/>
@@ -3828,6 +3839,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
         <image name="menu_icon" width="20" height="17"/>
         <image name="news_placeholder" width="384" height="184"/>
         <image name="notifications" width="19" height="21"/>
+        <image name="paperplane" catalog="system" width="128" height="119"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="premium_bg" width="372" height="455"/>
         <image name="profile_img01" width="70" height="70"/>

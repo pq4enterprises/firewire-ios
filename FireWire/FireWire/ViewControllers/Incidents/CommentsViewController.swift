@@ -126,6 +126,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        postComment()
+        return true
+    }
+
+    func postComment() {
         if let image = attachedImages.count > 0 ? attachedImages[0] : nil {
             showLoader()
             viewModel.requestImageUpload(image) { imageUrl in
@@ -135,11 +140,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         } else {
             comment(withImage: nil)
         }
-        return true
     }
 
     func comment(withImage urlString: String?) {
-        guard let commentMessage = addCommentTextField.text, !commentMessage.isEmpty else {
+        guard let commentMessage = addCommentTextField.text, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             showAlertMessage("Comments cannot be empty")
             return
         }
@@ -180,6 +184,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBAction func cameraButtonTap(_ sender: UIButton) {
         dismiss(animated: true)
         coordinator?.navigateToTakePicture(forIncident: selectedIncidentID ?? "")
+    }
+
+    @IBAction func sendButtonTap(_ sender: UIButton) {
+        postComment()
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
