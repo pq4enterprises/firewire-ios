@@ -103,12 +103,12 @@ final class UpdateProfileViewModel {
     }
 
     func validate(_ model: UpdateProfileRequestModel) -> ValidationError {
-        if model.firstName.isEmpty {
+        if model.firstName.trimmingCharacters(in: .whitespaces).isEmpty {
             return .failure(message: "First name is required")
         }
 
-        if model.email.isEmpty {
-            return .failure(message: "Email is required")
+        if model.lastName.trimmingCharacters(in: .whitespaces).isEmpty {
+            return .failure(message: "Last name is required")
         }
 
         if model.mobile.isEmpty {
