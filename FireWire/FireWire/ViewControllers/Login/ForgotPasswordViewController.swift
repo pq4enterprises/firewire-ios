@@ -27,7 +27,7 @@ class ForgotPasswordViewController: UIViewController {
 
     @IBAction func confirmButtonTap(_ sender: UIButton) {
         showLoader()
-        guard let email = emailTextField.text, !email.isEmpty else {
+        guard let email = emailTextField.text, !email.isEmpty, email.isValidEmail() else {
             hideLoader()
             showAlertMessage("Please enter valid email")
             return

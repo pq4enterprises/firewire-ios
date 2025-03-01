@@ -5,6 +5,8 @@
 //  Created by Sujitha Palanisamy on 20/11/24.
 //
 
+import Foundation
+
 public extension String {
     struct Login {
         public static let registerText = "Don’t have an Account? Register"
@@ -43,5 +45,11 @@ public extension String {
             maskEmail = maskEmail + "@" + last
         }
         return maskEmail
+    }
+
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
     }
 }
