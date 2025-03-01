@@ -683,7 +683,7 @@ agreeing with our Terms and Conditions</string>
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="802"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
-                                                <rect key="frame" x="5" y="0.0" width="383" height="108"/>
+                                                <rect key="frame" x="15" y="0.0" width="363" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODZ-xY-RIV">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -892,9 +892,9 @@ agreeing with our Terms and Conditions</string>
                                             <constraint firstItem="seD-YZ-ALe" firstAttribute="top" secondItem="T45-af-lub" secondAttribute="bottom" constant="25" id="Lro-ia-4l1"/>
                                             <constraint firstAttribute="trailing" secondItem="T45-af-lub" secondAttribute="trailing" constant="25" id="Pal-dG-53O"/>
                                             <constraint firstAttribute="trailing" secondItem="Thy-nm-krm" secondAttribute="trailing" constant="25" id="QGm-tl-y6L"/>
-                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="5" id="USR-s8-jOR"/>
+                                            <constraint firstAttribute="trailing" secondItem="JGy-is-dSs" secondAttribute="trailing" constant="15" id="USR-s8-jOR"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="top" secondItem="Thy-nm-krm" secondAttribute="bottom" constant="20" id="UXd-im-3RV"/>
-                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="5" id="YEw-TC-5Pe"/>
+                                            <constraint firstItem="JGy-is-dSs" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="15" id="YEw-TC-5Pe"/>
                                             <constraint firstItem="uyb-lj-gWP" firstAttribute="leading" secondItem="CJd-Io-ide" secondAttribute="leading" constant="25" id="fBw-A3-udZ"/>
                                             <constraint firstItem="Thy-nm-krm" firstAttribute="top" secondItem="JGy-is-dSs" secondAttribute="bottom" constant="20" id="fRt-Th-dmR"/>
                                             <constraint firstItem="Ckj-NW-xDd" firstAttribute="top" secondItem="uyb-lj-gWP" secondAttribute="bottom" constant="18" id="kGq-la-Q0b"/>

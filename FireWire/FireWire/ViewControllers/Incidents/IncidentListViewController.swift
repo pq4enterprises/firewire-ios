@@ -147,7 +147,7 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
         
         cell.shareAction = {
             let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
-            self.shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
+            self.shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))
         }
         cell.setupView(selectedIncident)
         return cell

@@ -98,7 +98,7 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupView(newsDetail)
         cell.shareAction = {
             let shareContent = "\(newsDetail.title) \nFind out: \(newsDetail.link)"
-            self.shareContentToSocialMedia(text: shareContent, url: URL(string: "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"))
+            self.shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))
         }
         return cell
     }

@@ -8,6 +8,9 @@
 import Foundation
 
 public extension String {
+
+    static let appStoreUrl = "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"
+    
     struct Login {
         public static let registerText = "Don’t have an Account? Register"
         public static let register = "Register"
