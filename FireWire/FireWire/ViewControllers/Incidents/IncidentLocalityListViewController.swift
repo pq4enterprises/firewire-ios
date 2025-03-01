@@ -51,6 +51,11 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
+        if viewModel.selectedAreas.isEmpty {
+            showAlertMessage("Select at least one location to proceed.")
+            return
+        }
+
         viewModel.setSelectedLocalities()
         coordinator?.dismissView(animated: true)
         //debugPrint("Selected areas \(self.viewModel.getSelectedIds())")
