@@ -90,15 +90,21 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
         if section == 0 {
             headerView.setupView(title: localityData.name, hideSelectAll: true)
         } else if section == 1 {
-            headerView.setupView(title: localitySubHeadings[0])
+            headerView.setupView(
+                title: localitySubHeadings[0],
+                isAllSelected: viewModel?.isLocalityAllChecked() ?? false
+            )
             headerView.selectAllAction = {
                 self.viewModel?.toggleSelectAllSubLocalities()
-                self.viewModel?.setSelectedLocalities()
                 tableView.reloadData()
             }
         } else if section == 2 {
             if let units = localityData.unit, units.count > 0 {
-                headerView.setupView(title: localitySubHeadings[1])
+                headerView.setupView(
+                    title: localitySubHeadings[1],
+                    isAllSelected: viewModel?.isUnitsAllChecked() ?? false
+                )
+
                 headerView.selectAllButton.isHidden = false
                 headerView.selectAllAction = {
                     self.viewModel?.toggleSelectAllUnits()
@@ -110,7 +116,10 @@ extension NotificationLocalityViewController: UITableViewDelegate, UITableViewDa
             }
         } else if section == 3 {
             if let incidentType = localityData.incidentType, incidentType.count > 0 {
-                headerView.setupView(title: localitySubHeadings[2])
+                headerView.setupView(
+                    title: localitySubHeadings[2],
+                    isAllSelected: viewModel?.isIncidentTypeAllChecked() ?? false
+                )
                 headerView.selectAllButton.isHidden = false
                 headerView.selectAllAction = {
                     self.viewModel?.toggleSelectAllIncidentTypes()

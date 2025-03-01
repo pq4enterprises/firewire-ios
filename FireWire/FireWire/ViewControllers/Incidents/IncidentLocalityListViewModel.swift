@@ -126,14 +126,14 @@ final class IncidentLocalityListViewModel {
         let allSelected = localityData[section].subLocality.allSatisfy { $0.isChecked }
 
         if allSelected {
-            localityData[section].isSubLocalityAllChecked = false
+            localityData[section].isAllItemChecked = false
             for i in 0..<localityData[section].subLocality.count {
                 localityData[section].subLocality[i].isChecked = false
                 // Update selection arrays for the unselected sub-locality and its locality
                 updateSelectionArrays(for: localityData[section].subLocality[i], localityId: localityData[section].id)
             }
         } else {
-            localityData[section].isSubLocalityAllChecked = true
+            localityData[section].isAllItemChecked = true
             for i in 0..<localityData[section].subLocality.count {
                 localityData[section].subLocality[i].isChecked = true
                 // Update selection arrays for the selected sub-locality and its locality

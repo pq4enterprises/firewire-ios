@@ -14,28 +14,67 @@ final class NotificationLocalityViewModel {
     var selectedUnits: [String] = []
     var delegate: NotificationLocalityDelegate?
 
+    func isLocalityAllChecked() -> Bool {
+        if localityData != nil {
+            return localityData.subLocality.allSatisfy { $0.isChecked }
+        }
+        return false
+    }
+
     func toggleSelectAllSubLocalities() {
         let allSelected = localityData.subLocality.allSatisfy { $0.isChecked }
 
-        /// If not all selected, select all items
-        if !allSelected {
+        if allSelected {
+            localityData.isAllItemChecked = false
             for i in 0..<localityData.subLocality.count {
-                let subLocality = localityData.subLocality[i]
-                if !subLocality.isChecked {
-                    localityData.subLocality[i].isChecked = true
-                    // Update selection arrays for the selected sub-locality
-                    updateSelectionArrays(for: localityData.subLocality[i])
-                }
+                localityData.subLocality[i].isChecked = false
+                // Update selection arrays for the unselected sub-locality
+                updateSelectionArrays(for: localityData.subLocality[i])
+            }
+        } else {
+            localityData.isAllItemChecked = true
+            for i in 0..<localityData.subLocality.count {
+                localityData.subLocality[i].isChecked = true
+                // Update selection arrays for the selected sub-locality
+                updateSelectionArrays(for: localityData.subLocality[i])
             }
         }
+
+        //        /// If not all selected, select all items
+        //        if !allSelected {
+        //            for i in 0..<localityData.subLocality.count {
+        //                let subLocality = localityData.subLocality[i]
+        //                if !subLocality.isChecked {
+        //                    localityData.subLocality[i].isChecked = true
+        //                    // Update selection arrays for the selected sub-locality
+        //                    updateSelectionArrays(for: localityData.subLocality[i])
+        //                }
+        //            }
+        //        }
+    }
+
+    func isUnitsAllChecked() -> Bool {
+        if let units = localityData.unit {
+            return units.compactMap { $0?.isChecked }.allSatisfy { $0 }
+        }
+        return false
     }
 
     func toggleSelectAllUnits() {
         guard let units = localityData.unit else { return }
         let allSelected = units.compactMap { $0?.isChecked }.allSatisfy { $0 }
 
-        /// If not all selected, select all items
-        if !allSelected {
+        if allSelected {
+            localityData.isAllItemChecked = false
+            for i in 0..<units.count {
+                if let unit = units[i], unit.isChecked {
+                    localityData.unit?[i]?.isChecked = false
+                    // Update selection arrays for the unselected units
+                    updateSelectionArrays(for: localityData.unit?[i])
+                }
+            }
+        } else {
+            localityData.isAllItemChecked = true
             for i in 0..<units.count {
                 if let unit = units[i], !unit.isChecked {
                     localityData.unit?[i]?.isChecked = true
@@ -44,14 +83,41 @@ final class NotificationLocalityViewModel {
                 }
             }
         }
+
+        //        /// If not all selected, select all items
+        //        if !allSelected {
+        //            for i in 0..<units.count {
+        //                if let unit = units[i], !unit.isChecked {
+        //                    localityData.unit?[i]?.isChecked = true
+        //                    // Update selection arrays for the selected units
+        //                    updateSelectionArrays(for: localityData.unit?[i])
+        //                }
+        //            }
+        //        }
+    }
+
+    func isIncidentTypeAllChecked() -> Bool {
+        if let incidentTypes = localityData.incidentType {
+            return incidentTypes.compactMap { $0?.isChecked }.allSatisfy { $0 }
+        }
+        return false
     }
 
     func toggleSelectAllIncidentTypes() {
         guard let incidentTypes = localityData.incidentType else { return }
         let allSelected = incidentTypes.compactMap { $0?.isChecked }.allSatisfy { $0 }
 
-        /// If not all selected, select all items
-        if !allSelected {
+        if allSelected {
+            localityData.isAllItemChecked = false
+            for i in 0..<incidentTypes.count {
+                if let incidentType = incidentTypes[i], incidentType.isChecked {
+                    localityData.incidentType?[i]?.isChecked = false
+                    // Update selection arrays for the unselected incident type
+                    updateSelectionArrays(for: localityData.incidentType?[i])
+                }
+            }
+        } else {
+            localityData.isAllItemChecked = true
             for i in 0..<incidentTypes.count {
                 if let incidentType = incidentTypes[i], !incidentType.isChecked {
                     localityData.incidentType?[i]?.isChecked = true
@@ -60,6 +126,17 @@ final class NotificationLocalityViewModel {
                 }
             }
         }
+
+        //        /// If not all selected, select all items
+        //        if !allSelected {
+        //            for i in 0..<incidentTypes.count {
+        //                if let incidentType = incidentTypes[i], !incidentType.isChecked {
+        //                    localityData.incidentType?[i]?.isChecked = true
+        //                    // Update selection arrays for the selected incident type
+        //                    updateSelectionArrays(for: localityData.incidentType?[i])
+        //                }
+        //            }
+        //        }
     }
 
     func updateSelectionArrays(for subLocality: SubLocality) {
