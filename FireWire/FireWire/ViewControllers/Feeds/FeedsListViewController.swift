@@ -39,6 +39,11 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         showActivityIndicator(true)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopListeningToFeed(indexPath: nil)
+    }
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -156,8 +161,10 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    func stopListeningToFeed(indexPath: IndexPath) {
-        viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = false
+    func stopListeningToFeed(indexPath: IndexPath?) {
+        if let indexPath {
+            viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = false
+        }
 
         AppManager.shared.currentScannerIDListeningTO = nil
         AudioManager.shared.stopStreaming()
