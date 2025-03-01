@@ -92,7 +92,12 @@ extension FeedAreaListViewController: UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCell(withIdentifier: CityHeaderCell.identifier) as! CityHeaderCell
-        headerView.setupView(title: viewModel.localityData[section].name)
+
+        headerView.setupView(
+            title: viewModel.localityData[section].name,
+            isAllSelected: viewModel.isLocalityAllChecked(section: section)
+        )
+        
         headerView.selectAllAction = {
             self.viewModel.toggleSelectAll(forSection: section)
             tableView.reloadSections([section], with: .automatic)

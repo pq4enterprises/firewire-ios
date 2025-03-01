@@ -130,34 +130,6 @@ final class NotificationLocalityViewModel {
         }
     }
 
-//    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
-//    func updateSelectionArrays(for subLocality: SubLocality) {
-//        // Update selected sub-localities
-//        if subLocality.isChecked {
-//            if !selectedSubLocalities.contains(subLocality.id) {
-//                selectedSubLocalities.append(subLocality.id)
-//            }
-//        } else {
-//            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
-//                selectedSubLocalities.remove(at: index)
-//            }
-//        }
-//    }
-
-//    func updateSelectionArrays(for unit: UnitDataModel?) {
-//        guard let unit else { return }
-//
-//        if unit.isChecked {
-//            if !selectedUnits.contains(unit.id) {
-//                selectedUnits.append(unit.id)
-//            }
-//        } else {
-//            if let index = selectedUnits.firstIndex(of: unit.id) {
-//                selectedUnits.remove(at: index)
-//            }
-//        }
-//    }
-
     func toggleSelection(at indexPath: IndexPath) {
         if indexPath.section == 1, let localityData { // for sublocalities
             var subLocality = localityData.subLocality[indexPath.row]

@@ -8,8 +8,8 @@
 import Foundation
 
 enum LocalityListType: String {
-    case area = "area"
-    case notification = "notification"
+    case area
+    case notification
 }
 
 final class IncidentLocalityListViewModel {
@@ -27,7 +27,6 @@ final class IncidentLocalityListViewModel {
 
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
 
-
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.localityList,
             payload: getIncidentLocalityRequestModel,
@@ -39,7 +38,7 @@ final class IncidentLocalityListViewModel {
                 let errorMessage = (response == nil) ? .CommonError.techError : "Unexpected response format"
                 if self?.selectAreaDelegate != nil {
                     self?.selectAreaDelegate?.error(message: errorMessage)
-                }else{
+                } else {
                     self?.delegate?.error(message: errorMessage)
                 }
                 return
@@ -48,7 +47,7 @@ final class IncidentLocalityListViewModel {
             guard let localityData = localityResponse.data else {
                 if self?.selectAreaDelegate != nil {
                     self?.selectAreaDelegate?.error(message: .CommonError.techError)
-                }else{
+                } else {
                     self?.delegate?.error(message: .CommonError.techError)
                 }
                 return
@@ -72,11 +71,11 @@ final class IncidentLocalityListViewModel {
         let requestModel: [[String: Any]] = selectedAreas.map { $0.toDictionary() }
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.setSelectedArea,
-            payload:  requestModel,
+            payload: requestModel,
             expect: SuccessResponseModel.self)
         { [weak self] response, _, _ in
 
-            if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated"{
+            if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
                 if self?.selectAreaDelegate != nil {
                     self?.selectAreaDelegate?.confirmSelectArea()
                 }
@@ -104,64 +103,55 @@ final class IncidentLocalityListViewModel {
 
         if subLocality.isChecked {
             // If the sub-locality is selected, add it to the selected areas if not already present
-            if !selectedAreas.contains(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId}) {
+            if !selectedAreas.contains(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId }) {
                 selectedAreas.append(selectedArea)
             }
         } else {
             // If the sub-locality is de-selected, remove it from the selected areas
-            if let index = selectedAreas.firstIndex(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId}) {
+            if let index = selectedAreas.firstIndex(where: { $0.subLocalityId == subLocality.id && $0.localityId == localityId }) {
                 selectedAreas.remove(at: index)
             }
         }
-
     }
 
-
-//    // Update the selectedLocalities and selectedSubLocalities arrays when an item is selected/deselected
-//    func updateSelectionArrays(for subLocality: SubLocality, localityId: String) {
-//        // Update selected sub-localities
-//        if subLocality.isSelected {
-//            if !selectedSubLocalities.contains(subLocality.id) {
-//                selectedSubLocalities.append(subLocality.id)
-//            }
-//        } else {
-//            if let index = selectedSubLocalities.firstIndex(of: subLocality.id) {
-//                selectedSubLocalities.remove(at: index)
-//            }
-//        }
-//
-//        // Update selected localities (only if sub-localities are selected)
-//        if subLocality.isSelected {
-//            // If this sub-locality is selected, add the locality ID to the selected localities
-//            if !selectedLocalities.contains(localityId) {
-//                selectedLocalities.append(localityId)
-//            }
-//        } else {
-//            // If no sub-localities are selected for this locality, remove the locality ID
-//            let isAnySubLocalitySelected = localityData.contains { locality in
-//                locality.subLocality.contains { $0.isSelected && $0.id != subLocality.id }
-//            }
-//            if !isAnySubLocalitySelected, let localityIndex = selectedLocalities.firstIndex(of: localityId) {
-//                selectedLocalities.remove(at: localityIndex)
-//            }
-//        }
-//    }
+    func isLocalityAllChecked(section: Int) -> Bool {
+        if !localityData.isEmpty {
+            return localityData[section].subLocality.allSatisfy { $0.isChecked }
+        }
+        return false
+    }
 
     // Handle "Select All" for a section
     func toggleSelectAll(forSection section: Int) {
         let allSelected = localityData[section].subLocality.allSatisfy { $0.isChecked }
 
-        /// If not all selected, select all items
-        if !allSelected {
+        if allSelected {
+            localityData[section].isSubLocalityAllChecked = false
             for i in 0..<localityData[section].subLocality.count {
-                let subLocality = localityData[section].subLocality[i]
-                if !subLocality.isChecked {
-                    localityData[section].subLocality[i].isChecked = true
-                    // Update selection arrays for the selected sub-locality and its locality
-                    updateSelectionArrays(for: localityData[section].subLocality[i], localityId: localityData[section].id)
-                }
+                localityData[section].subLocality[i].isChecked = false
+                // Update selection arrays for the unselected sub-locality and its locality
+                updateSelectionArrays(for: localityData[section].subLocality[i], localityId: localityData[section].id)
+            }
+        } else {
+            localityData[section].isSubLocalityAllChecked = true
+            for i in 0..<localityData[section].subLocality.count {
+                localityData[section].subLocality[i].isChecked = true
+                // Update selection arrays for the selected sub-locality and its locality
+                updateSelectionArrays(for: localityData[section].subLocality[i], localityId: localityData[section].id)
             }
         }
+
+//        /// If not all selected, select all items
+//        if !allSelected {
+//            for i in 0..<localityData[section].subLocality.count {
+//                let subLocality = localityData[section].subLocality[i]
+//                if !subLocality.isChecked {
+//                    localityData[section].subLocality[i].isChecked = true
+//                    // Update selection arrays for the selected sub-locality and its locality
+//                    updateSelectionArrays(for: localityData[section].subLocality[i], localityId: localityData[section].id)
+//                }
+//            }
+//        }
     }
 
     // To get selected IDs at any point

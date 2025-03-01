@@ -24,9 +24,17 @@ class CityHeaderCell: UITableViewCell {
         selectAllAction?()
     }
     
-    func setupView(title: String, hideSelectAll: Bool = false) {
+    func setupView(title: String, hideSelectAll: Bool = false, isAllSelected: Bool = false) {
         titleLabel.text = title
         selectAllButton.isHidden = hideSelectAll
+
+        if !hideSelectAll {
+            if isAllSelected {
+                selectAllButton.setTitle("UnSelect All", for: .normal)
+            }else{
+                selectAllButton.setTitle("Select All", for: .normal)
+            }
+        }
     }
 
 }

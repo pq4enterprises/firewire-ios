@@ -25,6 +25,8 @@ struct LocalityResponseData: Codable {
     var unit: [UnitDataModel?]?
     var incidentType: [IncidentTypeModel?]?
 
+    var isSubLocalityAllChecked: Bool = false
+
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name, state, subLocality, unit
