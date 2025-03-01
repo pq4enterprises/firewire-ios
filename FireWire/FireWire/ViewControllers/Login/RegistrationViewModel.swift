@@ -80,7 +80,8 @@ final class RegistrationViewModel {
             }
 
             UserDefaults.standard.set(loginData.id, forKey: "user_id")
-            UserDefaults.standard.set(loginData.firstName, forKey: "name")
+            let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
+            UserDefaults.standard.set(userName, forKey: "name")
             UserDefaults.standard.set(loginData.email, forKey: "email")
             UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
             UserDefaults.standard.synchronize()

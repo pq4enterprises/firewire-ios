@@ -33,7 +33,8 @@ final class UpdateProfileViewModel {
                 return
             }
 
-            UserDefaults.standard.set(userData.firstName, forKey: "name")
+            let userName = "\(userData.firstName) \(userData.lastName ?? "")"
+            UserDefaults.standard.set(userName, forKey: "name")
             UserDefaults.standard.set(userData.email, forKey: "email")
 
             if let profileImage = userData.img {
@@ -75,7 +76,8 @@ final class UpdateProfileViewModel {
         ) { response, _, _ in
             if let apiResponse = response as? GetUserProfileResponseModel, let userData = apiResponse.data {
 
-                UserDefaults.standard.set(userData.firstName, forKey: "name")
+                let userName = "\(userData.firstName) \(userData.lastName ?? "")"
+                UserDefaults.standard.set(userName, forKey: "name")
                 UserDefaults.standard.set(userData.email, forKey: "email")
 
                 if let profileImage = userData.img {
