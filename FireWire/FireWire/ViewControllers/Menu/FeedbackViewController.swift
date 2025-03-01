@@ -37,9 +37,9 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func submitButtonTap(_ sender: UIButton) {
-        let feedbackText = feedBackTextView.text ?? ""
+        let feedbackText = feedBackTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if feedbackText.isEmpty {
-            showToast(message: "Please enter your reason")
+            showToast(message: "Please enter a valid reason")
         }else{
             submitFeedback?(feedbackText)
             dismiss(animated: true, completion: nil)

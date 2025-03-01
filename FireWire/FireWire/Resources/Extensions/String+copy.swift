@@ -10,7 +10,7 @@ import Foundation
 public extension String {
 
     static let appStoreUrl = "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"
-    
+
     struct Login {
         public static let registerText = "Don’t have an Account? Register"
         public static let register = "Register"
@@ -29,6 +29,11 @@ public extension String {
 
     struct CommonError {
         public static let techError = "Technical error at our end please try again."
+    }
+
+    struct PremiumDetails {
+        static let title = "Get Full Access With A Premium Account"
+        static let premiumAccount = "Premium Account"
     }
 }
 

@@ -121,6 +121,15 @@ class MenuViewController: UIViewController {
         UserDefaults.standard.synchronize()
     }
 
+    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: "",
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Okay"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> MenuViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -145,7 +154,6 @@ extension MenuViewController {
             if response is SuccessResponseModel {
                 self?.deleteUser()
                 self?.clearUserDefaults()
-                self?.appCoordinator?.backToParentCoordinator()
             }
         }
     }
@@ -162,8 +170,10 @@ extension MenuViewController {
         ) { [weak self] response, _, _ in
             self?.hideLoader()
             if response is SuccessResponseModel {
-                self?.clearUserDefaults()
-                self?.appCoordinator?.backToParentCoordinator()
+                self?.showAlertMessage("Thank you for the feedback. Your account is deleted successfully!"){
+                    self?.clearUserDefaults()
+                    self?.appCoordinator?.backToParentCoordinator()
+                }
             }
         }
     }

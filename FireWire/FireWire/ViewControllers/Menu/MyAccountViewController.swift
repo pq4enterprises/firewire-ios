@@ -5,8 +5,8 @@
 //  Created by Sujitha Palanisamy on 06/12/24.
 //
 
-import UIKit
 import StoreKit
+import UIKit
 
 protocol MyAccountViewDelegate: AnyObject {
     func success(message: String)
@@ -16,19 +16,21 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
-    @IBOutlet weak var profileImageView: FWRoundedImageView!
-    @IBOutlet weak var updateProfileView: UIStackView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var logoutView: UIStackView!
-    @IBOutlet weak var termsStackView: UIStackView!
-    @IBOutlet weak var privacyPolicyStackView: UIStackView!
+    @IBOutlet var profileImageView: FWRoundedImageView!
+    @IBOutlet var updateProfileView: UIStackView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var logoutView: UIStackView!
+    @IBOutlet var termsStackView: UIStackView!
+    @IBOutlet var privacyPolicyStackView: UIStackView!
+    @IBOutlet weak var premiumInfoTitle: UILabel!
+    @IBOutlet var getPremiumButton: FWFilledButton!
 
     var viewModel: MyAccountViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         Task {
             await SubscriptionManager.shared.fetchProducts()
         }
@@ -45,23 +47,28 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
 
     func setupUI() {
         if let name = UserDefaults.standard.string(forKey: "name"),
-            let email = UserDefaults.standard.string(forKey: "email") {
+           let email = UserDefaults.standard.string(forKey: "email")
+        {
             nameLabel.text = name
             emailLabel.text = email
         }
-        
-        if UserDefaults.standard.bool(forKey: "isPremiumUser"){
-            let premiumStatus = String.init(format: "%@ | Premium User", nameLabel.text ?? "")
-            nameLabel.text = premiumStatus
+
+        if UserDefaults.standard.bool(forKey: "isPremiumUser") {
+            premiumInfoTitle.text = .PremiumDetails.premiumAccount
+            getPremiumButton.isHidden = true
+        }else{
+            premiumInfoTitle.text = .PremiumDetails.title
+            getPremiumButton.isHidden = false
         }
 
         if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
-            let imageUrl = URL(string: profileImage) {
+           let imageUrl = URL(string: profileImage)
+        {
             profileImageView.loadImage(from: imageUrl)
         }
     }
 
-    func setupActions(){
+    func setupActions() {
         let logoutViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(logoutViewTap))
         logoutView.isUserInteractionEnabled = true
         logoutView.addGestureRecognizer(logoutViewTapGesture)
@@ -81,19 +88,19 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
 
     @objc func logoutViewTap() {
         clearUserDefaults()
-        self.appCoordinator?.backToParentCoordinator()
+        appCoordinator?.backToParentCoordinator()
     }
 
     @objc func termsViewTap() {
-        self.coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
+        coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
     }
 
     @objc func privacyPolicyViewTap() {
-        self.coordinator?.openURL(APIEndpoints.privacyPolicyUrl)
+        coordinator?.openURL(APIEndpoints.privacyPolicyUrl)
     }
 
     @objc func updateProfileViewTap() {
-        self.coordinator?.navigateToUpdateProfile()
+        coordinator?.navigateToUpdateProfile()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -106,13 +113,13 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
             await SubscriptionManager.shared.purchaseMyProduct()
         }
     }
-    
+
     func purchaseTransactionCompleted(success: Bool, transaction: Transaction?) {
         DispatchQueue.main.async {
             if success {
-                //self.showAlertMessage("Your premium scubscription is Success!")
+                // self.showAlertMessage("Your premium scubscription is Success!")
                 self.viewModel?.submitPayment(transaction: transaction)
-            }else{
+            } else {
                 self.showAlertMessage("Purchase failed, please try again!")
             }
         }
@@ -122,7 +129,6 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         showAlertMessage(message)
     }
 
-
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
         showAlert(
             title: "",
@@ -131,11 +137,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
             actionStyles: [.default], actions: [{ _ in action?() }]
         )
     }
-    
-    
-    func clearUserDefaults(){
-        ["user_id", "name", "email", "token", "profile_image"].forEach {
-            UserDefaults.standard.removeObject(forKey: $0)
+
+    func clearUserDefaults() {
+        for item in ["user_id", "name", "email", "token", "profile_image"] {
+            UserDefaults.standard.removeObject(forKey: item)
         }
         UserDefaults.standard.synchronize()
     }
@@ -146,5 +151,4 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         let viewController = storyboard.instantiateViewController(withIdentifier: "MyAccountViewController") as! MyAccountViewController
         return viewController
     }
-
 }
