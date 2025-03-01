@@ -10,15 +10,13 @@ import UIKit
 protocol FeedListViewDelegate: AnyObject {
     func dataReceived()
     func errorReceived(message: String)
-    func errorPlayingAudio()
-    func playingAudio()
 }
 
 class FeedsListViewController: UIViewController, FeedListViewDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var noFeedsLabel: UILabel!
+    @IBOutlet var noFeedsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    
+
     var coordinator: HomeCoordinator?
     var viewModel: FeedsListViewModel!
     var paginationHandler: PaginationHandler<FeedsListViewModel>!
@@ -28,7 +26,7 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         viewModel = FeedsListViewModel()
         viewModel.getFeedList()
         viewModel.delegate = self
-        
+
         paginationHandler = PaginationHandler(viewModel: viewModel)
 
         setupTableView()
@@ -54,25 +52,10 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         tableView.isHidden = true
         noFeedsLabel.isHidden = false
     }
-    
+
     func dataReceived() {
         showActivityIndicator(false)
         tableView.reloadData()
-    }
-
-    func errorPlayingAudio() {
-        showAlert(
-            title: "",
-            message: "Unable to play the audio!",
-            alertStyle: .alert,
-            actionTitles: ["Ok"],
-            actionStyles: [.default],
-            actions: [{ _ in }]
-        )
-    }
-
-    func playingAudio(){
-        tableView.reloadData() // to update play status
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -104,13 +87,21 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         }
     }
 
+    fileprivate func showAlertMessage(title: String = "", _ errorMessage: String, action: (() -> Void)? = nil) {
+        showAlert(
+            title: title,
+            message: errorMessage,
+            alertStyle: .alert, actionTitles: ["Okay"],
+            actionStyles: [.default], actions: [{ _ in action?() }]
+        )
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> FeedsListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsListViewController
         return viewController
     }
-
 }
 
 extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -124,7 +115,6 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
         return headerView
     }
 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.items[section].feedList.count
     }
@@ -137,6 +127,50 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feedData = viewModel.items[indexPath.section].feedList[indexPath.row]
-        coordinator?.openURL(feedData.url)
+
+        if AppManager.shared.currentScannerIDListeningTO == feedData.id {
+            showAlertMessage(title: "Stop Listening", "Are you sure you want to stop listening?") {
+                self.stopListeningToFeed(indexPath: indexPath)
+            }
+        } else {
+            startListeningToFeed(id: feedData.id, urlString: feedData.url, indexPath: indexPath)
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+
+    func startListeningToFeed(id: String, urlString: String, indexPath: IndexPath) {
+        if let url = URL(string: urlString) {
+            // if audio is already playing stop & start playing new
+            if let playingFeedIndex = getIndexOfPlayingFeed() {
+                viewModel.items[playingFeedIndex.section].feedList[playingFeedIndex.row].isPlaying = false
+            }
+
+            viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = true
+            tableView.reloadData()
+
+            AudioManager.shared.streamAudioFromURL(url: url)
+            AppManager.shared.currentScannerIDListeningTO = id
+
+        } else {
+            showAlertMessage("This feed is unavailable at this time.")
+        }
+    }
+
+    func stopListeningToFeed(indexPath: IndexPath) {
+        viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = false
+
+        AppManager.shared.currentScannerIDListeningTO = nil
+        AudioManager.shared.stopStreaming()
+        tableView.reloadData()
+    }
+
+    func getIndexOfPlayingFeed() -> IndexPath? {
+        for sectionIndex in 0..<viewModel.items.count {
+            let feedList = viewModel.items[sectionIndex].feedList
+            if let rowIndex = feedList.firstIndex(where: { $0.isPlaying == true }) {
+                return IndexPath(row: rowIndex, section: sectionIndex)
+            }
+        }
+        return nil
     }
 }

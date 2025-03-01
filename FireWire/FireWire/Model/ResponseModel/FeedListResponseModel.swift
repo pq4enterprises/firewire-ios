@@ -27,5 +27,5 @@ struct FeedListData: Codable {
 
 struct FeedGroupedData {
     let localityName: String
-    let feedList: [FeedListData]
+    var feedList: [FeedListData]
 }

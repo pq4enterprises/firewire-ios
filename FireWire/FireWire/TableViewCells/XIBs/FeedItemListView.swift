@@ -13,11 +13,23 @@ class FeedItemListView: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "FeedItemListView", bundle: nil)
     }
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var playIcon: UIImageView!
 
-    func setupView(_ model: FeedListData){
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var playIcon: UIImageView!
+    @IBOutlet var liveLabel: UILabel!
+    @IBOutlet var musicPlayImage: UIImageView!
+
+    func setupView(_ model: FeedListData) {
         titleLabel.text = model.name
-        playIcon.image = model.isPlaying ? FWImage.pauseIcon : FWImage.playIcon
+        if model.isPlaying {
+            playIcon.image = FWImage.pauseIcon
+            liveLabel.isHidden = false
+            musicPlayImage.isHidden = false
+        } else {
+            playIcon.image = FWImage.playIcon
+            liveLabel.isHidden = true
+            musicPlayImage.isHidden = true
+
+        }
     }
 }

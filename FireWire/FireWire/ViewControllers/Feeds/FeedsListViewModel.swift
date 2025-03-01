@@ -5,7 +5,6 @@
 //  Created by Sujitha Palanisamy on 23/01/25.
 //
 
-import AVFAudio
 import Foundation
 
 final class FeedsListViewModel: PaginatableViewModel {
@@ -16,8 +15,6 @@ final class FeedsListViewModel: PaginatableViewModel {
     var limit: Int = 10
     var items: [FeedGroupedData] = []
     var delegate: FeedListViewDelegate?
-    var audioPlayer: AVAudioPlayer?
-    var currentIndex: IndexPath? // Track which row is currently playing
 
     func fetchData(forPage page: Int, completion: @escaping (Result<[FeedGroupedData], any Error>) -> Void) {
         let requestModel = CommonRequestModel(sortBy: "createdAt", sortDir: "desc", offset: page, limit: limit)

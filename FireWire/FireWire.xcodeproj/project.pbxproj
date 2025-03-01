@@ -301,6 +301,10 @@
 		B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */; };
 		B0E879FE2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */; };
 		B0E879FF2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */; };
+		B0E87A0C2D731BFF00BF0CC2 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E87A0B2D731BFF00BF0CC2 /* AudioManager.swift */; };
+		B0E87A0D2D731BFF00BF0CC2 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E87A0B2D731BFF00BF0CC2 /* AudioManager.swift */; };
+		B0E87A0F2D731DDF00BF0CC2 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */; };
+		B0E87A102D731DDF00BF0CC2 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */; };
 		B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
 		B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
 		B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */; };
@@ -513,6 +517,8 @@
 		B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestModel.swift; sourceTree = "<group>"; };
 		B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitSubscriptionModel.swift; sourceTree = "<group>"; };
+		B0E87A0B2D731BFF00BF0CC2 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentRequestModel.swift; sourceTree = "<group>"; };
 		B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityRequestModel.swift; sourceTree = "<group>"; };
 		B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
@@ -925,6 +931,8 @@
 		B0D12D012CED0C8400EEDDF8 /* FWCommon */ = {
 			isa = PBXGroup;
 			children = (
+				B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */,
+				B0E87A0A2D731BE000BF0CC2 /* AudioManager */,
 				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
 				B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */,
 				B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */,
@@ -934,6 +942,14 @@
 				B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */,
 			);
 			path = FWCommon;
+			sourceTree = "<group>";
+		};
+		B0E87A0A2D731BE000BF0CC2 /* AudioManager */ = {
+			isa = PBXGroup;
+			children = (
+				B0E87A0B2D731BFF00BF0CC2 /* AudioManager.swift */,
+			);
+			path = AudioManager;
 			sourceTree = "<group>";
 		};
 		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
@@ -1270,6 +1286,7 @@
 				B01FC7DB2D5F724A006D7450 /* MapMarkerModel.swift in Sources */,
 				B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */,
 				B0F1A7E82CED1F9200D9F309 /* FWFilledButton.swift in Sources */,
+				B0E87A0F2D731DDF00BF0CC2 /* AppManager.swift in Sources */,
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */,
@@ -1299,6 +1316,7 @@
 				B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */,
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
 				B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */,
+				B0E87A0C2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
 				B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
@@ -1410,6 +1428,7 @@
 				B01FC7DA2D5F724A006D7450 /* MapMarkerModel.swift in Sources */,
 				B0B1AE9A2D4F8DB6007371A9 /* RegistrationViewModel.swift in Sources */,
 				B0B1AE9B2D4F8DB6007371A9 /* FWFilledButton.swift in Sources */,
+				B0E87A102D731DDF00BF0CC2 /* AppManager.swift in Sources */,
 				B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */,
 				B0B1AE9D2D4F8DB6007371A9 /* UIViewController+Extension.swift in Sources */,
 				B0B1AE9E2D4F8DB6007371A9 /* FeedbackViewController.swift in Sources */,
@@ -1439,6 +1458,7 @@
 				B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */,
 				B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */,
 				B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */,
+				B0E87A0D2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
 				B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */,
 				B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
