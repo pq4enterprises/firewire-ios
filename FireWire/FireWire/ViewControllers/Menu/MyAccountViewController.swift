@@ -9,7 +9,7 @@ import StoreKit
 import UIKit
 
 protocol MyAccountViewDelegate: AnyObject {
-    func success(message: String)
+    func dataLoaded(message: String)
 }
 
 class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, MyAccountViewDelegate {
@@ -46,14 +46,12 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     func setupUI() {
-        if let name = UserDefaults.standard.string(forKey: "name"),
-           let email = UserDefaults.standard.string(forKey: "email")
-        {
+        if let name = FWUserDefaults().userName, let email = FWUserDefaults().userEmail {
             nameLabel.text = name
             emailLabel.text = email
         }
 
-        if UserDefaults.standard.bool(forKey: "isPremiumUser") {
+        if FWUserDefaults().userRole != "admin" {
             premiumInfoTitle.text = .PremiumDetails.premiumAccount
             getPremiumButton.isHidden = true
         }else{
@@ -61,7 +59,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
             getPremiumButton.isHidden = false
         }
 
-        if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
+        if let profileImage = FWUserDefaults().userImage,
            let imageUrl = URL(string: profileImage)
         {
             profileImageView.loadImage(from: imageUrl)
@@ -125,7 +123,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         }
     }
 
-    func success(message: String) {
+    func dataLoaded(message: String) {
         showAlertMessage(message)
     }
 
@@ -139,10 +137,12 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     func clearUserDefaults() {
-        for item in ["user_id", "name", "email", "token", "profile_image"] {
-            UserDefaults.standard.removeObject(forKey: item)
-        }
-        UserDefaults.standard.synchronize()
+        FWUserDefaults.removeObjectForKey(key: .userIDKey)
+        FWUserDefaults.removeObjectForKey(key: .userNameKey)
+        FWUserDefaults.removeObjectForKey(key: .userEmailKey)
+        FWUserDefaults.removeObjectForKey(key: .userTokenKey)
+        FWUserDefaults.removeObjectForKey(key: .userImageKey)
+        FWUserDefaults.removeObjectForKey(key: .userRoleKey)
     }
 
     // A convenience method to instantiate from the storyboard

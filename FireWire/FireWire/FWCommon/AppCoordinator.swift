@@ -58,7 +58,7 @@ class AppCoordinator: BaseCoordinator {
     }
 
     func isUserLoggedIn(completion: @escaping (Bool) -> Void) {
-        if UserDefaults.standard.object(forKey: "token") != nil {
+        if FWUserDefaults().userToken != nil {
             completion(true)
             return
         }
@@ -80,10 +80,9 @@ class AppCoordinator: BaseCoordinator {
     }
 
     private func clearSessionData() {
-        if let _ = UserDefaults.standard.object(forKey: "token") {
-            UserDefaults.standard.removeObject(forKey: "token")
+        if let _ = FWUserDefaults().userToken {
+            FWUserDefaults.removeObjectForKey(key: .userTokenKey)
         }
-        UserDefaults.standard.synchronize()
 
         //Logout google sign in
         GIDSignIn.sharedInstance.signOut()

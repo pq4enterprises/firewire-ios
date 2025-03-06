@@ -141,7 +141,7 @@ final class NotificationLocalityViewModel {
 
     func updateSelectionArrays(for subLocality: SubLocality) {
         // Create an area model for the selected sub-locality and locality
-        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let userId = FWUserDefaults().userID ?? ""
         let selectedArea = SelectedNotificationModel(userId: userId, notificationId: subLocality.id, type: "subLocality")
 
         if subLocality.isChecked {
@@ -160,7 +160,7 @@ final class NotificationLocalityViewModel {
     func updateSelectionArrays(for unit: UnitDataModel?) {
         guard let unit else { return }
 
-        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let userId = FWUserDefaults().userID ?? ""
         let selectedArea = SelectedNotificationModel(userId: userId, notificationId: unit.id, type: "unit")
 
         if unit.isChecked {
@@ -177,7 +177,7 @@ final class NotificationLocalityViewModel {
     func updateSelectionArrays(for incidentType: IncidentTypeModel?) {
         guard let incidentType else { return }
 
-        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let userId = FWUserDefaults().userID ?? ""
         let selectedArea = SelectedNotificationModel(userId: userId, notificationId: incidentType.id, type: "incident_type")
 
         if incidentType.isChecked {

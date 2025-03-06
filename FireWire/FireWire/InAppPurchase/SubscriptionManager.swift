@@ -74,7 +74,7 @@ class SubscriptionManager: NSObject {
                 switch verificationResult {
                 case .verified(let transaction):
                     print("Purchase successful: \(transaction)")
-                    await unlockPremiumFeatures(transaction: transaction)
+                    //await unlockPremiumFeatures(transaction: transaction)
                     delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
                 case .unverified:
                     print("Transaction verification failed.")

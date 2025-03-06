@@ -77,7 +77,7 @@ final class IncidentListViewModel: PaginatableViewModel {
     func favouriteIncident(incidentId: String, like: Bool, completion: @escaping (Bool) -> Void){
 
         let requestModel = APIPayload.favouriteIncident(
-            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            userId: FWUserDefaults().userID ?? "",
             incidentId: incidentId,
             type: like == true ? "like" : "unlike"
         ).toDictionary()

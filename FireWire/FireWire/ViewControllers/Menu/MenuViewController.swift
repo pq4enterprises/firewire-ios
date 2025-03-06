@@ -29,13 +29,12 @@ class MenuViewController: UIViewController {
     }
 
     func setupUI() {
-        if let name = UserDefaults.standard.string(forKey: "name"),
-            let email = UserDefaults.standard.string(forKey: "email") {
+        if let name = FWUserDefaults().userName, let email = FWUserDefaults().userEmail {
             nameLabel.text = name
             emailLabel.text = email
         }
 
-        if let profileImage = UserDefaults.standard.string(forKey: "profile_image"),
+        if let profileImage = FWUserDefaults().userImage,
             let imageUrl = URL(string: profileImage) {
             profileImageView.loadImage(from: imageUrl)
         }
@@ -115,10 +114,12 @@ class MenuViewController: UIViewController {
     }
 
     func clearUserDefaults(){
-        ["user_id", "name", "email", "token", "profile_image"].forEach {
-            UserDefaults.standard.removeObject(forKey: $0)
-        }
-        UserDefaults.standard.synchronize()
+        FWUserDefaults.removeObjectForKey(key: .userIDKey)
+        FWUserDefaults.removeObjectForKey(key: .userNameKey)
+        FWUserDefaults.removeObjectForKey(key: .userEmailKey)
+        FWUserDefaults.removeObjectForKey(key: .userTokenKey)
+        FWUserDefaults.removeObjectForKey(key: .userImageKey)
+        FWUserDefaults.removeObjectForKey(key: .userRoleKey)
     }
 
     fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {

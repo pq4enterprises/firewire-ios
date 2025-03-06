@@ -20,7 +20,7 @@ public class APIRequest {
         completionHandler: @escaping DataCompletionBlock
     ) {
         var urlString = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        let accessToken = UserDefaults.standard.string(forKey: "token")
+        let accessToken = FWUserDefaults().userToken
 
         // For GET request, append parameters to the URL if provided
         if requestType == APIConstants.GET, let payload = payload as? [String: Any], isEmptyPayload(payload) == false {

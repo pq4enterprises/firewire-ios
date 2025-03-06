@@ -58,7 +58,7 @@ final class IncidentDetailViewModel {
         guard let incidentDetail = incidentDetail else { return }
 
         let requestModel = APIPayload.favouriteIncident(
-            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            userId: FWUserDefaults().userID ?? "",
             incidentId: incidentDetail.id,
             type: "view").toDictionary()
 
@@ -84,7 +84,7 @@ final class IncidentDetailViewModel {
         guard let incidentDetail = incidentDetail else { return }
 
         let requestModel = APIPayload.favouriteIncident(
-            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            userId: FWUserDefaults().userID ?? "",
             incidentId: incidentDetail.id,
             type: like == true ? "unlike" : "like").toDictionary()
 

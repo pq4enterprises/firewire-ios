@@ -39,12 +39,12 @@ final class LoginViewModel {
                 OneSignal.login(userId)
             }
 
-            UserDefaults.standard.set(loginData.id, forKey: "user_id")
+            FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
             let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
-            UserDefaults.standard.set(userName, forKey: "name")
-            UserDefaults.standard.set(loginData.email, forKey: "email")
-            UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
-            UserDefaults.standard.synchronize()
+            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+            FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
+            FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
+            FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
 
             self?.getUserProfile()
             self?.delegate?.loginSuccess(.general)
@@ -59,7 +59,7 @@ final class LoginViewModel {
         ) { response, _, _ in
             if let apiResponse = response as? GetUserProfileResponseModel, let userData = apiResponse.data {
                 if let profileImage = userData.img {
-                    UserDefaults.standard.set(profileImage, forKey: "profile_image")
+                    FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
                 }
             }
         }
@@ -84,27 +84,26 @@ final class LoginViewModel {
                 self?.delegate?.loginFailed(errorMessage: errorMessage)
                 return
             }
-            
-            if loginDataResponse.code.lowercased() != "success"{
+
+            if loginDataResponse.code.lowercased() != "success" {
                 self?.delegate?.loginFailed(errorMessage: loginDataResponse.message)
                 return
             }
-            
+
             guard let loginData = loginDataResponse.data else {
                 self?.delegate?.loginFailed(errorMessage: "Missing login data")
                 return
             }
-            
-            UserDefaults.standard.set(loginData.id, forKey: "user_id")
+
+            FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
             let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
-            UserDefaults.standard.set(userName, forKey: "name")
-            UserDefaults.standard.set(loginData.email, forKey: "email")
-            UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
-            UserDefaults.standard.synchronize()
-           
-            let type: LoginType = requestModel.socialType == .google ? .google : .facebook
+            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+            FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
+            FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
+            FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
+
+            let type: LoginType = requestModel.socialType == .google ? .google : .apple
             self?.delegate?.loginSuccess(type)
-            
         }
     }
 

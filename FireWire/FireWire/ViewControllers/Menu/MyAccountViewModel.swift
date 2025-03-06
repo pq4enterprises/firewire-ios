@@ -12,8 +12,8 @@ final class MyAccountViewModel {
     public var delegate: MyAccountViewDelegate?
 
     func submitPayment(transaction: Transaction?) {
-        guard let transaction, let userId = UserDefaults.standard.string(forKey: "user_id") else {
-            delegate?.success(message: "Required payment details not available")
+        guard let transaction, let userId = FWUserDefaults().userID else {
+            delegate?.dataLoaded(message: "Required payment details not available")
             return
         }
 
@@ -40,14 +40,14 @@ final class MyAccountViewModel {
             requestType: APIConstants.PUT
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
-                self?.delegate?.success(message: "Payment detail submission failed, try again after sometime")
+                self?.delegate?.dataLoaded(message: "Payment detail submission failed, try again after sometime")
                 return
             }
 
             if apiResponse is SuccessResponseModel {
-                self?.delegate?.success(message: "Your premium subscription is Success!")
+                self?.delegate?.dataLoaded(message: "Your premium subscription is Success!")
             } else {
-                self?.delegate?.success(message: "Payment detail submission failed")
+                self?.delegate?.dataLoaded(message: "Payment detail submission failed")
             }
         }
     }

@@ -13,6 +13,7 @@ import UIKit
 enum LoginType: Int {
     case google
     case facebook
+    case apple
     case general
 }
 

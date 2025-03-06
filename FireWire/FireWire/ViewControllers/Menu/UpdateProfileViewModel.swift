@@ -34,11 +34,11 @@ final class UpdateProfileViewModel {
             }
 
             let userName = "\(userData.firstName) \(userData.lastName ?? "")"
-            UserDefaults.standard.set(userName, forKey: "name")
-            UserDefaults.standard.set(userData.email, forKey: "email")
+            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+            FWUserDefaults.setStringForKey(key: .userEmailKey, value: userData.email)
 
             if let profileImage = userData.img {
-                UserDefaults.standard.set(profileImage, forKey: "profile_image")
+                FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
             }
 
             self?.delegate?.dataLoaded(userData)
@@ -77,11 +77,11 @@ final class UpdateProfileViewModel {
             if let apiResponse = response as? GetUserProfileResponseModel, let userData = apiResponse.data {
 
                 let userName = "\(userData.firstName) \(userData.lastName ?? "")"
-                UserDefaults.standard.set(userName, forKey: "name")
-                UserDefaults.standard.set(userData.email, forKey: "email")
+                FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+                FWUserDefaults.setStringForKey(key: .userEmailKey, value: userData.email)
 
                 if let profileImage = userData.img {
-                    UserDefaults.standard.set(profileImage, forKey: "profile_image")
+                    FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
                 }
             }
         }
@@ -95,7 +95,7 @@ final class UpdateProfileViewModel {
         ) { response, _, _ in
             if let response = response as? UploadImageResponseModel {
                 if response.code.lowercased() == "success", let imageUrl = response.data?.url {
-                    UserDefaults.standard.set(imageUrl, forKey: "profile_image")
+                    FWUserDefaults.setStringForKey(key: .userImageKey, value: imageUrl[0])
                     self.delegate?.profileImageUpdated(imageUrl[0])
                 }else{
                     self.delegate?.error(message: response.message)

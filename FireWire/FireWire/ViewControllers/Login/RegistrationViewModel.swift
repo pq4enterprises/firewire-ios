@@ -79,12 +79,12 @@ final class RegistrationViewModel {
                 OneSignal.login(userId)
             }
 
-            UserDefaults.standard.set(loginData.id, forKey: "user_id")
+            FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
             let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
-            UserDefaults.standard.set(userName, forKey: "name")
-            UserDefaults.standard.set(loginData.email, forKey: "email")
-            UserDefaults.standard.set(loginData.token ?? "", forKey: "token")
-            UserDefaults.standard.synchronize()
+            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+            FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
+            FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
+            FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
 
             self?.delegate?.loginSuccess()
         }

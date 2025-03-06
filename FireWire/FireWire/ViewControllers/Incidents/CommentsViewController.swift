@@ -150,7 +150,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         showLoader()
         let requestModel = AddCommentRequestModel(
-            userId: UserDefaults.standard.string(forKey: "user_id") ?? "",
+            userId: FWUserDefaults().userID ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
             comment: commentMessage,

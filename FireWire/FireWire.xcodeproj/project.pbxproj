@@ -51,6 +51,8 @@
 		B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
 		B01FC7DA2D5F724A006D7450 /* MapMarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */; };
 		B01FC7DB2D5F724A006D7450 /* MapMarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */; };
+		B027AE522D792D5800F8BF4A /* FWUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */; };
+		B027AE532D792D5800F8BF4A /* FWUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */; };
 		B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
 		B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
@@ -418,6 +420,7 @@
 		B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityHeaderView.swift; sourceTree = "<group>"; };
 		B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationLocalityHeaderView.xib; sourceTree = "<group>"; };
 		B01FC7D92D5F7245006D7450 /* MapMarkerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerModel.swift; sourceTree = "<group>"; };
+		B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWUserDefaults.swift; sourceTree = "<group>"; };
 		B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentRequestModel.swift; sourceTree = "<group>"; };
 		B043CEAB2D0EDD0D007430B7 /* mapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapStyle.json; sourceTree = "<group>"; };
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -931,6 +934,7 @@
 		B0D12D012CED0C8400EEDDF8 /* FWCommon */ = {
 			isa = PBXGroup;
 			children = (
+				B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */,
 				B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */,
 				B0E87A0A2D731BE000BF0CC2 /* AudioManager */,
 				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
@@ -1272,6 +1276,7 @@
 				B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */,
 				B006D91C2D42B7430082E59E /* FeedListResponseModel.swift in Sources */,
 				B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */,
+				B027AE532D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */,
@@ -1414,6 +1419,7 @@
 				B0B1AE8D2D4F8DB6007371A9 /* IncidentLocalityRequestModel.swift in Sources */,
 				B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */,
 				B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */,
+				B027AE522D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
 				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,
 				B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */,
 				B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */,

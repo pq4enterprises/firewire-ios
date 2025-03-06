@@ -98,7 +98,7 @@ final class IncidentLocalityListViewModel {
 
     func updateSelectionArrays(for subLocality: SubLocality, localityId: String) {
         // Create an area model for the selected sub-locality and locality
-        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        let userId = FWUserDefaults().userID ?? ""
         let selectedArea = SelectedAreaModel(userId: userId, localityId: localityId, subLocalityId: subLocality.id)
 
         if subLocality.isChecked {
