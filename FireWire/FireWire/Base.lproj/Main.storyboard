@@ -3445,23 +3445,13 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock this feature by subscribing to our premium plan." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoD-dE-PeE">
-                                <rect key="frame" x="30" y="159" width="333" height="40.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="FWTextGrey2"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MQS-FH-Q8u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3a5-Fq-sZQ" firstAttribute="bottom" secondItem="MQS-FH-Q8u" secondAttribute="bottom" id="74H-lO-FhG"/>
                             <constraint firstItem="3a5-Fq-sZQ" firstAttribute="leading" secondItem="MQS-FH-Q8u" secondAttribute="leading" id="8I6-d1-Cnn"/>
-                            <constraint firstItem="HoD-dE-PeE" firstAttribute="leading" secondItem="MQS-FH-Q8u" secondAttribute="leading" constant="30" id="DdO-UZ-IxG"/>
                             <constraint firstItem="lQ4-PR-a9h" firstAttribute="top" secondItem="MQS-FH-Q8u" secondAttribute="top" id="H0a-bK-ciP"/>
-                            <constraint firstItem="MQS-FH-Q8u" firstAttribute="trailing" secondItem="HoD-dE-PeE" secondAttribute="trailing" constant="30" id="JLp-Cu-eux"/>
-                            <constraint firstItem="HoD-dE-PeE" firstAttribute="centerX" secondItem="fcv-9x-YA7" secondAttribute="centerX" id="Oey-4D-ECU"/>
-                            <constraint firstItem="HoD-dE-PeE" firstAttribute="top" secondItem="lQ4-PR-a9h" secondAttribute="bottom" constant="50" id="ZHp-jQ-WnW"/>
                             <constraint firstItem="3a5-Fq-sZQ" firstAttribute="trailing" secondItem="MQS-FH-Q8u" secondAttribute="trailing" id="cw6-L2-oq3"/>
                             <constraint firstItem="lQ4-PR-a9h" firstAttribute="trailing" secondItem="MQS-FH-Q8u" secondAttribute="trailing" id="jjL-ex-mXI"/>
                             <constraint firstItem="3a5-Fq-sZQ" firstAttribute="top" secondItem="lQ4-PR-a9h" secondAttribute="bottom" id="pbY-p0-Aff"/>
@@ -3469,7 +3459,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="messageLabel" destination="HoD-dE-PeE" id="mNG-6d-rgo"/>
                         <outlet property="tableView" destination="3a5-Fq-sZQ" id="Tl6-7i-B6K"/>
                     </connections>
                 </viewController>

@@ -11,30 +11,17 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
     var coordinator: HomeCoordinator?
     var viewModel: IncidentLocalityListViewModel!
 
-    @IBOutlet var messageLabel: UILabel!
     @IBOutlet var tableView: UITableView!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        unlockPremiumFeature()
-    }
+        viewModel = IncidentLocalityListViewModel()
+        viewModel.delegate = self
 
-    func unlockPremiumFeature() {
-        if FWUserDefaults().userRole == "basic_user" {
-            messageLabel.isHidden = false
-            tableView.isHidden = true
-        } else {
-            messageLabel.isHidden = true
-            tableView.isHidden = false
+        showLoader()
+        viewModel.getLocalities(forType: .notification)
 
-            viewModel = IncidentLocalityListViewModel()
-            viewModel.delegate = self
-
-            showLoader()
-            viewModel.getLocalities(forType: .notification)
-
-            setupTableView()
-        }
+        setupTableView()
     }
 
     func setupTableView() {

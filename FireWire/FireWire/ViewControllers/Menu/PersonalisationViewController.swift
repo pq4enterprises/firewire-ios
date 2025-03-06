@@ -33,11 +33,20 @@ class PersonalisationViewController: UIViewController {
     }
 
     @objc func notificationTap() {
+        guard unlockPremiumFeatureIfValid() == false else { return }
         coordinator?.navigateToNotificationSettings()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
         coordinator?.popView()
+    }
+
+    func unlockPremiumFeatureIfValid() -> Bool {
+        if FWUserDefaults().userRole == "basic_user" {
+            coordinator?.navigateToSubscriptionInfo()
+            return true
+        }
+        return false
     }
 
     // A convenience method to instantiate from the storyboard
