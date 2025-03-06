@@ -37,20 +37,51 @@ final class MyAccountViewModel {
             apiEndPoint: APIEndpoints.submitSubscriptionDetails,
             payload: submitPaymentRequestModel as JSON,
             expect: SuccessResponseModel.self,
-            requestType: APIConstants.PUT
+            requestType: APIConstants.POST
         ) { [weak self] response, _, _ in
             guard let apiResponse = response else {
-                self?.delegate?.dataLoaded(message: "Payment detail submission failed, try again after sometime")
+                self?.delegate?.dataLoaded(status: false, message: "Payment detail submission failed, try again after sometime")
                 return
             }
 
             if apiResponse is SuccessResponseModel {
-                self?.delegate?.dataLoaded(message: "Your premium subscription is Success!")
+                self?.getUserProfile() // subscription success, get user profile for updated role
             } else {
-                self?.delegate?.dataLoaded(message: "Payment detail submission failed")
+                self?.delegate?.dataLoaded(status: false, message: "Payment detail submission failed")
             }
         }
     }
+
+    func getUserProfile() {
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.userProfile,
+            expect: GetUserProfileResponseModel.self,
+            requestType: APIConstants.GET
+        ) { [weak self] response, _, _ in
+            guard let apiResponse = response as? GetUserProfileResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                return
+            }
+
+            if apiResponse.code != "success" {
+                self?.delegate?.dataLoaded(status: false, message: apiResponse.message)
+                return
+            }
+
+            guard let userData = apiResponse.data else {
+                self?.delegate?.dataLoaded(status: false, message: "Missing user data")
+                return
+            }
+
+            if let userRole = userData.role {
+                FWUserDefaults.setStringForKey(key: .userRoleKey, value: userRole)
+            }
+
+            self?.delegate?.dataLoaded(status: true, message: "Your premium subscription is Success!")
+        }
+    }
+
 
     func getString(fromDate: Date) -> String {
         let formatter = DateFormatter()

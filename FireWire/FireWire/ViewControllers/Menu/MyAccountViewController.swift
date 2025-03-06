@@ -9,7 +9,7 @@ import StoreKit
 import UIKit
 
 protocol MyAccountViewDelegate: AnyObject {
-    func dataLoaded(message: String)
+    func dataLoaded(status: Bool, message: String)
 }
 
 class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, MyAccountViewDelegate {
@@ -23,7 +23,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     @IBOutlet var logoutView: UIStackView!
     @IBOutlet var termsStackView: UIStackView!
     @IBOutlet var privacyPolicyStackView: UIStackView!
-    @IBOutlet weak var premiumInfoTitle: UILabel!
+    @IBOutlet var premiumInfoTitle: UILabel!
     @IBOutlet var getPremiumButton: FWFilledButton!
 
     var viewModel: MyAccountViewModel?
@@ -39,6 +39,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
+        updatePremiumInfo()
         setupActions()
 
         viewModel = MyAccountViewModel()
@@ -51,18 +52,20 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
             emailLabel.text = email
         }
 
-        if FWUserDefaults().userRole != "admin" {
-            premiumInfoTitle.text = .PremiumDetails.premiumAccount
-            getPremiumButton.isHidden = true
-        }else{
-            premiumInfoTitle.text = .PremiumDetails.title
-            getPremiumButton.isHidden = false
-        }
-
         if let profileImage = FWUserDefaults().userImage,
            let imageUrl = URL(string: profileImage)
         {
             profileImageView.loadImage(from: imageUrl)
+        }
+    }
+
+    func updatePremiumInfo() {
+        if FWUserDefaults().userRole != "admin" {
+            premiumInfoTitle.text = .PremiumDetails.premiumAccount
+            getPremiumButton.isHidden = true
+        } else {
+            premiumInfoTitle.text = .PremiumDetails.title
+            getPremiumButton.isHidden = false
         }
     }
 
@@ -115,15 +118,20 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     func purchaseTransactionCompleted(success: Bool, transaction: Transaction?) {
         DispatchQueue.main.async {
             if success {
-                // self.showAlertMessage("Your premium scubscription is Success!")
+                self.showLoader()
                 self.viewModel?.submitPayment(transaction: transaction)
             } else {
+                self.hideLoader()
                 self.showAlertMessage("Purchase failed, please try again!")
             }
         }
     }
 
-    func dataLoaded(message: String) {
+    func dataLoaded(status: Bool, message: String) {
+        self.hideLoader()
+        if status {
+            updatePremiumInfo()
+        }
         showAlertMessage(message)
     }
 
