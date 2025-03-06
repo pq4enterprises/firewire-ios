@@ -14,8 +14,8 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var tableView: UITableView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         unlockPremiumFeature()
     }
 

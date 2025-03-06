@@ -23,6 +23,7 @@ class NotificationLocalityViewController: UIViewController, NotificationLocality
         super.viewDidLoad()
         viewModel = NotificationLocalityViewModel()
         viewModel?.localityData = localityData
+        viewModel?.saveAlreadySelectedArea()
         viewModel?.delegate = self
         setupTableView()
     }

@@ -14,6 +14,14 @@ final class NotificationLocalityViewModel {
     var selectedUnits: [String] = []
     var delegate: NotificationLocalityDelegate?
 
+    func saveAlreadySelectedArea() {
+        guard let localityData else { return }
+
+        localityData.subLocality.forEach { updateSelectionArrays(for: $0) }
+        localityData.unit?.forEach { updateSelectionArrays(for: $0) }
+        localityData.incidentType?.forEach { updateSelectionArrays(for: $0) }
+    }
+
     func isLocalityAllChecked() -> Bool {
         if localityData != nil {
             return localityData.subLocality.allSatisfy { $0.isChecked }
@@ -39,18 +47,6 @@ final class NotificationLocalityViewModel {
                 updateSelectionArrays(for: localityData.subLocality[i])
             }
         }
-
-        //        /// If not all selected, select all items
-        //        if !allSelected {
-        //            for i in 0..<localityData.subLocality.count {
-        //                let subLocality = localityData.subLocality[i]
-        //                if !subLocality.isChecked {
-        //                    localityData.subLocality[i].isChecked = true
-        //                    // Update selection arrays for the selected sub-locality
-        //                    updateSelectionArrays(for: localityData.subLocality[i])
-        //                }
-        //            }
-        //        }
     }
 
     func isUnitsAllChecked() -> Bool {
@@ -84,16 +80,6 @@ final class NotificationLocalityViewModel {
             }
         }
 
-        //        /// If not all selected, select all items
-        //        if !allSelected {
-        //            for i in 0..<units.count {
-        //                if let unit = units[i], !unit.isChecked {
-        //                    localityData.unit?[i]?.isChecked = true
-        //                    // Update selection arrays for the selected units
-        //                    updateSelectionArrays(for: localityData.unit?[i])
-        //                }
-        //            }
-        //        }
     }
 
     func isIncidentTypeAllChecked() -> Bool {
@@ -126,17 +112,6 @@ final class NotificationLocalityViewModel {
                 }
             }
         }
-
-        //        /// If not all selected, select all items
-        //        if !allSelected {
-        //            for i in 0..<incidentTypes.count {
-        //                if let incidentType = incidentTypes[i], !incidentType.isChecked {
-        //                    localityData.incidentType?[i]?.isChecked = true
-        //                    // Update selection arrays for the selected incident type
-        //                    updateSelectionArrays(for: localityData.incidentType?[i])
-        //                }
-        //            }
-        //        }
     }
 
     func updateSelectionArrays(for subLocality: SubLocality) {
@@ -192,17 +167,15 @@ final class NotificationLocalityViewModel {
     }
 
     func setSelectedLocalities() {
-        if !selectedNotificationArea.isEmpty {
-            let requestModel: [[String: Any]] = selectedNotificationArea.map { $0.toDictionary() }
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.setNotificationArea,
-                payload: requestModel,
-                expect: SuccessResponseModel.self)
-            { response, _, _ in
+        let requestModel: [[String: Any]] = selectedNotificationArea.map { $0.toDictionary() }
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.setNotificationArea,
+            payload: requestModel,
+            expect: SuccessResponseModel.self)
+        { response, _, _ in
 
-                if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
-                    self.delegate?.setNotification(message: apiResponse.message)
-                }
+            if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
+                self.delegate?.setNotification(message: apiResponse.message)
             }
         }
     }
