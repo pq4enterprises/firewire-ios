@@ -13,7 +13,7 @@ final class MyAccountViewModel {
 
     func submitPayment(transaction: Transaction?) {
         guard let transaction, let userId = FWUserDefaults().userID else {
-            delegate?.dataLoaded(message: "Required payment details not available")
+            delegate?.dataLoaded(status: false, message: "Required payment details not available")
             return
         }
 
