@@ -145,4 +145,11 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.present(navVC, animated: true)
 
     }
+
+    func navigateToSubscriptionInfo(){
+        let subscriptionView = SubscriptionInfoViewController.instantiate()
+        subscriptionView.modalPresentationStyle = .overFullScreen
+        subscriptionView.coordinator = self
+        navigationController.present(subscriptionView, animated: true)
+    }
 }

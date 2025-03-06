@@ -23,31 +23,20 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        unlockPremiumFeature()
+        viewModel = FeedsListViewModel()
+        viewModel.getFeedList()
+        viewModel.delegate = self
+
+        paginationHandler = PaginationHandler(viewModel: viewModel)
+
+        setupTableView()
+
+        noFeedsLabel.isHidden = true
     }
 
-    func unlockPremiumFeature() {
-        tableView.isHidden = true
-
-        if FWUserDefaults().userRole == "basic_user" {
-            activityIndicator.isHidden = true
-            noFeedsLabel.isHidden = false
-            noFeedsLabel.text = "Unlock this feature by subscribing to our premium plan."
-        } else {
-            activityIndicator.isHidden = false
-            showActivityIndicator(true)
-
-            viewModel = FeedsListViewModel()
-            viewModel.getFeedList()
-            viewModel.delegate = self
-
-            paginationHandler = PaginationHandler(viewModel: viewModel)
-
-            setupTableView()
-
-            noFeedsLabel.text = "No Feeds found!"
-            noFeedsLabel.isHidden = true
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showActivityIndicator(true)
     }
 
     func setupTableView() {
@@ -107,6 +96,14 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         )
     }
 
+    func unlockPremiumFeatureIfValid() -> Bool {
+        if FWUserDefaults().userRole == "basic_user" {
+            coordinator?.navigateToSubscriptionInfo()
+            return true
+        }
+        return false
+    }
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> FeedsListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -144,6 +141,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
                 self.stopListeningToFeed(indexPath: indexPath)
             }
         } else {
+            guard unlockPremiumFeatureIfValid() == false else { return }
             startListeningToFeed(id: feedData.id, urlString: feedData.url, indexPath: indexPath)
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)

@@ -319,6 +319,8 @@
 		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
 		B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
 		B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */; };
+		B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
+		B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -534,6 +536,7 @@
 		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
 		B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseModel.swift; sourceTree = "<group>"; };
 		B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -763,6 +766,7 @@
 				B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */,
 				B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */,
 				B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */,
+				B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1334,6 +1338,7 @@
 				B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
+				B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
 				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
@@ -1477,6 +1482,7 @@
 				B0B1AEBF2D4F8DB6007371A9 /* MapViewModel.swift in Sources */,
 				B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */,
 				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
+				B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */,
 				B0B1AEC32D4F8DB6007371A9 /* JPAlertController.swift in Sources */,
 				B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class FeedItemListView: UITableViewCell {
 
     func setupView(_ model: FeedListData) {
         titleLabel.text = model.name
-        if model.isPlaying {
+        if model.isPlaying || AppManager.shared.currentScannerIDListeningTO == model.id {
             playIcon.image = FWImage.pauseIcon
             liveLabel.isHidden = false
             musicPlayImage.isHidden = false
