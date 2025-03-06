@@ -60,12 +60,12 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     func updatePremiumInfo() {
-        if FWUserDefaults().userRole != "admin" {
-            premiumInfoTitle.text = .PremiumDetails.premiumAccount
-            getPremiumButton.isHidden = true
-        } else {
+        if FWUserDefaults().userRole == "basic_user" {
             premiumInfoTitle.text = .PremiumDetails.title
             getPremiumButton.isHidden = false
+        } else {
+            premiumInfoTitle.text = .PremiumDetails.premiumAccount
+            getPremiumButton.isHidden = true
         }
     }
 

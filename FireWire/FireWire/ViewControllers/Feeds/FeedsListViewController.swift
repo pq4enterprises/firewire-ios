@@ -23,25 +23,31 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = FeedsListViewModel()
-        viewModel.getFeedList()
-        viewModel.delegate = self
-
-        paginationHandler = PaginationHandler(viewModel: viewModel)
-
-        setupTableView()
-
-        noFeedsLabel.isHidden = true
+        unlockPremiumFeature()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showActivityIndicator(true)
-    }
+    func unlockPremiumFeature() {
+        tableView.isHidden = true
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        stopListeningToFeed(indexPath: nil)
+        if FWUserDefaults().userRole == "basic_user" {
+            activityIndicator.isHidden = true
+            noFeedsLabel.isHidden = false
+            noFeedsLabel.text = "Unlock this feature by subscribing to our premium plan."
+        } else {
+            activityIndicator.isHidden = false
+            showActivityIndicator(true)
+
+            viewModel = FeedsListViewModel()
+            viewModel.getFeedList()
+            viewModel.delegate = self
+
+            paginationHandler = PaginationHandler(viewModel: viewModel)
+
+            setupTableView()
+
+            noFeedsLabel.text = "No Feeds found!"
+            noFeedsLabel.isHidden = true
+        }
     }
 
     func setupTableView() {
@@ -172,7 +178,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func getIndexOfPlayingFeed() -> IndexPath? {
-        for sectionIndex in 0..<viewModel.items.count {
+        for sectionIndex in 0 ..< viewModel.items.count {
             let feedList = viewModel.items[sectionIndex].feedList
             if let rowIndex = feedList.firstIndex(where: { $0.isPlaying == true }) {
                 return IndexPath(row: rowIndex, section: sectionIndex)

@@ -11,24 +11,37 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
     var coordinator: HomeCoordinator?
     var viewModel: IncidentLocalityListViewModel!
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = IncidentLocalityListViewModel()
-        viewModel.delegate = self
-
-        showLoader()
-        viewModel.getLocalities(forType: .notification)
-
-        setupTableView()
+        unlockPremiumFeature()
     }
 
-    func setupTableView(){
+    func unlockPremiumFeature() {
+        if FWUserDefaults().userRole == "basic_user" {
+            messageLabel.isHidden = false
+            tableView.isHidden = true
+        } else {
+            messageLabel.isHidden = true
+            tableView.isHidden = false
+
+            viewModel = IncidentLocalityListViewModel()
+            viewModel.delegate = self
+
+            showLoader()
+            viewModel.getLocalities(forType: .notification)
+
+            setupTableView()
+        }
+    }
+
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.sectionHeaderTopPadding = 0  // iOS 15+ to avoid space above section headers
+        tableView.sectionHeaderTopPadding = 0 // iOS 15+ to avoid space above section headers
     }
 
     func dataReceived() {
@@ -50,7 +63,6 @@ class NotificationSettingsViewController: UIViewController, IncidentLocalityList
         let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationSettingsViewController") as! NotificationSettingsViewController
         return viewController
     }
-
 }
 
 extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -72,5 +84,4 @@ extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.navigateToNotificationLocalityView(viewModel.localityData[indexPath.row])
     }
-
 }
