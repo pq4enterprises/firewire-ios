@@ -59,7 +59,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         lastNameTextField.text = model.lastName
         emailTextField.text = model.email
         phoneNumberTextField.text = model.mobile
-        positionTextField.text = model.role
+        positionTextField.text = model.title
 
         if let profileImage = model.img, let imageUrl = URL(string: profileImage) {
             profileImageView.loadImage(from: imageUrl)

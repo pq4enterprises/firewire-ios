@@ -2698,12 +2698,11 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                                 <color key="textColor" name="FWTextGrey"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-XH-lJd" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-XH-lJd" customClass="FWTextField" customModule="FireWire" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="22" width="333" height="55"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="55" id="uW7-Ma-Ney"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="FWTextGrey"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                             </textField>
