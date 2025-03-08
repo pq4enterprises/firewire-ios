@@ -1,8 +1,7 @@
 //
-//  JPToast.swift
-//  CIPO
+//  FWToast.swift
+//  FireWire
 //
-//  Created by prithiviraj on 3/11/24.
 //
 
 import UIKit

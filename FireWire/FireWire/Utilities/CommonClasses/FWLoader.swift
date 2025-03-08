@@ -1,20 +1,19 @@
 //
-//  JPLoader.swift
-//  CIPO
+//  FWLoader.swift
+//  FireWire
 //
-//  Created by prithiviraj on 3/11/24.
 //
 
 import UIKit
 
-public class JPLoader {
+public class FWLoader {
     var overlayView = UIView()
     var activityIndicator = UIActivityIndicatorView()
     var bgView = UIView()
 
-    class var shared: JPLoader {
+    class var shared: FWLoader {
         struct Static {
-            static let instance: JPLoader = JPLoader()
+            static let instance: FWLoader = FWLoader()
         }
         return Static.instance
     }

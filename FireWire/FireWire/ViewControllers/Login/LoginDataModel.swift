@@ -2,7 +2,6 @@
 //  LoginDataModel.swift
 //  FireWire
 //
-//  Created by JoPrithiviraj on 26/11/24.
 //
 
 import UIKit

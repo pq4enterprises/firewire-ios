@@ -10,14 +10,13 @@
 		73C3E9F62D4F83F800FF1352 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		9B4B179F2CF58759007517BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
-		9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* JPToast.swift */; };
-		9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D02CF57068007D319D /* JPTextField.swift */; };
-		9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
+		9B4F50DB2CF57068007D319D /* FWToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* FWToast.swift */; };
+		9B4F50DD2CF57068007D319D /* FWNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */; };
 		9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
 		9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
 		9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* FWAlertController.swift */; };
 		9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
-		9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* JPLoader.swift */; };
+		9B4F50E22CF57068007D319D /* FWLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* FWLoader.swift */; };
 		9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
 		9B4F51312CF586E6007D319D /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
 		9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */; };
@@ -187,11 +186,10 @@
 		B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
-		B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* JPToast.swift */; };
+		B0B1AEB72D4F8DB6007371A9 /* FWToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* FWToast.swift */; };
 		B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
 		B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */; };
-		B0B1AEBA2D4F8DB6007371A9 /* JPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D02CF57068007D319D /* JPTextField.swift */; };
-		B0B1AEBB2D4F8DB6007371A9 /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
+		B0B1AEBB2D4F8DB6007371A9 /* FWNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */; };
 		B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
 		B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
@@ -207,7 +205,7 @@
 		B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
 		B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
 		B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
-		B0B1AECB2D4F8DB6007371A9 /* JPLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* JPLoader.swift */; };
+		B0B1AECB2D4F8DB6007371A9 /* FWLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* FWLoader.swift */; };
 		B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304792D134057006F851A /* LocalityResponseModel.swift */; };
 		B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
 		B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
@@ -389,10 +387,9 @@
 		9B4F50CA2CF57068007D319D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		9B4F50CD2CF57068007D319D /* FWAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWAlertController.swift; sourceTree = "<group>"; };
-		9B4F50CE2CF57068007D319D /* JPLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPLoader.swift; sourceTree = "<group>"; };
-		9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNetworkReachability.swift; sourceTree = "<group>"; };
-		9B4F50D02CF57068007D319D /* JPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPTextField.swift; sourceTree = "<group>"; };
-		9B4F50D12CF57068007D319D /* JPToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPToast.swift; sourceTree = "<group>"; };
+		9B4F50CE2CF57068007D319D /* FWLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoader.swift; sourceTree = "<group>"; };
+		9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWNetworkReachability.swift; sourceTree = "<group>"; };
+		9B4F50D12CF57068007D319D /* FWToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWToast.swift; sourceTree = "<group>"; };
 		9B4F50E62CF57609007D319D /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
 		9B4F51292CF586E6007D319D /* String+copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+copy.swift"; sourceTree = "<group>"; };
 		9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
@@ -627,10 +624,9 @@
 			children = (
 				B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */,
 				9B4F50CD2CF57068007D319D /* FWAlertController.swift */,
-				9B4F50CE2CF57068007D319D /* JPLoader.swift */,
-				9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */,
-				9B4F50D02CF57068007D319D /* JPTextField.swift */,
-				9B4F50D12CF57068007D319D /* JPToast.swift */,
+				9B4F50CE2CF57068007D319D /* FWLoader.swift */,
+				9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */,
+				9B4F50D12CF57068007D319D /* FWToast.swift */,
 			);
 			path = CommonClasses;
 			sourceTree = "<group>";
@@ -1326,12 +1322,11 @@
 				B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */,
 				B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */,
 				B0E87A0C2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
-				9B4F50DB2CF57068007D319D /* JPToast.swift in Sources */,
+				9B4F50DB2CF57068007D319D /* FWToast.swift in Sources */,
 				B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
 				B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */,
-				9B4F50DC2CF57068007D319D /* JPTextField.swift in Sources */,
-				9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */,
+				9B4F50DD2CF57068007D319D /* FWNetworkReachability.swift in Sources */,
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
 				B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */,
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
@@ -1349,7 +1344,7 @@
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6B02D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
-				9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */,
+				9B4F50E22CF57068007D319D /* FWLoader.swift in Sources */,
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
 				B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */,
 				B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */,
@@ -1470,12 +1465,11 @@
 				B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */,
 				B0B1AEB62D4F8DB6007371A9 /* LoginRequestModel.swift in Sources */,
 				B0E87A0D2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
-				B0B1AEB72D4F8DB6007371A9 /* JPToast.swift in Sources */,
+				B0B1AEB72D4F8DB6007371A9 /* FWToast.swift in Sources */,
 				B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
 				B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */,
-				B0B1AEBA2D4F8DB6007371A9 /* JPTextField.swift in Sources */,
-				B0B1AEBB2D4F8DB6007371A9 /* JPNetworkReachability.swift in Sources */,
+				B0B1AEBB2D4F8DB6007371A9 /* FWNetworkReachability.swift in Sources */,
 				B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */,
 				B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */,
 				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
@@ -1493,7 +1487,7 @@
 				B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */,
 				B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6AF2D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
-				B0B1AECB2D4F8DB6007371A9 /* JPLoader.swift in Sources */,
+				B0B1AECB2D4F8DB6007371A9 /* FWLoader.swift in Sources */,
 				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
 				B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */,
 				B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */,
