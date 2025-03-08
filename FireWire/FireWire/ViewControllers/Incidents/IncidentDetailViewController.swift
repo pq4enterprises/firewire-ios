@@ -108,6 +108,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         if !reloadOnlyUIElements {
             let mapManager = MapManager()
             mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
+            mapView.mapType = .satellite
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 
@@ -119,7 +120,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
                 unitsView.isHidden = true
             }
 
-            fitMarkersToMap()
+            // focus on first marker
+            guard let markers = viewModel?.markersList else { return }
+            let firstLocation = markers[0].coordinates
+            let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
+            mapView.animate(to: camera)
         }
     }
 
@@ -203,13 +208,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            mapView.mapType = .normal
-        case 1:
             mapView.mapType = .satellite
-        case 3:
+        case 1:
+            mapView.mapType = .normal
+        case 2:
             mapView.mapType = .hybrid
         default:
-            mapView.mapType = .normal
+            mapView.mapType = .satellite
         }
     }
 
