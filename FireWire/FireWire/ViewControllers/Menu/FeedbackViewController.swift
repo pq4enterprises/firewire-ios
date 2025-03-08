@@ -39,7 +39,7 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
     @IBAction func submitButtonTap(_ sender: UIButton) {
         let feedbackText = feedBackTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if feedbackText.isEmpty {
-            showToast(message: "Please enter a valid reason")
+            showAlert(title: "", message: "Please enter a valid reason", actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }else{
             submitFeedback?(feedbackText)
             dismiss(animated: true, completion: nil)

@@ -283,7 +283,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: LoginViewDelegate {
     func loginSuccess(_ type: LoginType) {
         hideLoader()
-        if type == .google || type == .facebook {
+        if type == .google || type == .apple {
             coordinator?.navigateToSelectArea()
         } else {
             coordinator?.backToParentCoordinator()
