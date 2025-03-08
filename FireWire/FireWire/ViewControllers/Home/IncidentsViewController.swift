@@ -98,6 +98,9 @@ class IncidentsViewController: UIViewController {
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
+        incidentTableView.showsHorizontalScrollIndicator = false
+        incidentTableView.showsVerticalScrollIndicator = false
+
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         incidentTableView.addGestureRecognizer(panGestureRecognizer)
 

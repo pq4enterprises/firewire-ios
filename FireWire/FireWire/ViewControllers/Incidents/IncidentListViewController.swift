@@ -45,6 +45,9 @@ class IncidentListViewController: UIViewController, PostListViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+
         tableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
 
         incidentListCount.text = "\(viewModel.items.count) posts are listed"

@@ -37,6 +37,9 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+
         tableView.register(IncidentLocalityListItem.nib(), forCellReuseIdentifier: IncidentLocalityListItem.identifier)
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
     }

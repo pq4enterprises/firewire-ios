@@ -43,6 +43,9 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)
         tableView.register(FeedItemListView.nib(), forCellReuseIdentifier: FeedItemListView.identifier)
     }

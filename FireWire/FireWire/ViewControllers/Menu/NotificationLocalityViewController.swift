@@ -32,6 +32,9 @@ class NotificationLocalityViewController: UIViewController, NotificationLocality
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+
         tableView.sectionHeaderTopPadding = 0 // iOS 15+ to avoid space above section headers
 
         tableView.register(CityHeaderCell.nib(), forCellReuseIdentifier: CityHeaderCell.identifier)

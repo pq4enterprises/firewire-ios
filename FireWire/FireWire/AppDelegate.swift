@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
     // TODO: Check notification data and modify
     func onClick(event: OSNotificationClickEvent) {
         let additionalData = event.notification.additionalData
-
+        
         if let data = additionalData {
             if let screen = data["screen"] as? String {
                 if screen == "profile" {
@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
                 }
             }
         }
+    }
 
     // MARK: UISceneSession Lifecycle
 
