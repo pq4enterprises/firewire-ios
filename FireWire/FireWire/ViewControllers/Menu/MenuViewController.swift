@@ -73,11 +73,20 @@ class MenuViewController: UIViewController {
         personalisationView.addGestureRecognizer(personalisationViewGesture)
     }
 
+    func unlockPremiumFeatureIfValid() -> Bool {
+        if FWUserDefaults().userRole == "basic_user" {
+            coordinator?.navigateToSubscriptionInfo()
+            return true
+        }
+        return false
+    }
+
     @objc func myAccountViewTap() {
         coordinator?.navigateToMyAccount()
     }
 
     @objc func saltyWireViewTap() {
+        guard unlockPremiumFeatureIfValid() == false else { return }
         coordinator?.openURL(APIEndpoints.saltyWireUrl)
     }
 

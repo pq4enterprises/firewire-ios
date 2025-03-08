@@ -13,7 +13,7 @@ import StoreKit
 import UIKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
     #if DEV
         static let oneSignalAppId = "0366eec4-c67f-472e-9a4f-8f73461f1353"
     #else
@@ -35,8 +35,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("User accepted notifications: \(accepted)")
         }, fallbackToSettings: false)
 
+        /// Code to handle notification click
+        //OneSignal.Notifications.addClickListener(self)
+
         return true
     }
+
+    // TODO: Check notification data and modify
+    func onClick(event: OSNotificationClickEvent) {
+        let additionalData = event.notification.additionalData
+
+        if let data = additionalData {
+            if let screen = data["screen"] as? String {
+                if screen == "profile" {
+                    NotificationCenter.default.post(name: Notification.Name("OpenProfileScreen"), object: nil)
+                }
+                else if screen == "chat" {
+                    NotificationCenter.default.post(name: Notification.Name("OpenChatScreen"), object: nil)
+                }
+            }
+        }
 
     // MARK: UISceneSession Lifecycle
 
