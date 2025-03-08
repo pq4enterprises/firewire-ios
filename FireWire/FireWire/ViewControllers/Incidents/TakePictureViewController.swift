@@ -50,7 +50,7 @@ class TakePictureViewController: UIViewController {
             imagePickerController.allowsEditing = false
             present(imagePickerController, animated: true, completion: nil)
         } else {
-            showAlertMessage("Photo Gallery is not available.")
+            showAlert(title: "", message: "Photo Gallery is not available.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
     }
 
@@ -62,21 +62,12 @@ class TakePictureViewController: UIViewController {
             imagePickerController.allowsEditing = false
             present(imagePickerController, animated: true, completion: nil)
         } else {
-            showAlertMessage("Camera is not available on this device.")
+            showAlert(title: "", message: "Camera is not available on this device.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
     }
 
     @IBAction func cancelButtonTap(_ sender: UIButton) {
         dismiss(animated: true)
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     static func instantiate() -> TakePictureViewController {
@@ -132,11 +123,11 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
                                 // self?.coordinator?.navigateToIncidentComments(incidentId, imageUrl)
                             })
                         } else {
-                            self?.showAlertMessage("Upload image failed")
+                            self?.showAlert(title: "", message: "Upload image failed", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                         }
                     }
                 } else {
-                    self?.showAlertMessage(response.message)
+                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }

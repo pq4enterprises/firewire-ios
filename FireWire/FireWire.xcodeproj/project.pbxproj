@@ -15,7 +15,7 @@
 		9B4F50DD2CF57068007D319D /* JPNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */; };
 		9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
 		9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
-		9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* JPAlertController.swift */; };
+		9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* FWAlertController.swift */; };
 		9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
 		9B4F50E22CF57068007D319D /* JPLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* JPLoader.swift */; };
 		9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
@@ -199,7 +199,7 @@
 		B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
 		B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
 		B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */; };
-		B0B1AEC32D4F8DB6007371A9 /* JPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* JPAlertController.swift */; };
+		B0B1AEC32D4F8DB6007371A9 /* FWAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* FWAlertController.swift */; };
 		B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
 		B0B1AEC52D4F8DB6007371A9 /* SelectAreaListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */; };
 		B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
@@ -388,7 +388,7 @@
 		9B4F50C92CF57068007D319D /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		9B4F50CA2CF57068007D319D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
-		9B4F50CD2CF57068007D319D /* JPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPAlertController.swift; sourceTree = "<group>"; };
+		9B4F50CD2CF57068007D319D /* FWAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWAlertController.swift; sourceTree = "<group>"; };
 		9B4F50CE2CF57068007D319D /* JPLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPLoader.swift; sourceTree = "<group>"; };
 		9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNetworkReachability.swift; sourceTree = "<group>"; };
 		9B4F50D02CF57068007D319D /* JPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPTextField.swift; sourceTree = "<group>"; };
@@ -626,7 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */,
-				9B4F50CD2CF57068007D319D /* JPAlertController.swift */,
+				9B4F50CD2CF57068007D319D /* FWAlertController.swift */,
 				9B4F50CE2CF57068007D319D /* JPLoader.swift */,
 				9B4F50CF2CF57068007D319D /* JPNetworkReachability.swift */,
 				9B4F50D02CF57068007D319D /* JPTextField.swift */,
@@ -1340,7 +1340,7 @@
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
 				B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */,
-				9B4F50E02CF57068007D319D /* JPAlertController.swift in Sources */,
+				9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */,
 				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
 				B0100CDB2CF78E14004F6214 /* SelectAreaListViewCell.swift in Sources */,
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
@@ -1484,7 +1484,7 @@
 				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
 				B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */,
-				B0B1AEC32D4F8DB6007371A9 /* JPAlertController.swift in Sources */,
+				B0B1AEC32D4F8DB6007371A9 /* FWAlertController.swift in Sources */,
 				B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */,
 				B0B1AEC52D4F8DB6007371A9 /* SelectAreaListViewCell.swift in Sources */,
 				B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */,

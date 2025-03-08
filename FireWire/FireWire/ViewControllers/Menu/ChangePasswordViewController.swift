@@ -8,9 +8,9 @@
 import UIKit
 
 class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var currentPasswordTextField: FWTextField!
-    @IBOutlet weak var newPasswordTextField: FWTextField!
-    @IBOutlet weak var confirmPasswordTextField: FWTextField!
+    @IBOutlet var currentPasswordTextField: FWTextField!
+    @IBOutlet var newPasswordTextField: FWTextField!
+    @IBOutlet var confirmPasswordTextField: FWTextField!
 
     var coordinator: HomeCoordinator?
 
@@ -18,7 +18,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupUI()
     }
-    
+
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
@@ -38,7 +38,6 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             guard let self else { return }
             self.togglePasswordVisibility(self.confirmPasswordTextField)
         }
-
     }
 
     func togglePasswordVisibility(_ textField: UITextField) {
@@ -72,19 +71,19 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
               let oldPassword = currentPasswordTextField.text, !oldPassword.isEmpty
         else {
             hideLoader()
-            showAlertMessage("Please enter valid password")
+            showAlert(title: "", message: "Please enter valid password", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
         if newPassword.count < 8 && confirmPassword.count < 8 {
             hideLoader()
-            showAlertMessage("Password should be at least 8 character long")
+            showAlert(title: "", message: "Password should be at least 8 character long", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
         if newPassword != confirmPassword {
             hideLoader()
-            showAlertMessage("One of the password is not matching")
+            showAlert(title: "", message: "One of the password is not matching", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -99,32 +98,24 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             self?.hideLoader()
             guard let apiResponse = response as? SuccessResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
-                self?.showAlertMessage(errorMessage)
+                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
             }
 
             if apiResponse.code != "success" {
-                self?.showAlertMessage(apiResponse.message)
+                self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
             }
 
             if apiResponse.code.lowercased() == "success" {
-                self?.showAlertMessage("Your password has been successfully updated") {
+                self?.showAlert(title: "", message: "Your password has been successfully updated", actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
                     self?.coordinator?.popView()
-                }
+                })])
+
             } else {
-                self?.showAlertMessage("Technical error, please try again!")
+                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             }
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // A convenience method to instantiate from the storyboard
@@ -133,5 +124,4 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
         return viewController
     }
-
 }

@@ -26,12 +26,12 @@ class IncidentShareViewController: UIViewController {
                     // Open WhatsApp with the message
                     UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
                 } else {
-                    showAlertMessage("WhatsApp is not installed on this device. Please install WhatsApp to share content.")
+                    showAlert(title: "", message: "WhatsApp is not installed on this device. Please install WhatsApp to share content.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
     }
-    
+
     @IBAction func facebookButtonTap(_ sender: UIButton) {
         let messageToShare = "\(shareMessage) \n\n Checkout: \(appStoreUrl)"
         let urlFacebook = "fb://feed?text=\(messageToShare)"
@@ -43,12 +43,12 @@ class IncidentShareViewController: UIViewController {
                     // Open Facebook with the message
                     UIApplication.shared.open(facebookURL, options: [:], completionHandler: nil)
                 } else {
-                    showAlertMessage("Facebook is not installed on this device. Please install Facebook to share content.")
+                    showAlert(title: "", message: "Facebook is not installed on this device. Please install Facebook to share content.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
     }
-    
+
     @IBAction func instagramButtonTap(_ sender: UIButton) {
         let messageToShare = "\(shareMessage) \n\n Checkout: \(appStoreUrl)"
         let urlInstagram = "instagram://app?text=\(messageToShare)"
@@ -58,7 +58,7 @@ class IncidentShareViewController: UIViewController {
                 if UIApplication.shared.canOpenURL(instagramURL) {
                     UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
                 } else {
-                    showAlertMessage("Instagram is not installed on this device. Please install Instagram to share content.")
+                    showAlert(title: "", message: "Instagram is not installed on this device. Please install Instagram to share content.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
@@ -73,19 +73,10 @@ class IncidentShareViewController: UIViewController {
                 if UIApplication.shared.canOpenURL(twitterURL) {
                     UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
                 } else {
-                    showAlertMessage("Twitter is not installed on this device. Please install Twitter to share content.")
+                    showAlert(title: "", message: "Twitter is not installed on this device. Please install Twitter to share content.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     static func instantiate() -> IncidentShareViewController {

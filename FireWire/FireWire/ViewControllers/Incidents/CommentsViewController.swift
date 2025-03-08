@@ -105,7 +105,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func error(message: String) {
-        showAlertMessage(message)
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -144,7 +144,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     func comment(withImage urlString: String?) {
         guard let commentMessage = addCommentTextField.text, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showAlertMessage("Comments cannot be empty")
+            showAlert(title: "", message: "Comments cannot be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -164,15 +164,6 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         addCommentTextField.resignFirstResponder()
         attachedImages.removeAll()
         collectionViewHeightConstraint.constant = 0
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // TODO: Handle in common place

@@ -45,10 +45,9 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         let currentText = textField.text ?? ""
         let newLength = currentText.count + string.count - range.length
-        
+
         if string.contains(" ") {
             return false
         }
@@ -60,19 +59,19 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         showLoader()
         guard let newPassword = passwordTextField.text, !newPassword.isEmpty, let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty, let resetToken = resetToken else {
             hideLoader()
-            showAlertMessage("Please enter valid password")
+            showAlert(title: "", message: "Please enter valid password", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
         if newPassword.count < 8 && confirmPassword.count < 8 {
             hideLoader()
-            showAlertMessage("Password should be at least 8 character long")
+            showAlert(title: "", message: "Password should be at least 8 character long", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
         if newPassword != confirmPassword {
             hideLoader()
-            showAlertMessage("One of the password is not matching")
+            showAlert(title: "", message: "One of the password is not matching", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -84,7 +83,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 
             self?.hideLoader()
             guard let apiResponse = response else {
-                self?.showAlertMessage(.CommonError.techError)
+                self?.showAlert(title: "", message: .CommonError.techError, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
             }
 
@@ -93,19 +92,10 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
                     self?.showToast(message: "Reset password success")
                     self?.coordinator?.popToRootView()
                 } else {
-                    self?.showAlertMessage(response.message.isEmpty ? .CommonError.techError : response.message)
+                    self?.showAlert(title: "", message: response.message.isEmpty ? .CommonError.techError : response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // A convenience method to instantiate from the storyboard

@@ -43,7 +43,7 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
     @IBAction func backButtonTap(_ sender: UIButton) {
         coordinator?.popView()
     }
-    
+
     func dataReceived() {
         showActivityIndicator(false)
         tableView.reloadData()
@@ -51,7 +51,7 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
 
     func error(message: String) {
         showActivityIndicator(false)
-        showAlertMessage(message)
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -66,15 +66,6 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
 
             tableView.isHidden = false
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // A convenience method to instantiate from the storyboard
@@ -97,7 +88,7 @@ extension FeedAreaListViewController: UITableViewDataSource, UITableViewDelegate
             title: viewModel.localityData[section].name,
             isAllSelected: viewModel.isLocalityAllChecked(section: section)
         )
-        
+
         headerView.selectAllAction = {
             self.viewModel.toggleSelectAll(forSection: section)
             tableView.reloadSections([section], with: .automatic)

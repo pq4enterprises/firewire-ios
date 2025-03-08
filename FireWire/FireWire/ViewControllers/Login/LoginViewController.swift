@@ -131,7 +131,7 @@ class LoginViewController: UIViewController {
 
         guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
             hideLoader()
-            showAlertMessage("Enter valid email and password")
+            showAlert(title: "", message: "Enter valid email and password", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -142,7 +142,7 @@ class LoginViewController: UIViewController {
             viewModel?.performUserLogin(loginRequestModel)
         case .failure(let errorMessage):
             hideLoader()
-            showAlertMessage(errorMessage)
+            showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
         default:
             return
         }
@@ -293,22 +293,7 @@ extension LoginViewController: LoginViewDelegate {
 
     func loginFailed(errorMessage: String) {
         hideLoader()
-        showAlert(
-            title: "Login Failed",
-            message: errorMessage,
-            alertStyle: .alert,
-            actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in }]
-        )
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
+        showAlert(title: "Login Failed", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 }
 

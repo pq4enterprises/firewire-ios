@@ -66,25 +66,16 @@ class SubscriptionInfoViewController: UIViewController, SubscriptionManagerDeleg
                 self.viewModel?.submitPayment(transaction: transaction)
             } else {
                 self.hideLoader()
-                self.showAlertMessage("Purchase failed, please try again!")
+                self.showAlert(title: "", message: "Purchase failed, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             }
         }
     }
 
     func dataLoaded(status: Bool, message: String) {
         hideLoader()
-        showAlertMessage(message){
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
             self.dismiss(animated: true)
-        }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
+        })])
     }
 
     // A convenience method to instantiate from the storyboard

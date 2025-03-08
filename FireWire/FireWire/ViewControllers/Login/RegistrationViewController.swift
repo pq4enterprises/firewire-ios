@@ -114,15 +114,6 @@ class RegistrationViewController: UIViewController {
         scrollView.scrollIndicatorInsets = contentInset
     }
 
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
-    }
-
     @IBAction func signUpButtonTap(_ sender: UIButton) {
         showLoader()
         let requestModel = RegisterRequestModel(
@@ -141,7 +132,7 @@ class RegistrationViewController: UIViewController {
             viewModel?.registerNewUser(requestModel)
         case .failure(let errorMessage):
             hideLoader()
-            showAlertMessage(errorMessage)
+            showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
         default:
             return
         }
@@ -166,15 +157,18 @@ extension RegistrationViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         let currentText = textField.text ?? ""
         let newLength = currentText.count + string.count - range.length
 
         if textField == phoneTextField {
-            return newLength <= 15
-        }else if textField == passwordTextField || textField == confirmPasswordTextField {
+            // Allow only numbers (0-9) and prevent special characters
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+
+            return allowedCharacters.isSuperset(of: characterSet) && newLength <= 15
+        } else if textField == passwordTextField || textField == confirmPasswordTextField {
             if string == " " {
-                return false  // Reject space
+                return false // Reject space
             }
             return newLength <= 15
         }
@@ -185,14 +179,14 @@ extension RegistrationViewController: UITextFieldDelegate {
 extension RegistrationViewController: RegistrationViewModelDelegate {
     func registrationSuccess() {
         hideLoader()
-        showAlertMessage("New user registered") {
+        showAlert(title: "", message: "New user registered", actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
             self.coordinator?.popView()
-        }
+        })])
     }
 
     func registrationFail(errorMessage: String) {
         hideLoader()
-        showAlertMessage(errorMessage)
+        showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func loginSuccess() {
@@ -204,6 +198,6 @@ extension RegistrationViewController: RegistrationViewModelDelegate {
 
     func loginFailed(errorMessage: String) {
         hideLoader()
-        showAlertMessage(errorMessage)
+        showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 }

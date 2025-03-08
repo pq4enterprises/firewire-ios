@@ -11,17 +11,17 @@ class MenuViewController: UIViewController {
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
-    @IBOutlet weak var profileImageView: FWRoundedImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var myAccountView: FWView!
-    @IBOutlet weak var saltyWireView: UIView!
-    @IBOutlet weak var submitTipView: UIView!
-    @IBOutlet weak var podcastView: UIView!
-    @IBOutlet weak var fireWireView: UIView!
-    @IBOutlet weak var contactView: UIView!
-    @IBOutlet weak var personalisationView: UIView!
-    
+    @IBOutlet var profileImageView: FWRoundedImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var myAccountView: FWView!
+    @IBOutlet var saltyWireView: UIView!
+    @IBOutlet var submitTipView: UIView!
+    @IBOutlet var podcastView: UIView!
+    @IBOutlet var fireWireView: UIView!
+    @IBOutlet var contactView: UIView!
+    @IBOutlet var personalisationView: UIView!
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
@@ -35,14 +35,15 @@ class MenuViewController: UIViewController {
         }
 
         if let profileImage = FWUserDefaults().userImage,
-            let imageUrl = URL(string: profileImage) {
+           let imageUrl = URL(string: profileImage)
+        {
             profileImageView.loadImage(from: imageUrl)
         }
 
         myAccountView.setCornerRadiusAndShadow()
     }
 
-    func setupActions(){
+    func setupActions() {
         let accountViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(myAccountViewTap))
         myAccountView.isUserInteractionEnabled = true
         myAccountView.addGestureRecognizer(accountViewTapGesture)
@@ -103,32 +104,23 @@ class MenuViewController: UIViewController {
     @IBAction func closeButtonTap(_ sender: UIButton) {
         coordinator?.navigateBackToHome(popViewToLeft: true)
     }
-    
+
     @IBAction func deleleAccountTap(_ sender: UIButton) {
         let feedbackView = FeedbackViewController.instantiate()
         feedbackView.modalPresentationStyle = .overFullScreen
         feedbackView.submitFeedback = { feedback in
             self.submitFeedback(reason: feedback)
         }
-        self.present(feedbackView, animated: true)
+        present(feedbackView, animated: true)
     }
 
-    func clearUserDefaults(){
+    func clearUserDefaults() {
         FWUserDefaults.removeObjectForKey(key: .userIDKey)
         FWUserDefaults.removeObjectForKey(key: .userNameKey)
         FWUserDefaults.removeObjectForKey(key: .userEmailKey)
         FWUserDefaults.removeObjectForKey(key: .userTokenKey)
         FWUserDefaults.removeObjectForKey(key: .userImageKey)
         FWUserDefaults.removeObjectForKey(key: .userRoleKey)
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Okay"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // A convenience method to instantiate from the storyboard
@@ -139,9 +131,10 @@ class MenuViewController: UIViewController {
     }
 }
 
-//MARK: - API Calls
+// MARK: - API Calls
+
 extension MenuViewController {
-    func submitFeedback(reason: String){
+    func submitFeedback(reason: String) {
         showLoader()
         let postFeedbackRequestModel = APIPayload.postReasonToAccountDelete(reason: reason).toDictionary()
 
@@ -159,7 +152,7 @@ extension MenuViewController {
         }
     }
 
-    func deleteUser(){
+    func deleteUser() {
         showLoader()
         let deleteRequestModel = APIPayload.deleteAccount.toDictionary()
 
@@ -171,10 +164,10 @@ extension MenuViewController {
         ) { [weak self] response, _, _ in
             self?.hideLoader()
             if response is SuccessResponseModel {
-                self?.showAlertMessage("Thank you for the feedback. Your account is deleted successfully!"){
+                self?.showAlert(title: "", message: "Thank you for the feedback. Your account is deleted successfully!", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     self?.clearUserDefaults()
                     self?.appCoordinator?.backToParentCoordinator()
-                }
+                })])
             }
         }
     }

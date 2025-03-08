@@ -122,26 +122,17 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
                 self.viewModel?.submitPayment(transaction: transaction)
             } else {
                 self.hideLoader()
-                self.showAlertMessage("Purchase failed, please try again!")
+                self.showAlert(title: "", message: "Purchase failed, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             }
         }
     }
 
     func dataLoaded(status: Bool, message: String) {
-        self.hideLoader()
+        hideLoader()
         if status {
             updatePremiumInfo()
         }
-        showAlertMessage(message)
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func clearUserDefaults() {

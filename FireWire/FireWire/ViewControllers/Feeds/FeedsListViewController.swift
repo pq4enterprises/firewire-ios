@@ -87,15 +87,6 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         }
     }
 
-    fileprivate func showAlertMessage(title: String = "", _ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: title,
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Okay"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
-    }
-
     func unlockPremiumFeatureIfValid() -> Bool {
         if FWUserDefaults().userRole == "basic_user" {
             coordinator?.navigateToSubscriptionInfo()
@@ -137,9 +128,9 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
         let feedData = viewModel.items[indexPath.section].feedList[indexPath.row]
 
         if AppManager.shared.currentScannerIDListeningTO == feedData.id {
-            showAlertMessage(title: "Stop Listening", "Are you sure you want to stop listening?") {
+            self.showAlert(title: "Stop Listening", message: "Are you sure you want to stop listening?", actions: [UIAlertAction(title: "Stop Listening", style: .default, handler: { action in
                 self.stopListeningToFeed(indexPath: indexPath)
-            }
+            })], cancel: true)
         } else {
             guard unlockPremiumFeatureIfValid() == false else { return }
             startListeningToFeed(id: feedData.id, urlString: feedData.url, indexPath: indexPath)
@@ -161,7 +152,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
             AppManager.shared.currentScannerIDListeningTO = id
 
         } else {
-            showAlertMessage("This feed is unavailable at this time.")
+            showAlert(title: "", message: "This feed is unavailable at this time.", actions: [])
         }
     }
 

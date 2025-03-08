@@ -76,15 +76,6 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
         return false
     }
 
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
-    }
-
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> OtpVerificationViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -112,19 +103,19 @@ extension OtpVerificationViewController {
 
                 guard let apiResponse = response as? VerifyOtpResponseModel else {
                     let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
-                    self?.showAlertMessage(errorMessage)
+                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                     return
                 }
 
                 if apiResponse.code != "success" {
-                    self?.showAlertMessage(apiResponse.message)
+                    self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                     return
                 }
 
-                if let otpData = apiResponse.data  {
+                if let otpData = apiResponse.data {
                     self?.coordinator?.navigateToResetPassword(token: otpData.resetToken)
-                }else{
-                    self?.showAlertMessage("Technical error, please try again!")
+                } else {
+                    self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }
@@ -143,13 +134,13 @@ extension OtpVerificationViewController {
 
             self?.hideLoader()
             guard let apiResponse = response else {
-                self?.showAlertMessage("Technical error, please try again!")
+                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
             }
 
             if let response = apiResponse as? ForgotPasswordResponseModel {
                 if response.code.lowercased() != "success" {
-                    self?.showAlertMessage(response.message)
+                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }

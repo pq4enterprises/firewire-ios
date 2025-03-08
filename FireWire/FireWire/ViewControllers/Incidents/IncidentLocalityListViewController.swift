@@ -52,7 +52,7 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         if viewModel.selectedAreas.isEmpty {
-            showAlertMessage("Select at least one location to proceed.")
+            showAlert(title: "", message: "Select at least one location to proceed.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -69,7 +69,7 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
     func error(message: String) {
         showActivityIndicator(false)
-        showAlertMessage(message)
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -84,15 +84,6 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
             tableView.isHidden = false
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 }
 

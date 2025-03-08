@@ -71,7 +71,7 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
 
     func error(message: String) {
         hideLoader()
-        showAlertMessage(message)
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func profileUpdated(_ message: String) {
@@ -119,19 +119,10 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
             viewModel?.updateUserProfile(requestModel)
         case .failure(let errorMessage):
             hideLoader()
-            showAlertMessage(errorMessage)
+            showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
         default:
             return
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Okay"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     @IBAction func changePasswordButtonTap(_ sender: UIButton) {

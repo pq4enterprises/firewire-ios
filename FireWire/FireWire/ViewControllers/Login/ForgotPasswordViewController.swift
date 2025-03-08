@@ -29,7 +29,7 @@ class ForgotPasswordViewController: UIViewController {
         showLoader()
         guard let email = emailTextField.text, !email.isEmpty, email.isValidEmail() else {
             hideLoader()
-            showAlertMessage("Please enter valid email")
+            showAlert(title: "", message: "Please enter valid email", actions: [])
             return
         }
 
@@ -41,7 +41,7 @@ class ForgotPasswordViewController: UIViewController {
 
             self?.hideLoader()
             guard let apiResponse = response else {
-                self?.showAlertMessage("Technical error, please try again!")
+                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [])
                 return
             }
 
@@ -49,19 +49,10 @@ class ForgotPasswordViewController: UIViewController {
                 if response.code.lowercased() == "success" {
                     self?.coordinator?.navigateToOtpVerification(email: email)
                 } else {
-                    self?.showAlertMessage(response.message)
+                    self?.showAlert(title: "", message: response.message, actions: [])
                 }
             }
         }
-    }
-
-    fileprivate func showAlertMessage(_ errorMessage: String, action: (() -> Void)? = nil) {
-        showAlert(
-            title: "",
-            message: errorMessage,
-            alertStyle: .alert, actionTitles: ["Ok"],
-            actionStyles: [.default], actions: [{ _ in action?() }]
-        )
     }
 
     // A convenience method to instantiate from the storyboard
