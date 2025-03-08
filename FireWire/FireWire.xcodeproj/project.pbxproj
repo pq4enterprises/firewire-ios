@@ -11,7 +11,6 @@
 		9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		9B4B179F2CF58759007517BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
 		9B4F50DB2CF57068007D319D /* FWToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* FWToast.swift */; };
-		9B4F50DD2CF57068007D319D /* FWNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */; };
 		9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
 		9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
 		9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* FWAlertController.swift */; };
@@ -24,6 +23,8 @@
 		9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
 		9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
+		B00442052D7C5E6B008259FB /* FWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00442042D7C5E64008259FB /* FWNetworkManager.swift */; };
+		B00442062D7C5E6B008259FB /* FWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00442042D7C5E64008259FB /* FWNetworkManager.swift */; };
 		B006D91A2D42B6600082E59E /* FeedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */; };
 		B006D91C2D42B7430082E59E /* FeedListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */; };
 		B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
@@ -189,7 +190,6 @@
 		B0B1AEB72D4F8DB6007371A9 /* FWToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* FWToast.swift */; };
 		B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDF2D19E58D00D5D56E /* UpdateProfileRequestModel.swift */; };
 		B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */; };
-		B0B1AEBB2D4F8DB6007371A9 /* FWNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */; };
 		B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
 		B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
@@ -388,7 +388,6 @@
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		9B4F50CD2CF57068007D319D /* FWAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWAlertController.swift; sourceTree = "<group>"; };
 		9B4F50CE2CF57068007D319D /* FWLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoader.swift; sourceTree = "<group>"; };
-		9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWNetworkReachability.swift; sourceTree = "<group>"; };
 		9B4F50D12CF57068007D319D /* FWToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWToast.swift; sourceTree = "<group>"; };
 		9B4F50E62CF57609007D319D /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
 		9B4F51292CF586E6007D319D /* String+copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+copy.swift"; sourceTree = "<group>"; };
@@ -397,6 +396,7 @@
 		9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Teko-Medium.ttf"; sourceTree = "<group>"; };
+		B00442042D7C5E64008259FB /* FWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWNetworkManager.swift; sourceTree = "<group>"; };
 		B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewModel.swift; sourceTree = "<group>"; };
 		B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListResponseModel.swift; sourceTree = "<group>"; };
 		B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -622,10 +622,10 @@
 		9B4F50D22CF57068007D319D /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
+				B00442042D7C5E64008259FB /* FWNetworkManager.swift */,
 				B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */,
 				9B4F50CD2CF57068007D319D /* FWAlertController.swift */,
 				9B4F50CE2CF57068007D319D /* FWLoader.swift */,
-				9B4F50CF2CF57068007D319D /* FWNetworkReachability.swift */,
 				9B4F50D12CF57068007D319D /* FWToast.swift */,
 			);
 			path = CommonClasses;
@@ -1326,7 +1326,6 @@
 				B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
 				B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */,
-				9B4F50DD2CF57068007D319D /* FWNetworkReachability.swift in Sources */,
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
 				B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */,
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
@@ -1348,6 +1347,7 @@
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
 				B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */,
 				B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */,
+				B00442062D7C5E6B008259FB /* FWNetworkManager.swift in Sources */,
 				B00A48F02D0D850A0088F66F /* NewsResponseModel.swift in Sources */,
 				B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */,
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
@@ -1469,7 +1469,6 @@
 				B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
 				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
 				B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */,
-				B0B1AEBB2D4F8DB6007371A9 /* FWNetworkReachability.swift in Sources */,
 				B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */,
 				B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */,
 				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
@@ -1491,6 +1490,7 @@
 				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
 				B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */,
 				B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */,
+				B00442052D7C5E6B008259FB /* FWNetworkManager.swift in Sources */,
 				B0B1AECF2D4F8DB6007371A9 /* NewsResponseModel.swift in Sources */,
 				B0B1AED02D4F8DB6007371A9 /* SceneDelegate.swift in Sources */,
 				B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */,
