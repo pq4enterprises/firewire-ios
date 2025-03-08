@@ -117,6 +117,10 @@ final class UpdateProfileViewModel {
             return .failure(message: "Phone number is required")
         }
 
+        if model.mobile.count < 10 {
+            return .failure(message: "Enter a valid phone number")
+        }
+
         if model.title.isEmpty {
             return .failure(message: "Title is required")
         }

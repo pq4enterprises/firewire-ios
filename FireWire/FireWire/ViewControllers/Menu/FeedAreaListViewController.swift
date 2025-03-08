@@ -36,8 +36,13 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
     }
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
-        viewModel.setSelectedLocalities()
-        coordinator?.popView()
+        if viewModel.selectedAreas.count > 0 {
+            viewModel.setSelectedLocalities()
+            coordinator?.popView()
+        }else{
+            showAlert(title: "", message: "Select at lease one location to proceed.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
+
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {

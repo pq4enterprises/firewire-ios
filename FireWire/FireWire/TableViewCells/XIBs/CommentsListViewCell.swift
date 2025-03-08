@@ -34,7 +34,9 @@ class CommentsListViewCell: UITableViewCell {
 
     func setupView(_ model: CommentsData) {
         self.model = model
-        nameLabel.text = model.userID?.firstName
+
+        let userName = "\(model.userID?.firstName ?? "") \(model.userID?.lastName ?? "")"
+        nameLabel.text = userName
 
         if model.userID?.subLocality.count ?? 0 > 0, let locality = model.userID?.subLocality[0] {
             cityLabel.text = locality.name

@@ -89,8 +89,15 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         commentsListCount.isHidden = false
         noCommentsLabel.isHidden = true
 
+        // To update notification count in incident detail screen after adding a comment
+        postNotification()
+
         commentsListCount.text = "\(viewModel.totalPages) Comments"
         tableView.reloadData()
+    }
+
+    @objc func postNotification() {
+        NotificationCenter.default.post(name: .newCommentAdded, object: nil, userInfo: nil)
     }
 
     func noCommentsForIncident() {

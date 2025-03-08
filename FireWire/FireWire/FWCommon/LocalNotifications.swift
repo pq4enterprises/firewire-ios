@@ -10,4 +10,5 @@ import Foundation
 extension Notification.Name {
     static let incidentListDidChange = Notification.Name("incidentListDidChange")
     static let selectAreaDidChange = Notification.Name("selectAreaDidChange")
+    static let newCommentAdded = Notification.Name("newCommentAdded")
 }

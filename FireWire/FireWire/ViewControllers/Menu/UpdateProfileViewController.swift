@@ -183,6 +183,20 @@ extension UpdateProfileViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.backgroundColor = FWColor.textFieldBackgroundGrey
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let newLength = currentText.count + string.count - range.length
+
+        if textField == phoneNumberTextField {
+            // Allow only numbers (0-9) and prevent special characters
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+
+            return allowedCharacters.isSuperset(of: characterSet) && newLength <= 15
+        }
+        return true
+    }
 }
 
 extension UpdateProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

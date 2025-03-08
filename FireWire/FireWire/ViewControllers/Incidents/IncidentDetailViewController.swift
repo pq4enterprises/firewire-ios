@@ -34,6 +34,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
 
+    /// Flag is to skip reloading the map component when new comment is added
+    var reloadOnlyUIElements: Bool = false
+
     private var selectedIncidentID: String?
     private var isLabelExpanded = false
     private var mapView: GMSMapView!
@@ -48,6 +51,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         super.viewDidLoad()
         setupUI()
         setupActions()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(newCommentAdded(_:)), name: .newCommentAdded, object: nil)
     }
 
     func setupUI() {
@@ -58,6 +63,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let selectedIncidentID {
+            viewModel?.getIncidentDetail(for: selectedIncidentID)
+        }
+    }
+
+    @objc func newCommentAdded(_ notification: Notification) {
+        if let selectedIncidentID {
+            reloadOnlyUIElements = true
             viewModel?.getIncidentDetail(for: selectedIncidentID)
         }
     }
@@ -93,20 +105,22 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
         incidentComments.text = "\(incidentDetail.commentCount) Comments"
 
-        let mapManager = MapManager()
-        mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
-        mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
-        incidentMapView.addSubview(mapView)
+        if !reloadOnlyUIElements {
+            let mapManager = MapManager()
+            mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
+            mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
+            incidentMapView.addSubview(mapView)
 
-        if let units = incidentDetail.respondingUnits{
-            let unitsString = "[ " + units.joined(separator: ", ") + " ]"
-            unitsView.isHidden = false
-            unitsLabel.text = unitsString
-        }else{
-            unitsView.isHidden = true
+            if let units = incidentDetail.respondingUnits{
+                let unitsString = "[ " + units.joined(separator: ", ") + " ]"
+                unitsView.isHidden = false
+                unitsLabel.text = unitsString
+            }else{
+                unitsView.isHidden = true
+            }
+
+            fitMarkersToMap()
         }
-
-        fitMarkersToMap()
     }
 
     func fitMarkersToMap() {
@@ -209,7 +223,12 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         let viewController = storyboard.instantiateViewController(withIdentifier: "IncidentDetailViewController") as! IncidentDetailViewController
         return viewController
     }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .newCommentAdded, object: nil)
+    }
 }
+
 
 // MARK: View model delegates
 
