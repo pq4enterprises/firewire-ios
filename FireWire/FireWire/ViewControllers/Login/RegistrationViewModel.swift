@@ -92,11 +92,11 @@ final class RegistrationViewModel {
 
     func validate(_ model: RegisterRequestModel) -> ValidationError {
         if model.firstName.trimmingCharacters(in: .whitespaces).isEmpty {
-            return .failure(message: "First name is required")
+            return .failure(message: "First Name is required")
         }
 
         if model.lastName.trimmingCharacters(in: .whitespaces).isEmpty {
-            return .failure(message: "Last name is required")
+            return .failure(message: "Last Name is required")
         }
 
         if model.email.isEmpty {
