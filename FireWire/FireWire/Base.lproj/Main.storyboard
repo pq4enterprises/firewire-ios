@@ -764,11 +764,6 @@ agreeing with our Terms and Conditions</string>
                                                     <constraint firstItem="oNf-1O-NLy" firstAttribute="leading" secondItem="Ckj-NW-xDd" secondAttribute="leading" id="vM3-yy-1Um"/>
                                                 </constraints>
                                             </stackView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GGe-wF-wsJ">
-                                                <rect key="frame" x="44" y="231.33333333333331" width="305" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="color" name="FWRed"/>
-                                            </activityIndicatorView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T45-af-lub" customClass="FWView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="685" width="343" height="86"/>
                                                 <subviews>
@@ -929,7 +924,6 @@ agreeing with our Terms and Conditions</string>
                     </view>
                     <connections>
                         <outlet property="favouriteButton" destination="0jy-dA-eZ3" id="WBY-3I-Tjw"/>
-                        <outlet property="imageLoadingIndicator" destination="GGe-wF-wsJ" id="VnQ-ps-45M"/>
                         <outlet property="imageMapStackView" destination="uyb-lj-gWP" id="dvp-25-kwM"/>
                         <outlet property="incidentAddress" destination="HrE-Uv-08Z" id="b0S-lu-9eJ"/>
                         <outlet property="incidentComments" destination="2JJ-HI-WMC" id="f7i-vg-p5C"/>

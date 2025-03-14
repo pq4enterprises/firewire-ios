@@ -15,7 +15,6 @@
 		9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
 		9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CD2CF57068007D319D /* FWAlertController.swift */; };
 		9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
-		9B4F50E22CF57068007D319D /* FWLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* FWLoader.swift */; };
 		9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
 		9B4F51312CF586E6007D319D /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
 		9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */; };
@@ -85,6 +84,8 @@
 		B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
 		B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
+		B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
+		B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
 		B08236F42CE374D10092AC01 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F32CE374D10092AC01 /* Base */; };
@@ -237,7 +238,6 @@
 		B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
 		B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
 		B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
-		B0B1AECB2D4F8DB6007371A9 /* FWLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CE2CF57068007D319D /* FWLoader.swift */; };
 		B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304792D134057006F851A /* LocalityResponseModel.swift */; };
 		B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
 		B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
@@ -419,7 +419,6 @@
 		9B4F50CA2CF57068007D319D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9B4F50CB2CF57068007D319D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		9B4F50CD2CF57068007D319D /* FWAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWAlertController.swift; sourceTree = "<group>"; };
-		9B4F50CE2CF57068007D319D /* FWLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoader.swift; sourceTree = "<group>"; };
 		9B4F50D12CF57068007D319D /* FWToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWToast.swift; sourceTree = "<group>"; };
 		9B4F50E62CF57609007D319D /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
 		9B4F51292CF586E6007D319D /* String+copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+copy.swift"; sourceTree = "<group>"; };
@@ -484,6 +483,7 @@
 		B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewModel.swift; sourceTree = "<group>"; };
 		B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
+		B081F6602D84976900E2D673 /* FWLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoaderView.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B08236EE2CE374D10092AC01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -670,10 +670,10 @@
 		9B4F50D22CF57068007D319D /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
+				B081F6602D84976900E2D673 /* FWLoaderView.swift */,
 				B00442042D7C5E64008259FB /* FWNetworkManager.swift */,
 				B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */,
 				9B4F50CD2CF57068007D319D /* FWAlertController.swift */,
-				9B4F50CE2CF57068007D319D /* FWLoader.swift */,
 				9B4F50D12CF57068007D319D /* FWToast.swift */,
 			);
 			path = CommonClasses;
@@ -1444,7 +1444,6 @@
 				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6B02D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
-				9B4F50E22CF57068007D319D /* FWLoader.swift in Sources */,
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
 				B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */,
 				B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */,
@@ -1474,6 +1473,7 @@
 				B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */,
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
+				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
@@ -1590,7 +1590,6 @@
 				B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */,
 				B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6AF2D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
-				B0B1AECB2D4F8DB6007371A9 /* FWLoader.swift in Sources */,
 				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
 				B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */,
 				B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */,
@@ -1620,6 +1619,7 @@
 				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
 				B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */,
 				B0B1AEE22D4F8DB6007371A9 /* IncidentListViewModel.swift in Sources */,
+				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
 				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,

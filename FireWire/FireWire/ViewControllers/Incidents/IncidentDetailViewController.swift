@@ -24,7 +24,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var incidentFavourites: UILabel!
     @IBOutlet var incidentComments: UILabel!
     @IBOutlet var incidentMapView: UIView!
-    @IBOutlet var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var favouriteButton: UIButton!
     @IBOutlet var imageMapStackView: UIStackView!
     @IBOutlet weak var unitsView: FWView!
@@ -49,6 +48,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FWLoaderView.shared.showLoader(on: self.view)
+
         setupUI()
         setupActions()
 
@@ -92,11 +93,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
-            imageLoadingIndicator.isHidden = true
             incidentImageView.loadImage(from: imageUrl)
             imageMapStackView.distribution = .fillEqually
         } else {
-            imageLoadingIndicator.isHidden = true
             incidentImageView.isHidden = true
             imageMapStackView.distribution = .fill
             view.layoutIfNeeded()
@@ -239,6 +238,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
 extension IncidentDetailViewController {
     func dataReceived() {
+        FWLoaderView.shared.hideLoader()
         updateUI()
         viewModel?.postIncidentDetailViewCount()
     }
