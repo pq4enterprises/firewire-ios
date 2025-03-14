@@ -67,12 +67,15 @@ final class FeedsListViewModel: PaginatableViewModel {
         // Grouping the feed list data by locality name
         let grouped = Dictionary(grouping: feedListDataArray) { $0.locality.name }
 
-        for (localityName, feeds) in grouped {
-            // Create the FeedGroupedData for each locality
-            let feedGrouped = FeedGroupedData(localityName: localityName, feedList: feeds)
+        // Sort locality names in descending order
+        let sortedLocalityNames = grouped.keys.sorted(by: >)
 
-            // Add the grouped data into the result array
-            groupedData.append(feedGrouped)
+        for localityName in sortedLocalityNames {
+            if let feeds = grouped[localityName] {
+                // Create the FeedGroupedData for each locality
+                let feedGrouped = FeedGroupedData(localityName: localityName, feedList: feeds)
+                groupedData.append(feedGrouped)
+            }
         }
 
         return groupedData
