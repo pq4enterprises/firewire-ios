@@ -8,28 +8,26 @@
 import UIKit
 
 class CommentsListViewCell: UITableViewCell {
-
     static let identifier = "CommentsListViewCell"
 
     static func nib() -> UINib {
         return UINib(nibName: "CommentsListViewCell", bundle: nil)
     }
 
-    @IBOutlet weak var userImageView: FWRoundedImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var dateTimeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var imageCollectionView: UICollectionView!
-    @IBOutlet weak var imgCollectionHeightConstraint: NSLayoutConstraint!
-    
+    @IBOutlet var userImageView: FWRoundedImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var dateTimeLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var imageCollectionView: UICollectionView!
+    @IBOutlet var imgCollectionHeightConstraint: NSLayoutConstraint!
+
     private var model: CommentsData!
+    var commentsAction: ((CommentsData) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         imageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
-
     }
 
     func setupView(_ model: CommentsData) {
@@ -44,19 +42,19 @@ class CommentsListViewCell: UITableViewCell {
 
         if let profileImage = model.userID?.img, let imageUrl = URL(string: profileImage) {
             userImageView.loadImage(from: imageUrl)
-        }else{
+        } else {
             let defaultImage = UIImage(systemName: "person.crop.circle")
             userImageView.image = defaultImage
         }
 
         descriptionLabel.text = model.comment
 
-        if let commentsImage = model.img, commentsImage.count > 0{
+        if let commentsImage = model.img, commentsImage.count > 0 {
             for img in commentsImage {
                 if img.isEmpty {
                     imgCollectionHeightConstraint.constant = 0
                     imageCollectionView.isHidden = true
-                }else{
+                } else {
                     imgCollectionHeightConstraint.constant = 100.0
                     imageCollectionView.isHidden = false
                     imageCollectionView.dataSource = self
@@ -64,12 +62,12 @@ class CommentsListViewCell: UITableViewCell {
 
                     if let layout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                         layout.scrollDirection = .horizontal
-                        layout.itemSize = CGSize(width: 80, height: 80)  // Set item size
+                        layout.itemSize = CGSize(width: 80, height: 80) // Set item size
                     }
                     imageCollectionView.reloadData()
                 }
             }
-        }else{
+        } else {
             imgCollectionHeightConstraint.constant = 0
             imageCollectionView.isHidden = true
         }
@@ -81,6 +79,9 @@ class CommentsListViewCell: UITableViewCell {
         cityLabel.text = ""
     }
 
+    @IBAction func commentsActionTap(_ sender: UIButton) {
+        commentsAction?(model)
+    }
 }
 
 extension CommentsListViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -91,7 +92,7 @@ extension CommentsListViewCell: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentsImageViewItem.identifier, for: indexPath) as! CommentsImageViewItem
 
-        if let image = model.img?[indexPath.row]{
+        if let image = model.img?[indexPath.row] {
             cell.configure(with: image)
         }
 

@@ -43,12 +43,6 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date | Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-dX-E7n">
-                        <rect key="frame" x="235.66666666666666" y="31.999999999999996" width="64.333333333333343" height="14.333333333333332"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" name="FWTextGrey"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ShQ-j3-vfa">
                         <rect key="frame" x="10" y="72" width="300" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -69,11 +63,30 @@
                         <color key="textColor" name="FWTextGrey2"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixq-59-h95">
+                        <rect key="frame" x="280" y="21" width="20" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="eqA-YC-cmc"/>
+                        </constraints>
+                        <color key="tintColor" name="FWRed"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system"/>
+                        <connections>
+                            <action selector="commentsActionTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NcY-Ks-opn"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date | Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-dX-E7n">
+                        <rect key="frame" x="205.66666666666666" y="31.999999999999996" width="64.333333333333343" height="14.333333333333332"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="FWTextGrey"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ixq-59-h95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="3Mk-6J-uJk"/>
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="leading" secondItem="W2k-yX-Hd1" secondAttribute="trailing" constant="10" id="JwS-69-Vip"/>
                     <constraint firstItem="g0g-dX-E7n" firstAttribute="centerY" secondItem="cKk-cE-dNe" secondAttribute="centerY" id="LaP-j3-otr"/>
-                    <constraint firstItem="T2M-39-R9W" firstAttribute="trailing" secondItem="g0g-dX-E7n" secondAttribute="trailing" id="Uxn-zw-qX6"/>
+                    <constraint firstItem="ShQ-j3-vfa" firstAttribute="top" secondItem="ixq-59-h95" secondAttribute="bottom" constant="16" id="P2Z-v7-eeN"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="T2M-39-R9W" secondAttribute="bottom" constant="10" id="Xu4-mB-xFJ"/>
                     <constraint firstItem="W2k-yX-Hd1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="axs-y7-GJY"/>
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="centerY" secondItem="W2k-yX-Hd1" secondAttribute="centerY" id="bJa-8t-k1H"/>
@@ -81,9 +94,11 @@
                     <constraint firstItem="W2k-yX-Hd1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="dlf-jF-3Fs"/>
                     <constraint firstItem="ShQ-j3-vfa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="nGI-3x-hzA"/>
                     <constraint firstItem="T2M-39-R9W" firstAttribute="top" secondItem="ShQ-j3-vfa" secondAttribute="bottom" constant="5" id="nOb-JP-Ysk"/>
-                    <constraint firstAttribute="trailing" secondItem="g0g-dX-E7n" secondAttribute="trailing" constant="20" id="oaf-Le-FNL"/>
                     <constraint firstItem="ShQ-j3-vfa" firstAttribute="top" secondItem="W2k-yX-Hd1" secondAttribute="bottom" constant="8" symbolic="YES" id="plo-LE-Trc"/>
+                    <constraint firstAttribute="trailing" secondItem="T2M-39-R9W" secondAttribute="trailing" constant="20" id="shC-O8-fAG"/>
                     <constraint firstAttribute="trailing" secondItem="ShQ-j3-vfa" secondAttribute="trailing" constant="10" id="uU6-tB-zcJ"/>
+                    <constraint firstAttribute="trailing" secondItem="ixq-59-h95" secondAttribute="trailing" constant="20" id="w3z-Zx-aMo"/>
+                    <constraint firstItem="ixq-59-h95" firstAttribute="leading" secondItem="g0g-dX-E7n" secondAttribute="trailing" constant="10" id="wbY-rt-e5c"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -100,6 +115,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <namedColor name="FWRed">
             <color red="0.792156862745098" green="0.2627450980392157" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

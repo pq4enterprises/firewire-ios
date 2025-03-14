@@ -93,4 +93,9 @@ public struct FWUserDefaults {
     func objectForKey(key: String) -> [String:Any]? {
         return defaults.object(forKey: key) as? [String:Any]
     }
+
+    func isAdminUser() -> Bool {
+        let adminRoles = ["admin", "sub_admin", "super"]
+        return adminRoles.contains(userRole ?? "")
+    }
 }

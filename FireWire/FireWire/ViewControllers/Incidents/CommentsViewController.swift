@@ -11,7 +11,7 @@ protocol CommentsListViewDelegate: AnyObject {
     func dataReceived()
     func noCommentsForIncident()
     func commentAdded()
-    func error(message: String)
+    func showMessage(message: String)
 }
 
 class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextFieldDelegate {
@@ -111,8 +111,9 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         hideLoader()
     }
 
-    func error(message: String) {
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+    func showMessage(message: String) {
+        hideLoader()
+        showAlert(title: message, message: "", actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func showActivityIndicator(_ value: Bool) {
@@ -243,6 +244,9 @@ extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
         cell.setupView(viewModel.items[indexPath.row])
+        cell.commentsAction = { commentsDetail in
+            self.showActionSheet(commentsDetail)
+        }
         return cell
     }
 }
@@ -257,5 +261,49 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
         cell.configure(with: attachedImages[indexPath.row])
 
         return cell
+    }
+}
+
+extension CommentsViewController {
+    func showActionSheet(_ commentsDetail: CommentsData){
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let report: UIAlertAction = UIAlertAction(title: "Report Comment", style: .default) { action -> Void in
+            self.showLoader()
+            self.viewModel.reportComment(commentID: commentsDetail.id)
+        }
+        actionSheetController.addAction(report)
+
+
+        if FWUserDefaults().isAdminUser() {
+            let delete: UIAlertAction = UIAlertAction(title: "Delete Comment", style: .default) { action -> Void in
+                self.showLoader()
+                self.viewModel.deleteComment(commentID: commentsDetail.id)
+            }
+            actionSheetController.addAction(delete)
+        }
+
+        if FWUserDefaults().isAdminUser(){
+            if let commentImg = commentsDetail.img, commentImg.count > 0, !commentImg[0].isEmpty, let selectedIncidentID {
+                if commentsDetail.featuredImage {
+                    let featureImageAction: UIAlertAction = UIAlertAction(title: "Remove Featured Image", style: .default) { action -> Void in
+                        self.showLoader()
+                        self.viewModel.removeFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                    }
+                    actionSheetController.addAction(featureImageAction)
+                }else{
+                    let featureImageAction: UIAlertAction = UIAlertAction(title: "Set Featured Image", style: .default) { action -> Void in
+                        self.showLoader()
+                        self.viewModel.setFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                    }
+                    actionSheetController.addAction(featureImageAction)
+                }
+            }
+        }
+
+        let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: .destructive) { action -> Void in }
+        actionSheetController.addAction(cancel)
+
+        present(actionSheetController, animated: true)
     }
 }

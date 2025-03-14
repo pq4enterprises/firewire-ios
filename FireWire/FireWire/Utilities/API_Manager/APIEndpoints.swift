@@ -30,6 +30,9 @@ enum APIEndpoints {
     static let userProfile = "api/app/user/profile"
     static let commentsList = "api/app/incident/comment/%@"
     static let addComment = "api/app/incident/activity"
+    static let deleteComment = "api/app/comment/%@"
+    static let reportComment = "api/app/incident/comment/report/%@"
+    static let setFeaturedImage = "api/app/incident/%@"
     static let uploadImage = "api/common/upload"
     static let feedList = "api/app/feed"
     static let deleteAccount = "api/app/user/profile"
@@ -71,6 +74,8 @@ enum APIPayload {
     case deleteAccount
     case updatePassword(_ model: UpdatePasswordRequestModel)
     case submitSubscriptionDetails(_ model: SubmitSubscriptionModel)
+    case reportComment(userId: String)
+    case setFeaturedImage(imageUrl: String, commentId: String)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -166,6 +171,15 @@ enum APIPayload {
                 "purchaseDate": model.purchaseDate,
                 "expiredDate": model.expiredDate,
                 "type": model.type
+            ]
+        case let .reportComment(userId):
+            return [
+                "userId": userId
+            ]
+        case let .setFeaturedImage(imageUrl, commentId):
+            return [
+                "featuredImageUrl": imageUrl,
+                "commentId": commentId
             ]
         }
     }

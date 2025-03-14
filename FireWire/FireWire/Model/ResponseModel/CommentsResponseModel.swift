@@ -23,6 +23,7 @@ struct CommentsData: Codable {
     let userID: UserIdModel?
     let img: [String]?
     let comment: String
+    let featuredImage: Bool
     let createdAt: String
 
     enum CodingKeys: String, CodingKey {
@@ -30,6 +31,7 @@ struct CommentsData: Codable {
         case userID = "userId"
         case img
         case comment
+        case featuredImage
         case createdAt
     }
 }

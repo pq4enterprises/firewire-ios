@@ -105,6 +105,103 @@ public final class CommentsListViewModel: PaginatableViewModel {
         }
     }
 
+    func deleteComment(commentID: String) {
+        let requestURL = String(format: APIEndpoints.deleteComment, commentID)
+
+        APIRequest().callApi(
+            apiEndPoint: requestURL,
+            expect: SuccessResponseModel.self,
+            requestType: APIConstants.DELETE
+        )
+        { [weak self] response, _, _ in
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if apiResponse is SuccessResponseModel {
+                if let incidentId = self?.selectedIncidentID {
+                    // Reset the items list and append new items
+                    self?.delegate?.showMessage(message: "Comment Deleted")
+                    self?.currentPage = 1
+                    self?.items.removeAll()
+                    self?.getCommentsList(for: incidentId)
+                }
+            } else {
+                print("Invalid response object")
+            }
+        }
+    }
+
+    func reportComment(commentID: String) {
+        let requestURL = String(format: APIEndpoints.reportComment, commentID)
+
+        APIRequest().callApi(
+            apiEndPoint: requestURL,
+            payload: APIPayload.reportComment(userId: FWUserDefaults().userID ?? "").toDictionary(),
+            expect: SuccessResponseModel.self,
+            requestType: APIConstants.POST
+        )
+        { [weak self] response, _, _ in
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if apiResponse is SuccessResponseModel {
+                self?.delegate?.showMessage(message: "Comment Reported")
+            } else {
+                print("Invalid response object")
+            }
+        }
+    }
+
+    func setFeatureImage(imageUrl: String, commentID: String, incidentID: String){
+        let requestURL = String(format: APIEndpoints.setFeaturedImage, incidentID)
+
+        APIRequest().callApi(
+            apiEndPoint: requestURL,
+            payload: APIPayload.setFeaturedImage(imageUrl: imageUrl, commentId: commentID).toDictionary(),
+            expect: SuccessResponseModel.self,
+            requestType: APIConstants.PUT
+        )
+        { [weak self] response, _, _ in
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if apiResponse is SuccessResponseModel {
+                self?.delegate?.showMessage(message: "Featured Image Set")
+            } else {
+                print("Invalid response object")
+            }
+        }
+    }
+
+    func removeFeatureImage(imageUrl: String, commentID: String, incidentID: String){
+        let requestURL = String(format: APIEndpoints.setFeaturedImage, incidentID)
+
+        APIRequest().callApi(
+            apiEndPoint: requestURL,
+            payload: APIPayload.setFeaturedImage(imageUrl: imageUrl, commentId: commentID).toDictionary(),
+            expect: SuccessResponseModel.self,
+            requestType: APIConstants.DELETE
+        )
+        { [weak self] response, _, _ in
+
+            guard let apiResponse = response else {
+                return
+            }
+
+            if apiResponse is SuccessResponseModel {
+                self?.delegate?.showMessage(message: "Featured Image Removed")
+            } else {
+                print("Invalid response object")
+            }
+        }
+    }
+
     func requestImageUpload(_ image: UIImage, onImageUploaded: @escaping (String) -> Void) {
         APIRequest().uploadImage(
             apiEndPoint: APIEndpoints.uploadImage,
@@ -113,7 +210,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
         { [weak self] response, _, _ in
             guard let apiResponse = response as? UploadImageResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
-                self?.delegate?.error(message: errorMessage)
+                self?.delegate?.showMessage(message: errorMessage)
                 return
             }
 
@@ -122,11 +219,11 @@ public final class CommentsListViewModel: PaginatableViewModel {
                     if let imageUrl = apiResponse.data?.url {
                         onImageUploaded(imageUrl[0])
                     } else {
-                        self?.delegate?.error(message: "Image upload failed")
+                        self?.delegate?.showMessage(message: "Image upload failed")
                     }
                 }
             } else {
-                self?.delegate?.error(message: apiResponse.message)
+                self?.delegate?.showMessage(message: apiResponse.message)
             }
         }
     }
