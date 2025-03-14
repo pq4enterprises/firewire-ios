@@ -996,7 +996,7 @@ agreeing with our Terms and Conditions</string>
                                                         </collectionViewFlowLayout>
                                                         <cells/>
                                                     </collectionView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
+                                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Id-iGX">
                                                         <rect key="frame" x="56" y="25" width="261" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="5ib-eX-uKP"/>
@@ -1004,8 +1004,23 @@ agreeing with our Terms and Conditions</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                                     </textField>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add a comment" translatesAutoresizingMaskIntoConstraints="NO" id="jSD-kO-HKW">
+                                                        <rect key="frame" x="54" y="35" width="258" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="iMy-Jh-tGS"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="FWTextGrey"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-WV-Ytm">
                                                         <rect key="frame" x="20" y="38.666666666666629" width="26" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="23" id="rTN-uq-CXo"/>
+                                                            <constraint firstAttribute="width" constant="26" id="wDC-C4-uWP"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="FWTextGrey2"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="camera_icon"/>
                                                         <connections>
@@ -1014,6 +1029,10 @@ agreeing with our Terms and Conditions</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpF-4V-vJe">
                                                         <rect key="frame" x="322" y="32.666666666666629" width="51" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="51" id="7YH-9k-GQS"/>
+                                                            <constraint firstAttribute="height" constant="35" id="wJY-0T-HO3"/>
+                                                        </constraints>
                                                         <color key="tintColor" name="FWTextGrey2"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="paperplane" catalog="system"/>
@@ -1033,8 +1052,11 @@ agreeing with our Terms and Conditions</string>
                                                     <constraint firstAttribute="trailing" secondItem="rpF-4V-vJe" secondAttribute="trailing" constant="20" symbolic="YES" id="U45-To-9ZL"/>
                                                     <constraint firstAttribute="trailing" secondItem="vso-o2-OjG" secondAttribute="trailing" constant="20" id="VVQ-vd-5wj"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="top" secondItem="yXN-n8-nDp" secondAttribute="top" constant="10" id="XeG-nz-ixR"/>
+                                                    <constraint firstItem="rpF-4V-vJe" firstAttribute="leading" secondItem="jSD-kO-HKW" secondAttribute="trailing" constant="10" id="Ynz-6v-gss"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="leading" secondItem="yXN-n8-nDp" secondAttribute="leading" constant="20" id="Ypj-uN-IuG"/>
                                                     <constraint firstItem="Z6n-WV-Ytm" firstAttribute="centerY" secondItem="Fn3-Id-iGX" secondAttribute="centerY" id="dtn-2s-ciu"/>
+                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="leading" secondItem="Z6n-WV-Ytm" secondAttribute="trailing" constant="8" symbolic="YES" id="i4V-6x-fvk"/>
+                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="centerY" secondItem="Z6n-WV-Ytm" secondAttribute="centerY" constant="10" id="sBZ-bo-Flg"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1074,6 +1096,7 @@ agreeing with our Terms and Conditions</string>
                     <connections>
                         <outlet property="activityIndicator" destination="Uuh-BY-42q" id="cPP-YM-RTv"/>
                         <outlet property="addCommentTextField" destination="Fn3-Id-iGX" id="iSL-3R-zGp"/>
+                        <outlet property="addCommentTextView" destination="jSD-kO-HKW" id="Lxn-6A-RZd"/>
                         <outlet property="collectionViewHeightConstraint" destination="vmm-Xz-wfa" id="2hr-DJ-Zu4"/>
                         <outlet property="commentsListCount" destination="KPq-eX-lHc" id="vws-EH-zpd"/>
                         <outlet property="commentsView" destination="yXN-n8-nDp" id="YpV-5d-KVn"/>

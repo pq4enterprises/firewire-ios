@@ -35,6 +35,10 @@ public extension String {
         static let title = "Get Full Access With A Premium Account"
         static let premiumAccount = "Premium Account"
     }
+
+    struct Comments {
+        static let addAComment = "Add a comment"
+    }
 }
 
 public extension String {

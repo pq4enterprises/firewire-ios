@@ -14,7 +14,7 @@ protocol CommentsListViewDelegate: AnyObject {
     func showMessage(message: String)
 }
 
-class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextFieldDelegate {
+class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var commentsListCount: UILabel!
     @IBOutlet var noCommentsLabel: UILabel!
@@ -24,6 +24,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBOutlet var previewImageCollectionView: UICollectionView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var commentsView: FWView!
+    @IBOutlet weak var addCommentTextView: UITextView!
 
     var coordinator: HomeCoordinator?
     var viewModel: CommentsListViewModel!
@@ -34,7 +35,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addCommentTextField.delegate = self
+        //addCommentTextField.delegate = self
+        addCommentTextView.delegate = self
         setupView()
         setupActions()
         setupKeyboardActions()
@@ -136,9 +138,39 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        postComment()
-        return true
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        postComment()
+//        return true
+//    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == .Comments.addAComment {
+            textView.text = ""
+            textView.textColor = .black  // Change to normal text color
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = .Comments.addAComment
+            textView.textColor = .lightGray
+        }
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" { // Detect Return Key
+            postComment()
+            textView.resignFirstResponder() // Dismiss keyboard
+            textView.text = .Comments.addAComment
+            textView.textColor = .lightGray
+            return false // Prevent adding a new line
+        }
+
+        // Limit characters to 100
+        let currentText = textView.text ?? ""
+        let newText = (currentText as NSString).replacingCharacters(in: range, with: text)
+
+        return newText.count <= 100
     }
 
     func postComment() {
@@ -154,7 +186,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func comment(withImage urlString: String?) {
-        guard let commentMessage = addCommentTextField.text, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+        guard let commentMessage = addCommentTextView.text, commentMessage != .Comments.addAComment, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             showAlert(title: "", message: "Comments cannot be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
@@ -171,8 +203,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         viewModel.addComment(requestModel)
 
         // Clear text, hide keyboard, and reset UI
-        addCommentTextField.text = ""
-        addCommentTextField.resignFirstResponder()
+        addCommentTextView.text = ""
+        addCommentTextView.resignFirstResponder()
         attachedImages.removeAll()
         collectionViewHeightConstraint.constant = 0
     }
@@ -190,6 +222,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     @IBAction func sendButtonTap(_ sender: UIButton) {
         postComment()
+        addCommentTextView.text = .Comments.addAComment
+        addCommentTextView.textColor = .lightGray
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
