@@ -158,4 +158,10 @@ class HomeCoordinator: BaseCoordinator {
         subscriptionView.coordinator = self
         navigationController.present(subscriptionView, animated: true)
     }
+
+    func navigateToPostWebView(){
+        let postWebViewController = PostWebViewController.instantiate()
+        postWebViewController.coordinator = self
+        pushViewController(postWebViewController, animated: true)
+    }
 }

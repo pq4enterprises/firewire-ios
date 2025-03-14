@@ -21,7 +21,8 @@ class MenuViewController: UIViewController {
     @IBOutlet var fireWireView: UIView!
     @IBOutlet var contactView: UIView!
     @IBOutlet var personalisationView: UIView!
-
+    @IBOutlet weak var postButton: UIButton!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
@@ -41,6 +42,10 @@ class MenuViewController: UIViewController {
         }
 
         myAccountView.setCornerRadiusAndShadow()
+
+        if FWUserDefaults().isAdminUser() {
+            postButton.isHidden = false
+        }
     }
 
     func setupActions() {
@@ -123,6 +128,10 @@ class MenuViewController: UIViewController {
         present(feedbackView, animated: true)
     }
 
+    @IBAction func postButtonTap(_ sender: UIButton) {
+        coordinator?.navigateToPostWebView()
+    }
+    
     func clearUserDefaults() {
         FWUserDefaults.removeObjectForKey(key: .userIDKey)
         FWUserDefaults.removeObjectForKey(key: .userNameKey)

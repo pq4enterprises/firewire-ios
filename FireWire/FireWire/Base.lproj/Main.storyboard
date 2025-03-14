@@ -2115,6 +2115,17 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <action selector="closeButtonTap:" destination="cak-43-fKR" eventType="touchUpInside" id="8Tj-uw-4hu"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oka-4s-xWG">
+                                <rect key="frame" x="19.999999999999996" y="59" width="54.666666666666657" height="32"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Post">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="postButtonTap:" destination="cak-43-fKR" eventType="touchUpInside" id="ulr-Ix-OWy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Kj-bV-cB3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2128,6 +2139,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="RTL-4g-7bq" firstAttribute="top" secondItem="K1h-Xo-m6R" secondAttribute="bottom" constant="80" id="Hpd-ic-jlV"/>
                             <constraint firstItem="1Kj-bV-cB3" firstAttribute="bottom" secondItem="EXh-55-aEW" secondAttribute="bottom" constant="7" id="KdX-Lm-J1e"/>
                             <constraint firstItem="xYA-dM-GR4" firstAttribute="top" secondItem="Hh3-JK-Iyz" secondAttribute="bottom" constant="20" id="MtP-QK-XGv"/>
+                            <constraint firstItem="Oka-4s-xWG" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="Ocn-Jf-hFx"/>
                             <constraint firstItem="EXh-55-aEW" firstAttribute="top" secondItem="xYA-dM-GR4" secondAttribute="bottom" constant="75.670000000000002" id="PdB-OO-b2N"/>
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" id="QC7-74-Sfl"/>
                             <constraint firstItem="Hh3-JK-Iyz" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="VNW-cK-hky"/>
@@ -2141,6 +2153,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="width" secondItem="RTL-4g-7bq" secondAttribute="width" id="iH6-Rb-kst"/>
                             <constraint firstItem="K1h-Xo-m6R" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="k2h-ov-2bZ"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="poG-mn-Bex"/>
+                            <constraint firstItem="Oka-4s-xWG" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="uba-Jd-W2C"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="firstBaseline" secondItem="tr0-x6-T0q" secondAttribute="firstBaseline" constant="-30" id="vQo-25-UeC"/>
                             <constraint firstItem="Hh3-JK-Iyz" firstAttribute="top" secondItem="zoc-9c-ep4" secondAttribute="bottom" constant="20" id="wN4-eM-S8R"/>
                             <constraint firstItem="1Kj-bV-cB3" firstAttribute="trailing" secondItem="eQM-dW-GZa" secondAttribute="trailing" constant="20" id="yYi-cr-njJ"/>
@@ -2154,6 +2167,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                         <outlet property="nameLabel" destination="Tdk-gM-eb5" id="hIv-CR-UQn"/>
                         <outlet property="personalisationView" destination="wKA-vH-b01" id="w4t-is-YLo"/>
                         <outlet property="podcastView" destination="7LY-BA-ugo" id="qSf-P0-4sg"/>
+                        <outlet property="postButton" destination="Oka-4s-xWG" id="4Tn-eE-Czk"/>
                         <outlet property="profileImageView" destination="YWl-k6-lLx" id="Ey6-8X-LKo"/>
                         <outlet property="saltyWireView" destination="Hh3-JK-Iyz" id="r2M-NF-RdO"/>
                         <outlet property="submitTipView" destination="xNa-jT-yuP" id="Knk-kX-ZPh"/>
@@ -4014,6 +4028,72 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrg-80-o1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7245" y="1382"/>
+        </scene>
+        <!--Post Web View Controller-->
+        <scene sceneID="Lks-b5-eXY">
+            <objects>
+                <viewController storyboardIdentifier="PostWebViewController" id="gg5-yf-tog" customClass="PostWebViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Biw-as-fnT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-zZ-yUo">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0K-hd-qbu">
+                                        <rect key="frame" x="15" y="5" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="rMz-4o-boK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="back_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="gg5-yf-tog" eventType="touchUpInside" id="fYJ-yz-8ZC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Q0K-hd-qbu" secondAttribute="bottom" constant="5" id="03o-3t-8HX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Fh5-L6-1IF"/>
+                                    <constraint firstAttribute="height" constant="50" id="NKh-N3-0dC"/>
+                                    <constraint firstItem="Q0K-hd-qbu" firstAttribute="top" secondItem="Vcc-zZ-yUo" secondAttribute="top" constant="5" id="NlJ-Fb-Srb"/>
+                                    <constraint firstItem="Q0K-hd-qbu" firstAttribute="leading" secondItem="Vcc-zZ-yUo" secondAttribute="leading" constant="15" id="lG3-kG-4Zw"/>
+                                </constraints>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTy-xd-xPl">
+                                <rect key="frame" x="0.0" y="117" width="393" height="735"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yDM-Ay-o10"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="RTy-xd-xPl" secondAttribute="bottom" id="Di6-Iw-JE4"/>
+                            <constraint firstItem="Vcc-zZ-yUo" firstAttribute="top" secondItem="yDM-Ay-o10" secondAttribute="top" id="LGP-rj-j2G"/>
+                            <constraint firstItem="RTy-xd-xPl" firstAttribute="leading" secondItem="yDM-Ay-o10" secondAttribute="leading" id="XZR-kX-aVW"/>
+                            <constraint firstItem="Vcc-zZ-yUo" firstAttribute="leading" secondItem="yDM-Ay-o10" secondAttribute="leading" id="oAZ-H2-gTi"/>
+                            <constraint firstItem="Vcc-zZ-yUo" firstAttribute="trailing" secondItem="yDM-Ay-o10" secondAttribute="trailing" id="r0O-rE-FmH"/>
+                            <constraint firstItem="RTy-xd-xPl" firstAttribute="top" secondItem="Vcc-zZ-yUo" secondAttribute="bottom" constant="8" symbolic="YES" id="ukk-9R-8ev"/>
+                            <constraint firstItem="RTy-xd-xPl" firstAttribute="trailing" secondItem="yDM-Ay-o10" secondAttribute="trailing" id="zq8-OD-d7O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="RTy-xd-xPl" id="Xhy-bd-pdM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntE-BX-eNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655.7251908396947" y="2079.5774647887324"/>
         </scene>
         <!--Feed Area List View Controller-->
         <scene sceneID="joh-Mu-LIE">

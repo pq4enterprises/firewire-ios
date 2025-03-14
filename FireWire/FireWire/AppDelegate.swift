@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         /// Code to handle notification click
         //OneSignal.Notifications.addClickListener(self)
 
+        // Start monitoring network connectivity
+        _ = FWNetworkManager.shared
+
         return true
     }
 

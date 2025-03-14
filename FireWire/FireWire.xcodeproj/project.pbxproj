@@ -86,6 +86,8 @@
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
 		B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
+		B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6632D84BF8800E2D673 /* PostWebViewController.swift */; };
+		B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6632D84BF8800E2D673 /* PostWebViewController.swift */; };
 		B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B08236EF2CE374D10092AC01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EE2CE374D10092AC01 /* SceneDelegate.swift */; };
 		B08236F42CE374D10092AC01 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F32CE374D10092AC01 /* Base */; };
@@ -484,6 +486,7 @@
 		B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
 		B081F6602D84976900E2D673 /* FWLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoaderView.swift; sourceTree = "<group>"; };
+		B081F6632D84BF8800E2D673 /* PostWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWebViewController.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08236EC2CE374D10092AC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B08236EE2CE374D10092AC01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -816,6 +819,7 @@
 				B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */,
 				B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */,
 				B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */,
+				B081F6632D84BF8800E2D673 /* PostWebViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1459,6 +1463,7 @@
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
+				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
 				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
@@ -1605,6 +1610,7 @@
 				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
+				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
 				B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
