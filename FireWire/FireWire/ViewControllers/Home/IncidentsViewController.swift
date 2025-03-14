@@ -282,6 +282,9 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+        cell.commentAction = {
+            self.coordinator?.navigateToIncidentDetail(selectedIncident.id, openComments: true)
+        }
         cell.shareAction = {
             let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
             self.shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))

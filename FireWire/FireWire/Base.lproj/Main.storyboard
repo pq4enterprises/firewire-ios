@@ -923,6 +923,7 @@ agreeing with our Terms and Conditions</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentButton" destination="1pt-0T-HcO" id="S9G-gx-DqC"/>
                         <outlet property="favouriteButton" destination="0jy-dA-eZ3" id="WBY-3I-Tjw"/>
                         <outlet property="imageMapStackView" destination="uyb-lj-gWP" id="dvp-25-kwM"/>
                         <outlet property="incidentAddress" destination="HrE-Uv-08Z" id="b0S-lu-9eJ"/>

@@ -158,8 +158,8 @@ extension IncidentListViewController: UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.dismissView(animated: true)
-        let selectedIncidentID = viewModel.items[indexPath.row].id
-        coordinator?.navigateToIncidentDetail(selectedIncidentID)
+        //let selectedIncidentID = viewModel.items[indexPath.row].id
+        //coordinator?.navigateToIncidentDetail(selectedIncidentID)
     }
 }
 

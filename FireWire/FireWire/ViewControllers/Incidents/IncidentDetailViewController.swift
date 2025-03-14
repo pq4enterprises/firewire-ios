@@ -25,9 +25,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var incidentComments: UILabel!
     @IBOutlet var incidentMapView: UIView!
     @IBOutlet var favouriteButton: UIButton!
+    @IBOutlet var commentButton: UIButton!
     @IBOutlet var imageMapStackView: UIStackView!
-    @IBOutlet weak var unitsView: FWView!
-    @IBOutlet weak var unitsLabel: UILabel!
+    @IBOutlet var unitsView: FWView!
+    @IBOutlet var unitsLabel: UILabel!
 
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
@@ -35,18 +36,20 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     var reloadOnlyUIElements: Bool = false
 
     private var selectedIncidentID: String?
+    private var openCommentsSection: Bool = false
     private var isLabelExpanded = false
     private var mapView: GMSMapView!
 
-    func setSelectedIncidentID(_ id: String) {
+    func setSelectedIncidentID(_ id: String, _ openComments: Bool) {
         selectedIncidentID = id
+        openCommentsSection = openComments
         viewModel = IncidentDetailViewModel()
         viewModel?.delegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        FWLoaderView.shared.showLoader(on: self.view)
+        FWLoaderView.shared.showLoader(on: view)
 
         setupUI()
         setupActions()
@@ -92,10 +95,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             incidentImageView.loadImage(from: imageUrl)
-            //imageMapStackView.distribution = .fillEqually
+            // imageMapStackView.distribution = .fillEqually
         } else {
             incidentImageView.isHidden = true
-            //imageMapStackView.distribution = .fill
+            // imageMapStackView.distribution = .fill
             view.layoutIfNeeded()
         }
 
@@ -112,7 +115,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             if let units = incidentDetail.respondingUnits, units.count > 0 {
                 let unitsString = "[ " + units.joined(separator: ", ") + " ]"
                 unitsLabel.text = unitsString
-            }else{
+            } else {
                 unitsLabel.text = "No data found"
             }
 
@@ -121,6 +124,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             let firstLocation = markers[0].coordinates
             let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
             mapView.animate(to: camera)
+        }
+
+        if openCommentsSection {
+            commentButton.sendActions(for: .touchUpInside)
         }
     }
 
@@ -217,7 +224,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBAction func feedButtonTap(_ sender: UIButton) {
         coordinator?.navigateToFeeds()
     }
-    
+
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> IncidentDetailViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -229,7 +236,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         NotificationCenter.default.removeObserver(self, name: .newCommentAdded, object: nil)
     }
 }
-
 
 // MARK: View model delegates
 

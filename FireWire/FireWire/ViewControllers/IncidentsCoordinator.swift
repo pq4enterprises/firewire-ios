@@ -22,15 +22,6 @@ class IncidentsCoordinator: BaseCoordinator {
         pushViewController(bottomSheet, animated: true)
     }
 
-    func navigateToIncidentDetail(_ incidentID: String){
-        let postDetailViewController = IncidentDetailViewController.instantiate()
-        postDetailViewController.setSelectedIncidentID(incidentID)
-        //postDetailViewController.coordinator = self
-
-        modalPresentationStyle = .none
-        pushViewController(postDetailViewController, animated: true)
-    }
-
     func navigateToSelectAreaListView(){
         let selectAreaListView = IncidentLocalityListViewController(viewModel: IncidentLocalityListViewModel())
         //selectAreaListView.coordinator = self

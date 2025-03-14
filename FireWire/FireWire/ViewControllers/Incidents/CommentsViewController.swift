@@ -265,34 +265,33 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 extension CommentsViewController {
-    func showActionSheet(_ commentsDetail: CommentsData){
-        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    func showActionSheet(_ commentsDetail: CommentsData) {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let report: UIAlertAction = UIAlertAction(title: "Report Comment", style: .default) { action -> Void in
+        let report = UIAlertAction(title: "Report Comment", style: .default) { _ in
             self.showLoader()
             self.viewModel.reportComment(commentID: commentsDetail.id)
         }
         actionSheetController.addAction(report)
 
-
         if FWUserDefaults().isAdminUser() {
-            let delete: UIAlertAction = UIAlertAction(title: "Delete Comment", style: .default) { action -> Void in
+            let delete = UIAlertAction(title: "Delete Comment", style: .default) { _ in
                 self.showLoader()
                 self.viewModel.deleteComment(commentID: commentsDetail.id)
             }
             actionSheetController.addAction(delete)
         }
 
-        if FWUserDefaults().isAdminUser(){
+        if FWUserDefaults().isAdminUser() {
             if let commentImg = commentsDetail.img, commentImg.count > 0, !commentImg[0].isEmpty, let selectedIncidentID {
                 if commentsDetail.featuredImage {
-                    let featureImageAction: UIAlertAction = UIAlertAction(title: "Remove Featured Image", style: .default) { action -> Void in
+                    let featureImageAction: UIAlertAction = .init(title: "Remove Featured Image", style: .default) { _ in
                         self.showLoader()
                         self.viewModel.removeFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
                     }
                     actionSheetController.addAction(featureImageAction)
-                }else{
-                    let featureImageAction: UIAlertAction = UIAlertAction(title: "Set Featured Image", style: .default) { action -> Void in
+                } else {
+                    let featureImageAction: UIAlertAction = .init(title: "Set Featured Image", style: .default) { _ in
                         self.showLoader()
                         self.viewModel.setFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
                     }
@@ -301,7 +300,7 @@ extension CommentsViewController {
             }
         }
 
-        let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: .destructive) { action -> Void in }
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in }
         actionSheetController.addAction(cancel)
 
         present(actionSheetController, animated: true)

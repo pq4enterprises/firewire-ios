@@ -133,6 +133,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="comment_icon"/>
+                                <connections>
+                                    <action selector="commentButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gko-0J-4md"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqw-Ih-r9C">
                                 <rect key="frame" x="100" y="0.0" width="20" height="20"/>
