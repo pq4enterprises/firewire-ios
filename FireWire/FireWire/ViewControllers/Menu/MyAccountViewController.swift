@@ -23,8 +23,9 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     @IBOutlet var logoutView: UIStackView!
     @IBOutlet var termsStackView: UIStackView!
     @IBOutlet var privacyPolicyStackView: UIStackView!
-    @IBOutlet var premiumInfoTitle: UILabel!
-    @IBOutlet var getPremiumButton: FWFilledButton!
+    @IBOutlet weak var restoreSubscriptionButton: UIButton!
+    @IBOutlet weak var premiumInfoView: UIView!
+    @IBOutlet weak var subscriptionInfoView: UIView!
 
     var viewModel: MyAccountViewModel?
 
@@ -44,6 +45,8 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
 
         viewModel = MyAccountViewModel()
         viewModel?.delegate = self
+
+        SubscriptionManager.shared.delegate = self
     }
 
     func setupUI() {
@@ -61,11 +64,13 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
 
     func updatePremiumInfo() {
         if FWUserDefaults().userRole == "basic_user" {
-            premiumInfoTitle.text = .PremiumDetails.title
-            getPremiumButton.isHidden = false
+            premiumInfoView.isHidden = true
+            subscriptionInfoView.isHidden = false
+            restoreSubscriptionButton.isHidden = false
         } else {
-            premiumInfoTitle.text = .PremiumDetails.premiumAccount
-            getPremiumButton.isHidden = true
+            premiumInfoView.isHidden = false
+            subscriptionInfoView.isHidden = true
+            restoreSubscriptionButton.isHidden = true
         }
     }
 
@@ -112,9 +117,14 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     @IBAction func premiumButtonTapAction(_ sender: UIButton) {
-        SubscriptionManager.shared.delegate = self
         Task {
             await SubscriptionManager.shared.purchaseMyProduct()
+        }
+    }
+
+    @IBAction func restoreSubscriptionTap(_ sender: UIButton) {
+        Task {
+            await SubscriptionManager.shared.restorePurchases()
         }
     }
 

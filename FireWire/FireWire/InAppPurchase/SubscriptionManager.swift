@@ -57,7 +57,32 @@ class SubscriptionManager: NSObject {
             print("Failed to fetch products: \(error)")
         }
     }
-    
+
+    func restorePurchases() async {
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result else {
+                continue
+            }
+
+            if transaction.productID == AUTORENEW_SUBSCRIBE_PURCHASE_PRODUCT_ID {
+                // Check if the subscription is still valid
+                if let expirationDate = transaction.expirationDate, expirationDate > Date() {
+                    print("Subscription is active. Restoring access.")
+                    //await unlockPremiumFeatures(transaction: transaction)
+                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
+                    return
+                } else {
+                    print("Subscription has expired.")
+                }
+            }
+        }
+
+        // If no valid subscription was found
+        delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+        print("No active subscriptions found.")
+    }
+
+
     // Purchase product using StoreKit 2
     func purchaseMyProduct() async {
         guard !iapProducts.isEmpty else { return }
