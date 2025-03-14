@@ -12,12 +12,13 @@ class IncidentListViewCell: UITableViewCell {
 
     @IBOutlet weak var incidentTitle: UILabel!
     @IBOutlet weak var incidentDesc: UILabel!
+    @IBOutlet weak var incidentImageView: FWImageView!
     @IBOutlet weak var incidentLocation: UILabel!
     @IBOutlet weak var incidentDateTime: UILabel!
     @IBOutlet weak var incidentStarred: UILabel!
     @IBOutlet weak var incidentComments: UILabel!
     @IBOutlet var favouriteButton: UIButton!
-
+    
     var selectedIncidentId: String?
 
     var favAction: (() -> Void)?
@@ -51,6 +52,13 @@ class IncidentListViewCell: UITableViewCell {
 
         incidentStarred.text = "\(model.likeCount) Starred"
         incidentComments.text = "\(model.commentCount) Comments"
+
+        if let featureImageUrlString = model.featuredImageURL, let imageUrl = URL(string: featureImageUrlString)  {
+            incidentImageView.loadImage(from: imageUrl)
+            incidentImageView.isHidden = false
+        }else{
+            incidentImageView.isHidden = true
+        }
     }
 
     @IBAction func favButtonTap(_ sender: UIButton) {
