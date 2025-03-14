@@ -28,11 +28,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBOutlet var imageMapStackView: UIStackView!
     @IBOutlet weak var unitsView: FWView!
     @IBOutlet weak var unitsLabel: UILabel!
-    
-    // var coordinator: IncidentsCoordinator?
+
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
-
     /// Flag is to skip reloading the map component when new comment is added
     var reloadOnlyUIElements: Bool = false
 
@@ -94,10 +92,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             incidentImageView.loadImage(from: imageUrl)
-            imageMapStackView.distribution = .fillEqually
+            //imageMapStackView.distribution = .fillEqually
         } else {
             incidentImageView.isHidden = true
-            imageMapStackView.distribution = .fill
+            //imageMapStackView.distribution = .fill
             view.layoutIfNeeded()
         }
 
@@ -111,12 +109,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 
-            if let units = incidentDetail.respondingUnits{
+            if let units = incidentDetail.respondingUnits, units.count > 0 {
                 let unitsString = "[ " + units.joined(separator: ", ") + " ]"
-                unitsView.isHidden = false
                 unitsLabel.text = unitsString
             }else{
-                unitsView.isHidden = true
+                unitsLabel.text = "No data found"
             }
 
             // focus on first marker
