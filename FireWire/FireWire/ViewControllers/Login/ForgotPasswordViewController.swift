@@ -29,7 +29,7 @@ class ForgotPasswordViewController: UIViewController {
         showLoader()
         guard let email = emailTextField.text, !email.isEmpty, email.isValidEmail() else {
             hideLoader()
-            showAlert(title: "", message: "Please enter valid email", actions: [])
+            showAlert(title: "", message: "Please enter valid email", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -41,7 +41,7 @@ class ForgotPasswordViewController: UIViewController {
 
             self?.hideLoader()
             guard let apiResponse = response else {
-                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [])
+                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
             }
 
@@ -49,7 +49,7 @@ class ForgotPasswordViewController: UIViewController {
                 if response.code.lowercased() == "success" {
                     self?.coordinator?.navigateToOtpVerification(email: email)
                 } else {
-                    self?.showAlert(title: "", message: response.message, actions: [])
+                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
         }

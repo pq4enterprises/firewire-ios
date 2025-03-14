@@ -155,7 +155,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
             AppManager.shared.currentScannerIDListeningTO = id
 
         } else {
-            showAlert(title: "", message: "This feed is unavailable at this time.", actions: [])
+            showAlert(title: "", message: "This feed is unavailable at this time.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
     }
 
