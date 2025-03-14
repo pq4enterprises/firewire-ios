@@ -93,6 +93,38 @@
 		B08237042CE374D30092AC01 /* FireWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08237032CE374D30092AC01 /* FireWireTests.swift */; };
 		B082370E2CE374D30092AC01 /* FireWireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370D2CE374D30092AC01 /* FireWireUITests.swift */; };
 		B08237102CE374D30092AC01 /* FireWireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */; };
+		B0860F022D846BB70042874E /* NotificationSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */; };
+		B0860F032D846BB70042874E /* NotificationSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */; };
+		B0860F112D846C3B0042874E /* DivisionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F072D846C3B0042874E /* DivisionTicket.wav */; };
+		B0860F122D846C3B0042874E /* StandbyForMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0F2D846C3B0042874E /* StandbyForMessage.wav */; };
+		B0860F132D846C3B0042874E /* EngineTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0A2D846C3B0042874E /* EngineTicket.wav */; };
+		B0860F142D846C3B0042874E /* LadderTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0B2D846C3B0042874E /* LadderTicket.wav */; };
+		B0860F152D846C3B0042874E /* servicebell.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0D2D846C3B0042874E /* servicebell.wav */; };
+		B0860F162D846C3B0042874E /* TonesOnly.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F102D846C3B0042874E /* TonesOnly.wav */; };
+		B0860F172D846C3B0042874E /* BatalionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F062D846C3B0042874E /* BatalionTicket.wav */; };
+		B0860F182D846C3B0042874E /* MDTRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0C2D846C3B0042874E /* MDTRing.wav */; };
+		B0860F192D846C3B0042874E /* EngineLadderBatalionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F082D846C3B0042874E /* EngineLadderBatalionTicket.wav */; };
+		B0860F1A2D846C3B0042874E /* EngineLadderTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F092D846C3B0042874E /* EngineLadderTicket.wav */; };
+		B0860F1B2D846C3B0042874E /* SpecialUnit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0E2D846C3B0042874E /* SpecialUnit.wav */; };
+		B0860F1C2D846C3B0042874E /* ActingEngineTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F052D846C3B0042874E /* ActingEngineTicket.wav */; };
+		B0860F1D2D846C3B0042874E /* DivisionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F072D846C3B0042874E /* DivisionTicket.wav */; };
+		B0860F1E2D846C3B0042874E /* StandbyForMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0F2D846C3B0042874E /* StandbyForMessage.wav */; };
+		B0860F1F2D846C3B0042874E /* EngineTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0A2D846C3B0042874E /* EngineTicket.wav */; };
+		B0860F202D846C3B0042874E /* LadderTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0B2D846C3B0042874E /* LadderTicket.wav */; };
+		B0860F212D846C3B0042874E /* servicebell.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0D2D846C3B0042874E /* servicebell.wav */; };
+		B0860F222D846C3B0042874E /* TonesOnly.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F102D846C3B0042874E /* TonesOnly.wav */; };
+		B0860F232D846C3B0042874E /* BatalionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F062D846C3B0042874E /* BatalionTicket.wav */; };
+		B0860F242D846C3B0042874E /* MDTRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0C2D846C3B0042874E /* MDTRing.wav */; };
+		B0860F252D846C3B0042874E /* EngineLadderBatalionTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F082D846C3B0042874E /* EngineLadderBatalionTicket.wav */; };
+		B0860F262D846C3B0042874E /* EngineLadderTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F092D846C3B0042874E /* EngineLadderTicket.wav */; };
+		B0860F272D846C3B0042874E /* SpecialUnit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F0E2D846C3B0042874E /* SpecialUnit.wav */; };
+		B0860F282D846C3B0042874E /* ActingEngineTicket.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0860F052D846C3B0042874E /* ActingEngineTicket.wav */; };
+		B0860F2E2D846DA50042874E /* NotificationSoundsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */; };
+		B0860F2F2D846DA50042874E /* NotificationSoundsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */; };
+		B0860F302D846DA50042874E /* NotificationSoundsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */; };
+		B0860F312D846DA50042874E /* NotificationSoundsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */; };
+		B0860F332D8470470042874E /* NotificationSoundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */; };
+		B0860F342D8470470042874E /* NotificationSoundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */; };
 		B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
 		B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
 		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
@@ -464,6 +496,22 @@
 		B08237092CE374D30092AC01 /* FireWireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireWireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B082370D2CE374D30092AC01 /* FireWireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITests.swift; sourceTree = "<group>"; };
 		B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundsViewController.swift; sourceTree = "<group>"; };
+		B0860F052D846C3B0042874E /* ActingEngineTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ActingEngineTicket.wav; sourceTree = "<group>"; };
+		B0860F062D846C3B0042874E /* BatalionTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BatalionTicket.wav; sourceTree = "<group>"; };
+		B0860F072D846C3B0042874E /* DivisionTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DivisionTicket.wav; sourceTree = "<group>"; };
+		B0860F082D846C3B0042874E /* EngineLadderBatalionTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = EngineLadderBatalionTicket.wav; sourceTree = "<group>"; };
+		B0860F092D846C3B0042874E /* EngineLadderTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = EngineLadderTicket.wav; sourceTree = "<group>"; };
+		B0860F0A2D846C3B0042874E /* EngineTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = EngineTicket.wav; sourceTree = "<group>"; };
+		B0860F0B2D846C3B0042874E /* LadderTicket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LadderTicket.wav; sourceTree = "<group>"; };
+		B0860F0C2D846C3B0042874E /* MDTRing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MDTRing.wav; sourceTree = "<group>"; };
+		B0860F0D2D846C3B0042874E /* servicebell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = servicebell.wav; sourceTree = "<group>"; };
+		B0860F0E2D846C3B0042874E /* SpecialUnit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SpecialUnit.wav; sourceTree = "<group>"; };
+		B0860F0F2D846C3B0042874E /* StandbyForMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StandbyForMessage.wav; sourceTree = "<group>"; };
+		B0860F102D846C3B0042874E /* TonesOnly.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TonesOnly.wav; sourceTree = "<group>"; };
+		B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundsCell.swift; sourceTree = "<group>"; };
+		B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSoundsCell.xib; sourceTree = "<group>"; };
+		B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundsViewModel.swift; sourceTree = "<group>"; };
 		B086DF572D14918200B20E10 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
@@ -664,6 +712,7 @@
 		9B4F51192CF586BF007D319D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B0860F042D846C2A0042874E /* Sounds */,
 				9B4F51382CF58700007D319D /* Fonts */,
 				9B4F51372CF586EB007D319D /* Extensions */,
 				9B4B179D2CF58759007517BD /* Images.xcassets */,
@@ -712,6 +761,8 @@
 				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
 				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
+				B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */,
+				B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -763,6 +814,8 @@
 				B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */,
 				B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */,
 				B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */,
+				B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */,
+				B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -879,6 +932,25 @@
 				B082370F2CE374D30092AC01 /* FireWireUITestsLaunchTests.swift */,
 			);
 			path = FireWireUITests;
+			sourceTree = "<group>";
+		};
+		B0860F042D846C2A0042874E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B0860F052D846C3B0042874E /* ActingEngineTicket.wav */,
+				B0860F062D846C3B0042874E /* BatalionTicket.wav */,
+				B0860F072D846C3B0042874E /* DivisionTicket.wav */,
+				B0860F082D846C3B0042874E /* EngineLadderBatalionTicket.wav */,
+				B0860F092D846C3B0042874E /* EngineLadderTicket.wav */,
+				B0860F0A2D846C3B0042874E /* EngineTicket.wav */,
+				B0860F0B2D846C3B0042874E /* LadderTicket.wav */,
+				B0860F0C2D846C3B0042874E /* MDTRing.wav */,
+				B0860F0D2D846C3B0042874E /* servicebell.wav */,
+				B0860F0E2D846C3B0042874E /* SpecialUnit.wav */,
+				B0860F0F2D846C3B0042874E /* StandbyForMessage.wav */,
+				B0860F102D846C3B0042874E /* TonesOnly.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		B09254B62CF6372200879B07 /* CommonView */ = {
@@ -1183,6 +1255,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0860F1D2D846C3B0042874E /* DivisionTicket.wav in Resources */,
+				B0860F1E2D846C3B0042874E /* StandbyForMessage.wav in Resources */,
+				B0860F1F2D846C3B0042874E /* EngineTicket.wav in Resources */,
+				B0860F202D846C3B0042874E /* LadderTicket.wav in Resources */,
+				B0860F212D846C3B0042874E /* servicebell.wav in Resources */,
+				B0860F222D846C3B0042874E /* TonesOnly.wav in Resources */,
+				B0860F2E2D846DA50042874E /* NotificationSoundsCell.xib in Resources */,
+				B0860F232D846C3B0042874E /* BatalionTicket.wav in Resources */,
+				B0860F242D846C3B0042874E /* MDTRing.wav in Resources */,
+				B0860F252D846C3B0042874E /* EngineLadderBatalionTicket.wav in Resources */,
+				B0860F262D846C3B0042874E /* EngineLadderTicket.wav in Resources */,
+				B0860F272D846C3B0042874E /* SpecialUnit.wav in Resources */,
+				B0860F282D846C3B0042874E /* ActingEngineTicket.wav in Resources */,
 				B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */,
 				B04682412CE5401100419C65 /* IncidentListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
@@ -1229,6 +1314,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0860F112D846C3B0042874E /* DivisionTicket.wav in Resources */,
+				B0860F122D846C3B0042874E /* StandbyForMessage.wav in Resources */,
+				B0860F132D846C3B0042874E /* EngineTicket.wav in Resources */,
+				B0860F142D846C3B0042874E /* LadderTicket.wav in Resources */,
+				B0860F152D846C3B0042874E /* servicebell.wav in Resources */,
+				B0860F162D846C3B0042874E /* TonesOnly.wav in Resources */,
+				B0860F312D846DA50042874E /* NotificationSoundsCell.xib in Resources */,
+				B0860F172D846C3B0042874E /* BatalionTicket.wav in Resources */,
+				B0860F182D846C3B0042874E /* MDTRing.wav in Resources */,
+				B0860F192D846C3B0042874E /* EngineLadderBatalionTicket.wav in Resources */,
+				B0860F1A2D846C3B0042874E /* EngineLadderTicket.wav in Resources */,
+				B0860F1B2D846C3B0042874E /* SpecialUnit.wav in Resources */,
+				B0860F1C2D846C3B0042874E /* ActingEngineTicket.wav in Resources */,
 				B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */,
 				B0B1AEFD2D4F8DB6007371A9 /* IncidentListViewController.xib in Resources */,
 				B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */,
@@ -1298,6 +1396,7 @@
 				B0ADB6D52D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
+				B0860F2F2D846DA50042874E /* NotificationSoundsCell.swift in Sources */,
 				B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
@@ -1314,6 +1413,7 @@
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
 				B006D91A2D42B6600082E59E /* FeedsListViewModel.swift in Sources */,
+				B0860F022D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
 				B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */,
 				B00EDAF52D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
@@ -1324,6 +1424,7 @@
 				B0E87A0C2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
 				9B4F50DB2CF57068007D319D /* FWToast.swift in Sources */,
 				B0ADB6CF2D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
+				B0860F342D8470470042874E /* NotificationSoundsViewModel.swift in Sources */,
 				B0DA6CE02D19E58D00D5D56E /* UpdateProfileRequestModel.swift in Sources */,
 				B0EDF0482D32B97400767EAB /* VerifyOtpResponseModel.swift in Sources */,
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
@@ -1441,6 +1542,7 @@
 				B0ADB6D42D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */,
+				B0860F302D846DA50042874E /* NotificationSoundsCell.swift in Sources */,
 				B0B1AEA12D4F8DB6007371A9 /* OtpVerificationViewController.swift in Sources */,
 				B0B1AEA22D4F8DB6007371A9 /* FWBottomSheetViewController.swift in Sources */,
 				B0B1AEA32D4F8DB6007371A9 /* CityHeaderCell.swift in Sources */,
@@ -1457,6 +1559,7 @@
 				B0B1AEAE2D4F8DB6007371A9 /* FWDateFormatter.swift in Sources */,
 				B0B1AEAF2D4F8DB6007371A9 /* FWShadowButton.swift in Sources */,
 				B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */,
+				B0860F032D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */,
 				B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */,
 				B00EDAF62D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
@@ -1467,6 +1570,7 @@
 				B0E87A0D2D731BFF00BF0CC2 /* AudioManager.swift in Sources */,
 				B0B1AEB72D4F8DB6007371A9 /* FWToast.swift in Sources */,
 				B0ADB6D12D58D97D0086AC83 /* IncidentsViewController.swift in Sources */,
+				B0860F332D8470470042874E /* NotificationSoundsViewModel.swift in Sources */,
 				B0B1AEB82D4F8DB6007371A9 /* UpdateProfileRequestModel.swift in Sources */,
 				B0B1AEB92D4F8DB6007371A9 /* VerifyOtpResponseModel.swift in Sources */,
 				B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */,

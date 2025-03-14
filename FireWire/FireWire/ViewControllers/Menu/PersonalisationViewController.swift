@@ -12,6 +12,7 @@ class PersonalisationViewController: UIViewController {
     
     @IBOutlet weak var feedAreasView: UIStackView!
     @IBOutlet weak var notificationView: UIStackView!
+    @IBOutlet weak var notificationSoundsView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class PersonalisationViewController: UIViewController {
         let notificationGesture = UITapGestureRecognizer(target: self, action: #selector(notificationTap))
         notificationView.isUserInteractionEnabled = true
         notificationView.addGestureRecognizer(notificationGesture)
+
+        let notificationSoundsGesture = UITapGestureRecognizer(target: self, action: #selector(notificationSoundsTap))
+        notificationSoundsView.isUserInteractionEnabled = true
+        notificationSoundsView.addGestureRecognizer(notificationSoundsGesture)
     }
 
     @objc func feedAreaTap() {
@@ -35,6 +40,10 @@ class PersonalisationViewController: UIViewController {
     @objc func notificationTap() {
         guard unlockPremiumFeatureIfValid() == false else { return }
         coordinator?.navigateToNotificationSettings()
+    }
+
+    @objc func notificationSoundsTap() {
+        coordinator?.navigateToNotificationSounds()
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
