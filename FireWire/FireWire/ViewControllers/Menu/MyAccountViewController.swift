@@ -88,8 +88,11 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     @objc func logoutViewTap() {
-        clearUserDefaults()
-        appCoordinator?.backToParentCoordinator()
+        showAlert(title: "Sign Out", message: "Are you sure you want to sign out?", actions: [UIAlertAction(title: "Sign Out", style: .default, handler: { action in
+            self.clearUserDefaults()
+            self.appCoordinator?.backToParentCoordinator()
+        })], cancel: true)
+
     }
 
     @objc func termsViewTap() {

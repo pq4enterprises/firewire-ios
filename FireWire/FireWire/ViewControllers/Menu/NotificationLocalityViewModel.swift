@@ -153,7 +153,7 @@ final class NotificationLocalityViewModel {
         guard let incidentType else { return }
 
         let userId = FWUserDefaults().userID ?? ""
-        let selectedArea = SelectedNotificationModel(userId: userId, notificationId: incidentType.id, type: "incident_type")
+        let selectedArea = SelectedNotificationModel(userId: userId, notificationId: incidentType.id, type: "incidentType")
 
         if incidentType.isChecked {
             if !selectedNotificationArea.contains(where: { $0.notificationId == incidentType.id }) {
@@ -175,7 +175,7 @@ final class NotificationLocalityViewModel {
         { response, _, _ in
 
             if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
-                self.delegate?.setNotification(message: apiResponse.message)
+                self.delegate?.setNotification(message: "Notification settings updated successfully")
             }
         }
     }

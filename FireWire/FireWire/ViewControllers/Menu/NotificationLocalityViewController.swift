@@ -52,7 +52,7 @@ class NotificationLocalityViewController: UIViewController, NotificationLocality
 
     func setNotification(message: String) {
         hideLoader()
-        showToast(message: message)
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     // A convenience method to instantiate from the storyboard

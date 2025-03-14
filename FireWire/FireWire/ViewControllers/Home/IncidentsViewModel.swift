@@ -73,7 +73,7 @@ final class IncidentsViewModel: PaginatableViewModel {
                 if let lat = Double(item.latitude), let lon = Double(item.longitude) {
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
 
-                    /// snippet for map icon:  field3value + sub locality name
+                    /// snippet for map icon:  field3value + sub locality name - Not using for now, instead showing full address
                     var address = item.field3Value
                     if let subLocalityName = item.subLocality.first?.name, !subLocalityName.isEmpty {
                         if !address.isEmpty {
@@ -86,7 +86,7 @@ final class IncidentsViewModel: PaginatableViewModel {
                         incidentId: item.id,
                         coordinates: coordinates,
                         title: item.field1Value,
-                        address: address,
+                        address: item.address,
                         markerType: .incident
                     )
                     markersList.append(mapModel)
