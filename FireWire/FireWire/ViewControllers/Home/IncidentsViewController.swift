@@ -42,6 +42,14 @@ class IncidentsViewController: UIViewController {
     var isMapViewExpanded: Bool = false
     var isListViewExpanded: Bool = false
 
+    private let footerActivityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = FWColor.red
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+
+
     init(viewModel: IncidentsViewModel) {
         self.incidentsViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -105,6 +113,8 @@ class IncidentsViewController: UIViewController {
         incidentTableView.addGestureRecognizer(panGestureRecognizer)
 
         incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
+
+        incidentTableView.tableFooterView = footerActivityIndicator
     }
 
     func loadIncidentList() {
@@ -225,14 +235,27 @@ class IncidentsViewController: UIViewController {
         }
     }
 
+    func showFooterLoader() {
+        footerActivityIndicator.startAnimating()
+        incidentTableView.tableFooterView?.isHidden = false
+    }
+
+    func hideFooterLoader() {
+        footerActivityIndicator.stopAnimating()
+        incidentTableView.tableFooterView?.isHidden = true
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentHeight = scrollView.contentSize.height
         let scrollOffset = scrollView.contentOffset.y
         let screenHeight = scrollView.frame.size.height
 
-        if contentHeight - scrollOffset <= screenHeight {
+        guard contentHeight > screenHeight else { return }
+
+        if contentHeight - scrollOffset - screenHeight < 50 {
             // Load the next page when the user scrolls to the bottom
             paginationHandler.loadNextPage()
+            showFooterLoader()
         }
     }
 
@@ -306,6 +329,7 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
     }
 
     func incidentDataLoaded() {
+        hideFooterLoader()
         hideLoader()
         loadIncidentList()
         addMapMarkers()

@@ -44,6 +44,7 @@ class PaginationHandler<T: PaginatableViewModel> {
             case .success(let newItems):
                 self?.viewModel.didFetchData(newItems)
                 self?.viewModel.currentPage = nextPage  // Update the current page
+                self?.isLoading = false
             case .failure(let error):
                 print("Failed to fetch data: \(error)")
             }
