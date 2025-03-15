@@ -103,7 +103,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
-        incidentComments.text = "\(incidentDetail.commentCount) Comments"
+        incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
 
         if !reloadOnlyUIElements {
             let mapManager = MapManager()

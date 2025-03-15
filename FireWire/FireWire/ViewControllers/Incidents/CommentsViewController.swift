@@ -94,7 +94,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         // To update notification count in incident detail screen after adding a comment
         postNotification()
 
-        commentsListCount.text = "\(viewModel.totalPages) Comments"
+        commentsListCount.text = "\(viewModel.totalPages) \(viewModel.totalPages == 1 ? "Comment" : "Comments")"
         tableView.reloadData()
     }
 
