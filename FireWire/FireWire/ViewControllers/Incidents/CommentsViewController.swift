@@ -327,13 +327,13 @@ extension CommentsViewController {
                 if commentsDetail.featuredImage {
                     let featureImageAction: UIAlertAction = .init(title: "Remove Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: true)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: false)
                     }
                     actionSheetController.addAction(featureImageAction)
                 } else {
                     let featureImageAction: UIAlertAction = .init(title: "Set Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: false)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: true)
                     }
                     actionSheetController.addAction(featureImageAction)
                 }

@@ -958,7 +958,7 @@ agreeing with our Terms and Conditions</string>
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPq-eX-lHc">
-                                                <rect key="frame" x="25" y="0.0" width="88" height="31.666666666666668"/>
+                                                <rect key="frame" x="25" y="0.0" width="88" height="32"/>
                                                 <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -976,7 +976,7 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="color" name="FWRed"/>
                                             </activityIndicatorView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-WU-xYH">
-                                                <rect key="frame" x="0.0" y="51.666666666666686" width="393" height="617.33333333333326"/>
+                                                <rect key="frame" x="0.0" y="52" width="393" height="617"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-n8-nDp" customClass="FWView" customModule="FireWire" customModuleProvider="target">
@@ -3538,7 +3538,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-Iw-eb6">
-                                        <rect key="frame" x="124.66666666666669" y="9" width="144" height="32"/>
+                                        <rect key="frame" x="124.66666666666667" y="9.3333333333333304" width="143.66666666666663" height="31.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3567,7 +3567,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Locality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-7r-gik">
-                                                    <rect key="frame" x="25" y="11.000000000000002" width="143.66666666666666" height="22.666666666666671"/>
+                                                    <rect key="frame" x="25" y="11.000000000000002" width="143.33333333333334" height="22.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3665,7 +3665,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxT-cr-Waa">
-                                        <rect key="frame" x="124.66666666666669" y="9" width="144" height="32"/>
+                                        <rect key="frame" x="124.66666666666667" y="9.3333333333333304" width="143.66666666666663" height="31.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
