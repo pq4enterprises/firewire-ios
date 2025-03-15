@@ -115,7 +115,7 @@ final class RegistrationViewModel {
             return .failure(message: "Enter a valid phone number")
         }
 
-        if model.title.isEmpty {
+        if model.title.trimmingCharacters(in: .whitespaces).isEmpty {
             return .failure(message: "Title is required")
         }
 

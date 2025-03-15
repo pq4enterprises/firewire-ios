@@ -233,7 +233,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HAS-ni-U8K">
-                                                        <rect key="frame" x="30" y="145.33333333333337" width="333" height="75.666666666666686"/>
+                                                        <rect key="frame" x="30" y="145" width="333" height="75.666666666666686"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Enter your email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-cW-COW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="15.666666666666666"/>
@@ -252,7 +252,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0vh-OP-CcN">
-                                                        <rect key="frame" x="30" y="235.33333333333331" width="333" height="77"/>
+                                                        <rect key="frame" x="30" y="238" width="333" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Enter your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9M-4i-Nwl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="17"/>
@@ -342,16 +342,16 @@ agreeing with our Terms and Conditions</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="btp-mw-SdZ" userLabel="HeaderStackView">
                                                 <rect key="frame" x="40" y="67.000000000000014" width="313" height="236.33333333333337"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="CYx-7q-gnb">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="CYx-7q-gnb">
                                                         <rect key="frame" x="90.666666666666657" y="0.0" width="132" height="142"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Started!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phN-2O-jTv">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Get Started!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phN-2O-jTv">
                                                         <rect key="frame" x="77" y="142" width="159" height="60.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="42"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet consectetur. Nibh lacus id ut in vivamus eu egesta." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcX-cd-igr">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lorem ipsum dolor sit amet consectetur. Nibh lacus id ut in vivamus eu egesta." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcX-cd-igr">
                                                         <rect key="frame" x="7" y="202.33333333333331" width="299" height="34"/>
                                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="14"/>
                                                         <nil key="textColor"/>
@@ -446,7 +446,7 @@ agreeing with our Terms and Conditions</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mh-yp-ncn">
-                                        <rect key="frame" x="175.66666666666666" y="9.3333333333333304" width="42" height="31.666666666666671"/>
+                                        <rect key="frame" x="175.66666666666666" y="9" width="42" height="32"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1536,7 +1536,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Live Scanner Feeds" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-xi-FOp">
-                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333329"/>
+                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2304,7 +2304,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-Lr-l0N">
-                                <rect key="frame" x="30" y="696" width="333" height="102"/>
+                                <rect key="frame" x="30" y="694.66666666666663" width="333" height="103.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ytp-XH-yse">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="20.666666666666668"/>
@@ -2335,10 +2335,10 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5tN-Dm-PnV">
-                                        <rect key="frame" x="0.0" y="40.666666666666629" width="333" height="20.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="40.666666666666742" width="333" height="22"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terms_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1DW-Ga-ffz">
-                                                <rect key="frame" x="0.0" y="0.33333333333337123" width="20" height="20"/>
+                                                <rect key="frame" x="0.0" y="1" width="20" height="20"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="m8Y-n6-4GS"/>
@@ -2346,13 +2346,13 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CH-nP-xao">
-                                                <rect key="frame" x="30" y="2" width="285" height="16.666666666666668"/>
+                                                <rect key="frame" x="30" y="2" width="285" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hTC-0v-5Pl">
-                                                <rect key="frame" x="325" y="6.3333333333333712" width="8" height="8"/>
+                                                <rect key="frame" x="325" y="6.3333333333332584" width="8" height="9.3333333333333357"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="8" id="OOT-SL-2Y7"/>
@@ -2365,7 +2365,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-Z1-1ZI">
-                                        <rect key="frame" x="0.0" y="81.333333333333371" width="333" height="20.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="82.666666666666742" width="333" height="20.666666666666671"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4d0-uS-7bC">
                                                 <rect key="frame" x="0.0" y="0.33333333333325754" width="20" height="20"/>
@@ -2399,36 +2399,39 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_bg" translatesAutoresizingMaskIntoConstraints="NO" id="BsD-8x-N0n">
-                                <rect key="frame" x="30" y="216" width="333" height="420"/>
+                                <rect key="frame" x="30" y="217.33333333333334" width="333" height="417.33333333333326"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWt-AA-40w">
-                                <rect key="frame" x="39" y="221" width="315" height="410"/>
+                                <rect key="frame" x="39" y="222.33333333333334" width="315" height="407.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="0RS-UC-XBK">
-                                        <rect key="frame" x="15" y="20" width="285" height="376"/>
+                                        <rect key="frame" x="15" y="20" width="285" height="373.33333333333331"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PIp-vG-P9s">
-                                                <rect key="frame" x="104.66666666666666" y="0.0" width="76" height="52.666666666666664"/>
+                                                <rect key="frame" x="104.66666666666666" y="0.0" width="76" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.99" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-lH-Rbl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="38"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="35"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="27"/>
                                                         <color key="textColor" name="FWRed"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="per month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXF-CQ-AYp">
-                                                        <rect key="frame" x="0.0" y="38" width="76" height="14.666666666666664"/>
+                                                        <rect key="frame" x="0.0" y="34.999999999999972" width="76" height="15"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="14.666666666666664" id="8gi-wO-LbP"/>
+                                                            <constraint firstAttribute="height" constant="15" id="4pp-UO-cEK"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="7Qe-cY-N55"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Full Access With A Premium Account" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qo-1w-nKk">
-                                                <rect key="frame" x="57.000000000000014" y="65.666666666666686" width="171.33333333333337" height="42"/>
+                                                <rect key="frame" x="57.000000000000014" y="62.999999999999972" width="171.33333333333337" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="cjj-ie-qa7"/>
                                                 </constraints>
@@ -2437,7 +2440,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a premium account, you gain access to:" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkp-2u-Uie">
-                                                <rect key="frame" x="11" y="120.66666666666669" width="263" height="14.333333333333343"/>
+                                                <rect key="frame" x="11" y="117.99999999999997" width="263" height="14.333333333333343"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14.333333333333343" id="cYU-3X-G78"/>
                                                 </constraints>
@@ -2446,7 +2449,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbL-TK-BH6">
-                                                <rect key="frame" x="0.0" y="148" width="285" height="128.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="145.33333333333337" width="285" height="128.66666666666663"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKN-k1-SyU">
                                                         <rect key="frame" x="20" y="46" width="245" height="1"/>
@@ -2462,14 +2465,14 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLt-xl-12o">
-                                                        <rect key="frame" x="20" y="81.666666666666686" width="245" height="1"/>
+                                                        <rect key="frame" x="20" y="81.666666666666629" width="245" height="1"/>
                                                         <color key="backgroundColor" name="FWYellow"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Zyb-xd-icl"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom notifications (specific units, boros, incident types, etc.) and more to come!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6Y-dV-yVS">
-                                                        <rect key="frame" x="20" y="92.666666666666686" width="245" height="29.333333333333329"/>
+                                                        <rect key="frame" x="20" y="92.666666666666629" width="245" height="29.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2486,7 +2489,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                     <constraint firstAttribute="trailing" secondItem="B6Y-dV-yVS" secondAttribute="trailing" constant="20" id="19b-FM-bYH"/>
                                                     <constraint firstAttribute="height" constant="128.66999999999999" id="3H0-Hc-g1q"/>
                                                     <constraint firstItem="KKN-k1-SyU" firstAttribute="centerX" secondItem="OCG-9a-A2g" secondAttribute="centerX" id="Awr-bT-Jsr"/>
-                                                    <constraint firstAttribute="bottom" secondItem="B6Y-dV-yVS" secondAttribute="bottom" constant="6.6699999999999999" id="EUe-G4-DJj"/>
                                                     <constraint firstItem="aLt-xl-12o" firstAttribute="centerX" secondItem="VbL-TK-BH6" secondAttribute="centerX" id="GBn-8c-asR"/>
                                                     <constraint firstItem="KKN-k1-SyU" firstAttribute="top" secondItem="OCG-9a-A2g" secondAttribute="bottom" constant="10" id="GUm-6R-2lm"/>
                                                     <constraint firstItem="OCG-9a-A2g" firstAttribute="top" secondItem="VbL-TK-BH6" secondAttribute="top" constant="8" id="IEf-ln-oMK"/>
@@ -2504,7 +2506,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4E-Zg-2zz" customClass="FWFilledButton" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="289.66666666666663" width="285" height="45"/>
+                                                <rect key="frame" x="0.0" y="287" width="285" height="45"/>
                                                 <color key="backgroundColor" name="FWRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="dC7-vI-QxG"/>
@@ -2519,7 +2521,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgP-56-euA">
-                                                <rect key="frame" x="68.666666666666671" y="347.66666666666663" width="147.66666666666663" height="28.333333333333314"/>
+                                                <rect key="frame" x="68.666666666666671" y="345" width="147.66666666666663" height="28.333333333333314"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28.333333333333314" id="LfX-fH-i7C"/>
                                                 </constraints>
@@ -2619,7 +2621,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <constraint firstAttribute="trailing" secondItem="3Uf-Va-DA9" secondAttribute="trailing" constant="20" id="chP-TL-xEu"/>
                                             <constraint firstItem="3Uf-Va-DA9" firstAttribute="leading" secondItem="pes-Ch-UAu" secondAttribute="leading" constant="20" id="cjx-rh-4pm"/>
                                             <constraint firstItem="bNR-ER-McY" firstAttribute="top" secondItem="KvC-33-C7N" secondAttribute="bottom" constant="10" id="f5T-Ym-dRh"/>
-                                            <constraint firstAttribute="bottom" secondItem="3Uf-Va-DA9" secondAttribute="bottom" constant="6.6699999999999999" id="fuw-8Z-dwV"/>
                                             <constraint firstItem="bNR-ER-McY" firstAttribute="centerX" secondItem="KvC-33-C7N" secondAttribute="centerX" id="o8K-i2-kP9"/>
                                             <constraint firstItem="KvC-33-C7N" firstAttribute="top" secondItem="pes-Ch-UAu" secondAttribute="top" constant="8" id="ozl-2A-Bnw"/>
                                             <constraint firstItem="31H-kO-pma" firstAttribute="top" secondItem="bNR-ER-McY" secondAttribute="bottom" constant="10" id="tNc-bf-FX6"/>
@@ -3107,7 +3108,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Qt-rJq">
-                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666674"/>
+                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666663"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-FS-xFV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="77"/>
@@ -3537,7 +3538,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-Iw-eb6">
-                                        <rect key="frame" x="124.66666666666667" y="9.3333333333333304" width="143.66666666666663" height="31.666666666666671"/>
+                                        <rect key="frame" x="124.66666666666669" y="9" width="144" height="32"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3566,7 +3567,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Locality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-7r-gik">
-                                                    <rect key="frame" x="25" y="11.000000000000002" width="143.33333333333334" height="22.666666666666671"/>
+                                                    <rect key="frame" x="25" y="11.000000000000002" width="143.66666666666666" height="22.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3580,14 +3581,14 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationLocalityCell" id="366-Eo-xIC" customClass="NotificationLocalityCell" customModule="FireWire" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94.666667938232422" width="393" height="41.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="94.666667938232422" width="393" height="41.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="366-Eo-xIC" id="3Qy-46-blA">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekD-pD-cdS">
-                                                    <rect key="frame" x="24.999999999999996" y="10.999999999999998" width="39.666666666666657" height="19.333333333333329"/>
+                                                    <rect key="frame" x="24.999999999999996" y="11.000000000000002" width="39.666666666666657" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="FWTextGrey2"/>
                                                     <nil key="highlightedColor"/>
@@ -3664,7 +3665,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxT-cr-Waa">
-                                        <rect key="frame" x="124.66666666666667" y="9.3333333333333304" width="143.66666666666663" height="31.666666666666671"/>
+                                        <rect key="frame" x="124.66666666666669" y="9" width="144" height="32"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4262,7 +4263,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Areas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-j8-S0K">
-                                        <rect key="frame" x="152.33333333333334" y="9.3333333333333304" width="88.333333333333343" height="31.666666666666671"/>
+                                        <rect key="frame" x="152.66666666666666" y="9" width="88" height="32"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4355,7 +4356,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQM-7q-oLL">
-                                        <rect key="frame" x="128" y="9.3333333333333304" width="137.33333333333337" height="31.666666666666671"/>
+                                        <rect key="frame" x="128" y="9" width="137" height="32"/>
                                         <fontDescription key="fontDescription" name="Teko-Medium" family="Teko" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
