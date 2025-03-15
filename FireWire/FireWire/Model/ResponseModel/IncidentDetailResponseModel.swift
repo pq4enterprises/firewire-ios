@@ -16,10 +16,11 @@ struct IncidentDetailModel: Codable {
     let id: String
     //let locality, subLocality: Locality
     let latitude, longitude, address: String
-    let respondingUnits: [String]?
-    let featured, sendPushNotification: Bool
+    let respondingUnits: [String?]?
+    let featured: Bool
     //let postFacebook: [PostFacebook]?
     //let postTwitter: [PostTwitter]?
+    let sendPushNotification: Bool?
     let field1Value: String?
     let field2Value: String?
     let field3Value: String?
@@ -49,7 +50,6 @@ struct IncidentDetailModel: Codable {
         longitude = try container.decode(String.self, forKey: .longitude)
         address = try container.decode(String.self, forKey: .address)
         featured = try container.decode(Bool.self, forKey: .featured)
-        sendPushNotification = try container.decode(Bool.self, forKey: .sendPushNotification)
         createdAt = try container.decode(String.self, forKey: .createdAt)
         updatedAt = try container.decode(String.self, forKey: .updatedAt)
         v = try container.decode(Int.self, forKey: .v)
@@ -57,7 +57,8 @@ struct IncidentDetailModel: Codable {
         likeCount = try container.decode(Int.self, forKey: .likeCount)
 
         // Use decodeIfPresent for optional properties (will return nil if key is missing)
-        respondingUnits = try container.decodeIfPresent([String].self, forKey: .respondingUnits)
+        sendPushNotification = try container.decodeIfPresent(Bool.self, forKey: .sendPushNotification)
+        respondingUnits = try container.decodeIfPresent([String?].self, forKey: .respondingUnits)
         field1Value = try container.decodeIfPresent(String.self, forKey: .field1Value)
         field2Value = try container.decodeIfPresent(String.self, forKey: .field2Value)
         field3Value = try container.decodeIfPresent(String.self, forKey: .field3Value)

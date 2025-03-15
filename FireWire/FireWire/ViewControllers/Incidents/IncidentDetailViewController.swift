@@ -112,7 +112,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 
-            if let units = incidentDetail.respondingUnits, units.count > 0 {
+            if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
                 let unitsString = "[ " + units.joined(separator: ", ") + " ]"
                 unitsLabel.text = unitsString
             } else {
