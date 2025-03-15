@@ -150,6 +150,7 @@ class IncidentsViewController: UIViewController {
         showLoader()
         incidentsViewModel.currentPage = 1
         incidentsViewModel.items.removeAll()
+        incidentsViewModel.markersList.removeAll()
         incidentsViewModel.getIncidentList()
     }
 
