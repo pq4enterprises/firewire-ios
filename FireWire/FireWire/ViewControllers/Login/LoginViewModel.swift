@@ -65,7 +65,6 @@ final class LoginViewModel {
         }
     }
 
-    // TODO: API response need to handled, currently API throwing error
     func authenticateSocialLogin(_ requestModel: SocialLoginRequestModel) {
         let loginRequestModel = APIPayload.socialLogin(
             token: requestModel.token,

@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
     #endif
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // TODO: This is Dev key from Atom replace it from NYC
         GMSServices.provideAPIKey("AIzaSyALseex1HWFQ2XSxIk-uYwKegYzc5hgkPg")
 
         /// Facebook SDK initialisation

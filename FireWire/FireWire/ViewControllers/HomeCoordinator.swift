@@ -46,12 +46,6 @@ class HomeCoordinator: BaseCoordinator {
         }
     }
 
-    func navigateToIncidentList(_ incidentListData: [IncidentDataModel]){
-        let incidentsCoordinator = IncidentsCoordinator(navigationController: self.navigationController)
-        addChildCoordinator(incidentsCoordinator)
-        incidentsCoordinator.start(with: incidentListData, nil)
-    }
-
     func navigateToMyAccount(){
         let myAccountViewController = MyAccountViewController.instantiate()
         myAccountViewController.appCoordinator = parentCoordinator

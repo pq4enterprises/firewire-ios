@@ -100,36 +100,4 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
-    //TODO: Upload image is happening along with comment, this can be removed after testing
-    func requestImageUpload(_ image: UIImage) {
-        showLoader()
-        APIRequest().uploadImage(
-            apiEndPoint: APIEndpoints.uploadImage,
-            image: image,
-            expect: UploadImageResponseModel.self
-        ) { [weak self] response, _, _ in
-            guard let apiResponse = response else {
-                self?.hideLoader()
-                return
-            }
-
-            if let response = apiResponse as? UploadImageResponseModel {
-                if response.code.lowercased() == "success" {
-                    self?.hideLoader()
-                    DispatchQueue.main.async {
-                        if let imageUrl = response.data?.url, let incidentId = self?.selectedIncidentID {
-                            self?.dismiss(animated: true, completion: {
-                                // self?.coordinator?.navigateToIncidentComments(incidentId, imageUrl)
-                            })
-                        } else {
-                            self?.showAlert(title: "", message: "Upload image failed", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                        }
-                    }
-                } else {
-                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                }
-            }
-        }
-    }
 }

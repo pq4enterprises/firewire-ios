@@ -57,10 +57,6 @@
 		B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
 		B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
-		B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
-		B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
-		B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* IncidentListViewController.swift */; };
-		B04682412CE5401100419C65 /* IncidentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* IncidentListViewController.xib */; };
 		B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
@@ -77,7 +73,6 @@
 		B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */; };
 		B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */; };
 		B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
-		B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
 		B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
 		B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */; };
 		B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */; };
@@ -144,7 +139,6 @@
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
 		B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304492D0EE799006F851A /* FacebookLogin */; };
 		B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3044B2D0EE799006F851A /* FacebookShare */; };
-		B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */; };
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
 		B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */; };
@@ -228,7 +222,6 @@
 		B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
 		B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CA2CF57068007D319D /* APIManager.swift */; };
-		B0B1AEBF2D4F8DB6007371A9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */; };
 		B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50C92CF57068007D319D /* APIEndpoints.swift */; };
 		B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C78EC2D32C38A00044D5B /* AddCommentRequestModel.swift */; };
 		B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */; };
@@ -238,7 +231,6 @@
 		B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50CB2CF57068007D319D /* APIRequest.swift */; };
 		B0B1AEC72D4F8DB6007371A9 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0392D325F7400767EAB /* IncidentRequestModel.swift */; };
-		B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */; };
 		B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
 		B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304792D134057006F851A /* LocalityResponseModel.swift */; };
 		B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
@@ -248,13 +240,11 @@
 		B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */; };
 		B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A370CE2CEF95E80021D2F7 /* FWTextField.swift */; };
-		B0B1AED42D4F8DB6007371A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823A2CE53B9300419C65 /* MapViewController.swift */; };
 		B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
 		B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
 		B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
-		B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046823E2CE5401100419C65 /* IncidentListViewController.swift */; };
 		B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
 		B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
 		B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
@@ -262,7 +252,6 @@
 		B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
 		B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
 		B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
-		B0B1AEE22D4F8DB6007371A9 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
 		B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
 		B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
@@ -287,12 +276,10 @@
 		B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE802D4F8DB6007371A9 /* FacebookLogin */; };
 		B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE852D4F8DB6007371A9 /* SwiftSoup */; };
 		B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
-		B0B1AEFD2D4F8DB6007371A9 /* IncidentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823F2CE5401100419C65 /* IncidentListViewController.xib */; };
 		B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08236F52CE374D30092AC01 /* Assets.xcassets */; };
 		B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
-		B0B1AF022D4F8DB6007371A9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046823B2CE53B9300419C65 /* MapViewController.xib */; };
 		B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
 		B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
 		B0B1AF052D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F82CE374D30092AC01 /* Base */; };
@@ -316,7 +303,6 @@
 		B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
 		B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
 		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
-		B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
@@ -325,8 +311,6 @@
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
 		B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
 		B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */; };
-		B0D4B0ED2D6986F3009A1BD1 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */; };
-		B0D4B0EE2D6986F3009A1BD1 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */; };
 		B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
 		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
@@ -458,10 +442,6 @@
 		B046822C2CE52CA900419C65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B04682322CE5327D00419C65 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		B04682332CE5327D00419C65 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
-		B046823A2CE53B9300419C65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		B046823B2CE53B9300419C65 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		B046823E2CE5401100419C65 /* IncidentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewController.swift; sourceTree = "<group>"; };
-		B046823F2CE5401100419C65 /* IncidentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewController.xib; sourceTree = "<group>"; };
 		B04682442CE6685300419C65 /* FWRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedButton.swift; sourceTree = "<group>"; };
 		B04682462CE66B3700419C65 /* FWSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSegmentControl.swift; sourceTree = "<group>"; };
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
@@ -478,7 +458,6 @@
 		B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestModel.swift; sourceTree = "<group>"; };
 		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
-		B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentsCoordinator.swift; sourceTree = "<group>"; };
 		B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewCell.swift; sourceTree = "<group>"; };
 		B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsListViewCell.xib; sourceTree = "<group>"; };
@@ -528,7 +507,6 @@
 		B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
-		B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalisationViewController.swift; sourceTree = "<group>"; };
 		B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -555,7 +533,6 @@
 		B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAreaModel.swift; sourceTree = "<group>"; };
 		B0B836752D5A744200C71D8F /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
 		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
-		B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewModel.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -563,7 +540,6 @@
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B0D4B0E92D690F21009A1BD1 /* FeedAreaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAreaListViewController.swift; sourceTree = "<group>"; };
-		B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainViewController.swift; sourceTree = "<group>"; };
 		B0D737832D3FD59600D82F2C /* FeedItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemListView.swift; sourceTree = "<group>"; };
 		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
 		B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -773,9 +749,6 @@
 		B0100CDD2CF79975004F6214 /* Incidents */ = {
 			isa = PBXGroup;
 			children = (
-				B046823E2CE5401100419C65 /* IncidentListViewController.swift */,
-				B046823F2CE5401100419C65 /* IncidentListViewController.xib */,
-				B0CF74B62D038833008935D8 /* IncidentListViewModel.swift */,
 				B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */,
 				B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */,
 				B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */,
@@ -845,8 +818,6 @@
 				B04682522CE67CE900419C65 /* Home */,
 				B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
-				B06EEDBB2D0B7402000A6245 /* IncidentsCoordinator.swift */,
-				B0D4B0EC2D6986F2009A1BD1 /* DomainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -864,9 +835,6 @@
 		B04682522CE67CE900419C65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B046823A2CE53B9300419C65 /* MapViewController.swift */,
-				B046823B2CE53B9300419C65 /* MapViewController.xib */,
-				B0A3044D2D0EF0A9006F851A /* MapViewModel.swift */,
 				B046822C2CE52CA900419C65 /* HomeViewController.swift */,
 				B0ADB6D32D58E48A0086AC83 /* IncidentsViewModel.swift */,
 				B0ADB6CD2D58D97D0086AC83 /* IncidentsViewController.swift */,
@@ -1273,12 +1241,10 @@
 				B0860F272D846C3B0042874E /* SpecialUnit.wav in Resources */,
 				B0860F282D846C3B0042874E /* ActingEngineTicket.wav in Resources */,
 				B043CEAC2D0EDD0D007430B7 /* mapStyle.json in Resources */,
-				B04682412CE5401100419C65 /* IncidentListViewController.xib in Resources */,
 				B08236F62CE374D30092AC01 /* Assets.xcassets in Resources */,
 				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
-				B046823D2CE53B9300419C65 /* MapViewController.xib in Resources */,
 				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
 				B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
@@ -1332,12 +1298,10 @@
 				B0860F1B2D846C3B0042874E /* SpecialUnit.wav in Resources */,
 				B0860F1C2D846C3B0042874E /* ActingEngineTicket.wav in Resources */,
 				B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */,
-				B0B1AEFD2D4F8DB6007371A9 /* IncidentListViewController.xib in Resources */,
 				B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */,
 				B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */,
 				B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */,
 				B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */,
-				B0B1AF022D4F8DB6007371A9 /* MapViewController.xib in Resources */,
 				B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */,
 				B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */,
 				B0B1AF052D4F8DB6007371A9 /* Base in Resources */,
@@ -1434,7 +1398,6 @@
 				B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */,
 				B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */,
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
-				B0A3044E2D0EF0A9006F851A /* MapViewModel.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
 				B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
@@ -1445,7 +1408,6 @@
 				9B4F50E12CF57068007D319D /* APIRequest.swift in Sources */,
 				B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */,
 				B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */,
-				B06EEDBC2D0B7402000A6245 /* IncidentsCoordinator.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6B02D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
@@ -1458,14 +1420,12 @@
 				B0EDF0422D32769200767EAB /* ResetPasswordViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
 				B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
-				B046823C2CE53B9300419C65 /* MapViewController.swift in Sources */,
 				B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
-				B04682402CE5401100419C65 /* IncidentListViewController.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
@@ -1477,13 +1437,11 @@
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */,
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
-				B0CF74B72D038834008935D8 /* IncidentListViewModel.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
 				B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */,
-				B0D4B0EE2D6986F3009A1BD1 /* DomainViewController.swift in Sources */,
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
@@ -1581,7 +1539,6 @@
 				B0B1AEBC2D4F8DB6007371A9 /* IncidentResponseModel.swift in Sources */,
 				B0B1AEBD2D4F8DB6007371A9 /* LoginViewModel.swift in Sources */,
 				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
-				B0B1AEBF2D4F8DB6007371A9 /* MapViewModel.swift in Sources */,
 				B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */,
 				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
 				B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
@@ -1592,7 +1549,6 @@
 				B0B1AEC62D4F8DB6007371A9 /* APIRequest.swift in Sources */,
 				B0B1AEC72D4F8DB6007371A9 /* FWImage.swift in Sources */,
 				B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */,
-				B0B1AEC92D4F8DB6007371A9 /* IncidentsCoordinator.swift in Sources */,
 				B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6AF2D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
 				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
@@ -1605,14 +1561,12 @@
 				B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */,
 				B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */,
 				B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
-				B0B1AED42D4F8DB6007371A9 /* MapViewController.swift in Sources */,
 				B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */,
 				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
 				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
-				B0B1AEDA2D4F8DB6007371A9 /* IncidentListViewController.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
 				B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
@@ -1624,13 +1578,11 @@
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
 				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
 				B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */,
-				B0B1AEE22D4F8DB6007371A9 /* IncidentListViewModel.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
 				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,
 				B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */,
-				B0D4B0ED2D6986F3009A1BD1 /* DomainViewController.swift in Sources */,
 				B0B1AEE72D4F8DB6007371A9 /* APIConstants.swift in Sources */,
 				B0B1AEE82D4F8DB6007371A9 /* NotificationLocalityCell.swift in Sources */,
 				B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */,

@@ -9,13 +9,11 @@ import Foundation
 import UIKit
 
 enum APIEndpoints {
-//    #if DEV
-//        static var baseURL = "https://dev-firewire-api.atomgroups.work/"
-//    #else
-//        static let baseURL = "https://firewire-api.atomgroups.work/"
-//    #endif
-
-    static var baseURL = "https://dev-firewire-api.atomgroups.work/"
+    #if DEV
+        static var baseURL = "https://dev-firewire-api.atomgroups.work/"
+    #else
+        static let baseURL = "https://firewire-api.atomgroups.work/"
+    #endif
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"

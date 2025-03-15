@@ -18,7 +18,6 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
     @IBOutlet var confirmButton: FWFilledButton!
 
     weak var parentCoordinator: AppCoordinator?
-    var coordinator: IncidentsCoordinator?
     var viewModel: IncidentLocalityListViewModel!
     var selectedAreas: SelectedLocalities!
 
@@ -71,7 +70,6 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
 
     func confirmSelectArea() {
         hideLoader()
-        coordinator?.backToParentCoordinator()
         parentCoordinator?.navigateToHome()
     }
 

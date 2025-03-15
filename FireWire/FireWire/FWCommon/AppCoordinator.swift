@@ -16,17 +16,9 @@ class AppCoordinator: BaseCoordinator {
             if isLoggedIn {
                 self.navigateToHome()
             } else {
-                //self.navigateToLogin()
-                self.navigateToSetDomain()
+                self.navigateToLogin()
             }
         }
-    }
-
-    func navigateToSetDomain(){
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        addChildCoordinator(loginCoordinator)
-        loginCoordinator.parentCoordinator = self
-        loginCoordinator.setDomainView()
     }
 
     func navigateToLogin() {

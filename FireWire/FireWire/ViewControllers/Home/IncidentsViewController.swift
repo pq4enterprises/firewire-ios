@@ -33,7 +33,6 @@ class IncidentsViewController: UIViewController {
     var mapView: GMSMapView!
     var mapManager: MapManager!
 
-    var incidentView: IncidentListViewController!
     var incidentListExpanded: ((Bool) -> Void)?
 
     var initialMapViewHeight: CGFloat = 500
