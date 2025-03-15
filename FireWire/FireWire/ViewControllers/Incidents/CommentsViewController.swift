@@ -240,6 +240,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         // Adjust the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
+
+        // Scroll to make the text view visible
+        if let textView = addCommentTextView {
+            let textViewFrame = textView.convert(textView.bounds, to: scrollView)
+            scrollView.scrollRectToVisible(textViewFrame, animated: true)
+        }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -321,13 +327,13 @@ extension CommentsViewController {
                 if commentsDetail.featuredImage {
                     let featureImageAction: UIAlertAction = .init(title: "Remove Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.removeFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: true)
                     }
                     actionSheetController.addAction(featureImageAction)
                 } else {
                     let featureImageAction: UIAlertAction = .init(title: "Set Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.setFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: false)
                     }
                     actionSheetController.addAction(featureImageAction)
                 }
