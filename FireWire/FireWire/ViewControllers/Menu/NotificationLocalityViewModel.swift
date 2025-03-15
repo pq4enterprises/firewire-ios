@@ -79,7 +79,6 @@ final class NotificationLocalityViewModel {
                 }
             }
         }
-
     }
 
     func isIncidentTypeAllChecked() -> Bool {
@@ -167,7 +166,24 @@ final class NotificationLocalityViewModel {
     }
 
     func setSelectedLocalities() {
+        // Add selected locality id
+        if !selectedNotificationArea.isEmpty {
+            let userId = FWUserDefaults().userID ?? ""
+            let selectedLocality = SelectedNotificationModel(userId: userId, notificationId: localityData.id, type: "locality")
+
+            // Check if the locality already exists
+            if !selectedNotificationArea.contains(where: { $0.notificationId == localityData.id && $0.type == "locality" }) {
+                selectedNotificationArea.append(selectedLocality)
+            }
+        }
+
+        // Remove if only "locality" type exists
+        if selectedNotificationArea.allSatisfy({ $0.type == "locality" }) {
+            selectedNotificationArea.removeAll()
+        }
+
         let requestModel: [[String: Any]] = selectedNotificationArea.map { $0.toDictionary() }
+
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.setNotificationArea,
             payload: requestModel,
