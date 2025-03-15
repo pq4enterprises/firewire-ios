@@ -2521,14 +2521,14 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgP-56-euA">
-                                                <rect key="frame" x="68.666666666666671" y="345" width="147.66666666666663" height="28.333333333333314"/>
+                                                <rect key="frame" x="63" y="345" width="159" height="28.333333333333314"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28.333333333333314" id="LfX-fH-i7C"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Restore Subscription">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="restoreSubscriptionTap:" destination="379-Cb-SNB" eventType="touchUpInside" id="C5V-YP-MQh"/>
