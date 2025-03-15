@@ -16,7 +16,8 @@ class PostWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let requestUrl = String(format: APIEndpoints.postAdminUrl, FWUserDefaults().userToken ?? "", "light")
+        let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
+        let requestUrl = String(format: APIEndpoints.postAdminUrl, FWUserDefaults().userToken ?? "", isDarkMode ? "dark" : "light")
         debugPrint("request url \(requestUrl)")
 
         if let url = URL(string: requestUrl) {

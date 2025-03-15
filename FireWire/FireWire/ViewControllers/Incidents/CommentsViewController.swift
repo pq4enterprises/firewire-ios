@@ -146,7 +146,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == .Comments.addAComment {
             textView.text = ""
-            textView.textColor = .black  // Change to normal text color
+            textView.textColor = .label
         }
     }
 
