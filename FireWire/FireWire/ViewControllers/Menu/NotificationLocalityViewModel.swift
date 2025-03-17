@@ -191,7 +191,7 @@ final class NotificationLocalityViewModel {
         { response, _, _ in
 
             if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
-                self.delegate?.setNotification(message: "Notification settings updated successfully")
+                self.delegate?.setNotification(message: "Notification Settings Updated Successfully")
             }
         }
     }

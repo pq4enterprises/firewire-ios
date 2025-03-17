@@ -7,7 +7,11 @@
 
 import UIKit
 
-class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDelegate {
+protocol FeedAreaDelegate {
+    func savedFeedArea()
+}
+
+class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDelegate, FeedAreaDelegate {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
 
@@ -18,6 +22,7 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        viewModel.feedAreaDelegate = self
         viewModel?.getLocalities(forType: .area)
         setupTableView()
     }
@@ -40,12 +45,11 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
 
     @IBAction func doneButtonTap(_ sender: UIButton) {
         if viewModel.selectedAreas.count > 0 {
+            showLoader()
             viewModel.setSelectedLocalities()
-            coordinator?.popView()
-        }else{
+        } else {
             showAlert(title: "", message: "Select at lease one location to proceed.", actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
-
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -60,6 +64,12 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
     func error(message: String) {
         showActivityIndicator(false)
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+    }
+
+    func savedFeedArea() {
+        hideLoader()
+        showAlert(title: "", message: "Feed Areas Updated Successfully", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        coordinator?.popView()
     }
 
     func showActivityIndicator(_ value: Bool) {
