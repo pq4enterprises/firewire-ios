@@ -64,13 +64,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixq-59-h95">
-                        <rect key="frame" x="280" y="21" width="20" height="35"/>
+                        <rect key="frame" x="280" y="19" width="20" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="eqA-YC-cmc"/>
                         </constraints>
                         <color key="tintColor" name="FWRed"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="comments_action"/>
                         <connections>
                             <action selector="commentsActionTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NcY-Ks-opn"/>
                         </connections>
@@ -83,10 +83,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ixq-59-h95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="3Mk-6J-uJk"/>
+                    <constraint firstItem="ixq-59-h95" firstAttribute="centerY" secondItem="g0g-dX-E7n" secondAttribute="centerY" id="JC6-1q-elc"/>
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="leading" secondItem="W2k-yX-Hd1" secondAttribute="trailing" constant="10" id="JwS-69-Vip"/>
                     <constraint firstItem="g0g-dX-E7n" firstAttribute="centerY" secondItem="cKk-cE-dNe" secondAttribute="centerY" id="LaP-j3-otr"/>
-                    <constraint firstItem="ShQ-j3-vfa" firstAttribute="top" secondItem="ixq-59-h95" secondAttribute="bottom" constant="16" id="P2Z-v7-eeN"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="T2M-39-R9W" secondAttribute="bottom" constant="10" id="Xu4-mB-xFJ"/>
                     <constraint firstItem="W2k-yX-Hd1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="axs-y7-GJY"/>
                     <constraint firstItem="cKk-cE-dNe" firstAttribute="centerY" secondItem="W2k-yX-Hd1" secondAttribute="centerY" id="bJa-8t-k1H"/>
@@ -115,7 +114,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <image name="comments_action" width="27" height="26"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <namedColor name="FWRed">
             <color red="0.792156862745098" green="0.2627450980392157" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

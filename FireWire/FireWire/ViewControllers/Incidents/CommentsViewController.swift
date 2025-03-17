@@ -203,7 +203,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         viewModel.addComment(requestModel)
 
         // Clear text, hide keyboard, and reset UI
-        addCommentTextView.text = ""
+        addCommentTextView.text = .Comments.addAComment
+        addCommentTextView.textColor = .lightGray
         addCommentTextView.resignFirstResponder()
         attachedImages.removeAll()
         collectionViewHeightConstraint.constant = 0
@@ -222,8 +223,6 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     @IBAction func sendButtonTap(_ sender: UIButton) {
         postComment()
-        addCommentTextView.text = .Comments.addAComment
-        addCommentTextView.textColor = .lightGray
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
