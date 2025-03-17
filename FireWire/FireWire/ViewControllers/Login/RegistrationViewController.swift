@@ -52,6 +52,8 @@ class RegistrationViewController: UIViewController {
             self.togglePasswordVisibility(self.confirmPasswordTextField)
         }
 
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
         phoneTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
@@ -171,6 +173,8 @@ extension RegistrationViewController: UITextFieldDelegate {
                 return false // Reject space
             }
             return newLength <= 15
+        }else if textField == firstNameTextField || textField == lastNameTextField {
+            return newLength <= 30
         }
         return true
     }
