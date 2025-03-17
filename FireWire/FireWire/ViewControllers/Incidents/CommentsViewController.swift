@@ -47,6 +47,9 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
 
         commentsView.setTopShadow()
+        
+        addCommentTextView.layer.cornerRadius = 5
+        addCommentTextView.layer.masksToBounds = true
 
         if attachedImages.count > 0 {
             collectionViewHeightConstraint.constant = 100.0

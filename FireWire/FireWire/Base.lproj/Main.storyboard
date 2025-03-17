@@ -1010,8 +1010,8 @@ agreeing with our Terms and Conditions</string>
                                                         <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                                     </textField>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add a comment" translatesAutoresizingMaskIntoConstraints="NO" id="jSD-kO-HKW">
-                                                        <rect key="frame" x="54" y="35" width="258" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="56" y="25" width="266" height="50"/>
+                                                        <color key="backgroundColor" name="FWGrey"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="iMy-Jh-tGS"/>
                                                         </constraints>
@@ -1057,11 +1057,11 @@ agreeing with our Terms and Conditions</string>
                                                     <constraint firstAttribute="trailing" secondItem="rpF-4V-vJe" secondAttribute="trailing" constant="20" symbolic="YES" id="U45-To-9ZL"/>
                                                     <constraint firstAttribute="trailing" secondItem="vso-o2-OjG" secondAttribute="trailing" constant="20" id="VVQ-vd-5wj"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="top" secondItem="yXN-n8-nDp" secondAttribute="top" constant="10" id="XeG-nz-ixR"/>
-                                                    <constraint firstItem="rpF-4V-vJe" firstAttribute="leading" secondItem="jSD-kO-HKW" secondAttribute="trailing" constant="10" id="Ynz-6v-gss"/>
+                                                    <constraint firstItem="rpF-4V-vJe" firstAttribute="leading" secondItem="jSD-kO-HKW" secondAttribute="trailing" id="Ynz-6v-gss"/>
                                                     <constraint firstItem="vso-o2-OjG" firstAttribute="leading" secondItem="yXN-n8-nDp" secondAttribute="leading" constant="20" id="Ypj-uN-IuG"/>
                                                     <constraint firstItem="Z6n-WV-Ytm" firstAttribute="centerY" secondItem="Fn3-Id-iGX" secondAttribute="centerY" id="dtn-2s-ciu"/>
-                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="leading" secondItem="Z6n-WV-Ytm" secondAttribute="trailing" constant="8" symbolic="YES" id="i4V-6x-fvk"/>
-                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="centerY" secondItem="Z6n-WV-Ytm" secondAttribute="centerY" constant="10" id="sBZ-bo-Flg"/>
+                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="leading" secondItem="Z6n-WV-Ytm" secondAttribute="trailing" constant="10" id="i4V-6x-fvk"/>
+                                                    <constraint firstItem="jSD-kO-HKW" firstAttribute="centerY" secondItem="Z6n-WV-Ytm" secondAttribute="centerY" id="sBZ-bo-Flg"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -2150,7 +2150,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oka-4s-xWG">
-                                <rect key="frame" x="20.000000000000004" y="59" width="56.333333333333343" height="33.333333333333343"/>
+                                <rect key="frame" x="20.000000000000004" y="60" width="56.333333333333343" height="33.333333333333343"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Post">
@@ -2173,7 +2173,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="RTL-4g-7bq" firstAttribute="top" secondItem="K1h-Xo-m6R" secondAttribute="bottom" constant="80" id="Hpd-ic-jlV"/>
                             <constraint firstItem="1Kj-bV-cB3" firstAttribute="bottom" secondItem="EXh-55-aEW" secondAttribute="bottom" constant="7" id="KdX-Lm-J1e"/>
                             <constraint firstItem="xYA-dM-GR4" firstAttribute="top" secondItem="Hh3-JK-Iyz" secondAttribute="bottom" constant="20" id="MtP-QK-XGv"/>
-                            <constraint firstItem="Oka-4s-xWG" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="Ocn-Jf-hFx"/>
                             <constraint firstItem="EXh-55-aEW" firstAttribute="top" secondItem="xYA-dM-GR4" secondAttribute="bottom" constant="75.670000000000002" id="PdB-OO-b2N"/>
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" id="QC7-74-Sfl"/>
                             <constraint firstItem="Hh3-JK-Iyz" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="VNW-cK-hky"/>
@@ -2186,6 +2185,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="eQM-dW-GZa" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="hvC-15-35b"/>
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="width" secondItem="RTL-4g-7bq" secondAttribute="width" id="iH6-Rb-kst"/>
                             <constraint firstItem="K1h-Xo-m6R" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="k2h-ov-2bZ"/>
+                            <constraint firstItem="Oka-4s-xWG" firstAttribute="centerY" secondItem="eQM-dW-GZa" secondAttribute="centerY" id="lb7-M2-MJ2"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="poG-mn-Bex"/>
                             <constraint firstItem="Oka-4s-xWG" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="uba-Jd-W2C"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="firstBaseline" secondItem="tr0-x6-T0q" secondAttribute="firstBaseline" constant="-30" id="vQo-25-UeC"/>
