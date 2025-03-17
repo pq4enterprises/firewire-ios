@@ -8,21 +8,31 @@
 import UIKit
 import WebKit
 
-class PostWebViewController: UIViewController {
+class PostWebViewController: UIViewController, WKScriptMessageHandler {
     var coordinator: HomeCoordinator?
-
-    @IBOutlet var webView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
+        let isDarkMode = traitCollection.userInterfaceStyle == .dark
         let requestUrl = String(format: APIEndpoints.postAdminUrl, FWUserDefaults().userToken ?? "", isDarkMode ? "dark" : "light")
         debugPrint("request url \(requestUrl)")
 
+        let config = WKWebViewConfiguration()
+        config.userContentController.add(self, name: "closeWebView")
+
+        let webView = WKWebView(frame: view.frame, configuration: config)
         if let url = URL(string: requestUrl) {
             let request = URLRequest(url: url)
             webView.load(request)
+        }
+
+        view.addSubview(webView)
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "closeWebView" {
+            coordinator?.popView()
         }
     }
 

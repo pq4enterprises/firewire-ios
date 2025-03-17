@@ -4219,30 +4219,15 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <constraint firstItem="Q0K-hd-qbu" firstAttribute="leading" secondItem="Vcc-zZ-yUo" secondAttribute="leading" constant="15" id="lG3-kG-4Zw"/>
                                 </constraints>
                             </view>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTy-xd-xPl">
-                                <rect key="frame" x="0.0" y="117" width="393" height="735"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yDM-Ay-o10"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="RTy-xd-xPl" secondAttribute="bottom" id="Di6-Iw-JE4"/>
                             <constraint firstItem="Vcc-zZ-yUo" firstAttribute="top" secondItem="yDM-Ay-o10" secondAttribute="top" id="LGP-rj-j2G"/>
-                            <constraint firstItem="RTy-xd-xPl" firstAttribute="leading" secondItem="yDM-Ay-o10" secondAttribute="leading" id="XZR-kX-aVW"/>
                             <constraint firstItem="Vcc-zZ-yUo" firstAttribute="leading" secondItem="yDM-Ay-o10" secondAttribute="leading" id="oAZ-H2-gTi"/>
                             <constraint firstItem="Vcc-zZ-yUo" firstAttribute="trailing" secondItem="yDM-Ay-o10" secondAttribute="trailing" id="r0O-rE-FmH"/>
-                            <constraint firstItem="RTy-xd-xPl" firstAttribute="top" secondItem="Vcc-zZ-yUo" secondAttribute="bottom" constant="8" symbolic="YES" id="ukk-9R-8ev"/>
-                            <constraint firstItem="RTy-xd-xPl" firstAttribute="trailing" secondItem="yDM-Ay-o10" secondAttribute="trailing" id="zq8-OD-d7O"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="RTy-xd-xPl" id="Xhy-bd-pdM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntE-BX-eNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
