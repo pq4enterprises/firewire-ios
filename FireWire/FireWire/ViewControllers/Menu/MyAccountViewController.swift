@@ -66,11 +66,9 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         if FWUserDefaults().userRole == "basic_user" {
             premiumInfoView.isHidden = true
             subscriptionInfoView.isHidden = false
-            restoreSubscriptionButton.isHidden = false
         } else {
             premiumInfoView.isHidden = false
             subscriptionInfoView.isHidden = true
-            restoreSubscriptionButton.isHidden = true
         }
     }
 
