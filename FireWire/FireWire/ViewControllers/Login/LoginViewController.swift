@@ -164,7 +164,7 @@ class LoginViewController: UIViewController {
 
                 self.showLoader()
 
-                let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "basic_user")
+                let requestModel = SocialLoginRequestModel(token: accessToken, socialType: .google, role: "")
                 self.viewModel?.authenticateSocialLogin(requestModel)
             }
         }
@@ -186,7 +186,7 @@ class LoginViewController: UIViewController {
             } else if let result = result, !result.isCancelled {
                 // Login successful, you can access the user's Facebook data here
                 // self.fetchFacebookUserData()
-                _ = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
+                _ = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "")
                 // self.viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 // Login was canceled by the user
@@ -282,13 +282,15 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: LoginViewDelegate {
     func loginSuccess(_ type: LoginType) {
-        hideLoader()
-        if type == .google || type == .apple {
-            coordinator?.navigateToSelectArea()
-        } else {
-            coordinator?.backToParentCoordinator()
-            parentCoordinator?.navigateToHome()
+        viewModel?.validateIfAreaSelected(forType: .area) { result in
+            self.hideLoader()
+            result ? self.navigateHome() : self.coordinator?.navigateToSelectArea()
         }
+    }
+
+    private func navigateHome() {
+        coordinator?.backToParentCoordinator()
+        parentCoordinator?.navigateToHome()
     }
 
     func loginFailed(errorMessage: String) {
@@ -307,7 +309,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             {
                 showLoader()
 
-                let requestModel = SocialLoginRequestModel(token: tokenString, socialType: .apple, role: "basic_user")
+                let requestModel = SocialLoginRequestModel(token: tokenString, socialType: .apple, role: "")
                 viewModel?.authenticateSocialLogin(requestModel)
             } else {
                 print("Failed to get identity token.")

@@ -8,15 +8,16 @@ extension URLSession {
         case success(String), failure(Error)
     }
     
-    enum customError: Error {
+    enum CustomError: Error {
         case invalidUrl
         case invalidData
         case tokenExpired
+        case noInternet
     }
     
     func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: Any? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(customError.invalidUrl))
+            completion(.failure(CustomError.invalidUrl))
             return
         }
         var request = URLRequest(url: url)
@@ -44,7 +45,7 @@ extension URLSession {
                 if let error = error {
                     completion(.failure(error))
                 } else {
-                    completion(.failure(customError.invalidData))
+                    completion(.failure(CustomError.invalidData))
                 }
                 return
             }
@@ -53,7 +54,7 @@ extension URLSession {
             if let httpResponse = response as? HTTPURLResponse {
                 // Handle token expiration case (401 Unauthorized)
                 if httpResponse.statusCode == 401 {
-                    completion(.failure(customError.tokenExpired))
+                    completion(.failure(CustomError.tokenExpired))
                     return
                 }
             }
@@ -84,11 +85,16 @@ extension URLSession {
                     debugPrint("Unknown Decoding Error: \(decodingError.localizedDescription)")
                 }
 
-                completion(.failure(customError.invalidData))
+                completion(.failure(CustomError.invalidData))
             } catch {
                 // For other errors that aren't DecodingError
-                debugPrint("Decoding error: \(error.localizedDescription)")
-                completion(.failure(customError.invalidData))
+                if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
+                    debugPrint("No internet connection")
+                    completion(.failure(CustomError.noInternet))  // Define a 'noInternet' error in your customError enum
+                } else {
+                    debugPrint("Decoding error: \(error.localizedDescription)")
+                    completion(.failure(CustomError.invalidData))
+                }
             }
 
         }

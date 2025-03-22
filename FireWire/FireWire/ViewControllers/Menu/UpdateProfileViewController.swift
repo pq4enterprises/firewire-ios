@@ -194,6 +194,8 @@ extension UpdateProfileViewController: UITextFieldDelegate {
             let characterSet = CharacterSet(charactersIn: string)
 
             return allowedCharacters.isSuperset(of: characterSet) && newLength <= 15
+        }else if textField == firstNameTextField || textField == lastNameTextField {
+            return newLength <= 30
         }
         return true
     }

@@ -50,9 +50,11 @@ class HomeViewController: UIViewController {
     func updateUI(_ listExpanded: Bool) {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
             if listExpanded {
-                self.headerView.backgroundColor = .white
-                self.menuButton.setImage(FWImage.menuIcon, for: .normal)
-                self.feedsButton.setImage(FWImage.alertIcon, for: .normal)
+                self.headerView.backgroundColor = .systemBackground
+
+                let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
+                self.menuButton.setImage(isDarkMode ? FWImage.menuIconWhite : FWImage.menuIcon, for: .normal)
+                self.feedsButton.setImage(isDarkMode ? FWImage.alertIconWhite : FWImage.alertIcon, for: .normal)
             } else {
                 self.headerView.backgroundColor = .clear
                 self.menuButton.setImage(FWImage.menuIconWhite, for: .normal)

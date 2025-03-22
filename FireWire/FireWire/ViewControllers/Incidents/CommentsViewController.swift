@@ -47,6 +47,9 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
 
         commentsView.setTopShadow()
+        
+        addCommentTextView.layer.cornerRadius = 5
+        addCommentTextView.layer.masksToBounds = true
 
         if attachedImages.count > 0 {
             collectionViewHeightConstraint.constant = 100.0
@@ -94,7 +97,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         // To update notification count in incident detail screen after adding a comment
         postNotification()
 
-        commentsListCount.text = "\(viewModel.totalPages) Comments"
+        commentsListCount.text = "\(viewModel.totalPages) \(viewModel.totalPages == 1 ? "Comment" : "Comments")"
         tableView.reloadData()
     }
 
@@ -146,7 +149,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == .Comments.addAComment {
             textView.text = ""
-            textView.textColor = .black  // Change to normal text color
+            textView.textColor = .label
         }
     }
 
@@ -186,8 +189,13 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func comment(withImage urlString: String?) {
-        guard let commentMessage = addCommentTextView.text, commentMessage != .Comments.addAComment, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showAlert(title: "", message: "Comments cannot be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        let commentMessage = addCommentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let isCommentEmpty = commentMessage == nil || commentMessage == .Comments.addAComment || commentMessage!.isEmpty
+        let isImageEmpty = urlString == nil
+
+        if isCommentEmpty && isImageEmpty {
+            showAlert(title: "", message: "Comment and image cannot both be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -196,14 +204,15 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             userId: FWUserDefaults().userID ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
-            comment: commentMessage,
+            comment: commentMessage ?? "",
             img: urlString ?? ""
         )
 
         viewModel.addComment(requestModel)
 
         // Clear text, hide keyboard, and reset UI
-        addCommentTextView.text = ""
+        addCommentTextView.text = .Comments.addAComment
+        addCommentTextView.textColor = .lightGray
         addCommentTextView.resignFirstResponder()
         attachedImages.removeAll()
         collectionViewHeightConstraint.constant = 0
@@ -222,8 +231,6 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     @IBAction func sendButtonTap(_ sender: UIButton) {
         postComment()
-        addCommentTextView.text = .Comments.addAComment
-        addCommentTextView.textColor = .lightGray
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -240,6 +247,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         // Adjust the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
+
+        // Scroll to make the text view visible
+        if let textView = addCommentTextView {
+            let textViewFrame = textView.convert(textView.bounds, to: scrollView)
+            scrollView.scrollRectToVisible(textViewFrame, animated: true)
+        }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -321,13 +334,13 @@ extension CommentsViewController {
                 if commentsDetail.featuredImage {
                     let featureImageAction: UIAlertAction = .init(title: "Remove Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.removeFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: false)
                     }
                     actionSheetController.addAction(featureImageAction)
                 } else {
                     let featureImageAction: UIAlertAction = .init(title: "Set Featured Image", style: .default) { _ in
                         self.showLoader()
-                        self.viewModel.setFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID)
+                        self.viewModel.setAndRemoveFeatureImage(imageUrl: commentImg[0], commentID: commentsDetail.id, incidentID: selectedIncidentID, set: true)
                     }
                     actionSheetController.addAction(featureImageAction)
                 }

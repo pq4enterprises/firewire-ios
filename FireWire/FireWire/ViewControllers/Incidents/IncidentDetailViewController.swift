@@ -103,7 +103,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
-        incidentComments.text = "\(incidentDetail.commentCount) Comments"
+        incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
 
         if !reloadOnlyUIElements {
             let mapManager = MapManager()
@@ -112,7 +112,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 
-            if let units = incidentDetail.respondingUnits, units.count > 0 {
+            if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
                 let unitsString = "[ " + units.joined(separator: ", ") + " ]"
                 unitsLabel.text = unitsString
             } else {

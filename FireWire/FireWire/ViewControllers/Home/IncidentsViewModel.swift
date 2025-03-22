@@ -62,36 +62,41 @@ final class IncidentsViewModel: PaginatableViewModel {
     }
 
     func didFetchData(_ data: [IncidentDataModel]) {
+        var updatedMarkers: [MapMarkerModel] = []
+
         for item in data {
             // if the item already exists in the list update the existing item at the same position
             if let index = items.firstIndex(where: { $0.id == item.id }) {
                 items[index] = item
             } else {
                 items.append(item)
-
-                // for map markers
-                if let lat = Double(item.latitude), let lon = Double(item.longitude) {
-                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-
-                    /// snippet for map icon:  field3value + sub locality name - Not using for now, instead showing full address
-                    var address = item.field3Value
-                    if let subLocalityName = item.subLocality.first?.name, !subLocalityName.isEmpty {
-                        if !address.isEmpty {
-                            address.append(", ")
-                        }
-                        address.append(subLocalityName)
-                    }
-
-                    let mapModel = MapMarkerModel(
-                        incidentId: item.id,
-                        coordinates: coordinates,
-                        title: item.field1Value,
-                        address: item.address,
-                        markerType: .incident
-                    )
-                    markersList.append(mapModel)
-                }
             }
+
+            // for map markers
+            if let lat = Double(item.latitude), let lon = Double(item.longitude) {
+                let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+
+                /// snippet for map icon:  field3value + sub locality name - Not using for now, instead showing full address
+                var address = item.field3Value
+                if let subLocalityName = item.subLocality.first?.name, !subLocalityName.isEmpty {
+                    if !address.isEmpty {
+                        address.append(", ")
+                    }
+                    address.append(subLocalityName)
+                }
+
+                let mapModel = MapMarkerModel(
+                    incidentId: item.id,
+                    coordinates: coordinates,
+                    title: item.field1Value,
+                    address: item.address,
+                    markerType: .incident
+                )
+
+                updatedMarkers.append(mapModel)
+            }
+
+            markersList = updatedMarkers
         }
 
         items.count > 0
@@ -140,5 +145,34 @@ final class IncidentsViewModel: PaginatableViewModel {
 
     func getSelectedIncidentIdFromMapTitle(title: String) -> String? {
         markersList.first { $0.title.lowercased() == title.lowercased() }?.incidentId
+    }
+
+    func validateIfAreaSelected(forType type: LocalityListType, completion: @escaping (Bool) -> Void) {
+        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        requestModel.listType = ListType(type: type.rawValue)
+
+        let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.localityList,
+            payload: getIncidentLocalityRequestModel,
+            expect: LocalityResponseModel.self,
+            requestType: APIConstants.GET
+        ) { response, _, _ in
+
+            guard let localityResponse = response as? LocalityResponseModel,
+                  let localityData = localityResponse.data
+            else {
+                completion(false)
+                return
+            }
+
+            let isAnyAreaSelected = localityData.data.contains { locality in
+                locality.subLocality.contains { $0.isChecked } ||
+                (locality.unit?.compactMap { $0?.isChecked }.contains(true) ?? false) ||
+                (locality.incidentType?.compactMap { $0?.isChecked }.contains(true) ?? false)
+            }
+            completion(isAnyAreaSelected)
+        }
     }
 }

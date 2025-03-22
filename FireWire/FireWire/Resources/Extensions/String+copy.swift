@@ -8,48 +8,46 @@
 import Foundation
 
 public extension String {
-
     static let appStoreUrl = "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"
 
-    struct Login {
+    enum Login {
         public static let registerText = "Don’t have an Account? Register"
         public static let register = "Register"
         public static let termsAndConditionsText = "By register or logging into an account you are agreeing with our Terms and Conditions"
         public static let termsAndConditions = "Terms and Conditions"
     }
 
-    struct Register {
+    enum Register {
         public static let signInText = "Already have an Account? Sign In"
         public static let signIn = "Sign In"
     }
 
-    struct VerifyOtp {
+    enum VerifyOtp {
         public static let info = "Verification code has been sent to you registered email id %@"
     }
 
-    struct CommonError {
+    enum CommonError {
         public static let techError = "Technical error at our end please try again."
     }
 
-    struct PremiumDetails {
+    enum PremiumDetails {
         static let title = "Get Full Access With A Premium Account"
         static let premiumAccount = "Premium Account"
     }
 
-    struct Comments {
+    enum Comments {
         static let addAComment = "Add a comment"
     }
 }
 
 public extension String {
-
     var maskEmail: String {
         let email = self
         let components = email.components(separatedBy: "@")
         var maskEmail = ""
         if let first = components.first {
             maskEmail = String(first.enumerated().map { index, char in
-                return [0, 1, first.count - 1, first.count - 2].contains(index) ?
+                return [0, 1, first.count - 1].contains(index) ?
                 char : "*"
             })
         }

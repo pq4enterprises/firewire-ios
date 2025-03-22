@@ -117,4 +117,33 @@ final class LoginViewModel {
 
         return .success
     }
+
+    func validateIfAreaSelected(forType type: LocalityListType, completion: @escaping (Bool) -> Void) {
+        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        requestModel.listType = ListType(type: type.rawValue)
+
+        let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.localityList,
+            payload: getIncidentLocalityRequestModel,
+            expect: LocalityResponseModel.self,
+            requestType: APIConstants.GET
+        ) { response, _, _ in
+
+            guard let localityResponse = response as? LocalityResponseModel,
+                  let localityData = localityResponse.data
+            else {
+                completion(false)
+                return
+            }
+
+            let isAnyAreaSelected = localityData.data.contains { locality in
+                locality.subLocality.contains { $0.isChecked } ||
+                (locality.unit?.compactMap { $0?.isChecked }.contains(true) ?? false) ||
+                (locality.incidentType?.compactMap { $0?.isChecked }.contains(true) ?? false)
+            }
+            completion(isAnyAreaSelected)
+        }
+    }
 }

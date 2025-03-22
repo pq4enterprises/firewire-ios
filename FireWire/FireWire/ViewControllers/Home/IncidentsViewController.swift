@@ -73,6 +73,13 @@ class IncidentsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showLoader()
+
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
+            self.hideLoader()
+            if !result { self.coordinator?.navigateToSelectArea() }
+            return
+        }
+
         incidentsViewModel.getIncidentList()
 
         if isMapViewExpanded {
@@ -82,9 +89,6 @@ class IncidentsViewController: UIViewController {
         if isListViewExpanded {
             incidentContainerView.isHidden = false
         }
-
-        mapView.frame = mapContentView.bounds // refresh the map view margins
-        self.view.layoutIfNeeded()
     }
 
     //MARK: - View setup
@@ -97,11 +101,16 @@ class IncidentsViewController: UIViewController {
         mapManager = MapManager()
         mapView = mapManager.setupMapView(frame: mapContentView.bounds)
         mapView.delegate = self
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapContentView.addSubview(mapView)
+
+        // Force layout update after adding the subview
+        DispatchQueue.main.async {
+            self.mapView.frame = self.mapContentView.bounds
+        }
     }
 
     func setupIncidentList() {
-        // incidentContainerView.setTopCornersRadius(radius: 20)
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
@@ -147,6 +156,7 @@ class IncidentsViewController: UIViewController {
         showLoader()
         incidentsViewModel.currentPage = 1
         incidentsViewModel.items.removeAll()
+        incidentsViewModel.markersList.removeAll()
         incidentsViewModel.getIncidentList()
     }
 

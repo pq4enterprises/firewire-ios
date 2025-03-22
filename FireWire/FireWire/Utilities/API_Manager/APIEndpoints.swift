@@ -48,7 +48,7 @@ enum APIEndpoints {
     static let termsAndConditionUrl = "https://nycfirewire.net/terms"
     static let privacyPolicyUrl = "https://nycfirewire.net/privacy"
 
-    static let postAdminUrl = "https://dev-firewire.atomgroups.work/noauth/create/incident?form=add&token=%@&theme=%@"
+    static let postAdminUrl = "https://firewire.atomgroups.work/noauth/create/incident?form=add&token=%@&theme=%@"
 }
 
 enum SocialLoginType: String{

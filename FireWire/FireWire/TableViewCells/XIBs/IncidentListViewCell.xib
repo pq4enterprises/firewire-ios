@@ -82,7 +82,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-jG-5ui">
                                         <rect key="frame" x="25" y="-2.3333333333333428" width="277" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="0MC-Dm-3Xv"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="0MC-Dm-3Xv"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="14"/>
                                         <color key="textColor" name="FWRed"/>
@@ -119,6 +119,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Amq-2p-xb5"/>
                                     <constraint firstAttribute="width" constant="20" id="Rde-ed-5Py"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="star_icon"/>
                                 <connections>
@@ -131,6 +132,7 @@
                                     <constraint firstAttribute="height" constant="20" id="fGo-7z-0KV"/>
                                     <constraint firstAttribute="width" constant="20" id="vT9-b5-Iyy"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="comment_icon"/>
                                 <connections>
@@ -143,6 +145,7 @@
                                     <constraint firstAttribute="height" constant="20" id="KyL-hg-jdi"/>
                                     <constraint firstAttribute="width" constant="20" id="t42-7K-AI9"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="share_icon"/>
                                 <connections>
@@ -196,7 +199,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <color key="backgroundColor" name="FWWhite+Grey"/>
                 <constraints>
                     <constraint firstItem="ILf-jJ-FTP" firstAttribute="top" secondItem="E1B-AS-LRx" secondAttribute="bottom" constant="20" id="5E6-Rq-EWT"/>
                     <constraint firstItem="5Ya-nc-AXm" firstAttribute="top" secondItem="ILf-jJ-FTP" secondAttribute="bottom" constant="15" id="BK8-WZ-yBv"/>
@@ -244,8 +247,11 @@
         <namedColor name="FWTextGrey">
             <color red="0.47450980392156861" green="0.47843137254901963" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="FWWhite+Grey">
+            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

@@ -11,6 +11,19 @@
         }
       },
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "visionos",
+        "reference" : "systemGray4Color"
+      },
+      "idiom" : "universal"
     }
   ],
   "info" : {

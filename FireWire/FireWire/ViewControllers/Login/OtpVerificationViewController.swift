@@ -108,7 +108,9 @@ extension OtpVerificationViewController {
                 }
 
                 if apiResponse.code != "success" {
-                    self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                    self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in
+                        self?.otpTextFields.forEach { $0.text = "" }
+                    }])
                     return
                 }
 

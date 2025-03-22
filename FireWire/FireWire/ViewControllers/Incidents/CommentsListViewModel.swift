@@ -29,8 +29,8 @@ public final class CommentsListViewModel: PaginatableViewModel {
             apiEndPoint: requestURL,
             payload: getCommentsRequestModel,
             expect: CommentsResponseModel.self,
-            requestType: APIConstants.GET)
-        { [weak self] response, _, _ in
+            requestType: APIConstants.GET
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 self?.delegate?.noCommentsForIncident()
@@ -56,8 +56,11 @@ public final class CommentsListViewModel: PaginatableViewModel {
     }
 
     func didFetchData(_ data: [CommentsData]) {
-        if !data.isEmpty{
-            items.append(contentsOf: data) // Append new items to existing list
+        if !data.isEmpty {
+            let existingIds = items.map { $0.id }
+            let newItems = data.filter { !existingIds.contains($0.id) }
+
+            items.append(contentsOf: newItems) // Append new items to existing list
 
             if items.isEmpty {
                 delegate?.noCommentsForIncident()
@@ -74,7 +77,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
             switch result {
             case .success(let newItems):
                 self?.didFetchData(newItems)
-            case .failure(_):
+            case .failure:
                 self?.delegate?.noCommentsForIncident()
             }
         }
@@ -84,8 +87,8 @@ public final class CommentsListViewModel: PaginatableViewModel {
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.addComment,
             payload: APIPayload.addComment(model).toDictionary(),
-            expect: SuccessResponseModel.self)
-        { [weak self] response, _, _ in
+            expect: SuccessResponseModel.self
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 return
@@ -112,8 +115,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
             apiEndPoint: requestURL,
             expect: SuccessResponseModel.self,
             requestType: APIConstants.DELETE
-        )
-        { [weak self] response, _, _ in
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 return
@@ -141,8 +143,7 @@ public final class CommentsListViewModel: PaginatableViewModel {
             payload: APIPayload.reportComment(userId: FWUserDefaults().userID ?? "").toDictionary(),
             expect: SuccessResponseModel.self,
             requestType: APIConstants.POST
-        )
-        { [weak self] response, _, _ in
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 return
@@ -156,46 +157,25 @@ public final class CommentsListViewModel: PaginatableViewModel {
         }
     }
 
-    func setFeatureImage(imageUrl: String, commentID: String, incidentID: String){
+    func setAndRemoveFeatureImage(imageUrl: String, commentID: String, incidentID: String, set: Bool) {
         let requestURL = String(format: APIEndpoints.setFeaturedImage, incidentID)
 
         APIRequest().callApi(
             apiEndPoint: requestURL,
-            payload: APIPayload.setFeaturedImage(imageUrl: imageUrl, commentId: commentID).toDictionary(),
+            payload: APIPayload.setFeaturedImage(imageUrl: set ? imageUrl : "", commentId: commentID).toDictionary(),
             expect: SuccessResponseModel.self,
             requestType: APIConstants.PUT
-        )
-        { [weak self] response, _, _ in
+        ) { [weak self] response, _, _ in
 
             guard let apiResponse = response else {
                 return
             }
 
             if apiResponse is SuccessResponseModel {
-                self?.delegate?.showMessage(message: "Featured Image Set")
-            } else {
-                print("Invalid response object")
-            }
-        }
-    }
+                set
+                    ? self?.delegate?.showMessage(message: "Featured Image Set")
+                    : self?.delegate?.showMessage(message: "Featured Image Removed")
 
-    func removeFeatureImage(imageUrl: String, commentID: String, incidentID: String){
-        let requestURL = String(format: APIEndpoints.setFeaturedImage, incidentID)
-
-        APIRequest().callApi(
-            apiEndPoint: requestURL,
-            payload: APIPayload.setFeaturedImage(imageUrl: imageUrl, commentId: commentID).toDictionary(),
-            expect: SuccessResponseModel.self,
-            requestType: APIConstants.DELETE
-        )
-        { [weak self] response, _, _ in
-
-            guard let apiResponse = response else {
-                return
-            }
-
-            if apiResponse is SuccessResponseModel {
-                self?.delegate?.showMessage(message: "Featured Image Removed")
             } else {
                 print("Invalid response object")
             }
@@ -206,8 +186,8 @@ public final class CommentsListViewModel: PaginatableViewModel {
         APIRequest().uploadImage(
             apiEndPoint: APIEndpoints.uploadImage,
             image: image,
-            expect: UploadImageResponseModel.self)
-        { [weak self] response, _, _ in
+            expect: UploadImageResponseModel.self
+        ) { [weak self] response, _, _ in
             guard let apiResponse = response as? UploadImageResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
                 self?.delegate?.showMessage(message: errorMessage)
