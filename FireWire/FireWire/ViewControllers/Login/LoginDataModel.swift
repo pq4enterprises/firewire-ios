@@ -23,7 +23,7 @@ struct LoginDataModel: Codable {
     let active: Bool?
     let token: String?
     let refreshToken: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
