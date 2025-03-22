@@ -57,7 +57,10 @@ public final class CommentsListViewModel: PaginatableViewModel {
 
     func didFetchData(_ data: [CommentsData]) {
         if !data.isEmpty {
-            items.append(contentsOf: data) // Append new items to existing list
+            let existingIds = items.map { $0.id }
+            let newItems = data.filter { !existingIds.contains($0.id) }
+
+            items.append(contentsOf: newItems) // Append new items to existing list
 
             if items.isEmpty {
                 delegate?.noCommentsForIncident()

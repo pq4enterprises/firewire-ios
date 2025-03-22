@@ -78,7 +78,7 @@ final class MyAccountViewModel {
                 FWUserDefaults.setStringForKey(key: .userRoleKey, value: userRole)
             }
 
-            self?.delegate?.dataLoaded(status: true, message: "Your premium subscription is Success!")
+            self?.delegate?.dataLoaded(status: true, message: "Your premium subscription is success!")
         }
     }
 

@@ -189,8 +189,13 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func comment(withImage urlString: String?) {
-        guard let commentMessage = addCommentTextView.text, commentMessage != .Comments.addAComment, !commentMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showAlert(title: "", message: "Comments cannot be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        let commentMessage = addCommentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let isCommentEmpty = commentMessage == nil || commentMessage == .Comments.addAComment || commentMessage!.isEmpty
+        let isImageEmpty = urlString == nil
+
+        if isCommentEmpty && isImageEmpty {
+            showAlert(title: "", message: "Comment and image cannot both be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
@@ -199,7 +204,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             userId: FWUserDefaults().userID ?? "",
             incidentId: selectedIncidentID ?? "",
             type: "comment",
-            comment: commentMessage,
+            comment: commentMessage ?? "",
             img: urlString ?? ""
         )
 
