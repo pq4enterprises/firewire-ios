@@ -164,4 +164,10 @@ class HomeCoordinator: BaseCoordinator {
         postWebViewController.coordinator = self
         pushViewController(postWebViewController, animated: true)
     }
+
+    func navigateToSelectArea(){
+        let selectAreaViewController = SelectAreaViewController.instantiate()
+        selectAreaViewController.parentCoordinator = parentCoordinator
+        pushViewController(selectAreaViewController, animated: false)
+    }
 }

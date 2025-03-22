@@ -16,8 +16,8 @@ class AppCoordinator: BaseCoordinator {
             if isLoggedIn {
                 self.navigateToHome()
             } else {
-                //self.navigateToLogin()
-                self.navigateToSetDomain()
+                self.navigateToLogin()
+                //self.navigateToSetDomain()
             }
         }
     }

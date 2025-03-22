@@ -74,6 +74,13 @@ class IncidentsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showLoader()
+
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
+            self.hideLoader()
+            if !result { self.coordinator?.navigateToSelectArea() }
+            return
+        }
+
         incidentsViewModel.getIncidentList()
 
         if isMapViewExpanded {
