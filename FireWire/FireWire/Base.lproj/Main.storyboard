@@ -2168,7 +2168,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oka-4s-xWG">
-                                <rect key="frame" x="20.000000000000004" y="60" width="56.333333333333343" height="33.333333333333343"/>
+                                <rect key="frame" x="20.000000000000004" y="59" width="56.333333333333343" height="35"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Post">
@@ -2195,6 +2195,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" id="QC7-74-Sfl"/>
                             <constraint firstItem="Hh3-JK-Iyz" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="VNW-cK-hky"/>
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="height" secondItem="RTL-4g-7bq" secondAttribute="height" multiplier="1.02177" id="Vkl-sk-MYM"/>
+                            <constraint firstItem="Oka-4s-xWG" firstAttribute="bottom" secondItem="eQM-dW-GZa" secondAttribute="bottom" id="YFz-KR-ow6"/>
                             <constraint firstItem="xYA-dM-GR4" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="YWy-s5-kXk"/>
                             <constraint firstItem="1Kj-bV-cB3" firstAttribute="trailing" secondItem="xYA-dM-GR4" secondAttribute="trailing" constant="20" id="c9J-0k-cPO"/>
                             <constraint firstItem="EXh-55-aEW" firstAttribute="centerX" secondItem="HYu-MD-lE8" secondAttribute="centerX" id="d9a-lU-gj5"/>
@@ -2203,7 +2204,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                             <constraint firstItem="eQM-dW-GZa" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="hvC-15-35b"/>
                             <constraint firstItem="tr0-x6-T0q" firstAttribute="width" secondItem="RTL-4g-7bq" secondAttribute="width" id="iH6-Rb-kst"/>
                             <constraint firstItem="K1h-Xo-m6R" firstAttribute="top" secondItem="1Kj-bV-cB3" secondAttribute="top" id="k2h-ov-2bZ"/>
-                            <constraint firstItem="Oka-4s-xWG" firstAttribute="centerY" secondItem="eQM-dW-GZa" secondAttribute="centerY" id="lb7-M2-MJ2"/>
+                            <constraint firstItem="Oka-4s-xWG" firstAttribute="top" secondItem="eQM-dW-GZa" secondAttribute="top" id="kRY-d9-v88"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="poG-mn-Bex"/>
                             <constraint firstItem="Oka-4s-xWG" firstAttribute="leading" secondItem="1Kj-bV-cB3" secondAttribute="leading" constant="20" id="uba-Jd-W2C"/>
                             <constraint firstItem="zoc-9c-ep4" firstAttribute="firstBaseline" secondItem="tr0-x6-T0q" secondAttribute="firstBaseline" constant="-30" id="vQo-25-UeC"/>
