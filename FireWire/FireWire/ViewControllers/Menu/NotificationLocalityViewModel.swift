@@ -9,12 +9,30 @@ import Foundation
 
 final class NotificationLocalityViewModel {
     var localityData: LocalityResponseData!
+    var allLocalities: [LocalityResponseData] = []
     var selectedNotificationArea: [SelectedNotificationModel] = []
     var selectedSubLocalities: [String] = []
     var selectedUnits: [String] = []
     var delegate: NotificationLocalityDelegate?
 
     func saveAlreadySelectedArea() {
+        guard !allLocalities.isEmpty else { return }
+
+        allLocalities.forEach { locality in
+            locality.subLocality.forEach { updateSelectionArrays(for: $0) }
+            locality.unit?.forEach { updateSelectionArrays(for: $0) }
+            locality.incidentType?.forEach { updateSelectionArrays(for: $0) }
+
+            // Check if the locality is already in `selectedNotificationArea`
+            if !selectedNotificationArea.contains(where: { $0.notificationId == locality.id && $0.type == "locality" }) {
+                let userId = FWUserDefaults().userID ?? ""
+                let selectedLocality = SelectedNotificationModel(userId: userId, notificationId: locality.id, type: "locality")
+                selectedNotificationArea.append(selectedLocality)
+            }
+        }
+    }
+
+    func saveAlreadySelectedArea_forOneLocality() {
         guard let localityData else { return }
 
         localityData.subLocality.forEach { updateSelectionArrays(for: $0) }
@@ -166,17 +184,6 @@ final class NotificationLocalityViewModel {
     }
 
     func setSelectedLocalities() {
-        // Add selected locality id
-        if !selectedNotificationArea.isEmpty {
-            let userId = FWUserDefaults().userID ?? ""
-            let selectedLocality = SelectedNotificationModel(userId: userId, notificationId: localityData.id, type: "locality")
-
-            // Check if the locality already exists
-            if !selectedNotificationArea.contains(where: { $0.notificationId == localityData.id && $0.type == "locality" }) {
-                selectedNotificationArea.append(selectedLocality)
-            }
-        }
-
         // Remove if only "locality" type exists
         if selectedNotificationArea.allSatisfy({ $0.type == "locality" }) {
             selectedNotificationArea.removeAll()

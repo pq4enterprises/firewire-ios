@@ -14,6 +14,7 @@ protocol NotificationLocalityDelegate: AnyObject {
 class NotificationLocalityViewController: UIViewController, NotificationLocalityDelegate {
     var coordinator: HomeCoordinator?
     var localityData: LocalityResponseData?
+    var allLocalities: [LocalityResponseData]?
     var localitySubHeadings = ["Sublocalities", "Units", "Incident Types"]
     var viewModel: NotificationLocalityViewModel?
 
@@ -22,6 +23,7 @@ class NotificationLocalityViewController: UIViewController, NotificationLocality
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NotificationLocalityViewModel()
+        viewModel?.allLocalities = allLocalities ?? []
         viewModel?.localityData = localityData
         viewModel?.saveAlreadySelectedArea()
         viewModel?.delegate = self
