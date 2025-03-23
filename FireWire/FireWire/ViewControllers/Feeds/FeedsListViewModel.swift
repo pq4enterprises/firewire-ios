@@ -36,16 +36,17 @@ final class FeedsListViewModel: PaginatableViewModel {
             if let feedList = feedListResponse.data {
                 self?.totalPages = feedListResponse.pageInfo.totalCount
                 DispatchQueue.main.async {
-                    let newList = self?.groupFeedDataByLocality(feedListDataArray: feedList)
+                    let newList = self?.groupFeedDataByLocality(feedListDataArray: feedList, existingGroupedData: self?.items ?? [])
                     completion(.success(newList ?? []))
                 }
-            }else {
+            } else {
                 self?.delegate?.errorReceived(message: "Invalid response")
             }
         }
     }
 
     func didFetchData(_ data: [FeedGroupedData]) {
+        items.removeAll()
         items.append(contentsOf: data) // Append new items to existing list
         delegate?.dataReceived()
     }
@@ -61,23 +62,29 @@ final class FeedsListViewModel: PaginatableViewModel {
         }
     }
 
-    func groupFeedDataByLocality(feedListDataArray: [FeedListData]) -> [FeedGroupedData] {
-        var groupedData = [FeedGroupedData]()
+    func groupFeedDataByLocality(feedListDataArray: [FeedListData], existingGroupedData: [FeedGroupedData]) -> [FeedGroupedData] {
+        // Convert existing grouped data into a dictionary for quick lookups
+        var groupedDict = Dictionary(uniqueKeysWithValues: existingGroupedData.map { ($0.localityName, $0) })
 
-        // Grouping the feed list data by locality name
-        let grouped = Dictionary(grouping: feedListDataArray) { $0.locality.name }
+        // New feed data grouped by locality name
+        let newGrouped = Dictionary(grouping: feedListDataArray) { $0.locality.name }
 
-        // Sort locality names in descending order
-        let sortedLocalityNames = grouped.keys.sorted(by: >)
+        // Merge new data with existing groups while avoiding duplicates
+        for (localityName, newFeeds) in newGrouped {
+            if var existingGroup = groupedDict[localityName] {
+                let existingFeedIds = Set(existingGroup.feedList.map { $0.id }) // Assuming FeedListData has a unique 'id'
+                let uniqueFeeds = newFeeds.filter { !existingFeedIds.contains($0.id) } // Filter duplicates
 
-        for localityName in sortedLocalityNames {
-            if let feeds = grouped[localityName] {
-                // Create the FeedGroupedData for each locality
-                let feedGrouped = FeedGroupedData(localityName: localityName, feedList: feeds)
-                groupedData.append(feedGrouped)
+                if !uniqueFeeds.isEmpty {
+                    existingGroup.feedList.append(contentsOf: uniqueFeeds)
+                    groupedDict[localityName] = existingGroup
+                }
+            } else {
+                groupedDict[localityName] = FeedGroupedData(localityName: localityName, feedList: newFeeds)
             }
         }
 
-        return groupedData
+        // Return sorted grouped data
+        return groupedDict.values.sorted { $0.localityName > $1.localityName }
     }
 }
