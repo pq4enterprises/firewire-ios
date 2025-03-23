@@ -176,6 +176,12 @@ public final class CommentsListViewModel: PaginatableViewModel {
                     ? self?.delegate?.showMessage(message: "Featured Image Set")
                     : self?.delegate?.showMessage(message: "Featured Image Removed")
 
+                if let incidentId = self?.selectedIncidentID {
+                    self?.currentPage = 1
+                    self?.items.removeAll()
+                    self?.getCommentsList(for: incidentId)
+                }
+
             } else {
                 print("Invalid response object")
             }

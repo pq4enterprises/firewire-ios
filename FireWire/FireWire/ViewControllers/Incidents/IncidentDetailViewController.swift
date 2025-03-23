@@ -127,6 +127,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         if openCommentsSection {
+            openCommentsSection = false
             commentButton.sendActions(for: .touchUpInside)
         }
     }

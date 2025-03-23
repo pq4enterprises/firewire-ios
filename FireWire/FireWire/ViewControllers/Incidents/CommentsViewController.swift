@@ -189,7 +189,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func comment(withImage urlString: String?) {
-        let commentMessage = addCommentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        var commentMessage = addCommentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if commentMessage == .Comments.addAComment {
+            commentMessage = ""
+        }
 
         let isCommentEmpty = commentMessage == nil || commentMessage == .Comments.addAComment || commentMessage!.isEmpty
         let isImageEmpty = urlString == nil
