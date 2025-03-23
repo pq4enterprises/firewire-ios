@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var feedsButton: UIButton!
     @IBOutlet var headerView: UIView!
+    @IBOutlet weak var reloadButton: UIButton!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -55,10 +56,12 @@ class HomeViewController: UIViewController {
                 let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
                 self.menuButton.setImage(isDarkMode ? FWImage.menuIconWhite : FWImage.menuIcon, for: .normal)
                 self.feedsButton.setImage(isDarkMode ? FWImage.alertIconWhite : FWImage.alertIcon, for: .normal)
+                self.reloadButton.tintColor = isDarkMode ? .white : UIColor.label
             } else {
                 self.headerView.backgroundColor = .clear
                 self.menuButton.setImage(FWImage.menuIconWhite, for: .normal)
                 self.feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
+                self.reloadButton.tintColor = .white
             }
             self.view.layoutSubviews()
         }, completion: nil)
@@ -77,6 +80,12 @@ class HomeViewController: UIViewController {
         coordinator?.navigateToFeeds()
     }
 
+    @IBAction func reloadButtonTap(_ sender: UIButton) {
+        if let incidentsViewController {
+            incidentsViewController.reloadIncidentsView()
+        }
+    }
+    
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
         isIncidentListExpanded == true
             ? incidentsViewController?.expandMap()
@@ -99,12 +108,14 @@ class HomeViewController: UIViewController {
 
             menuButton.setImage(FWImage.menuIconWhite, for: .normal)
             feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
+            reloadButton.isHidden = false
             updateUI(isIncidentListExpanded)
         case 1:
             selectedViewController = newsViewController!
 
             menuButton.setImage(FWImage.menuIcon, for: .normal)
             feedsButton.setImage(FWImage.alertIcon, for: .normal)
+            reloadButton.isHidden = true
             updateUI(true)
         default:
             return

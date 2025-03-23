@@ -91,6 +91,18 @@ class IncidentsViewController: UIViewController {
         }
     }
 
+    func reloadIncidentsView(){
+        showLoader()
+        incidentsViewModel.getIncidentList()
+        if isMapViewExpanded {
+            incidentContainerView.isHidden = true
+        }
+
+        if isListViewExpanded {
+            incidentContainerView.isHidden = false
+        }
+    }
+
     //MARK: - View setup
     func setupUI() {
         changeViewButton.setupShadow()
