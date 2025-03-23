@@ -136,12 +136,12 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
             })], cancel: true)
         } else {
             guard unlockPremiumFeatureIfValid() == false else { return }
-            startListeningToFeed(id: feedData.id, urlString: feedData.url, indexPath: indexPath)
+            startListeningToFeed(id: feedData.id, title: feedData.name, urlString: feedData.url, indexPath: indexPath)
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
-    func startListeningToFeed(id: String, urlString: String, indexPath: IndexPath) {
+    func startListeningToFeed(id: String, title: String, urlString: String, indexPath: IndexPath) {
         if let url = URL(string: urlString) {
             // if audio is already playing stop & start playing new
             if let playingFeedIndex = getIndexOfPlayingFeed() {
@@ -151,7 +151,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
             viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = true
             tableView.reloadData()
 
-            AudioManager.shared.streamAudioFromURL(url: url)
+            AudioManager.shared.streamAudioFromURL(url: url, feedTitle: title)
             AppManager.shared.currentScannerIDListeningTO = id
 
         } else {

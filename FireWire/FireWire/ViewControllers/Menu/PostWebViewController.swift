@@ -39,7 +39,15 @@ class PostWebViewController: UIViewController, WKScriptMessageHandler, WKNavigat
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "closeWebView" {
-            coordinator?.popView()
+            if let value = message.body as? String {
+                if value == "close" {
+                    coordinator?.popView()
+                } else if value == "submit" {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.coordinator?.popView()
+                    }
+                }
+            }
         }
     }
 
