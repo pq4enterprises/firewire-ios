@@ -74,7 +74,9 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
     }
 
     func error(message: String) {
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in 
+            self.parentCoordinator?.backToParentCoordinator()
+        }])
     }
 
     func enableConfirmButton(){

@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class PostWebViewController: UIViewController, WKScriptMessageHandler {
+class PostWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate {
     var coordinator: HomeCoordinator?
 
     override func viewDidLoad() {
@@ -20,8 +20,15 @@ class PostWebViewController: UIViewController, WKScriptMessageHandler {
 
         let config = WKWebViewConfiguration()
         config.userContentController.add(self, name: "closeWebView")
+        config.defaultWebpagePreferences.allowsContentJavaScript = true
+        config.preferences.javaScriptCanOpenWindowsAutomatically = true
+        config.websiteDataStore = WKWebsiteDataStore.default()
 
         let webView = WKWebView(frame: view.frame, configuration: config)
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/537.36"
+
         if let url = URL(string: requestUrl) {
             let request = URLRequest(url: url)
             webView.load(request)
@@ -34,6 +41,28 @@ class PostWebViewController: UIViewController, WKScriptMessageHandler {
         if message.name == "closeWebView" {
             coordinator?.popView()
         }
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping @MainActor (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+        if let url = navigationAction.request.url?.absoluteString {
+            if url.contains("facebook.com") {
+                if let fbURL = URL(string: url) {
+                    UIApplication.shared.open(fbURL)
+                }
+                decisionHandler(.cancel, preferences)
+                return
+            }
+        }
+
+        preferences.allowsContentJavaScript = true
+        decisionHandler(.allow, preferences)
+    }
+
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request) // Load pop-up inside the same WKWebView
+        }
+        return nil
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
