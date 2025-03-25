@@ -14,11 +14,7 @@ class MapManager {
     var markers = [GMSMarker]()
 
     func setupMapView(frame: CGRect, zoom: Float = 15.0) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: zoom)
-        let mapOptions = GMSMapViewOptions()
-        mapOptions.camera = camera
-
-        mapView = GMSMapView(options: mapOptions)
+        mapView = GMSMapView()
         mapView.frame = frame
         mapView.mapType = .normal
 
