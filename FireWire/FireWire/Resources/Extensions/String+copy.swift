@@ -37,6 +37,7 @@ public extension String {
 
     enum Comments {
         static let addAComment = "Add a comment"
+        static let commentsAndImageEmptyMessage = "Please enter a comment or upload an image"
     }
 }
 

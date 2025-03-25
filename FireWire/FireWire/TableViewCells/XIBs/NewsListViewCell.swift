@@ -47,7 +47,7 @@ class NewsListViewCell: UITableViewCell {
             debugPrint("Error parsing HTML: \(error.localizedDescription)")
         }
 
-        if let formattedDate = FWDateFormatter(inputDateFormat: "EEE, dd MMM yyyy HH:mm:ss Z").formatDateString(model.pubDate) {
+        if let formattedDate = FWDateFormatter(inputDateFormat: "EEE, dd MMM yyyy HH:mm:ss Z").formatDateWithPOSIX(model.pubDate) {
             newsDateTime.text = formattedDate
         }
     }

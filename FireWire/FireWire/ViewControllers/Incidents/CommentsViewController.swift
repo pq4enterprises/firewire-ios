@@ -198,7 +198,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         let isImageEmpty = urlString == nil
 
         if isCommentEmpty && isImageEmpty {
-            showAlert(title: "", message: "Comment and image cannot both be empty", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+            showAlert(title: "", message: .Comments.commentsAndImageEmptyMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
             return
         }
 
