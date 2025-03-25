@@ -51,7 +51,7 @@ class AudioManager: NSObject {
         updateNowPlayingInfo(artist: feedTitle)
     }
     
-    private func updateNowPlayingInfo(title: String = "FireWire", artist: String = "Live Stream") {
+    private func updateNowPlayingInfo(title: String = "FireWire", artist: String = "") {
         guard let player = player else { return }
 
         // Create artwork for the now playing info
@@ -75,13 +75,11 @@ class AudioManager: NSObject {
         
         commandCenter.playCommand.addTarget { [weak self] _ in
             self?.player?.play()
-            self?.updateNowPlayingInfo()
             return .success
         }
         
         commandCenter.pauseCommand.addTarget { [weak self] _ in
             self?.player?.pause()
-            self?.updateNowPlayingInfo()
             return .success
         }
         
@@ -91,7 +89,6 @@ class AudioManager: NSObject {
             } else {
                 self?.player?.play()
             }
-            self?.updateNowPlayingInfo()
             return .success
         }
     }

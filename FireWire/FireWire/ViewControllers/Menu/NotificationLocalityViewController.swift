@@ -54,7 +54,9 @@ class NotificationLocalityViewController: UIViewController, NotificationLocality
 
     func setNotification(message: String) {
         hideLoader()
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in 
+            self.coordinator?.popView()
+        }])
     }
 
     // A convenience method to instantiate from the storyboard

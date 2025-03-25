@@ -81,4 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         }
         return false
     }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        debugPrint("App activated")
+    }
+
 }
