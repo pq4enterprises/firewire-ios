@@ -34,7 +34,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var termsAndConditionsLabel: UILabel!
     @IBOutlet var emailTextField: FWTextField!
     @IBOutlet var passwordTextField: FWTextField!
-
+    @IBOutlet weak var googleButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -47,6 +48,9 @@ class LoginViewController: UIViewController {
 
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
+
+        googleButton.layer.cornerRadius = 6
+        googleButton.clipsToBounds = true
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -68,7 +72,7 @@ class LoginViewController: UIViewController {
             coloredText: .Login.termsAndConditions
         )
 
-        let appleButton = ASAuthorizationAppleIDButton()
+        let appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .white)
         appleButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
         appleButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         appleButton.center = view.center
