@@ -24,8 +24,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     @IBOutlet var previewImageCollectionView: UICollectionView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var commentsView: FWView!
-    @IBOutlet weak var addCommentTextView: UITextView!
-
+    @IBOutlet var addCommentTextView: UITextView!
+    
     var coordinator: HomeCoordinator?
     var viewModel: CommentsListViewModel!
     var attachedImages: [UIImage] = []
@@ -47,7 +47,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
 
         commentsView.setTopShadow()
-        
+
         addCommentTextView.layer.cornerRadius = 5
         addCommentTextView.layer.masksToBounds = true
 
@@ -66,6 +66,9 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             collectionViewHeightConstraint.constant = 0
             previewImageCollectionView.isHidden = true
         }
+
+        scrollView.bounces = false
+        tableView.bounces = false
     }
 
     func setSelectedIncidentID(_ id: String) {
@@ -140,11 +143,6 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
     }
-
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        postComment()
-//        return true
-//    }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == .Comments.addAComment {
@@ -236,45 +234,12 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         postComment()
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-
-        // Calculate the inset of the scroll view
-        let keyboardHeight = keyboardFrame.height
-
-        // Set the content inset for the scroll view
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardHeight
-        scrollView.contentInset = contentInset
-
-        // Adjust the scroll indicator inset
-        scrollView.scrollIndicatorInsets = contentInset
-
-        // Scroll to make the text view visible
-        if let textView = addCommentTextView {
-            let textViewFrame = textView.convert(textView.bounds, to: scrollView)
-            scrollView.scrollRectToVisible(textViewFrame, animated: true)
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        // Reset the content inset when the keyboard hides
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = 0
-        scrollView.contentInset = contentInset
-
-        // Reset the scroll indicator inset
-        scrollView.scrollIndicatorInsets = contentInset
-    }
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentHeight = scrollView.contentSize.height
         let scrollOffset = scrollView.contentOffset.y
         let screenHeight = scrollView.frame.size.height
 
         if contentHeight - scrollOffset <= screenHeight {
-            // Load the next page when the user scrolls to the bottom
             paginationHandler.loadNextPage()
         }
     }
@@ -354,5 +319,39 @@ extension CommentsViewController {
         actionSheetController.addAction(cancel)
 
         present(actionSheetController, animated: true)
+    }
+}
+
+extension CommentsViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let keyboardHeight = keyboardFrame.height
+
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = keyboardHeight
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+
+        if let textView = commentsView {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                let textViewFrame = textView.convert(textView.bounds, to: self.scrollView)
+                self.scrollView.scrollRectToVisible(textViewFrame, animated: true)
+
+                let lastSection = max(self.tableView.numberOfSections - 1, 0)
+                let lastRow = max(self.tableView.numberOfRows(inSection: lastSection) - 1, 0)
+
+                let indexPath = IndexPath(row: lastRow, section: lastSection)
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = 0
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
     }
 }
