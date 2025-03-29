@@ -32,8 +32,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
-    /// Flag is to skip reloading the map component when new comment is added
-    var reloadOnlyUIElements: Bool = false
 
     private var selectedIncidentID: String?
     private var openCommentsSection: Bool = false
@@ -71,7 +69,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     @objc func newCommentAdded(_ notification: Notification) {
         if let selectedIncidentID {
-            reloadOnlyUIElements = true
             viewModel?.getIncidentDetail(for: selectedIncidentID)
         }
     }
@@ -93,37 +90,44 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
-        if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
-            incidentImageView.loadImage(from: imageUrl)
-            // imageMapStackView.distribution = .fillEqually
-        } else {
-            incidentImageView.isHidden = true
-            // imageMapStackView.distribution = .fill
-            view.layoutIfNeeded()
-        }
-
-        incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
-        incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
-
-        if !reloadOnlyUIElements {
+        if mapView == nil {
             let mapManager = MapManager()
             mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
             mapView.mapType = .satellite
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 
-            if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
-                let unitsString = "[ " + units.joined(separator: ", ") + " ]"
-                unitsLabel.text = unitsString
-            } else {
-                unitsLabel.text = "No data found"
-            }
-
             // focus on first marker
             guard let markers = viewModel?.markersList else { return }
             let firstLocation = markers[0].coordinates
             let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
             mapView.animate(to: camera)
+        }
+
+        if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
+            incidentImageView.isHidden = false
+            incidentImageView.loadImage(from: imageUrl)
+
+            let newHeight = self.imageMapStackView.bounds.height - 140.0
+            mapView.frame = CGRect(x: 0, y: 0, width: self.imageMapStackView.bounds.width, height: newHeight)
+        } else {
+            incidentImageView.isHidden = true
+            mapView.frame = imageMapStackView.bounds
+        }
+
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+            self.imageMapStackView.layoutIfNeeded()
+        }
+
+        incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
+        incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
+
+        if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
+            let unitsString = "[ " + units.joined(separator: ", ") + " ]"
+            unitsLabel.text = unitsString
+        } else {
+            unitsLabel.text = "No data found"
         }
 
         if openCommentsSection {
