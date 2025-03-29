@@ -38,7 +38,12 @@ final class MyAccountViewModel {
             payload: submitPaymentRequestModel as JSON,
             expect: SuccessResponseModel.self,
             requestType: APIConstants.POST
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                return
+            }
+
             guard let apiResponse = response else {
                 self?.delegate?.dataLoaded(status: false, message: "Payment detail submission failed, try again after sometime")
                 return
@@ -57,7 +62,12 @@ final class MyAccountViewModel {
             apiEndPoint: APIEndpoints.userProfile,
             expect: GetUserProfileResponseModel.self,
             requestType: APIConstants.GET
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                return
+            }
+
             guard let apiResponse = response as? GetUserProfileResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self?.delegate?.dataLoaded(status: false, message: errorMessage)

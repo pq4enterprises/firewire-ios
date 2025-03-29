@@ -79,9 +79,14 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
             apiEndPoint: APIEndpoints.resetPassword,
             payload: APIPayload.resetPassword(resetToken: resetToken, password: newPassword, confirmPassword: confirmPassword).toDictionary(),
             expect: SuccessResponseModel.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
 
             self?.hideLoader()
+            if let errorMessage = error {
+                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                return
+            }
+
             guard let apiResponse = response else {
                 self?.showAlert(title: "", message: .CommonError.techError, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return

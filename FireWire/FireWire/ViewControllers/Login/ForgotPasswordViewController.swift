@@ -37,9 +37,14 @@ class ForgotPasswordViewController: UIViewController {
             apiEndPoint: APIEndpoints.forgotPassword,
             payload: APIPayload.forgotPassword(email: email).toDictionary(),
             expect: ForgotPasswordResponseModel.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
 
             self?.hideLoader()
+            if let errorMessage = error {
+                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                return
+            }
+
             guard let apiResponse = response else {
                 self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return

@@ -127,8 +127,11 @@ final class IncidentsViewModel: PaginatableViewModel {
             apiEndPoint: APIEndpoints.favIncident,
             payload: requestModel as JSON,
             expect: SuccessResponseModel.self
-        ) { response, _, _ in
-
+        ) { response, _, error in
+            if let errorMessage = error {
+                self.delegate?.error(message: errorMessage)
+                return
+            }
             guard let apiResponse = response as? SuccessResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self.delegate?.error(message: errorMessage)

@@ -34,7 +34,12 @@ final class RegistrationViewModel {
             apiEndPoint: APIEndpoints.register,
             payload: parameters as JSON,
             expect: RegisterResponseModel.self)
-        { [weak self] response, _, _ in
+        { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.registrationFail(errorMessage: errorMessage)
+                return
+            }
+
             guard let registerResponse = response as? RegisterResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self?.delegate?.registrationFail(errorMessage: errorMessage)
@@ -58,7 +63,12 @@ final class RegistrationViewModel {
             apiEndPoint: APIEndpoints.login,
             payload: loginRequestModel as JSON,
             expect: LoginApiResponse.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.loginFailed(errorMessage: errorMessage)
+                return
+            }
+
             guard let apiResponse = response as? LoginApiResponse else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self?.delegate?.loginFailed(errorMessage: errorMessage)

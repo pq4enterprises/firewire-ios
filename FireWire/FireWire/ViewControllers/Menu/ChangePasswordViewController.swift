@@ -93,9 +93,14 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             apiEndPoint: APIEndpoints.updatePassword,
             payload: APIPayload.updatePassword(requestModel).toDictionary(),
             expect: SuccessResponseModel.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
 
             self?.hideLoader()
+            if let errorMessage = error {
+                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                return
+            }
+
             guard let apiResponse = response as? SuccessResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
                 self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])

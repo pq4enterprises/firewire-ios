@@ -25,7 +25,11 @@ final class FeedsListViewModel: PaginatableViewModel {
             payload: getFeedRequestModel,
             expect: FeedListResponseModel.self,
             requestType: APIConstants.GET)
-        { [weak self] response, _, _ in
+        { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.errorReceived(message: errorMessage)
+                return
+            }
 
             guard let feedListResponse = response as? FeedListResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"

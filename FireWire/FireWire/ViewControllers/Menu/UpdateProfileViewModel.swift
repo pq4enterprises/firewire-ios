@@ -16,7 +16,12 @@ final class UpdateProfileViewModel {
             apiEndPoint: APIEndpoints.userProfile,
             expect: GetUserProfileResponseModel.self,
             requestType: APIConstants.GET
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.error(message: errorMessage)
+                return
+            }
+
             guard let apiResponse = response as? GetUserProfileResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self?.delegate?.error(message: errorMessage)
@@ -53,7 +58,12 @@ final class UpdateProfileViewModel {
             payload: updateUserRequestModel as JSON,
             expect: SuccessResponseModel.self,
             requestType: APIConstants.PUT
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.error(message: errorMessage)
+                return
+            }
+
             guard let apiResponse = response else {
                 self?.delegate?.profileUpdated("Profile update failed, try again after sometime")
                 return

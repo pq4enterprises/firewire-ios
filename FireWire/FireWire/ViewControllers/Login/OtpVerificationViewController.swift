@@ -98,8 +98,13 @@ extension OtpVerificationViewController {
                 apiEndPoint: APIEndpoints.verifyOtp,
                 payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
                 expect: VerifyOtpResponseModel.self
-            ) { [weak self] response, _, _ in
+            ) { [weak self] response, _, error in
                 self?.hideLoader()
+
+                if let errorMessage = error {
+                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                    return
+                }
 
                 guard let apiResponse = response as? VerifyOtpResponseModel else {
                     let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
@@ -132,9 +137,14 @@ extension OtpVerificationViewController {
             apiEndPoint: APIEndpoints.forgotPassword,
             payload: APIPayload.forgotPassword(email: email).toDictionary(),
             expect: ForgotPasswordResponseModel.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
 
             self?.hideLoader()
+            if let errorMessage = error {
+                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                return
+            }
+
             guard let apiResponse = response else {
                 self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 return
