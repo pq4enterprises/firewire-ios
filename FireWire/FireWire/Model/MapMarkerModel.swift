@@ -18,4 +18,5 @@ struct MapMarkerModel {
     let title: String
     let address: String
     let markerType: MarkerType
+    let createdAt: String
 }

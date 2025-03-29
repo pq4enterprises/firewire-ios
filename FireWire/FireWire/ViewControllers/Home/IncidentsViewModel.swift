@@ -90,13 +90,19 @@ final class IncidentsViewModel: PaginatableViewModel {
                     coordinates: coordinates,
                     title: item.field1Value,
                     address: item.address,
-                    markerType: .incident
+                    markerType: .incident,
+                    createdAt: item.createdAt
                 )
 
                 updatedMarkers.append(mapModel)
             }
 
             markersList = updatedMarkers
+        }
+
+        if items.count > 0 && updatedMarkers.count > 0 {
+            items.sort { $0.createdAt > $1.createdAt }
+            updatedMarkers.sort { $0.createdAt > $1.createdAt }
         }
 
         items.count > 0
