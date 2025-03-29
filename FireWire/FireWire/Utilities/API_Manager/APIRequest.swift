@@ -37,13 +37,13 @@ public class APIRequest {
                                   payload: requestType == APIConstants.GET ? nil : payload,
                                   expecting: expect.self)
         { result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
                     completionHandler(response, nil, nil)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error as APIError):
+                    completionHandler(nil, nil, error.localizedDescription)
+                case .failure(let error):
                     completionHandler(nil, nil, error.localizedDescription)
                 }
             }
@@ -106,7 +106,7 @@ public class APIRequest {
 
         if let imageData = image.jpegData(compressionQuality: 0.8) {
             let timestamp = Int(Date().timeIntervalSince1970)
-            let uniqueFileName =  "image-\(timestamp).jpg"
+            let uniqueFileName = "image-\(timestamp).jpg"
 
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
             body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(uniqueFileName)\"\r\n".data(using: .utf8)!)

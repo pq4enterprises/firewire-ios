@@ -33,7 +33,16 @@ final class IncidentLocalityListViewModel {
             payload: getIncidentLocalityRequestModel,
             expect: LocalityResponseModel.self,
             requestType: APIConstants.GET)
-        { [weak self] response, _, _ in
+        { [weak self] response, _, error in
+
+            if let errorMessage = error {
+                if self?.selectAreaDelegate != nil {
+                    self?.selectAreaDelegate?.error(message: errorMessage)
+                } else {
+                    self?.delegate?.error(message: errorMessage)
+                }
+                return
+            }
 
             guard let localityResponse = response as? LocalityResponseModel else {
                 let errorMessage = (response == nil) ? .CommonError.techError : "Unexpected response format"

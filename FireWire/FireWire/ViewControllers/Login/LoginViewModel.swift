@@ -18,7 +18,12 @@ final class LoginViewModel {
             apiEndPoint: APIEndpoints.login,
             payload: loginRequestModel as JSON,
             expect: LoginApiResponse.self
-        ) { [weak self] response, _, _ in
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.loginFailed(errorMessage: errorMessage)
+                return
+            }
+
             guard let apiResponse = response as? LoginApiResponse else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
                 self?.delegate?.loginFailed(errorMessage: errorMessage)

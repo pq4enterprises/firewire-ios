@@ -3,100 +3,68 @@ import UIKit
 
 extension URLSession {
     typealias JSONData = [String: Any]
-    
-    enum ConnectionResult {
-        case success(String), failure(Error)
-    }
-    
-    enum CustomError: Error {
-        case invalidUrl
-        case invalidData
-        case tokenExpired
-        case noInternet
-    }
-    
-    func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString:String, headers:[String:String], payload: Any? = nil, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+
+    func request<T: Codable>(url: URL?, httpMethod: String?, authTokenString: String, headers: [String: String], payload: Any? = nil, expecting type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(CustomError.invalidUrl))
+            completion(.failure(APIError.invalidUrl))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.allHTTPHeaderFields = headers
         request.addValue("Bearer " + authTokenString, forHTTPHeaderField: "Authorization")
-        
-        print("API request: ----- \(request)")
-        
+
+        debugPrint("API request: ----- \(request)")
+
         if let payload = payload {
-            guard let body = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted) else {
-                print("\n Serialization failed")
-                return
-            }
-
-            if let jsonString = String(data: body, encoding: .utf8) {
-                print("POST Payload: \(jsonString)")
-            }
-
-            request.httpBody = body
-        }
-        
-        let task = dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                if let error = error {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(CustomError.invalidData))
-                }
-                return
-            }
-
-            // Check for HTTP response status code
-            if let httpResponse = response as? HTTPURLResponse {
-                // Handle token expiration case (401 Unauthorized)
-                if httpResponse.statusCode == 401 {
-                    completion(.failure(CustomError.tokenExpired))
-                    return
-                }
-            }
-
             do {
-                let result = try JSONDecoder().decode(type.self, from: data)
-                completion(.success(result))
-            } catch let decodingError as DecodingError {
-                // Handle specific DecodingError cases
-                switch decodingError {
-                case .typeMismatch(let type, let context):
-                    debugPrint("Type mismatch error: Expected type \(type), but found \(context.debugDescription)")
-                    debugPrint("Coding Path: \(context.codingPath)")
+                let body = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+                request.httpBody = body
 
-                case .valueNotFound(let value, let context):
-                    debugPrint("Value not found error: Expected value \(value) but found none.")
-                    debugPrint("Coding Path: \(context.codingPath)")
-
-                case .keyNotFound(let key, let context):
-                    debugPrint("Key not found error: Missing key \(key) in the response.")
-                    debugPrint("Coding Path: \(context.codingPath)")
-
-                case .dataCorrupted(let context):
-                    debugPrint("Data corrupted error: The data is malformed or invalid.")
-                    debugPrint("Coding Path: \(context.codingPath)")
-
-                @unknown default:
-                    debugPrint("Unknown Decoding Error: \(decodingError.localizedDescription)")
+                if let jsonString = String(data: body, encoding: .utf8) {
+                    debugPrint("POST Payload: \(jsonString)")
                 }
 
-                completion(.failure(CustomError.invalidData))
             } catch {
-                // For other errors that aren't DecodingError
-                if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
-                    debugPrint("No internet connection")
-                    completion(.failure(CustomError.noInternet))  // Define a 'noInternet' error in your customError enum
+                completion(.failure(APIError.invalidData))
+                return
+            }
+        }
+
+        let task = dataTask(with: request) { data, response, error in
+            if let error = error as NSError? {
+                if error.code == NSURLErrorNotConnectedToInternet {
+                    completion(.failure(APIError.noInternet))
                 } else {
-                    debugPrint("Decoding error: \(error.localizedDescription)")
-                    completion(.failure(CustomError.invalidData))
+                    completion(.failure(error))
                 }
+                return
             }
 
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(APIError.invalidData))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(APIError.invalidData))
+                return
+            }
+
+            switch httpResponse.statusCode {
+                case 200 ... 299:
+                    do {
+                        let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(decodedResponse))
+                    } catch {
+                        completion(.failure(APIError.invalidData))
+                    }
+                case 401:
+                    completion(.failure(APIError.tokenExpired))
+                default:
+                    let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown server error"
+                    completion(.failure(APIError.serverError(code: httpResponse.statusCode, message: errorMessage)))
+            }
         }
         task.resume()
     }
