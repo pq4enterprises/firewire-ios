@@ -1070,7 +1070,6 @@ agreeing with our Terms and Conditions</string>
                                                     <constraint firstItem="Z6n-WV-Ytm" firstAttribute="leading" secondItem="yXN-n8-nDp" secondAttribute="leading" constant="20" id="8UD-UD-ogm"/>
                                                     <constraint firstItem="rpF-4V-vJe" firstAttribute="centerY" secondItem="Fn3-Id-iGX" secondAttribute="centerY" id="Gk2-8M-CTB"/>
                                                     <constraint firstItem="Fn3-Id-iGX" firstAttribute="leading" secondItem="Z6n-WV-Ytm" secondAttribute="trailing" constant="10" id="Ila-zf-jMw"/>
-                                                    <constraint firstAttribute="height" constant="90" id="MUI-WX-Tce"/>
                                                     <constraint firstItem="rpF-4V-vJe" firstAttribute="leading" secondItem="Fn3-Id-iGX" secondAttribute="trailing" constant="5" id="R12-yu-1f2"/>
                                                     <constraint firstAttribute="trailing" secondItem="rpF-4V-vJe" secondAttribute="trailing" constant="20" symbolic="YES" id="U45-To-9ZL"/>
                                                     <constraint firstAttribute="trailing" secondItem="vso-o2-OjG" secondAttribute="trailing" constant="20" id="VVQ-vd-5wj"/>
