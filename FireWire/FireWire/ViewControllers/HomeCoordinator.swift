@@ -165,4 +165,10 @@ class HomeCoordinator: BaseCoordinator {
         selectAreaViewController.parentCoordinator = parentCoordinator
         pushViewController(selectAreaViewController, animated: false)
     }
+
+    func navigateToGettinSaltyMenu(){
+        let saltyMenuView = GettinSaltyMenuViewController.instantiate()
+        saltyMenuView.coordinator = self
+        pushViewController(saltyMenuView, animated: true)
+    }
 }

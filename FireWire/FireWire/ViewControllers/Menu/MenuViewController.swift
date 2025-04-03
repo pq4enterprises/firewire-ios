@@ -92,7 +92,8 @@ class MenuViewController: UIViewController {
 
     @objc func saltyWireViewTap() {
         guard unlockPremiumFeatureIfValid() == false else { return }
-        coordinator?.openURL(APIEndpoints.saltyWireUrl)
+        //coordinator?.openURL(APIEndpoints.saltyWireUrl)
+        coordinator?.navigateToGettinSaltyMenu()
     }
 
     @objc func submitTipViewTap() {

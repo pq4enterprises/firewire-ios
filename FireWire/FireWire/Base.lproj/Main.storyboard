@@ -6,10 +6,11 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -4201,6 +4202,83 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
             </objects>
             <point key="canvasLocation" x="7245" y="1382"/>
         </scene>
+        <!--Gettin Salty Menu View Controller-->
+        <scene sceneID="TVv-9L-D1B">
+            <objects>
+                <viewController storyboardIdentifier="GettinSaltyMenuViewController" id="uYD-Ts-pSy" customClass="GettinSaltyMenuViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hlO-Dn-0ix">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkX-ic-Ooj">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPb-kp-8lG">
+                                        <rect key="frame" x="15" y="5" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="ifP-sM-2mv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="back_icon">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="uYD-Ts-pSy" eventType="touchUpInside" id="LCs-9E-scl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="YPb-kp-8lG" firstAttribute="top" secondItem="lkX-ic-Ooj" secondAttribute="top" constant="5" id="77u-t1-Byr"/>
+                                    <constraint firstAttribute="height" constant="50" id="9Jh-Qj-egC"/>
+                                    <constraint firstAttribute="bottom" secondItem="YPb-kp-8lG" secondAttribute="bottom" constant="5" id="ASX-OV-C7b"/>
+                                    <constraint firstItem="YPb-kp-8lG" firstAttribute="leading" secondItem="lkX-ic-Ooj" secondAttribute="leading" constant="15" id="XMf-A9-KBi"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-BM-1NR">
+                                <rect key="frame" x="10" y="117" width="373" height="701"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BLV-4G-MTc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tA6-dF-95s">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="loS-Vp-iGJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SGO-5x-tlk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZCy-BM-1NR" firstAttribute="top" secondItem="lkX-ic-Ooj" secondAttribute="bottom" constant="8" symbolic="YES" id="6YP-Ju-gj9"/>
+                            <constraint firstItem="ZCy-BM-1NR" firstAttribute="bottom" secondItem="SGO-5x-tlk" secondAttribute="bottom" id="80y-e3-xT3"/>
+                            <constraint firstItem="SGO-5x-tlk" firstAttribute="trailing" secondItem="ZCy-BM-1NR" secondAttribute="trailing" constant="10" id="Nhb-qF-AlK"/>
+                            <constraint firstItem="lkX-ic-Ooj" firstAttribute="top" secondItem="SGO-5x-tlk" secondAttribute="top" id="QWX-tx-hAU"/>
+                            <constraint firstItem="ZCy-BM-1NR" firstAttribute="leading" secondItem="SGO-5x-tlk" secondAttribute="leading" constant="10" id="Y9s-tq-atX"/>
+                            <constraint firstItem="lkX-ic-Ooj" firstAttribute="leading" secondItem="SGO-5x-tlk" secondAttribute="leading" id="mG6-r0-tMZ"/>
+                            <constraint firstItem="lkX-ic-Ooj" firstAttribute="trailing" secondItem="SGO-5x-tlk" secondAttribute="trailing" id="yt0-T1-AuG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ZCy-BM-1NR" id="FcF-Xn-vju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAE-SC-uab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884.7328244274809" y="2079.5774647887324"/>
+        </scene>
         <!--Post Web View Controller-->
         <scene sceneID="Lks-b5-eXY">
             <objects>
@@ -4232,7 +4310,6 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Q0K-hd-qbu" secondAttribute="bottom" constant="5" id="03o-3t-8HX"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Fh5-L6-1IF"/>
                                     <constraint firstAttribute="height" constant="50" id="NKh-N3-0dC"/>
                                     <constraint firstItem="Q0K-hd-qbu" firstAttribute="top" secondItem="Vcc-zZ-yUo" secondAttribute="top" constant="5" id="NlJ-Fb-Srb"/>
                                     <constraint firstItem="Q0K-hd-qbu" firstAttribute="leading" secondItem="Vcc-zZ-yUo" secondAttribute="leading" constant="15" id="lG3-kG-4Zw"/>

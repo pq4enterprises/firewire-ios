@@ -40,6 +40,7 @@ enum APIEndpoints {
     static let setSelectedArea = "api/app/user/area"
     static let setNotificationArea = "api/app/user/notification"
     static let submitSubscriptionDetails = "api/app/payment"
+    static let gettinSaltyMenu = "api/app/content"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
