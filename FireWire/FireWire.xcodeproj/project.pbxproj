@@ -130,6 +130,12 @@
 		B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
 		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
 		B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
+		B08782972D9ED59E00D60456 /* GettinSaltyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08782962D9ED59E00D60456 /* GettinSaltyMenuViewController.swift */; };
+		B08782982D9ED59E00D60456 /* GettinSaltyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08782962D9ED59E00D60456 /* GettinSaltyMenuViewController.swift */; };
+		B087829A2D9ED78500D60456 /* GettinSaltyMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08782992D9ED78300D60456 /* GettinSaltyMenuCollectionViewCell.swift */; };
+		B087829B2D9ED78500D60456 /* GettinSaltyMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08782992D9ED78300D60456 /* GettinSaltyMenuCollectionViewCell.swift */; };
+		B087829D2D9ED89500D60456 /* SaltyMenuResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087829C2D9ED88E00D60456 /* SaltyMenuResponseModel.swift */; };
+		B087829E2D9ED89500D60456 /* SaltyMenuResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087829C2D9ED88E00D60456 /* SaltyMenuResponseModel.swift */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
 		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
@@ -502,6 +508,9 @@
 		B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponseModel.swift; sourceTree = "<group>"; };
+		B08782962D9ED59E00D60456 /* GettinSaltyMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettinSaltyMenuViewController.swift; sourceTree = "<group>"; };
+		B08782992D9ED78300D60456 /* GettinSaltyMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettinSaltyMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		B087829C2D9ED88E00D60456 /* SaltyMenuResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaltyMenuResponseModel.swift; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
 		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
@@ -813,6 +822,7 @@
 				B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */,
 				B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */,
 				B081F6632D84BF8800E2D673 /* PostWebViewController.swift */,
+				B08782962D9ED59E00D60456 /* GettinSaltyMenuViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -845,6 +855,7 @@
 		B04682512CE67CCE00419C65 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B08782992D9ED78300D60456 /* GettinSaltyMenuCollectionViewCell.swift */,
 				B0100CD82CF78DDD004F6214 /* XIBs */,
 				B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */,
 				B01D51A52D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift */,
@@ -1044,6 +1055,7 @@
 		B0EDF03E2D32678300767EAB /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				B087829C2D9ED88E00D60456 /* SaltyMenuResponseModel.swift */,
 				B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */,
 				B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */,
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
@@ -1423,6 +1435,7 @@
 				B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */,
 				B0A370CD2CEF91DA0021D2F7 /* UIViewController+Extension.swift in Sources */,
 				B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */,
+				B087829E2D9ED89500D60456 /* SaltyMenuResponseModel.swift in Sources */,
 				B0ADB6D52D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
@@ -1482,6 +1495,7 @@
 				B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */,
 				B0EDF0422D32769200767EAB /* ResetPasswordViewController.swift in Sources */,
 				B0A370CF2CEF95E80021D2F7 /* FWTextField.swift in Sources */,
+				B08782972D9ED59E00D60456 /* GettinSaltyMenuViewController.swift in Sources */,
 				B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
 				B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */,
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
@@ -1492,6 +1506,7 @@
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
 				B0B836772D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0D4B0EA2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
+				B087829A2D9ED78500D60456 /* GettinSaltyMenuCollectionViewCell.swift in Sources */,
 				9B4F51312CF586E6007D319D /* String+copy.swift in Sources */,
 				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
@@ -1565,6 +1580,7 @@
 				B0B1AE9C2D4F8DB6007371A9 /* RegisterResponseModel.swift in Sources */,
 				B0B1AE9D2D4F8DB6007371A9 /* UIViewController+Extension.swift in Sources */,
 				B0B1AE9E2D4F8DB6007371A9 /* FeedbackViewController.swift in Sources */,
+				B087829D2D9ED89500D60456 /* SaltyMenuResponseModel.swift in Sources */,
 				B0ADB6D42D58E48F0086AC83 /* IncidentsViewModel.swift in Sources */,
 				B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */,
@@ -1624,6 +1640,7 @@
 				B0B1AED12D4F8DB6007371A9 /* RegistrationViewController.swift in Sources */,
 				B0B1AED22D4F8DB6007371A9 /* ResetPasswordViewController.swift in Sources */,
 				B0B1AED32D4F8DB6007371A9 /* FWTextField.swift in Sources */,
+				B08782982D9ED59E00D60456 /* GettinSaltyMenuViewController.swift in Sources */,
 				B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */,
 				B0B1AED52D4F8DB6007371A9 /* CommentsListViewModel.swift in Sources */,
 				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
@@ -1634,6 +1651,7 @@
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
 				B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */,
 				B0D4B0EB2D690F27009A1BD1 /* FeedAreaListViewController.swift in Sources */,
+				B087829B2D9ED78500D60456 /* GettinSaltyMenuCollectionViewCell.swift in Sources */,
 				B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */,
 				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
