@@ -111,6 +111,7 @@ final class LoginViewModel {
             FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
             FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
 
+            self?.getUserProfile()
             let type: LoginType = requestModel.socialType == .google ? .google : .apple
             self?.delegate?.loginSuccess(type)
         }
