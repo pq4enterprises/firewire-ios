@@ -45,12 +45,10 @@ class AudioManager: NSObject {
         let item = AVPlayerItem(asset: asset)
         
         player = AVPlayer(playerItem: item)
-        item.addObserver(self, forKeyPath: timedMetadataKey, options: [.new], context: nil)
-        
         player?.play()
         updateNowPlayingInfo(artist: feedTitle)
     }
-    
+
     private func updateNowPlayingInfo(title: String = "FireWire", artist: String = "") {
         guard let player = player else { return }
 
