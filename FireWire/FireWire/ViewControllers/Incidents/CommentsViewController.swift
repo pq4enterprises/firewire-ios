@@ -348,7 +348,7 @@ extension CommentsViewController {
                     let lastSection = max(self.tableView.numberOfSections - 1, 0)
                     let lastRow = max(self.tableView.numberOfRows(inSection: lastSection) - 1, 0)
 
-                    if lastRow >= 0 {
+                    if lastRow > 0 {
                         let indexPath = IndexPath(row: lastRow, section: lastSection)
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
