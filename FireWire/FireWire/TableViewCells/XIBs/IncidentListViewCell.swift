@@ -51,7 +51,7 @@ class IncidentListViewCell: UITableViewCell {
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
-        incidentStarred.text = "\(model.likeCount) Starred"
+        incidentStarred.text = "\(model.likeCount) Likes"
         incidentComments.text = "\(model.commentCount) \(model.commentCount == 1 ? "Comment" : "Comments")"
 
         if let featureImageUrlString = model.featuredImageURL, let imageUrl = URL(string: featureImageUrlString)  {
