@@ -120,7 +120,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             self.imageMapStackView.layoutIfNeeded()
         }
 
-        incidentFavourites.text = "\(incidentDetail.likeCount) Starred"
+        incidentFavourites.text = "\(incidentDetail.likeCount) Likes"
         incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
 
         if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
@@ -261,7 +261,7 @@ extension IncidentDetailViewController {
         if let currentLikeCount = viewModel?.incidentDetail?.likeCount {
             viewModel?.incidentDetail?.likeCount = max(0, currentLikeCount + (like ? 1 : -1))
         }
-        incidentFavourites.text = "\(viewModel?.incidentDetail?.likeCount ?? 0) Starred"
+        incidentFavourites.text = "\(viewModel?.incidentDetail?.likeCount ?? 0) Likes"
     }
 
     func error(message: String) {

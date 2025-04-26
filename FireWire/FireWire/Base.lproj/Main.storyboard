@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter_18pt-Regular.ttf">
+        <array key="Inter-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -851,11 +851,11 @@ agreeing with our Terms and Conditions</string>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mOF-5C-UzC">
-                                                        <rect key="frame" x="171" y="0.0" width="172" height="10"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mOF-5C-UzC">
+                                                        <rect key="frame" x="192.66666666666663" y="0.0" width="150.33333333333337" height="10"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MLf-Y5-jHz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="86" height="10"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="54.333333333333336" height="10"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="csu-78-fKL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -864,8 +864,8 @@ agreeing with our Terms and Conditions</string>
                                                                             <constraint firstAttribute="height" constant="10" id="uee-5e-uGK"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-VO-u6L">
-                                                                        <rect key="frame" x="14" y="0.0" width="72" height="10"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-VO-u6L">
+                                                                        <rect key="frame" x="14.000000000000004" y="0.0" width="40.333333333333343" height="10"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" name="FWTextGrey"/>
                                                                         <nil key="highlightedColor"/>
@@ -873,7 +873,7 @@ agreeing with our Terms and Conditions</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-X8-i1h">
-                                                                <rect key="frame" x="86" y="0.0" width="86" height="10"/>
+                                                                <rect key="frame" x="64.333333333333343" y="0.0" width="86" height="10"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_filled" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-yi-XIL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
