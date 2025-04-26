@@ -55,6 +55,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(newCommentAdded(_:)), name: .newCommentAdded, object: nil)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .newCommentAdded, object: nil)
+    }
+
     func setupUI() {
         incidentDesc.isUserInteractionEnabled = true
         unitsView.setCornerRadius()
@@ -235,10 +240,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "IncidentDetailViewController") as! IncidentDetailViewController
         return viewController
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .newCommentAdded, object: nil)
     }
 }
 
