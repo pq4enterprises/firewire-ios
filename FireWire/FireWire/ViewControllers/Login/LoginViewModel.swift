@@ -104,6 +104,10 @@ final class LoginViewModel {
                 return
             }
 
+            if let userId = loginData.id {
+                OneSignal.login(userId)
+            }
+
             FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
             let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
             FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
