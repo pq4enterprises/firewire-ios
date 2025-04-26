@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet var viewContainer: UIView!
-    @IBOutlet var segmentControl: FWSegmentControl!
+    @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var feedsButton: UIButton!
     @IBOutlet var headerView: UIView!
