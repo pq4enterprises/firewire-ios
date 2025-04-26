@@ -1137,7 +1137,7 @@
 				B08236E62CE374D10092AC01 /* Frameworks */,
 				B08236E72CE374D10092AC01 /* Resources */,
 				73C3E9FB2D4F83F800FF1352 /* Embed Foundation Extensions */,
-				B06F61E92DBD0BA6005113B4 /* ShellScript */,
+				B06F61EA2DBD1057005113B4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1407,9 +1407,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B06F61E92DBD0BA6005113B4 /* ShellScript */ = {
+		B06F61EA2DBD1057005113B4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1420,9 +1420,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" \\\n  -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" \\\n  -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\" \\\n-gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" \\\n-p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
