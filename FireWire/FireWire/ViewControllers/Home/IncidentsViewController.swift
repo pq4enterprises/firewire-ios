@@ -70,6 +70,11 @@ class IncidentsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showLoader()
@@ -298,10 +303,6 @@ class IncidentsViewController: UIViewController {
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
         present(activityViewController, animated: true)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
     }
 }
 

@@ -40,6 +40,11 @@ class UpdateProfileViewController: UIViewController, UpdateProfileViewDelegate {
         viewModel?.getUserProfile()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func setupUI() {
         firstNameTextField.backgroundColor = FWColor.textFieldBackgroundGrey
         lastNameTextField.backgroundColor = FWColor.textFieldBackgroundGrey

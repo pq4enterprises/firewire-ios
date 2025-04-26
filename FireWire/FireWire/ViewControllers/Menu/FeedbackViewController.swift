@@ -22,6 +22,11 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
         setupKeyboardActions()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func setupUI(){
         feedbackView.setCornerRadius()
 

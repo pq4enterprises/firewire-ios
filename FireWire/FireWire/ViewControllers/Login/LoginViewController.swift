@@ -46,6 +46,11 @@ class LoginViewController: UIViewController {
         viewModel?.delegate = self
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 

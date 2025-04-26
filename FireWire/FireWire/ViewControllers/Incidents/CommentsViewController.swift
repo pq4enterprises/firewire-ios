@@ -43,6 +43,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         setupTableView()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func setupView() {
         previewImageCollectionView.register(CommentsImageViewItem.nib(), forCellWithReuseIdentifier: CommentsImageViewItem.identifier)
 
