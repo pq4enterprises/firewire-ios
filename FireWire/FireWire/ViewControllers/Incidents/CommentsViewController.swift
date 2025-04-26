@@ -344,11 +344,15 @@ extension CommentsViewController {
                 let textViewFrame = textView.convert(textView.bounds, to: self.scrollView)
                 self.scrollView.scrollRectToVisible(textViewFrame, animated: true)
 
-                let lastSection = max(self.tableView.numberOfSections - 1, 0)
-                let lastRow = max(self.tableView.numberOfRows(inSection: lastSection) - 1, 0)
+                if self.tableView.numberOfSections > 0 {
+                    let lastSection = max(self.tableView.numberOfSections - 1, 0)
+                    let lastRow = max(self.tableView.numberOfRows(inSection: lastSection) - 1, 0)
 
-                let indexPath = IndexPath(row: lastRow, section: lastSection)
-                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    if lastRow >= 0 {
+                        let indexPath = IndexPath(row: lastRow, section: lastSection)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
+                }
             }
         }
     }
