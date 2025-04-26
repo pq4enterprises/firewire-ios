@@ -11,6 +11,7 @@ import GoogleSignIn
 import OneSignalFramework
 import StoreKit
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
 
         // Start monitoring network connectivity
         _ = FWNetworkManager.shared
+
+        FirebaseApp.configure()
 
         return true
     }
