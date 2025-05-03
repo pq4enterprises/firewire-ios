@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-SemiBold.ttf">
@@ -219,6 +219,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="commentButton" destination="aRo-5X-mEF" id="Lt5-WH-LtU"/>
                 <outlet property="favouriteButton" destination="YVn-AA-4ms" id="zRi-aG-pLz"/>
                 <outlet property="incidentComments" destination="Bgk-SE-vfb" id="W4g-kD-Z1R"/>
                 <outlet property="incidentDateTime" destination="bOB-3e-dL8" id="dSQ-jV-yG6"/>
@@ -227,6 +228,7 @@
                 <outlet property="incidentLocation" destination="HFp-jG-5ui" id="0w4-Wc-pu4"/>
                 <outlet property="incidentStarred" destination="jyv-9Q-TKh" id="u71-OH-RNk"/>
                 <outlet property="incidentTitle" destination="lFU-Wy-rUn" id="Wls-DI-OAr"/>
+                <outlet property="shareButton" destination="uqw-Ih-r9C" id="vY6-NQ-At9"/>
             </connections>
             <point key="canvasLocation" x="30.534351145038165" y="120.42253521126761"/>
         </tableViewCell>

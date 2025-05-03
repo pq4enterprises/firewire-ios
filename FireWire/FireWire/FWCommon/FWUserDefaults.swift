@@ -15,6 +15,7 @@ enum UserDefaultKeys: String {
     case userNameKey = "userName"
     case userRoleKey = "userRole"
     case userImageKey = "userImage"
+    case onBoardingSequence = "onboarding_sequence"
 }
 
 public struct FWUserDefaults {

@@ -5,6 +5,7 @@
 //  Created by Sujitha Palanisamy on 14/11/24.
 //
 
+import MaterialShowcase
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -13,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var feedsButton: UIButton!
     @IBOutlet var headerView: UIView!
-    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet var reloadButton: UIButton!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -85,7 +86,7 @@ class HomeViewController: UIViewController {
             incidentsViewController.reloadIncidentsView()
         }
     }
-    
+
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
         isIncidentListExpanded == true
             ? incidentsViewController?.expandMap()
@@ -133,5 +134,44 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         return viewController
+    }
+}
+
+extension HomeViewController: MaterialShowcaseDelegate {
+    func showTutorial(){
+        let showCase1 = createMaterialShowcase(primaryText: "Radio", secondaryText: "Listen to Scanner Feeds", targetView: feedsButton)
+
+        var showCase2: MaterialShowcase?
+        if let segmentView = segmentView(from: segmentControl, at: 1) {
+            showCase2 = createMaterialShowcase(primaryText: "News", secondaryText: "News, Updates, Articles from Fire Wire", targetView: segmentView)
+        }
+
+        let showCase3 = createMaterialShowcase(primaryText: "Edit Profile", secondaryText: "My Account -> Update Profile", targetView: menuButton)
+        let showCase4 = createMaterialShowcase(primaryText: "Notification", secondaryText: "Personalization -> Notification", targetView: menuButton)
+        let showCase5 = createMaterialShowcase(primaryText: "Submit A Tip", secondaryText: "Click Menu option to Submit A Tip", targetView: menuButton)
+
+        showCase1.delegate = self
+
+        if let showCase2 {
+            showCase2.delegate = self
+        }
+        
+        showCase3.delegate = self
+        showCase4.delegate = self
+        showCase5.delegate = self
+
+        ShowcaseManager.shared.startSequence([showCase1, showCase2!, showCase3, showCase4, showCase5]) {
+            self.incidentsViewController?.showTutorial()
+        }
+    }
+
+    func segmentView(from segmentedControl: UISegmentedControl, at index: Int) -> UIView? {
+        guard index < segmentedControl.numberOfSegments else { return nil }
+        let segmentViews = segmentedControl.subviews.sorted { $0.frame.minX < $1.frame.minX }
+        return segmentViews.reversed()[index]
+    }
+
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
+        ShowcaseManager.shared.markNext()
     }
 }

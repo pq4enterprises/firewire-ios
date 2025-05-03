@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MaterialShowcase
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -40,5 +41,23 @@ extension UIViewController {
             activityIndicator.removeFromSuperview()
             view.isUserInteractionEnabled = true // Re-enable interaction after loading
         }
+    }
+
+
+    func createMaterialShowcase(
+        primaryText: String,
+        secondaryText: String,
+        targetView: UIView
+    ) -> MaterialShowcase {
+        let showcase = MaterialShowcase()
+        showcase.setTargetView(view: targetView)
+        showcase.primaryText = primaryText
+        showcase.secondaryText = secondaryText
+        showcase.backgroundViewType = .circle
+        showcase.backgroundPromptColor = FWColor.red
+        showcase.targetTintColor = .clear
+        showcase.targetHolderColor = .clear
+        showcase.backgroundRadius = 250
+        return showcase
     }
 }

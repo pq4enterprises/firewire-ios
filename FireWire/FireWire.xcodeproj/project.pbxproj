@@ -73,6 +73,10 @@
 		B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */; };
 		B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B064D3192CF32B5000CAB161 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
+		B06B38EF2DC50BFE0010B8BA /* MaterialShowcase in Frameworks */ = {isa = PBXBuildFile; productRef = B06B38EE2DC50BFE0010B8BA /* MaterialShowcase */; };
+		B06B38F12DC50C0B0010B8BA /* MaterialShowcase in Frameworks */ = {isa = PBXBuildFile; productRef = B06B38F02DC50C0B0010B8BA /* MaterialShowcase */; };
+		B06B38F92DC5EE470010B8BA /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B38F82DC5EE410010B8BA /* ShowcaseManager.swift */; };
+		B06B38FA2DC5EE470010B8BA /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B38F82DC5EE410010B8BA /* ShowcaseManager.swift */; };
 		B06EEDB12D0B56B8000A6245 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */; };
 		B06EEDB32D0B571F000A6245 /* RegisterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */; };
 		B06EEDB72D0B586B000A6245 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */; };
@@ -469,6 +473,7 @@
 		B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWRoundedImageView.swift; sourceTree = "<group>"; };
 		B064D3182CF32B5000CAB161 /* FWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWView.swift; sourceTree = "<group>"; };
+		B06B38F82DC5EE410010B8BA /* ShowcaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
 		B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B06EEDB22D0B571F000A6245 /* RegisterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestModel.swift; sourceTree = "<group>"; };
 		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
@@ -633,6 +638,7 @@
 				B06F61802DBCB24A005113B4 /* FirebaseCrashlytics in Frameworks */,
 				B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */,
 				B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */,
+				B06B38F12DC50C0B0010B8BA /* MaterialShowcase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +670,7 @@
 				B06F61822DBCB264005113B4 /* FirebaseCrashlytics in Frameworks */,
 				B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */,
 				B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */,
+				B06B38EF2DC50BFE0010B8BA /* MaterialShowcase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1026,7 @@
 		B0D12D012CED0C8400EEDDF8 /* FWCommon */ = {
 			isa = PBXGroup;
 			children = (
+				B06B38F82DC5EE410010B8BA /* ShowcaseManager.swift */,
 				B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */,
 				B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */,
 				B0E87A0A2D731BE000BF0CC2 /* AudioManager */,
@@ -1155,6 +1163,7 @@
 				B0B1AE752D4F8A42007371A9 /* OneSignalFramework */,
 				B0B1AE772D4F8A42007371A9 /* OneSignalInAppMessages */,
 				B06F617F2DBCB24A005113B4 /* FirebaseCrashlytics */,
+				B06B38F02DC50C0B0010B8BA /* MaterialShowcase */,
 			);
 			productName = FireWire;
 			productReference = B08236E92CE374D10092AC01 /* FireWire.app */;
@@ -1221,6 +1230,7 @@
 				B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */,
 				B0B1AE892D4F8DB6007371A9 /* OneSignalInAppMessages */,
 				B06F61812DBCB264005113B4 /* FirebaseCrashlytics */,
+				B06B38EE2DC50BFE0010B8BA /* MaterialShowcase */,
 			);
 			productName = FireWire;
 			productReference = B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */;
@@ -1272,6 +1282,7 @@
 				B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				B06F617E2DBCB24A005113B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B06B38ED2DC50BFE0010B8BA /* XCRemoteSwiftPackageReference "material-showcase-ios" */,
 			);
 			productRefGroup = B08236EA2CE374D10092AC01 /* Products */;
 			projectDirPath = "";
@@ -1490,6 +1501,7 @@
 				B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */,
 				B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */,
 				B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */,
+				B06B38F92DC5EE470010B8BA /* ShowcaseManager.swift in Sources */,
 				B006D91A2D42B6600082E59E /* FeedsListViewModel.swift in Sources */,
 				B0860F022D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B00BA5372D9733D60075DA7D /* APIError.swift in Sources */,
@@ -1635,6 +1647,7 @@
 				B0B1AEAD2D4F8DB6007371A9 /* NotificationLocalityHeaderView.swift in Sources */,
 				B0B1AEAE2D4F8DB6007371A9 /* FWDateFormatter.swift in Sources */,
 				B0B1AEAF2D4F8DB6007371A9 /* FWShadowButton.swift in Sources */,
+				B06B38FA2DC5EE470010B8BA /* ShowcaseManager.swift in Sources */,
 				B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */,
 				B0860F032D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B00BA5362D9733D60075DA7D /* APIError.swift in Sources */,
@@ -2319,6 +2332,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B06B38ED2DC50BFE0010B8BA /* XCRemoteSwiftPackageReference "material-showcase-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aromajoin/material-showcase-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
 		B06F617E2DBCB24A005113B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -2426,6 +2447,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B06B38EE2DC50BFE0010B8BA /* MaterialShowcase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B06B38ED2DC50BFE0010B8BA /* XCRemoteSwiftPackageReference "material-showcase-ios" */;
+			productName = MaterialShowcase;
+		};
+		B06B38F02DC50C0B0010B8BA /* MaterialShowcase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B06B38ED2DC50BFE0010B8BA /* XCRemoteSwiftPackageReference "material-showcase-ios" */;
+			productName = MaterialShowcase;
+		};
 		B06F617F2DBCB24A005113B4 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B06F617E2DBCB24A005113B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

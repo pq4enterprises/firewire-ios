@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncidentsViewController" customModule="FireWire" customModuleProvider="target">
             <connections>
                 <outlet property="changeViewButton" destination="dJt-cc-S5w" id="hz6-XY-ihu"/>
+                <outlet property="feedAreasButton" destination="fyb-yI-Dwk" id="TdK-xl-8sF"/>
                 <outlet property="incidentContainerView" destination="G9t-4y-qaw" id="iFM-Ne-Ret"/>
                 <outlet property="incidentTableView" destination="GgX-Mx-YdS" id="Xcm-hX-KmQ"/>
                 <outlet property="incidentsCountLabel" destination="lCw-ET-X3F" id="oMB-Jj-iek"/>
@@ -30,17 +31,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDS-1O-oJE">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="500" id="uho-F6-CwD"/>
+                                <constraint firstAttribute="height" constant="400" id="uho-F6-CwD"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9t-4y-qaw" customClass="FWView" customModule="FireWire" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="500" width="393" height="352"/>
+                            <rect key="frame" x="0.0" y="400" width="393" height="452"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GgX-Mx-YdS">
-                                    <rect key="frame" x="0.0" y="49.333333333333371" width="393" height="302.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="49.333333333333314" width="393" height="402.66666666666669"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 posts are listed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCw-ET-X3F">
@@ -50,15 +51,12 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-yI-Dwk">
-                                    <rect key="frame" x="300" y="15" width="78" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="78" id="4Yz-9n-r8y"/>
-                                    </constraints>
+                                    <rect key="frame" x="239.33333333333337" y="15" width="138.66666666666663" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title="Filter" image="filter_icon">
+                                    <state key="normal" title="Feed Areas" image="filter_icon">
                                         <color key="titleColor" systemColor="labelColor"/>
                                     </state>
                                     <connections>
@@ -80,6 +78,7 @@
                                 <constraint firstItem="fyb-yI-Dwk" firstAttribute="top" secondItem="G9t-4y-qaw" secondAttribute="top" constant="15" id="I2P-HU-EzU"/>
                                 <constraint firstItem="lCw-ET-X3F" firstAttribute="leading" secondItem="G9t-4y-qaw" secondAttribute="leading" constant="15" id="S3a-6l-Xm4"/>
                                 <constraint firstAttribute="bottom" secondItem="GgX-Mx-YdS" secondAttribute="bottom" id="UHB-qw-fJ5"/>
+                                <constraint firstItem="fyb-yI-Dwk" firstAttribute="leading" secondItem="lCw-ET-X3F" secondAttribute="trailing" constant="100" id="cjq-yf-gV2"/>
                                 <constraint firstItem="GgX-Mx-YdS" firstAttribute="leading" secondItem="G9t-4y-qaw" secondAttribute="leading" id="i3Z-88-KIt"/>
                                 <constraint firstItem="GgX-Mx-YdS" firstAttribute="top" secondItem="lCw-ET-X3F" secondAttribute="bottom" constant="10" id="u1c-4v-iuR"/>
                                 <constraint firstItem="lCw-ET-X3F" firstAttribute="top" secondItem="G9t-4y-qaw" secondAttribute="top" constant="20" id="uqe-W1-sBc"/>

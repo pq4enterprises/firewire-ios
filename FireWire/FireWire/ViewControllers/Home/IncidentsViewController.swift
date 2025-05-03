@@ -6,6 +6,7 @@
 //
 
 import GoogleMaps
+import MaterialShowcase
 import UIKit
 
 protocol IncidentsViewViewDelegate: AnyObject {
@@ -23,6 +24,7 @@ class IncidentsViewController: UIViewController {
     @IBOutlet var incidentsCountLabel: UILabel!
     @IBOutlet var noIncidentsLabel: UILabel!
     @IBOutlet var changeViewButton: FWRoundedButton!
+    @IBOutlet var feedAreasButton: UIButton!
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
@@ -35,7 +37,7 @@ class IncidentsViewController: UIViewController {
 
     var incidentListExpanded: ((Bool) -> Void)?
 
-    var initialMapViewHeight: CGFloat = 500
+    var initialMapViewHeight: CGFloat = 400
     var minMapViewHeight: CGFloat = 50
 
     var isMapViewExpanded: Bool = false
@@ -48,6 +50,7 @@ class IncidentsViewController: UIViewController {
         return activityIndicator
     }()
 
+    var sequence = MaterialShowcaseSequence()
 
     init(viewModel: IncidentsViewModel) {
         self.incidentsViewModel = viewModel
@@ -82,7 +85,6 @@ class IncidentsViewController: UIViewController {
         incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
             self.hideLoader()
             if !result { self.coordinator?.navigateToSelectArea() }
-            return
         }
 
         incidentsViewModel.getIncidentList()
@@ -165,6 +167,7 @@ class IncidentsViewController: UIViewController {
     }
 
     // MARK: - Actions
+
     @IBAction func filterButtonTap(_ sender: UIButton) {
         coordinator?.navigateToSelectAreaListView()
     }
@@ -355,6 +358,10 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
         hideLoader()
         loadIncidentList()
         addMapMarkers()
+
+        if let parentVC = self.parent as? HomeViewController {
+            parentVC.showTutorial()
+        }
     }
 
     func noIncidentData() {
@@ -374,5 +381,58 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
         {
             coordinator?.navigateToIncidentDetail(selectedIncidentID)
         }
+    }
+}
+
+extension IncidentsViewController: MaterialShowcaseDelegate {
+    func showTutorial() {
+        if let cell = incidentTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? IncidentListViewCell {
+            let titleView = cell.incidentTitle
+            let showcase1 = createMaterialShowcase(
+                primaryText: "Incident",
+                secondaryText: "Click to view incident details",
+                targetView: titleView!
+            )
+
+            let likesView = cell.favouriteButton
+            let showcase2 = createMaterialShowcase(
+                primaryText: "Like",
+                secondaryText: "Tap to like incidents",
+                targetView: likesView!
+            )
+
+            let commentsView = cell.commentButton
+            let showcase3 = createMaterialShowcase(
+                primaryText: "Comment",
+                secondaryText: "Comment and Share photos",
+                targetView: commentsView!
+            )
+
+            let shareView = cell.shareButton
+            let showcase4 = createMaterialShowcase(
+                primaryText: "Share",
+                secondaryText: "Share incidents with friends",
+                targetView: shareView!
+            )
+
+            let showcase5 = createMaterialShowcase(
+                primaryText: "Feed Areas",
+                secondaryText: "Select Areas to appear on your feed",
+                targetView: feedAreasButton
+            )
+
+            showcase1.delegate = self
+            showcase2.delegate = self
+            showcase3.delegate = self
+            showcase4.delegate = self
+            showcase5.delegate = self
+
+            ShowcaseManager.shared.startSequence([showcase1, showcase2, showcase3, showcase4, showcase5])
+            FWUserDefaults.setBoolForKey(key: UserDefaultKeys.onBoardingSequence, value: true)
+        }
+    }
+    
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
+        ShowcaseManager.shared.markNext()
     }
 }

@@ -18,6 +18,8 @@ class IncidentListViewCell: UITableViewCell {
     @IBOutlet weak var incidentStarred: UILabel!
     @IBOutlet weak var incidentComments: UILabel!
     @IBOutlet var favouriteButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     var selectedIncidentId: String?
 
