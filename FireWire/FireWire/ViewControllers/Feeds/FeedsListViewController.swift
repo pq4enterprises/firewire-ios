@@ -32,6 +32,30 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         setupTableView()
 
         noFeedsLabel.isHidden = true
+
+        NotificationCenter.default.addObserver(self, selector: #selector(playbackStateChanged), name: AudioManager.playbackStateChangedNotification, object: nil)
+
+    }
+
+    @objc func playbackStateChanged() {
+        let isPlaying = AudioManager.shared.isPlaying
+        if let currentID = AppManager.shared.currentScannerIDListeningTO{
+            updatePlayingState(forFeedID: currentID, isPlaying: isPlaying)
+            tableView.reloadData()
+        }
+    }
+
+    func updatePlayingState(forFeedID id: String, isPlaying: Bool) {
+        if viewModel.items.count > 0 {
+            for sectionIndex in 0..<viewModel.items.count {
+                for rowIndex in 0..<viewModel.items[sectionIndex].feedList.count {
+                    if viewModel.items[sectionIndex].feedList[rowIndex].id == id {
+                        viewModel.items[sectionIndex].feedList[rowIndex].isPlaying = isPlaying
+                        return
+                    }
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -166,6 +190,7 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
 
         AppManager.shared.currentScannerIDListeningTO = nil
         AudioManager.shared.stopStreaming()
+        AudioManager.shared.stopRemotePlaybackUI()
         tableView.reloadData()
     }
 

@@ -13,6 +13,8 @@ protocol AudioManagerDelegate {
 }
 
 class AudioManager: NSObject {
+    static let playbackStateChangedNotification = Notification.Name("AudioManagerPlaybackStateChanged")
+
     let timedMetadataKey = "timedMetadata"
     static let shared = AudioManager()
     var delegate: AudioManagerDelegate?
@@ -22,7 +24,11 @@ class AudioManager: NSObject {
     var isPlaying: Bool {
         return player?.rate != 0 && player?.error == nil && player != nil
     }
-    
+
+    private func notifyPlaybackStateChanged() {
+        NotificationCenter.default.post(name: AudioManager.playbackStateChangedNotification, object: nil)
+    }
+
     override init() {
         super.init()
         setupAudioSession()
@@ -33,6 +39,7 @@ class AudioManager: NSObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
+            UIApplication.shared.beginReceivingRemoteControlEvents()
             debugPrint("Audio session configured for background playback.")
         }  catch let error as NSError {
             debugPrint("Audio Session Error: \(error.localizedDescription) - Code: \(error.code)")
@@ -73,11 +80,13 @@ class AudioManager: NSObject {
         
         commandCenter.playCommand.addTarget { [weak self] _ in
             self?.player?.play()
+            self?.notifyPlaybackStateChanged()
             return .success
         }
         
         commandCenter.pauseCommand.addTarget { [weak self] _ in
             self?.player?.pause()
+            self?.notifyPlaybackStateChanged()
             return .success
         }
         
@@ -87,6 +96,7 @@ class AudioManager: NSObject {
             } else {
                 self?.player?.play()
             }
+            self?.notifyPlaybackStateChanged()
             return .success
         }
     }
@@ -94,4 +104,16 @@ class AudioManager: NSObject {
     func stopStreaming() {
         player?.pause()
     }
+
+    func stopRemotePlaybackUI() {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        // Deactivate audio session
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
+            UIApplication.shared.endReceivingRemoteControlEvents()
+        } catch {
+            debugPrint("Failed to deactivate audio session: \(error)")
+        }
+    }
+
 }
