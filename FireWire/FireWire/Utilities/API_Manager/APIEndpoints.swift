@@ -35,6 +35,7 @@ enum APIEndpoints {
     static let setNotificationArea = "api/app/user/notification"
     static let submitSubscriptionDetails = "api/app/payment"
     static let gettinSaltyMenu = "api/app/content"
+    static let refreshToken = "api/app/auth/token/refresh"
 
     static let newsList = "https://nycfirewire.net/feed"
     static let submitTipUrl = "https://nycfirewire.net/send-a-tip/"
@@ -73,6 +74,7 @@ enum APIPayload {
     case submitSubscriptionDetails(_ model: SubmitSubscriptionModel)
     case reportComment(userId: String)
     case setFeaturedImage(imageUrl: String, commentId: String)
+    case refreshToken(refreshToken: String)
 
     func toDictionary() -> [String: Any] {
         switch self {
@@ -177,6 +179,10 @@ enum APIPayload {
             return [
                 "featuredImageUrl": imageUrl,
                 "commentId": commentId
+            ]
+        case let .refreshToken(refreshToken):
+            return [
+                "refreshToken": refreshToken
             ]
         }
     }

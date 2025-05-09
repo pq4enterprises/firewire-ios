@@ -94,6 +94,7 @@ final class RegistrationViewModel {
             FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
             FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
             FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
+            FWUserDefaults.setStringForKey(key: .refreshTokenKey, value: loginData.refreshToken)
             FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
 
             self?.delegate?.loginSuccess()
