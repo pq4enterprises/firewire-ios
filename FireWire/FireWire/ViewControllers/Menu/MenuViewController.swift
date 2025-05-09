@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class MenuViewController: UIViewController {
     weak var appCoordinator: AppCoordinator?
@@ -25,6 +26,9 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_main_menu"
+        ])
         setupUI()
         setupActions()
     }

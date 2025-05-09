@@ -7,6 +7,7 @@
 
 import GoogleMaps
 import UIKit
+import FirebaseAnalytics
 
 protocol IncidentDetailViewDelegate: AnyObject {
     func dataReceived()
@@ -67,6 +68,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_incident_details"
+        ])
+        
         if let selectedIncidentID {
             viewModel?.getIncidentDetail(for: selectedIncidentID)
         }

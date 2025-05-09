@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 protocol NewsListViewDelegate: AnyObject {
     func dataReceived()
@@ -36,6 +37,13 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
 
         showActivityIndicator(true)
         viewModel.getNewsList()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_news_feed"
+        ])
     }
 
     func setupTableView() {

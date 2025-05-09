@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 protocol FeedListViewDelegate: AnyObject {
     func dataReceived()
@@ -60,6 +61,9 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_scanner_feeds"
+        ])
         showActivityIndicator(true)
     }
 
@@ -153,6 +157,10 @@ extension FeedsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feedData = viewModel.items[indexPath.section].feedList[indexPath.row]
+
+        Analytics.logEvent("radio_feed_tapped", parameters: [
+            "feed_title": feedData.name
+        ])
 
         if AppManager.shared.currentScannerIDListeningTO == feedData.id {
             self.showAlert(title: "Stop Listening", message: "Are you sure you want to stop listening?", actions: [UIAlertAction(title: "Stop Listening", style: .default, handler: { action in

@@ -8,6 +8,7 @@
 import GoogleMaps
 import MaterialShowcase
 import UIKit
+import FirebaseAnalytics
 
 protocol IncidentsViewViewDelegate: AnyObject {
     func incidentDataLoaded()
@@ -80,6 +81,10 @@ class IncidentsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_incident_feed"
+        ])
+
         showLoader()
 
         incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in

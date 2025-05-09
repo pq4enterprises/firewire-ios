@@ -7,6 +7,7 @@
 
 import StoreKit
 import UIKit
+import FirebaseAnalytics
 
 protocol MyAccountViewDelegate: AnyObject {
     func dataLoaded(status: Bool, message: String)
@@ -115,6 +116,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     @IBAction func premiumButtonTapAction(_ sender: UIButton) {
+        Analytics.logEvent("subscribe_button_tapped", parameters: [
+            AnalyticsParameterScreenName: "ios_my_account"
+        ])
+
         Task {
             await SubscriptionManager.shared.purchaseMyProduct()
         }

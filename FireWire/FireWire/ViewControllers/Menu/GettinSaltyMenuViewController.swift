@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class GettinSaltyMenuViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
@@ -16,6 +17,13 @@ class GettinSaltyMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_salty_wire"
+        ])
     }
 
     func setupUI() {
