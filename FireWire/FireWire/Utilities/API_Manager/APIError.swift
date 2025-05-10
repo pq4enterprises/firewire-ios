@@ -5,7 +5,7 @@
 //  Created by Sujitha Palanisamy on 29/03/25.
 //
 
-public enum APIError: Error {
+public enum APIError: Error, Equatable {
     case invalidUrl
     case invalidData
     case tokenExpired

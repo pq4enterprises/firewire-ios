@@ -41,8 +41,8 @@ final class IncidentsViewModel: PaginatableViewModel {
             requestType: APIConstants.GET
         ) { [weak self] response, _, error in
 
-            if error != nil {
-                self?.getRefreshToken()
+            if error != nil && self?.delegate != nil {
+                self?.delegate?.tokenExpired()
                 return
             }
 
@@ -122,46 +122,6 @@ final class IncidentsViewModel: PaginatableViewModel {
         }
     }
 
-    func getRefreshToken() {
-        if let refreshToken = FWUserDefaults().refreshToken {
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.refreshToken,
-                payload: APIPayload.refreshToken(refreshToken: refreshToken).toDictionary(),
-                expect: LoginApiResponse.self
-            ) { [weak self] response, _, error in
-                if let errorMessage = error {
-                    self?.delegate?.error(message: errorMessage)
-                    return
-                }
-
-                guard let apiResponse = response as? LoginApiResponse else {
-                    let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
-                    self?.delegate?.error(message: errorMessage)
-                    return
-                }
-
-                guard let loginData = apiResponse.data else {
-                    self?.delegate?.error(message: "Missing response data")
-                    return
-                }
-
-                FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
-                let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
-                FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
-                FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
-                FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
-                FWUserDefaults.setStringForKey(key: .refreshTokenKey, value: loginData.refreshToken)
-                FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
-
-                //After refresh token resume the call
-                self?.getIncidentList()
-            }
-        }else{
-            self.delegate?.tokenExpired()
-            return
-        }
-    }
-
     func favouriteIncident(incidentId: String, like: Bool, completion: @escaping (Bool) -> Void) {
         let requestModel = APIPayload.favouriteIncident(
             userId: FWUserDefaults().userID ?? "",
@@ -207,7 +167,7 @@ final class IncidentsViewModel: PaginatableViewModel {
             payload: getIncidentLocalityRequestModel,
             expect: LocalityResponseModel.self,
             requestType: APIConstants.GET
-        ) { response, _, _ in
+        ) { response, _, error in
 
             guard let localityResponse = response as? LocalityResponseModel,
                   let localityData = localityResponse.data

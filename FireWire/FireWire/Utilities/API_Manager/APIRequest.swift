@@ -17,10 +17,16 @@ public class APIRequest {
         payload: Any? = nil,
         expect: T.Type,
         requestType: String = APIConstants.POST, // Default to POST if not specified
+        noAuth: Bool = false,
+        retryOnAuthFailure: Bool = true,
         completionHandler: @escaping DataCompletionBlock
     ) {
         var urlString = APIEndpoints.baseURL + (apiEndPoint ?? "")
-        let accessToken = FWUserDefaults().userToken
+        var accessToken = FWUserDefaults().userToken
+
+        if noAuth {
+            accessToken = ""
+        }
 
         // For GET request, append parameters to the URL if provided
         if requestType == APIConstants.GET, let payload = payload as? [String: Any], isEmptyPayload(payload) == false {
@@ -41,12 +47,64 @@ public class APIRequest {
                 switch result {
                 case .success(let response):
                     completionHandler(response, nil, nil)
-                case .failure(let error as APIError):
-                    completionHandler(nil, nil, error.localizedDescription)
+                case .failure(let error as APIError) where error == .tokenExpired:
+                    // Handle token refresh
+                    if retryOnAuthFailure {
+                        self.refreshToken { success in
+                            if success {
+                                // Retry original call once
+                                self.callApi(
+                                    apiEndPoint: apiEndPoint,
+                                    payload: payload,
+                                    expect: expect,
+                                    requestType: requestType,
+                                    noAuth: noAuth,
+                                    retryOnAuthFailure: false, // Prevent infinite loop
+                                    completionHandler: completionHandler
+                                )
+                            } else {
+                                completionHandler(nil, nil, APIError.tokenExpired.localizedDescription)
+                            }
+                        }
+                    } else {
+                        completionHandler(nil, nil, error.localizedDescription)
+                    }
                 case .failure(let error):
                     completionHandler(nil, nil, error.localizedDescription)
                 }
             }
+        }
+    }
+
+    private func refreshToken(completion: @escaping (Bool) -> Void) {
+        guard let refreshToken = FWUserDefaults().refreshToken else { return }
+        let payload = APIPayload.refreshToken(refreshToken: refreshToken).toDictionary()
+
+        self.callApi(
+            apiEndPoint: APIEndpoints.refreshToken,
+            payload: payload,
+            expect: LoginApiResponse.self,
+            noAuth: false,
+            retryOnAuthFailure: false
+        ) { response, _, error in
+            guard let loginResponse = response as? LoginApiResponse,
+                  let loginData = loginResponse.data,
+                  error == nil
+            else {
+                completion(false)
+                return
+            }
+
+            // Save new tokens
+            FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
+            let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
+            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
+            FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
+            FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
+            FWUserDefaults.setStringForKey(key: .refreshTokenKey, value: loginData.refreshToken)
+            FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
+
+            completion(true)
         }
     }
 
