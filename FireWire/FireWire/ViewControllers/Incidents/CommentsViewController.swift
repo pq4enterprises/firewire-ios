@@ -86,7 +86,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showActivityIndicator(true)
+        showLoader()
         if let selectedIncidentID {
             viewModel?.getCommentsList(for: selectedIncidentID)
         }
@@ -97,7 +97,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func dataReceived() {
-        showActivityIndicator(false)
+        hideLoader()
         tableView.isHidden = false
         commentsListCount.isHidden = false
         noCommentsLabel.isHidden = true
@@ -114,7 +114,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 
     func noCommentsForIncident() {
-        showActivityIndicator(false)
+        hideLoader()
         tableView.isHidden = true
         commentsListCount.isHidden = true
         noCommentsLabel.isHidden = false
@@ -127,16 +127,6 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     func showMessage(message: String) {
         hideLoader()
         showAlert(title: message, message: "", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-    }
-
-    func showActivityIndicator(_ value: Bool) {
-        if value {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
-        } else {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-        }
     }
 
     func setupTableView() {

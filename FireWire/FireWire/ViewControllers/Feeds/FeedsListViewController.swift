@@ -14,7 +14,6 @@ protocol FeedListViewDelegate: AnyObject {
 }
 
 class FeedsListViewController: UIViewController, FeedListViewDelegate {
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var noFeedsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
 
@@ -64,7 +63,7 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
             AnalyticsParameterScreenName: "ios_scanner_feeds"
         ])
-        showActivityIndicator(true)
+        showLoader()
     }
 
     func setupTableView() {
@@ -79,28 +78,14 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
     }
 
     func errorReceived(message: String) {
-        showActivityIndicator(false)
+        hideLoader()
         tableView.isHidden = true
         noFeedsLabel.isHidden = false
     }
 
     func dataReceived() {
-        showActivityIndicator(false)
+        hideLoader()
         tableView.reloadData()
-    }
-
-    func showActivityIndicator(_ value: Bool) {
-        if value {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
-
-            tableView.isHidden = true
-        } else {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-
-            tableView.isHidden = false
-        }
     }
 
     @IBAction func closeButtonTap(_ sender: Any) {

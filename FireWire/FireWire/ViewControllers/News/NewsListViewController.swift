@@ -13,7 +13,6 @@ protocol NewsListViewDelegate: AnyObject {
 }
 
 class NewsListViewController: UIViewController, NewsListViewDelegate {
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var newsListCount: UILabel!
     @IBOutlet var tableView: UITableView!
 
@@ -35,7 +34,8 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         super.viewDidLoad()
         setupTableView()
 
-        showActivityIndicator(true)
+        showLoader()
+        tableView.isHidden = true
         viewModel.getNewsList()
     }
 
@@ -57,25 +57,12 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
     }
 
     func dataReceived() {
-        showActivityIndicator(false)
+        hideLoader()
+        tableView.isHidden = false
         tableView.reloadData()
         newsListCount.text = "\(viewModel.newsList.count) news are listed"
     }
 
-    func showActivityIndicator(_ value: Bool) {
-        if value {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
-
-            tableView.isHidden = true
-        } else {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-
-            tableView.isHidden = false
-        }
-    }
-    
     func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
         var items: [Any] = [text]
 

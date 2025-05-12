@@ -95,11 +95,13 @@ class HomeCoordinator: BaseCoordinator {
         let selectAreaListView = IncidentLocalityListViewController(viewModel: IncidentLocalityListViewModel())
         selectAreaListView.coordinator = self
 
-        let bottomSheet = FWBottomSheetViewController.instantiate()
-        bottomSheet.configure(with: selectAreaListView, isDraggableView: false, bottomSheetDetents: [.large])
-        bottomSheet.showDimmedView = true
-        bottomSheet.modalPresentationStyle = .pageSheet
-        navigationController.present(bottomSheet, animated: true)
+        if let sheet = selectAreaListView.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+        }
+        selectAreaListView.modalPresentationStyle = .pageSheet
+        navigationController.present(selectAreaListView, animated: true)
     }
 
     /// Copy of IncidentLocalityListViewController, just using different view controller for UI & navigation purpose

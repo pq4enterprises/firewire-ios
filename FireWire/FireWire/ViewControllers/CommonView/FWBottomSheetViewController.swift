@@ -22,7 +22,7 @@ class FWBottomSheetViewController: UIViewController {
 
     var defaultHeight: CGFloat = 400
     let dismissibleHeight: CGFloat = 200
-    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
+    var maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
     // keep current new height, initial is default height
     var currentContainerHeight: CGFloat = 400
 
@@ -82,6 +82,14 @@ class FWBottomSheetViewController: UIViewController {
         // tap gesture on dimmed view to dismiss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCloseAction))
         dimmedView.addGestureRecognizer(tapGesture)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let screenHeight = UIScreen.main.bounds.height
+        let topPadding: CGFloat = view.safeAreaInsets.top + 20
+        let bottomPadding: CGFloat = view.safeAreaInsets.bottom + 20
+        maximumContainerHeight = screenHeight - topPadding - bottomPadding
     }
 
     @objc func handleCloseAction() {

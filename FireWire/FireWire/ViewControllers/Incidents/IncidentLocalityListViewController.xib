@@ -63,17 +63,18 @@
                     <rect key="frame" x="0.0" y="119" width="393" height="699"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-lF-ZB1">
-                    <rect key="frame" x="24" y="236" width="344" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-lF-ZB1">
+                    <rect key="frame" x="178" y="219" width="37" height="37"/>
                     <color key="color" name="FWRed"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="gHa-lF-ZB1" firstAttribute="top" secondItem="Ov2-7u-8cB" secondAttribute="bottom" constant="100" id="1Ld-h1-8eQ"/>
                 <constraint firstItem="wfK-k6-HJ7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2y7-S6-Afg"/>
                 <constraint firstItem="wfK-k6-HJ7" firstAttribute="top" secondItem="Ov2-7u-8cB" secondAttribute="bottom" id="4uA-AZ-8xN"/>
+                <constraint firstItem="gHa-lF-ZB1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aDw-3W-Puh"/>
                 <constraint firstItem="Ov2-7u-8cB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aWD-Cy-vCr"/>
                 <constraint firstItem="Ov2-7u-8cB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="d7n-AL-LTw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wfK-k6-HJ7" secondAttribute="bottom" id="kyH-77-Ino"/>
