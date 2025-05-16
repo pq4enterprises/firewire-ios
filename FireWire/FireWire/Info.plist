@@ -13,7 +13,7 @@
 		</dict>
 	</array>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<true/>
+	<false/>
 	<key>FacebookAppID</key>
 	<string>891535999464182</string>
 	<key>FacebookClientToken</key>
