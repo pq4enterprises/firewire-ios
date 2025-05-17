@@ -6,13 +6,11 @@
 //
 
 import AuthenticationServices
-import FBSDKLoginKit
 import GoogleSignIn
 import UIKit
 
 enum LoginType: Int {
     case google
-    case facebook
     case apple
     case general
 }
@@ -120,10 +118,6 @@ class LoginViewController: UIViewController {
         performGoogleLogin()
     }
 
-    @IBAction func facebookSignInTap(_ sender: UIButton) {
-        performFaceBookLogin()
-    }
-
     @objc func handleAppleSignIn() {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
@@ -179,56 +173,6 @@ class LoginViewController: UIViewController {
         }
     }
 
-    func performFaceBookLogin() {
-        let loginManager = LoginManager()
-        loginManager.logOut()
-        let cookies = HTTPCookieStorage.shared
-        let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
-        for cookie in facebookCookies! {
-            cookies.deleteCookie(cookie)
-        }
-
-        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
-            if let error = error {
-                // Handle login error here
-                print("Error: \(error.localizedDescription)")
-            } else if let result = result, !result.isCancelled {
-                // Login successful, you can access the user's Facebook data here
-                // self.fetchFacebookUserData()
-                _ = SocialLoginRequestModel(token: AccessToken.current?.tokenString ?? "", socialType: .facebook, role: "basic_user")
-                // self.viewModel?.authenticateSocialLogin(requestModel)
-            } else {
-                // Login was canceled by the user
-                print("Login was cancelled.")
-            }
-        }
-    }
-
-    // TODO: Remove this if facebook user data is not required
-    func fetchFacebookUserData() {
-        if AccessToken.current != nil {
-            // You can make a Graph API request here to fetch user data
-            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { _, result, error in
-                if let error = error {
-                    // Handle API request error here
-                    print("Error: \(error.localizedDescription)")
-                } else if let userData = result as? [String: Any] {
-                    // Access the user data here
-                    let userID = userData["id"] as? String
-                    let name = userData["name"] as? String
-
-                    // Handle the user data as needed
-                    print("User ID: \(userID ?? "")")
-                    print("Name: \(name ?? "")")
-
-                    self.coordinator?.backToParentCoordinator()
-                    self.parentCoordinator?.navigateToHome()
-                }
-            }
-        } else {
-            print("No active Facebook access token.")
-        }
-    }
 
     // TODO: Handle in common place
     func setupKeyboardActions() {

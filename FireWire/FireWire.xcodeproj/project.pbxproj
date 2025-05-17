@@ -156,8 +156,6 @@
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
-		B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304492D0EE799006F851A /* FacebookLogin */; };
-		B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3044B2D0EE799006F851A /* FacebookShare */; };
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
 		B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */; };
@@ -291,8 +289,6 @@
 		B0B1AEF52D4F8DB6007371A9 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE892D4F8DB6007371A9 /* OneSignalInAppMessages */; };
 		B0B1AEF62D4F8DB6007371A9 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7E2D4F8DB6007371A9 /* GoogleSignIn */; };
 		B0B1AEF72D4F8DB6007371A9 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE832D4F8DB6007371A9 /* XMLCoder */; };
-		B0B1AEF82D4F8DB6007371A9 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE822D4F8DB6007371A9 /* FacebookShare */; };
-		B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE802D4F8DB6007371A9 /* FacebookLogin */; };
 		B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE852D4F8DB6007371A9 /* SwiftSoup */; };
 		B0B1AEFC2D4F8DB6007371A9 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B043CEAB2D0EDD0D007430B7 /* mapStyle.json */; };
 		B0B1AEFE2D4F8DB6007371A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08236F52CE374D30092AC01 /* Assets.xcassets */; };
@@ -637,9 +633,7 @@
 				B0B1AE782D4F8A42007371A9 /* OneSignalInAppMessages in Frameworks */,
 				B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */,
 				B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */,
-				B0A3044C2D0EE799006F851A /* FacebookShare in Frameworks */,
 				B06F61802DBCB24A005113B4 /* FirebaseCrashlytics in Frameworks */,
-				B0A3044A2D0EE799006F851A /* FacebookLogin in Frameworks */,
 				B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */,
 				B06B38F12DC50C0B0010B8BA /* MaterialShowcase in Frameworks */,
 			);
@@ -670,9 +664,7 @@
 				B0B1AEF52D4F8DB6007371A9 /* OneSignalInAppMessages in Frameworks */,
 				B0B1AEF62D4F8DB6007371A9 /* GoogleSignIn in Frameworks */,
 				B0B1AEF72D4F8DB6007371A9 /* XMLCoder in Frameworks */,
-				B0B1AEF82D4F8DB6007371A9 /* FacebookShare in Frameworks */,
 				B06F61822DBCB264005113B4 /* FirebaseCrashlytics in Frameworks */,
-				B0B1AEF92D4F8DB6007371A9 /* FacebookLogin in Frameworks */,
 				B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */,
 				B06B38EF2DC50BFE0010B8BA /* MaterialShowcase in Frameworks */,
 			);
@@ -1160,8 +1152,6 @@
 			packageProductDependencies = (
 				B0E115802CFF7B9C00E7D10B /* GoogleMaps */,
 				B0A304462D0EE35F006F851A /* GoogleSignIn */,
-				B0A304492D0EE799006F851A /* FacebookLogin */,
-				B0A3044B2D0EE799006F851A /* FacebookShare */,
 				B0A3046A2D10A17B006F851A /* XMLCoder */,
 				B0A3046F2D10AD56006F851A /* SwiftSoup */,
 				B0B1AE752D4F8A42007371A9 /* OneSignalFramework */,
@@ -1228,8 +1218,6 @@
 			packageProductDependencies = (
 				B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */,
 				B0B1AE7E2D4F8DB6007371A9 /* GoogleSignIn */,
-				B0B1AE802D4F8DB6007371A9 /* FacebookLogin */,
-				B0B1AE822D4F8DB6007371A9 /* FacebookShare */,
 				B0B1AE832D4F8DB6007371A9 /* XMLCoder */,
 				B0B1AE852D4F8DB6007371A9 /* SwiftSoup */,
 				B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */,
@@ -1283,7 +1271,6 @@
 			packageReferences = (
 				B0E1157F2CFF7B9C00E7D10B /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				B0A304452D0EE35F006F851A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				B0A3046E2D10AD56006F851A /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				B0B1AE722D4F8A42007371A9 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
@@ -2362,14 +2349,6 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 14.1.0;
-			};
-		};
 		B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
@@ -2408,14 +2387,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.0.0;
-			};
-		};
-		B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 14.1.0;
 			};
 		};
 		B0B1AE842D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
@@ -2488,16 +2459,6 @@
 			package = B0A304452D0EE35F006F851A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
 		};
-		B0A304492D0EE799006F851A /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-		B0A3044B2D0EE799006F851A /* FacebookShare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0A304482D0EE799006F851A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookShare;
-		};
 		B0A3046A2D10A17B006F851A /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0A304692D10A17B006F851A /* XCRemoteSwiftPackageReference "XMLCoder" */;
@@ -2532,16 +2493,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0B1AE7F2D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
-		};
-		B0B1AE802D4F8DB6007371A9 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-		B0B1AE822D4F8DB6007371A9 /* FacebookShare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0B1AE812D4F8DB6007371A9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookShare;
 		};
 		B0B1AE832D4F8DB6007371A9 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;

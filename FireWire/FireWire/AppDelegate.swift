@@ -5,7 +5,6 @@
 //  Created by Sujitha Palanisamy on 12/11/24.
 //
 
-import FBSDKCoreKit
 import GoogleMaps
 import GoogleSignIn
 import OneSignalFramework
@@ -23,9 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyALseex1HWFQ2XSxIk-uYwKegYzc5hgkPg")
-
-        /// Facebook SDK initialisation
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Remove this method to stop OneSignal Debugging
         OneSignal.Debug.setLogLevel(.LL_VERBOSE)

@@ -7,7 +7,6 @@
 
 import GoogleSignIn
 import UIKit
-import FBSDKLoginKit
 import OneSignalFramework
 
 class AppCoordinator: BaseCoordinator {
@@ -63,12 +62,6 @@ class AppCoordinator: BaseCoordinator {
                 completion(true)
             }
         }
-
-        if AccessToken.current != nil {
-            completion(true)
-        }else{
-            completion(false)
-        }
     }
 
     private func clearSessionData() {
@@ -78,9 +71,6 @@ class AppCoordinator: BaseCoordinator {
 
         //Logout google sign in
         GIDSignIn.sharedInstance.signOut()
-
-        //Facebook logout
-        AccessToken.current = nil
 
         //Notification logout
         OneSignal.logout()
