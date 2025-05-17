@@ -11,6 +11,7 @@ import OneSignalFramework
 import StoreKit
 import UIKit
 import Firebase
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
@@ -38,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         _ = FWNetworkManager.shared
 
         FirebaseApp.configure()
+        
+        ATTrackingManager.requestTrackingAuthorization{ _ in }
 
         return true
     }

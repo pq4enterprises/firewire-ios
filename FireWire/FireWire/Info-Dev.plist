@@ -61,5 +61,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This app collects data to provide a better user experience. We do not use this data for tracking you across apps or websites.</string>
 </dict>
 </plist>
