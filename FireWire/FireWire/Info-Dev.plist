@@ -12,14 +12,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<true/>
-	<key>FacebookAppID</key>
-	<string>891535999464182</string>
-	<key>FacebookClientToken</key>
-	<string>edf4d94539b2fde41f60e6b26be1e4ea</string>
-	<key>FacebookDisplayName</key>
-	<string>Fire-Wire</string>
 	<key>GIDClientID</key>
 	<string>223386379375-sd7bkbbvbgftj9hpp0594h8q0ei2uero.apps.googleusercontent.com</string>
 	<key>LSApplicationQueriesSchemes</key>
