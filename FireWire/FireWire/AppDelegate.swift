@@ -39,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         _ = FWNetworkManager.shared
 
         FirebaseApp.configure()
-        
-        ATTrackingManager.requestTrackingAuthorization{ _ in }
 
         return true
     }
