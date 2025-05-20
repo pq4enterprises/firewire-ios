@@ -11,7 +11,6 @@ import OneSignalFramework
 import StoreKit
 import UIKit
 import Firebase
-import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
