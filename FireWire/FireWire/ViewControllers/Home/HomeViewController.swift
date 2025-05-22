@@ -7,6 +7,7 @@
 
 import MaterialShowcase
 import UIKit
+import AppTrackingTransparency
 
 class HomeViewController: UIViewController {
     @IBOutlet var viewContainer: UIView!
@@ -27,6 +28,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
 
     func setupView() {
