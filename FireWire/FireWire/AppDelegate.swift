@@ -11,7 +11,6 @@ import OneSignalFramework
 import StoreKit
 import UIKit
 import Firebase
-import FirebaseAnalytics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
@@ -39,10 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         _ = FWNetworkManager.shared
 
         FirebaseApp.configure()
-
-        // Disable IDFA and ad personalization features
-        Analytics.setAnalyticsCollectionEnabled(true)
-        Analytics.setUserID(nil)
 
         return true
     }
