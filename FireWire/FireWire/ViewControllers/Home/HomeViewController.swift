@@ -5,6 +5,7 @@
 //  Created by Sujitha Palanisamy on 14/11/24.
 //
 
+import AppTrackingTransparency
 import MaterialShowcase
 import UIKit
 
@@ -27,6 +28,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
 
     func setupView() {
@@ -138,7 +144,7 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: MaterialShowcaseDelegate {
-    func showTutorial(){
+    func showTutorial() {
         let showCase1 = createMaterialShowcase(primaryText: "Radio", secondaryText: "Listen to Scanner Feeds", targetView: feedsButton)
 
         var showCase2: MaterialShowcase?
@@ -155,7 +161,7 @@ extension HomeViewController: MaterialShowcaseDelegate {
         if let showCase2 {
             showCase2.delegate = self
         }
-        
+
         showCase3.delegate = self
         showCase4.delegate = self
         showCase5.delegate = self

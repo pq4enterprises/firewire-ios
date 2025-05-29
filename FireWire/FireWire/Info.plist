@@ -61,7 +61,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>GoogleAdMobAppMeasurementEnabled</key>
-    <false/>
+	<key>GoogleAdMobAppMeasurementEnabled</key>
+	<false/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>One of our third party requires tracking usage. We do not personally track the user&apos;s activity. </string>
 </dict>
 </plist>
