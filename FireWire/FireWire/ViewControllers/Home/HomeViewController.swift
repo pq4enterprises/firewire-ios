@@ -5,7 +5,6 @@
 //  Created by Sujitha Palanisamy on 14/11/24.
 //
 
-import AppTrackingTransparency
 import MaterialShowcase
 import UIKit
 
@@ -28,11 +27,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
 
     func setupView() {
