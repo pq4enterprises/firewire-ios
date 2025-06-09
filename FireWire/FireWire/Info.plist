@@ -63,5 +63,7 @@
 	<true/>
 	<key>GoogleAdMobAppMeasurementEnabled</key>
 	<false/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier is used to support technical functionality like crash reporting and app diagnostics, not to track you or show ads.</string>
 </dict>
 </plist>
