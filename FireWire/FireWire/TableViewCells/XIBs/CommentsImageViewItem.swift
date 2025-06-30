@@ -16,6 +16,19 @@ class CommentsImageViewItem: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
 
+    var onImageTap: (() -> Void)?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        imageView.addGestureRecognizer(tap)
+    }
+
+    @objc private func handleTap() {
+        onImageTap?()
+    }
+
     func configure(with imageUrl: String) {
         imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true

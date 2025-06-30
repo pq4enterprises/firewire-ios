@@ -24,6 +24,7 @@ class CommentsListViewCell: UITableViewCell {
 
     private var model: CommentsData!
     var commentsAction: ((CommentsData) -> Void)?
+    var imageTapHandler: ((String) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -94,6 +95,10 @@ extension CommentsListViewCell: UICollectionViewDataSource, UICollectionViewDele
 
         if let image = model.img?[indexPath.row] {
             cell.configure(with: image)
+
+            cell.onImageTap = { [weak self] in
+                self?.imageTapHandler?(image)
+            }
         }
 
         return cell
