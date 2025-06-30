@@ -226,13 +226,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            mapView.mapType = .satellite
+            mapView.mapType = .hybrid
         case 1:
             mapView.mapType = .normal
         case 2:
-            mapView.mapType = .hybrid
-        default:
             mapView.mapType = .satellite
+        default:
+            mapView.mapType = .normal
         }
     }
 

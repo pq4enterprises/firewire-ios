@@ -94,8 +94,9 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 
             if let response = apiResponse as? SuccessResponseModel {
                 if response.code.lowercased() == "success" {
-                    self?.showToast(message: "Reset password success")
-                    self?.coordinator?.popToRootView()
+                    self?.showAlert(title: "", message: "Reset password success", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                        self?.coordinator?.popToRootView()
+                    })])
                 } else {
                     self?.showAlert(title: "", message: response.message.isEmpty ? .CommonError.techError : response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
