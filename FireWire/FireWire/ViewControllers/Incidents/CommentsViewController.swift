@@ -277,36 +277,11 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func showFullscreenImage(_ imageUrl: String) {
-        guard let url = URL(string: imageUrl) else { return }
-
-        let fullscreenImageView = UIImageView()
-        fullscreenImageView.contentMode = .scaleAspectFit
-        fullscreenImageView.backgroundColor = .black
-        fullscreenImageView.frame = view.bounds
-        fullscreenImageView.isUserInteractionEnabled = true
-        fullscreenImageView.alpha = 0
-
-        // Add tap to dismiss
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-        fullscreenImageView.addGestureRecognizer(tap)
-
-        // Add before loading image
-        view.addSubview(fullscreenImageView)
-
-        // Load image (assumes you have an async loadImage(from:) extension)
-        fullscreenImageView.loadImage(from: url)
-
-        UIView.animate(withDuration: 0.3) {
-            fullscreenImageView.alpha = 1
-        }
-    }
-
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.3, animations: {
-            sender.view?.alpha = 0
-        }) { _ in
-            sender.view?.removeFromSuperview()
-        }
+        let previewVC = ImagePreviewViewController()
+        previewVC.imageUrl = imageUrl
+        previewVC.modalPresentationStyle = .overFullScreen
+        previewVC.modalTransitionStyle = .crossDissolve
+        present(previewVC, animated: true)
     }
 }
 
