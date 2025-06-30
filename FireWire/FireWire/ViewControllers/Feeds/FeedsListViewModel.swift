@@ -12,7 +12,7 @@ final class FeedsListViewModel: PaginatableViewModel {
 
     var currentPage: Int = 1
     var totalPages: Int = 1
-    var limit: Int = 10
+    var limit: Int = 100
     var items: [FeedGroupedData] = []
     var delegate: FeedListViewDelegate?
 
