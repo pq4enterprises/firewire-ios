@@ -33,8 +33,8 @@ class IncidentListViewCell: UITableViewCell {
 
     func setupView(_ model: IncidentDataModel){
         selectedIncidentId = model.id
-        incidentTitle.text = model.field1Value
-        incidentDesc.text = model.field2Value
+        incidentTitle.text = model.field1Value.uppercased()
+        incidentDesc.text = model.field2Value.uppercased()
 
         var address = model.field3Value
         if let subLocalityName = model.subLocality.first?.name, !subLocalityName.isEmpty {
@@ -43,10 +43,10 @@ class IncidentListViewCell: UITableViewCell {
             }
             address.append(subLocalityName)
         }
-        incidentLocation.text = address
+        incidentLocation.text = address.uppercased()
 
         if let formattedDate = FWDateFormatter().formatDateString(model.createdAt){
-            incidentDateTime.text = formattedDate
+            incidentDateTime.text = formattedDate.uppercased()
         }
 
         model.isLiked

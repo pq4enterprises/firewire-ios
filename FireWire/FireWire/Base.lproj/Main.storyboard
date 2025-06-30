@@ -695,7 +695,7 @@ agreeing with our Terms and Conditions</string>
                                 <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Io-ide">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="876"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="853"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-is-dSs">
                                                 <rect key="frame" x="20" y="0.0" width="353" height="108"/>
@@ -780,24 +780,32 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T45-af-lub" customClass="FWView" customModule="FireWire" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="735" width="343" height="86"/>
+                                                <rect key="frame" x="25" y="735" width="343" height="63"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JbC-Ad-GtL">
-                                                        <rect key="frame" x="10" y="15" width="323" height="56"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JbC-Ad-GtL">
+                                                        <rect key="frame" x="10" y="15" width="323" height="33"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-z6-XM2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="323" height="23"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="23" id="SbD-t8-dDc"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LML-Qu-KEe">
-                                                                <rect key="frame" x="0.0" y="33" width="323" height="23"/>
+                                                                <rect key="frame" x="0.0" y="33" width="323" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="tHc-z6-XM2" firstAttribute="leading" secondItem="JbC-Ad-GtL" secondAttribute="leading" id="MfW-Li-2dx"/>
+                                                            <constraint firstItem="tHc-z6-XM2" firstAttribute="top" secondItem="JbC-Ad-GtL" secondAttribute="top" id="Vbu-0m-R8W"/>
+                                                            <constraint firstAttribute="trailing" secondItem="tHc-z6-XM2" secondAttribute="trailing" id="pdW-d4-XXb"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="FWGrey"/>
@@ -809,7 +817,7 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="seD-YZ-ALe">
-                                                <rect key="frame" x="25" y="846" width="343" height="10"/>
+                                                <rect key="frame" x="25" y="823" width="343" height="10"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-Mu-fTL">
                                                         <rect key="frame" x="0.0" y="0.0" width="137" height="10"/>

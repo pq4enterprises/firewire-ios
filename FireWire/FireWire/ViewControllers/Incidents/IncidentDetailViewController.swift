@@ -87,14 +87,14 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         guard let incidentDetail = viewModel?.incidentDetail else {
             return
         }
-        incidentTitle.text = incidentDetail.field1Value ?? ""
-        incidentDesc.text = incidentDetail.field2Value ?? ""
+        incidentTitle.text = incidentDetail.field1Value?.uppercased() ?? ""
+        incidentDesc.text = incidentDetail.field2Value?.uppercased() ?? ""
 
         if let formattedDate = FWDateFormatter().formatDateString(incidentDetail.createdAt) {
-            incidentDateTime.text = formattedDate
+            incidentDateTime.text = formattedDate.uppercased()
         }
 
-        incidentAddress.text = incidentDetail.address
+        incidentAddress.text = incidentDetail.address.uppercased()
 
         incidentDetail.isLiked
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
@@ -134,7 +134,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
 
         let units = incidentDetail.respondingUnits?
-            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines).uppercased() }
             .filter { !$0.isEmpty } ?? []
         unitsLabel.text = units.isEmpty ? "No data found" : "[ \(units.joined(separator: ", ")) ]"
 
