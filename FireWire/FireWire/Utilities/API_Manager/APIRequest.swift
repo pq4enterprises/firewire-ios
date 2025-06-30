@@ -70,7 +70,8 @@ public class APIRequest {
                         completionHandler(nil, nil, error.localizedDescription)
                     }
                 case .failure(let error):
-                    completionHandler(nil, nil, error.localizedDescription)
+                    guard let apiError = error as? APIError else { return }
+                    completionHandler(nil, nil, apiError.localizedDescription)
                 }
             }
         }
