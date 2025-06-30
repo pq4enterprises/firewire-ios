@@ -133,12 +133,10 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentFavourites.text = "\(incidentDetail.likeCount) Likes"
         incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
 
-        if let units = incidentDetail.respondingUnits?.compactMap({ $0 }), !units.isEmpty {
-            let unitsString = "[ " + units.joined(separator: ", ") + " ]"
-            unitsLabel.text = unitsString
-        } else {
-            unitsLabel.text = "No data found"
-        }
+        let units = incidentDetail.respondingUnits?
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty } ?? []
+        unitsLabel.text = units.isEmpty ? "No data found" : "[ \(units.joined(separator: ", ")) ]"
 
         if openCommentsSection {
             openCommentsSection = false

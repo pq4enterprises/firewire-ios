@@ -51,7 +51,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-yI-Dwk">
-                                    <rect key="frame" x="258" y="15" width="120" height="18"/>
+                                    <rect key="frame" x="258" y="20.666666666666686" width="120" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="DSf-q9-tzP"/>
                                     </constraints>
@@ -78,8 +78,8 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="GgX-Mx-YdS" secondAttribute="trailing" id="04z-1T-SEg"/>
                                 <constraint firstAttribute="trailing" secondItem="fyb-yI-Dwk" secondAttribute="trailing" constant="15" id="3Wv-jA-2yZ"/>
-                                <constraint firstItem="fyb-yI-Dwk" firstAttribute="top" secondItem="G9t-4y-qaw" secondAttribute="top" constant="15" id="I2P-HU-EzU"/>
                                 <constraint firstItem="lCw-ET-X3F" firstAttribute="leading" secondItem="G9t-4y-qaw" secondAttribute="leading" constant="15" id="S3a-6l-Xm4"/>
+                                <constraint firstItem="fyb-yI-Dwk" firstAttribute="centerY" secondItem="lCw-ET-X3F" secondAttribute="centerY" id="Tm7-jz-fsR"/>
                                 <constraint firstAttribute="bottom" secondItem="GgX-Mx-YdS" secondAttribute="bottom" id="UHB-qw-fJ5"/>
                                 <constraint firstItem="GgX-Mx-YdS" firstAttribute="leading" secondItem="G9t-4y-qaw" secondAttribute="leading" id="i3Z-88-KIt"/>
                                 <constraint firstItem="GgX-Mx-YdS" firstAttribute="top" secondItem="lCw-ET-X3F" secondAttribute="bottom" constant="10" id="u1c-4v-iuR"/>
