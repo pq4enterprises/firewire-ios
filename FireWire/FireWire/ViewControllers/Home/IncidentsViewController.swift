@@ -207,6 +207,7 @@ class IncidentsViewController: UIViewController {
         isListViewExpanded = false
         isMapViewExpanded = true
         updateChangeViewButton()
+        centerMapOnFirstMarker()
     }
 
     func expandList() {
@@ -221,6 +222,17 @@ class IncidentsViewController: UIViewController {
         isMapViewExpanded = false
         updateChangeViewButton()
         incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+
+    func centerMapOnFirstMarker() {
+        guard let marker = incidentsViewModel.markersList.first else { return }
+
+        let originalPoint = mapView.projection.point(for: marker.coordinates)
+        let offsetPoint = CGPoint(x: originalPoint.x, y: originalPoint.y + 300)
+        let offsetCoordinate = mapView.projection.coordinate(for: offsetPoint)
+
+        let camera = GMSCameraPosition.camera(withTarget: offsetCoordinate, zoom: 15)
+        mapView.animate(to: camera)
     }
 
     func updateChangeViewButton() {
