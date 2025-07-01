@@ -12,9 +12,32 @@ class VersionChecker {
 
     static func isUpdateRequired() -> Bool {
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
-        return isVersion(currentVersion, lessThan: minimumSupportedVersion)
+
+        let maxComponents = maxDotCountVersionComponentCount(currentVersion, minimumSupportedVersion)
+        let a = paddedVersion(currentVersion, maxComponents: maxComponents)
+        let b = paddedVersion(minimumSupportedVersion, maxComponents: maxComponents)
+        return a <= b
     }
 
+    static func maxDotCountVersionComponentCount(_ v1: String, _ v2: String) -> Int {
+        let count1 = v1.split(separator: ".").count
+        let count2 = v2.split(separator: ".").count
+        return max(count1, count2)
+    }
+
+    static func paddedVersion(_ version: String, maxComponents: Int = 3, componentWidth: Int = 5) -> Int {
+        let parts = version.split(separator: ".").map { String($0) }
+        var paddedParts: [String] = []
+
+        for i in 0..<maxComponents {
+            let part = i < parts.count ? parts[i] : "0"
+            paddedParts.append(part.leftPadded(toLength: componentWidth))
+        }
+
+        return Int(paddedParts.joined()) ?? 0
+    }
+
+    //Note: Not used as of now it is replaced with padded version remove this logic later
     private static func isVersion(_ current: String, lessThan required: String) -> Bool {
         let c = current.split(separator: ".").compactMap { Int($0) }
         let r = required.split(separator: ".").compactMap { Int($0) }

@@ -63,4 +63,9 @@ public extension String {
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+
+    func leftPadded(toLength length: Int, withPad character: Character = "0") -> String {
+        let padding = String(repeating: character, count: max(0, length - self.count))
+        return padding + self
+    }
 }
