@@ -11,13 +11,22 @@ import OneSignalFramework
 
 class AppCoordinator: BaseCoordinator {
     override func start() {
-        isUserLoggedIn { isLoggedIn in
-            if isLoggedIn {
-                self.navigateToHome()
-            } else {
-                self.navigateToLogin()
+        if VersionChecker.isUpdateRequired() {
+            self.navigateToForceUpdate()
+        }else{
+            isUserLoggedIn { isLoggedIn in
+                if isLoggedIn {
+                    self.navigateToHome()
+                } else {
+                    self.navigateToLogin()
+                }
             }
         }
+    }
+
+    func navigateToForceUpdate() {
+        let vc = ForceUpdateViewController.instantiate()
+        navigationController.setViewControllers([vc], animated: false)
     }
 
     func navigateToLogin() {

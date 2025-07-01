@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
+        <array key="Inter_18pt-Regular.ttf">
             <string>Inter18pt-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
@@ -1371,7 +1371,7 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-lI-e3o">
-                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333326"/>
+                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333314"/>
                                                 <string key="text">To everyone that’s been using the app, I’m sure you’re aware of some of the new additions already. For those that haven’t hopped on board yet, there’s a bunch of reasons to download now!  Salty Wire:  If you’re a fan of the Gettin’ Salty Podcast and a fan of FireWire, you’re gonna love this!
 We’ve joined forces with Lou and Kubes to give you the ultimate experience. A subscription will get you access to the premium features on the FireWire app, and also never before seen premium content, documentaries, and training videos from the Gettin’ Salty guys. We will also be releasing our rewards program soon to give back to our loyal followers. Stay tuned!
 Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast:  Another great addition to the FireWire family are the boys from Chicago’s Bravest Stories podcast! Listen to interviews with firefighters in Chicago and other areas as they explain in detail some of the wildest alarms they’ve responded to! You can also click their link on the FireWire app to check them out!</string>
@@ -1500,7 +1500,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a premium account, you gain access to:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-Xy-HjH">
-                                                <rect key="frame" x="10" y="120.66666666666669" width="263.33333333333331" height="14.333333333333343"/>
+                                                <rect key="frame" x="10" y="120.66666666666669" width="263.33333333333337" height="14.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1553,7 +1553,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Live Scanner Feeds" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-xi-FOp">
-                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333329"/>
+                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2004,7 +2004,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <rect key="frame" x="245.33333333333329" y="0.0" width="107.66666666666666" height="127.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-uh-FZm">
-                                                        <rect key="frame" x="5" y="20" width="97.666666666666671" height="87.666666666666671"/>
+                                                        <rect key="frame" x="5" y="20" width="97.666666666666671" height="87.666666666666657"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img07" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-Kc-JxZ">
                                                                 <rect key="frame" x="24" y="0.0" width="50" height="50"/>
@@ -3134,7 +3134,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Qt-rJq">
-                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666674"/>
+                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666663"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-FS-xFV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="77"/>
@@ -4485,6 +4485,57 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrY-6Z-LCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4289.3129770992364" y="2094.3661971830988"/>
+        </scene>
+        <!--Force Update View Controller-->
+        <scene sceneID="I9Y-La-o9Y">
+            <objects>
+                <viewController storyboardIdentifier="ForceUpdateViewController" id="Jow-PG-jDz" customClass="ForceUpdateViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cc5-9Y-2ua">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-va-Q6j">
+                                <rect key="frame" x="130.66666666666666" y="210" width="131.99999999999997" height="142.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="142.33000000000001" id="J6X-kB-mlF"/>
+                                    <constraint firstAttribute="width" constant="132" id="hyM-ax-fE3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0a-kY-VXs">
+                                <rect key="frame" x="43" y="402.33333333333331" width="307" height="47.666666666666686"/>
+                                <string key="text">A new version of the app is required.
+Please update to continue.</string>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REu-Ke-ESZ">
+                                <rect key="frame" x="137" y="479" width="119" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                <color key="tintColor" name="FWRed"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Update Now"/>
+                                <connections>
+                                    <action selector="updateNowClicked:" destination="Jow-PG-jDz" eventType="touchUpInside" id="SsY-hq-kfk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ssP-SD-Rm2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wig-va-Q6j" firstAttribute="centerX" secondItem="cc5-9Y-2ua" secondAttribute="centerX" id="0UI-8y-DMM"/>
+                            <constraint firstItem="T0a-kY-VXs" firstAttribute="centerX" secondItem="cc5-9Y-2ua" secondAttribute="centerX" id="2v7-kj-6eW"/>
+                            <constraint firstItem="T0a-kY-VXs" firstAttribute="centerY" secondItem="cc5-9Y-2ua" secondAttribute="centerY" id="9Iv-Th-4gN"/>
+                            <constraint firstItem="T0a-kY-VXs" firstAttribute="top" secondItem="Wig-va-Q6j" secondAttribute="bottom" constant="50" id="lUd-mT-d2L"/>
+                            <constraint firstItem="T0a-kY-VXs" firstAttribute="leading" secondItem="ssP-SD-Rm2" secondAttribute="leading" constant="43" id="vQf-SU-BBb"/>
+                            <constraint firstItem="ssP-SD-Rm2" firstAttribute="trailing" secondItem="T0a-kY-VXs" secondAttribute="trailing" constant="43" id="whA-LQ-ncp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4SP-Ad-FH2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4945.801526717557" y="2093.6619718309862"/>
         </scene>
     </scenes>
     <resources>

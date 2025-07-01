@@ -5,9 +5,9 @@
 //  Created by Sujitha Palanisamy on 14/11/24.
 //
 
+import AppTrackingTransparency
 import MaterialShowcase
 import UIKit
-import AppTrackingTransparency
 
 class HomeViewController: UIViewController {
     @IBOutlet var viewContainer: UIView!

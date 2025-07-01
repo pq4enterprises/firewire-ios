@@ -136,6 +136,10 @@
 		B0860F312D846DA50042874E /* NotificationSoundsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */; };
 		B0860F332D8470470042874E /* NotificationSoundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */; };
 		B0860F342D8470470042874E /* NotificationSoundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */; };
+		B0860F852E141F750055957B /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F842E141F700055957B /* VersionChecker.swift */; };
+		B0860F862E141F750055957B /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F842E141F700055957B /* VersionChecker.swift */; };
+		B0860F882E1425CB0055957B /* ForceUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F872E1425C20055957B /* ForceUpdateViewController.swift */; };
+		B0860F892E1425CB0055957B /* ForceUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0860F872E1425C20055957B /* ForceUpdateViewController.swift */; };
 		B086DF582D14918200B20E10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF572D14918200B20E10 /* LoginViewModel.swift */; };
 		B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
 		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
@@ -517,6 +521,8 @@
 		B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundsCell.swift; sourceTree = "<group>"; };
 		B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSoundsCell.xib; sourceTree = "<group>"; };
 		B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundsViewModel.swift; sourceTree = "<group>"; };
+		B0860F842E141F700055957B /* VersionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
+		B0860F872E1425C20055957B /* ForceUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateViewController.swift; sourceTree = "<group>"; };
 		B086DF572D14918200B20E10 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
@@ -725,6 +731,7 @@
 		9B4F50D92CF57068007D319D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B0860F842E141F700055957B /* VersionChecker.swift */,
 				9B4F50CC2CF57068007D319D /* API_Manager */,
 				9B4F50D22CF57068007D319D /* CommonClasses */,
 				9B4F50D42CF57068007D319D /* Components */,
@@ -856,6 +863,7 @@
 		B04682292CE52C5A00419C65 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0860F872E1425C20055957B /* ForceUpdateViewController.swift */,
 				B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */,
 				B0100CDF2CF79A03004F6214 /* News */,
 				B0100CDD2CF79975004F6214 /* Incidents */,
@@ -1489,6 +1497,7 @@
 				B01D51A62D1F017000D4CBB1 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0A304542D0F0C5A006F851A /* NotificationSettingsViewController.swift in Sources */,
 				B0860F2F2D846DA50042874E /* NotificationSoundsCell.swift in Sources */,
+				B0860F892E1425CB0055957B /* ForceUpdateViewController.swift in Sources */,
 				B0EDF0402D326FAE00767EAB /* OtpVerificationViewController.swift in Sources */,
 				B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */,
 				B0A304832D134937006F851A /* CityHeaderCell.swift in Sources */,
@@ -1574,6 +1583,7 @@
 				B0AD4B382D01EDEF009B065C /* APIConstants.swift in Sources */,
 				B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */,
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
+				B0860F862E141F750055957B /* VersionChecker.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AC2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
@@ -1636,6 +1646,7 @@
 				B0B1AE9F2D4F8DB6007371A9 /* NotificationChooseLocalityHeaderCell.swift in Sources */,
 				B0B1AEA02D4F8DB6007371A9 /* NotificationSettingsViewController.swift in Sources */,
 				B0860F302D846DA50042874E /* NotificationSoundsCell.swift in Sources */,
+				B0860F882E1425CB0055957B /* ForceUpdateViewController.swift in Sources */,
 				B0B1AEA12D4F8DB6007371A9 /* OtpVerificationViewController.swift in Sources */,
 				B0B1AEA22D4F8DB6007371A9 /* FWBottomSheetViewController.swift in Sources */,
 				B0B1AEA32D4F8DB6007371A9 /* CityHeaderCell.swift in Sources */,
@@ -1721,6 +1732,7 @@
 				B0B1AEE72D4F8DB6007371A9 /* APIConstants.swift in Sources */,
 				B0B1AEE82D4F8DB6007371A9 /* NotificationLocalityCell.swift in Sources */,
 				B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */,
+				B0860F852E141F750055957B /* VersionChecker.swift in Sources */,
 				B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AD2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */,
