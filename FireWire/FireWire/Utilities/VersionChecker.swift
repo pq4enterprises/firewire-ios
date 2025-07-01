@@ -8,7 +8,7 @@
 import Foundation
 
 class VersionChecker {
-    static let minimumSupportedVersion = "12.0"
+    static let minimumSupportedVersion = "12.0.1"
 
     static func isUpdateRequired() -> Bool {
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
@@ -16,7 +16,7 @@ class VersionChecker {
         let maxComponents = maxDotCountVersionComponentCount(currentVersion, minimumSupportedVersion)
         let a = paddedVersion(currentVersion, maxComponents: maxComponents)
         let b = paddedVersion(minimumSupportedVersion, maxComponents: maxComponents)
-        return a <= b
+        return a < b
     }
 
     static func maxDotCountVersionComponentCount(_ v1: String, _ v2: String) -> Int {

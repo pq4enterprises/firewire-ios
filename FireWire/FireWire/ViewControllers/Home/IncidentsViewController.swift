@@ -234,6 +234,11 @@ class IncidentsViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withTarget: offsetCoordinate, zoom: 15)
         mapView.animate(to: camera)
     }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        mapView.selectedMarker = marker
+        return true
+    }
 
     func updateChangeViewButton() {
         if isListViewExpanded {
