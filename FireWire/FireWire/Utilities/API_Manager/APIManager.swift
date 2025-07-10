@@ -57,6 +57,7 @@ extension URLSession {
                         let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                         completion(.success(decodedResponse))
                     } catch {
+                        debugPrint("Decoding failed with error: \(error)")
                         completion(.failure(APIError.invalidData))
                     }
                 case 401:

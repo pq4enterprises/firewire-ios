@@ -43,6 +43,15 @@ struct SubLocality: Codable {
         case name, latitude, longitude
         case isChecked
     }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        latitude = try container.decodeIfPresent(String.self, forKey: .latitude) ?? ""
+        longitude = try container.decodeIfPresent(String.self, forKey: .longitude) ?? ""
+        isChecked = (try? container.decode(Bool.self, forKey: .isChecked)) ?? false
+    }
 }
 
 struct UnitDataModel: Codable {

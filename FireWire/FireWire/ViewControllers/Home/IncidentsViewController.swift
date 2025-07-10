@@ -227,8 +227,11 @@ class IncidentsViewController: UIViewController {
     func centerMapOnFirstMarker() {
         guard let marker = incidentsViewModel.markersList.first else { return }
 
+        let mapHeight = mapView.frame.height
+        let verticalOffset = mapHeight / 2
+
         let originalPoint = mapView.projection.point(for: marker.coordinates)
-        let offsetPoint = CGPoint(x: originalPoint.x, y: originalPoint.y + 300)
+        let offsetPoint = CGPoint(x: originalPoint.x, y: originalPoint.y + verticalOffset)
         let offsetCoordinate = mapView.projection.coordinate(for: offsetPoint)
 
         let camera = GMSCameraPosition.camera(withTarget: offsetCoordinate, zoom: 15)
