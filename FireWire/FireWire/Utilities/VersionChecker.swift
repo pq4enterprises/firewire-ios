@@ -8,7 +8,7 @@
 import Foundation
 
 class VersionChecker {
-    static let minimumSupportedVersion = "12.0.1"
+    static let minimumSupportedVersion = "12.0.2"
 
     static func isUpdateRequired() -> Bool {
         let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
