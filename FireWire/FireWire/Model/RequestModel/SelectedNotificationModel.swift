@@ -9,6 +9,7 @@ struct SelectedNotificationModel {
     public let userId: String
     public let notificationId: String
     public let type: String
+    public let forLocalityId: String
 
     func toDictionary() -> [String: Any] {
         return [
