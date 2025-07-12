@@ -103,7 +103,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         if mapView == nil {
             let mapManager = MapManager()
             mapView = mapManager.setupMapView(frame: incidentMapView.bounds)
-            mapView.mapType = .satellite
+            mapView.mapType = .hybrid
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             incidentMapView.addSubview(mapView)
 

@@ -218,7 +218,7 @@ final class NotificationLocalityViewModel {
 
         updateSelectionArrayForChild(
             itemId: incidentType.id,
-            type: "unit",
+            type: "incidentType",
             isChecked: incidentType.isChecked,
             localityId: localityId
         )

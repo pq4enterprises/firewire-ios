@@ -41,7 +41,7 @@
                             <rect key="frame" x="0.0" y="400" width="393" height="452"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GgX-Mx-YdS">
-                                    <rect key="frame" x="0.0" y="49.333333333333314" width="393" height="402.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="54.333333333333314" width="393" height="397.66666666666669"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 posts are listed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCw-ET-X3F">
@@ -82,7 +82,7 @@
                                 <constraint firstItem="fyb-yI-Dwk" firstAttribute="centerY" secondItem="lCw-ET-X3F" secondAttribute="centerY" id="Tm7-jz-fsR"/>
                                 <constraint firstAttribute="bottom" secondItem="GgX-Mx-YdS" secondAttribute="bottom" id="UHB-qw-fJ5"/>
                                 <constraint firstItem="GgX-Mx-YdS" firstAttribute="leading" secondItem="G9t-4y-qaw" secondAttribute="leading" id="i3Z-88-KIt"/>
-                                <constraint firstItem="GgX-Mx-YdS" firstAttribute="top" secondItem="lCw-ET-X3F" secondAttribute="bottom" constant="10" id="u1c-4v-iuR"/>
+                                <constraint firstItem="GgX-Mx-YdS" firstAttribute="top" secondItem="lCw-ET-X3F" secondAttribute="bottom" constant="15" id="u1c-4v-iuR"/>
                                 <constraint firstItem="lCw-ET-X3F" firstAttribute="top" secondItem="G9t-4y-qaw" secondAttribute="top" constant="20" id="uqe-W1-sBc"/>
                             </constraints>
                         </view>
