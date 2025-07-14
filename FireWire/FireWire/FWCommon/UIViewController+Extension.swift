@@ -22,25 +22,27 @@ extension UIViewController {
     // MARK: - Show Activity Indicator
     
     func showLoader(with style: UIActivityIndicatorView.Style = .large) {
+        if view.viewWithTag(998) != nil { return }
+
+        let dimView = UIView(frame: view.bounds)
+        dimView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        dimView.tag = 998 // Use different tag for dim background
+        dimView.isUserInteractionEnabled = true
+
         let activityIndicator = UIActivityIndicatorView(style: style)
         activityIndicator.tag = 999 // Tag to identify the activity indicator later
-        activityIndicator.center = view.center
+        activityIndicator.center = dimView.center
         activityIndicator.startAnimating()
         activityIndicator.color = FWColor.red
 
-        // Add the activity indicator to the view
-        view.addSubview(activityIndicator)
-        view.isUserInteractionEnabled = false // Optionally disable interaction during loading
+        dimView.addSubview(activityIndicator)
+        view.addSubview(dimView)
     }
 
     // MARK: - Hide Activity Indicator
 
     func hideLoader() {
-        if let activityIndicator = view.viewWithTag(999) as? UIActivityIndicatorView {
-            activityIndicator.stopAnimating()
-            activityIndicator.removeFromSuperview()
-            view.isUserInteractionEnabled = true // Re-enable interaction after loading
-        }
+        view.viewWithTag(998)?.removeFromSuperview()
     }
 
 
