@@ -44,7 +44,9 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         updatePremiumInfo()
         setupActions()
 
+        showLoader()
         viewModel = MyAccountViewModel()
+        viewModel?.getUserProfile(forSubscription: false)
         viewModel?.delegate = self
 
         SubscriptionManager.shared.delegate = self
@@ -148,7 +150,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         if status {
             updatePremiumInfo()
         }
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+
+        if !message.isEmpty {
+            showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
     }
 
     func clearUserDefaults() {

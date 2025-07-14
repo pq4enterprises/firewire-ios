@@ -57,7 +57,7 @@ final class MyAccountViewModel {
         }
     }
 
-    func getUserProfile() {
+    func getUserProfile(forSubscription: Bool = true) {
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.userProfile,
             expect: GetUserProfileResponseModel.self,
@@ -88,7 +88,7 @@ final class MyAccountViewModel {
                 FWUserDefaults.setStringForKey(key: .userRoleKey, value: userRole)
             }
 
-            self?.delegate?.dataLoaded(status: true, message: "Your premium subscription is success!")
+            self?.delegate?.dataLoaded(status: true, message: forSubscription ? "Your premium subscription is success!" : "" )
         }
     }
 
