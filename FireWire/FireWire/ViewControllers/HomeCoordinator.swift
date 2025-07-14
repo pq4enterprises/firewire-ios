@@ -91,8 +91,10 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(changePasswordViewController, animated: true)
     }
 
-    func navigateToSelectAreaListView(){
-        let selectAreaListView = IncidentLocalityListViewController(viewModel: IncidentLocalityListViewModel())
+    func navigateToSelectAreaListView(_ delegate: FilterAreaDelegate?){
+        let viewModel = IncidentLocalityListViewModel()
+        viewModel.filterAreaDelegate = delegate
+        let selectAreaListView = IncidentLocalityListViewController(viewModel: viewModel)
         selectAreaListView.coordinator = self
 
         if let sheet = selectAreaListView.sheetPresentationController {

@@ -115,6 +115,10 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     func noCommentsForIncident() {
         hideLoader()
+
+        // To update notification count in incident detail screen after removing last comment
+        postNotification()
+
         tableView.isHidden = true
         commentsListCount.isHidden = true
         noCommentsLabel.isHidden = false

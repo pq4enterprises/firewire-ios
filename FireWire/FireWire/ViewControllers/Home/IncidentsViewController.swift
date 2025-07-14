@@ -17,7 +17,11 @@ protocol IncidentsViewViewDelegate: AnyObject {
     func tokenExpired()
 }
 
-class IncidentsViewController: UIViewController {
+protocol FilterAreaDelegate: AnyObject {
+    func filterUpdate()
+}
+
+class IncidentsViewController: UIViewController, FilterAreaDelegate {
     @IBOutlet var mapHConstraint: NSLayoutConstraint!
     @IBOutlet var incidentContainerView: FWView!
     @IBOutlet var mapContentView: UIView!
@@ -70,13 +74,6 @@ class IncidentsViewController: UIViewController {
         setupMap()
         setupIncidentList()
         setupUI()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(selectAreaDidChange(_:)), name: .selectAreaDidChange, object: nil)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .selectAreaDidChange, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -112,6 +109,8 @@ class IncidentsViewController: UIViewController {
 
         if isListViewExpanded {
             incidentContainerView.isHidden = false
+            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            self.incidentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
     }
 
@@ -174,10 +173,10 @@ class IncidentsViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
-        coordinator?.navigateToSelectAreaListView()
+        coordinator?.navigateToSelectAreaListView(self)
     }
 
-    @objc func selectAreaDidChange(_ notification: Notification) {
+    func filterUpdate(){
         showLoader()
         incidentsViewModel.currentPage = 1
         incidentsViewModel.items.removeAll()

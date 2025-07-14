@@ -17,6 +17,7 @@ final class IncidentLocalityListViewModel {
     var delegate: IncidentLocalityListViewDelegate?
     var selectAreaDelegate: SelectAreaDelegate?
     var feedAreaDelegate: FeedAreaDelegate?
+    var filterAreaDelegate: FilterAreaDelegate?
 
     var selectedAreas: [SelectedAreaModel] = []
     var selectedLocalities: [String] = []
@@ -94,7 +95,11 @@ final class IncidentLocalityListViewModel {
                     self?.feedAreaDelegate?.savedFeedArea()
                 }
 
-                self?.postNotification()
+                if self?.filterAreaDelegate != nil {
+                    self?.filterAreaDelegate?.filterUpdate()
+                }
+
+                //self?.postNotification()
             }
         }
     }
