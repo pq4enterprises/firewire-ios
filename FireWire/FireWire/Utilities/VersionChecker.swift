@@ -9,7 +9,7 @@ import Foundation
 
 class VersionChecker {
     static let minimumSupportedVersion = "12.0.2"
-    static let minimumSupportedBuild = "120102"
+    static let minimumSupportedBuild = "120202"
 
     static func isBuildUpdateRequired() -> Bool {
         let currentBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
