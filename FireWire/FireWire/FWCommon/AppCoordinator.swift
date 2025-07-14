@@ -11,7 +11,7 @@ import OneSignalFramework
 
 class AppCoordinator: BaseCoordinator {
     override func start() {
-        if VersionChecker.isUpdateRequired() {
+        if VersionChecker.isAnyUpdateRequired() {
             self.navigateToForceUpdate()
         }else{
             isUserLoggedIn { isLoggedIn in
