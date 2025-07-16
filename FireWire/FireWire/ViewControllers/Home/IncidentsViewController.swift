@@ -5,10 +5,10 @@
 //  Created by Sujitha Palanisamy on 09/02/25.
 //
 
+import FirebaseAnalytics
 import GoogleMaps
 import MaterialShowcase
 import UIKit
-import FirebaseAnalytics
 
 protocol IncidentsViewViewDelegate: AnyObject {
     func incidentDataLoaded()
@@ -82,17 +82,18 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
             AnalyticsParameterScreenName: "ios_incident_feed"
         ])
 
-        showLoader()
-
         incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
             self.hideLoader()
             if !result { self.coordinator?.navigateToSelectArea() }
         }
 
-        incidentsViewModel.getIncidentList()
+        fetchIncidents()
 
         if isMapViewExpanded {
             incidentContainerView.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.centerMapOnFirstMarker()
+            }
         }
 
         if isListViewExpanded {
@@ -100,21 +101,36 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
         }
     }
 
-    func reloadIncidentsView(){
+    func reloadIncidentsView() {
+        fetchIncidents()
+
+        if isMapViewExpanded {
+            incidentContainerView.isHidden = true
+        }
+
+        if isListViewExpanded {
+            incidentContainerView.isHidden = false
+            let indexPath: IndexPath = .init(row: 0, section: 0)
+            incidentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
+    }
+
+    // MARK: - Fetch incidents
+
+    func filterUpdate() {
+        fetchIncidents()
+    }
+
+    func fetchIncidents() {
         showLoader()
+        incidentsViewModel.currentPage = 1
+        incidentsViewModel.items.removeAll()
+        incidentsViewModel.markersList.removeAll()
         incidentsViewModel.getIncidentList()
-        if isMapViewExpanded {
-            incidentContainerView.isHidden = true
-        }
-
-        if isListViewExpanded {
-            incidentContainerView.isHidden = false
-            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
-            self.incidentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        }
     }
 
-    //MARK: - View setup
+    // MARK: - View setup
+
     func setupUI() {
         changeViewButton.setupShadow()
         changeViewButton.isHidden = true
@@ -176,14 +192,6 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
         coordinator?.navigateToSelectAreaListView(self)
     }
 
-    func filterUpdate(){
-        showLoader()
-        incidentsViewModel.currentPage = 1
-        incidentsViewModel.items.removeAll()
-        incidentsViewModel.markersList.removeAll()
-        incidentsViewModel.getIncidentList()
-    }
-
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
         updateChangeViewButton()
 
@@ -226,15 +234,15 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
     func centerMapOnFirstMarker() {
         guard let marker = incidentsViewModel.markersList.first else { return }
 
-        let mapHeight = mapView.frame.height
-        let verticalOffset = mapHeight / 2
+        let screenHeight = UIScreen.main.bounds.height
+        let verticalOffset = screenHeight / 2
 
         let originalPoint = mapView.projection.point(for: marker.coordinates)
         let offsetPoint = CGPoint(x: originalPoint.x, y: originalPoint.y + verticalOffset)
         let offsetCoordinate = mapView.projection.coordinate(for: offsetPoint)
 
         let camera = GMSCameraPosition.camera(withTarget: offsetCoordinate, zoom: 15)
-        mapView.animate(to: camera)
+        mapView.camera = camera
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -383,7 +391,7 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
         loadIncidentList()
         addMapMarkers()
 
-        if let parentVC = self.parent as? HomeViewController {
+        if let parentVC = parent as? HomeViewController {
             parentVC.showTutorial()
         }
     }
@@ -455,7 +463,7 @@ extension IncidentsViewController: MaterialShowcaseDelegate {
             FWUserDefaults.setBoolForKey(key: UserDefaultKeys.onBoardingSequence, value: true)
         }
     }
-    
+
     func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
         ShowcaseManager.shared.markNext()
     }

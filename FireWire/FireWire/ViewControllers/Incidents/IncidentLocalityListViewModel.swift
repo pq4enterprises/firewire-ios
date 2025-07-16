@@ -99,13 +99,8 @@ final class IncidentLocalityListViewModel {
                     self?.filterAreaDelegate?.filterUpdate()
                 }
 
-                //self?.postNotification()
             }
         }
-    }
-
-    @objc func postNotification() {
-        NotificationCenter.default.post(name: .selectAreaDidChange, object: nil)
     }
 
     func toggleSelection(at indexPath: IndexPath) {
