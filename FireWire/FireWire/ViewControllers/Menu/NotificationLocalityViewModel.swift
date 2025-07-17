@@ -249,10 +249,12 @@ final class NotificationLocalityViewModel {
             apiEndPoint: APIEndpoints.setNotificationArea,
             payload: requestModel,
             expect: SuccessResponseModel.self
-        ) { response, _, _ in
+        ) { response, _, error in
 
             if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
                 self.delegate?.setNotification(message: "Notification Settings updated successfully")
+            } else if let errorMessage = error {
+                self.delegate?.setNotification(message: errorMessage)
             }
         }
     }
