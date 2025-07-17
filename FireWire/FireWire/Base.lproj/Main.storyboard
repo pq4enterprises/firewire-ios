@@ -24,6 +24,71 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Incident Home View Controller-->
+        <scene sceneID="QeY-PO-C0u">
+            <objects>
+                <viewController storyboardIdentifier="IncidentHomeViewController" id="ovT-OX-VT1" customClass="IncidentHomeViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5oI-ZY-9Nv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldf-1g-uzJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="416"/>
+                                <connections>
+                                    <segue destination="Bk4-hO-upr" kind="embed" id="ftO-HI-e8t"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGp-0H-jgy">
+                                <rect key="frame" x="0.0" y="416" width="393" height="436"/>
+                                <connections>
+                                    <segue destination="SSa-zf-LZ6" kind="embed" id="P1t-8v-1uc"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02C-9E-oja" customClass="FWRoundedButton" customModule="FireWire" customModuleProvider="target">
+                                <rect key="frame" x="131.66666666666666" y="743" width="129.99999999999997" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="CIf-uU-gn9"/>
+                                    <constraint firstAttribute="width" constant="130" id="gh7-Cu-FfC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="View map" image="view_map_icon">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeViewButtonTapped:" destination="ovT-OX-VT1" eventType="touchUpInside" id="JmU-TJ-cMb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dGW-dh-fDJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JGp-0H-jgy" firstAttribute="top" secondItem="Ldf-1g-uzJ" secondAttribute="bottom" id="5Sg-fW-Kjq"/>
+                            <constraint firstItem="Ldf-1g-uzJ" firstAttribute="top" secondItem="5oI-ZY-9Nv" secondAttribute="top" id="E9k-nE-qxe"/>
+                            <constraint firstItem="Ldf-1g-uzJ" firstAttribute="leading" secondItem="dGW-dh-fDJ" secondAttribute="leading" id="G9d-n4-hSc"/>
+                            <constraint firstItem="JGp-0H-jgy" firstAttribute="height" secondItem="Ldf-1g-uzJ" secondAttribute="height" multiplier="1.04854" id="MTS-OV-T6K"/>
+                            <constraint firstAttribute="bottom" secondItem="JGp-0H-jgy" secondAttribute="bottom" id="XGY-cH-DzB"/>
+                            <constraint firstItem="Ldf-1g-uzJ" firstAttribute="trailing" secondItem="dGW-dh-fDJ" secondAttribute="trailing" id="ac0-6R-4W6"/>
+                            <constraint firstItem="02C-9E-oja" firstAttribute="centerX" secondItem="5oI-ZY-9Nv" secondAttribute="centerX" id="cUF-pi-47X"/>
+                            <constraint firstItem="JGp-0H-jgy" firstAttribute="trailing" secondItem="dGW-dh-fDJ" secondAttribute="trailing" id="jPm-a6-9kv"/>
+                            <constraint firstItem="JGp-0H-jgy" firstAttribute="top" secondItem="Ldf-1g-uzJ" secondAttribute="bottom" id="kuk-ZQ-ngb"/>
+                            <constraint firstItem="JGp-0H-jgy" firstAttribute="leading" secondItem="dGW-dh-fDJ" secondAttribute="leading" id="pXB-do-LGj"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="02C-9E-oja" secondAttribute="bottom" constant="30" id="qJk-Iq-xl5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changeViewButton" destination="02C-9E-oja" id="tFJ-N3-YZy"/>
+                        <outlet property="drawerContentContainerView" destination="JGp-0H-jgy" id="wAN-pD-q11"/>
+                        <outlet property="primaryContentContainerView" destination="Ldf-1g-uzJ" id="qn5-3v-GEx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrg-aX-qA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987.02290076335873" y="-705.63380281690149"/>
+        </scene>
         <!--Domain View Controller-->
         <scene sceneID="e0r-Jq-UYi">
             <objects>
@@ -1371,7 +1436,7 @@ agreeing with our Terms and Conditions</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-lI-e3o">
-                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333314"/>
+                                                <rect key="frame" x="25" y="245.33333333333334" width="343" height="501.33333333333326"/>
                                                 <string key="text">To everyone that’s been using the app, I’m sure you’re aware of some of the new additions already. For those that haven’t hopped on board yet, there’s a bunch of reasons to download now!  Salty Wire:  If you’re a fan of the Gettin’ Salty Podcast and a fan of FireWire, you’re gonna love this!
 We’ve joined forces with Lou and Kubes to give you the ultimate experience. A subscription will get you access to the premium features on the FireWire app, and also never before seen premium content, documentaries, and training videos from the Gettin’ Salty guys. We will also be releasing our rewards program soon to give back to our loyal followers. Stay tuned!
 Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast:  Another great addition to the FireWire family are the boys from Chicago’s Bravest Stories podcast! Listen to interviews with firefighters in Chicago and other areas as they explain in detail some of the wildest alarms they’ve responded to! You can also click their link on the FireWire app to check them out!</string>
@@ -1500,7 +1565,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a premium account, you gain access to:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-Xy-HjH">
-                                                <rect key="frame" x="10" y="120.66666666666669" width="263.33333333333337" height="14.333333333333343"/>
+                                                <rect key="frame" x="10" y="120.66666666666669" width="263.33333333333331" height="14.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1553,7 +1618,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Live Scanner Feeds" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-xi-FOp">
-                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333336"/>
+                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2004,7 +2069,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <rect key="frame" x="245.33333333333329" y="0.0" width="107.66666666666666" height="127.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-uh-FZm">
-                                                        <rect key="frame" x="5" y="20" width="97.666666666666671" height="87.666666666666657"/>
+                                                        <rect key="frame" x="5" y="20" width="97.666666666666671" height="87.666666666666671"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img07" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-Kc-JxZ">
                                                                 <rect key="frame" x="24" y="0.0" width="50" height="50"/>
@@ -3134,7 +3199,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Qt-rJq">
-                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666663"/>
+                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666674"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-FS-xFV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="77"/>
@@ -4537,6 +4602,97 @@ Please update to continue.</string>
             </objects>
             <point key="canvasLocation" x="4945.801526717557" y="2093.6619718309862"/>
         </scene>
+        <!--Incident Map View Controller-->
+        <scene sceneID="Jqs-d7-FZY">
+            <objects>
+                <viewController id="Bk4-hO-upr" customClass="IncidentMapViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WRE-M5-TMw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uYQ-bc-eXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="-902"/>
+        </scene>
+        <!--Incident List View Controller-->
+        <scene sceneID="OAJ-DX-s0d">
+            <objects>
+                <viewController id="SSa-zf-LZ6" customClass="IncidentListViewController" customModule="FireWire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yTF-MC-Uuu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="436"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qK6-PC-KEr">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 posts are listed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jh-kn-F6l">
+                                        <rect key="frame" x="14.999999999999993" y="20" width="124.33333333333331" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr3-HK-eNk">
+                                        <rect key="frame" x="258" y="20.666666666666668" width="120" height="18.000000000000004"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="ahG-0n-Hp7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Feed Areas" image="filter_icon">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="feedAreaTapped:" destination="SSa-zf-LZ6" eventType="touchUpInside" id="r61-5s-pWa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qr3-HK-eNk" secondAttribute="trailing" constant="15" id="99J-fI-PGu"/>
+                                    <constraint firstItem="1jh-kn-F6l" firstAttribute="top" secondItem="qK6-PC-KEr" secondAttribute="top" constant="20" id="I29-LH-e6v"/>
+                                    <constraint firstItem="qr3-HK-eNk" firstAttribute="centerY" secondItem="1jh-kn-F6l" secondAttribute="centerY" id="OZd-h7-KOl"/>
+                                    <constraint firstItem="1jh-kn-F6l" firstAttribute="leading" secondItem="qK6-PC-KEr" secondAttribute="leading" constant="15" id="QZL-Op-Oty"/>
+                                    <constraint firstAttribute="height" constant="60" id="pUB-pe-Ypq"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cvc-Y0-27m">
+                                <rect key="frame" x="0.0" y="60" width="393" height="376"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Incidents Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ih-co-G7A">
+                                <rect key="frame" x="111.66666666666669" y="120" width="170" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" name="FWTextGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qK6-PC-KEr" firstAttribute="leading" secondItem="yTF-MC-Uuu" secondAttribute="leading" id="8Oo-mD-rOp"/>
+                            <constraint firstItem="5ih-co-G7A" firstAttribute="top" secondItem="qK6-PC-KEr" secondAttribute="bottom" constant="60" id="N1U-SX-Rox"/>
+                            <constraint firstAttribute="bottom" secondItem="cvc-Y0-27m" secondAttribute="bottom" id="Phd-3z-efm"/>
+                            <constraint firstItem="cvc-Y0-27m" firstAttribute="leading" secondItem="yTF-MC-Uuu" secondAttribute="leading" id="aSw-CT-7P4"/>
+                            <constraint firstItem="qK6-PC-KEr" firstAttribute="top" secondItem="yTF-MC-Uuu" secondAttribute="top" id="g2i-2b-aFZ"/>
+                            <constraint firstItem="5ih-co-G7A" firstAttribute="centerX" secondItem="yTF-MC-Uuu" secondAttribute="centerX" id="ieP-hj-fvB"/>
+                            <constraint firstAttribute="trailing" secondItem="qK6-PC-KEr" secondAttribute="trailing" id="pZG-2d-mWG"/>
+                            <constraint firstAttribute="trailing" secondItem="cvc-Y0-27m" secondAttribute="trailing" id="t8K-AP-QqS"/>
+                            <constraint firstItem="cvc-Y0-27m" firstAttribute="top" secondItem="qK6-PC-KEr" secondAttribute="bottom" id="xEK-ub-Lc1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="incidentTableView" destination="cvc-Y0-27m" id="VxX-nQ-1TM"/>
+                        <outlet property="noIncidentLabel" destination="5ih-co-G7A" id="9cU-WY-mnd"/>
+                        <outlet property="totalPostLabel" destination="1jh-kn-F6l" id="Ohz-lP-i3E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCU-64-AHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1881.679389312977" y="-502.11267605633805"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alert_icon" width="20" height="28"/>
@@ -4550,6 +4706,7 @@ Please update to continue.</string>
         <image name="facebook_icon" width="62" height="62"/>
         <image name="fb_logo" width="87" height="16"/>
         <image name="feed_areas" width="20" height="20"/>
+        <image name="filter_icon" width="16" height="16"/>
         <image name="gallery_icon" width="36" height="33"/>
         <image name="google_logo" width="71" height="24"/>
         <image name="instagram_icon" width="62" height="62"/>
@@ -4581,6 +4738,7 @@ Please update to continue.</string>
         <image name="takephoto_icon" width="38" height="33"/>
         <image name="terms_icon" width="26" height="26"/>
         <image name="twitter_icon" width="62" height="62"/>
+        <image name="view_map_icon" width="18" height="23"/>
         <image name="whatsapp_icon" width="62" height="62"/>
         <namedColor name="FWGradient">
             <color red="0.99607843137254903" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>

@@ -19,8 +19,9 @@ class HomeViewController: UIViewController {
 
     var coordinator: HomeCoordinator?
     var appCoordinator: AppCoordinator?
-    // var mapViewController: MapViewController?
-    var incidentsViewController: IncidentsViewController?
+
+    var incidentHomeVC: IncidentHomeViewController?
+    //var incidentsViewController: IncidentsViewController?
     var newsViewController: NewsListViewController?
 
     var isIncidentListExpanded: Bool = false
@@ -38,13 +39,22 @@ class HomeViewController: UIViewController {
     func setupView() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
-        incidentsViewController?.coordinator = coordinator
-        incidentsViewController?.appCoordinator = appCoordinator
-        incidentsViewController?.incidentListExpanded = { listExpanded in
-            self.isIncidentListExpanded = listExpanded
-            self.updateUI(listExpanded)
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        incidentHomeVC = storyboard.instantiateViewController(withIdentifier: "IncidentHomeViewController") as? IncidentHomeViewController
+        incidentHomeVC?.drawerTopInset = 60.0
+        incidentHomeVC?.initialDrawerPosition = .partiallyRevealed
+        incidentHomeVC?.coordinator = coordinator
+        incidentHomeVC?.appCoordinator = appCoordinator
+        incidentHomeVC?.incidentDrawerDelegate = self
+
+
+//        incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
+//        incidentsViewController?.coordinator = coordinator
+//        incidentsViewController?.appCoordinator = appCoordinator
+//        incidentsViewController?.incidentListExpanded = { listExpanded in
+//            self.isIncidentListExpanded = listExpanded
+//            self.updateUI(listExpanded)
+//        }
 
         newsViewController = NewsListViewController(viewModel: NewsListViewModel())
         newsViewController?.coordinator = coordinator
@@ -88,15 +98,15 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func reloadButtonTap(_ sender: UIButton) {
-        if let incidentsViewController {
-            incidentsViewController.reloadIncidentsView()
-        }
+//        if let incidentsViewController {
+//            incidentsViewController.reloadIncidentsView()
+//        }
     }
 
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
-        isIncidentListExpanded == true
-            ? incidentsViewController?.expandMap()
-            : incidentsViewController?.expandList()
+//        isIncidentListExpanded == true
+//            ? incidentsViewController?.expandMap()
+//            : incidentsViewController?.expandList()
     }
 
     func switchToViewController(at index: Int) {
@@ -111,7 +121,7 @@ class HomeViewController: UIViewController {
 
         switch index {
         case 0:
-            selectedViewController = incidentsViewController!
+            selectedViewController = incidentHomeVC!
 
             menuButton.setImage(FWImage.menuIconWhite, for: .normal)
             feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
@@ -167,7 +177,7 @@ extension HomeViewController: MaterialShowcaseDelegate {
         showCase5.delegate = self
 
         ShowcaseManager.shared.startSequence([showCase1, showCase2!, showCase3, showCase4, showCase5]) {
-            self.incidentsViewController?.showTutorial()
+            //self.incidentsViewController?.showTutorial()
         }
     }
 
@@ -179,5 +189,11 @@ extension HomeViewController: MaterialShowcaseDelegate {
 
     func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
         ShowcaseManager.shared.markNext()
+    }
+}
+
+extension HomeViewController: IncidentDrawerDelegate {
+    func incidentListExpanded(_ value: Bool) {
+        updateUI(value)
     }
 }
