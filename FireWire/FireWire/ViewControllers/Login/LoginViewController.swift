@@ -226,6 +226,11 @@ extension LoginViewController: UITextFieldDelegate {
         if string == " " {
             return false // Reject space
         }
+
+        if string.containsEmoji {
+            return false // Reject emoji's
+        }
+
         if textField == passwordTextField {
             let currentText = textField.text ?? ""
             let newLength = currentText.count + string.count - range.length

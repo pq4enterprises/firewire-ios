@@ -177,6 +177,11 @@ extension RegistrationViewController: UITextFieldDelegate {
             if string == " " {
                 return false // Reject space
             }
+
+            if string.containsEmoji {
+                return false // Reject emoji's
+            }
+            
             return newLength <= 15
         }else if textField == firstNameTextField || textField == lastNameTextField {
             return newLength <= 30
