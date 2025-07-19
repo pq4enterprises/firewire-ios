@@ -18,6 +18,7 @@ class IncidentHomeViewController: PulleyViewController {
     var incidentsViewModel: IncidentsViewModel?
     var paginationHandler: PaginationHandler<IncidentsViewModel>!
     var incidentDrawerDelegate: IncidentDrawerDelegate?
+    var forceRefresh: Bool = false
 
     var drawerVC: IncidentListViewController? {
         return drawerContentViewController as? IncidentListViewController
@@ -51,14 +52,21 @@ class IncidentHomeViewController: PulleyViewController {
         fetchIncidents()
     }
 
-    func fetchIncidents() {
+    func fetchIncidents(forceRefresh: Bool = false) {
         showLoader()
         incidentsViewModel?.currentPage = 1
         incidentsViewModel?.items.removeAll()
         incidentsViewModel?.markersList.removeAll()
         incidentsViewModel?.getIncidentList()
+        self.forceRefresh = forceRefresh
     }
 
+    func showTutorial(){
+        if let parentVC = parent as? HomeViewController {
+            parentVC.showTutorial()
+        }
+    }
+    
     override func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
         if drawer.drawerPosition == .open {
             backgroundDimmingColor = .systemBackground
@@ -101,6 +109,8 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
         if let drawerVC, let incidentsViewModel, !incidentsViewModel.items.isEmpty {
             drawerVC.items = incidentsViewModel.items
             drawerVC.totalPages = incidentsViewModel.totalPages
+            drawerVC.forceRefresh = forceRefresh
+            self.forceRefresh = false // Reset force refresh
         }
     }
 

@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     var appCoordinator: AppCoordinator?
 
     var incidentHomeVC: IncidentHomeViewController?
-    //var incidentsViewController: IncidentsViewController?
+    // var incidentsViewController: IncidentsViewController?
     var newsViewController: NewsListViewController?
 
     var isIncidentListExpanded: Bool = false
@@ -46,7 +46,6 @@ class HomeViewController: UIViewController {
         incidentHomeVC?.coordinator = coordinator
         incidentHomeVC?.appCoordinator = appCoordinator
         incidentHomeVC?.incidentDrawerDelegate = self
-
 
 //        incidentsViewController = IncidentsViewController(viewModel: IncidentsViewModel())
 //        incidentsViewController?.coordinator = coordinator
@@ -98,9 +97,9 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func reloadButtonTap(_ sender: UIButton) {
-//        if let incidentsViewController {
-//            incidentsViewController.reloadIncidentsView()
-//        }
+        if let incidentHomeVC {
+            incidentHomeVC.fetchIncidents(forceRefresh: true)
+        }
     }
 
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
@@ -177,7 +176,9 @@ extension HomeViewController: MaterialShowcaseDelegate {
         showCase5.delegate = self
 
         ShowcaseManager.shared.startSequence([showCase1, showCase2!, showCase3, showCase4, showCase5]) {
-            //self.incidentsViewController?.showTutorial()
+            if let drawerVC = self.incidentHomeVC?.drawerContentViewController as? IncidentListViewController {
+                drawerVC.showTutorial()
+            }
         }
     }
 

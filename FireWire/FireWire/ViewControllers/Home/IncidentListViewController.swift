@@ -7,6 +7,7 @@
 
 import UIKit
 import Pulley
+import MaterialShowcase
 
 protocol IncidentsListViewDelegate: AnyObject {
     func loadNextPage()
@@ -27,6 +28,10 @@ class IncidentListViewController: UIViewController {
                 incidentTableView.isHidden = false
                 incidentTableView.reloadData()
                 hideFooterLoader()
+
+                if let parentVC = parent as? IncidentHomeViewController {
+                    parentVC.showTutorial()
+                }
             }
         }
     }
@@ -38,6 +43,14 @@ class IncidentListViewController: UIViewController {
     }
 
     let viewModel = IncidentListViewModel()
+    var forceRefresh: Bool = false {
+        didSet {
+            if forceRefresh {
+                incidentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                forceRefresh = false
+            }
+        }
+    }
 
     private let footerActivityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -49,7 +62,8 @@ class IncidentListViewController: UIViewController {
     @IBOutlet weak var totalPostLabel: UILabel!
     @IBOutlet weak var noIncidentLabel: UILabel!
     @IBOutlet weak var incidentTableView: UITableView!
-    
+    @IBOutlet var feedAreaButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -183,5 +197,60 @@ extension IncidentListViewController: APIDelegate {
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in
             self.coordinator?.popView()
         }])
+    }
+}
+
+extension IncidentListViewController: MaterialShowcaseDelegate {
+    func showTutorial() {
+        if let cell = incidentTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? IncidentListViewCell {
+            let titleView = cell.incidentTitle
+            let showcase1 = createMaterialShowcase(
+                primaryText: "Incident",
+                secondaryText: "Click to view incident details",
+                targetView: titleView!
+            )
+
+            let likesView = cell.favouriteButton
+            let showcase2 = createMaterialShowcase(
+                primaryText: "Like",
+                secondaryText: "Tap to like incidents",
+                targetView: likesView!
+            )
+
+            let commentsView = cell.commentButton
+            let showcase3 = createMaterialShowcase(
+                primaryText: "Comment",
+                secondaryText: "Comment and Share photos",
+                targetView: commentsView!
+            )
+
+            let shareView = cell.shareButton
+            let showcase4 = createMaterialShowcase(
+                primaryText: "Share",
+                secondaryText: "Share incidents with friends",
+                targetView: shareView!
+            )
+
+            let showcase5 = createMaterialShowcase(
+                primaryText: "Feed Areas",
+                secondaryText: "Select Areas to appear on your feed",
+                targetView: feedAreaButton
+            )
+            showcase5.primaryTextAlignment = .right
+            showcase5.secondaryTextAlignment = .right
+
+            showcase1.delegate = self
+            showcase2.delegate = self
+            showcase3.delegate = self
+            showcase4.delegate = self
+            showcase5.delegate = self
+
+            ShowcaseManager.shared.startSequence([showcase1, showcase2, showcase3, showcase4, showcase5])
+            FWUserDefaults.setBoolForKey(key: UserDefaultKeys.onBoardingSequence, value: true)
+        }
+    }
+
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
+        ShowcaseManager.shared.markNext()
     }
 }
