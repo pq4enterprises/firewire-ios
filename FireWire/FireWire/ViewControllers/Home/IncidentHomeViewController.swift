@@ -37,6 +37,8 @@ class IncidentHomeViewController: PulleyViewController {
         drawerVC?.delegate = self
         drawerVC?.coordinator = coordinator
 
+        contentVC?.coordinator = coordinator
+
         incidentsViewModel = IncidentsViewModel()
         incidentsViewModel?.delegate = self
 
