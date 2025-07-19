@@ -131,10 +131,6 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
             self.coordinator?.popView()
         }])
     }
-
-    func tokenExpired() {
-        appCoordinator?.backToParentCoordinator()
-    }
 }
 
 extension IncidentHomeViewController: IncidentsListViewDelegate {

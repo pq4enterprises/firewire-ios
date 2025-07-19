@@ -14,7 +14,6 @@ protocol IncidentsViewViewDelegate: AnyObject {
     func incidentDataLoaded()
     func noIncidentData()
     func error(message: String)
-    func tokenExpired()
 }
 
 protocol FilterAreaDelegate: AnyObject {
@@ -381,10 +380,6 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate {
-    func tokenExpired() {
-        appCoordinator?.backToParentCoordinator()
-    }
-
     func incidentDataLoaded() {
         hideFooterLoader()
         hideLoader()

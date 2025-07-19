@@ -42,7 +42,7 @@ final class IncidentsViewModel: PaginatableViewModel {
         ) { [weak self] response, _, error in
 
             if error != nil && self?.delegate != nil {
-                self?.delegate?.tokenExpired()
+                self?.delegate?.error(message: error ?? .CommonError.techError)
                 return
             }
 

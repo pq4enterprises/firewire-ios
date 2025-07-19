@@ -47,12 +47,8 @@ class FWNetworkManager {
                 preferredStyle: .alert
             )
 
-            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in
-                if self.isConnected {
-                    self.dismissAlert()
-                }
-            }
-            alertController?.addAction(retryAction)
+            let cancelAction = UIAlertAction(title: "Ok", style: .cancel)
+            alertController?.addAction(cancelAction)
 
             rootViewController.present(alertController!, animated: true)
         }

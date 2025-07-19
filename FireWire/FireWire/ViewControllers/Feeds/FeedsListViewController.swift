@@ -23,6 +23,7 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoader()
         viewModel = FeedsListViewModel()
         viewModel.getFeedList()
         viewModel.delegate = self
@@ -63,7 +64,6 @@ class FeedsListViewController: UIViewController, FeedListViewDelegate {
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
             AnalyticsParameterScreenName: "ios_scanner_feeds"
         ])
-        showLoader()
     }
 
     func setupTableView() {
