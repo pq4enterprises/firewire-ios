@@ -7,6 +7,7 @@
 
 import Pulley
 import UIKit
+import FirebaseAnalytics
 
 protocol IncidentDrawerDelegate {
     func incidentListExpanded(_ value: Bool)
@@ -51,6 +52,15 @@ class IncidentHomeViewController: PulleyViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: "ios_incident_feed"
+        ])
+
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
+            self.hideLoader()
+            if !result { self.coordinator?.navigateToSelectArea() }
+        }
+
         fetchIncidents()
     }
 
