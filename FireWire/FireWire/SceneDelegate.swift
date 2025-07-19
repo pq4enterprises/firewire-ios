@@ -12,6 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
 
+    static var shared: SceneDelegate? {
+        return UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .compactMap { $0.delegate as? SceneDelegate }
+            .first
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 

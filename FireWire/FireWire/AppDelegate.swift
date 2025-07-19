@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         }, fallbackToSettings: false)
 
         /// Code to handle notification click
-        //OneSignal.Notifications.addClickListener(self)
+        OneSignal.Notifications.addClickListener(self)
 
         // Start monitoring network connectivity
         _ = FWNetworkManager.shared
@@ -42,19 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         return true
     }
 
-    // TODO: Check notification data and modify
     func onClick(event: OSNotificationClickEvent) {
         let additionalData = event.notification.additionalData
-        
-        if let data = additionalData {
-            if let screen = data["screen"] as? String {
-                if screen == "profile" {
-                    NotificationCenter.default.post(name: Notification.Name("OpenProfileScreen"), object: nil)
-                }
-                else if screen == "chat" {
-                    NotificationCenter.default.post(name: Notification.Name("OpenChatScreen"), object: nil)
-                }
-            }
+
+        DispatchQueue.main.async {
+            SceneDelegate.shared?.appCoordinator?.start()
         }
     }
 
