@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7312D4F92D8ECE3500E8D454 /* NotificationServiceExtension-Dev.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7312D4ED2D8ECDEC00E8D454 /* NotificationServiceExtension-Dev.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		73C3E9F62D4F83F800FF1352 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 73C3E9EF2D4F83F800FF1352 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		73D5503C2E2BB1440073DCC4 /* Pulley in Frameworks */ = {isa = PBXBuildFile; productRef = 73D5503B2E2BB1440073DCC4 /* Pulley */; };
 		9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		9B4B179F2CF58759007517BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
 		9B4F50DB2CF57068007D319D /* FWToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50D12CF57068007D319D /* FWToast.swift */; };
@@ -692,6 +693,7 @@
 				B0B1AEF62D4F8DB6007371A9 /* GoogleSignIn in Frameworks */,
 				B0B1AEF72D4F8DB6007371A9 /* XMLCoder in Frameworks */,
 				B06F61822DBCB264005113B4 /* FirebaseCrashlytics in Frameworks */,
+				73D5503C2E2BB1440073DCC4 /* Pulley in Frameworks */,
 				B0B1AEFA2D4F8DB6007371A9 /* SwiftSoup in Frameworks */,
 				B06B38EF2DC50BFE0010B8BA /* MaterialShowcase in Frameworks */,
 			);
@@ -1262,6 +1264,7 @@
 				B06B38EE2DC50BFE0010B8BA /* MaterialShowcase */,
 				B01FFAC32DCE4A2C0007AB0A /* FirebaseAnalytics */,
 				B0C1D2942DEE1BA4009E879B /* FirebaseAnalyticsWithoutAdIdSupport */,
+				73D5503B2E2BB1440073DCC4 /* Pulley */,
 			);
 			productName = FireWire;
 			productReference = B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */;
@@ -2484,6 +2487,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		73D5503B2E2BB1440073DCC4 /* Pulley */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0D825D52E294565005B1EA4 /* XCRemoteSwiftPackageReference "Pulley" */;
+			productName = Pulley;
+		};
 		B01FFAC12DCE4A1E0007AB0A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B06F617E2DBCB24A005113B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
