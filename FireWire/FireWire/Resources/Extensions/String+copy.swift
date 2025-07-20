@@ -70,6 +70,6 @@ public extension String {
     }
 
     var containsEmoji: Bool {
-        return self.unicodeScalars.contains { $0.properties.isEmojiPresentation }
+        return self.unicodeScalars.contains { $0.properties.isEmojiPresentation || $0.properties.isEmoji }
     }
 }
