@@ -81,7 +81,7 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
             AnalyticsParameterScreenName: "ios_incident_feed"
         ])
 
-        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result,_  in
             self.hideLoader()
             if !result { self.coordinator?.navigateToSelectArea() }
         }

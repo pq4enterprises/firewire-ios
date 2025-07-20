@@ -6,10 +6,18 @@
 //
 
 import Foundation
+import FirebaseRemoteConfig
 
+/// Note: Verifying only build number from firebase for force update logic.
 class VersionChecker {
     static let minimumSupportedVersion = "12.0.2"
-    static let minimumSupportedBuild = "120205"
+    //static let minimumSupportedBuild = "120205"
+
+    private static let remoteConfig = RemoteConfig.remoteConfig()
+
+    static var minimumSupportedBuild: String {
+        remoteConfig["minimum_ios_build"].stringValue
+    }
 
     static func isBuildUpdateRequired() -> Bool {
         let currentBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"

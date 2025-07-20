@@ -14,7 +14,11 @@ final class NewsListViewModel {
     func getNewsList(){
         APIRequest().fetchRSS(
             apiEndPoint: APIEndpoints.newsList,
-            modelType: NewsResponseModel.self) { [weak self] response, _, _ in
+            modelType: NewsResponseModel.self) { [weak self] response, _, error in
+                if let error {
+                    self?.delegate?.error(message: error)
+                    return
+                }
 
                 guard let apiResponse = response else {
                     return

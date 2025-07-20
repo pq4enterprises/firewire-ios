@@ -55,6 +55,10 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             return false
         }
 
+        if string.containsEmoji {
+            return false // Reject emoji's
+        }
+
         let currentText = textField.text ?? ""
         let newLength = currentText.count + string.count - range.length
         return newLength <= 15

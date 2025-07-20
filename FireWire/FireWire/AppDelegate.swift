@@ -5,12 +5,13 @@
 //  Created by Sujitha Palanisamy on 12/11/24.
 //
 
+import Firebase
+import FirebaseRemoteConfig
 import GoogleMaps
 import GoogleSignIn
 import OneSignalFramework
 import StoreKit
 import UIKit
-import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListener {
@@ -39,12 +40,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
 
         FirebaseApp.configure()
 
+        // Remote config fetch interval for firebase
+        let remoteConfig = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        #if DEBUG
+                settings.minimumFetchInterval = 0 // force fetch in dev
+        #else
+                settings.minimumFetchInterval = 43200 // 12h in prod
+        #endif
+        RemoteConfig.remoteConfig().configSettings = settings
+
+        remoteConfig.fetchAndActivate { _, error in
+            if let error = error {
+                print("Remote Config fetch failed: \(error.localizedDescription)")
+            } else {
+                print("Remote Config fetched successfully")
+            }
+        }
+
         return true
     }
 
     func onClick(event: OSNotificationClickEvent) {
-        let additionalData = event.notification.additionalData
-
         DispatchQueue.main.async {
             SceneDelegate.shared?.appCoordinator?.start()
         }
@@ -76,5 +93,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
     func applicationDidBecomeActive(_ application: UIApplication) {
         debugPrint("App activated")
     }
-
 }

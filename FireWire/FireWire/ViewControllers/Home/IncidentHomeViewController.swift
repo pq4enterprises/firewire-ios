@@ -56,12 +56,18 @@ class IncidentHomeViewController: PulleyViewController {
             AnalyticsParameterScreenName: "ios_incident_feed"
         ])
 
-        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result in
+        showLoader()
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result, errorMessage  in
             self.hideLoader()
-            if !result { self.coordinator?.navigateToSelectArea() }
-        }
 
-        fetchIncidents()
+            if !result && errorMessage != "" {
+                self.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+            }else if !result && errorMessage == "" {
+                 self.coordinator?.navigateToSelectArea()
+            }else{
+                self.fetchIncidents()
+            }
+        }
     }
 
     func fetchIncidents(forceRefresh: Bool = false) {
@@ -137,9 +143,7 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
 
     func error(message: String) {
         hideLoader()
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel) { _ in
-            self.coordinator?.popView()
-        }])
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 }
 

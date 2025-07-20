@@ -20,7 +20,11 @@ final class IncidentDetailViewModel {
             apiEndPoint: requestURL,
             expect: IncidentDetailResponseModel.self,
             requestType: APIConstants.GET)
-        { [weak self] response, _, _ in
+        { [weak self] response, _, error in
+            if let error {
+                self?.delegate?.error(message: error)
+                return
+            }
 
             guard let apiResponse = response else {
                 return
