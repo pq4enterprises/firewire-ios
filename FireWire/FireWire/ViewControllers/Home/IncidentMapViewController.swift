@@ -12,6 +12,7 @@ class IncidentMapViewController: UIViewController {
     var mapView: GMSMapView!
     var mapManager: MapManager!
     var coordinator: HomeCoordinator?
+    var selectedMarker: GMSMarker?
 
     var markersList: [MapMarkerModel] = [] {
         didSet {
@@ -44,26 +45,10 @@ class IncidentMapViewController: UIViewController {
         let firstLocation = markersList[0].coordinates
         let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
         mapView.animate(to: camera)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.centerMapOnMarkerAboveDrawer()
-        }
     }
 
     func clearMapMarkers() {
         mapManager.removeAllMapMarker()
-    }
-
-    func centerMapOnMarkerAboveDrawer() {
-        guard let firstMarker = mapManager.markers.first else { return }
-        let markerCoordinate = firstMarker.position
-
-        let markerPoint = mapView.projection.point(for: markerCoordinate)
-        let offsetY: CGFloat = UIScreen.main.bounds.height * -0.15
-        let adjustedPoint = CGPoint(x: markerPoint.x, y: markerPoint.y - offsetY)
-        let adjustedCoordinate = mapView.projection.coordinate(for: adjustedPoint)
-        let camera = GMSCameraPosition.camera(withTarget: adjustedCoordinate, zoom: 15.0)
-        mapView.animate(to: camera)
     }
 }
 

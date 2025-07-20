@@ -111,7 +111,7 @@ extension IncidentListViewController: PulleyDrawerViewControllerDelegate {
 
     func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         let screenHeight = UIScreen.main.bounds.height
-        let halfScreenHeight = screenHeight / 2
+        let halfScreenHeight = (screenHeight / 2) - 100
 
         let isDrawerMode = pulleyViewController?.currentDisplayMode == .drawer
         return halfScreenHeight + (isDrawerMode ? bottomSafeArea : 0.0)
