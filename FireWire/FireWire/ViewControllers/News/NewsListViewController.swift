@@ -10,6 +10,7 @@ import FirebaseAnalytics
 
 protocol NewsListViewDelegate: AnyObject {
     func dataReceived()
+    func error(message: String)
 }
 
 class NewsListViewController: UIViewController, NewsListViewDelegate {
@@ -61,6 +62,11 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         tableView.isHidden = false
         tableView.reloadData()
         newsListCount.text = "\(viewModel.newsList.count) news are listed"
+    }
+
+    func error(message: String) {
+        hideLoader()
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {

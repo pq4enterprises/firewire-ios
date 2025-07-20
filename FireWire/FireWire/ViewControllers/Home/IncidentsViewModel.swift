@@ -156,7 +156,7 @@ final class IncidentsViewModel: PaginatableViewModel {
         markersList.first { $0.title.lowercased() == title.lowercased() }?.incidentId
     }
 
-    func validateIfAreaSelected(forType type: LocalityListType, completion: @escaping (Bool) -> Void) {
+    func validateIfAreaSelected(forType type: LocalityListType, completion: @escaping (Bool, String) -> Void) {
         var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
         requestModel.listType = ListType(type: type.rawValue)
 
@@ -172,7 +172,7 @@ final class IncidentsViewModel: PaginatableViewModel {
             guard let localityResponse = response as? LocalityResponseModel,
                   let localityData = localityResponse.data
             else {
-                completion(false)
+                completion(false, error ?? "")
                 return
             }
 
@@ -181,7 +181,7 @@ final class IncidentsViewModel: PaginatableViewModel {
                     (locality.unit?.compactMap { $0?.isChecked }.contains(true) ?? false) ||
                     (locality.incidentType?.compactMap { $0?.isChecked }.contains(true) ?? false)
             }
-            completion(isAnyAreaSelected)
+            completion(isAnyAreaSelected, "")
         }
     }
 }

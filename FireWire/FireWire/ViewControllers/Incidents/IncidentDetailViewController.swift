@@ -269,6 +269,7 @@ extension IncidentDetailViewController {
     }
 
     func error(message: String) {
-        showToast(message: message)
+        FWLoaderView.shared.hideLoader()
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 }
