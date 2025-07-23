@@ -68,8 +68,4 @@ public extension String {
         let padding = String(repeating: character, count: max(0, length - self.count))
         return padding + self
     }
-
-    var containsEmoji: Bool {
-        return self.unicodeScalars.contains { $0.properties.isEmojiPresentation || $0.properties.isEmoji }
-    }
 }

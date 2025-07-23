@@ -52,10 +52,6 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
             return false
         }
 
-        if string.containsEmoji {
-            return false // Reject emoji's
-        }
-
         return newLength <= 15
     }
 
