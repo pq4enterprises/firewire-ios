@@ -43,18 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         // Remote config fetch interval for firebase
         let remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
-        #if DEBUG
-                settings.minimumFetchInterval = 0 // force fetch in dev
-        #else
-                settings.minimumFetchInterval = 43200 // 12h in prod
-        #endif
+        settings.minimumFetchInterval = 43200 // 12h in prod
         RemoteConfig.remoteConfig().configSettings = settings
 
         remoteConfig.fetchAndActivate { _, error in
             if let error = error {
-                print("Remote Config fetch failed: \(error.localizedDescription)")
+                debugPrint("Remote Config fetch failed: \(error.localizedDescription)")
             } else {
-                print("Remote Config fetched successfully")
+                debugPrint("Remote Config fetched successfully")
             }
         }
 
