@@ -1618,7 +1618,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Live Scanner Feeds" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-xi-FOp">
-                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333336"/>
+                                                <rect key="frame" x="75.000000000000014" y="8" width="133.33333333333337" height="34.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Inter18pt-Regular" family="Inter 18pt" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -3199,7 +3199,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Qt-rJq">
-                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666663"/>
+                                                <rect key="frame" x="30" y="100" width="333" height="744.66666666666674"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-FS-xFV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="77"/>
@@ -4451,7 +4451,7 @@ Check it out on www.saltywire.com  Chicago’s Bravest Stories Podcast: �
                                     <action selector="saveButtonTap:" destination="chA-7c-pTG" eventType="touchUpInside" id="CVR-oZ-12a"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-Sd-fmc">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-Sd-fmc">
                                 <rect key="frame" x="186.66666666666666" y="183" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
