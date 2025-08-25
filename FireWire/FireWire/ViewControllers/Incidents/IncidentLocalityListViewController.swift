@@ -33,13 +33,9 @@ class IncidentLocalityListViewController: UIViewController, IncidentLocalityList
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showActivityIndicator(true)
         viewModel?.getLocalities(forType: .area)
         setupTableView()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showActivityIndicator(true)
     }
 
     func setupTableView() {
