@@ -21,15 +21,11 @@ class FeedAreaListViewController: UIViewController, IncidentLocalityListViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showActivityIndicator(true)
         viewModel.delegate = self
         viewModel.feedAreaDelegate = self
         viewModel?.getLocalities(forType: .area)
         setupTableView()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showActivityIndicator(true)
     }
 
     func setupTableView() {
