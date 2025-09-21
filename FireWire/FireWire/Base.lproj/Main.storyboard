@@ -1069,10 +1069,6 @@ agreeing with our Terms and Conditions</string>
                                                 <color key="textColor" name="FWTextGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-WU-xYH">
-                                                <rect key="frame" x="0.0" y="51.666666666666686" width="393" height="617.33333333333326"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-n8-nDp" customClass="FWView" customModule="FireWire" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="669" width="393" height="90"/>
                                                 <subviews>
@@ -1153,18 +1149,29 @@ agreeing with our Terms and Conditions</string>
                                                     <constraint firstItem="jSD-kO-HKW" firstAttribute="centerY" secondItem="Z6n-WV-Ytm" secondAttribute="centerY" id="sBZ-bo-Flg"/>
                                                 </constraints>
                                             </view>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eo3-UA-TJ8">
+                                                <rect key="frame" x="0.0" y="51.666666666666686" width="393" height="617.33333333333326"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UML-Iq-Tyb">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="yXN-n8-nDp" secondAttribute="trailing" id="3Tc-1b-l9d"/>
-                                            <constraint firstItem="3KU-WU-xYH" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" id="3yz-ms-oYo"/>
                                             <constraint firstItem="KPq-eX-lHc" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" constant="25" id="91K-40-TlQ"/>
-                                            <constraint firstItem="yXN-n8-nDp" firstAttribute="top" secondItem="3KU-WU-xYH" secondAttribute="bottom" id="HIs-Is-fRY"/>
                                             <constraint firstItem="KPq-eX-lHc" firstAttribute="top" secondItem="wsf-J7-dOc" secondAttribute="top" id="IDb-JN-kuh"/>
+                                            <constraint firstItem="eo3-UA-TJ8" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" id="Ker-t7-TG5"/>
+                                            <constraint firstItem="eo3-UA-TJ8" firstAttribute="top" secondItem="KPq-eX-lHc" secondAttribute="bottom" constant="20" id="VL9-d9-LN8"/>
                                             <constraint firstAttribute="bottom" secondItem="yXN-n8-nDp" secondAttribute="bottom" id="XHj-Zv-CO2"/>
+                                            <constraint firstAttribute="trailing" secondItem="eo3-UA-TJ8" secondAttribute="trailing" id="ZSg-7w-qyW"/>
                                             <constraint firstItem="yXN-n8-nDp" firstAttribute="leading" secondItem="wsf-J7-dOc" secondAttribute="leading" id="c59-Qc-BTj"/>
-                                            <constraint firstItem="3KU-WU-xYH" firstAttribute="top" secondItem="KPq-eX-lHc" secondAttribute="bottom" constant="20" id="nGH-kz-0p7"/>
-                                            <constraint firstAttribute="trailing" secondItem="3KU-WU-xYH" secondAttribute="trailing" id="t2k-93-JLm"/>
+                                            <constraint firstItem="yXN-n8-nDp" firstAttribute="top" secondItem="eo3-UA-TJ8" secondAttribute="bottom" id="pyH-uZ-7sY"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1190,13 +1197,13 @@ agreeing with our Terms and Conditions</string>
                     <connections>
                         <outlet property="addCommentTextField" destination="Fn3-Id-iGX" id="iSL-3R-zGp"/>
                         <outlet property="addCommentTextView" destination="jSD-kO-HKW" id="Lxn-6A-RZd"/>
+                        <outlet property="collectionView" destination="eo3-UA-TJ8" id="2PR-7A-9iR"/>
                         <outlet property="collectionViewHeightConstraint" destination="vmm-Xz-wfa" id="2hr-DJ-Zu4"/>
                         <outlet property="commentsListCount" destination="KPq-eX-lHc" id="vws-EH-zpd"/>
                         <outlet property="commentsView" destination="yXN-n8-nDp" id="YpV-5d-KVn"/>
                         <outlet property="noCommentsLabel" destination="iqo-6b-L8R" id="Byu-nG-Lc5"/>
                         <outlet property="previewImageCollectionView" destination="vso-o2-OjG" id="QZm-f5-LQg"/>
                         <outlet property="scrollView" destination="rUF-vU-l83" id="0L7-Mt-5Mb"/>
-                        <outlet property="tableView" destination="3KU-WU-xYH" id="dM3-us-CSP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSB-uQ-Wfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

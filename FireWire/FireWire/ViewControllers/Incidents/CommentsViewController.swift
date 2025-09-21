@@ -14,33 +14,43 @@ protocol CommentsListViewDelegate: AnyObject {
     func showMessage(message: String)
 }
 
+enum Section {
+    case main
+}
+
 class CommentsViewController: UIViewController, CommentsListViewDelegate, UITextViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var commentsListCount: UILabel!
     @IBOutlet var noCommentsLabel: UILabel!
-    @IBOutlet var tableView: UITableView!
+    // @IBOutlet var tableView: UITableView!
     @IBOutlet var addCommentTextField: UITextField!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var previewImageCollectionView: UICollectionView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var commentsView: FWView!
     @IBOutlet var addCommentTextView: UITextView!
-    
+    @IBOutlet var collectionView: UICollectionView!
+
+    private var dataSource: UICollectionViewDiffableDataSource<Section, CommentsData>!
+
     var coordinator: HomeCoordinator?
     var viewModel: CommentsListViewModel!
     var attachedImages: [UIImage] = []
     var paginationHandler: PaginationHandler<CommentsListViewModel>!
 
     private var selectedIncidentID: String?
+    private var selectedParentID: String?
+    private var mentions: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addCommentTextField.delegate = self
+        // addCommentTextField.delegate = self
         addCommentTextView.delegate = self
         setupView()
         setupActions()
         setupKeyboardActions()
-        setupTableView()
+        // setupTableView()
+        setupCollectionView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,7 +83,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         }
 
         scrollView.bounces = false
-        tableView.bounces = false
+        collectionView.bounces = false
+        // tableView.bounces = false
     }
 
     func setSelectedIncidentID(_ id: String) {
@@ -98,7 +109,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     func dataReceived() {
         hideLoader()
-        tableView.isHidden = false
+        // tableView.isHidden = false
+        collectionView.isHidden = false
         commentsListCount.isHidden = false
         noCommentsLabel.isHidden = true
 
@@ -106,7 +118,55 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         postNotification()
 
         commentsListCount.text = "\(viewModel.totalPages) \(viewModel.totalPages == 1 ? "Comment" : "Comments")"
-        tableView.reloadData()
+        // tableView.reloadData()
+        applySnapshot(with: viewModel.items)
+    }
+
+    private func applySnapshot(with comments: [CommentsData]) {
+        var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<CommentsData>()
+
+        func addComments(_ comments: [CommentsData], parent: CommentsData? = nil, depth: Int = 0) {
+            for var comment in comments {
+                comment.depth = depth
+                sectionSnapshot.append([comment], to: parent)
+                sectionSnapshot.expand([comment])
+
+                if let replies = comment.replies {
+                    addComments(replies, parent: comment, depth: depth + 1)
+                }
+            }
+        }
+
+        let hierarchy = buildCommentHierarchy(from: comments)
+        addComments(hierarchy)
+
+        dataSource.apply(sectionSnapshot, to: .main, animatingDifferences: true)
+    }
+
+    func buildCommentHierarchy(from allComments: [CommentsData]) -> [CommentsData] {
+        var commentMap = [String: CommentsData]()
+
+        // Step A: put everything in a dictionary
+        for comment in allComments {
+            commentMap[comment.id] = comment
+        }
+
+        // Step B: attach replies based on parentId
+        var rootComments: [CommentsData] = []
+
+        for comment in allComments {
+            if let parentId = comment.parentId, var parent = commentMap[parentId] {
+                if parent.replies == nil {
+                    parent.replies = []
+                }
+                parent.replies?.append(comment)
+            } else {
+                // no parentId → this is a top-level comment
+                rootComments.append(comment)
+            }
+        }
+
+        return rootComments
     }
 
     @objc func postNotification() {
@@ -119,7 +179,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         // To update notification count in incident detail screen after removing last comment
         postNotification()
 
-        tableView.isHidden = true
+        // tableView.isHidden = true
+        collectionView.isHidden = true
         commentsListCount.isHidden = true
         noCommentsLabel.isHidden = false
     }
@@ -133,15 +194,65 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         showAlert(title: message, message: "", actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+    func setupCollectionView() {
+        let layoutConfig = UICollectionLayoutListConfiguration(appearance: .plain)
+        let layout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
 
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = false
+        collectionView.collectionViewLayout = layout
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
+        collectionView.register(CommentsCell.nib(), forCellWithReuseIdentifier: CommentsCell.identifier)
+
+        dataSource = UICollectionViewDiffableDataSource<Section, CommentsData>(collectionView: collectionView) { collectionView, indexPath, item in
+
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CommentsCell.identifier,
+                for: indexPath
+            ) as! CommentsCell
+            cell.setupView(item)
+            cell.replyAction = { commentsDetail in
+                if let userName = commentsDetail.userID?.firstName {
+                    self.setMention(for: userName)
+                    if let _parentId = commentsDetail.parentId {
+                        self.selectedParentID = _parentId
+                    } else {
+                        self.selectedParentID = commentsDetail.id // for first comment
+                    }
+
+                    self.mentions = commentsDetail.userID?.id
+                    self.addCommentTextView.becomeFirstResponder()
+                }
+            }
+            return cell
+        }
     }
+
+    func setMention(for userName: String) {
+        let mention = "@\(userName) "
+        let attributedText = NSMutableAttributedString(string: mention)
+
+        attributedText.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: NSRange(location: 0, length: mention.count))
+        attributedText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(location: 0, length: mention.count))
+
+        addCommentTextView.attributedText = attributedText
+        addCommentTextView.selectedRange = NSMakeRange(attributedText.length, 0)
+
+        // Reset attributes
+        addCommentTextView.typingAttributes = [
+            .foregroundColor: UIColor.label,
+            .font: UIFont.systemFont(ofSize: 16)
+        ]
+    }
+
+//    func setupTableView() {
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//
+//        tableView.showsHorizontalScrollIndicator = false
+//        tableView.showsVerticalScrollIndicator = false
+//
+//        tableView.register(CommentsListViewCell.nib(), forCellReuseIdentifier: CommentsListViewCell.identifier)
+//    }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == .Comments.addAComment {
@@ -250,23 +361,23 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
     }
 }
 
-extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
-        cell.setupView(viewModel.items[indexPath.row])
-        cell.commentsAction = { commentsDetail in
-            self.showActionSheet(commentsDetail)
-        }
-        cell.imageTapHandler = { [weak self] image in
-            self?.showFullscreenImage(image)
-        }
-        return cell
-    }
-}
+//extension CommentsViewController: UITableViewDataSource, UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        viewModel.items.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: CommentsListViewCell.identifier, for: indexPath) as! CommentsListViewCell
+//        cell.setupView(viewModel.items[indexPath.row])
+//        cell.commentsAction = { commentsDetail in
+//            self.showActionSheet(commentsDetail)
+//        }
+//        cell.imageTapHandler = { [weak self] image in
+//            self?.showFullscreenImage(image)
+//        }
+//        return cell
+//    }
+//}
 
 extension CommentsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -349,13 +460,13 @@ extension CommentsViewController {
                 let textViewFrame = textView.convert(textView.bounds, to: self.scrollView)
                 self.scrollView.scrollRectToVisible(textViewFrame, animated: true)
 
-                if self.tableView.numberOfSections > 0 {
-                    let lastSection = max(self.tableView.numberOfSections - 1, 0)
-                    let lastRow = max(self.tableView.numberOfRows(inSection: lastSection) - 1, 0)
+                if self.collectionView.numberOfSections > 0 {
+                    let lastSection = max(self.collectionView.numberOfSections - 1, 0)
+                    let lastRow = self.collectionView.numberOfItems(inSection: lastSection) - 1
 
                     if lastRow > 0 {
                         let indexPath = IndexPath(row: lastRow, section: lastSection)
-                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                        self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
                     }
                 }
             }

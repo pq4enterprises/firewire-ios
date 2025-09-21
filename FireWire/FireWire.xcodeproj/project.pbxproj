@@ -45,6 +45,10 @@
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		B01085DA2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
 		B01085DB2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
+		B01154FF2E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
+		B01155002E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
+		B01155012E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
+		B01155022E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
@@ -462,6 +466,8 @@
 		B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAreaListViewCell.xib; sourceTree = "<group>"; };
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
+		B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewController.swift; sourceTree = "<group>"; };
@@ -813,6 +819,8 @@
 				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */,
 				B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */,
+				B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */,
+				B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -1357,6 +1365,7 @@
 				B0860F1D2D846C3B0042874E /* DivisionTicket.wav in Resources */,
 				B0860F1E2D846C3B0042874E /* StandbyForMessage.wav in Resources */,
 				B0860F1F2D846C3B0042874E /* EngineTicket.wav in Resources */,
+				B01155012E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */,
 				B0860F202D846C3B0042874E /* LadderTicket.wav in Resources */,
 				B0860F212D846C3B0042874E /* servicebell.wav in Resources */,
 				B0860F222D846C3B0042874E /* TonesOnly.wav in Resources */,
@@ -1415,6 +1424,7 @@
 				B0860F112D846C3B0042874E /* DivisionTicket.wav in Resources */,
 				B0860F122D846C3B0042874E /* StandbyForMessage.wav in Resources */,
 				B0860F132D846C3B0042874E /* EngineTicket.wav in Resources */,
+				B01155002E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */,
 				B0860F142D846C3B0042874E /* LadderTicket.wav in Resources */,
 				B0860F152D846C3B0042874E /* servicebell.wav in Resources */,
 				B0860F162D846C3B0042874E /* TonesOnly.wav in Resources */,
@@ -1535,6 +1545,7 @@
 				B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
+				B01155022E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */,
@@ -1688,6 +1699,7 @@
 				B0B1AEA82D4F8DB6007371A9 /* CommentsImageViewItem.swift in Sources */,
 				B0B1AEA92D4F8DB6007371A9 /* UINavigationController+Extension.swift in Sources */,
 				B0B1AEAA2D4F8DB6007371A9 /* NewsListViewModel.swift in Sources */,
+				B01154FF2E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */,
 				B0B1AEAB2D4F8DB6007371A9 /* NewsListViewCell.swift in Sources */,
 				B0B1AEAC2D4F8DB6007371A9 /* FWColor.swift in Sources */,
 				B0B1AEAD2D4F8DB6007371A9 /* NotificationLocalityHeaderView.swift in Sources */,
