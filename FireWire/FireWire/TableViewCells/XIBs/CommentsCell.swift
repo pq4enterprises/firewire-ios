@@ -22,7 +22,10 @@ class CommentsCell: UICollectionViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var imageCollectionView: UICollectionView!
     @IBOutlet var imgCollectionHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var repliesStackView: UIStackView!
+    @IBOutlet weak var repliesCount: UILabel!
+    
     private var model: CommentsData!
     var commentsAction: ((CommentsData) -> Void)?
     var imageTapHandler: ((String) -> Void)?
@@ -36,6 +39,8 @@ class CommentsCell: UICollectionViewCell {
     func setupView(_ model: CommentsData) {
         self.model = model
 
+        leadingConstraint.constant = CGFloat(model.depth * 20)
+        
         let userName = "\(model.userID?.firstName ?? "") \(model.userID?.lastName ?? "")"
         nameLabel.text = userName
 
@@ -81,8 +86,12 @@ class CommentsCell: UICollectionViewCell {
 
         cityLabel.text = ""
 
-        let indent = CGFloat(model.depth) * 20
-        baseView.layoutMargins = UIEdgeInsets(top: 8, left: 16 + indent, bottom: 8, right: 16)
+        if model.depth == 0, let replies = model.replies {
+            repliesCount.text = "\(replies.count) replies"
+            repliesStackView.isHidden = false
+        } else {
+            repliesStackView.isHidden = true
+        }
     }
 
     @IBAction func replyActionTap(_ sender: UIButton) {

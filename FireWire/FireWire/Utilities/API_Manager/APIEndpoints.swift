@@ -129,7 +129,7 @@ enum APIPayload {
                 "incidentId": model.incidentId,
                 "type": model.type,
                 "comment": model.comment,
-                "url": model.img
+                "img": model.img
             ]
 
             if let parentId = model.parentId {

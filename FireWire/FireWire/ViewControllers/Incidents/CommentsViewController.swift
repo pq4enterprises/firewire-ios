@@ -200,6 +200,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         collectionView.collectionViewLayout = layout
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.delegate = self
 
         collectionView.register(CommentsCell.nib(), forCellWithReuseIdentifier: CommentsCell.identifier)
 
@@ -210,6 +211,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
                 for: indexPath
             ) as! CommentsCell
             cell.setupView(item)
+
             cell.replyAction = { commentsDetail in
                 if let userName = commentsDetail.userID?.firstName {
                     self.setMention(for: userName)
@@ -223,6 +225,15 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
                     self.addCommentTextView.becomeFirstResponder()
                 }
             }
+
+            cell.commentsAction = { commentsDetail in
+                self.showActionSheet(commentsDetail)
+            }
+
+            cell.imageTapHandler = { [weak self] image in
+                self?.showFullscreenImage(image)
+            }
+
             return cell
         }
     }
@@ -232,7 +243,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         let attributedText = NSMutableAttributedString(string: mention)
 
         attributedText.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: NSRange(location: 0, length: mention.count))
-        attributedText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(location: 0, length: mention.count))
+        attributedText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 14), range: NSRange(location: 0, length: mention.count))
 
         addCommentTextView.attributedText = attributedText
         addCommentTextView.selectedRange = NSMakeRange(attributedText.length, 0)
@@ -240,7 +251,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         // Reset attributes
         addCommentTextView.typingAttributes = [
             .foregroundColor: UIColor.label,
-            .font: UIFont.systemFont(ofSize: 16)
+            .font: UIFont.systemFont(ofSize: 14)
         ]
     }
 
@@ -311,13 +322,18 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         }
 
         showLoader()
-        let requestModel = AddCommentRequestModel(
+        var requestModel = AddCommentRequestModel(
             userId: FWUserDefaults().userID ?? "",
             incidentId: selectedIncidentID ?? "",
+            parentId: selectedParentID,
             type: "comment",
             comment: commentMessage ?? "",
             img: urlString ?? ""
         )
+
+        if let mentions = mentions{
+            requestModel.mentions = [mentions]
+        }
 
         viewModel.addComment(requestModel)
 
@@ -397,6 +413,20 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
         previewVC.modalPresentationStyle = .overFullScreen
         previewVC.modalTransitionStyle = .crossDissolve
         present(previewVC, animated: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let comment = dataSource.itemIdentifier(for: indexPath) else { return }
+
+        var sectionSnapshot = dataSource.snapshot(for: .main)
+
+        if sectionSnapshot.isExpanded(comment) {
+            sectionSnapshot.collapse([comment])
+        } else {
+            sectionSnapshot.expand([comment])
+        }
+
+        dataSource.apply(sectionSnapshot, to: .main, animatingDifferences: true)
     }
 }
 
