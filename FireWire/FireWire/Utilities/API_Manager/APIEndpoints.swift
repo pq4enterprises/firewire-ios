@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-enum APIEndpoints {    
-    static let baseURL = "https://api.nycfirewireapp.com/"
-    //static let baseURL = "https://dev-firewire-api.atomgroups.work/"
+enum APIEndpoints {
+    // static let baseURL = "https://api.nycfirewireapp.com/"
+    static let baseURL = "https://dev-firewire-api.atomgroups.work/"
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
@@ -50,10 +50,10 @@ enum APIEndpoints {
     static let postAdminUrl = "https://admin.nycfirewireapp.com/noauth/create/incident?form=add&token=%@&theme=%@"
 }
 
-enum SocialLoginType: String{
-    case google = "google"
-    case facebook = "facebook"
-    case apple = "apple"
+enum SocialLoginType: String {
+    case google
+    case facebook
+    case apple
 }
 
 enum APIPayload {
@@ -124,13 +124,23 @@ enum APIPayload {
                 "query": model.listType?.toJsonString() ?? ""
             ]
         case let .addComment(model):
-            return [
+            var dictionary: [String: Any] = [
                 "userId": model.userId,
                 "incidentId": model.incidentId,
                 "type": model.type,
                 "comment": model.comment,
                 "img": model.img
             ]
+
+            if let parentId = model.parentId {
+                dictionary["parentId"] = parentId
+            }
+
+            if !model.mentions.isEmpty {
+                dictionary["mentions"] = model.mentions
+            }
+
+            return dictionary
         case let .commentsList(model):
             return [
                 "sortBy": model.sortBy,

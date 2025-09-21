@@ -53,7 +53,7 @@ class IncidentListViewCell: UITableViewCell {
             ? favouriteButton.setImage(FWImage.favIconSelected, for: .normal)
             : favouriteButton.setImage(FWImage.favIcon, for: .normal)
 
-        incidentStarred.text = "\(model.likeCount) Likes"
+        incidentStarred.text = "\(model.likeCount) \(model.likeCount == 1 ? "Like" : "Likes")"
         incidentComments.text = "\(model.commentCount) \(model.commentCount == 1 ? "Comment" : "Comments")"
 
         if let featureImageUrlString = model.featuredImageURL, let imageUrl = URL(string: featureImageUrlString)  {
@@ -62,6 +62,14 @@ class IncidentListViewCell: UITableViewCell {
         }else{
             incidentImageView.isHidden = true
         }
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(favButtonTap))
+        incidentStarred.isUserInteractionEnabled = true
+        incidentStarred.addGestureRecognizer(tapGesture)
+
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(commentButtonTap))
+        incidentComments.isUserInteractionEnabled = true
+        incidentComments.addGestureRecognizer(tapGesture2)
     }
 
     @IBAction func favButtonTap(_ sender: UIButton) {

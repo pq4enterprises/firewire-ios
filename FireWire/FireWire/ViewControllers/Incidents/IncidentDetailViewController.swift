@@ -110,7 +110,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             // focus on first marker
             guard let markers = viewModel?.markersList else { return }
             let firstLocation = markers[0].coordinates
-            let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 15.0)
+            let camera = GMSCameraPosition.camera(withTarget: firstLocation, zoom: 19.0)
             mapView.animate(to: camera)
         }
 
@@ -130,8 +130,16 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             self.imageMapStackView.layoutIfNeeded()
         }
 
-        incidentFavourites.text = "\(incidentDetail.likeCount) Likes"
+        incidentFavourites.text = "\(incidentDetail.likeCount) \(incidentDetail.likeCount == 1 ? "Like" : "Likes")"
         incidentComments.text = "\(incidentDetail.commentCount) \(incidentDetail.commentCount == 1 ? "Comment" : "Comments")"
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeButtonTap))
+        incidentFavourites.isUserInteractionEnabled = true
+        incidentFavourites.addGestureRecognizer(tapGesture)
+
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(commentButtonTap))
+        incidentComments.isUserInteractionEnabled = true
+        incidentComments.addGestureRecognizer(tapGesture2)
 
         let units = incidentDetail.respondingUnits?
             .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines).uppercased() }
@@ -265,7 +273,9 @@ extension IncidentDetailViewController {
         if let currentLikeCount = viewModel?.incidentDetail?.likeCount {
             viewModel?.incidentDetail?.likeCount = max(0, currentLikeCount + (like ? 1 : -1))
         }
-        incidentFavourites.text = "\(viewModel?.incidentDetail?.likeCount ?? 0) Likes"
+
+        let likeCount = viewModel?.incidentDetail?.likeCount ?? 0
+        incidentFavourites.text = "\(likeCount) \(likeCount == 1 ? "Like" : "Likes")"
     }
 
     func error(message: String) {
