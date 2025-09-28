@@ -120,6 +120,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         commentsListCount.text = "\(viewModel.totalPages) \(viewModel.totalPages == 1 ? "Comment" : "Comments")"
         // tableView.reloadData()
         applySnapshot(with: viewModel.items)
+        collectionView.reloadData()
     }
 
     private func applySnapshot(with comments: [CommentsData]) {
@@ -129,7 +130,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             for var comment in comments {
                 comment.depth = depth
                 sectionSnapshot.append([comment], to: parent)
-                sectionSnapshot.expand([comment])
+                //sectionSnapshot.expand([comment])
 
                 if let replies = comment.replies {
                     addComments(replies, parent: comment, depth: depth + 1)
@@ -139,6 +140,18 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
         let hierarchy = buildCommentHierarchy(from: comments)
         addComments(hierarchy)
+
+        if let parentId = selectedParentID,
+           let parentComment = comments.first(where: { $0.id == parentId }) {
+            sectionSnapshot.expand([parentComment])
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                if let replies = parentComment.replies, let lastReply = replies.last,
+                   let indexPath = self.dataSource.indexPath(for: lastReply) {
+                    self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }
 
         dataSource.apply(sectionSnapshot, to: .main, animatingDifferences: true)
     }
