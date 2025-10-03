@@ -193,7 +193,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     @IBAction func commentButtonTap(_ sender: UIButton) {
         if let selectedIncidentID {
-            coordinator?.navigateToIncidentComments(selectedIncidentID)
+            let selectedIncidentComments = SelectedIncidentCommentsModel(incidentID: selectedIncidentID)
+            coordinator?.navigateToIncidentComments(selectedIncidentComments)
         }
     }
 
