@@ -114,9 +114,9 @@ class HomeCoordinator: BaseCoordinator {
         navigationController.pushViewController(feedAreaListView, animated: true)
     }
 
-    func navigateToIncidentComments(_ incidentID: String, _ attachedImages: [UIImage] = []){
+    func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){
         let commentsList = CommentsViewController.instantiate()
-        commentsList.setSelectedIncidentID(incidentID)
+        commentsList.setSelectedIncidentID(incidentComments)
         commentsList.attachedImages = attachedImages
         commentsList.coordinator = self
 
@@ -124,18 +124,23 @@ class HomeCoordinator: BaseCoordinator {
         navVC.modalPresentationStyle = .pageSheet
 
         if let sheet = navVC.sheetPresentationController {
-            sheet.detents = [.medium(), .custom(resolver: {context in
-                0.95 * context.maximumDetentValue
-            })]
+            sheet.detents = [
+                .medium(),
+                .custom(identifier: .init("custom"), resolver: { context in
+                    0.95 * context.maximumDetentValue
+                })
+            ]
+            sheet.selectedDetentIdentifier = .init("custom")
             sheet.prefersGrabberVisible = true
         }
         navigationController.present(navVC, animated: true)
     }
 
-    func navigateToTakePicture(forIncident incidentID: String){
+    func navigateToTakePicture(forIncidentComments incidentComments: SelectedIncidentCommentsModel){
         let takePictureViewController = TakePictureViewController.instantiate()
         takePictureViewController.coordinator = self
-        takePictureViewController.selectedIncidentID = incidentID
+        //takePictureViewController.selectedIncidentID = incidentID
+        takePictureViewController.selectedIncidentComments = incidentComments
         takePictureViewController.isModalInPresentation = true  // Disable dismissing by tapping outside
 
         let navVC = UINavigationController(rootViewController: takePictureViewController)

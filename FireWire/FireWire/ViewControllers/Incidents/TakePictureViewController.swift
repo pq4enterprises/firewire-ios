@@ -13,7 +13,8 @@ class TakePictureViewController: UIViewController {
     @IBOutlet var galleryView: FWView!
 
     var coordinator: HomeCoordinator?
-    var selectedIncidentID: String?
+    //var selectedIncidentID: String?
+    var selectedIncidentComments: SelectedIncidentCommentsModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,7 @@ class TakePictureViewController: UIViewController {
 extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // Delegate method when image is picked
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage, let incidentId = selectedIncidentID {
+        if let selectedImage = info[.originalImage] as? UIImage, let incidentCommentsModel = selectedIncidentComments {
             // Do something with the selected image, e.g., display it in an ImageView
             // requestImageUpload(selectedImage)
 
@@ -88,7 +89,7 @@ extension TakePictureViewController: UIImagePickerControllerDelegate, UINavigati
                 guard let self = self else { return }
 
                 self.dismiss(animated: true) {
-                    self.coordinator?.navigateToIncidentComments(incidentId, [selectedImage])
+                    self.coordinator?.navigateToIncidentComments(incidentCommentsModel, [selectedImage])
                 }
             }
         } else {

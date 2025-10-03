@@ -153,7 +153,7 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
         }
         cell.shareAction = {
             let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
-            self.shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))
+            self.shareContentToSocialMedia(text: shareContent)
         }
         cell.setupView(selectedIncident)
         return cell
@@ -165,15 +165,19 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
         coordinator?.navigateToIncidentDetail(selectedIncidentID)
     }
 
-    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil) {
         var items: [Any] = [text]
 
         if let imageToShare = image {
             items.append(imageToShare)
         }
 
-        if let urlToShare = url {
-            items.append("Checkout: \(urlToShare)")
+        if let iosUrl = URL(string: String.appStoreUrl) {
+            items.append("Download the app on iOS: \(iosUrl)")
+        }
+
+        if let androidUrl = URL(string: String.playStoreUrl) {
+            items.append("Download the app on Android: \(androidUrl)")
         }
 
         // Create an instance of UIActivityViewController

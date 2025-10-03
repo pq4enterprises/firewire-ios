@@ -52,6 +52,8 @@
 		B01155002E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
 		B01155012E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
 		B01155022E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
+		B018F9192E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */; };
+		B018F91A2E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
@@ -471,6 +473,7 @@
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
+		B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIncidentCommentsModel.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewController.swift; sourceTree = "<group>"; };
@@ -1100,6 +1103,7 @@
 		B0EDF03D2D32677B00767EAB /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */,
 				B0E879FD2D71B6AD00BF0CC2 /* SubmitSubscriptionModel.swift */,
 				B00EDAF42D5D1FDB000370CE /* SelectedNotificationModel.swift */,
 				B0B836752D5A744200C71D8F /* CommonRequestModel.swift */,
@@ -1593,6 +1597,7 @@
 				B0EDF03A2D325F7400767EAB /* IncidentRequestModel.swift in Sources */,
 				B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6B02D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
+				B018F91A2E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */,
 				B0A3047A2D134057006F851A /* LocalityResponseModel.swift in Sources */,
 				B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */,
 				B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */,
@@ -1747,6 +1752,7 @@
 				B0B1AEC82D4F8DB6007371A9 /* IncidentRequestModel.swift in Sources */,
 				B0B1AECA2D4F8DB6007371A9 /* IncidentDetailViewModel.swift in Sources */,
 				B0ADB6AF2D5767D50086AC83 /* UpdatePasswordRequestModel.swift in Sources */,
+				B018F9192E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */,
 				B0B1AECC2D4F8DB6007371A9 /* LocalityResponseModel.swift in Sources */,
 				B0B1AECD2D4F8DB6007371A9 /* SuccessResponseModel.swift in Sources */,
 				B0B1AECE2D4F8DB6007371A9 /* PaginationHandler.swift in Sources */,
@@ -2091,7 +2097,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 120502;
+				CURRENT_PROJECT_VERSION = 120503;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GZ55QHPVX2;
@@ -2135,7 +2141,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 120502;
+				CURRENT_PROJECT_VERSION = 120503;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GZ55QHPVX2;
 				GENERATE_INFOPLIST_FILE = YES;

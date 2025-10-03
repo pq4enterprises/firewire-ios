@@ -9,6 +9,7 @@ import Foundation
 
 public extension String {
     static let appStoreUrl = "https://apps.apple.com/us/app/nyc-fire-wire/id980572369"
+    static let playStoreUrl = "https://play.google.com/store/search?q=nyc+fire+wire+app&c=apps&hl=es_419"
 
     enum Login {
         public static let registerText = "Don’t have an Account? Register"

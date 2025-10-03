@@ -40,7 +40,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     private var selectedIncidentID: String?
     private var selectedParentID: String?
-    private var mentions: String?
+    private var mentionsUserID: String?
+    private var mentionsUserName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,21 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         scrollView.bounces = false
         collectionView.bounces = false
         // tableView.bounces = false
+
+        if let mentionsUserName {
+            setMention(for: mentionsUserName)
+        }
+
     }
 
-    func setSelectedIncidentID(_ id: String) {
-        selectedIncidentID = id
+    func setSelectedIncidentID(_ incidentComments: SelectedIncidentCommentsModel) {
+        selectedIncidentID = incidentComments.incidentID
+
+        // Already reply section has been selected so set the selected id from model
+        selectedParentID = incidentComments.commentParentID
+        mentionsUserID = incidentComments.mentionsUserID
+        mentionsUserName = incidentComments.mentionsUserName
+
         viewModel = CommentsListViewModel()
         viewModel?.delegate = self
 
@@ -145,10 +157,19 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
            let parentComment = comments.first(where: { $0.id == parentId }) {
             sectionSnapshot.expand([parentComment])
 
+            // Scroll to New reply comment
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 if let replies = parentComment.replies, let lastReply = replies.last,
                    let indexPath = self.dataSource.indexPath(for: lastReply) {
                     self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }else{
+            // Scroll to New top-level comment
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                if self.collectionView.numberOfItems(inSection: 0) > 0 {
+                    let topIndexPath = IndexPath(item: 0, section: 0)
+                    self.collectionView.scrollToItem(at: topIndexPath, at: .top, animated: true)
                 }
             }
         }
@@ -234,7 +255,8 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
                         self.selectedParentID = commentsDetail.id // for first comment
                     }
 
-                    self.mentions = commentsDetail.userID?.id
+                    self.mentionsUserID = commentsDetail.userID?.id
+                    self.mentionsUserName = userName
                     self.addCommentTextView.becomeFirstResponder()
                 }
             }
@@ -289,6 +311,11 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
         if textView.text.isEmpty {
             textView.text = .Comments.addAComment
             textView.textColor = .lightGray
+
+            // reset the selected reply IDs
+            selectedParentID = nil
+            mentionsUserID = nil
+            mentionsUserName = nil
         }
     }
 
@@ -344,7 +371,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             img: urlString ?? ""
         )
 
-        if let mentions = mentions{
+        if let mentions = mentionsUserID{
             requestModel.mentions = [mentions]
         }
 
@@ -366,7 +393,16 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     @IBAction func cameraButtonTap(_ sender: UIButton) {
         dismiss(animated: true)
-        coordinator?.navigateToTakePicture(forIncident: selectedIncidentID ?? "")
+
+        let selectedComments = SelectedIncidentCommentsModel(
+            incidentID: selectedIncidentID ?? "",
+            commentParentID: selectedParentID,
+            mentionsUserID: mentionsUserID,
+            mentionsUserName: mentionsUserName
+        )
+
+        coordinator?.navigateToTakePicture(forIncidentComments: selectedComments)
+        //coordinator?.navigateToTakePicture(forIncident: selectedIncidentID ?? "")
     }
 
     @IBAction func sendButtonTap(_ sender: UIButton) {

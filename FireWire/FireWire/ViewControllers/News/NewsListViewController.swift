@@ -69,15 +69,19 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
-    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil) {
         var items: [Any] = [text]
 
         if let imageToShare = image {
             items.append(imageToShare)
         }
 
-        if let urlToShare = url {
-            items.append("Checkout: \(urlToShare)")
+        if let iosUrl = URL(string: String.appStoreUrl) {
+            items.append("Download the app on iOS: \(iosUrl)")
+        }
+
+        if let androidUrl = URL(string: String.playStoreUrl) {
+            items.append("Download the app on Android: \(androidUrl)")
         }
 
         // Create an instance of UIActivityViewController
@@ -102,7 +106,7 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupView(newsDetail)
         cell.shareAction = {
             let shareContent = "\(newsDetail.title) \nFind out: \(newsDetail.link)"
-            self.shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))
+            self.shareContentToSocialMedia(text: shareContent)
         }
         return cell
     }
