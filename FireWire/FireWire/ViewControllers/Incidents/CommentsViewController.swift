@@ -40,7 +40,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
 
     private var selectedIncidentID: String?
     private var selectedParentID: String?
-    private var mentions: String?
+    private var mentionsUserID: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -243,7 +243,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
                         self.selectedParentID = commentsDetail.id // for first comment
                     }
 
-                    self.mentions = commentsDetail.userID?.id
+                    self.mentionsUserID = commentsDetail.userID?.id
                     self.addCommentTextView.becomeFirstResponder()
                 }
             }
@@ -353,7 +353,7 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
             img: urlString ?? ""
         )
 
-        if let mentions = mentions{
+        if let mentions = mentionsUserID{
             requestModel.mentions = [mentions]
         }
 
