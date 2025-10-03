@@ -145,10 +145,19 @@ class CommentsViewController: UIViewController, CommentsListViewDelegate, UIText
            let parentComment = comments.first(where: { $0.id == parentId }) {
             sectionSnapshot.expand([parentComment])
 
+            // Scroll to New reply comment
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 if let replies = parentComment.replies, let lastReply = replies.last,
                    let indexPath = self.dataSource.indexPath(for: lastReply) {
                     self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }else{
+            // Scroll to New top-level comment
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                if self.collectionView.numberOfItems(inSection: 0) > 0 {
+                    let topIndexPath = IndexPath(item: 0, section: 0)
+                    self.collectionView.scrollToItem(at: topIndexPath, at: .top, animated: true)
                 }
             }
         }

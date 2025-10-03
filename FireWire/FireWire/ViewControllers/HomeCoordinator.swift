@@ -124,9 +124,13 @@ class HomeCoordinator: BaseCoordinator {
         navVC.modalPresentationStyle = .pageSheet
 
         if let sheet = navVC.sheetPresentationController {
-            sheet.detents = [.medium(), .custom(resolver: {context in
-                0.95 * context.maximumDetentValue
-            })]
+            sheet.detents = [
+                .medium(),
+                .custom(identifier: .init("custom"), resolver: { context in
+                    0.95 * context.maximumDetentValue
+                })
+            ]
+            sheet.selectedDetentIdentifier = .init("custom")
             sheet.prefersGrabberVisible = true
         }
         navigationController.present(navVC, animated: true)
