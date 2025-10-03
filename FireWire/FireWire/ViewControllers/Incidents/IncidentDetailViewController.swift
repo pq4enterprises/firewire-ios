@@ -203,21 +203,25 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
-        shareContentToSocialMedia(text: shareContent, url: URL(string: String.appStoreUrl))
+        shareContentToSocialMedia(text: shareContent)
 
         // let shareContent = "\(incidentDetail.field1Value ?? "") \n\(incidentDetail.address)"
         // coordinator?.navigateToShareView(shareMessage: shareContent)
     }
 
-    func shareContentToSocialMedia(text: String, image: UIImage? = nil, url: URL? = nil) {
+    func shareContentToSocialMedia(text: String, image: UIImage? = nil) {
         var items: [Any] = [text]
 
         if let imageToShare = image {
             items.append(imageToShare)
         }
 
-        if let urlToShare = url {
-            items.append("Checkout: \(urlToShare)")
+        if let iosUrl = URL(string: String.appStoreUrl) {
+            items.append("Download the app on iOS: \(iosUrl)")
+        }
+
+        if let androidUrl = URL(string: String.playStoreUrl) {
+            items.append("Download the app on Android: \(androidUrl)")
         }
 
         // Create an instance of UIActivityViewController
