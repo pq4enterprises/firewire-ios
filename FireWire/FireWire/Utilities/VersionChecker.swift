@@ -15,6 +15,24 @@ class VersionChecker {
 
     private static let remoteConfig = RemoteConfig.remoteConfig()
 
+    static func fetchRemoteConfig(completion: (() -> Void)? = nil) {
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 43200 // 0 for dev, // 12 hours for prod
+        remoteConfig.configSettings = settings
+
+        remoteConfig.fetchAndActivate { status, error in
+            if let error = error {
+                debugPrint("Remote Config fetch failed: \(error.localizedDescription)")
+                completion?()
+                return
+            }
+
+            debugPrint("Remote Config fetched successfully: \(status.rawValue)")
+            debugPrint("minimum_ios_build =", remoteConfig["minimum_ios_build"].stringValue)
+            completion?()
+        }
+    }
+
     static var minimumSupportedBuild: String {
         remoteConfig["minimum_ios_build"].stringValue
     }
