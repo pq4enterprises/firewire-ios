@@ -48,7 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
 
     func onClick(event: OSNotificationClickEvent) {
         DispatchQueue.main.async {
-            SceneDelegate.shared?.appCoordinator?.start()
+            let data = event.notification.additionalData
+
+            if let type = data?["type"] as? String,
+               let incidentId = data?["incidentId"] as? String {
+
+                SceneDelegate.shared?.appCoordinator?.navigateToIncidentDetail(incidentId)
+            }else{
+                SceneDelegate.shared?.appCoordinator?.start()
+            }
         }
     }
 

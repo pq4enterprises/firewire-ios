@@ -43,6 +43,14 @@ class AppCoordinator: BaseCoordinator {
         homeCoordinator.start()
     }
 
+
+    func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false){
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+        addChildCoordinator(homeCoordinator)
+        homeCoordinator.parentCoordinator = self
+        homeCoordinator.navigateToIncidentDetail(incidentID)
+    }
+
     override func backToParentCoordinator() {
         clearSessionData()
 
