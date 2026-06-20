@@ -24,36 +24,38 @@ class LoginCoordinator: BaseCoordinator {
         pushViewController(registrationViewController, animated: true)
     }
 
-    func navigateToHome(){
-        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+    func navigateToHome() {
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
         addChildCoordinator(homeCoordinator)
         homeCoordinator.start()
     }
 
-    func navigateToForgotPassword(){
+    func navigateToForgotPassword() {
         let forgotPasswordViewController = ForgotPasswordViewController.instantiate()
         forgotPasswordViewController.coordinator = self
         pushViewController(forgotPasswordViewController, animated: true)
     }
 
-    func navigateToOtpVerification(email: String){
-        let otpVerificationViewController = OtpVerificationViewController.instantiate()
-        otpVerificationViewController.email = email
-        otpVerificationViewController.coordinator = self
-        pushViewController(otpVerificationViewController, animated: true)
+    func navigateToOTPVerification(email: String, verificationType: OTPVerificationType) {
+        let viewModel: OtpVerificationProtocol = verificationType == .forgotPassword
+            ? OtpVerificationViewModel(email: email, otp: "")
+            : RegistrationOtpVerificationViewModel(email: email, otp: "")
+
+        let otpViewController = OtpVerificationViewController.instantiate(viewModel: viewModel, verificationType: verificationType)
+        otpViewController.coordinator = self
+        pushViewController(otpViewController, animated: true)
     }
 
-    func navigateToResetPassword(token: String){
+    func navigateToResetPassword(token: String) {
         let resetPasswordViewController = ResetPasswordViewController.instantiate()
         resetPasswordViewController.coordinator = self
         resetPasswordViewController.resetToken = token
         pushViewController(resetPasswordViewController, animated: true)
     }
 
-    func navigateToSelectArea(){
+    func navigateToSelectArea() {
         let selectAreaViewController = SelectAreaViewController.instantiate()
         selectAreaViewController.parentCoordinator = parentCoordinator
         pushViewController(selectAreaViewController, animated: true)
     }
-
 }

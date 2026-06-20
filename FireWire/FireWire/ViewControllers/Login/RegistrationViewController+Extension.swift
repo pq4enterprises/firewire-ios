@@ -53,11 +53,9 @@ extension RegistrationViewController: UITextFieldDelegate {
 }
 
 extension RegistrationViewController: RegistrationViewModelDelegate {
-    func registrationSuccess() {
+    func registrationSuccess(forEmail email: String) {
         hideLoader()
-        showAlert(title: "", message: "New user registered", actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
-            self.coordinator?.popView()
-        })])
+        coordinator?.navigateToOTPVerification(email: email, verificationType: .registration)
     }
 
     func registrationFail(errorMessage: String) {

@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 
 enum APIEndpoints {
-    static let baseURL = "https://api.nycfirewireapp.com/"
-    //static let baseURL = "https://staging.api.nycfirewireapp.com/"
+    //static let baseURL = "https://api.nycfirewireapp.com/"
+    static let baseURL = "https://staging.api.nycfirewireapp.com/"
 
     static let register = "api/app/auth/register"
     static let login = "api/app/auth/login"
     static let forgotPassword = "api/app/auth/forgot-password"
     static let verifyOtp = "api/app/auth/otp-verify"
+    static let verifyEmailOtp = "api/app/auth/verify-email-otp"
     static let resetPassword = "api/app/auth/reset-password"
     static let socialLogin = "api/app/auth/social-login"
     static let incidentList = "api/app/incident"
@@ -61,6 +62,7 @@ enum APIPayload {
     case socialLogin(token: String, socialType: String, role: String)
     case forgotPassword(email: String)
     case verifyOtp(email: String, otp: String)
+    case verifyEmailOtp(email: String, otp: String)
     case resetPassword(resetToken: String, password: String, confirmPassword: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
@@ -85,7 +87,8 @@ enum APIPayload {
             return ["token": token, "socialType": socialType, "role": role]
         case let .forgotPassword(email):
             return ["email": email]
-        case let .verifyOtp(email, otp):
+        case let .verifyOtp(email, otp),
+            let .verifyEmailOtp(email, otp):
             return ["email": email, "otp": otp]
         case let .resetPassword(resetToken, password, confirmPassword):
             return ["resetToken": resetToken, "password": password, "confirmPassword": confirmPassword]

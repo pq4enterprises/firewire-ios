@@ -18,10 +18,12 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
 
     var otpTextFields: [UITextField] = []
     var coordinator: LoginCoordinator?
-    var email: String?
+    private var verificationType: OTPVerificationType!
+    private var viewModel: OtpVerificationProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         setupUI()
     }
 
@@ -34,10 +36,8 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
 
         value1Text.becomeFirstResponder()
 
-        if let email {
-            let maskedEmail = email.maskEmail
-            verifyOtpInfo.text = String(format: .VerifyOtp.info, maskedEmail)
-        }
+        let maskedEmail = viewModel.email.maskEmail
+        verifyOtpInfo.text = String(format: .VerifyOtp.info, maskedEmail)
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -77,9 +77,11 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
     }
 
     // A convenience method to instantiate from the storyboard
-    static func instantiate() -> OtpVerificationViewController {
+    static func instantiate(viewModel: OtpVerificationProtocol, verificationType: OTPVerificationType) -> OtpVerificationViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
+        viewController.viewModel = viewModel
+        viewController.verificationType = verificationType
         return viewController
     }
 }
@@ -90,52 +92,23 @@ extension OtpVerificationViewController {
     func submitOtp() {
         showLoader()
 
-        guard let email = email else { return }
-
         let otp = otpTextFields.compactMap { $0.text }.joined()
-        if otp.count == otpTextFields.count {
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.verifyOtp,
-                payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
-                expect: VerifyOtpResponseModel.self
-            ) { [weak self] response, _, error in
-                self?.hideLoader()
-
-                if let errorMessage = error {
-                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                    return
-                }
-
-                guard let apiResponse = response as? VerifyOtpResponseModel else {
-                    let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
-                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                    return
-                }
-
-                if apiResponse.code != "success" {
-                    self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in
-                        self?.otpTextFields.forEach { $0.text = "" }
-                    }])
-                    return
-                }
-
-                if let otpData = apiResponse.data {
-                    self?.coordinator?.navigateToResetPassword(token: otpData.resetToken)
-                } else {
-                    self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                }
-            }
+        guard otp.count == otpTextFields.count else {
+            hideLoader()
+            showAlert(title: "", message: "Please enter valid OTP", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+            return
         }
+
+        viewModel.updateOtp(otp)
+        viewModel.submitOtp()
     }
 
     func requestOtp() {
         showLoader()
 
-        guard let email = email else { return }
-
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.forgotPassword,
-            payload: APIPayload.forgotPassword(email: email).toDictionary(),
+            payload: APIPayload.forgotPassword(email: viewModel.email).toDictionary(),
             expect: ForgotPasswordResponseModel.self
         ) { [weak self] response, _, error in
 
@@ -155,6 +128,31 @@ extension OtpVerificationViewController {
                     self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
                 }
             }
+        }
+    }
+}
+
+extension OtpVerificationViewController: OtpVerificationViewModelDelegate {
+    func otpVerificationSuccess(data: VerifyOtpResponseData?) {
+        DispatchQueue.main.async {
+            self.hideLoader()
+            if self.verificationType == .forgotPassword {
+                self.coordinator?.navigateToResetPassword(token: data?.resetToken ?? "")
+            } else {
+                self.showAlert(title: "", message: "OTP verified successfully", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                    self.coordinator?.navigateToSelectArea()
+                })])
+            }
+        }
+    }
+
+    func otpVerificationFailure(errorMessage: String) {
+        DispatchQueue.main.async {
+            self.hideLoader()
+            self.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel) { _ in
+                self.otpTextFields.forEach { $0.text = "" }
+                self.value1Text.becomeFirstResponder()
+            }])
         }
     }
 }

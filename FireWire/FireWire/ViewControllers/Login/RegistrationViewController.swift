@@ -8,6 +8,7 @@
 import UIKit
 
 protocol RegistrationViewModelDelegate {
+    func registrationSuccess(forEmail email: String)
     func registrationFail(errorMessage: String)
     func loginSuccess()
     func loginFailed(errorMessage: String)

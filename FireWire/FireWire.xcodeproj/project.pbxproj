@@ -170,6 +170,14 @@
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B09325752FE693A0008B1101 /* RegistrationViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */; };
 		B09325762FE693A0008B1101 /* RegistrationViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */; };
+		B09325782FE699A6008B1101 /* OtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */; };
+		B09325792FE699A6008B1101 /* OtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */; };
+		B09325882FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */; };
+		B09325892FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */; };
+		B093258C2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */; };
+		B093258D2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */; };
+		B093258F2FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */; };
+		B09325902FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
@@ -563,6 +571,10 @@
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationViewController+Extension.swift"; sourceTree = "<group>"; };
+		B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewModel.swift; sourceTree = "<group>"; };
+		B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationProtocol.swift; sourceTree = "<group>"; };
+		B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationOtpVerificationViewModel.swift; sourceTree = "<group>"; };
+		B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailResponseModel.swift; sourceTree = "<group>"; };
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalisationViewController.swift; sourceTree = "<group>"; };
 		B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -1031,6 +1043,13 @@
 			path = CommonView;
 			sourceTree = "<group>";
 		};
+		B093258A2FE6A253008B1101 /* VerifyOTP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VerifyOTP;
+			sourceTree = "<group>";
+		};
 		B0A9D7B82D49614000DB34A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,13 +1079,17 @@
 		B0D12CFE2CED095200EEDDF8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B093258A2FE6A253008B1101 /* VerifyOTP */,
 				B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */,
 				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
+				B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
 				B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */,
 				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
 				B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */,
+				B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */,
+				B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */,
 				B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */,
 				B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */,
 				B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */,
@@ -1136,6 +1159,7 @@
 				B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */,
 				B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */,
 				B0EDF0472D32B97400767EAB /* VerifyOtpResponseModel.swift */,
+				B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */,
 				B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */,
 			);
 			path = ResponseModel;
@@ -1521,6 +1545,7 @@
 				B006D91C2D42B7430082E59E /* FeedListResponseModel.swift in Sources */,
 				B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */,
 				B027AE532D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
+				B093258F2FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D825DF2E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
@@ -1613,6 +1638,7 @@
 				B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */,
 				B0D825E22E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
+				B09325892FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
@@ -1630,6 +1656,7 @@
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
+				B093258C2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
 				B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */,
@@ -1638,6 +1665,7 @@
 				B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */,
 				B0860F862E141F750055957B /* VersionChecker.swift in Sources */,
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
+				B09325792FE699A6008B1101 /* OtpVerificationViewModel.swift in Sources */,
 				B0ADB6AC2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
 				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
@@ -1677,6 +1705,7 @@
 				B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */,
 				B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */,
 				B027AE522D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
+				B09325902FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */,
 				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,
 				B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */,
 				B0D825E02E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
@@ -1769,6 +1798,7 @@
 				B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */,
 				B0D825E32E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
+				B09325882FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
 				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
@@ -1786,6 +1816,7 @@
 				B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
+				B093258D2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
 				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,
 				B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */,
@@ -1794,6 +1825,7 @@
 				B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */,
 				B0860F852E141F750055957B /* VersionChecker.swift in Sources */,
 				B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */,
+				B09325782FE699A6008B1101 /* OtpVerificationViewModel.swift in Sources */,
 				B0ADB6AD2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */,
 				B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */,

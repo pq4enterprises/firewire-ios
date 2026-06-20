@@ -51,13 +51,12 @@ final class RegistrationViewModel {
                 self?.delegate?.registrationFail(errorMessage: errorMessage)
                 return
             }else{
-                // Perform automatic login after successful registration
-                self?.performLogin(model)
+                self?.delegate?.registrationSuccess(forEmail: model.email)
             }
         }
     }
 
-    func performLogin(_ model: RegisterRequestModel){
+    /*func performLogin(_ model: RegisterRequestModel){
         let loginRequestModel = APIPayload.login(email: model.email, password: model.password).toDictionary()
 
         APIRequest().callApi(
@@ -100,7 +99,7 @@ final class RegistrationViewModel {
 
             self?.delegate?.loginSuccess()
         }
-    }
+    }*/
 
     func validate(_ model: RegisterRequestModel) -> ValidationError {
         if model.firstName.trimmingCharacters(in: .whitespaces).isEmpty {
