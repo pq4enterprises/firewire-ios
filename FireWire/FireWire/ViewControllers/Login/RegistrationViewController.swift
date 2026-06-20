@@ -47,6 +47,15 @@ class RegistrationViewController: UIViewController {
     func setupUI() {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
+
+        // Prevent iOS AutoFill from taking over secure fields (can hide rightView and interrupt editing in Simulator).
+        passwordTextField.textContentType = .oneTimeCode
+        confirmPasswordTextField.textContentType = .oneTimeCode
+        passwordTextField.autocorrectionType = .no
+        confirmPasswordTextField.autocorrectionType = .no
+
         passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
             guard let self else { return }
             self.togglePasswordVisibility(self.passwordTextField)
@@ -62,6 +71,8 @@ class RegistrationViewController: UIViewController {
         phoneTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        emailTextField.delegate = self
+        positionTextField.delegate = self
 
         signInLabel.colorString(
             text: .Register.signInText,
@@ -73,9 +84,22 @@ class RegistrationViewController: UIViewController {
     }
 
     func togglePasswordVisibility(_ textField: UITextField) {
-        textField.isSecureTextEntry.toggle()
-        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
+        let wasFirstResponder = textField.isFirstResponder
+        let existingText = textField.text
 
+        textField.isSecureTextEntry.toggle()
+
+        // Re-apply text to prevent secure-entry cursor glitches while editing.
+        textField.text = nil
+        textField.text = existingText
+
+        if wasFirstResponder {
+            textField.becomeFirstResponder()
+            let endPosition = textField.endOfDocument
+            textField.selectedTextRange = textField.textRange(from: endPosition, to: endPosition)
+        }
+
+        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
         if let button = textField.rightView as? UIButton {
             button.setImage(icon, for: .normal)
         }
@@ -99,25 +123,18 @@ class RegistrationViewController: UIViewController {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
 
-        // Calculate the inset of the scroll view
         let keyboardHeight = keyboardFrame.height
 
-        // Set the content inset for the scroll view
         var contentInset = scrollView.contentInset
         contentInset.bottom = keyboardHeight
         scrollView.contentInset = contentInset
-
-        // Adjust the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        // Reset the content inset when the keyboard hides
         var contentInset = scrollView.contentInset
         contentInset.bottom = 0
         scrollView.contentInset = contentInset
-
-        // Reset the scroll indicator inset
         scrollView.scrollIndicatorInsets = contentInset
     }
 
@@ -157,55 +174,4 @@ class RegistrationViewController: UIViewController {
     }
 }
 
-extension RegistrationViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        let newLength = currentText.count + string.count - range.length
-
-        if textField == phoneTextField {
-            // Allow only numbers (0-9) and prevent special characters
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-
-            return allowedCharacters.isSuperset(of: characterSet) && newLength <= 15
-        } else if textField == passwordTextField || textField == confirmPasswordTextField {
-            if string == " " {
-                return false // Reject space
-            }
-            
-            return newLength <= 15
-        }else if textField == firstNameTextField || textField == lastNameTextField {
-            return newLength <= 30
-        }
-        return true
-    }
-}
-
-extension RegistrationViewController: RegistrationViewModelDelegate {
-    func registrationSuccess() {
-        hideLoader()
-        showAlert(title: "", message: "New user registered", actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
-            self.coordinator?.popView()
-        })])
-    }
-
-    func registrationFail(errorMessage: String) {
-        hideLoader()
-        showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-    }
-
-    func loginSuccess() {
-        hideLoader()
-        coordinator?.navigateToSelectArea()
-    }
-
-    func loginFailed(errorMessage: String) {
-        hideLoader()
-        showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-    }
-}

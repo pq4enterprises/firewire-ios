@@ -51,7 +51,8 @@ final class RegistrationViewModel {
                 self?.delegate?.registrationFail(errorMessage: errorMessage)
                 return
             }else{
-                self?.performLogin(model) // Perform automatic login after successful registration
+                // Perform automatic login after successful registration
+                self?.performLogin(model)
             }
         }
     }
