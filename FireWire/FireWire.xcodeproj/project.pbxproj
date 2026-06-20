@@ -916,7 +916,7 @@
 				B09254B62CF6372200879B07 /* CommonView */,
 				B01BB0542CF314A4003970D7 /* Feeds */,
 				B01BB04D2CF31087003970D7 /* Menu */,
-				B0D12CFE2CED095200EEDDF8 /* Login */,
+				B0D12CFE2CED095200EEDDF8 /* Security */,
 				B04682522CE67CE900419C65 /* Home */,
 				B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */,
 				B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */,
@@ -1046,8 +1046,48 @@
 		B093258A2FE6A253008B1101 /* VerifyOTP */ = {
 			isa = PBXGroup;
 			children = (
+				B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */,
+				B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */,
+				B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */,
 			);
 			path = VerifyOTP;
+			sourceTree = "<group>";
+		};
+		B09325912FE6B3C1008B1101 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */,
+				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
+				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B09325922FE6B3CD008B1101 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */,
+				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
+				B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */,
+				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		B09325932FE6B3E3008B1101 /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		B09325942FE6B3FC008B1101 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		B0A9D7B82D49614000DB34A6 /* Frameworks */ = {
@@ -1076,25 +1116,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B0D12CFE2CED095200EEDDF8 /* Login */ = {
+		B0D12CFE2CED095200EEDDF8 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				B09325942FE6B3FC008B1101 /* ForgotPassword */,
+				B09325932FE6B3E3008B1101 /* ResetPassword */,
+				B09325922FE6B3CD008B1101 /* Register */,
+				B09325912FE6B3C1008B1101 /* Login */,
 				B093258A2FE6A253008B1101 /* VerifyOTP */,
-				B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */,
-				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
-				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
-				B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */,
-				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
-				B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */,
-				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
-				B0EDF03F2D326FAE00767EAB /* OtpVerificationViewController.swift */,
-				B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */,
-				B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */,
-				B0EDF0412D32769200767EAB /* ResetPasswordViewController.swift */,
-				B0EDF0432D32B07100767EAB /* ForgotPasswordViewController.swift */,
 				B0ADB6A82D5747650086AC83 /* SelectAreaViewController.swift */,
 			);
-			path = Login;
+			path = Security;
 			sourceTree = "<group>";
 		};
 		B0D12D012CED0C8400EEDDF8 /* FWCommon */ = {
