@@ -143,7 +143,19 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
 
     func error(message: String) {
         hideLoader()
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+
+        if message.lowercased() == APIError.tokenExpired.localizedDescription.lowercased() {
+            showAlert(title: "", message: message, actions: [
+                UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                    self.appCoordinator?.backToParentCoordinator()
+                })
+            ])
+            return
+        }
+
+        showAlert(title: "", message: message, actions: [
+            UIAlertAction(title: "Ok", style: .cancel)
+        ])
     }
 }
 
