@@ -10,10 +10,11 @@ import StoreKit
 
 final class MyAccountViewModel {
     public var delegate: MyAccountViewDelegate?
+    public var emailVerificationDelegate: EmailVerificationDelegate?
 
     func submitPayment(transaction: Transaction?) {
         guard let transaction, let userId = FWUserDefaults().userID else {
-            delegate?.dataLoaded(status: false, message: "Required payment details not available")
+            delegate?.failure(message: "Required payment details not available")
             return
         }
 
@@ -40,19 +41,19 @@ final class MyAccountViewModel {
             requestType: APIConstants.POST
         ) { [weak self] response, _, error in
             if let errorMessage = error {
-                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                self?.delegate?.failure(message: errorMessage)
                 return
             }
 
             guard let apiResponse = response else {
-                self?.delegate?.dataLoaded(status: false, message: "Payment detail submission failed, try again after sometime")
+                self?.delegate?.failure(message: "Payment detail submission failed, try again after sometime")
                 return
             }
 
             if apiResponse is SuccessResponseModel {
                 self?.getUserProfile() // subscription success, get user profile for updated role
             } else {
-                self?.delegate?.dataLoaded(status: false, message: "Payment detail submission failed")
+                self?.delegate?.failure(message: "Payment detail submission failed")
             }
         }
     }
@@ -63,24 +64,27 @@ final class MyAccountViewModel {
             expect: GetUserProfileResponseModel.self,
             requestType: APIConstants.GET
         ) { [weak self] response, _, error in
+
+            guard let self else { return }
+
             if let errorMessage = error {
-                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                self.delegate?.failure(message: errorMessage)
                 return
             }
 
             guard let apiResponse = response as? GetUserProfileResponseModel else {
                 let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
-                self?.delegate?.dataLoaded(status: false, message: errorMessage)
+                self.delegate?.failure(message: errorMessage)
                 return
             }
 
             if apiResponse.code != "success" {
-                self?.delegate?.dataLoaded(status: false, message: apiResponse.message)
+                self.delegate?.failure(message: apiResponse.message)
                 return
             }
 
             guard let userData = apiResponse.data else {
-                self?.delegate?.dataLoaded(status: false, message: "Missing user data")
+                self.delegate?.failure(message: "Missing user data")
                 return
             }
 
@@ -88,7 +92,37 @@ final class MyAccountViewModel {
                 FWUserDefaults.setStringForKey(key: .userRoleKey, value: userRole)
             }
 
-            self?.delegate?.dataLoaded(status: true, message: forSubscription ? "Your premium subscription is success!" : "" )
+            self.delegate?.success(
+                dataLoaded: userData,
+                message: forSubscription ? "Your premium subscription is success!" : ""
+            )
+        }
+    }
+
+    func requestEmailVerification(){
+        let emailModel = APIPayload.resendEmailOtp(email: FWUserDefaults().userEmail ?? "").toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.resendEmailOtp,
+            payload: emailModel as JSON,
+            expect: ResendOTPForEmailResponseModel.self,
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.failure(message: errorMessage)
+                return
+            }
+
+            guard let apiResponse = response as? ResendOTPForEmailResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self?.delegate?.failure(message: errorMessage)
+                return
+            }
+
+            if apiResponse.code == "success"{
+                self?.emailVerificationDelegate?.resendEmailOtp(status: true)
+            }else{
+                self?.delegate?.failure(message: apiResponse.message)
+            }            
         }
     }
 

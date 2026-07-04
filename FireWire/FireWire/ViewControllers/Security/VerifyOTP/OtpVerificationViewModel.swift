@@ -10,6 +10,7 @@ import Foundation
 public enum OTPVerificationType {
     case registration
     case forgotPassword
+    case existingUser
 }
 
 final class OtpVerificationViewModel: OtpVerificationProtocol {

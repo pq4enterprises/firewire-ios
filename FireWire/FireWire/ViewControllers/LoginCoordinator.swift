@@ -39,7 +39,7 @@ class LoginCoordinator: BaseCoordinator {
     func navigateToOTPVerification(email: String, verificationType: OTPVerificationType) {
         let viewModel: OtpVerificationProtocol = verificationType == .forgotPassword
             ? OtpVerificationViewModel(email: email, otp: "")
-            : RegistrationOtpVerificationViewModel(email: email, otp: "")
+            : EmailOtpVerificationViewModel(email: email, otp: "")
 
         let otpViewController = OtpVerificationViewController.instantiate(viewModel: viewModel, verificationType: verificationType)
         otpViewController.coordinator = self

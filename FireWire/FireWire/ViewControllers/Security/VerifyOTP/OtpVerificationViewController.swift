@@ -18,6 +18,7 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
 
     var otpTextFields: [UITextField] = []
     var coordinator: LoginCoordinator?
+    var homeCoordinator: HomeCoordinator?
     private var verificationType: OTPVerificationType!
     private var viewModel: OtpVerificationProtocol!
 
@@ -41,7 +42,11 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
-        coordinator?.popView()
+        if let coordinator {
+            coordinator.popView()
+        } else if let homeCoordinator {
+            homeCoordinator.popView()
+        }
     }
 
     @IBAction func resentOTPTap(_ sender: UIButton) {
@@ -138,6 +143,10 @@ extension OtpVerificationViewController: OtpVerificationViewModelDelegate {
             self.hideLoader()
             if self.verificationType == .forgotPassword {
                 self.coordinator?.navigateToResetPassword(token: data?.resetToken ?? "")
+            } else if self.verificationType == .existingUser {
+                self.showAlert(title: "", message: "OTP verified successfully", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                    self.homeCoordinator?.navigateBackToHome()
+                })])
             } else {
                 self.showAlert(title: "", message: "OTP verified successfully", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     self.coordinator?.navigateToSelectArea()

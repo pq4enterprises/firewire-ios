@@ -5,15 +5,20 @@
 //  Created by Sujitha Palanisamy on 06/12/24.
 //
 
+import FirebaseAnalytics
 import StoreKit
 import UIKit
-import FirebaseAnalytics
 
-protocol MyAccountViewDelegate: AnyObject {
-    func dataLoaded(status: Bool, message: String)
+protocol EmailVerificationDelegate: AnyObject {
+    func resendEmailOtp(status: Bool)
 }
 
-class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, MyAccountViewDelegate {
+protocol MyAccountViewDelegate: AnyObject {
+    func success(dataLoaded userData: UserProfileData, message: String)
+    func failure(message: String)
+}
+
+class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     weak var appCoordinator: AppCoordinator?
     var coordinator: HomeCoordinator?
 
@@ -21,12 +26,13 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     @IBOutlet var updateProfileView: UIStackView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var verifyEmailButton: UIButton!
     @IBOutlet var logoutView: UIStackView!
     @IBOutlet var termsStackView: UIStackView!
     @IBOutlet var privacyPolicyStackView: UIStackView!
-    @IBOutlet weak var restoreSubscriptionButton: UIButton!
-    @IBOutlet weak var premiumInfoView: UIView!
-    @IBOutlet weak var subscriptionInfoView: UIView!
+    @IBOutlet var restoreSubscriptionButton: UIButton!
+    @IBOutlet var premiumInfoView: UIView!
+    @IBOutlet var subscriptionInfoView: UIView!
 
     var viewModel: MyAccountViewModel?
 
@@ -48,6 +54,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         viewModel = MyAccountViewModel()
         viewModel?.getUserProfile(forSubscription: false)
         viewModel?.delegate = self
+        viewModel?.emailVerificationDelegate = self
 
         SubscriptionManager.shared.delegate = self
     }
@@ -94,11 +101,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     @objc func logoutViewTap() {
-        showAlert(title: "Sign Out", message: "Are you sure you want to sign out?", actions: [UIAlertAction(title: "Sign Out", style: .default, handler: { action in
+        showAlert(title: "Sign Out", message: "Are you sure you want to sign out?", actions: [UIAlertAction(title: "Sign Out", style: .default, handler: { _ in
             self.clearUserDefaults()
             self.appCoordinator?.backToParentCoordinator()
         })], cancel: true)
-
     }
 
     @objc func termsViewTap() {
@@ -114,7 +120,11 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
     }
 
     @IBAction func backButtonTap(_ sender: UIButton) {
-        appCoordinator?.popView()
+        if let appCoordinator {
+            appCoordinator.popView()
+        } else if let coordinator {
+            coordinator.popView()
+        }
     }
 
     @IBAction func premiumButtonTapAction(_ sender: UIButton) {
@@ -125,6 +135,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         Task {
             await SubscriptionManager.shared.purchaseMyProduct()
         }
+    }
+
+    @IBAction func verifyEmailTap(_ sender: UIButton) {
+        viewModel?.requestEmailVerification()
     }
 
     @IBAction func restoreSubscriptionTap(_ sender: UIButton) {
@@ -145,17 +159,6 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         }
     }
 
-    func dataLoaded(status: Bool, message: String) {
-        hideLoader()
-        if status {
-            updatePremiumInfo()
-        }
-
-        if !message.isEmpty {
-            showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-        }
-    }
-
     func clearUserDefaults() {
         FWUserDefaults.removeObjectForKey(key: .userIDKey)
         FWUserDefaults.removeObjectForKey(key: .userNameKey)
@@ -170,5 +173,33 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate, My
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "MyAccountViewController") as! MyAccountViewController
         return viewController
+    }
+}
+
+extension MyAccountViewController: MyAccountViewDelegate, EmailVerificationDelegate {
+    func resendEmailOtp(status: Bool) {
+        if let email = FWUserDefaults().userEmail {
+            coordinator?.navigateToOTPVerification(email: email, verificationType: .existingUser)
+        }
+    }
+    
+    func success(dataLoaded userData: UserProfileData, message: String) {
+        hideLoader()
+
+        updatePremiumInfo()
+
+        if !message.isEmpty {
+            showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
+
+        verifyEmailButton.isHidden = userData.emailVerified
+    }
+
+    func failure(message: String) {
+        hideLoader()
+
+        if !message.isEmpty {
+            showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
     }
 }

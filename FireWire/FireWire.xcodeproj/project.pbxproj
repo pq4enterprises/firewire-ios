@@ -174,10 +174,12 @@
 		B09325792FE699A6008B1101 /* OtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */; };
 		B09325882FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */; };
 		B09325892FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */; };
-		B093258C2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */; };
-		B093258D2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */; };
+		B093258C2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift */; };
+		B093258D2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258B2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift */; };
 		B093258F2FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */; };
 		B09325902FE6A8FA008B1101 /* VerifyEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */; };
+		B097A3BC2FF90D6800AC0643 /* ResendOTPForEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A3BB2FF90D5A00AC0643 /* ResendOTPForEmailResponseModel.swift */; };
+		B097A3BD2FF90D6800AC0643 /* ResendOTPForEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A3BB2FF90D5A00AC0643 /* ResendOTPForEmailResponseModel.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */; };
@@ -573,8 +575,9 @@
 		B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationViewController+Extension.swift"; sourceTree = "<group>"; };
 		B09325772FE6999D008B1101 /* OtpVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewModel.swift; sourceTree = "<group>"; };
 		B09325872FE6A239008B1101 /* OtpVerificationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationProtocol.swift; sourceTree = "<group>"; };
-		B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationOtpVerificationViewModel.swift; sourceTree = "<group>"; };
+		B093258B2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOtpVerificationViewModel.swift; sourceTree = "<group>"; };
 		B093258E2FE6A8F3008B1101 /* VerifyEmailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailResponseModel.swift; sourceTree = "<group>"; };
+		B097A3BB2FF90D5A00AC0643 /* ResendOTPForEmailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendOTPForEmailResponseModel.swift; sourceTree = "<group>"; };
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304512D0F0B3C006F851A /* PersonalisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalisationViewController.swift; sourceTree = "<group>"; };
 		B0A304532D0F0C5A006F851A /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -1066,7 +1069,7 @@
 		B09325922FE6B3CD008B1101 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				B093258B2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift */,
+				B093258B2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
 				B09325742FE6939B008B1101 /* RegistrationViewController+Extension.swift */,
 				B06EEDB02D0B56B8000A6245 /* RegistrationViewModel.swift */,
@@ -1178,6 +1181,7 @@
 		B0EDF03E2D32678300767EAB /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				B097A3BB2FF90D5A00AC0643 /* ResendOTPForEmailResponseModel.swift */,
 				B087829C2D9ED88E00D60456 /* SaltyMenuResponseModel.swift */,
 				B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */,
 				B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */,
@@ -1585,6 +1589,7 @@
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
+				B097A3BC2FF90D6800AC0643 /* ResendOTPForEmailResponseModel.swift in Sources */,
 				B0ADB6A92D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
 				B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */,
@@ -1688,7 +1693,7 @@
 				B0A304522D0F0B3C006F851A /* PersonalisationViewController.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
-				B093258C2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */,
+				B093258C2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
 				B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */,
 				B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */,
@@ -1745,6 +1750,7 @@
 				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
 				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
 				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
+				B097A3BD2FF90D6800AC0643 /* ResendOTPForEmailResponseModel.swift in Sources */,
 				B0ADB6AA2D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */,
 				B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */,
@@ -1848,7 +1854,7 @@
 				B0B1AEE12D4F8DB6007371A9 /* PersonalisationViewController.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
-				B093258D2FE6A28B008B1101 /* RegistrationOtpVerificationViewModel.swift in Sources */,
+				B093258D2FE6A28B008B1101 /* EmailOtpVerificationViewModel.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
 				B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */,
 				B0B1AEE62D4F8DB6007371A9 /* IncidentShareViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 import StoreKit
 import UIKit
 
-class SubscriptionInfoViewController: UIViewController, SubscriptionManagerDelegate, MyAccountViewDelegate {
+class SubscriptionInfoViewController: UIViewController, SubscriptionManagerDelegate {
     @IBOutlet var termsStackView: UIStackView!
     @IBOutlet var privacyPolicyStackView: UIStackView!
 
@@ -71,17 +71,26 @@ class SubscriptionInfoViewController: UIViewController, SubscriptionManagerDeleg
         }
     }
 
-    func dataLoaded(status: Bool, message: String) {
-        hideLoader()
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
-            self.dismiss(animated: true)
-        })])
-    }
-
     // A convenience method to instantiate from the storyboard
     static func instantiate() -> SubscriptionInfoViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SubscriptionInfoViewController") as! SubscriptionInfoViewController
         return viewController
+    }
+}
+
+extension SubscriptionInfoViewController: MyAccountViewDelegate {
+    func success(dataLoaded userData: UserProfileData, message: String) {
+        hideLoader()
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+            self.dismiss(animated: true)
+        })])
+    }
+    
+    func failure(message: String) {
+        hideLoader()
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+            self.dismiss(animated: true)
+        })])
     }
 }

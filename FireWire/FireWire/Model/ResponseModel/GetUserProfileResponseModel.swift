@@ -29,12 +29,13 @@ struct UserProfileData: Codable {
     let phone: Int?
     let otpValidUpto: String?
     let unit: [String]?
-    
+    let emailVerified: Bool
+
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName, mobile, email, role, title, locality, subLocality
         case v = "__v"
-        case refreshToken, webToken, lastLogin, resetToken, permission, type, img, lastName, phone, otpValidUpto, unit
+        case refreshToken, webToken, lastLogin, resetToken, permission, type, img, lastName, phone, otpValidUpto, unit, emailVerified
     }
     
     
@@ -61,5 +62,6 @@ struct UserProfileData: Codable {
         phone = try container.decodeIfPresent(Int.self, forKey: .phone)
         otpValidUpto = try container.decodeIfPresent(String.self, forKey: .otpValidUpto)
         unit = try container.decodeIfPresent([String].self, forKey: .unit)
+        emailVerified = try container.decodeIfPresent(Bool.self, forKey: .emailVerified) ?? false
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import OneSignalFramework
 
-final class RegistrationOtpVerificationViewModel: OtpVerificationProtocol {
+final class EmailOtpVerificationViewModel: OtpVerificationProtocol {
     weak var delegate: OtpVerificationViewModelDelegate?
     let email: String
     private(set) var otp: String

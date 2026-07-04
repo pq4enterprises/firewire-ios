@@ -61,7 +61,18 @@ class IncidentHomeViewController: PulleyViewController {
             self.hideLoader()
 
             if !result && errorMessage != "" {
-                self.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                if errorMessage.lowercased() == APIError.tokenExpired.localizedDescription.lowercased() {
+                    self.showAlert(title: "", message: errorMessage, actions: [
+                        UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                            self.appCoordinator?.backToParentCoordinator()
+                        })
+                    ])
+                    return
+                }
+
+                self.showAlert(title: "", message: errorMessage, actions: [
+                    UIAlertAction(title: "Ok", style: .cancel)
+                ])
             }else if !result && errorMessage == "" {
                  self.coordinator?.navigateToSelectArea()
             }else{

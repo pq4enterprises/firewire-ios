@@ -180,4 +180,11 @@ class HomeCoordinator: BaseCoordinator {
         saltyMenuView.coordinator = self
         pushViewController(saltyMenuView, animated: true)
     }
+
+    func navigateToOTPVerification(email: String, verificationType: OTPVerificationType) {
+        let viewModel: OtpVerificationProtocol = EmailOtpVerificationViewModel(email: email, otp: "")
+        let otpViewController = OtpVerificationViewController.instantiate(viewModel: viewModel, verificationType: verificationType)
+        otpViewController.homeCoordinator = self
+        pushViewController(otpViewController, animated: true)
+    }
 }
