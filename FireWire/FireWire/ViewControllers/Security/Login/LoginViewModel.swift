@@ -30,6 +30,11 @@ final class LoginViewModel {
                 return
             }
 
+            if apiResponse.code == "email_not_verified", let email = apiResponse.data?.email {
+                self?.delegate?.emailNotVerified(forEmail: email, message: apiResponse.message)
+                return
+            }
+
             if apiResponse.code != "success" {
                 self?.delegate?.loginFailed(errorMessage: apiResponse.message)
                 return

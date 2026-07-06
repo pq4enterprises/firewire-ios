@@ -23,7 +23,8 @@ struct LoginDataModel: Codable {
     let active: Bool?
     let token: String?
     let refreshToken: String?
-    
+    let emailVerified: Bool
+
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
@@ -35,5 +36,21 @@ struct LoginDataModel: Codable {
         case active
         case token
         case refreshToken
+        case emailVerified
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        firstName = try container.decodeIfPresent(String.self, forKey: .firstName)
+        lastName = try container.decodeIfPresent(String.self, forKey: .lastName)
+        email = try container.decodeIfPresent(String.self, forKey: .email)
+        mobile = try container.decodeIfPresent(String.self, forKey: .mobile)
+        role = try container.decodeIfPresent(String.self, forKey: .role)
+        verified = (try? container.decodeIfPresent(Bool.self, forKey: .verified)) ?? false
+        active = try container.decodeIfPresent(Bool.self, forKey: .active)
+        token = try container.decodeIfPresent(String.self, forKey: .token)
+        refreshToken = try container.decodeIfPresent(String.self, forKey: .refreshToken)
+        emailVerified = (try? container.decodeIfPresent(Bool.self, forKey: .emailVerified)) ?? false
     }
 }

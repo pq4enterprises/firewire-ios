@@ -18,6 +18,7 @@ enum LoginType: Int {
 protocol LoginViewDelegate: AnyObject {
     func loginSuccess(_ type: LoginType)
     func loginFailed(errorMessage: String)
+    func emailNotVerified(forEmail email: String, message: String)
 }
 
 class LoginViewController: UIViewController {
@@ -237,6 +238,16 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController: LoginViewDelegate {
+    func emailNotVerified(forEmail email: String, message: String) {
+        hideLoader()
+        self.showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.coordinator?.navigateToOTPVerification(
+                email: email,
+                verificationType: .registration
+            )
+        })], cancel: true)
+    }
+    
     func loginSuccess(_ type: LoginType) {
         viewModel?.validateIfAreaSelected(forType: .area) { result in
             self.hideLoader()

@@ -66,7 +66,7 @@ final class EmailOtpVerificationViewModel: OtpVerificationProtocol {
     }
 
     func resendOtp(){
-        let emailModel = APIPayload.resendEmailOtp(email: FWUserDefaults().userEmail ?? "").toDictionary()
+        let emailModel = APIPayload.resendEmailOtp(email: email).toDictionary()
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.resendEmailOtp,
