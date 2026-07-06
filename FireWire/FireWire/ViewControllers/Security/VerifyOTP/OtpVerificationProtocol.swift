@@ -10,6 +10,7 @@ import Foundation
 protocol OtpVerificationViewModelDelegate: AnyObject {
     func otpVerificationSuccess(data: VerifyOtpResponseData?)
     func otpVerificationFailure(errorMessage: String)
+    func resendOtpSuccess(message: String)
 }
 
 protocol OtpVerificationProtocol: AnyObject {
@@ -18,4 +19,5 @@ protocol OtpVerificationProtocol: AnyObject {
     
     func updateOtp(_ otp: String)
     func submitOtp()
+    func resendOtp()
 }

@@ -64,4 +64,31 @@ final class EmailOtpVerificationViewModel: OtpVerificationProtocol {
             self?.delegate?.otpVerificationSuccess(data: nil)
         }
     }
+
+    func resendOtp(){
+        let emailModel = APIPayload.resendEmailOtp(email: FWUserDefaults().userEmail ?? "").toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.resendEmailOtp,
+            payload: emailModel as JSON,
+            expect: ResendOTPForEmailResponseModel.self,
+        ) { [weak self] response, _, error in
+            if let errorMessage = error {
+                self?.delegate?.otpVerificationFailure(errorMessage: errorMessage)
+                return
+            }
+
+            guard let apiResponse = response as? ResendOTPForEmailResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
+                self?.delegate?.otpVerificationFailure(errorMessage: errorMessage)
+                return
+            }
+
+            if apiResponse.code == "success"{
+                self?.delegate?.resendOtpSuccess(message: apiResponse.message)
+            }else{
+                self?.delegate?.otpVerificationFailure(errorMessage: apiResponse.message)
+            }
+        }
+    }
 }

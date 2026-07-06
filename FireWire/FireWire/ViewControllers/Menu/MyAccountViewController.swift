@@ -26,7 +26,7 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
     @IBOutlet var updateProfileView: UIStackView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
-    @IBOutlet var verifyEmailButton: UIButton!
+    @IBOutlet weak var verifyEmailLabel: FWPaddingLabel!
     @IBOutlet var logoutView: UIStackView!
     @IBOutlet var termsStackView: UIStackView!
     @IBOutlet var privacyPolicyStackView: UIStackView!
@@ -98,6 +98,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
         let updateProfileTapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfileViewTap))
         updateProfileView.isUserInteractionEnabled = true
         updateProfileView.addGestureRecognizer(updateProfileTapGesture)
+
+        let verifyEmailTapGesture = UITapGestureRecognizer(target: self, action: #selector(verifyEmailViewTap))
+        verifyEmailLabel.isUserInteractionEnabled = true
+        verifyEmailLabel.addGestureRecognizer(verifyEmailTapGesture)
     }
 
     @objc func logoutViewTap() {
@@ -119,6 +123,10 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
         coordinator?.navigateToUpdateProfile()
     }
 
+    @objc func verifyEmailViewTap(){
+        viewModel?.requestEmailVerification()
+    }
+
     @IBAction func backButtonTap(_ sender: UIButton) {
         if let appCoordinator {
             appCoordinator.popView()
@@ -135,10 +143,6 @@ class MyAccountViewController: UIViewController, SubscriptionManagerDelegate {
         Task {
             await SubscriptionManager.shared.purchaseMyProduct()
         }
-    }
-
-    @IBAction func verifyEmailTap(_ sender: UIButton) {
-        viewModel?.requestEmailVerification()
     }
 
     @IBAction func restoreSubscriptionTap(_ sender: UIButton) {
@@ -192,7 +196,7 @@ extension MyAccountViewController: MyAccountViewDelegate, EmailVerificationDeleg
             showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
 
-        verifyEmailButton.isHidden = userData.emailVerified
+        updateVerifyButton(isVerified: userData.emailVerified)
     }
 
     func failure(message: String) {
@@ -200,6 +204,22 @@ extension MyAccountViewController: MyAccountViewDelegate, EmailVerificationDeleg
 
         if !message.isEmpty {
             showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
+    }
+
+    func updateVerifyButton(isVerified: Bool) {
+        verifyEmailLabel.layer.cornerRadius = 8
+        verifyEmailLabel.layer.masksToBounds = true
+        verifyEmailLabel.textAlignment = .center
+
+        if isVerified {
+            verifyEmailLabel.text = "✓ Verified Email"
+            verifyEmailLabel.textColor = .systemGreen
+            verifyEmailLabel.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.15)
+        } else {
+            verifyEmailLabel.text = "Verify Email"
+            verifyEmailLabel.textColor = .systemBlue
+            verifyEmailLabel.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.15)
         }
     }
 }

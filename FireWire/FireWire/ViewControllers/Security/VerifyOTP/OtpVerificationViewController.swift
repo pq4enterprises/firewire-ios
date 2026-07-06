@@ -50,7 +50,8 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func resentOTPTap(_ sender: UIButton) {
-        requestOtp()
+        showLoader()
+        viewModel.resendOtp()
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -107,37 +108,16 @@ extension OtpVerificationViewController {
         viewModel.updateOtp(otp)
         viewModel.submitOtp()
     }
-
-    func requestOtp() {
-        showLoader()
-
-        APIRequest().callApi(
-            apiEndPoint: APIEndpoints.forgotPassword,
-            payload: APIPayload.forgotPassword(email: viewModel.email).toDictionary(),
-            expect: ForgotPasswordResponseModel.self
-        ) { [weak self] response, _, error in
-
-            self?.hideLoader()
-            if let errorMessage = error {
-                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                return
-            }
-
-            guard let apiResponse = response else {
-                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                return
-            }
-
-            if let response = apiResponse as? ForgotPasswordResponseModel {
-                if response.code.lowercased() != "success" {
-                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                }
-            }
-        }
-    }
 }
 
 extension OtpVerificationViewController: OtpVerificationViewModelDelegate {
+    func resendOtpSuccess(message: String) {
+        DispatchQueue.main.async {
+            self.hideLoader()
+            self.showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        }
+    }
+
     func otpVerificationSuccess(data: VerifyOtpResponseData?) {
         DispatchQueue.main.async {
             self.hideLoader()

@@ -13,10 +13,10 @@ struct ForgotPasswordResponseModel: Codable {
 }
 
 struct ForgotPasswordResponseData: Codable {
-    let error: Bool
-    let message: String
+    let email: String
+    let emailVerified: Bool
 
     enum CodingKeys: String, CodingKey {
-        case error, message
+        case email, emailVerified
     }
 }

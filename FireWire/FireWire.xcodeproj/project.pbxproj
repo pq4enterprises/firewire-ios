@@ -101,6 +101,8 @@
 		B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
 		B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
+		B07C64162FFBFDED00317C2B /* FWPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C64152FFBFDE700317C2B /* FWPaddingLabel.swift */; };
+		B07C64172FFBFDED00317C2B /* FWPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C64152FFBFDE700317C2B /* FWPaddingLabel.swift */; };
 		B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
 		B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6602D84976900E2D673 /* FWLoaderView.swift */; };
 		B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F6632D84BF8800E2D673 /* PostWebViewController.swift */; };
@@ -524,6 +526,7 @@
 		B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewModel.swift; sourceTree = "<group>"; };
 		B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
+		B07C64152FFBFDE700317C2B /* FWPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWPaddingLabel.swift; sourceTree = "<group>"; };
 		B081F6602D84976900E2D673 /* FWLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWLoaderView.swift; sourceTree = "<group>"; };
 		B081F6632D84BF8800E2D673 /* PostWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWebViewController.swift; sourceTree = "<group>"; };
 		B08236E92CE374D10092AC01 /* FireWire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -760,6 +763,7 @@
 		9B4F50D42CF57068007D319D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B07C64152FFBFDE700317C2B /* FWPaddingLabel.swift */,
 				B071E0202CE5036500D09598 /* FWShadowButton.swift */,
 				B04682442CE6685300419C65 /* FWRoundedButton.swift */,
 				B04682462CE66B3700419C65 /* FWSegmentControl.swift */,
@@ -1676,6 +1680,7 @@
 				B0D825E22E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B09325892FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */,
+				B07C64172FFBFDED00317C2B /* FWPaddingLabel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
 				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
@@ -1837,6 +1842,7 @@
 				B0D825E32E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
 				B09325882FE6A239008B1101 /* OtpVerificationProtocol.swift in Sources */,
+				B07C64162FFBFDED00317C2B /* FWPaddingLabel.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
 				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,

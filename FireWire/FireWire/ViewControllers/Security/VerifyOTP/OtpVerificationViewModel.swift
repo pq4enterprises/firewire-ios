@@ -57,4 +57,29 @@ final class OtpVerificationViewModel: OtpVerificationProtocol {
             self?.delegate?.otpVerificationSuccess(data: data)
         }
     }
+
+    func resendOtp() {
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.forgotPassword,
+            payload: APIPayload.forgotPassword(email: email).toDictionary(),
+            expect: ForgotPasswordResponseModel.self
+        ) { [weak self] response, _, error in
+
+            if let errorMessage = error {
+                self?.delegate?.otpVerificationFailure(errorMessage: errorMessage)
+                return
+            }
+
+            guard let apiResponse = response else {
+                self?.delegate?.otpVerificationFailure(errorMessage: "Technical error, please try again!")
+                return
+            }
+
+            if let response = apiResponse as? ForgotPasswordResponseModel {
+                if response.code.lowercased() == "success" {
+                    self?.delegate?.resendOtpSuccess(message: response.message)
+                }
+            }
+        }
+    }
 }
