@@ -63,7 +63,8 @@ public class APIRequest {
                                     completionHandler: completionHandler
                                 )
                             } else {
-                                completionHandler(nil, nil, APIError.tokenExpired.localizedDescription)
+                                NotificationCenter.default.post(name: .sessionExpired, object: nil)
+                                completionHandler(nil, nil, nil)
                             }
                         }
                     } else {

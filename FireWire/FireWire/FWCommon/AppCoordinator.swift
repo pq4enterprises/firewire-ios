@@ -6,14 +6,14 @@
 //
 
 import GoogleSignIn
-import UIKit
 import OneSignalFramework
+import UIKit
 
 class AppCoordinator: BaseCoordinator {
     override func start() {
         if VersionChecker.isBuildUpdateRequired() {
-            self.navigateToForceUpdate()
-        }else{
+            navigateToForceUpdate()
+        } else {
             isUserLoggedIn { isLoggedIn in
                 if isLoggedIn {
                     self.navigateToHome()
@@ -22,6 +22,8 @@ class AppCoordinator: BaseCoordinator {
                 }
             }
         }
+
+        observeSessionExpiry()
     }
 
     func navigateToForceUpdate() {
@@ -43,8 +45,7 @@ class AppCoordinator: BaseCoordinator {
         homeCoordinator.start()
     }
 
-
-    func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false){
+    func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false) {
         let homeCoordinator = HomeCoordinator(navigationController: navigationController)
         addChildCoordinator(homeCoordinator)
         homeCoordinator.parentCoordinator = self
@@ -86,10 +87,38 @@ class AppCoordinator: BaseCoordinator {
             FWUserDefaults.removeObjectForKey(key: .userTokenKey)
         }
 
-        //Logout google sign in
+        // Logout google sign in
         GIDSignIn.sharedInstance.signOut()
 
-        //Notification logout
+        // Notification logout
         OneSignal.logout()
+    }
+
+    private func observeSessionExpiry() {
+        NotificationCenter.default.removeObserver(self, name: .sessionExpired, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleSessionExpired),
+            name: .sessionExpired,
+            object: nil
+        )
+    }
+
+    @objc private func handleSessionExpired() {
+        // Dismiss any presented VCs first (covers modals, alerts, etc.)
+        navigationController.dismiss(animated: false)
+        showSessionExpiredAlertAndLogout()
+    }
+
+    private func showSessionExpiredAlertAndLogout() {
+        let alert = UIAlertController(
+            title: "",
+            message: APIError.tokenExpired.localizedDescription,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+            self?.backToParentCoordinator()
+        })
+        navigationController.topViewController?.present(alert, animated: true)
     }
 }

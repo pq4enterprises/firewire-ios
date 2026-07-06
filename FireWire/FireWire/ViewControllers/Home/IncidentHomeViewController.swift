@@ -5,9 +5,9 @@
 //  Created by Sujitha Palanisamy on 17/07/25.
 //
 
+import FirebaseAnalytics
 import Pulley
 import UIKit
-import FirebaseAnalytics
 
 protocol IncidentDrawerDelegate {
     func incidentListExpanded(_ value: Bool)
@@ -29,7 +29,7 @@ class IncidentHomeViewController: PulleyViewController {
         return primaryContentViewController as? IncidentMapViewController
     }
 
-    @IBOutlet weak var changeViewButton: FWRoundedButton!
+    @IBOutlet var changeViewButton: FWRoundedButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class IncidentHomeViewController: PulleyViewController {
 
         changeViewButton.isHidden = true
         changeViewButton.setupShadow()
-        self.view.bringSubviewToFront(changeViewButton)
+        view.bringSubviewToFront(changeViewButton)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -57,25 +57,16 @@ class IncidentHomeViewController: PulleyViewController {
         ])
 
         showLoader()
-        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result, errorMessage  in
+        incidentsViewModel?.validateIfAreaSelected(forType: .area) { result, errorMessage in
             self.hideLoader()
 
             if !result && errorMessage != "" {
-                if errorMessage.lowercased() == APIError.tokenExpired.localizedDescription.lowercased() {
-                    self.showAlert(title: "", message: errorMessage, actions: [
-                        UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                            self.appCoordinator?.backToParentCoordinator()
-                        })
-                    ])
-                    return
-                }
-
                 self.showAlert(title: "", message: errorMessage, actions: [
                     UIAlertAction(title: "Ok", style: .cancel)
                 ])
-            }else if !result && errorMessage == "" {
-                 self.coordinator?.navigateToSelectArea()
-            }else{
+            } else if !result && errorMessage == "" {
+                self.coordinator?.navigateToSelectArea()
+            } else {
                 self.fetchIncidents()
             }
         }
@@ -90,12 +81,12 @@ class IncidentHomeViewController: PulleyViewController {
         self.forceRefresh = forceRefresh
     }
 
-    func showTutorial(){
+    func showTutorial() {
         if let parentVC = parent as? HomeViewController {
             parentVC.showTutorial()
         }
     }
-    
+
     override func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
         if drawer.drawerPosition == .open {
             backgroundDimmingColor = .systemBackground
@@ -122,9 +113,9 @@ class IncidentHomeViewController: PulleyViewController {
     }
 
     @IBAction func changeViewButtonTapped(_ sender: UIButton) {
-        let isOpen = self.drawerPosition == .open
+        let isOpen = drawerPosition == .open
         let newPosition: PulleyPosition = isOpen ? .closed : .open
-        self.setDrawerPosition(position: newPosition, animated: true)
+        setDrawerPosition(position: newPosition, animated: true)
     }
 }
 
@@ -139,7 +130,7 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
             drawerVC.items = incidentsViewModel.items
             drawerVC.totalPages = incidentsViewModel.totalPages
             drawerVC.forceRefresh = forceRefresh
-            self.forceRefresh = false // Reset force refresh
+            forceRefresh = false // Reset force refresh
         }
     }
 
@@ -154,15 +145,6 @@ extension IncidentHomeViewController: IncidentsViewViewDelegate {
 
     func error(message: String) {
         hideLoader()
-
-        if message.lowercased() == APIError.tokenExpired.localizedDescription.lowercased() {
-            showAlert(title: "", message: message, actions: [
-                UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                    self.appCoordinator?.backToParentCoordinator()
-                })
-            ])
-            return
-        }
 
         showAlert(title: "", message: message, actions: [
             UIAlertAction(title: "Ok", style: .cancel)
