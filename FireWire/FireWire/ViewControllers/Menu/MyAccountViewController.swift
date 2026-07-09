@@ -213,13 +213,15 @@ extension MyAccountViewController: MyAccountViewDelegate, EmailVerificationDeleg
         verifyEmailLabel.textAlignment = .center
 
         if isVerified {
-            verifyEmailLabel.text = "✓ Verified Email"
+            verifyEmailLabel.text = "✓ Verified"
             verifyEmailLabel.textColor = .systemGreen
             verifyEmailLabel.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.15)
+            verifyEmailLabel.isUserInteractionEnabled = false
         } else {
             verifyEmailLabel.text = "Verify Email"
             verifyEmailLabel.textColor = .systemBlue
             verifyEmailLabel.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.15)
+            verifyEmailLabel.isUserInteractionEnabled = true
         }
     }
 }

@@ -51,7 +51,7 @@ class ForgotPasswordViewController: UIViewController {
             }
 
             if let response = apiResponse as? ForgotPasswordResponseModel {
-                if response.code.lowercased() == "success" {
+                if response.code.lowercased() == "success" || response.code.lowercased() == "email_not_verified" {
                     self?.coordinator?.navigateToOTPVerification(email: email, verificationType: .forgotPassword)
                 } else {
                     self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
