@@ -46,7 +46,7 @@ final class RegistrationViewModel {
                 return
             }
 
-            if registerResponse.code == "email_not_verified" {
+            if registerResponse.code == "email_not_verified" || registerResponse.code == "success" {
                 self?.delegate?.registrationSuccess(forEmail: model.email)
             } else {
                 let errorMessage = registerResponse.message ?? registerResponse.error ?? "Error registering new user"
