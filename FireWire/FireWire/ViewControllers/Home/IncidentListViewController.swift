@@ -149,7 +149,7 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         cell.commentAction = {
-            self.coordinator?.navigateToIncidentDetail(selectedIncident.id, openComments: true)
+            self.coordinator?.navigateToIncidentDetail(selectedIncident.id, openComments: true, subLocalityName: selectedIncident.subLocality.first?.name)
         }
         cell.shareAction = {
             let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
@@ -161,8 +161,8 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.dismissView(animated: true)
-        let selectedIncidentID = items[indexPath.row].id
-        coordinator?.navigateToIncidentDetail(selectedIncidentID)
+        let selectedItem = items[indexPath.row]
+        coordinator?.navigateToIncidentDetail(selectedItem.id, subLocalityName: selectedItem.subLocality.first?.name)
     }
 
     func shareContentToSocialMedia(text: String, image: UIImage? = nil) {

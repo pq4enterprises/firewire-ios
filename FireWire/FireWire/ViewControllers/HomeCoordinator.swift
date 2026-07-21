@@ -18,9 +18,9 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(homeViewController, animated: true)
     }
 
-    func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false){
+    func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false, subLocalityName: String? = nil){
         let postDetailViewController = IncidentDetailViewController.instantiate()
-        postDetailViewController.setSelectedIncidentID(incidentID, openComments)
+        postDetailViewController.setSelectedIncidentID(incidentID, openComments, subLocalityName: subLocalityName)
         postDetailViewController.coordinator = self
         pushViewController(postDetailViewController, animated: true)
     }

@@ -366,7 +366,7 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.commentAction = {
-            self.coordinator?.navigateToIncidentDetail(selectedIncident.id, openComments: true)
+            self.coordinator?.navigateToIncidentDetail(selectedIncident.id, openComments: true, subLocalityName: selectedIncident.subLocality.first?.name)
         }
         cell.shareAction = {
             let shareContent = "\(selectedIncident.field1Value) \n\(selectedIncident.address)"
@@ -378,8 +378,8 @@ extension IncidentsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.dismissView(animated: true)
-        let selectedIncidentID = incidentsViewModel.items[indexPath.row].id
-        coordinator?.navigateToIncidentDetail(selectedIncidentID)
+        let selectedItem = incidentsViewModel.items[indexPath.row]
+        coordinator?.navigateToIncidentDetail(selectedItem.id, subLocalityName: selectedItem.subLocality.first?.name)
     }
 }
 
@@ -410,7 +410,8 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
         if let markerTitle = marker.title,
            let selectedIncidentID = incidentsViewModel.getSelectedIncidentIdFromMapTitle(title: markerTitle)
         {
-            coordinator?.navigateToIncidentDetail(selectedIncidentID)
+            let subLocalityName = incidentsViewModel.items.first { $0.id == selectedIncidentID }?.subLocality.first?.name
+            coordinator?.navigateToIncidentDetail(selectedIncidentID, subLocalityName: subLocalityName)
         }
     }
 }

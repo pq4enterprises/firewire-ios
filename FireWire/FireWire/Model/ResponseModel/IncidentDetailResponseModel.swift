@@ -29,13 +29,14 @@ struct IncidentDetailModel: Codable {
     let createdAt, updatedAt: String
     let v: Int
     let featuredImageUrl: String?
+    let subLocalityName: String?
     var commentCount, likeCount: Int
     let points: [Point]?
     var isLiked: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case latitude, longitude, address, respondingUnits, featured, sendPushNotification, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, featuredImageUrl
+        case latitude, longitude, address, respondingUnits, featured, sendPushNotification, field1Value, field2Value, field3Value, field4Value, field5Value, createdAt, updatedAt, featuredImageUrl, subLocalityName
         case v = "__v"
         case commentCount, likeCount
         case points
@@ -65,6 +66,7 @@ struct IncidentDetailModel: Codable {
         field4Value = try container.decodeIfPresent(String.self, forKey: .field4Value)
         field5Value = try container.decodeIfPresent(String.self, forKey: .field5Value)
         featuredImageUrl = try container.decodeIfPresent(String.self, forKey: .featuredImageUrl)
+        subLocalityName = try container.decodeIfPresent(String.self, forKey: .subLocalityName)
         points = try container.decodeIfPresent([Point].self, forKey: .points)
 
         // Handle the isLiked flag with a default value if not present
