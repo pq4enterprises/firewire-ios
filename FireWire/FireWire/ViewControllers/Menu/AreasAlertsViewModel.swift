@@ -132,8 +132,33 @@ final class AreasAlertsViewModel {
             return RegionGroup(localityId: locality.id, name: locality.name, rows: rows)
         }
 
+        groups.sort { lhs, rhs in
+            let lhsRank = Self.regionRank(lhs.name)
+            let rhsRank = Self.regionRank(rhs.name)
+            if lhsRank != rhsRank { return lhsRank < rhsRank }
+            return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
+        }
+
         originalFeedSet = currentFeedSet
         originalAlertSet = alertChecked
+    }
+
+    /// Region display priority — first match wins; unlisted regions follow alphabetically.
+    /// Adjust this list to change the on-screen order. Future: drive from a
+    /// portal-managed Locality.sort field once the backend adds one.
+    private static let regionOrder = [
+        "NEW YORK CITY",
+        "LONG ISLAND",
+        "USA",
+        "UNITED STATES",
+        "CANADA",
+        "EUROPE",
+        "UNITED KINGDOM"
+    ]
+
+    private static func regionRank(_ name: String) -> Int {
+        let key = name.trimmingCharacters(in: .whitespaces).uppercased()
+        return regionOrder.firstIndex(of: key) ?? regionOrder.count
     }
 
     // MARK: - Mutations
