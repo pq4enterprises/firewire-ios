@@ -32,6 +32,7 @@
 		B0050EF52E2D20B1001810D5 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = B0050EF42E2D20B1001810D5 /* FirebaseRemoteConfig */; };
 		B006D91A2D42B6600082E59E /* FeedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */; };
 		B006D91C2D42B7430082E59E /* FeedListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */; };
+		B0C4A1022E32AB0100000002 /* LinkListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4A1012E32AB0100000001 /* LinkListResponseModel.swift */; };
 		B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
 		B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */; };
@@ -203,6 +204,7 @@
 		B0B1AE8C2D4F8DB6007371A9 /* FWRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682442CE6685300419C65 /* FWRoundedButton.swift */; };
 		B0B1AE8D2D4F8DB6007371A9 /* IncidentLocalityRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF03B2D3266EC00767EAB /* IncidentLocalityRequestModel.swift */; };
 		B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */; };
+		B0C4A1032E32AB0100000003 /* LinkListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4A1012E32AB0100000001 /* LinkListResponseModel.swift */; };
 		B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
 		B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
 		B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
@@ -455,6 +457,7 @@
 		B00442042D7C5E64008259FB /* FWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWNetworkManager.swift; sourceTree = "<group>"; };
 		B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewModel.swift; sourceTree = "<group>"; };
 		B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListResponseModel.swift; sourceTree = "<group>"; };
+		B0C4A1012E32AB0100000001 /* LinkListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkListResponseModel.swift; sourceTree = "<group>"; };
 		B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		B00A48EB2D0D77DD0088F66F /* FWImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImageView.swift; sourceTree = "<group>"; };
 		B00A48ED2D0D84C10088F66F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
@@ -1118,6 +1121,7 @@
 			children = (
 				B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */,
 				B006D91B2D42B73C0082E59E /* FeedListResponseModel.swift */,
+				B0C4A1012E32AB0100000001 /* LinkListResponseModel.swift */,
 				B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */,
 				B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */,
 				B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */,
@@ -1519,6 +1523,7 @@
 				B04682452CE6685300419C65 /* FWRoundedButton.swift in Sources */,
 				B0EDF03C2D3266EC00767EAB /* IncidentLocalityRequestModel.swift in Sources */,
 				B006D91C2D42B7430082E59E /* FeedListResponseModel.swift in Sources */,
+				B0C4A1022E32AB0100000002 /* LinkListResponseModel.swift in Sources */,
 				B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */,
 				B027AE532D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
@@ -1672,6 +1677,7 @@
 				B0B1AE8C2D4F8DB6007371A9 /* FWRoundedButton.swift in Sources */,
 				B0B1AE8D2D4F8DB6007371A9 /* IncidentLocalityRequestModel.swift in Sources */,
 				B0B1AE8E2D4F8DB6007371A9 /* FeedListResponseModel.swift in Sources */,
+				B0C4A1032E32AB0100000003 /* LinkListResponseModel.swift in Sources */,
 				B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */,
 				B027AE522D792D5800F8BF4A /* FWUserDefaults.swift in Sources */,
 				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,

@@ -27,11 +27,30 @@ class MenuViewController: UIViewController {
     /// Card-styled views whose CGColor borders need refreshing on theme change.
     private var borderedViews: [UIView] = []
 
+    // MARK: Shortcuts state
+
+    /// One menu shortcut tile: static built-in or server-driven from the Link API.
+    private struct ShortcutItem {
+        let title: String
+        let systemImage: String
+        let imageUrl: String?
+        let tint: UIColor
+        let color: UIColor
+        let action: () -> Void
+    }
+
+    /// Vertical container that holds the shortcut tile rows so they can be
+    /// re-rendered when server links arrive without touching the rest of the menu.
+    private let shortcutsStack = UIStackView()
+    private var shortcutTileViews: [UIView] = []
+    private var shortcutActions: [() -> Void] = []
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         buildUI()
+        fetchAppLinks()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -231,57 +250,129 @@ class MenuViewController: UIViewController {
         contentStack.addArrangedSubview(sectionLabel)
         contentStack.setCustomSpacing(10, after: sectionLabel)
 
-        // Top row — two large tiles
-        let tipTile = shortcutTile(
-            title: "SUBMIT A TIP", systemImage: "exclamationmark.triangle",
-            tint: FireWireTheme.orangeTint, color: FireWireTheme.orange,
-            circleSize: 56, titleSize: 14, padding: 22,
-            action: #selector(submitTipViewTap))
-        let podcastTile = shortcutTile(
-            title: "CHICAGO PODCAST", systemImage: "mic",
-            tint: FireWireTheme.surface2, color: FireWireTheme.text,
-            circleSize: 56, titleSize: 14, padding: 22,
-            action: #selector(podcastViewTap))
+        shortcutsStack.axis = .vertical
+        shortcutsStack.spacing = 12
+        contentStack.addArrangedSubview(shortcutsStack)
 
-        let topRow = UIStackView(arrangedSubviews: [tipTile, podcastTile])
-        topRow.axis = .horizontal
-        topRow.spacing = 12
-        topRow.distribution = .fillEqually
-        contentStack.addArrangedSubview(topRow)
-        contentStack.setCustomSpacing(12, after: topRow)
+        // Static tiles render immediately; the Link API response (if any)
+        // re-renders the stack with server-driven tiles when it arrives.
+        renderShortcuts(staticShortcutItems())
+    }
 
-        // Bottom row — three small tiles
-        let websiteTile = shortcutTile(
-            title: "FIREWIRE WEBSITE", systemImage: "globe",
-            tint: FireWireTheme.redTint, color: FireWireTheme.red,
-            circleSize: 46, titleSize: 11.5, padding: 18,
-            action: #selector(fireWireViewTap))
-        let contactTile = shortcutTile(
-            title: "CONTACT", systemImage: "envelope",
-            tint: FireWireTheme.infoTint, color: FireWireTheme.info,
-            circleSize: 46, titleSize: 11.5, padding: 18,
-            action: #selector(contactViewTap))
-        let personalisationTile = shortcutTile(
-            title: "PERSONALIZATION", systemImage: "gearshape",
+    /// The five built-in tiles — the fallback whenever the Link API fails
+    /// or returns no links. Matches the original hardcoded menu exactly.
+    private func staticShortcutItems() -> [ShortcutItem] {
+        [
+            ShortcutItem(
+                title: "SUBMIT A TIP", systemImage: "exclamationmark.triangle", imageUrl: nil,
+                tint: FireWireTheme.orangeTint, color: FireWireTheme.orange,
+                action: { [weak self] in self?.submitTipViewTap() }),
+            ShortcutItem(
+                title: "CHICAGO PODCAST", systemImage: "mic", imageUrl: nil,
+                tint: FireWireTheme.surface2, color: FireWireTheme.text,
+                action: { [weak self] in self?.podcastViewTap() }),
+            ShortcutItem(
+                title: "FIREWIRE WEBSITE", systemImage: "globe", imageUrl: nil,
+                tint: FireWireTheme.redTint, color: FireWireTheme.red,
+                action: { [weak self] in self?.fireWireViewTap() }),
+            ShortcutItem(
+                title: "CONTACT", systemImage: "envelope", imageUrl: nil,
+                tint: FireWireTheme.infoTint, color: FireWireTheme.info,
+                action: { [weak self] in self?.contactViewTap() }),
+            personalisationShortcutItem(),
+        ]
+    }
+
+    /// Built-in in-app tile — always kept, appended after any server links.
+    private func personalisationShortcutItem() -> ShortcutItem {
+        ShortcutItem(
+            title: "PERSONALIZATION", systemImage: "gearshape", imageUrl: nil,
             tint: FireWireTheme.successTint, color: FireWireTheme.success,
-            circleSize: 46, titleSize: 11.5, padding: 18,
-            action: #selector(personalisationViewTap))
+            action: { [weak self] in self?.personalisationViewTap() })
+    }
 
-        let bottomRow = UIStackView(arrangedSubviews: [websiteTile, contactTile, personalisationTile])
-        bottomRow.axis = .horizontal
-        bottomRow.spacing = 12
-        bottomRow.distribution = .fillEqually
-        contentStack.addArrangedSubview(bottomRow)
+    /// Maps portal-managed links to external-URL tiles, then appends the
+    /// built-in Personalization tile. Links missing a name or url are skipped.
+    private func serverShortcutItems(from links: [AppLinkData]) -> [ShortcutItem] {
+        var items: [ShortcutItem] = links.compactMap { link in
+            guard let name = link.name, !name.isEmpty,
+                  let url = link.url, !url.isEmpty
+            else { return nil }
+
+            let imageUrl = (link.imageUrl?.isEmpty == false) ? link.imageUrl : nil
+            return ShortcutItem(
+                title: name.uppercased(), systemImage: "link", imageUrl: imageUrl,
+                tint: FireWireTheme.surface2, color: FireWireTheme.text,
+                action: { [weak self] in self?.coordinator?.openURL(url) })
+        }
+
+        guard !items.isEmpty else { return [] }
+        items.append(personalisationShortcutItem())
+        return items
+    }
+
+    /// Rebuilds the tile grid for an arbitrary item count: the first row holds
+    /// up to two large tiles, every following row up to three small tiles
+    /// (padded with invisible spacers so tile widths stay consistent).
+    private func renderShortcuts(_ items: [ShortcutItem]) {
+        guard !items.isEmpty else { return }
+
+        borderedViews.removeAll { view in shortcutTileViews.contains(where: { $0 === view }) }
+        shortcutTileViews.removeAll()
+        shortcutActions = items.map { $0.action }
+        shortcutsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        // Top row — up to two large tiles
+        let topCount = min(2, items.count)
+        var topTiles: [UIView] = []
+        for index in 0 ..< topCount {
+            topTiles.append(shortcutTile(
+                item: items[index], index: index,
+                circleSize: 56, titleSize: 14, padding: 22))
+        }
+        addShortcutRow(topTiles, columns: topCount)
+
+        // Remaining rows — up to three small tiles each
+        var rowTiles: [UIView] = []
+        for index in topCount ..< items.count {
+            rowTiles.append(shortcutTile(
+                item: items[index], index: index,
+                circleSize: 46, titleSize: 11.5, padding: 18))
+            if rowTiles.count == 3 {
+                addShortcutRow(rowTiles, columns: 3)
+                rowTiles = []
+            }
+        }
+        if !rowTiles.isEmpty {
+            addShortcutRow(rowTiles, columns: 3)
+        }
+    }
+
+    private func addShortcutRow(_ tiles: [UIView], columns: Int) {
+        var views = tiles
+        while views.count < columns {
+            views.append(UIView()) // invisible spacer keeps tile widths equal
+        }
+        let row = UIStackView(arrangedSubviews: views)
+        row.axis = .horizontal
+        row.spacing = 12
+        row.distribution = .fillEqually
+        shortcutsStack.addArrangedSubview(row)
     }
 
     private func shortcutTile(
-        title: String, systemImage: String, tint: UIColor, color: UIColor,
-        circleSize: CGFloat, titleSize: CGFloat, padding: CGFloat,
-        action: Selector
+        item: ShortcutItem, index: Int,
+        circleSize: CGFloat, titleSize: CGFloat, padding: CGFloat
     ) -> UIView {
+        let title = item.title
+        let systemImage = item.systemImage
+        let tint = item.tint
+        let color = item.color
+
         let tile = UIView()
         FireWireTheme.cardStyle(tile)
         borderedViews.append(tile)
+        shortcutTileViews.append(tile)
 
         let circle = UIView()
         circle.backgroundColor = tint
@@ -295,6 +386,25 @@ class MenuViewController: UIViewController {
         icon.contentMode = .scaleAspectFit
         icon.translatesAutoresizingMaskIntoConstraints = false
         circle.addSubview(icon)
+
+        // Server-provided icon fills the circle over the SF Symbol placeholder
+        if let imageUrl = item.imageUrl, let url = URL(string: imageUrl) {
+            let circleImageView = UIImageView()
+            circleImageView.contentMode = .scaleAspectFill
+            circleImageView.clipsToBounds = true
+            circleImageView.layer.cornerRadius = circleSize / 2
+            circleImageView.translatesAutoresizingMaskIntoConstraints = false
+            circle.addSubview(circleImageView)
+
+            NSLayoutConstraint.activate([
+                circleImageView.topAnchor.constraint(equalTo: circle.topAnchor),
+                circleImageView.leadingAnchor.constraint(equalTo: circle.leadingAnchor),
+                circleImageView.trailingAnchor.constraint(equalTo: circle.trailingAnchor),
+                circleImageView.bottomAnchor.constraint(equalTo: circle.bottomAnchor),
+            ])
+
+            circleImageView.loadImage(from: url)
+        }
 
         let label = UILabel()
         label.text = title
@@ -322,9 +432,16 @@ class MenuViewController: UIViewController {
             label.bottomAnchor.constraint(equalTo: tile.bottomAnchor, constant: -padding * 0.8),
         ])
 
+        tile.tag = index
         tile.isUserInteractionEnabled = true
-        tile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        tile.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(shortcutTileTap(_:))))
         return tile
+    }
+
+    @objc private func shortcutTileTap(_ gesture: UITapGestureRecognizer) {
+        guard let index = gesture.view?.tag, shortcutActions.indices.contains(index) else { return }
+        shortcutActions[index]()
     }
 
     private func buildDeleteAccountButton() {
@@ -417,6 +534,29 @@ class MenuViewController: UIViewController {
 // MARK: - API Calls
 
 extension MenuViewController {
+    /// Fetches portal-managed shortcut links. Non-blocking: the static tiles
+    /// are already on screen; a successful response with at least one valid
+    /// link swaps them for server-driven tiles. Any failure or an empty list
+    /// silently keeps the static fallback.
+    func fetchAppLinks() {
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.appLinks,
+            payload: ["show": "true"] as JSON,
+            expect: LinkListResponseModel.self,
+            requestType: APIConstants.GET
+        ) { [weak self] response, _, error in
+            guard let self = self,
+                  error == nil,
+                  let linkResponse = response as? LinkListResponseModel,
+                  let links = linkResponse.data?.data
+            else { return }
+
+            let items = self.serverShortcutItems(from: links)
+            guard !items.isEmpty else { return }
+            self.renderShortcuts(items)
+        }
+    }
+
     func submitFeedback(reason: String) {
         showLoader()
         let postFeedbackRequestModel = APIPayload.postReasonToAccountDelete(reason: reason).toDictionary()
