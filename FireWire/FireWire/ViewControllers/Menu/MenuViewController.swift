@@ -16,7 +16,6 @@ class MenuViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var myAccountView: FWView!
-    @IBOutlet var saltyWireView: UIView!
     @IBOutlet var submitTipView: UIView!
     @IBOutlet var podcastView: UIView!
     @IBOutlet var fireWireView: UIView!
@@ -57,10 +56,6 @@ class MenuViewController: UIViewController {
         myAccountView.isUserInteractionEnabled = true
         myAccountView.addGestureRecognizer(accountViewTapGesture)
 
-        let saltyWireViewGesture = UITapGestureRecognizer(target: self, action: #selector(saltyWireViewTap))
-        saltyWireView.isUserInteractionEnabled = true
-        saltyWireView.addGestureRecognizer(saltyWireViewGesture)
-
         let submitTipViewGesture = UITapGestureRecognizer(target: self, action: #selector(submitTipViewTap))
         submitTipView.isUserInteractionEnabled = true
         submitTipView.addGestureRecognizer(submitTipViewGesture)
@@ -82,22 +77,8 @@ class MenuViewController: UIViewController {
         personalisationView.addGestureRecognizer(personalisationViewGesture)
     }
 
-    func unlockPremiumFeatureIfValid() -> Bool {
-        if FWUserDefaults().userRole == "basic_user" {
-            coordinator?.navigateToSubscriptionInfo()
-            return true
-        }
-        return false
-    }
-
     @objc func myAccountViewTap() {
         coordinator?.navigateToMyAccount()
-    }
-
-    @objc func saltyWireViewTap() {
-        guard unlockPremiumFeatureIfValid() == false else { return }
-        //coordinator?.openURL(APIEndpoints.saltyWireUrl)
-        coordinator?.navigateToGettinSaltyMenu()
     }
 
     @objc func submitTipViewTap() {

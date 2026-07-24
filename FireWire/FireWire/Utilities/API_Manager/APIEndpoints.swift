@@ -35,7 +35,6 @@ enum APIEndpoints {
     static let setSelectedArea = "api/app/user/area"
     static let setNotificationArea = "api/app/user/notification"
     static let submitSubscriptionDetails = "api/app/payment"
-    static let gettinSaltyMenu = "api/app/content"
     static let refreshToken = "api/app/auth/token/refresh"
 
     static let newsList = "https://nycfirewire.net/feed"
@@ -43,7 +42,6 @@ enum APIEndpoints {
     static let chicagoPodcastUrl = "https://www.chicagosbraveststories.com"
     static let contactUrl = "https://nycfirewire.net/contact/"
     static let fireWireUrl = "https://nycfirewire.net/"
-    static let saltyWireUrl = "https://saltywire.com/"
     static let termsAndConditionUrl = "https://nycfirewire.net/terms"
     static let privacyPolicyUrl = "https://nycfirewire.net/privacy"
 
