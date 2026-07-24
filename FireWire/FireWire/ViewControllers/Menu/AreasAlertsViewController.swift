@@ -35,9 +35,9 @@ class AreasAlertsViewController: UIViewController {
     private var groupCards: [UIView] = []
     private var groupChevrons: [UIImageView] = []
 
-    /// Region names the user collapsed (all groups start expanded) —
+    /// Region names the user expanded (all groups start collapsed) —
     /// mirrors the scanner screen's collapsible region headers.
-    private var collapsedGroups = Set<String>()
+    private var expandedGroups = Set<String>()
 
     /// Card-styled views whose CGColor borders need refreshing on theme change.
     private var borderedViews: [UIView] = []
@@ -393,7 +393,7 @@ class AreasAlertsViewController: UIViewController {
             groupsStack.addArrangedSubview(groupHeaderRow(for: group, groupIndex: groupIndex))
 
             let card = groupCard(for: group, groupIndex: groupIndex)
-            let collapsed = collapsedGroups.contains(group.name)
+            let collapsed = !expandedGroups.contains(group.name)
             card.isHidden = collapsed
             card.alpha = collapsed ? 0 : 1
             groupCards.append(card)
@@ -406,7 +406,7 @@ class AreasAlertsViewController: UIViewController {
     /// the toggle button so its taps never collapse the group.
     private func groupHeaderRow(for group: AreasAlertsViewModel.RegionGroup, groupIndex: Int) -> UIView {
         let row = UIView()
-        let expanded = !collapsedGroups.contains(group.name)
+        let expanded = expandedGroups.contains(group.name)
 
         let chevron = UIImageView(image: UIImage(
             systemName: "chevron.right",
@@ -474,11 +474,11 @@ class AreasAlertsViewController: UIViewController {
         else { return }
 
         let name = viewModel.groups[groupIndex].name
-        let collapse = !collapsedGroups.contains(name)
+        let collapse = expandedGroups.contains(name)
         if collapse {
-            collapsedGroups.insert(name)
+            expandedGroups.remove(name)
         } else {
-            collapsedGroups.remove(name)
+            expandedGroups.insert(name)
         }
 
         let card = groupCards[groupIndex]

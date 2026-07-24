@@ -104,11 +104,13 @@ class IncidentListViewController: UIViewController {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))
         filterConfig.imagePadding = 6
         filterConfig.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        // Design-system action label (matches the news bar's NYCFIREWIRE.NET
+        // treatment / Android's poppins_bold): heavy, uppercase, kerned, red.
         filterConfig.attributedTitle = AttributedString(
             "FEED AREAS",
             attributes: AttributeContainer([
-                .font: UIFont.systemFont(ofSize: 13, weight: .bold),
-                .kern: 0.4,
+                .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
+                .kern: 0.8,
             ]))
         feedAreaButton.configuration = filterConfig
 

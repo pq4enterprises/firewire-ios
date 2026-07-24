@@ -67,8 +67,10 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
 
     // MARK: State
 
-    /// Region names the user collapsed (all regions start expanded).
-    private var collapsedRegions = Set<String>()
+    /// Region names the user expanded (all regions start collapsed). The
+    /// region that contains the actively-playing feed is auto-expanded so the
+    /// live row is always reachable.
+    private var expandedRegions = Set<String>()
 
     private var elapsedTimer: Timer?
     private var ledTimer: Timer?
@@ -147,8 +149,19 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         hideLoader()
         noFeedsLabel.isHidden = true
         tableView.isHidden = false
+        expandRegionOfActiveFeed()
         tableView.reloadData()
         updateConsole()
+    }
+
+    /// Auto-expand the region group that contains the actively-playing feed
+    /// so the live row is visible even though groups default collapsed.
+    private func expandRegionOfActiveFeed() {
+        guard let activeID = AppManager.shared.currentScannerIDListeningTO else { return }
+        for group in viewModel.items where group.feedList.contains(where: { $0.id == activeID }) {
+            expandedRegions.insert(group.localityName)
+            return
+        }
     }
 
     func errorReceived(message: String) {
@@ -680,6 +693,9 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         } else if !isPlaying {
             playbackStartDate = nil
         }
+        if isPlaying {
+            expandRegionOfActiveFeed()
+        }
         tableView.reloadData()
         updateConsole()
     }
@@ -701,10 +717,10 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         let section = sender.tag
         guard section < viewModel.items.count else { return }
         let region = viewModel.items[section].localityName
-        if collapsedRegions.contains(region) {
-            collapsedRegions.remove(region)
+        if expandedRegions.contains(region) {
+            expandedRegions.remove(region)
         } else {
-            collapsedRegions.insert(region)
+            expandedRegions.insert(region)
         }
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
     }
@@ -748,6 +764,8 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
             AppManager.shared.currentScannerIDListeningTO = id
             playbackStartDate = Date()
 
+            // Keep the live row visible if its group was collapsed.
+            expandedRegions.insert(viewModel.items[indexPath.section].localityName)
             tableView.reloadData()
             updateConsole()
         } else {
@@ -801,12 +819,12 @@ extension ScannerViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let group = viewModel.items[section]
-        return collapsedRegions.contains(group.localityName) ? 0 : group.feedList.count
+        return expandedRegions.contains(group.localityName) ? group.feedList.count : 0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let group = viewModel.items[section]
-        let expanded = !collapsedRegions.contains(group.localityName)
+        let expanded = expandedRegions.contains(group.localityName)
 
         let container = UIView()
 
