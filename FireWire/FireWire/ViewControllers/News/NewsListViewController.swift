@@ -54,43 +54,48 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
 
-        tableView.register(NewsListViewCell.nib(), forCellReuseIdentifier: NewsListViewCell.identifier)
+        tableView.register(NewsListViewCell.self, forCellReuseIdentifier: NewsListViewCell.identifier)
+        styleUI()
+    }
+
+    /// New design system: cards on the app background, heavy uppercase
+    /// stories count on a surface header bar with hairline.
+    private func styleUI() {
+        view.backgroundColor = FireWireTheme.background
+        tableView.backgroundColor = FireWireTheme.background
+        tableView.separatorStyle = .none
+
+        newsListCount.font = FireWireTheme.sectionTitleFont()
+        newsListCount.textColor = FireWireTheme.text
+        newsListCount.text = nil
+
+        if let headerBar = newsListCount.superview {
+            headerBar.backgroundColor = FireWireTheme.surface
+
+            let hairline = UIView()
+            hairline.backgroundColor = FireWireTheme.hairline
+            hairline.translatesAutoresizingMaskIntoConstraints = false
+            headerBar.addSubview(hairline)
+
+            NSLayoutConstraint.activate([
+                hairline.leadingAnchor.constraint(equalTo: headerBar.leadingAnchor),
+                hairline.trailingAnchor.constraint(equalTo: headerBar.trailingAnchor),
+                hairline.bottomAnchor.constraint(equalTo: headerBar.bottomAnchor),
+                hairline.heightAnchor.constraint(equalToConstant: 1),
+            ])
+        }
     }
 
     func dataReceived() {
         hideLoader()
         tableView.isHidden = false
         tableView.reloadData()
-        newsListCount.text = "\(viewModel.newsList.count) news are listed"
+        newsListCount.text = "\(viewModel.newsList.count) STORIES LISTED"
     }
 
     func error(message: String) {
         hideLoader()
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-    }
-
-    func shareContentToSocialMedia(text: String, image: UIImage? = nil) {
-        var items: [Any] = [text]
-
-        if let imageToShare = image {
-            items.append(imageToShare)
-        }
-
-        if let iosUrl = URL(string: String.appStoreUrl) {
-            items.append("Download the app on iOS: \(iosUrl)")
-        }
-
-        if let androidUrl = URL(string: String.playStoreUrl) {
-            items.append("Download the app on Android: \(androidUrl)")
-        }
-
-        // Create an instance of UIActivityViewController
-        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-
-        // Exclude certain activity types if needed (optional)
-        activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
-
-        self.present(activityViewController, animated: true)
     }
 
 }
@@ -104,10 +109,6 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsListViewCell.identifier, for: indexPath) as! NewsListViewCell
         let newsDetail = viewModel.newsList[indexPath.row]
         cell.setupView(newsDetail)
-        cell.shareAction = {
-            let shareContent = "\(newsDetail.title) \nFind out: \(newsDetail.link)"
-            self.shareContentToSocialMedia(text: shareContent)
-        }
         return cell
     }
 
