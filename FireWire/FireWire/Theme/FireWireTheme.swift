@@ -40,6 +40,18 @@ enum FireWireTheme {
     static let orange = UIColor(rgb: 0xE0842F)
     static let info = UIColor(rgb: 0x2F6FE0)
 
+    // MARK: Accent tints (icon-circle backgrounds — menu shortcut tiles)
+
+    static let orangeTint = UIColor(
+        light: UIColor(rgb: 0xFCE3C4),
+        dark: FireWireTheme.orange.withAlphaComponent(0.20))
+    static let infoTint = UIColor(
+        light: UIColor(rgb: 0xDDEBFF),
+        dark: FireWireTheme.info.withAlphaComponent(0.20))
+    static let successTint = UIColor(
+        light: UIColor(rgb: 0xD6F2DF),
+        dark: FireWireTheme.success.withAlphaComponent(0.20))
+
     // MARK: Unit-category chip palette
 
     // NOTE: product wants these colors admin-configurable from the portal
