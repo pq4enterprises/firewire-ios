@@ -164,8 +164,6 @@
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
 		B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
 		B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
-		B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
-		B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
@@ -274,7 +272,6 @@
 		B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
 		B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
 		B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
-		B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
 		B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
 		B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
@@ -318,7 +315,6 @@
 		B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
 		B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F32CE374D10092AC01 /* Base */; };
 		B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
-		B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */; };
 		B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
 		B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
@@ -545,8 +541,6 @@
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
 		B08FAA572D339559000BCD27 /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageResponseModel.swift; sourceTree = "<group>"; };
-		B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewController.swift; sourceTree = "<group>"; };
-		B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
@@ -812,8 +806,6 @@
 		B0100CDD2CF79975004F6214 /* Incidents */ = {
 			isa = PBXGroup;
 			children = (
-				B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */,
-				B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */,
 				B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */,
 				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
@@ -1386,7 +1378,6 @@
 				9B4B179F2CF58759007517BD /* Images.xcassets in Resources */,
 				B08236F42CE374D10092AC01 /* Base in Resources */,
 				9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */,
-				B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */,
 				9B4F51332CF586E6007D319D /* Poppins-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1442,7 +1433,6 @@
 				B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */,
 				B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */,
 				B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */,
-				B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */,
 				B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1592,7 +1582,6 @@
 				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
 				B0E879FB2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
-				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
@@ -1743,7 +1732,6 @@
 				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
 				B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
-				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,

@@ -7,6 +7,13 @@
 
 import Foundation
 
+/// Moved here from the retired IncidentLocalityListViewController (the old
+/// feed-areas sheet) — SelectAreaViewController still conforms to it.
+protocol IncidentLocalityListViewDelegate: AnyObject {
+    func dataReceived()
+    func error(message: String)
+}
+
 enum LocalityListType: String {
     case area
     case notification

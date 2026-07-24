@@ -16,7 +16,9 @@ class MapManager {
     func setupMapView(frame: CGRect, zoom: Float = 15.0) -> GMSMapView {
         mapView = GMSMapView()
         mapView.frame = frame
-        mapView.mapType = .normal
+        // Default the feed map to hybrid (satellite + labels) per the 2026
+        // redesign; any user-facing map-type toggle still applies on top.
+        mapView.mapType = .hybrid
 
         //addIncidentMarkers()
         loadMapStyle()

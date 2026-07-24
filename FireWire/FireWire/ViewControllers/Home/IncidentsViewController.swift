@@ -47,11 +47,11 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
     var isMapViewExpanded: Bool = false
     var isListViewExpanded: Bool = false
 
-    private let footerActivityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = FWColor.red
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
+    private let footerActivityIndicator: FWFlameLoaderView = {
+        let loader = FWFlameLoaderView(pointSize: 18)
+        loader.frame = CGRect(x: 0, y: 0, width: 0, height: 44)
+        loader.hidesWhenStopped = true
+        return loader
     }()
 
     var sequence = MaterialShowcaseSequence()
@@ -188,7 +188,8 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
     // MARK: - Actions
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
-        coordinator?.navigateToSelectAreaListView(self)
+        // Old feed-areas sheet was retired — Areas & Alerts replaces it.
+        coordinator?.navigateToAreasAlerts()
     }
 
     @IBAction func changeViewButtonTap(_ sender: UIButton) {

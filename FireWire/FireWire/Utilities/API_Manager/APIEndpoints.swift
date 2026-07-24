@@ -43,6 +43,7 @@ enum APIEndpoints {
     static let chicagoPodcastUrl = "https://www.chicagosbraveststories.com"
     static let contactUrl = "https://nycfirewire.net/contact/"
     static let fireWireUrl = "https://nycfirewire.net/"
+    static let fireWireNewsUrl = "https://nycfirewire.net/news/"
     static let termsAndConditionUrl = "https://nycfirewire.net/terms"
     static let privacyPolicyUrl = "https://nycfirewire.net/privacy"
 

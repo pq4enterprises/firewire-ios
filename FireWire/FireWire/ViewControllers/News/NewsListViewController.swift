@@ -58,16 +58,23 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         styleUI()
     }
 
-    /// New design system: cards on the app background, heavy uppercase
-    /// stories count on a surface header bar with hairline.
+    /// New design system: cards on the app background; the header bar links
+    /// out to the NYCFIREWIRE.NET news site (red link, uppercase).
     private func styleUI() {
         view.backgroundColor = FireWireTheme.background
         tableView.backgroundColor = FireWireTheme.background
         tableView.separatorStyle = .none
 
-        newsListCount.font = FireWireTheme.sectionTitleFont()
-        newsListCount.textColor = FireWireTheme.text
-        newsListCount.text = nil
+        newsListCount.attributedText = NSAttributedString(
+            string: "NYCFIREWIRE.NET",
+            attributes: [
+                .font: FireWireTheme.sectionTitleFont(),
+                .kern: 0.8,
+                .foregroundColor: FireWireTheme.red,
+            ])
+        newsListCount.isUserInteractionEnabled = true
+        newsListCount.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(newsSiteLinkTap)))
 
         if let headerBar = newsListCount.superview {
             headerBar.backgroundColor = FireWireTheme.surface
@@ -86,11 +93,14 @@ class NewsListViewController: UIViewController, NewsListViewDelegate {
         }
     }
 
+    @objc private func newsSiteLinkTap() {
+        coordinator?.openURL(APIEndpoints.fireWireNewsUrl)
+    }
+
     func dataReceived() {
         hideLoader()
         tableView.isHidden = false
         tableView.reloadData()
-        newsListCount.text = "\(viewModel.newsList.count) STORIES LISTED"
     }
 
     func error(message: String) {

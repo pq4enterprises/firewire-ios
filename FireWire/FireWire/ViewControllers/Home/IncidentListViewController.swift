@@ -38,7 +38,8 @@ class IncidentListViewController: UIViewController {
 
     var totalPages: Int = 0 {
         didSet {
-            totalPostLabel.text = "\(totalPages) POSTS LISTED"
+            // Set on every completed feed load — stamp the bar with the time.
+            markFeedUpdated()
         }
     }
 
@@ -52,11 +53,17 @@ class IncidentListViewController: UIViewController {
         }
     }
 
-    private let footerActivityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = FWColor.red
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
+    private let footerFlameLoader: FWFlameLoaderView = {
+        let loader = FWFlameLoaderView(pointSize: 18)
+        loader.frame = CGRect(x: 0, y: 0, width: 0, height: 44)
+        loader.hidesWhenStopped = true
+        return loader
+    }()
+
+    private static let updatedTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
     }()
 
     @IBOutlet weak var totalPostLabel: UILabel!
@@ -72,20 +79,19 @@ class IncidentListViewController: UIViewController {
         incidentTableView.delegate = self
 
         incidentTableView.register(IncidentListViewCell.self, forCellReuseIdentifier: IncidentListViewCell.identifier)
-        incidentTableView.tableFooterView = footerActivityIndicator
+        incidentTableView.tableFooterView = footerFlameLoader
         styleUI()
     }
 
-    /// New design system: surface sheet with grabber, heavy uppercase posts
-    /// count and red FEED AREAS filter action.
+    /// New design system: surface sheet with grabber, muted monospaced
+    /// last-updated stamp and red FEED AREAS action.
     private func styleUI() {
         view.backgroundColor = FireWireTheme.surface
         incidentTableView.backgroundColor = FireWireTheme.surface
         incidentTableView.separatorStyle = .none
         incidentTableView.showsVerticalScrollIndicator = false
 
-        totalPostLabel.font = FireWireTheme.sectionTitleFont()
-        totalPostLabel.textColor = FireWireTheme.text
+        setUpdatedLabel(text: "UPDATED —")
 
         noIncidentLabel.text = "NO INCIDENTS FOUND"
         noIncidentLabel.font = FireWireTheme.bodyFont()
@@ -149,19 +155,38 @@ class IncidentListViewController: UIViewController {
     }
 
     func showFooterLoader() {
-        footerActivityIndicator.startAnimating()
+        footerFlameLoader.startAnimating()
         incidentTableView.tableFooterView?.isHidden = false
     }
 
     func hideFooterLoader() {
-        footerActivityIndicator.stopAnimating()
+        footerFlameLoader.stopAnimating()
         incidentTableView.tableFooterView?.isHidden = true
     }
 
-    @IBAction func feedAreaTapped(_ sender: UIButton) {
-        coordinator?.navigateToSelectAreaListView(self)
+    /// "UPDATED 2:41 PM"-style stamp — uppercase, monospaced, muted.
+    private func markFeedUpdated() {
+        let time = Self.updatedTimeFormatter.string(from: Date()).uppercased()
+        setUpdatedLabel(text: "UPDATED \(time)")
     }
-    
+
+    private func setUpdatedLabel(text: String) {
+        totalPostLabel.attributedText = NSAttributedString(
+            string: text,
+            attributes: [
+                .font: UIFont.monospacedSystemFont(ofSize: 12, weight: .bold),
+                .kern: 0.8,
+                .foregroundColor: FireWireTheme.muted,
+            ])
+    }
+
+    @IBAction func feedAreaTapped(_ sender: UIButton) {
+        // The pre-redesign feed-areas sheet was retired with the Areas &
+        // Alerts screen — route there instead (fixes a decode crash on the
+        // deleted flow's XIB).
+        coordinator?.navigateToAreasAlerts()
+    }
+
 }
 
 extension IncidentListViewController: PulleyDrawerViewControllerDelegate {
@@ -247,12 +272,6 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
         activityViewController.excludedActivityTypes = [.addToReadingList, .assignToContact, .airDrop]
 
         present(activityViewController, animated: true)
-    }
-}
-
-extension IncidentListViewController: FilterAreaDelegate {
-    func filterUpdate() {
-        delegate?.filterUpdate()
     }
 }
 

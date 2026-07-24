@@ -85,22 +85,7 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(changePasswordViewController, animated: true)
     }
 
-    func navigateToSelectAreaListView(_ delegate: FilterAreaDelegate?){
-        let viewModel = IncidentLocalityListViewModel()
-        viewModel.filterAreaDelegate = delegate
-        let selectAreaListView = IncidentLocalityListViewController(viewModel: viewModel)
-        selectAreaListView.coordinator = self
-
-        if let sheet = selectAreaListView.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersGrabberVisible = true
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
-        }
-        selectAreaListView.modalPresentationStyle = .pageSheet
-        navigationController.present(selectAreaListView, animated: true)
-    }
-
-    func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){
+func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentComments)
         commentsList.attachedImages = attachedImages

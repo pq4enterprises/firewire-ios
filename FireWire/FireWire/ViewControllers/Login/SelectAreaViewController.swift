@@ -49,16 +49,30 @@ class SelectAreaViewController: UIViewController, IncidentLocalityListViewDelega
         tableView.reloadData()
     }
 
-    func showActivityIndicator(_ value: Bool) {
-        if value {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
+    /// Branded flame loader shown in place of the legacy XIB spinner.
+    private lazy var flameLoader: FWFlameLoaderView = {
+        let loader = FWFlameLoaderView(pointSize: 36)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loader)
+        NSLayoutConstraint.activate([
+            loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loader.widthAnchor.constraint(equalToConstant: 60),
+            loader.heightAnchor.constraint(equalToConstant: 60),
+        ])
+        return loader
+    }()
 
+    func showActivityIndicator(_ value: Bool) {
+        // The XIB's UIActivityIndicatorView stays hidden — the branded flame
+        // loader replaces its visual while this API stays the same.
+        activityIndicator.isHidden = true
+
+        if value {
+            flameLoader.startAnimating()
             tableView.isHidden = true
         } else {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-
+            flameLoader.stopAnimating()
             tableView.isHidden = false
         }
     }

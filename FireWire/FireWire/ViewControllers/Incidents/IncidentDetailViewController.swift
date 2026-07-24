@@ -383,7 +383,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         headerBar.addSubview(shareButton)
 
         let feedButton = UIButton(type: .system)
-        feedButton.setImage(FWImage.alertIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
+        // Canonical scanner glyph — identical to the home header's treatment.
+        feedButton.setImage(
+            UIImage(systemName: "radio",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .medium)),
+            for: .normal)
         feedButton.tintColor = IncidentTheme.text
         feedButton.addTarget(self, action: #selector(feedButtonTap), for: .touchUpInside)
         feedButton.translatesAutoresizingMaskIntoConstraints = false
