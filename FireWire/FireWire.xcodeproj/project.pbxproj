@@ -161,7 +161,6 @@
 		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
 		B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
-		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
 		B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
 		B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
@@ -314,7 +313,6 @@
 		B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */; };
 		B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
 		B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */; };
-		B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
 		B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
@@ -544,7 +542,6 @@
 		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponseModel.swift; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
-		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
 		B08FAA572D339559000BCD27 /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageResponseModel.swift; sourceTree = "<group>"; };
@@ -804,7 +801,6 @@
 				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
 				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
-				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */,
 				B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */,
 				B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */,
@@ -1385,7 +1381,6 @@
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */,
 				B060817B2D3062A10031CE38 /* CommentsImageViewItem.xib in Resources */,
-				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
 				B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */,
 				9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */,
 				9B4B179F2CF58759007517BD /* Images.xcassets in Resources */,
@@ -1442,7 +1437,6 @@
 				B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */,
 				B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */,
 				B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */,
-				B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */,
 				B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */,
 				B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */,
 				B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */,
