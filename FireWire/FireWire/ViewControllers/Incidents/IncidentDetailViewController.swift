@@ -593,6 +593,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         levelBadge.layer.cornerRadius = 8
         levelBadge.layer.masksToBounds = true
         levelBadge.insets = UIEdgeInsets(top: 6, left: 11, bottom: 6, right: 11)
+        levelBadge.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         signalChip.font = .systemFont(ofSize: 11, weight: .heavy)
         signalChip.textColor = IncidentTheme.red
@@ -601,10 +602,15 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         signalChip.layer.masksToBounds = true
         signalChip.insets = UIEdgeInsets(top: 6, left: 9, bottom: 6, right: 9)
         signalChip.isHidden = true
+        signalChip.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         subLocalityLabel.font = .systemFont(ofSize: 13, weight: .regular)
         subLocalityLabel.textColor = IncidentTheme.text
         subLocalityLabel.numberOfLines = 1
+        subLocalityLabel.adjustsFontSizeToFitWidth = true
+        subLocalityLabel.minimumScaleFactor = 0.7
+        subLocalityLabel.baselineAdjustment = .alignCenters
+        subLocalityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         subLocalityLabel.isHidden = true
 
         incidentDateTime.font = .monospacedSystemFont(ofSize: 11, weight: .semibold)
