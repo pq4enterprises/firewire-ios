@@ -162,7 +162,7 @@ extension HomeViewController: MaterialShowcaseDelegate {
         }
 
         let showCase3 = createMaterialShowcase(primaryText: "Edit Profile", secondaryText: "My Account -> Update Profile", targetView: menuButton)
-        let showCase4 = createMaterialShowcase(primaryText: "Notification", secondaryText: "Personalization -> Notification", targetView: menuButton)
+        let showCase4 = createMaterialShowcase(primaryText: "Notification", secondaryText: "Areas & Alerts", targetView: menuButton)
         let showCase5 = createMaterialShowcase(primaryText: "Submit A Tip", secondaryText: "Click Menu option to Submit A Tip", targetView: menuButton)
 
         showCase1.delegate = self

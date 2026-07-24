@@ -16,7 +16,6 @@ final class IncidentLocalityListViewModel {
     var localityData: [LocalityResponseData] = []
     var delegate: IncidentLocalityListViewDelegate?
     var selectAreaDelegate: SelectAreaDelegate?
-    var feedAreaDelegate: FeedAreaDelegate?
     var filterAreaDelegate: FilterAreaDelegate?
 
     var selectedAreas: [SelectedAreaModel] = []
@@ -89,10 +88,6 @@ final class IncidentLocalityListViewModel {
             if let apiResponse = response as? SuccessResponseModel, apiResponse.code.lowercased() == "updated" {
                 if self?.selectAreaDelegate != nil {
                     self?.selectAreaDelegate?.confirmSelectArea()
-                }
-
-                if self?.feedAreaDelegate != nil {
-                    self?.feedAreaDelegate?.savedFeedArea()
                 }
 
                 if self?.filterAreaDelegate != nil {

@@ -53,16 +53,10 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(myAccountViewController, animated: true)
     }
 
-    func navigateToPersonalisation(){
-        let personalisationViewController = PersonalisationViewController.instantiate()
-        personalisationViewController.coordinator = self
-        pushViewController(personalisationViewController, animated: true)
-    }
-
-    func navigateToNotificationSettings(){
-        let notificationSettingsViewController = NotificationSettingsViewController.instantiate()
-        notificationSettingsViewController.coordinator = self
-        pushViewController(notificationSettingsViewController, animated: true)
+    func navigateToAreasAlerts(){
+        let areasAlertsViewController = AreasAlertsViewController.instantiate()
+        areasAlertsViewController.coordinator = self
+        pushViewController(areasAlertsViewController, animated: true)
     }
 
     func navigateToNotificationSounds(){
@@ -104,14 +98,6 @@ class HomeCoordinator: BaseCoordinator {
         }
         selectAreaListView.modalPresentationStyle = .pageSheet
         navigationController.present(selectAreaListView, animated: true)
-    }
-
-    /// Copy of IncidentLocalityListViewController, just using different view controller for UI & navigation purpose
-    func navigateToFeedAreaListView(){
-        let feedAreaListView = FeedAreaListViewController.instantiate()
-        feedAreaListView.viewModel = IncidentLocalityListViewModel()
-        feedAreaListView.coordinator = self
-        navigationController.pushViewController(feedAreaListView, animated: true)
     }
 
     func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){

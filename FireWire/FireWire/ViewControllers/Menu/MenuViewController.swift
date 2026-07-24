@@ -279,20 +279,20 @@ class MenuViewController: UIViewController {
                 title: "CONTACT", systemImage: "envelope", imageUrl: nil,
                 tint: FireWireTheme.infoTint, color: FireWireTheme.info,
                 action: { [weak self] in self?.contactViewTap() }),
-            personalisationShortcutItem(),
+            areasAlertsShortcutItem(),
         ]
     }
 
     /// Built-in in-app tile — always kept, appended after any server links.
-    private func personalisationShortcutItem() -> ShortcutItem {
+    private func areasAlertsShortcutItem() -> ShortcutItem {
         ShortcutItem(
-            title: "PERSONALIZATION", systemImage: "gearshape", imageUrl: nil,
+            title: "AREAS & ALERTS", systemImage: "bell", imageUrl: nil,
             tint: FireWireTheme.successTint, color: FireWireTheme.success,
-            action: { [weak self] in self?.personalisationViewTap() })
+            action: { [weak self] in self?.areasAlertsViewTap() })
     }
 
     /// Maps portal-managed links to external-URL tiles, then appends the
-    /// built-in Personalization tile. Links missing a name or url are skipped.
+    /// built-in Areas & Alerts tile. Links missing a name or url are skipped.
     private func serverShortcutItems(from links: [AppLinkData]) -> [ShortcutItem] {
         var items: [ShortcutItem] = links.compactMap { link in
             guard let name = link.name, !name.isEmpty,
@@ -307,7 +307,7 @@ class MenuViewController: UIViewController {
         }
 
         guard !items.isEmpty else { return [] }
-        items.append(personalisationShortcutItem())
+        items.append(areasAlertsShortcutItem())
         return items
     }
 
@@ -495,8 +495,8 @@ class MenuViewController: UIViewController {
         coordinator?.openURL(APIEndpoints.contactUrl)
     }
 
-    @objc func personalisationViewTap() {
-        coordinator?.navigateToPersonalisation()
+    @objc func areasAlertsViewTap() {
+        coordinator?.navigateToAreasAlerts()
     }
 
     @objc func closeButtonTap() {
