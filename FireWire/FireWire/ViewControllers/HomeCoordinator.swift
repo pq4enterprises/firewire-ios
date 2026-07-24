@@ -33,9 +33,9 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToFeeds(){
-        let feedsViewController = FeedsListViewController.instantiate()
-        feedsViewController.coordinator = self
-        pushViewController(feedsViewController, animated: true)
+        let scannerViewController = ScannerViewController.instantiate()
+        scannerViewController.coordinator = self
+        pushViewController(scannerViewController, animated: true)
     }
 
     func navigateBackToHome(popViewToLeft: Bool = false){

@@ -49,6 +49,7 @@
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
+		BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
 		B01085DA2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
 		B01085DB2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
@@ -60,7 +61,6 @@
 		B018F91A2E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
-		B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
 		B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
 		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
 		B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
@@ -207,7 +207,6 @@
 		B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
 		B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
 		B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
-		B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
 		B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
@@ -277,7 +276,6 @@
 		B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
 		B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
 		B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
-		B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
 		B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
 		B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
@@ -294,6 +292,7 @@
 		B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
+		BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
 		B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */; };
 		B0B1AEF32D4F8DB6007371A9 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */; };
@@ -322,7 +321,6 @@
 		B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
 		B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */; };
-		B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
 		B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
 		B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
@@ -338,8 +336,6 @@
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
-		B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
-		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0D825D72E294565005B1EA4 /* Pulley in Frameworks */ = {isa = PBXBuildFile; productRef = B0D825D62E294565005B1EA4 /* Pulley */; };
 		B0D825D92E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
 		B0D825DA2E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
@@ -467,6 +463,7 @@
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
 		BD1000012E30AAAA00000001 /* FireWireTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireTheme.swift; sourceTree = "<group>"; };
 		BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewController.swift; sourceTree = "<group>"; };
+		BD3000012E60CC0000000001 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewModel.swift; sourceTree = "<group>"; };
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
@@ -474,7 +471,6 @@
 		B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIncidentCommentsModel.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewController.swift; sourceTree = "<group>"; };
 		B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewModel.swift; sourceTree = "<group>"; };
 		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
 		B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWDateFormatter.swift; sourceTree = "<group>"; };
@@ -586,8 +582,6 @@
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		B0D737832D3FD59600D82F2C /* FeedItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemListView.swift; sourceTree = "<group>"; };
-		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
 		B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentHomeViewController.swift; sourceTree = "<group>"; };
 		B0D825DB2E2945DA005B1EA4 /* IncidentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentMapViewController.swift; sourceTree = "<group>"; };
 		B0D825DE2E2945EA005B1EA4 /* IncidentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewController.swift; sourceTree = "<group>"; };
@@ -805,8 +799,6 @@
 				B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */,
 				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
 				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
-				B0D737832D3FD59600D82F2C /* FeedItemListView.swift */,
-				B0D737842D3FD59600D82F2C /* FeedItemListView.xib */,
 				B0A304812D134937006F851A /* CityHeaderCell.swift */,
 				B0A304822D134937006F851A /* CityHeaderCell.xib */,
 				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
@@ -878,7 +870,7 @@
 			isa = PBXGroup;
 			children = (
 				B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */,
-				B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */,
+				BD3000012E60CC0000000001 /* ScannerViewController.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -1405,7 +1397,6 @@
 				9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */,
 				B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */,
 				9B4F51332CF586E6007D319D /* Poppins-SemiBold.ttf in Resources */,
-				B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1463,7 +1454,6 @@
 				B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */,
 				B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */,
 				B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */,
-				B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1519,7 +1509,6 @@
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D825DF2E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
-				B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */,
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
@@ -1616,7 +1605,6 @@
 				B0E879FB2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
 				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
-				B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
@@ -1637,6 +1625,7 @@
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 				BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */,
 				BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */,
+				BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */,
 				BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1672,7 +1661,6 @@
 				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,
 				B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */,
 				B0D825E02E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
-				B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */,
 				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
 				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
 				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
@@ -1769,7 +1757,6 @@
 				B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
 				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
-				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
@@ -1790,6 +1777,7 @@
 				B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */,
 				BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */,
 				BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */,
+				BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */,
 				BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
