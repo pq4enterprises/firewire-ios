@@ -50,6 +50,8 @@
 		BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
 		BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
+		BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B01085DA2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
 		B01085DB2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
 		B01154FF2E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
@@ -171,7 +173,6 @@
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */; };
 		B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
-		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046A2D10A17B006F851A /* XMLCoder */; };
 		B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046F2D10AD56006F851A /* SwiftSoup */; };
 		B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
@@ -287,14 +288,14 @@
 		B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
 		B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
-		B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
-		B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
 		BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
+		BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */; };
 		B0B1AEF32D4F8DB6007371A9 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */; };
 		B0B1AEF42D4F8DB6007371A9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
@@ -331,7 +332,6 @@
 		B0C1D2952DEE1BA4009E879B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = B0C1D2942DEE1BA4009E879B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		B0C1D2A42DEE22D1009E879B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01FFAC12DCE4A1E0007AB0A /* FirebaseAnalytics */; };
 		B0C1D2A52DEE22D1009E879B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01FFAC32DCE4A2C0007AB0A /* FirebaseAnalytics */; };
-		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
@@ -371,8 +371,6 @@
 		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
 		B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
 		B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */; };
-		B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
-		B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -468,6 +466,8 @@
 		BD1000012E30AAAA00000001 /* FireWireTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireTheme.swift; sourceTree = "<group>"; };
 		BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewController.swift; sourceTree = "<group>"; };
 		BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewModel.swift; sourceTree = "<group>"; };
+		BD3000012E60BBBB00000001 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BD3000022E60BBBB00000002 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
@@ -559,7 +559,6 @@
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityCell.swift; sourceTree = "<group>"; };
 		B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewController.swift; sourceTree = "<group>"; };
-		B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewModel.swift; sourceTree = "<group>"; };
 		B0A304792D134057006F851A /* LocalityResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityResponseModel.swift; sourceTree = "<group>"; };
 		B0A304812D134937006F851A /* CityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeaderCell.swift; sourceTree = "<group>"; };
@@ -579,7 +578,6 @@
 		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAreaModel.swift; sourceTree = "<group>"; };
 		B0B836752D5A744200C71D8F /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
-		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -610,7 +608,6 @@
 		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
 		B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseModel.swift; sourceTree = "<group>"; };
 		B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -855,18 +852,17 @@
 			children = (
 				BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */,
 				BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */,
+				BD3000012E60BBBB00000001 /* ProfileViewController.swift */,
+				BD3000022E60BBBB00000002 /* EditProfileViewController.swift */,
 				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
-				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 				B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */,
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
 				B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */,
-				B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */,
 				B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */,
 				B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */,
 				B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */,
 				B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */,
-				B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */,
 				B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */,
 				B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */,
 				B081F6632D84BF8800E2D673 /* PostWebViewController.swift */,
@@ -1579,7 +1575,6 @@
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
-				B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */,
 				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
@@ -1629,15 +1624,15 @@
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AC2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
-				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
 				B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */,
 				B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */,
-				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0E879FF2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 				BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */,
 				BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */,
 				BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */,
+				BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */,
+				BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1732,7 +1727,6 @@
 				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
 				B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */,
 				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
-				B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */,
 				B0B1AEC32D4F8DB6007371A9 /* FWAlertController.swift in Sources */,
 				B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */,
@@ -1782,15 +1776,15 @@
 				B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AD2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */,
-				B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */,
 				B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */,
 				B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */,
-				B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */,
 				B0E879FE2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */,
 				BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */,
 				BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */,
 				BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */,
+				BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */,
+				BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,12 @@ class SubscriptionManager: NSObject {
     fileprivate var iapProducts: [Product] = []
     
     var delegate: SubscriptionManagerDelegate?
+
+    /// Display price of the monthly subscription, once products are fetched.
+    /// UI-only accessor — does not touch the purchase flow.
+    var monthlyDisplayPrice: String? {
+        iapProducts.first?.displayPrice
+    }
     
     private override init() {
         super.init()
