@@ -38,7 +38,21 @@ enum FireWireTheme {
     static let success = UIColor(rgb: 0x17B26A)
     static let warning = UIColor(rgb: 0xF5B93C)
     static let orange = UIColor(rgb: 0xE0842F)
+    static let ember = UIColor(rgb: 0xEA5A1F)
     static let info = UIColor(rgb: 0x2F6FE0)
+
+    /// Feed-card level badge tint (mockup: 1st alarm amber, working fire
+    /// ember, everything else — all hands, 2nd alarm+ — brand red).
+    static func severityColor(forLevel level: String) -> UIColor {
+        let normalized = level.uppercased()
+        if normalized.contains("1ST ALARM") || normalized.contains("STILL") {
+            return orange
+        }
+        if normalized.contains("WORKING") {
+            return ember
+        }
+        return red
+    }
 
     // MARK: Accent tints (icon-circle backgrounds — menu shortcut tiles)
 

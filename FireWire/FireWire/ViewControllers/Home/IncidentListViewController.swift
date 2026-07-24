@@ -38,7 +38,7 @@ class IncidentListViewController: UIViewController {
 
     var totalPages: Int = 0 {
         didSet {
-            totalPostLabel.text = "\(totalPages) posts are listed"
+            totalPostLabel.text = "\(totalPages) POSTS LISTED"
         }
     }
 
@@ -71,8 +71,68 @@ class IncidentListViewController: UIViewController {
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
-        incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
+        incidentTableView.register(IncidentListViewCell.self, forCellReuseIdentifier: IncidentListViewCell.identifier)
         incidentTableView.tableFooterView = footerActivityIndicator
+        styleUI()
+    }
+
+    /// New design system: surface sheet with grabber, heavy uppercase posts
+    /// count and red FEED AREAS filter action.
+    private func styleUI() {
+        view.backgroundColor = FireWireTheme.surface
+        incidentTableView.backgroundColor = FireWireTheme.surface
+        incidentTableView.separatorStyle = .none
+        incidentTableView.showsVerticalScrollIndicator = false
+
+        totalPostLabel.font = FireWireTheme.sectionTitleFont()
+        totalPostLabel.textColor = FireWireTheme.text
+
+        noIncidentLabel.text = "NO INCIDENTS FOUND"
+        noIncidentLabel.font = FireWireTheme.bodyFont()
+        noIncidentLabel.textColor = FireWireTheme.muted
+
+        var filterConfig = UIButton.Configuration.plain()
+        filterConfig.baseForegroundColor = FireWireTheme.red
+        filterConfig.image = UIImage(
+            systemName: "line.3.horizontal.decrease",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))
+        filterConfig.imagePadding = 6
+        filterConfig.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        filterConfig.attributedTitle = AttributedString(
+            "FEED AREAS",
+            attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 13, weight: .bold),
+                .kern: 0.4,
+            ]))
+        feedAreaButton.configuration = filterConfig
+
+        // Grabber + hairline on the sheet's header bar
+        if let headerBar = totalPostLabel.superview {
+            headerBar.backgroundColor = FireWireTheme.surface
+
+            let grabber = UIView()
+            grabber.backgroundColor = FireWireTheme.muted.withAlphaComponent(0.5)
+            grabber.layer.cornerRadius = 2.5
+            grabber.translatesAutoresizingMaskIntoConstraints = false
+            headerBar.addSubview(grabber)
+
+            let hairline = UIView()
+            hairline.backgroundColor = FireWireTheme.hairline
+            hairline.translatesAutoresizingMaskIntoConstraints = false
+            headerBar.addSubview(hairline)
+
+            NSLayoutConstraint.activate([
+                grabber.topAnchor.constraint(equalTo: headerBar.topAnchor, constant: 8),
+                grabber.centerXAnchor.constraint(equalTo: headerBar.centerXAnchor),
+                grabber.widthAnchor.constraint(equalToConstant: 44),
+                grabber.heightAnchor.constraint(equalToConstant: 5),
+
+                hairline.leadingAnchor.constraint(equalTo: headerBar.leadingAnchor),
+                hairline.trailingAnchor.constraint(equalTo: headerBar.trailingAnchor),
+                hairline.bottomAnchor.constraint(equalTo: headerBar.bottomAnchor),
+                hairline.heightAnchor.constraint(equalToConstant: 1),
+            ])
+        }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -211,28 +271,28 @@ extension IncidentListViewController: MaterialShowcaseDelegate {
             let showcase1 = createMaterialShowcase(
                 primaryText: "Incident",
                 secondaryText: "Click to view incident details",
-                targetView: titleView!
+                targetView: titleView
             )
 
             let likesView = cell.favouriteButton
             let showcase2 = createMaterialShowcase(
                 primaryText: "Like",
                 secondaryText: "Tap to like incidents",
-                targetView: likesView!
+                targetView: likesView
             )
 
             let commentsView = cell.commentButton
             let showcase3 = createMaterialShowcase(
                 primaryText: "Comment",
                 secondaryText: "Comment and Share photos",
-                targetView: commentsView!
+                targetView: commentsView
             )
 
             let shareView = cell.shareButton
             let showcase4 = createMaterialShowcase(
                 primaryText: "Share",
                 secondaryText: "Share incidents with friends",
-                targetView: shareView!
+                targetView: shareView
             )
 
             let showcase5 = createMaterialShowcase(

@@ -158,7 +158,7 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         incidentTableView.addGestureRecognizer(panGestureRecognizer)
 
-        incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
+        incidentTableView.register(IncidentListViewCell.self, forCellReuseIdentifier: IncidentListViewCell.identifier)
 
         incidentTableView.tableFooterView = footerActivityIndicator
     }
@@ -423,28 +423,28 @@ extension IncidentsViewController: MaterialShowcaseDelegate {
             let showcase1 = createMaterialShowcase(
                 primaryText: "Incident",
                 secondaryText: "Click to view incident details",
-                targetView: titleView!
+                targetView: titleView
             )
 
             let likesView = cell.favouriteButton
             let showcase2 = createMaterialShowcase(
                 primaryText: "Like",
                 secondaryText: "Tap to like incidents",
-                targetView: likesView!
+                targetView: likesView
             )
 
             let commentsView = cell.commentButton
             let showcase3 = createMaterialShowcase(
                 primaryText: "Comment",
                 secondaryText: "Comment and Share photos",
-                targetView: commentsView!
+                targetView: commentsView
             )
 
             let shareView = cell.shareButton
             let showcase4 = createMaterialShowcase(
                 primaryText: "Share",
                 secondaryText: "Share incidents with friends",
-                targetView: shareView!
+                targetView: shareView
             )
 
             let showcase5 = createMaterialShowcase(

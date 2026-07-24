@@ -81,7 +81,6 @@
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
 		B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
-		B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
 		B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
 		B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
@@ -308,7 +307,6 @@
 		B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
-		B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
 		B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
 		B0B1AF052D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F82CE374D30092AC01 /* Base */; };
 		B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A304822D134937006F851A /* CityHeaderCell.xib */; };
@@ -495,7 +493,6 @@
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
 		B046824B2CE66F5A00419C65 /* FWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFont.swift; sourceTree = "<group>"; };
 		B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewCell.swift; sourceTree = "<group>"; };
-		B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewCell.xib; sourceTree = "<group>"; };
 		B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListItem.swift; sourceTree = "<group>"; };
 		B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListItem.xib; sourceTree = "<group>"; };
 		B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsImageViewItem.swift; sourceTree = "<group>"; };
@@ -817,7 +814,6 @@
 				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
 				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
-				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
 				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */,
@@ -1393,7 +1389,6 @@
 				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
-				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
 				B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */,
@@ -1452,7 +1447,6 @@
 				B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */,
 				B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */,
 				B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */,
-				B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */,
 				B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */,
 				B0B1AF052D4F8DB6007371A9 /* Base in Resources */,
 				B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */,

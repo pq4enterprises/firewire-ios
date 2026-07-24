@@ -45,9 +45,23 @@ class IncidentHomeViewController: PulleyViewController {
 
         paginationHandler = PaginationHandler(viewModel: incidentsViewModel!)
 
+        styleUI()
+    }
+
+    /// New design system: rounded surface sheet and a red VIEW MAP/LIST pill.
+    private func styleUI() {
+        drawerCornerRadius = 22
+        drawerBackgroundVisualEffectView = nil
+
         changeViewButton.isHidden = true
+        changeViewButton.backgroundColor = FireWireTheme.red
+        changeViewButton.tintColor = .white
+        changeViewButton.setTitleColor(.white, for: .normal)
+        changeViewButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .heavy)
         changeViewButton.setupShadow()
-        self.view.bringSubviewToFront(changeViewButton)
+        changeViewButton.layer.shadowColor = FireWireTheme.red.cgColor
+        changeViewButton.layer.shadowOpacity = 0.4
+        view.bringSubviewToFront(changeViewButton)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -86,23 +100,30 @@ class IncidentHomeViewController: PulleyViewController {
     }
     
     override func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
+        let pinImage = UIImage(
+            systemName: "mappin.and.ellipse",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))
+        let listImage = UIImage(
+            systemName: "list.bullet",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))
+
         if drawer.drawerPosition == .open {
-            backgroundDimmingColor = .systemBackground
+            backgroundDimmingColor = FireWireTheme.background
             backgroundDimmingOpacity = 1.0
             incidentDrawerDelegate?.incidentListExpanded(true)
 
             // change view button setup
             changeViewButton.isHidden = false
-            changeViewButton.setTitle("View map", for: .normal)
-            changeViewButton.setImage(FWImage.viewMapIcon, for: .normal)
+            changeViewButton.setTitle("VIEW MAP", for: .normal)
+            changeViewButton.setImage(pinImage, for: .normal)
         } else if drawer.drawerPosition == .closed {
             backgroundDimmingColor = UIColor.black.withAlphaComponent(0.5)
             incidentDrawerDelegate?.incidentListExpanded(false)
 
             // change view button setup
             changeViewButton.isHidden = false
-            changeViewButton.setTitle("View list", for: .normal)
-            changeViewButton.setImage(FWImage.menuIconRed, for: .normal)
+            changeViewButton.setTitle("VIEW LIST", for: .normal)
+            changeViewButton.setImage(listImage, for: .normal)
         } else {
             backgroundDimmingColor = UIColor.black.withAlphaComponent(0.5)
             incidentDrawerDelegate?.incidentListExpanded(false)
