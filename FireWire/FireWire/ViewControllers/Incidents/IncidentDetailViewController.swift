@@ -476,14 +476,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         actionsRow.translatesAutoresizingMaskIntoConstraints = false
         bottomBar.addSubview(actionsRow)
 
-        // Two-line brand footer (share-card mockup: tagline over handle).
+        // Single-line brand footer, centered and bottom-aligned.
         let watermark = UILabel()
-        watermark.numberOfLines = 2
+        watermark.numberOfLines = 1
         let watermarkParagraph = NSMutableParagraphStyle()
         watermarkParagraph.alignment = .center
-        watermarkParagraph.lineSpacing = 2
         watermark.attributedText = NSAttributedString(
-            string: "FIRE WIRE - THE BRAVEST NEWS NETWORK\n@NYCFIREWIRE",
+            string: "FIRE WIRE - THE BRAVEST NEWS NETWORK",
             attributes: [
                 .font: UIFont.monospacedSystemFont(ofSize: 10, weight: .bold),
                 .kern: 0.5,
