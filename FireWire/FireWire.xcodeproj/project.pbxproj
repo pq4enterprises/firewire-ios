@@ -261,6 +261,7 @@
 		B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
 		B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		FE5E551C2A0100000000AA03 /* FWSessionExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */; };
 		B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
 		B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
 		B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
@@ -322,6 +323,7 @@
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		FE5E551B2A0100000000AA02 /* FWSessionExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */; };
 		B0D825D72E294565005B1EA4 /* Pulley in Frameworks */ = {isa = PBXBuildFile; productRef = B0D825D62E294565005B1EA4 /* Pulley */; };
 		B0D825D92E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
 		B0D825DA2E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
@@ -559,6 +561,7 @@
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSessionExpiry.swift; sourceTree = "<group>"; };
 		B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentHomeViewController.swift; sourceTree = "<group>"; };
 		B0D825DB2E2945DA005B1EA4 /* IncidentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentMapViewController.swift; sourceTree = "<group>"; };
 		B0D825DE2E2945EA005B1EA4 /* IncidentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewController.swift; sourceTree = "<group>"; };
@@ -1032,6 +1035,7 @@
 				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
 				B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */,
 				B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */,
+				FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */,
 				B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */,
 				B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */,
 				B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */,
@@ -1552,6 +1556,7 @@
 				B0D825E22E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
+				FE5E551B2A0100000000AA02 /* FWSessionExpiry.swift in Sources */,
 				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
@@ -1700,6 +1705,7 @@
 				B0D825E32E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
+				FE5E551C2A0100000000AA03 /* FWSessionExpiry.swift in Sources */,
 				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,

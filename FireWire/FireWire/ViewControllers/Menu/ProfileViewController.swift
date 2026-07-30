@@ -645,6 +645,9 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         FWUserDefaults.removeObjectForKey(key: .userNameKey)
         FWUserDefaults.removeObjectForKey(key: .userEmailKey)
         FWUserDefaults.removeObjectForKey(key: .userTokenKey)
+        // The refresh token was left behind by every sign-out path, so a signed-out
+        // device kept a credential that could still mint new access tokens.
+        FWUserDefaults.removeObjectForKey(key: .refreshTokenKey)
         FWUserDefaults.removeObjectForKey(key: .userImageKey)
         FWUserDefaults.removeObjectForKey(key: .userRoleKey)
     }

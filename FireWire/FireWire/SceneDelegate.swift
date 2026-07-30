@@ -28,9 +28,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()
-        
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+
+        // Single app-wide listener for a genuinely dead session. Routing from here
+        // rather than from each view controller is what makes the recovery consistent
+        // no matter which screen the user happened to be on when it expired.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleSessionExpired),
+            name: .fwSessionExpired,
+            object: nil
+        )
+    }
+
+    @objc private func handleSessionExpired() {
+        appCoordinator?.handleSessionExpired()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -50,9 +50,10 @@ public class APIRequest {
                 case .failure(let error as APIError) where error == .tokenExpired:
                     // Handle token refresh
                     if retryOnAuthFailure {
-                        self.refreshToken { success in
-                            if success {
-                                // Retry original call once
+                        self.refreshToken { outcome in
+                            switch outcome {
+                            case .success:
+                                // Retry original call once. The user sees nothing.
                                 self.callApi(
                                     apiEndPoint: apiEndPoint,
                                     payload: payload,
@@ -62,23 +63,41 @@ public class APIRequest {
                                     retryOnAuthFailure: false, // Prevent infinite loop
                                     completionHandler: completionHandler
                                 )
-                            } else {
+                            case .unauthorized:
+                                // The one case where re-authentication is unavoidable.
+                                // Route the user somewhere they can actually recover
+                                // instead of handing back a string that becomes a
+                                // dead-end "Ok" alert.
+                                FWSessionExpiry.broadcast()
                                 completionHandler(nil, nil, APIError.tokenExpired.localizedDescription)
+                            case .transientFailure:
+                                // Network problem, not an auth problem. Keep the session.
+                                completionHandler(nil, nil, APIError.noInternet.localizedDescription)
                             }
                         }
                     } else {
                         completionHandler(nil, nil, error.localizedDescription)
                     }
                 case .failure(let error):
-                    guard let apiError = error as? APIError else { return }
-                    completionHandler(nil, nil, apiError.localizedDescription)
+                    // Previously `guard let apiError = error as? APIError else { return }`
+                    // — a bare return that abandoned the completion handler, leaving the
+                    // caller's spinner running forever on any non-APIError failure.
+                    let message = (error as? APIError)?.localizedDescription ?? error.localizedDescription
+                    completionHandler(nil, nil, message)
                 }
             }
         }
     }
 
-    private func refreshToken(completion: @escaping (Bool) -> Void) {
-        guard let refreshToken = FWUserDefaults().refreshToken else { return }
+    private func refreshToken(completion: @escaping (RefreshOutcome) -> Void) {
+        // This used to be `guard let ... else { return }` — a bare return that never
+        // called the completion handler, so a user with no stored refresh token was
+        // left staring at a spinner that never stopped. No refresh token means the
+        // session cannot be renewed, which is `unauthorized`.
+        guard let refreshToken = FWUserDefaults().refreshToken, !refreshToken.isEmpty else {
+            completion(.unauthorized)
+            return
+        }
         let payload = APIPayload.refreshToken(refreshToken: refreshToken).toDictionary()
 
         self.callApi(
@@ -88,11 +107,23 @@ public class APIRequest {
             noAuth: false,
             retryOnAuthFailure: false
         ) { response, _, error in
+            if let error {
+                // A 401 from the refresh endpoint means the refresh token itself failed
+                // to verify. Anything else (no connectivity, 5xx) is transient and must
+                // not end the session.
+                completion(error == APIError.tokenExpired.localizedDescription
+                           ? .unauthorized
+                           : .transientFailure)
+                return
+            }
+
+            // The API answers a *refused* refresh with HTTP 200 and a body carrying only
+            // message + code — no `data` — for a revoked session or a deleted account.
+            // A 200 alone therefore does not mean the refresh worked.
             guard let loginResponse = response as? LoginApiResponse,
-                  let loginData = loginResponse.data,
-                  error == nil
+                  let loginData = loginResponse.data
             else {
-                completion(false)
+                completion(.unauthorized)
                 return
             }
 
@@ -105,7 +136,7 @@ public class APIRequest {
             FWUserDefaults.setStringForKey(key: .refreshTokenKey, value: loginData.refreshToken)
             FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
 
-            completion(true)
+            completion(.success)
         }
     }
 

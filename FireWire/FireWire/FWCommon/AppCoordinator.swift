@@ -73,10 +73,33 @@ class AppCoordinator: BaseCoordinator {
         }
     }
 
+    /// Tears down the current session and drops the user on the login screen, which
+    /// already carries email + password fields, Forgot Password, and social sign-in —
+    /// so they can recover in place rather than being stranded behind an "Ok" button.
+    func handleSessionExpired() {
+        clearSessionData()
+
+        for coordinator in childCoordinators {
+            coordinator.backToParentCoordinator()
+        }
+        childCoordinators.removeAll()
+
+        navigationController.popToRootViewController(animated: false)
+        LoginViewController.pendingSessionExpiryNotice = true
+        navigateToLogin()
+
+        FWSessionExpiry.reset()
+    }
+
     private func clearSessionData() {
         if let _ = FWUserDefaults().userToken {
             FWUserDefaults.removeObjectForKey(key: .userTokenKey)
         }
+
+        // The refresh token was never cleared here, nor on sign-out. A dead — or worse,
+        // still-live — refresh token surviving a sign-out on a shared device is both a
+        // correctness and a privacy problem.
+        FWUserDefaults.removeObjectForKey(key: .refreshTokenKey)
 
         //Logout google sign in
         GIDSignIn.sharedInstance.signOut()
