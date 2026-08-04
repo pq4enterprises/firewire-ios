@@ -47,8 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
     }
 
     func onClick(event: OSNotificationClickEvent) {
+        // Same payload contract as Android: additionalData.incidentId
+        let incidentId = event.notification.additionalData?["incidentId"] as? String
         DispatchQueue.main.async {
-            SceneDelegate.shared?.appCoordinator?.start()
+            SceneDelegate.shared?.appCoordinator?.handleNotificationTap(incidentId: incidentId)
         }
     }
 
