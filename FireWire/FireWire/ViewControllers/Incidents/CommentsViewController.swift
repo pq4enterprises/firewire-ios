@@ -628,13 +628,19 @@ extension CommentsViewController {
     func showActionSheet(_ commentsDetail: CommentsData) {
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let report = UIAlertAction(title: "Report Comment", style: .default) { _ in
-            self.showLoader()
-            self.viewModel.reportComment(commentID: commentsDetail.id)
-        }
-        actionSheetController.addAction(report)
+        let isOwnComment = commentsDetail.userID?.id == FWUserDefaults().userID
 
-        if FWUserDefaults().isAdminUser() {
+        // Reporting your own comment is not a thing (matches Android)
+        if !isOwnComment {
+            let report = UIAlertAction(title: "Report Comment", style: .default) { _ in
+                self.showLoader()
+                self.viewModel.reportComment(commentID: commentsDetail.id)
+            }
+            actionSheetController.addAction(report)
+        }
+
+        // Moderators delete any comment; authors can delete their own
+        if FWUserDefaults().isAdminUser() || isOwnComment {
             let delete = UIAlertAction(title: "Delete Comment", style: .default) { _ in
                 self.showLoader()
                 self.viewModel.deleteComment(commentID: commentsDetail.id)
