@@ -7,11 +7,11 @@
 
 import Foundation
 
+// No offset/limit: the locality endpoint is always called with show=true, which
+// makes the server return every locality in one response. See APIPayload.incidentLocalityList.
 struct IncidentLocalityRequestModel {
     public var sortBy: String
     public var sortDir: String
-    public var offset: Int
-    public var limit: Int
     public var listType: ListType?
 }
 
