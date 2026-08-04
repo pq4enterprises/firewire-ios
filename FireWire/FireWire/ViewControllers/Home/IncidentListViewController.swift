@@ -97,22 +97,37 @@ class IncidentListViewController: UIViewController {
         noIncidentLabel.font = FireWireTheme.bodyFont()
         noIncidentLabel.textColor = FireWireTheme.muted
 
-        var filterConfig = UIButton.Configuration.plain()
-        filterConfig.baseForegroundColor = FireWireTheme.red
-        filterConfig.image = UIImage(
-            systemName: "line.3.horizontal.decrease",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))
-        filterConfig.imagePadding = 6
-        filterConfig.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         // Design-system action label (matches the news bar's NYCFIREWIRE.NET
         // treatment / Android's poppins_bold): heavy, uppercase, kerned, red.
-        filterConfig.attributedTitle = AttributedString(
-            "FEED AREAS",
-            attributes: AttributeContainer([
-                .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
-                .kern: 0.8,
-            ]))
-        feedAreaButton.configuration = filterConfig
+        // Styled through the legacy button API — this button comes from the
+        // storyboard as a legacy (non-configuration) button, and a runtime
+        // UIButton.Configuration assignment silently loses to the storyboard
+        // state; setAttributedTitle/setImage always win.
+        feedAreaButton.tintColor = FireWireTheme.red
+        feedAreaButton.setImage(
+            UIImage(
+                systemName: "line.3.horizontal.decrease",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))?
+                .withRenderingMode(.alwaysTemplate),
+            for: .normal)
+        feedAreaButton.setAttributedTitle(
+            NSAttributedString(
+                string: "FEED AREAS",
+                attributes: [
+                    .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
+                    .kern: 0.8,
+                    .foregroundColor: FireWireTheme.red,
+                ]),
+            for: .normal)
+        // The storyboard pins this button to 120pt with a 15pt title inset,
+        // which truncates the heavier label ("FEE...REAS"). Let it size to fit.
+        feedAreaButton.constraints
+            .filter { $0.firstAttribute == .width }
+            .forEach { $0.isActive = false }
+        // Icon-to-label gap without truncation: the negative right title inset
+        // pairs with the extra content inset so the label keeps its full width.
+        feedAreaButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
+        feedAreaButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 6)
 
         // Grabber + hairline on the sheet's header bar
         if let headerBar = totalPostLabel.superview {
