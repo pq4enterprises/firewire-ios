@@ -1153,6 +1153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B08237132CE374D30092AC01 /* Build configuration list for PBXNativeTarget "FireWire" */;
 			buildPhases = (
+				B0FE00AA2E390AA000000001 /* Release Guard */,
 				B08236E52CE374D10092AC01 /* Sources */,
 				B08236E62CE374D10092AC01 /* Frameworks */,
 				B08236E72CE374D10092AC01 /* Resources */,
@@ -1424,6 +1425,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B0FE00AA2E390AA000000001 /* Release Guard */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/FireWire/Utilities/API_Manager/APIEndpoints.swift",
+			);
+			name = "Release Guard";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# RELEASE GUARD: refuse to build a Release while the API points at staging.\n# Mirrors Android's checkReleaseApiUrl. Debug builds are unaffected --\n# pointing them at staging is normal and expected.\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then exit 0; fi\nFILE=\"${PROJECT_DIR}/FireWire/Utilities/API_Manager/APIEndpoints.swift\"\nif [ ! -f \"$FILE\" ]; then\n  echo \"error: Release guard: $FILE not found -- cannot verify the API base URL.\"\n  exit 1\nfi\nACTIVE=$(grep -E '^[[:space:]]*static let (baseURL|postAdminUrl)' \"$FILE\")\nCOUNT=$(printf '%s\\n' \"$ACTIVE\" | grep -c 'static let')\nif [ \"$COUNT\" -lt 2 ]; then\n  echo \"error: Release guard: expected an active baseURL and postAdminUrl in APIEndpoints.swift, found $COUNT. Both must be present (uncommented) and set to production.\"\n  exit 1\nfi\nBAD=$(printf '%s\\n' \"$ACTIVE\" | grep -E 'staging\\.|dev-firewire' || true)\nif [ -n \"$BAD\" ]; then\n  echo \"error: RELEASE BLOCKED -- an API URL is not production: $BAD  ||  Set baseURL to https://api.nycfirewireapp.com/ and postAdminUrl to https://admin.nycfirewireapp.com before building a release.\"\n  exit 1\nfi\necho \"Release guard OK -- production URLs active.\"\n";
+		};
 		B06F61EA2DBD1057005113B4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
