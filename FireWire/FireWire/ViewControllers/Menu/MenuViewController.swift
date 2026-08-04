@@ -387,23 +387,30 @@ class MenuViewController: UIViewController {
         icon.translatesAutoresizingMaskIntoConstraints = false
         circle.addSubview(icon)
 
-        // Server-provided icon fills the circle over the SF Symbol placeholder
+        // Server-provided icon: untinted, centered inside a neutral circle —
+        // same treatment as Android, instead of an edge-to-edge crop that
+        // mangled logo-shaped images.
         if let imageUrl = item.imageUrl, let url = URL(string: imageUrl) {
-            let circleImageView = UIImageView()
-            circleImageView.contentMode = .scaleAspectFill
-            circleImageView.clipsToBounds = true
-            circleImageView.layer.cornerRadius = circleSize / 2
-            circleImageView.translatesAutoresizingMaskIntoConstraints = false
-            circle.addSubview(circleImageView)
+            circle.backgroundColor = FireWireTheme.surface2
+
+            let serverIconView = UIImageView()
+            serverIconView.contentMode = .scaleAspectFit
+            serverIconView.clipsToBounds = true
+            serverIconView.translatesAutoresizingMaskIntoConstraints = false
+            circle.addSubview(serverIconView)
 
             NSLayoutConstraint.activate([
-                circleImageView.topAnchor.constraint(equalTo: circle.topAnchor),
-                circleImageView.leadingAnchor.constraint(equalTo: circle.leadingAnchor),
-                circleImageView.trailingAnchor.constraint(equalTo: circle.trailingAnchor),
-                circleImageView.bottomAnchor.constraint(equalTo: circle.bottomAnchor),
+                serverIconView.centerXAnchor.constraint(equalTo: circle.centerXAnchor),
+                serverIconView.centerYAnchor.constraint(equalTo: circle.centerYAnchor),
+                serverIconView.widthAnchor.constraint(equalTo: circle.widthAnchor, multiplier: 0.6),
+                serverIconView.heightAnchor.constraint(equalTo: circle.heightAnchor, multiplier: 0.6),
             ])
 
-            circleImageView.loadImage(from: url)
+            // The SF Symbol placeholder stays until the download succeeds, so a
+            // transparent server icon never shows the placeholder through itself.
+            serverIconView.loadImage(from: url) {
+                icon.isHidden = true
+            }
         }
 
         let label = UILabel()
