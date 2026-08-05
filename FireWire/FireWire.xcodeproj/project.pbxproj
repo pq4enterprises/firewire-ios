@@ -201,6 +201,7 @@
 		B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
 		B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
+		B0FE00AA2E390AA000000003 /* SessionExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */; };
 		B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 		B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
@@ -319,6 +320,7 @@
 		B0C1D2A52DEE22D1009E879B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01FFAC32DCE4A2C0007AB0A /* FirebaseAnalytics */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
+		B0FE00AA2E390AA000000004 /* SessionExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
@@ -557,6 +559,7 @@
 		B0B836752D5A744200C71D8F /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiredViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -1013,6 +1016,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */,
+				B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */,
 				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
@@ -1496,6 +1500,7 @@
 				B0D825DF2E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
+				B0FE00AA2E390AA000000004 /* SessionExpiredViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B0ADB6A92D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
@@ -1645,6 +1650,7 @@
 				B0D825E02E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
 				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
 				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
+				B0FE00AA2E390AA000000003 /* SessionExpiredViewController.swift in Sources */,
 				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
 				B0ADB6AA2D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */,
