@@ -47,11 +47,11 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
     var isMapViewExpanded: Bool = false
     var isListViewExpanded: Bool = false
 
-    private let footerActivityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = FWColor.red
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
+    private let footerActivityIndicator: FWFlameLoaderView = {
+        let loader = FWFlameLoaderView(pointSize: 18)
+        loader.frame = CGRect(x: 0, y: 0, width: 0, height: 44)
+        loader.hidesWhenStopped = true
+        return loader
     }()
 
     var sequence = MaterialShowcaseSequence()
@@ -158,7 +158,7 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         incidentTableView.addGestureRecognizer(panGestureRecognizer)
 
-        incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
+        incidentTableView.register(IncidentListViewCell.self, forCellReuseIdentifier: IncidentListViewCell.identifier)
 
         incidentTableView.tableFooterView = footerActivityIndicator
     }
@@ -188,7 +188,8 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
     // MARK: - Actions
 
     @IBAction func filterButtonTap(_ sender: UIButton) {
-        coordinator?.navigateToSelectAreaListView(self)
+        // Old feed-areas sheet was retired — Areas & Alerts replaces it.
+        coordinator?.navigateToAreasAlerts()
     }
 
     @IBAction func changeViewButtonTap(_ sender: UIButton) {
@@ -423,28 +424,28 @@ extension IncidentsViewController: MaterialShowcaseDelegate {
             let showcase1 = createMaterialShowcase(
                 primaryText: "Incident",
                 secondaryText: "Click to view incident details",
-                targetView: titleView!
+                targetView: titleView
             )
 
             let likesView = cell.favouriteButton
             let showcase2 = createMaterialShowcase(
                 primaryText: "Like",
                 secondaryText: "Tap to like incidents",
-                targetView: likesView!
+                targetView: likesView
             )
 
             let commentsView = cell.commentButton
             let showcase3 = createMaterialShowcase(
                 primaryText: "Comment",
                 secondaryText: "Comment and Share photos",
-                targetView: commentsView!
+                targetView: commentsView
             )
 
             let shareView = cell.shareButton
             let showcase4 = createMaterialShowcase(
                 primaryText: "Share",
                 secondaryText: "Share incidents with friends",
-                targetView: shareView!
+                targetView: shareView
             )
 
             let showcase5 = createMaterialShowcase(

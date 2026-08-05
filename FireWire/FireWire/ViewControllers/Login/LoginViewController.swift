@@ -25,6 +25,10 @@ class LoginViewController: UIViewController {
     weak var parentCoordinator: AppCoordinator?
     var viewModel: LoginViewModel?
 
+    /// Set by AppCoordinator when it routes here because the session expired, so the
+    /// user is told *why* they are suddenly looking at a login screen. Consumed once.
+    static var pendingSessionExpiryNotice = false
+
     @IBOutlet var socialLoginStack: UIStackView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var registerLabel: UILabel!
@@ -42,6 +46,18 @@ class LoginViewController: UIViewController {
 
         viewModel = LoginViewModel()
         viewModel?.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // A non-blocking toast, not an alert: the fields, Forgot Password, and social
+        // sign-in are all right here, so nothing should stand between the user and
+        // typing their password.
+        if LoginViewController.pendingSessionExpiryNotice {
+            LoginViewController.pendingSessionExpiryNotice = false
+            showToast(message: "Your session ended. Please sign in again.")
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

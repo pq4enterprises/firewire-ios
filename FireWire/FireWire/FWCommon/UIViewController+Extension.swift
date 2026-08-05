@@ -20,22 +20,25 @@ extension UIViewController {
     }
 
     // MARK: - Show Activity Indicator
-    
+
+    /// The `style` parameter is kept so existing call sites compile unchanged;
+    /// the visual is now the branded FWFlameLoaderView on every screen.
     func showLoader(with style: UIActivityIndicatorView.Style = .large) {
         if view.viewWithTag(998) != nil { return }
 
         let dimView = UIView(frame: view.bounds)
+        dimView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dimView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         dimView.tag = 998 // Use different tag for dim background
         dimView.isUserInteractionEnabled = true
 
-        let activityIndicator = UIActivityIndicatorView(style: style)
-        activityIndicator.tag = 999 // Tag to identify the activity indicator later
-        activityIndicator.center = dimView.center
-        activityIndicator.startAnimating()
-        activityIndicator.color = FWColor.red
+        let flameLoader = FWFlameLoaderView(pointSize: style == .large ? 40 : 26)
+        flameLoader.tag = 999 // Tag to identify the loader later
+        flameLoader.frame = dimView.bounds
+        flameLoader.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        flameLoader.startAnimating()
 
-        dimView.addSubview(activityIndicator)
+        dimView.addSubview(flameLoader)
         view.addSubview(dimView)
     }
 

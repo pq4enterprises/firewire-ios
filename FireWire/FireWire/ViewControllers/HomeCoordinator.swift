@@ -33,9 +33,9 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToFeeds(){
-        let feedsViewController = FeedsListViewController.instantiate()
-        feedsViewController.coordinator = self
-        pushViewController(feedsViewController, animated: true)
+        let scannerViewController = ScannerViewController.instantiate()
+        scannerViewController.coordinator = self
+        pushViewController(scannerViewController, animated: true)
     }
 
     func navigateBackToHome(popViewToLeft: Bool = false){
@@ -47,10 +47,10 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToMyAccount(){
-        let myAccountViewController = MyAccountViewController.instantiate()
-        myAccountViewController.appCoordinator = parentCoordinator
-        myAccountViewController.coordinator = self
-        pushViewController(myAccountViewController, animated: true)
+        let profileViewController = ProfileViewController.instantiate()
+        profileViewController.appCoordinator = parentCoordinator
+        profileViewController.coordinator = self
+        pushViewController(profileViewController, animated: true)
     }
 
     func navigateToAreasAlerts(){
@@ -74,9 +74,9 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToUpdateProfile(){
-        let updateProfileViewController = UpdateProfileViewController.instantiate()
-        updateProfileViewController.coordinator = self
-        pushViewController(updateProfileViewController, animated: true)
+        let editProfileViewController = EditProfileViewController.instantiate()
+        editProfileViewController.coordinator = self
+        pushViewController(editProfileViewController, animated: true)
     }
 
     func navigateToChangePassword(){
@@ -85,22 +85,7 @@ class HomeCoordinator: BaseCoordinator {
         pushViewController(changePasswordViewController, animated: true)
     }
 
-    func navigateToSelectAreaListView(_ delegate: FilterAreaDelegate?){
-        let viewModel = IncidentLocalityListViewModel()
-        viewModel.filterAreaDelegate = delegate
-        let selectAreaListView = IncidentLocalityListViewController(viewModel: viewModel)
-        selectAreaListView.coordinator = self
-
-        if let sheet = selectAreaListView.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersGrabberVisible = true
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
-        }
-        selectAreaListView.modalPresentationStyle = .pageSheet
-        navigationController.present(selectAreaListView, animated: true)
-    }
-
-    func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){
+func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsModel, _ attachedImages: [UIImage] = []){
         let commentsList = CommentsViewController.instantiate()
         commentsList.setSelectedIncidentID(incidentComments)
         commentsList.attachedImages = attachedImages
@@ -143,10 +128,14 @@ class HomeCoordinator: BaseCoordinator {
     }
 
     func navigateToSubscriptionInfo(){
-        let subscriptionView = SubscriptionInfoViewController.instantiate()
-        subscriptionView.modalPresentationStyle = .overFullScreen
-        subscriptionView.coordinator = self
-        navigationController.present(subscriptionView, animated: true)
+        // The subscription paywall now lives inside the redesigned Profile
+        // screen — present it modally wherever the old paywall was triggered.
+        let profileViewController = ProfileViewController.instantiate()
+        profileViewController.appCoordinator = parentCoordinator
+        profileViewController.coordinator = self
+        profileViewController.isModalPaywall = true
+        profileViewController.modalPresentationStyle = .fullScreen
+        navigationController.present(profileViewController, animated: true)
     }
 
     func navigateToPostWebView(){

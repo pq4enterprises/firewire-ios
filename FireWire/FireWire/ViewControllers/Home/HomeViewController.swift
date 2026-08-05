@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
 
     func setupView() {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        styleHeader()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         incidentHomeVC = storyboard.instantiateViewController(withIdentifier: "IncidentHomeViewController") as? IncidentHomeViewController
@@ -60,27 +61,64 @@ class HomeViewController: UIViewController {
 
         switchToViewController(at: 0)
         segmentControl.selectedSegmentIndex = 0
-        segmentControl.layer.cornerRadius = 20
+    }
+
+    /// New design system: solid surface header with hairline, WIRE/NEWS
+    /// segmented pill, themed line icons for menu / reload / scanner.
+    private func styleHeader() {
+        view.backgroundColor = FireWireTheme.background
+        headerView.backgroundColor = FireWireTheme.surface
+
+        let hairline = UIView()
+        hairline.backgroundColor = FireWireTheme.hairline
+        hairline.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(hairline)
+        NSLayoutConstraint.activate([
+            hairline.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            hairline.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            hairline.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            hairline.heightAnchor.constraint(equalToConstant: 1),
+        ])
+
+        menuButton.setImage(
+            UIImage(systemName: "line.3.horizontal",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold)),
+            for: .normal)
+        menuButton.tintColor = FireWireTheme.text
+
+        reloadButton.setImage(
+            UIImage(systemName: "arrow.clockwise",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)),
+            for: .normal)
+        reloadButton.tintColor = FireWireTheme.text
+
+        feedsButton.setImage(
+            UIImage(systemName: "radio",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .medium)),
+            for: .normal)
+        feedsButton.tintColor = FireWireTheme.text
+
+        segmentControl.setTitle("WIRE", forSegmentAt: 0)
+        segmentControl.setTitle("NEWS", forSegmentAt: 1)
+        segmentControl.backgroundColor = FireWireTheme.surface2
+        segmentControl.selectedSegmentTintColor = FireWireTheme.surface
+        segmentControl.setTitleTextAttributes([
+            .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
+            .foregroundColor: FireWireTheme.muted,
+            .kern: 0.6,
+        ], for: .normal)
+        segmentControl.setTitleTextAttributes([
+            .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
+            .foregroundColor: FireWireTheme.text,
+            .kern: 0.6,
+        ], for: .selected)
+        segmentControl.layer.cornerRadius = 12
         segmentControl.layer.masksToBounds = true
     }
 
     func updateUI(_ listExpanded: Bool) {
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-            if listExpanded {
-                self.headerView.backgroundColor = .systemBackground
-
-                let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
-                self.menuButton.setImage(isDarkMode ? FWImage.menuIconWhite : FWImage.menuIcon, for: .normal)
-                self.feedsButton.setImage(isDarkMode ? FWImage.alertIconWhite : FWImage.alertIcon, for: .normal)
-                self.reloadButton.tintColor = isDarkMode ? .white : UIColor.label
-            } else {
-                self.headerView.backgroundColor = .clear
-                self.menuButton.setImage(FWImage.menuIconWhite, for: .normal)
-                self.feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
-                self.reloadButton.tintColor = .white
-            }
-            self.view.layoutSubviews()
-        }, completion: nil)
+        // Header is always solid surface in the new design system — nothing
+        // to swap when the incident list expands/collapses over the map.
     }
 
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
@@ -121,18 +159,10 @@ class HomeViewController: UIViewController {
         switch index {
         case 0:
             selectedViewController = incidentHomeVC!
-
-            menuButton.setImage(FWImage.menuIconWhite, for: .normal)
-            feedsButton.setImage(FWImage.alertIconWhite, for: .normal)
             reloadButton.isHidden = false
-            updateUI(isIncidentListExpanded)
         case 1:
             selectedViewController = newsViewController!
-
-            menuButton.setImage(FWImage.menuIcon, for: .normal)
-            feedsButton.setImage(FWImage.alertIcon, for: .normal)
             reloadButton.isHidden = true
-            updateUI(true)
         default:
             return
         }

@@ -38,7 +38,8 @@ class IncidentListViewController: UIViewController {
 
     var totalPages: Int = 0 {
         didSet {
-            totalPostLabel.text = "\(totalPages) posts are listed"
+            // Set on every completed feed load — stamp the bar with the time.
+            markFeedUpdated()
         }
     }
 
@@ -52,11 +53,17 @@ class IncidentListViewController: UIViewController {
         }
     }
 
-    private let footerActivityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = FWColor.red
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
+    private let footerFlameLoader: FWFlameLoaderView = {
+        let loader = FWFlameLoaderView(pointSize: 18)
+        loader.frame = CGRect(x: 0, y: 0, width: 0, height: 44)
+        loader.hidesWhenStopped = true
+        return loader
+    }()
+
+    private static let updatedTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
     }()
 
     @IBOutlet weak var totalPostLabel: UILabel!
@@ -71,8 +78,84 @@ class IncidentListViewController: UIViewController {
         incidentTableView.dataSource = self
         incidentTableView.delegate = self
 
-        incidentTableView.register(IncidentListViewCell.nib(), forCellReuseIdentifier: IncidentListViewCell.identifier)
-        incidentTableView.tableFooterView = footerActivityIndicator
+        incidentTableView.register(IncidentListViewCell.self, forCellReuseIdentifier: IncidentListViewCell.identifier)
+        incidentTableView.tableFooterView = footerFlameLoader
+        styleUI()
+    }
+
+    /// New design system: surface sheet with grabber, muted monospaced
+    /// last-updated stamp and red FEED AREAS action.
+    private func styleUI() {
+        view.backgroundColor = FireWireTheme.surface
+        incidentTableView.backgroundColor = FireWireTheme.surface
+        incidentTableView.separatorStyle = .none
+        incidentTableView.showsVerticalScrollIndicator = false
+
+        setUpdatedLabel(text: "UPDATED —")
+
+        noIncidentLabel.text = "NO INCIDENTS FOUND"
+        noIncidentLabel.font = FireWireTheme.bodyFont()
+        noIncidentLabel.textColor = FireWireTheme.muted
+
+        // Design-system action label (matches the news bar's NYCFIREWIRE.NET
+        // treatment / Android's poppins_bold): heavy, uppercase, kerned, red.
+        // Styled through the legacy button API — this button comes from the
+        // storyboard as a legacy (non-configuration) button, and a runtime
+        // UIButton.Configuration assignment silently loses to the storyboard
+        // state; setAttributedTitle/setImage always win.
+        feedAreaButton.tintColor = FireWireTheme.red
+        feedAreaButton.setImage(
+            UIImage(
+                systemName: "line.3.horizontal.decrease",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold))?
+                .withRenderingMode(.alwaysTemplate),
+            for: .normal)
+        feedAreaButton.setAttributedTitle(
+            NSAttributedString(
+                string: "FEED AREAS",
+                attributes: [
+                    .font: UIFont.systemFont(ofSize: 13, weight: .heavy),
+                    .kern: 0.8,
+                    .foregroundColor: FireWireTheme.red,
+                ]),
+            for: .normal)
+        // The storyboard pins this button to 120pt with a 15pt title inset,
+        // which truncates the heavier label ("FEE...REAS"). Let it size to fit.
+        feedAreaButton.constraints
+            .filter { $0.firstAttribute == .width }
+            .forEach { $0.isActive = false }
+        // Icon-to-label gap without truncation: the negative right title inset
+        // pairs with the extra content inset so the label keeps its full width.
+        feedAreaButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
+        feedAreaButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 6)
+
+        // Grabber + hairline on the sheet's header bar
+        if let headerBar = totalPostLabel.superview {
+            headerBar.backgroundColor = FireWireTheme.surface
+
+            let grabber = UIView()
+            grabber.backgroundColor = FireWireTheme.muted.withAlphaComponent(0.5)
+            grabber.layer.cornerRadius = 2.5
+            grabber.translatesAutoresizingMaskIntoConstraints = false
+            headerBar.addSubview(grabber)
+
+            let hairline = UIView()
+            hairline.backgroundColor = FireWireTheme.hairline
+            hairline.translatesAutoresizingMaskIntoConstraints = false
+            headerBar.addSubview(hairline)
+
+            NSLayoutConstraint.activate([
+                grabber.topAnchor.constraint(equalTo: headerBar.topAnchor, constant: 8),
+                grabber.centerXAnchor.constraint(equalTo: headerBar.centerXAnchor),
+                grabber.widthAnchor.constraint(equalToConstant: 44),
+                grabber.heightAnchor.constraint(equalToConstant: 5),
+
+                hairline.leadingAnchor.constraint(equalTo: headerBar.leadingAnchor),
+                hairline.trailingAnchor.constraint(equalTo: headerBar.trailingAnchor),
+                hairline.bottomAnchor.constraint(equalTo: headerBar.bottomAnchor),
+                hairline.heightAnchor.constraint(equalToConstant: 1),
+            ])
+        }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -89,19 +172,38 @@ class IncidentListViewController: UIViewController {
     }
 
     func showFooterLoader() {
-        footerActivityIndicator.startAnimating()
+        footerFlameLoader.startAnimating()
         incidentTableView.tableFooterView?.isHidden = false
     }
 
     func hideFooterLoader() {
-        footerActivityIndicator.stopAnimating()
+        footerFlameLoader.stopAnimating()
         incidentTableView.tableFooterView?.isHidden = true
     }
 
-    @IBAction func feedAreaTapped(_ sender: UIButton) {
-        coordinator?.navigateToSelectAreaListView(self)
+    /// "UPDATED 2:41 PM"-style stamp — uppercase, monospaced, muted.
+    private func markFeedUpdated() {
+        let time = Self.updatedTimeFormatter.string(from: Date()).uppercased()
+        setUpdatedLabel(text: "UPDATED \(time)")
     }
-    
+
+    private func setUpdatedLabel(text: String) {
+        totalPostLabel.attributedText = NSAttributedString(
+            string: text,
+            attributes: [
+                .font: UIFont.monospacedSystemFont(ofSize: 12, weight: .bold),
+                .kern: 0.8,
+                .foregroundColor: FireWireTheme.muted,
+            ])
+    }
+
+    @IBAction func feedAreaTapped(_ sender: UIButton) {
+        // The pre-redesign feed-areas sheet was retired with the Areas &
+        // Alerts screen — route there instead (fixes a decode crash on the
+        // deleted flow's XIB).
+        coordinator?.navigateToAreasAlerts()
+    }
+
 }
 
 extension IncidentListViewController: PulleyDrawerViewControllerDelegate {
@@ -190,12 +292,6 @@ extension IncidentListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension IncidentListViewController: FilterAreaDelegate {
-    func filterUpdate() {
-        delegate?.filterUpdate()
-    }
-}
-
 extension IncidentListViewController: APIDelegate {
     func error(message: String) {
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in
@@ -211,28 +307,28 @@ extension IncidentListViewController: MaterialShowcaseDelegate {
             let showcase1 = createMaterialShowcase(
                 primaryText: "Incident",
                 secondaryText: "Click to view incident details",
-                targetView: titleView!
+                targetView: titleView
             )
 
             let likesView = cell.favouriteButton
             let showcase2 = createMaterialShowcase(
                 primaryText: "Like",
                 secondaryText: "Tap to like incidents",
-                targetView: likesView!
+                targetView: likesView
             )
 
             let commentsView = cell.commentButton
             let showcase3 = createMaterialShowcase(
                 primaryText: "Comment",
                 secondaryText: "Comment and Share photos",
-                targetView: commentsView!
+                targetView: commentsView
             )
 
             let shareView = cell.shareButton
             let showcase4 = createMaterialShowcase(
                 primaryText: "Share",
                 secondaryText: "Share incidents with friends",
-                targetView: shareView!
+                targetView: shareView
             )
 
             let showcase5 = createMaterialShowcase(

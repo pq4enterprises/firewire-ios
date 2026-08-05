@@ -32,6 +32,12 @@ class AreasAlertsViewController: UIViewController {
     private var feedSwitches: [[UISwitch]] = []
     private var alertSwitches: [[UISwitch]] = []
     private var groupActionButtons: [UIButton] = []
+    private var groupCards: [UIView] = []
+    private var groupChevrons: [UIImageView] = []
+
+    /// Region names the user expanded (all groups start collapsed) —
+    /// mirrors the scanner screen's collapsible region headers.
+    private var expandedGroups = Set<String>()
 
     /// Card-styled views whose CGColor borders need refreshing on theme change.
     private var borderedViews: [UIView] = []
@@ -378,17 +384,41 @@ class AreasAlertsViewController: UIViewController {
         feedSwitches = []
         alertSwitches = []
         groupActionButtons = []
+        groupCards = []
+        groupChevrons = []
 
         for (groupIndex, group) in viewModel.groups.enumerated() {
             feedSwitches.append([])
             alertSwitches.append([])
             groupsStack.addArrangedSubview(groupHeaderRow(for: group, groupIndex: groupIndex))
-            groupsStack.addArrangedSubview(groupCard(for: group, groupIndex: groupIndex))
+
+            let card = groupCard(for: group, groupIndex: groupIndex)
+            let collapsed = !expandedGroups.contains(group.name)
+            card.isHidden = collapsed
+            card.alpha = collapsed ? 0 : 1
+            groupCards.append(card)
+            groupsStack.addArrangedSubview(card)
         }
     }
 
+    /// Collapsible group header — chevron + name toggles the group open and
+    /// closed (scanner-screen pattern); the SELECT ALL action sits on top of
+    /// the toggle button so its taps never collapse the group.
     private func groupHeaderRow(for group: AreasAlertsViewModel.RegionGroup, groupIndex: Int) -> UIView {
         let row = UIView()
+        let expanded = expandedGroups.contains(group.name)
+
+        let chevron = UIImageView(image: UIImage(
+            systemName: "chevron.right",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 11, weight: .heavy)))
+        chevron.tintColor = FireWireTheme.muted
+        chevron.contentMode = .center
+        if expanded {
+            chevron.transform = CGAffineTransform(rotationAngle: .pi / 2)
+        }
+        chevron.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(chevron)
+        groupChevrons.append(chevron)
 
         let nameLabel = UILabel()
         nameLabel.text = group.name.uppercased()
@@ -396,6 +426,14 @@ class AreasAlertsViewController: UIViewController {
         nameLabel.textColor = FireWireTheme.text
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         row.addSubview(nameLabel)
+
+        // Full-row toggle target. Added before the SELECT ALL button so the
+        // action button stays on top and receives its own taps.
+        let toggleButton = UIButton(type: .custom)
+        toggleButton.tag = groupIndex
+        toggleButton.addTarget(self, action: #selector(groupHeaderTap(_:)), for: .touchUpInside)
+        toggleButton.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(toggleButton)
 
         let actionButton = UIButton(type: .system)
         actionButton.setTitle(group.allFeedOn ? "UNSELECT ALL" : "SELECT ALL", for: .normal)
@@ -409,12 +447,48 @@ class AreasAlertsViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             row.heightAnchor.constraint(equalToConstant: 40),
-            nameLabel.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 4),
+
+            chevron.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 4),
+            chevron.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 4),
+            chevron.widthAnchor.constraint(equalToConstant: 14),
+
+            nameLabel.leadingAnchor.constraint(equalTo: chevron.trailingAnchor, constant: 8),
             nameLabel.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 4),
+
+            toggleButton.topAnchor.constraint(equalTo: row.topAnchor),
+            toggleButton.leadingAnchor.constraint(equalTo: row.leadingAnchor),
+            toggleButton.trailingAnchor.constraint(equalTo: row.trailingAnchor),
+            toggleButton.bottomAnchor.constraint(equalTo: row.bottomAnchor),
+
             actionButton.trailingAnchor.constraint(equalTo: row.trailingAnchor, constant: -4),
             actionButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
         ])
         return row
+    }
+
+    @objc private func groupHeaderTap(_ sender: UIButton) {
+        let groupIndex = sender.tag
+        guard groupIndex < viewModel.groups.count,
+              groupIndex < groupCards.count,
+              groupIndex < groupChevrons.count
+        else { return }
+
+        let name = viewModel.groups[groupIndex].name
+        let collapse = expandedGroups.contains(name)
+        if collapse {
+            expandedGroups.remove(name)
+        } else {
+            expandedGroups.insert(name)
+        }
+
+        let card = groupCards[groupIndex]
+        let chevron = groupChevrons[groupIndex]
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut]) {
+            card.isHidden = collapse
+            card.alpha = collapse ? 0 : 1
+            chevron.transform = collapse ? .identity : CGAffineTransform(rotationAngle: .pi / 2)
+            self.contentStack.layoutIfNeeded()
+        }
     }
 
     private func groupCard(for group: AreasAlertsViewModel.RegionGroup, groupIndex: Int) -> UIView {

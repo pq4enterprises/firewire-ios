@@ -265,8 +265,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     private let mapCard = UIView()
     private let mapContainer = UIView()
-    private let mapAddressChip = UIView()
-    private let mapAddressLabel = UILabel()
     private let mapTypeSelector = MapTypeSelector(titles: ["HYBRID", "STREET", "SATELLITE"])
 
     private let unitsCard = UIView()
@@ -383,7 +381,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         headerBar.addSubview(shareButton)
 
         let feedButton = UIButton(type: .system)
-        feedButton.setImage(FWImage.alertIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
+        // Canonical scanner glyph — identical to the home header's treatment.
+        feedButton.setImage(
+            UIImage(systemName: "radio",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .medium)),
+            for: .normal)
         feedButton.tintColor = IncidentTheme.text
         feedButton.addTarget(self, action: #selector(feedButtonTap), for: .touchUpInside)
         feedButton.translatesAutoresizingMaskIntoConstraints = false
@@ -474,11 +476,19 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         actionsRow.translatesAutoresizingMaskIntoConstraints = false
         bottomBar.addSubview(actionsRow)
 
+        // Single-line brand footer, centered and bottom-aligned.
         let watermark = UILabel()
-        watermark.text = "FIRE WIRE · @NYCFIREWIRE"
-        watermark.font = .monospacedSystemFont(ofSize: 10, weight: .bold)
-        watermark.textColor = IncidentTheme.muted
-        watermark.textAlignment = .center
+        watermark.numberOfLines = 1
+        let watermarkParagraph = NSMutableParagraphStyle()
+        watermarkParagraph.alignment = .center
+        watermark.attributedText = NSAttributedString(
+            string: "FIRE WIRE - THE BRAVEST NEWS NETWORK",
+            attributes: [
+                .font: UIFont.monospacedSystemFont(ofSize: 10, weight: .bold),
+                .kern: 0.5,
+                .foregroundColor: IncidentTheme.muted,
+                .paragraphStyle: watermarkParagraph,
+            ])
         watermark.translatesAutoresizingMaskIntoConstraints = false
         bottomBar.addSubview(watermark)
 
@@ -631,23 +641,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         mapContainer.translatesAutoresizingMaskIntoConstraints = false
         mapCard.addSubview(mapContainer)
 
-        mapAddressChip.backgroundColor = UIColor(white: 0, alpha: 0.55)
-        mapAddressChip.layer.cornerRadius = 8
-        mapAddressChip.layer.masksToBounds = true
-        mapAddressChip.translatesAutoresizingMaskIntoConstraints = false
-        mapCard.addSubview(mapAddressChip)
-
-        let pinIcon = UIImageView(image: UIImage(systemName: "mappin"))
-        pinIcon.tintColor = .white
-        pinIcon.contentMode = .scaleAspectFit
-        pinIcon.translatesAutoresizingMaskIntoConstraints = false
-        mapAddressChip.addSubview(pinIcon)
-
-        mapAddressLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        mapAddressLabel.textColor = .white
-        mapAddressLabel.translatesAutoresizingMaskIntoConstraints = false
-        mapAddressChip.addSubview(mapAddressLabel)
-
         mapTypeSelector.translatesAutoresizingMaskIntoConstraints = false
         mapTypeSelector.onSelectionChanged = { [weak self] index in
             self?.mapTypeChanged(to: index)
@@ -659,20 +652,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             mapContainer.leadingAnchor.constraint(equalTo: mapCard.leadingAnchor),
             mapContainer.trailingAnchor.constraint(equalTo: mapCard.trailingAnchor),
             mapContainer.bottomAnchor.constraint(equalTo: mapCard.bottomAnchor),
-
-            mapAddressChip.topAnchor.constraint(equalTo: mapCard.topAnchor, constant: 10),
-            mapAddressChip.leadingAnchor.constraint(equalTo: mapCard.leadingAnchor, constant: 10),
-            mapAddressChip.trailingAnchor.constraint(lessThanOrEqualTo: mapCard.trailingAnchor, constant: -10),
-
-            pinIcon.leadingAnchor.constraint(equalTo: mapAddressChip.leadingAnchor, constant: 8),
-            pinIcon.centerYAnchor.constraint(equalTo: mapAddressChip.centerYAnchor),
-            pinIcon.widthAnchor.constraint(equalToConstant: 12),
-            pinIcon.heightAnchor.constraint(equalToConstant: 14),
-
-            mapAddressLabel.leadingAnchor.constraint(equalTo: pinIcon.trailingAnchor, constant: 5),
-            mapAddressLabel.trailingAnchor.constraint(equalTo: mapAddressChip.trailingAnchor, constant: -9),
-            mapAddressLabel.topAnchor.constraint(equalTo: mapAddressChip.topAnchor, constant: 5),
-            mapAddressLabel.bottomAnchor.constraint(equalTo: mapAddressChip.bottomAnchor, constant: -5),
 
             mapTypeSelector.trailingAnchor.constraint(equalTo: mapCard.trailingAnchor, constant: -8),
             mapTypeSelector.bottomAnchor.constraint(equalTo: mapCard.bottomAnchor, constant: -8),
@@ -789,7 +768,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
 
         incidentAddressTitle.text = incidentDetail.address.uppercased()
-        mapAddressLabel.text = incidentDetail.address.uppercased()
 
         let subtitle = incidentDetail.field3Value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         incidentSubTitle.text = subtitle.uppercased()

@@ -49,18 +49,16 @@
 		B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
+		BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
+		BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B01085DA2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
 		B01085DB2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
-		B01154FF2E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
-		B01155002E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
-		B01155012E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */; };
-		B01155022E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */; };
 		B018F9192E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */; };
 		B018F91A2E8FD747002C3C7F /* SelectedIncidentCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */; };
 		B01BB04F2CF3109C003970D7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
 		B01BB0512CF311A5003970D7 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
-		B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
 		B01C0E282D08A5C60021A39E /* IncidentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */; };
 		B01C0E2C2D08A8290021A39E /* IncidentDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */; };
 		B01C0E342D08C0DD0021A39E /* FWDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */; };
@@ -81,7 +79,6 @@
 		B04682472CE66B3700419C65 /* FWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682462CE66B3700419C65 /* FWSegmentControl.swift */; };
 		B046824A2CE66E4900419C65 /* FWColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682492CE66E4900419C65 /* FWColor.swift */; };
 		B046824C2CE66F5A00419C65 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
-		B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
 		B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B06081742D3042F10031CE38 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
 		B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
@@ -102,8 +99,6 @@
 		B06F61842DBCB53B005113B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B06F61832DBCB53B005113B4 /* GoogleService-Info.plist */; };
 		B06F61852DBCB53B005113B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B06F61832DBCB53B005113B4 /* GoogleService-Info.plist */; };
 		B0707F4C2D1D5FE40096EB4A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
-		B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */; };
-		B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */; };
 		B0707F522D1D7CF60096EB4A /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */; };
 		B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B071E0212CE5036500D09598 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
@@ -160,19 +155,15 @@
 		B086DF5C2D1498FB00B20E10 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */; };
 		B086DF602D14A3C900B20E10 /* SuccessResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */; };
 		B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */; };
-		B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B08FAA542D32E234000BCD27 /* IncidentShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */; };
 		B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA572D339559000BCD27 /* TakePictureViewController.swift */; };
 		B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
-		B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
-		B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B09254BA2CF6378500879B07 /* FWBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */; };
 		B09254BE2CF64BE400879B07 /* FWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254BD2CF64BE400879B07 /* FWImage.swift */; };
 		B0A304472D0EE35F006F851A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A304462D0EE35F006F851A /* GoogleSignIn */; };
 		B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0A304562D0F0E9E006F851A /* NotificationLocalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */; };
 		B0A304582D0F1483006F851A /* NotificationLocalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */; };
-		B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0A3046B2D10A17B006F851A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046A2D10A17B006F851A /* XMLCoder */; };
 		B0A304702D10AD56006F851A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B0A3046F2D10AD56006F851A /* SwiftSoup */; };
 		B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
@@ -208,9 +199,9 @@
 		B0B1AE8F2D4F8DB6007371A9 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */; };
 		B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48E92D0D75A50088F66F /* UIImageView+Extension.swift */; };
 		B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046822C2CE52CA900419C65 /* HomeViewController.swift */; };
-		B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
 		B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3044F2D0EFDE0006F851A /* MapManager.swift */; };
 		B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
+		B0FE00AA2E390AA000000003 /* SessionExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */; };
 		B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */; };
 		B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08236EC2CE374D10092AC01 /* AppDelegate.swift */; };
 		B0B1AE972D4F8DB6007371A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
@@ -239,7 +230,6 @@
 		B0B1AEAF2D4F8DB6007371A9 /* FWShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071E0202CE5036500D09598 /* FWShadowButton.swift */; };
 		B0B1AEB02D4F8DB6007371A9 /* FeedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */; };
 		B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04682322CE5327D00419C65 /* NewsListViewController.swift */; };
-		B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */; };
 		B0B1AEB32D4F8DB6007371A9 /* FWImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48EB2D0D77DD0088F66F /* FWImageView.swift */; };
 		B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */; };
 		B0B1AEB52D4F8DB6007371A9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB04E2CF3109C003970D7 /* MenuViewController.swift */; };
@@ -272,13 +262,12 @@
 		B0B1AED62D4F8DB6007371A9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */; };
 		B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0452D32B3DE00767EAB /* ForgotPasswordResponseModel.swift */; };
 		B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
+		FE5E551C2A0100000000AA03 /* FWSessionExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */; };
 		B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9D7BC2D4961E100DB34A6 /* SubscriptionManager.swift */; };
 		B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3182CF32B5000CAB161 /* FWView.swift */; };
 		B0B1AEDC2D4F8DB6007371A9 /* String+copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F51292CF586E6007D319D /* String+copy.swift */; };
 		B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */; };
-		B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */; };
 		B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F50E62CF57609007D319D /* LoginDataModel.swift */; };
-		B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */; };
 		B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */; };
 		B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */; };
 		B0B1AEE52D4F8DB6007371A9 /* IncidentLocalityListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */; };
@@ -288,14 +277,15 @@
 		B0B1AEE92D4F8DB6007371A9 /* FWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046824B2CE66F5A00419C65 /* FWFont.swift */; };
 		B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B064D3162CF325E800CAB161 /* FWRoundedImageView.swift */; };
 		B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A48F32D0D8BDD0088F66F /* NewsDetailResponseModel.swift */; };
-		B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */; };
 		B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */; };
 		B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086DF592D1492DF00B20E10 /* SocialLoginRequestModel.swift */; };
-		B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */; };
 		BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1000012E30AAAA00000001 /* FireWireTheme.swift */; };
 		BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
+		BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
+		BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */; };
 		B0B1AEF32D4F8DB6007371A9 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE7C2D4F8DB6007371A9 /* GoogleMaps */; };
 		B0B1AEF42D4F8DB6007371A9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A9D7B92D49614100DB34A6 /* StoreKit.framework */; };
@@ -308,23 +298,18 @@
 		B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */; };
 		B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512F2CF586E6007D319D /* Teko-Medium.ttf */; };
 		B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512C2CF586E6007D319D /* Inter-Regular.ttf */; };
-		B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */; };
 		B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */; };
 		B0B1AF052D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F82CE374D30092AC01 /* Base */; };
 		B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A304822D134937006F851A /* CityHeaderCell.xib */; };
-		B0B1AF072D4F8DB6007371A9 /* CommentsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */; };
 		B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512D2CF586E6007D319D /* Poppins-Regular.ttf */; };
 		B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */; };
 		B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */; };
-		B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */; };
 		B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04682332CE5327D00419C65 /* NewsListViewController.xib */; };
 		B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179C2CF58759007517BD /* Colors.xcassets */; };
 		B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4B179D2CF58759007517BD /* Images.xcassets */; };
 		B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B08236F32CE374D10092AC01 /* Base */; };
 		B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512B2CF586E6007D319D /* Inter_18pt-Regular.ttf */; };
-		B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */; };
 		B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F512E2CF586E6007D319D /* Poppins-SemiBold.ttf */; };
-		B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
 		B0B836732D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
 		B0B836742D5A48AF00C71D8F /* SelectedAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */; };
 		B0B836762D5A745000C71D8F /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B836752D5A744200C71D8F /* CommonRequestModel.swift */; };
@@ -333,15 +318,14 @@
 		B0C1D2952DEE1BA4009E879B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = B0C1D2942DEE1BA4009E879B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		B0C1D2A42DEE22D1009E879B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01FFAC12DCE4A1E0007AB0A /* FirebaseAnalytics */; };
 		B0C1D2A52DEE22D1009E879B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01FFAC32DCE4A2C0007AB0A /* FirebaseAnalytics */; };
-		B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */; };
 		B0CF74BB2D038C1D008935D8 /* IncidentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */; };
 		B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */; };
+		B0FE00AA2E390AA000000004 /* SessionExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */; };
 		B0D12D002CED095200EEDDF8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */; };
 		B0D12D032CED0C9400EEDDF8 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */; };
 		B0D12D052CED0CC300EEDDF8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */; };
 		B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */; };
-		B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D737832D3FD59600D82F2C /* FeedItemListView.swift */; };
-		B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D737842D3FD59600D82F2C /* FeedItemListView.xib */; };
+		FE5E551B2A0100000000AA02 /* FWSessionExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */; };
 		B0D825D72E294565005B1EA4 /* Pulley in Frameworks */ = {isa = PBXBuildFile; productRef = B0D825D62E294565005B1EA4 /* Pulley */; };
 		B0D825D92E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
 		B0D825DA2E294594005B1EA4 /* IncidentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */; };
@@ -373,8 +357,6 @@
 		B0F7939B2D44BDBB00F0C8A0 /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */; };
 		B0F98C9E2D4D27AC006B8861 /* GetUserProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */; };
 		B0F98CA02D4D48CF006B8861 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */; };
-		B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
-		B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -469,14 +451,14 @@
 		B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewController.swift; sourceTree = "<group>"; };
 		BD1000012E30AAAA00000001 /* FireWireTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWireTheme.swift; sourceTree = "<group>"; };
 		BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewController.swift; sourceTree = "<group>"; };
+		BD3000012E60CC0000000001 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewModel.swift; sourceTree = "<group>"; };
+		BD3000012E60BBBB00000001 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BD3000022E60BBBB00000002 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
-		B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
-		B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
 		B018F9182E8FD73F002C3C7F /* SelectedIncidentCommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIncidentCommentsModel.swift; sourceTree = "<group>"; };
 		B01BB04E2CF3109C003970D7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B01BB0502CF311A5003970D7 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewController.swift; sourceTree = "<group>"; };
 		B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailViewModel.swift; sourceTree = "<group>"; };
 		B01C0E2B2D08A8290021A39E /* IncidentDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentDetailResponseModel.swift; sourceTree = "<group>"; };
 		B01C0E332D08C0DD0021A39E /* FWDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWDateFormatter.swift; sourceTree = "<group>"; };
@@ -495,7 +477,6 @@
 		B04682492CE66E4900419C65 /* FWColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWColor.swift; sourceTree = "<group>"; };
 		B046824B2CE66F5A00419C65 /* FWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWFont.swift; sourceTree = "<group>"; };
 		B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewCell.swift; sourceTree = "<group>"; };
-		B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentListViewCell.xib; sourceTree = "<group>"; };
 		B06081722D3042F10031CE38 /* IncidentLocalityListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListItem.swift; sourceTree = "<group>"; };
 		B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListItem.xib; sourceTree = "<group>"; };
 		B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsImageViewItem.swift; sourceTree = "<group>"; };
@@ -509,8 +490,6 @@
 		B06EEDB62D0B586B000A6245 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		B06F61832DBCB53B005113B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0707F4B2D1D5FE40096EB4A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
-		B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewCell.swift; sourceTree = "<group>"; };
-		B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsListViewCell.xib; sourceTree = "<group>"; };
 		B0707F512D1D7CF60096EB4A /* CommentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewModel.swift; sourceTree = "<group>"; };
 		B0707F532D1D7DAD0096EB4A /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
 		B071E0202CE5036500D09598 /* FWShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWShadowButton.swift; sourceTree = "<group>"; };
@@ -551,18 +530,14 @@
 		B086DF5B2D1498FB00B20E10 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		B086DF5F2D14A3C900B20E10 /* SuccessResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponseModel.swift; sourceTree = "<group>"; };
 		B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewCell.swift; sourceTree = "<group>"; };
-		B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewCell.xib; sourceTree = "<group>"; };
 		B08FAA532D32E234000BCD27 /* IncidentShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentShareViewController.swift; sourceTree = "<group>"; };
 		B08FAA572D339559000BCD27 /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		B08FAA592D3404B7000BCD27 /* UploadImageResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageResponseModel.swift; sourceTree = "<group>"; };
-		B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewController.swift; sourceTree = "<group>"; };
-		B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncidentLocalityListViewController.xib; sourceTree = "<group>"; };
 		B09254B92CF6378500879B07 /* FWBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWBottomSheetViewController.swift; sourceTree = "<group>"; };
 		B09254BD2CF64BE400879B07 /* FWImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWImage.swift; sourceTree = "<group>"; };
 		B0A3044F2D0EFDE0006F851A /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		B0A304552D0F0E9E006F851A /* NotificationLocalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityCell.swift; sourceTree = "<group>"; };
 		B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocalityViewController.swift; sourceTree = "<group>"; };
-		B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLocalityListViewModel.swift; sourceTree = "<group>"; };
 		B0A304792D134057006F851A /* LocalityResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityResponseModel.swift; sourceTree = "<group>"; };
 		B0A304812D134937006F851A /* CityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeaderCell.swift; sourceTree = "<group>"; };
@@ -582,15 +557,14 @@
 		B0B1AF192D4F8DB6007371A9 /* FireWire-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireWire-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B836722D5A489900C71D8F /* SelectedAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAreaModel.swift; sourceTree = "<group>"; };
 		B0B836752D5A744200C71D8F /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
-		B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		B0CF74BA2D038C1D008935D8 /* IncidentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentResponseModel.swift; sourceTree = "<group>"; };
 		B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiredViewController.swift; sourceTree = "<group>"; };
 		B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D042CED0CC300EEDDF8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		B0D737832D3FD59600D82F2C /* FeedItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemListView.swift; sourceTree = "<group>"; };
-		B0D737842D3FD59600D82F2C /* FeedItemListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemListView.xib; sourceTree = "<group>"; };
+		FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWSessionExpiry.swift; sourceTree = "<group>"; };
 		B0D825D82E294594005B1EA4 /* IncidentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentHomeViewController.swift; sourceTree = "<group>"; };
 		B0D825DB2E2945DA005B1EA4 /* IncidentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentMapViewController.swift; sourceTree = "<group>"; };
 		B0D825DE2E2945EA005B1EA4 /* IncidentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentListViewController.swift; sourceTree = "<group>"; };
@@ -613,7 +587,6 @@
 		B0F7939A2D44BDB500F0C8A0 /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
 		B0F98C9D2D4D27A2006B8861 /* GetUserProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseModel.swift; sourceTree = "<group>"; };
 		B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -808,22 +781,14 @@
 				B06081732D3042F10031CE38 /* IncidentLocalityListItem.xib */,
 				B06081782D3062A10031CE38 /* CommentsImageViewItem.swift */,
 				B06081792D3062A10031CE38 /* CommentsImageViewItem.xib */,
-				B0D737832D3FD59600D82F2C /* FeedItemListView.swift */,
-				B0D737842D3FD59600D82F2C /* FeedItemListView.xib */,
 				B0A304812D134937006F851A /* CityHeaderCell.swift */,
 				B0A304822D134937006F851A /* CityHeaderCell.xib */,
-				B0707F4D2D1D70750096EB4A /* CommentsListViewCell.swift */,
-				B0707F4E2D1D70750096EB4A /* CommentsListViewCell.xib */,
 				B0100CD92CF78E14004F6214 /* SelectAreaListViewCell.swift */,
 				B0100CDA2CF78E14004F6214 /* SelectAreaListViewCell.xib */,
 				B046824D2CE6779A00419C65 /* IncidentListViewCell.swift */,
-				B046824E2CE6779A00419C65 /* IncidentListViewCell.xib */,
 				B0895A7A2CE8F10700A4AA1D /* NewsListViewCell.swift */,
-				B0895A7B2CE8F10700A4AA1D /* NewsListViewCell.xib */,
 				B0860F2C2D846DA50042874E /* NotificationSoundsCell.swift */,
 				B0860F2D2D846DA50042874E /* NotificationSoundsCell.xib */,
-				B01154FD2E7FF5C000F7ECD0 /* CommentsCell.swift */,
-				B01154FE2E7FF5C000F7ECD0 /* CommentsCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -831,8 +796,6 @@
 		B0100CDD2CF79975004F6214 /* Incidents */ = {
 			isa = PBXGroup;
 			children = (
-				B09254B22CF626C100879B07 /* IncidentLocalityListViewController.swift */,
-				B09254B32CF626C100879B07 /* IncidentLocalityListViewController.xib */,
 				B0A304772D133FBF006F851A /* IncidentLocalityListViewModel.swift */,
 				B0100CE12CF79A97004F6214 /* IncidentDetailViewController.swift */,
 				B01C0E272D08A5C60021A39E /* IncidentDetailViewModel.swift */,
@@ -859,18 +822,17 @@
 			children = (
 				BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */,
 				BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */,
+				BD3000012E60BBBB00000001 /* ProfileViewController.swift */,
+				BD3000022E60BBBB00000002 /* EditProfileViewController.swift */,
 				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
 				B01BB04E2CF3109C003970D7 /* MenuViewController.swift */,
-				B0CF74B42D0369BA008935D8 /* MyAccountViewController.swift */,
 				B0E879FA2D71B64800BF0CC2 /* MyAccountViewModel.swift */,
 				B0A304572D0F1483006F851A /* NotificationLocalityViewController.swift */,
 				B0A9D7B62D49554D00DB34A6 /* NotificationLocalityViewModel.swift */,
-				B0A3045D2D0F20AB006F851A /* UpdateProfileViewController.swift */,
 				B0DA6CDD2D19DE4700D5D56E /* UpdateProfileViewModel.swift */,
 				B01D51A92D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift */,
 				B01D51AD2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib */,
 				B0ADB6AB2D5766F20086AC83 /* ChangePasswordViewController.swift */,
-				B0FCE7AE2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift */,
 				B0860F012D846BB70042874E /* NotificationSoundsViewController.swift */,
 				B0860F322D8470450042874E /* NotificationSoundsViewModel.swift */,
 				B081F6632D84BF8800E2D673 /* PostWebViewController.swift */,
@@ -882,7 +844,7 @@
 			isa = PBXGroup;
 			children = (
 				B006D9192D42B65B0082E59E /* FeedsListViewModel.swift */,
-				B01BB0522CF3149E003970D7 /* FeedsListViewController.swift */,
+				BD3000012E60CC0000000001 /* ScannerViewController.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -1054,6 +1016,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D12CFC2CED095200EEDDF8 /* LoginViewController.swift */,
+				B0FE00AA2E390AA000000002 /* SessionExpiredViewController.swift */,
 				B086DF572D14918200B20E10 /* LoginViewModel.swift */,
 				9B4F50E62CF57609007D319D /* LoginDataModel.swift */,
 				B0D12CFD2CED095200EEDDF8 /* RegistrationViewController.swift */,
@@ -1076,6 +1039,7 @@
 				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
 				B0D12D022CED0C9400EEDDF8 /* BaseCoordinator.swift */,
 				B0D12D072CED109D00EEDDF8 /* AppCoordinator.swift */,
+				FE5E551A2A0100000000AA01 /* FWSessionExpiry.swift */,
 				B0F1A7ED2CED224700D9F309 /* UILabel+Extension.swift */,
 				B0A370CC2CEF91DA0021D2F7 /* UIViewController+Extension.swift */,
 				B064D3142CF316BD00CAB161 /* UINavigationController+Extension.swift */,
@@ -1193,6 +1157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B08237132CE374D30092AC01 /* Build configuration list for PBXNativeTarget "FireWire" */;
 			buildPhases = (
+				B0FE00AA2E390AA000000001 /* Release Guard */,
 				B08236E52CE374D10092AC01 /* Sources */,
 				B08236E62CE374D10092AC01 /* Frameworks */,
 				B08236E72CE374D10092AC01 /* Resources */,
@@ -1376,7 +1341,6 @@
 				B0860F1D2D846C3B0042874E /* DivisionTicket.wav in Resources */,
 				B0860F1E2D846C3B0042874E /* StandbyForMessage.wav in Resources */,
 				B0860F1F2D846C3B0042874E /* EngineTicket.wav in Resources */,
-				B01155012E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */,
 				B0860F202D846C3B0042874E /* LadderTicket.wav in Resources */,
 				B0860F212D846C3B0042874E /* servicebell.wav in Resources */,
 				B0860F222D846C3B0042874E /* TonesOnly.wav in Resources */,
@@ -1393,24 +1357,19 @@
 				B0100CDC2CF78E14004F6214 /* SelectAreaListViewCell.xib in Resources */,
 				9B4F51342CF586E6007D319D /* Teko-Medium.ttf in Resources */,
 				9B4F51352CF586E6007D319D /* Inter-Regular.ttf in Resources */,
-				B046824F2CE6779A00419C65 /* IncidentListViewCell.xib in Resources */,
 				B01D51AE2D1F153500D4CBB1 /* NotificationLocalityHeaderView.xib in Resources */,
 				B08236F92CE374D30092AC01 /* Base in Resources */,
 				B0A304842D134937006F851A /* CityHeaderCell.xib in Resources */,
 				B0ADB6D02D58D97D0086AC83 /* IncidentsViewController.xib in Resources */,
-				B0707F4F2D1D70750096EB4A /* CommentsListViewCell.xib in Resources */,
 				9B4F51322CF586E6007D319D /* Poppins-Regular.ttf in Resources */,
 				B06081752D3042F10031CE38 /* IncidentLocalityListItem.xib in Resources */,
 				B060817B2D3062A10031CE38 /* CommentsImageViewItem.xib in Resources */,
-				B0895A7D2CE8F10700A4AA1D /* NewsListViewCell.xib in Resources */,
 				B04682352CE5327D00419C65 /* NewsListViewController.xib in Resources */,
 				9B4B179E2CF58759007517BD /* Colors.xcassets in Resources */,
 				9B4B179F2CF58759007517BD /* Images.xcassets in Resources */,
 				B08236F42CE374D10092AC01 /* Base in Resources */,
 				9B4F51362CF586E6007D319D /* Inter_18pt-Regular.ttf in Resources */,
-				B09254B52CF626C100879B07 /* IncidentLocalityListViewController.xib in Resources */,
 				9B4F51332CF586E6007D319D /* Poppins-SemiBold.ttf in Resources */,
-				B0D737862D3FD59600D82F2C /* FeedItemListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,7 +1394,6 @@
 				B0860F112D846C3B0042874E /* DivisionTicket.wav in Resources */,
 				B0860F122D846C3B0042874E /* StandbyForMessage.wav in Resources */,
 				B0860F132D846C3B0042874E /* EngineTicket.wav in Resources */,
-				B01155002E7FF5C000F7ECD0 /* CommentsCell.xib in Resources */,
 				B0860F142D846C3B0042874E /* LadderTicket.wav in Resources */,
 				B0860F152D846C3B0042874E /* servicebell.wav in Resources */,
 				B0860F162D846C3B0042874E /* TonesOnly.wav in Resources */,
@@ -1452,30 +1410,45 @@
 				B0B1AEFF2D4F8DB6007371A9 /* SelectAreaListViewCell.xib in Resources */,
 				B0B1AF002D4F8DB6007371A9 /* Teko-Medium.ttf in Resources */,
 				B0B1AF012D4F8DB6007371A9 /* Inter-Regular.ttf in Resources */,
-				B0B1AF032D4F8DB6007371A9 /* IncidentListViewCell.xib in Resources */,
 				B0B1AF042D4F8DB6007371A9 /* NotificationLocalityHeaderView.xib in Resources */,
 				B0B1AF052D4F8DB6007371A9 /* Base in Resources */,
 				B0B1AF062D4F8DB6007371A9 /* CityHeaderCell.xib in Resources */,
 				B0ADB6D22D58D97D0086AC83 /* IncidentsViewController.xib in Resources */,
-				B0B1AF072D4F8DB6007371A9 /* CommentsListViewCell.xib in Resources */,
 				B0B1AF082D4F8DB6007371A9 /* Poppins-Regular.ttf in Resources */,
 				B0B1AF092D4F8DB6007371A9 /* IncidentLocalityListItem.xib in Resources */,
 				B0B1AF0A2D4F8DB6007371A9 /* CommentsImageViewItem.xib in Resources */,
-				B0B1AF0B2D4F8DB6007371A9 /* NewsListViewCell.xib in Resources */,
 				B0B1AF0C2D4F8DB6007371A9 /* NewsListViewController.xib in Resources */,
 				B0B1AF0D2D4F8DB6007371A9 /* Colors.xcassets in Resources */,
 				B0B1AF0E2D4F8DB6007371A9 /* Images.xcassets in Resources */,
 				B0B1AF0F2D4F8DB6007371A9 /* Base in Resources */,
 				B0B1AF102D4F8DB6007371A9 /* Inter_18pt-Regular.ttf in Resources */,
-				B0B1AF112D4F8DB6007371A9 /* IncidentLocalityListViewController.xib in Resources */,
 				B0B1AF122D4F8DB6007371A9 /* Poppins-SemiBold.ttf in Resources */,
-				B0B1AF132D4F8DB6007371A9 /* FeedItemListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B0FE00AA2E390AA000000001 /* Release Guard */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/FireWire/Utilities/API_Manager/APIEndpoints.swift",
+			);
+			name = "Release Guard";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# RELEASE GUARD: refuse to build a Release while the API points at staging.\n# Mirrors Android's checkReleaseApiUrl. Debug builds are unaffected --\n# pointing them at staging is normal and expected.\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then exit 0; fi\nFILE=\"${PROJECT_DIR}/FireWire/Utilities/API_Manager/APIEndpoints.swift\"\nif [ ! -f \"$FILE\" ]; then\n  echo \"error: Release guard: $FILE not found -- cannot verify the API base URL.\"\n  exit 1\nfi\nACTIVE=$(grep -E '^[[:space:]]*static let (baseURL|postAdminUrl)' \"$FILE\")\nCOUNT=$(printf '%s\\n' \"$ACTIVE\" | grep -c 'static let')\nif [ \"$COUNT\" -lt 2 ]; then\n  echo \"error: Release guard: expected an active baseURL and postAdminUrl in APIEndpoints.swift, found $COUNT. Both must be present (uncommented) and set to production.\"\n  exit 1\nfi\nBAD=$(printf '%s\\n' \"$ACTIVE\" | grep -E 'staging\\.|dev-firewire' || true)\nif [ -n \"$BAD\" ]; then\n  echo \"error: RELEASE BLOCKED -- an API URL is not production: $BAD  ||  Set baseURL to https://api.nycfirewireapp.com/ and postAdminUrl to https://admin.nycfirewireapp.com before building a release.\"\n  exit 1\nfi\necho \"Release guard OK -- production URLs active.\"\n";
+		};
 		B06F61EA2DBD1057005113B4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -1525,9 +1498,9 @@
 				B00A48EA2D0D75A50088F66F /* UIImageView+Extension.swift in Sources */,
 				B046822D2CE52CA900419C65 /* HomeViewController.swift in Sources */,
 				B0D825DF2E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
-				B0D737852D3FD59600D82F2C /* FeedItemListView.swift in Sources */,
 				B0A304502D0EFDE0006F851A /* MapManager.swift in Sources */,
 				B0D12CFF2CED095200EEDDF8 /* LoginViewController.swift in Sources */,
+				B0FE00AA2E390AA000000004 /* SessionExpiredViewController.swift in Sources */,
 				B0F1A7EE2CED224700D9F309 /* UILabel+Extension.swift in Sources */,
 				B0ADB6A92D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B08236ED2CE374D10092AC01 /* AppDelegate.swift in Sources */,
@@ -1555,7 +1528,6 @@
 				B060817A2D3062A10031CE38 /* CommentsImageViewItem.swift in Sources */,
 				B064D3152CF316BD00CAB161 /* UINavigationController+Extension.swift in Sources */,
 				B00A48EE2D0D84C10088F66F /* NewsListViewModel.swift in Sources */,
-				B01155022E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */,
 				B0895A7C2CE8F10700A4AA1D /* NewsListViewCell.swift in Sources */,
 				B046824A2CE66E4900419C65 /* FWColor.swift in Sources */,
 				B01D51AA2D1F121C00D4CBB1 /* NotificationLocalityHeaderView.swift in Sources */,
@@ -1566,7 +1538,6 @@
 				B0860F022D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B00BA5372D9733D60075DA7D /* APIError.swift in Sources */,
 				B04682342CE5327D00419C65 /* NewsListViewController.swift in Sources */,
-				B0707F502D1D70750096EB4A /* CommentsListViewCell.swift in Sources */,
 				B00EDAF52D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
 				B00A48EC2D0D77DD0088F66F /* FWImageView.swift in Sources */,
 				B0DA6CDE2D19DE4700D5D56E /* UpdateProfileViewModel.swift in Sources */,
@@ -1585,7 +1556,6 @@
 				9B4F50DE2CF57068007D319D /* APIManager.swift in Sources */,
 				9B4F50DF2CF57068007D319D /* APIEndpoints.swift in Sources */,
 				B02C78ED2D32C38A00044D5B /* AddCommentRequestModel.swift in Sources */,
-				B0FCE7B02D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0A9D7B72D49555A00DB34A6 /* NotificationLocalityViewModel.swift in Sources */,
 				9B4F50E02CF57068007D319D /* FWAlertController.swift in Sources */,
 				B08FAA582D339559000BCD27 /* TakePictureViewController.swift in Sources */,
@@ -1612,6 +1582,7 @@
 				B0D825E22E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0EDF0462D32B3DE00767EAB /* ForgotPasswordResponseModel.swift in Sources */,
 				B0D12D082CED109D00EEDDF8 /* AppCoordinator.swift in Sources */,
+				FE5E551B2A0100000000AA02 /* FWSessionExpiry.swift in Sources */,
 				B081F6642D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0A9D7BD2D4961EE00DB34A6 /* SubscriptionManager.swift in Sources */,
 				B064D3192CF32B5000CAB161 /* FWView.swift in Sources */,
@@ -1620,9 +1591,7 @@
 				B00EDAF22D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0A304782D133FBF006F851A /* IncidentLocalityListViewModel.swift in Sources */,
 				B0E879FB2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
-				B09254B42CF626C100879B07 /* IncidentLocalityListViewController.swift in Sources */,
 				9B4F50E72CF57609007D319D /* LoginDataModel.swift in Sources */,
-				B01BB0532CF3149E003970D7 /* FeedsListViewController.swift in Sources */,
 				B081F6612D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B04682502CE6779A00419C65 /* IncidentListViewCell.swift in Sources */,
 				B08FAA5A2D3404B7000BCD27 /* UploadImageResponseModel.swift in Sources */,
@@ -1635,15 +1604,16 @@
 				B064D3172CF325E800CAB161 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AC2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B00A48F42D0D8BDD0088F66F /* NewsDetailResponseModel.swift in Sources */,
-				B0A3045E2D0F20AB006F851A /* UpdateProfileViewController.swift in Sources */,
 				B0707F542D1D7DAD0096EB4A /* CommentsResponseModel.swift in Sources */,
 				B086DF5A2D1492DF00B20E10 /* SocialLoginRequestModel.swift in Sources */,
-				B0CF74B52D0369BA008935D8 /* MyAccountViewController.swift in Sources */,
 				B0E879FF2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0100CE22CF79A97004F6214 /* IncidentDetailViewController.swift in Sources */,
 				BD1000022E30AAAA00000002 /* FireWireTheme.swift in Sources */,
 				BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */,
+				BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */,
 				BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */,
+				BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */,
+				BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1678,9 +1648,9 @@
 				B0B1AE902D4F8DB6007371A9 /* UIImageView+Extension.swift in Sources */,
 				B0B1AE912D4F8DB6007371A9 /* HomeViewController.swift in Sources */,
 				B0D825E02E2945EA005B1EA4 /* IncidentListViewController.swift in Sources */,
-				B0B1AE922D4F8DB6007371A9 /* FeedItemListView.swift in Sources */,
 				B0B1AE932D4F8DB6007371A9 /* MapManager.swift in Sources */,
 				B0B1AE942D4F8DB6007371A9 /* LoginViewController.swift in Sources */,
+				B0FE00AA2E390AA000000003 /* SessionExpiredViewController.swift in Sources */,
 				B0B1AE952D4F8DB6007371A9 /* UILabel+Extension.swift in Sources */,
 				B0ADB6AA2D5747650086AC83 /* SelectAreaViewController.swift in Sources */,
 				B0B1AE962D4F8DB6007371A9 /* AppDelegate.swift in Sources */,
@@ -1708,7 +1678,6 @@
 				B0B1AEA82D4F8DB6007371A9 /* CommentsImageViewItem.swift in Sources */,
 				B0B1AEA92D4F8DB6007371A9 /* UINavigationController+Extension.swift in Sources */,
 				B0B1AEAA2D4F8DB6007371A9 /* NewsListViewModel.swift in Sources */,
-				B01154FF2E7FF5C000F7ECD0 /* CommentsCell.swift in Sources */,
 				B0B1AEAB2D4F8DB6007371A9 /* NewsListViewCell.swift in Sources */,
 				B0B1AEAC2D4F8DB6007371A9 /* FWColor.swift in Sources */,
 				B0B1AEAD2D4F8DB6007371A9 /* NotificationLocalityHeaderView.swift in Sources */,
@@ -1719,7 +1688,6 @@
 				B0860F032D846BB70042874E /* NotificationSoundsViewController.swift in Sources */,
 				B00BA5362D9733D60075DA7D /* APIError.swift in Sources */,
 				B0B1AEB12D4F8DB6007371A9 /* NewsListViewController.swift in Sources */,
-				B0B1AEB22D4F8DB6007371A9 /* CommentsListViewCell.swift in Sources */,
 				B00EDAF62D5D1FE5000370CE /* SelectedNotificationModel.swift in Sources */,
 				B0B1AEB32D4F8DB6007371A9 /* FWImageView.swift in Sources */,
 				B0B1AEB42D4F8DB6007371A9 /* UpdateProfileViewModel.swift in Sources */,
@@ -1738,7 +1706,6 @@
 				B0B1AEBE2D4F8DB6007371A9 /* APIManager.swift in Sources */,
 				B0B1AEC02D4F8DB6007371A9 /* APIEndpoints.swift in Sources */,
 				B0B1AEC12D4F8DB6007371A9 /* AddCommentRequestModel.swift in Sources */,
-				B0FCE7AF2D79FC1B00D894B8 /* SubscriptionInfoViewController.swift in Sources */,
 				B0B1AEC22D4F8DB6007371A9 /* NotificationLocalityViewModel.swift in Sources */,
 				B0B1AEC32D4F8DB6007371A9 /* FWAlertController.swift in Sources */,
 				B0B1AEC42D4F8DB6007371A9 /* TakePictureViewController.swift in Sources */,
@@ -1765,6 +1732,7 @@
 				B0D825E32E2955C9005B1EA4 /* IncidentListViewModel.swift in Sources */,
 				B0B1AED72D4F8DB6007371A9 /* ForgotPasswordResponseModel.swift in Sources */,
 				B0B1AED82D4F8DB6007371A9 /* AppCoordinator.swift in Sources */,
+				FE5E551C2A0100000000AA03 /* FWSessionExpiry.swift in Sources */,
 				B081F6652D84BF8800E2D673 /* PostWebViewController.swift in Sources */,
 				B0B1AED92D4F8DB6007371A9 /* SubscriptionManager.swift in Sources */,
 				B0B1AEDB2D4F8DB6007371A9 /* FWView.swift in Sources */,
@@ -1773,9 +1741,7 @@
 				B00EDAF32D5D10AA000370CE /* LocalNotifications.swift in Sources */,
 				B0B1AEDD2D4F8DB6007371A9 /* IncidentLocalityListViewModel.swift in Sources */,
 				B0E879FC2D71B64D00BF0CC2 /* MyAccountViewModel.swift in Sources */,
-				B0B1AEDE2D4F8DB6007371A9 /* IncidentLocalityListViewController.swift in Sources */,
 				B0B1AEDF2D4F8DB6007371A9 /* LoginDataModel.swift in Sources */,
-				B0B1AEE02D4F8DB6007371A9 /* FeedsListViewController.swift in Sources */,
 				B081F6622D84976E00E2D673 /* FWLoaderView.swift in Sources */,
 				B0B1AEE32D4F8DB6007371A9 /* IncidentListViewCell.swift in Sources */,
 				B0B1AEE42D4F8DB6007371A9 /* UploadImageResponseModel.swift in Sources */,
@@ -1788,15 +1754,16 @@
 				B0B1AEEA2D4F8DB6007371A9 /* FWRoundedImageView.swift in Sources */,
 				B0ADB6AD2D5766F20086AC83 /* ChangePasswordViewController.swift in Sources */,
 				B0B1AEEB2D4F8DB6007371A9 /* NewsDetailResponseModel.swift in Sources */,
-				B0B1AEEC2D4F8DB6007371A9 /* UpdateProfileViewController.swift in Sources */,
 				B0B1AEED2D4F8DB6007371A9 /* CommentsResponseModel.swift in Sources */,
 				B0B1AEEE2D4F8DB6007371A9 /* SocialLoginRequestModel.swift in Sources */,
-				B0B1AEEF2D4F8DB6007371A9 /* MyAccountViewController.swift in Sources */,
 				B0E879FE2D71B6B600BF0CC2 /* SubmitSubscriptionModel.swift in Sources */,
 				B0B1AEF02D4F8DB6007371A9 /* IncidentDetailViewController.swift in Sources */,
 				BD1000032E30AAAA00000003 /* FireWireTheme.swift in Sources */,
 				BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */,
+				BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */,
 				BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */,
+				BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */,
+				BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

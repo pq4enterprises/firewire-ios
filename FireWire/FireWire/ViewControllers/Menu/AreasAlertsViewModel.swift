@@ -87,7 +87,7 @@ final class AreasAlertsViewModel {
         _ type: LocalityListType,
         completion: @escaping ([LocalityResponseData]?, String?) -> Void
     ) {
-        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc")
         requestModel.listType = ListType(type: type.rawValue)
 
         APIRequest().callApi(

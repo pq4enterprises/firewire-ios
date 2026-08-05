@@ -43,6 +43,7 @@ enum APIEndpoints {
     static let chicagoPodcastUrl = "https://www.chicagosbraveststories.com"
     static let contactUrl = "https://nycfirewire.net/contact/"
     static let fireWireUrl = "https://nycfirewire.net/"
+    static let fireWireNewsUrl = "https://nycfirewire.net/news/"
     static let termsAndConditionUrl = "https://nycfirewire.net/terms"
     static let privacyPolicyUrl = "https://nycfirewire.net/privacy"
 
@@ -115,11 +116,19 @@ enum APIPayload {
 
             return dictionary
         case let .incidentLocalityList(model):
+            // Filter / area-selection screens. The server marks each locality and
+            // subLocality with the caller's own isChecked from their stored UserLocality
+            // rows, so the saved selection comes back with the list — no local cache needed.
+            //
+            // show=true is required: without it the server falls back to `limit || 10` and
+            // returns only the FIRST TEN localities. Any saved selection outside that page
+            // was simply absent from the screen, which is what made filters look like they
+            // never persisted. With show=true the server drops its $skip/$limit stages, so
+            // offset/limit are meaningless here and are not sent. Matches Android f9cd91a.
             return [
                 "sortBy": model.sortBy,
                 "sortDir": model.sortDir,
-                "offset": model.offset,
-                "limit": model.limit,
+                "show": true,
                 "query": model.listType?.toJsonString() ?? ""
             ]
         case let .addComment(model):

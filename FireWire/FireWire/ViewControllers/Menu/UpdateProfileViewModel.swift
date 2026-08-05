@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+protocol UpdateProfileViewDelegate: AnyObject {
+    func error(message: String)
+    func dataLoaded(_ model: UserProfileData)
+    func profileUpdated(_ message: String)
+    func profileImageUpdated(_ url: String)
+}
+
 final class UpdateProfileViewModel {
     public var delegate: UpdateProfileViewDelegate?
 

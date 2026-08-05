@@ -8,6 +8,10 @@
 import Foundation
 import StoreKit
 
+protocol MyAccountViewDelegate: AnyObject {
+    func dataLoaded(status: Bool, message: String)
+}
+
 final class MyAccountViewModel {
     public var delegate: MyAccountViewDelegate?
 

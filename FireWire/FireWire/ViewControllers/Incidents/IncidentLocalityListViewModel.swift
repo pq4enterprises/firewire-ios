@@ -7,6 +7,13 @@
 
 import Foundation
 
+/// Moved here from the retired IncidentLocalityListViewController (the old
+/// feed-areas sheet) — SelectAreaViewController still conforms to it.
+protocol IncidentLocalityListViewDelegate: AnyObject {
+    func dataReceived()
+    func error(message: String)
+}
+
 enum LocalityListType: String {
     case area
     case notification
@@ -23,7 +30,7 @@ final class IncidentLocalityListViewModel {
     var selectedSubLocalities: [String] = []
 
     func getLocalities(forType type: LocalityListType) {
-        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc")
         requestModel.listType = ListType(type: type.rawValue)
 
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()

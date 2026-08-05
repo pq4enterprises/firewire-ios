@@ -136,7 +136,7 @@ final class LoginViewModel {
     }
 
     func validateIfAreaSelected(forType type: LocalityListType, completion: @escaping (Bool) -> Void) {
-        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc", offset: 1, limit: 10)
+        var requestModel = IncidentLocalityRequestModel(sortBy: "createdAt", sortDir: "desc")
         requestModel.listType = ListType(type: type.rawValue)
 
         let getIncidentLocalityRequestModel = APIPayload.incidentLocalityList(requestModel).toDictionary()
