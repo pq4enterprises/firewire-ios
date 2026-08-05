@@ -8,7 +8,9 @@
 import StoreKit
 
 protocol SubscriptionManagerDelegate {
-    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?)
+    /// failureMessage is nil on success AND on failures that need no alert
+    /// (e.g. the user cancelled the purchase sheet themselves).
+    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?, failureMessage: String?)
 }
 
 class SubscriptionManager: NSObject {
@@ -46,6 +48,8 @@ class SubscriptionManager: NSObject {
     }
 
     func restorePurchases() async {
+        var foundExpired = false
+
         for await result in Transaction.currentEntitlements {
             guard case .verified(let transaction) = result else {
                 continue
@@ -56,16 +60,21 @@ class SubscriptionManager: NSObject {
                 if let expirationDate = transaction.expirationDate, expirationDate > Date() {
                     print("Subscription is active. Restoring access.")
                     //await unlockPremiumFeatures(transaction: transaction)
-                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
+                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction, failureMessage: nil)
                     return
                 } else {
+                    foundExpired = true
                     print("Subscription has expired.")
                 }
             }
         }
 
-        // If no valid subscription was found
-        delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+        // No valid subscription — a restore that finds nothing is not a failed
+        // purchase, so say what actually happened.
+        let message = foundExpired
+            ? "Your subscription has expired. Subscribe again to regain premium access."
+            : "No previous subscription was found to restore."
+        delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: message)
         print("No active subscriptions found.")
     }
 
@@ -87,23 +96,24 @@ class SubscriptionManager: NSObject {
                 case .verified(let transaction):
                     print("Purchase successful: \(transaction)")
                     //await unlockPremiumFeatures(transaction: transaction)
-                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction)
+                    delegate?.purchaseTransactionCompleted(success: true, transaction: transaction, failureMessage: nil)
                 case .unverified:
                     print("Transaction verification failed.")
-                    delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+                    delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: "Purchase failed, please try again!")
                 }
             case .userCancelled:
+                // The user backed out on purpose — no alert needed.
                 print("User cancelled the purchase.")
-                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: nil)
             case .pending:
                 print("Purchase is pending.")
-                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: "Your purchase is pending approval.")
             @unknown default:
-                delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+                delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: "Purchase failed, please try again!")
             }
         } catch {
             print("Purchase failed: \(error)")
-            delegate?.purchaseTransactionCompleted(success: false, transaction: nil)
+            delegate?.purchaseTransactionCompleted(success: false, transaction: nil, failureMessage: "Purchase failed, please try again!")
         }
     }
     

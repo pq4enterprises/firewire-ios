@@ -616,14 +616,17 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         }
     }
 
-    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?) {
+    func purchaseTransactionCompleted(success: Bool, transaction: Transaction?, failureMessage: String?) {
         DispatchQueue.main.async {
             if success {
                 self.showLoader()
                 self.viewModel?.submitPayment(transaction: transaction)
             } else {
                 self.hideLoader()
-                self.showAlert(title: "", message: "Purchase failed, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                // nil message means nothing alert-worthy happened (user cancelled)
+                if let failureMessage {
+                    self.showAlert(title: "", message: failureMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                }
             }
         }
     }
