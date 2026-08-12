@@ -96,7 +96,7 @@ public struct FWUserDefaults {
     }
 
     func isAdminUser() -> Bool {
-        let adminRoles = ["admin", "sub_admin", "super"]
+        let adminRoles = ["admin", "super"]
         return adminRoles.contains(userRole ?? "")
     }
 }
