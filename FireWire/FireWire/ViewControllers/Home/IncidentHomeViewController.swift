@@ -94,6 +94,7 @@ class IncidentHomeViewController: PulleyViewController {
     }
 
     func showTutorial(){
+        guard ShowcaseManager.toursEnabled else { return }
         if let parentVC = parent as? HomeViewController {
             parentVC.showTutorial()
         }

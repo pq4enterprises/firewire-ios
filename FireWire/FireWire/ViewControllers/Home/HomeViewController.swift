@@ -184,6 +184,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: MaterialShowcaseDelegate {
     func showTutorial() {
+        guard ShowcaseManager.toursEnabled else { return }
         let showCase1 = createMaterialShowcase(primaryText: "Radio", secondaryText: "Listen to Scanner Feeds", targetView: feedsButton)
 
         var showCase2: MaterialShowcase?

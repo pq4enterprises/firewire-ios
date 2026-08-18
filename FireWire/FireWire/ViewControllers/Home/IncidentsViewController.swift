@@ -419,6 +419,7 @@ extension IncidentsViewController: IncidentsViewViewDelegate, GMSMapViewDelegate
 
 extension IncidentsViewController: MaterialShowcaseDelegate {
     func showTutorial() {
+        guard ShowcaseManager.toursEnabled else { return }
         if let cell = incidentTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? IncidentListViewCell {
             let titleView = cell.incidentTitle
             let showcase1 = createMaterialShowcase(
