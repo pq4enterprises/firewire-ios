@@ -70,10 +70,16 @@ class LoginCoordinator: BaseCoordinator {
         }
     }
 
+    /// First-run area picker: the redesigned Areas & Alerts screen in onboarding
+    /// mode (replaces the old storyboard SelectAreaViewController).
     func navigateToSelectArea(){
-        let selectAreaViewController = SelectAreaViewController.instantiate()
-        selectAreaViewController.parentCoordinator = parentCoordinator
-        pushViewController(selectAreaViewController, animated: true)
+        let areasViewController = AreasAlertsViewController.instantiate()
+        areasViewController.isOnboarding = true
+        areasViewController.onContinue = { [weak self] in
+            self?.backToParentCoordinator()
+            self?.parentCoordinator?.navigateToHome()
+        }
+        pushViewController(areasViewController, animated: true)
     }
 
 }

@@ -14,6 +14,14 @@ class AreasAlertsViewController: UIViewController {
     var coordinator: HomeCoordinator?
     let viewModel = AreasAlertsViewModel()
 
+    /// Onboarding mode: reached right after email verification, or from the feed
+    /// when the account follows no areas yet. No back affordance, at least one
+    /// feed area is required, and SAVE becomes CONTINUE and hands off through
+    /// `onContinue` instead of popping back to the menu. Replaces the old
+    /// storyboard SelectAreaViewController on that route.
+    var isOnboarding = false
+    var onContinue: (() -> Void)?
+
     // MARK: Views
 
     private let headerBar = UIView()
@@ -55,6 +63,16 @@ class AreasAlertsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateSoundLabel() // refresh after returning from the sounds screen
+        if isOnboarding {
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isOnboarding {
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -85,6 +103,10 @@ class AreasAlertsViewController: UIViewController {
 
         viewModel.onSaved = { [weak self] in
             self?.hideLoader()
+            if self?.isOnboarding == true {
+                self?.onContinue?()
+                return
+            }
             self?.showAlert(
                 title: "",
                 message: "Areas & Alerts updated successfully",
@@ -126,6 +148,7 @@ class AreasAlertsViewController: UIViewController {
         backButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         backButton.tintColor = FireWireTheme.text
         backButton.addTarget(self, action: #selector(backButtonTap), for: .touchUpInside)
+        backButton.isHidden = isOnboarding
         backButton.translatesAutoresizingMaskIntoConstraints = false
         headerBar.addSubview(backButton)
 
@@ -166,7 +189,7 @@ class AreasAlertsViewController: UIViewController {
         hairline.translatesAutoresizingMaskIntoConstraints = false
         bottomBar.addSubview(hairline)
 
-        saveButton.setTitle("SAVE", for: .normal)
+        saveButton.setTitle(isOnboarding ? "CONTINUE" : "SAVE", for: .normal)
         saveButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .heavy)
         saveButton.setTitleColor(.white, for: .normal)
         saveButton.backgroundColor = FireWireTheme.red
@@ -220,6 +243,7 @@ class AreasAlertsViewController: UIViewController {
     private func buildSoundCard() {
         FireWireTheme.cardStyle(soundCard)
         soundCard.layer.cornerRadius = 14
+        soundCard.isHidden = isOnboarding
         borderedViews.append(soundCard)
 
         let iconSquare = UIView()
@@ -662,7 +686,7 @@ class AreasAlertsViewController: UIViewController {
         }
 
         guard viewModel.feedChanged || viewModel.alertChanged else {
-            coordinator?.popView()
+            if isOnboarding { onContinue?() } else { coordinator?.popView() }
             return
         }
 

@@ -144,10 +144,17 @@ func navigateToIncidentComments(_ incidentComments: SelectedIncidentCommentsMode
         pushViewController(postWebViewController, animated: true)
     }
 
+    /// First-run area picker for an account that follows no areas yet: the
+    /// redesigned Areas & Alerts screen in onboarding mode (replaces the old
+    /// storyboard SelectAreaViewController). Continue restarts Home, as before.
     func navigateToSelectArea(){
-        let selectAreaViewController = SelectAreaViewController.instantiate()
-        selectAreaViewController.parentCoordinator = parentCoordinator
-        pushViewController(selectAreaViewController, animated: false)
+        let areasViewController = AreasAlertsViewController.instantiate()
+        areasViewController.coordinator = self
+        areasViewController.isOnboarding = true
+        areasViewController.onContinue = { [weak self] in
+            self?.parentCoordinator?.navigateToHome()
+        }
+        pushViewController(areasViewController, animated: false)
     }
 
 }
