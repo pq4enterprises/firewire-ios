@@ -3,6 +3,9 @@
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 16/11/24.
+//  Rebuilt on FireWireTheme (2026 auth redesign): programmatic layout that
+//  scales from iPhone SE to Pro Max, honours Dynamic Type and dark mode, and
+//  surfaces every error inline instead of in an alert.
 //
 
 import AuthenticationServices
@@ -18,9 +21,11 @@ enum LoginType: Int {
 protocol LoginViewDelegate: AnyObject {
     func loginSuccess(_ type: LoginType)
     func loginFailed(errorMessage: String)
+    /// The account exists but its email is unverified; the server has just emailed a code.
+    func loginRequiresEmailVerification(email: String)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: FWAuthScreenController {
     weak var coordinator: LoginCoordinator?
     weak var parentCoordinator: AppCoordinator?
     var viewModel: LoginViewModel?
@@ -28,92 +33,174 @@ class LoginViewController: UIViewController {
     /// Set by AppCoordinator when it routes here because the session expired, so the
     /// user is told *why* they are suddenly looking at a login screen. Consumed once.
     static var pendingSessionExpiryNotice = false
+    /// One-shot success message shown on arrival (e.g. after a password reset).
+    static var pendingSuccessNotice: String?
 
-    @IBOutlet var socialLoginStack: UIStackView!
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var registerLabel: UILabel!
-    @IBOutlet var forgotPasswordLabel: UILabel!
-    @IBOutlet var termsAndConditionsLabel: UILabel!
-    @IBOutlet var emailTextField: FWTextField!
-    @IBOutlet var passwordTextField: FWTextField!
-    @IBOutlet var googleButton: UIButton!
+    override var analyticsScreenName: String? { "Login Page" }
+
+    private let hero = FWAuthHeroView()
+    private let noticeBanner = FWBanner()
+    private let emailField = FWAuthField(caption: "Email", placeholder: "you@example.com", kind: .email)
+    private let passwordField = FWAuthField(caption: "Password", placeholder: "Enter your password", kind: .password)
+    private let formBanner = FWBanner()
+    private let signInButton = FWPrimaryButton(title: "Sign in")
+    private let registerLabel = UILabel()
+    private let termsLabel = UILabel()
+    private let socialRow = UIStackView()
+    private let appleHost = FWAppleButtonHost()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        setupActions()
-        setupKeyboardActions()
-
+        buildLayout()
         viewModel = LoginViewModel()
         viewModel?.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateHeroSizing()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        // A non-blocking toast, not an alert: the fields, Forgot Password, and social
-        // sign-in are all right here, so nothing should stand between the user and
-        // typing their password.
+        // Non-blocking inline notices: the fields, Forgot Password, and social sign-in are
+        // all right here, so nothing should stand between the user and typing their password.
         if LoginViewController.pendingSessionExpiryNotice {
             LoginViewController.pendingSessionExpiryNotice = false
-            showToast(message: "Your session ended. Please sign in again.")
+            noticeBanner.show("Your session ended. Please sign in again.", style: .info)
+        } else if let message = LoginViewController.pendingSuccessNotice {
+            LoginViewController.pendingSuccessNotice = nil
+            noticeBanner.show(message, style: .success)
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        updateHeroSizing()
     }
 
-    func setupUI() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in self.updateHeroSizing(for: size) })
+    }
 
-        googleButton.layer.cornerRadius = 6
-        googleButton.clipsToBounds = true
-        googleButton.layer.borderWidth = 1
-        googleButton.layer.borderColor = UIColor.black.cgColor // adapts to theme
-
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) {
-            self.passwordTextField.isSecureTextEntry.toggle()
-            let icon = self.passwordTextField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
-
-            if let button = self.passwordTextField.rightView as? UIButton {
-                button.setImage(icon, for: .normal)
-            }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory {
+            updateHeroSizing()
+            registerLabel.setLinkSentence("Don’t have an account?", link: "Register")
+            setupTermsText()
         }
-
-        registerLabel.colorString(
-            text: .Login.registerText,
-            coloredText: .Login.register
-        )
-        termsAndConditionsLabel.colorString(
-            text: .Login.termsAndConditionsText,
-            coloredText: .Login.termsAndConditions
-        )
-
-        let appleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
-        appleButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
-        appleButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        appleButton.center = view.center
-        socialLoginStack.addArrangedSubview(appleButton)
     }
 
-    func setupActions() {
-        hideKeyboardWhenTappedAround()
+    // MARK: Layout
 
-        let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(registerTap))
+    private func buildLayout() {
+        scrollView.contentInsetAdjustmentBehavior = .never
+        content.addArrangedSubview(hero)
+
+        let form = UIStackView()
+        form.axis = .vertical
+        form.isLayoutMarginsRelativeArrangement = true
+        form.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 12, bottom: 20, trailing: 12)
+
+        form.addArrangedSubview(noticeBanner)
+        form.setCustomSpacing(14, after: noticeBanner)
+
+        let connectLabel = FWAuthLabel.monoCaption("Connect with")
+        form.addArrangedSubview(connectLabel)
+        form.setCustomSpacing(10, after: connectLabel)
+
+        let googleButton = FWGoogleButton()
+        googleButton.addTarget(self, action: #selector(googleSignInTap), for: .touchUpInside)
+        appleHost.onTap = { [weak self] in self?.handleAppleSignIn() }
+        socialRow.axis = .horizontal
+        socialRow.distribution = .fillEqually
+        socialRow.spacing = 12
+        socialRow.addArrangedSubview(googleButton)
+        socialRow.addArrangedSubview(appleHost)
+        form.addArrangedSubview(socialRow)
+        form.setCustomSpacing(14, after: socialRow)
+
+        let orLabel = FWAuthLabel.monoCaption("or")
+        form.addArrangedSubview(orLabel)
+        form.setCustomSpacing(12, after: orLabel)
+
+        let card = FWAuthCard()
+        card.stack.addArrangedSubview(emailField)
+        card.stack.addArrangedSubview(passwordField)
+        card.stack.addArrangedSubview(formBanner)
+        let forgotButton = FWLinkButton(title: "Forgot?")
+        forgotButton.addTarget(self, action: #selector(forgotTap), for: .touchUpInside)
+        let forgotRow = UIStackView(arrangedSubviews: [UIView(), forgotButton])
+        forgotRow.axis = .horizontal
+        card.stack.addArrangedSubview(forgotRow)
+        card.stack.setCustomSpacing(8, after: passwordField)
+        card.stack.setCustomSpacing(2, after: formBanner)
+        form.addArrangedSubview(card)
+        form.setCustomSpacing(16, after: card)
+
+        signInButton.addTarget(self, action: #selector(signInTap), for: .touchUpInside)
+        form.addArrangedSubview(signInButton)
+        form.setCustomSpacing(6, after: signInButton)
+
+        registerLabel.numberOfLines = 0
+        registerLabel.adjustsFontForContentSizeCategory = true
+        registerLabel.setLinkSentence("Don’t have an account?", link: "Register")
         registerLabel.isUserInteractionEnabled = true
-        registerLabel.addGestureRecognizer(labelTapGesture)
+        registerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(registerTap)))
+        registerLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
+        registerLabel.isAccessibilityElement = true
+        registerLabel.accessibilityTraits = .button
+        form.addArrangedSubview(registerLabel)
+        form.setCustomSpacing(2, after: registerLabel)
 
-        let forgotLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(forgotTap))
-        forgotPasswordLabel.isUserInteractionEnabled = true
-        forgotPasswordLabel.addGestureRecognizer(forgotLabelTapGesture)
+        termsLabel.numberOfLines = 0
+        termsLabel.adjustsFontForContentSizeCategory = true
+        setupTermsText()
+        termsLabel.isUserInteractionEnabled = true
+        termsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTap)))
+        termsLabel.accessibilityTraits = .link
+        form.addArrangedSubview(termsLabel)
 
-        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTap))
-        termsAndConditionsLabel.isUserInteractionEnabled = true
-        termsAndConditionsLabel.addGestureRecognizer(termsTapGesture)
+        content.addArrangedSubview(form)
+
+        emailField.textField.delegate = self
+        emailField.textField.returnKeyType = .next
+        passwordField.textField.delegate = self
+        passwordField.textField.returnKeyType = .go
+        emailField.textField.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        passwordField.textField.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+    }
+
+    private func setupTermsText() {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.lineHeightMultiple = 1.15
+        let text = NSMutableAttributedString(
+            string: String.Login.termsAndConditionsText,
+            attributes: [.font: FWAuthFont.caption, .foregroundColor: FireWireTheme.muted, .paragraphStyle: paragraph])
+        let range = (String.Login.termsAndConditionsText as NSString).range(of: String.Login.termsAndConditions)
+        if range.location != NSNotFound {
+            text.addAttributes([.foregroundColor: FireWireTheme.red, .font: FWAuthFont.scaled(12, weight: .heavy, maximum: 18)], range: range)
+        }
+        termsLabel.attributedText = text
+    }
+
+    private func updateHeroSizing(for size: CGSize? = nil) {
+        let height = size?.height ?? view.bounds.height
+        let safeTop = view.safeAreaInsets.top
+        let largeText = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+        hero.setCompact(height < 700 || largeText, safeTop: safeTop, screenHeight: height)
+    }
+
+    // MARK: Actions
+
+    @objc private func editingChanged(_ field: UITextField) {
+        if field === emailField.textField { emailField.setError(nil) }
+        if field === passwordField.textField { passwordField.setError(nil) }
+        formBanner.hide()
     }
 
     @objc func registerTap() {
@@ -128,11 +215,11 @@ class LoginViewController: UIViewController {
         coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
     }
 
-    @IBAction func signInTap(_ sender: UIButton) {
+    @objc func signInTap() {
         callLoginApi()
     }
 
-    @IBAction func googleSignInTap(_ sender: UIButton) {
+    @objc func googleSignInTap() {
         performGoogleLogin()
     }
 
@@ -148,25 +235,22 @@ class LoginViewController: UIViewController {
     }
 
     func callLoginApi() {
+        view.endEditing(true)
+        formBanner.hide()
+
+        let email = emailField.text
+        let password = passwordField.textField.text ?? ""
+        let emailError = FWAuthValidation.emailError(email)
+        let passwordError = FWAuthValidation.passwordError(password)
+        emailField.setError(emailError)
+        passwordField.setError(passwordError)
+        guard emailError == nil, passwordError == nil else {
+            scrollView.scrollRectToVisible(emailField.convert(emailField.bounds, to: scrollView), animated: true)
+            return
+        }
+
         showLoader()
-
-        guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
-            hideLoader()
-            showAlert(title: "", message: "Enter valid email and password", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-            return
-        }
-
-        let validationResult = viewModel?.validate(email: email, password: password)
-        switch validationResult {
-        case .success:
-            let loginRequestModel = LoginRequestModel(email: email, password: password)
-            viewModel?.performUserLogin(loginRequestModel)
-        case .failure(let errorMessage):
-            hideLoader()
-            showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-        default:
-            return
-        }
+        viewModel?.performUserLogin(LoginRequestModel(email: email, password: password))
     }
 
     func performGoogleLogin() {
@@ -191,62 +275,19 @@ class LoginViewController: UIViewController {
         }
     }
 
-
-    // TODO: Handle in common place
-    func setupKeyboardActions() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-
-        // Calculate the inset of the scroll view
-        let keyboardHeight = keyboardFrame.height
-
-        // Set the content inset for the scroll view
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardHeight
-        scrollView.contentInset = contentInset
-
-        // Adjust the scroll indicator inset
-        scrollView.scrollIndicatorInsets = contentInset
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        // Reset the content inset when the keyboard hides
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = 0
-        scrollView.contentInset = contentInset
-
-        // Reset the scroll indicator inset
-        scrollView.scrollIndicatorInsets = contentInset
-    }
-
-    // A convenience method to instantiate from the storyboard
+    // Kept so existing call sites keep compiling; the screen is now built in code.
     static func instantiate() -> LoginViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        return viewController
+        return LoginViewController()
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == " " {
-            return false // Reject space
-        }
-
-        if textField == passwordTextField {
-            let currentText = textField.text ?? ""
-            let newLength = currentText.count + string.count - range.length
-            return newLength <= 15
+        if textField === emailField.textField {
+            passwordField.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            callLoginApi()
         }
         return true
     }
@@ -267,7 +308,19 @@ extension LoginViewController: LoginViewDelegate {
 
     func loginFailed(errorMessage: String) {
         hideLoader()
-        showAlert(title: "Login Failed", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+        formBanner.show(FWAuthValidation.friendly(errorMessage), style: .error)
+        scrollFormBannerIntoView()
+    }
+
+    func loginRequiresEmailVerification(email: String) {
+        hideLoader()
+        coordinator?.navigateToVerifyEmail(email: email, origin: .login)
+    }
+
+    private func scrollFormBannerIntoView() {
+        view.layoutIfNeeded()
+        let rect = formBanner.convert(formBanner.bounds, to: scrollView).insetBy(dx: 0, dy: -40)
+        scrollView.scrollRectToVisible(rect, animated: true)
     }
 }
 

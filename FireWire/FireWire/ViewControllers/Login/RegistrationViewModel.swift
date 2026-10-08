@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OneSignalFramework
 
 enum ValidationError: Error {
     case success
@@ -14,7 +13,7 @@ enum ValidationError: Error {
 }
 
 final class RegistrationViewModel {
-    var delegate: RegistrationViewModelDelegate?
+    weak var delegate: RegistrationViewModelDelegate?
 
     init(delegate: RegistrationViewModelDelegate?) {
         self.delegate = delegate
@@ -46,58 +45,15 @@ final class RegistrationViewModel {
                 return
             }
 
-            if registerResponse.code != "success" {
+            // The server emails a 6-digit code on every successful registration and
+            // also when an unverified address registers again ("email_not_verified").
+            // Either way the next step is the verification screen, as on Android.
+            if registerResponse.code == "success" || registerResponse.code == "email_not_verified" {
+                self?.delegate?.registrationSuccess(email: model.email.lowercased())
+            } else {
                 let errorMessage = registerResponse.message ?? registerResponse.error ?? "Error registering new user"
                 self?.delegate?.registrationFail(errorMessage: errorMessage)
-                return
-            }else{
-                self?.performLogin(model) // Perform automatic login after successful registration
             }
-        }
-    }
-
-    func performLogin(_ model: RegisterRequestModel){
-        let loginRequestModel = APIPayload.login(email: model.email, password: model.password).toDictionary()
-
-        APIRequest().callApi(
-            apiEndPoint: APIEndpoints.login,
-            payload: loginRequestModel as JSON,
-            expect: LoginApiResponse.self
-        ) { [weak self] response, _, error in
-            if let errorMessage = error {
-                self?.delegate?.loginFailed(errorMessage: errorMessage)
-                return
-            }
-
-            guard let apiResponse = response as? LoginApiResponse else {
-                let errorMessage = (response == nil) ? "Invalid response" : "Unexpected response format"
-                self?.delegate?.loginFailed(errorMessage: errorMessage)
-                return
-            }
-
-            if apiResponse.code != "success" {
-                self?.delegate?.loginFailed(errorMessage: apiResponse.message)
-                return
-            }
-
-            guard let loginData = apiResponse.data else {
-                self?.delegate?.loginFailed(errorMessage: "Missing login data")
-                return
-            }
-
-            if let userId = loginData.id {
-                OneSignal.login(userId)
-            }
-
-            FWUserDefaults.setStringForKey(key: .userIDKey, value: loginData.id)
-            let userName = "\(loginData.firstName ?? "") \(loginData.lastName ?? "")"
-            FWUserDefaults.setStringForKey(key: .userNameKey, value: userName)
-            FWUserDefaults.setStringForKey(key: .userEmailKey, value: loginData.email)
-            FWUserDefaults.setStringForKey(key: .userTokenKey, value: loginData.token)
-            FWUserDefaults.setStringForKey(key: .refreshTokenKey, value: loginData.refreshToken)
-            FWUserDefaults.setStringForKey(key: .userRoleKey, value: loginData.role)
-
-            self?.delegate?.loginSuccess()
         }
     }
 

@@ -30,6 +30,14 @@ final class LoginViewModel {
                 return
             }
 
+            // Unverified sign-up (only once email verification is enforced server-side):
+            // the server has just emailed a code, so route to the verification screen
+            // instead of a dead-end error.
+            if apiResponse.code == "email_not_verified" {
+                self?.delegate?.loginRequiresEmailVerification(email: apiResponse.data?.email ?? requestModel.email.lowercased())
+                return
+            }
+
             if apiResponse.code != "success" {
                 self?.delegate?.loginFailed(errorMessage: apiResponse.message)
                 return

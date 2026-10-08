@@ -50,6 +50,26 @@ class LoginCoordinator: BaseCoordinator {
         pushViewController(resetPasswordViewController, animated: true)
     }
 
+    /// Email verification (the server has already emailed the code).
+    func navigateToVerifyEmail(email: String, origin: VerifyEmailOrigin) {
+        let verifyEmailViewController = VerifyEmailViewController()
+        verifyEmailViewController.email = email
+        verifyEmailViewController.origin = origin
+        verifyEmailViewController.coordinator = self
+        pushViewController(verifyEmailViewController, animated: true)
+    }
+
+    /// After verifying an unverified email mid-reset, drop back to the forgot
+    /// password screen (still on the stack) so the user can request the reset code.
+    func returnToForgotPasswordAfterVerification() {
+        if let forgot = navigationController.viewControllers.last(where: { $0 is ForgotPasswordViewController }) as? ForgotPasswordViewController {
+            forgot.pendingVerifiedNotice = true
+            navigationController.popToViewController(forgot, animated: true)
+        } else {
+            navigateToForgotPassword()
+        }
+    }
+
     func navigateToSelectArea(){
         let selectAreaViewController = SelectAreaViewController.instantiate()
         selectAreaViewController.parentCoordinator = parentCoordinator

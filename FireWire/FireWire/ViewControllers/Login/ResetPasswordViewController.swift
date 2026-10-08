@@ -3,78 +3,101 @@
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 11/01/25.
+//  Rebuilt on FireWireTheme (2026 auth redesign): step 3 of 3 of the reset flow.
 //
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var passwordTextField: FWTextField!
-    @IBOutlet var confirmPasswordTextField: FWTextField!
-
+class ResetPasswordViewController: FWAuthScreenController, UITextFieldDelegate {
     var coordinator: LoginCoordinator?
     var resetToken: String?
 
+    override var analyticsScreenName: String? { "Forgot Password" }
+
+    private let passwordField = FWAuthField(caption: "New password", placeholder: "At least 8 characters", kind: .newPassword)
+    private let confirmPasswordField = FWAuthField(caption: "Confirm new password", placeholder: "Re-enter password", kind: .newPassword)
+    private let banner = FWBanner()
+    private let saveButton = FWPrimaryButton(title: "Save new password")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        buildLayout()
     }
 
-    func setupUI() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    private func buildLayout() {
+        installTopBar(title: "Reset password") { [weak self] in self?.coordinator?.popView() }
 
-        [passwordTextField, confirmPasswordTextField].forEach { $0.delegate = self }
+        let form = UIStackView()
+        form.axis = .vertical
+        form.isLayoutMarginsRelativeArrangement = true
+        form.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 20, trailing: 12)
 
-        passwordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
-            guard let self else { return }
-            self.togglePasswordVisibility(self.passwordTextField)
+        form.addArrangedSubview(FWAuthStepHeader(step: 3, title: "New password"))
+        form.setCustomSpacing(12, after: form.arrangedSubviews.last!)
+
+        let card = FWAuthCard()
+        card.stack.addArrangedSubview(passwordField)
+        let hint = FWAuthLabel.body("At least 8 characters.", color: FireWireTheme.muted)
+        hint.font = FWAuthFont.caption
+        card.stack.addArrangedSubview(hint)
+        card.stack.setCustomSpacing(6, after: passwordField)
+        card.stack.addArrangedSubview(confirmPasswordField)
+        card.stack.addArrangedSubview(banner)
+        form.addArrangedSubview(card)
+        form.setCustomSpacing(16, after: card)
+
+        saveButton.addTarget(self, action: #selector(submitButton), for: .touchUpInside)
+        form.addArrangedSubview(saveButton)
+        content.addArrangedSubview(form)
+
+        [passwordField, confirmPasswordField].forEach {
+            $0.textField.delegate = self
+            $0.textField.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         }
-
-        confirmPasswordTextField.addRightIcon(FWImage.hidePasswordIcon!) { [weak self] in
-            guard let self else { return }
-            self.togglePasswordVisibility(self.confirmPasswordTextField)
-        }
+        passwordField.textField.returnKeyType = .next
+        confirmPasswordField.textField.returnKeyType = .done
     }
 
-    func togglePasswordVisibility(_ textField: UITextField) {
-        textField.isSecureTextEntry.toggle()
-        let icon = textField.isSecureTextEntry ? FWImage.hidePasswordIcon! : FWImage.showPasswordIcon!
-
-        if let button = textField.rightView as? UIButton {
-            button.setImage(icon, for: .normal)
-        }
+    @objc private func editingChanged(_ textField: UITextField) {
+        if textField === passwordField.textField { passwordField.setError(nil) }
+        if textField === confirmPasswordField.textField { confirmPasswordField.setError(nil) }
+        banner.hide()
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        let newLength = currentText.count + string.count - range.length
-
-        if string.contains(" ") {
-            return false
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === passwordField.textField {
+            confirmPasswordField.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            submitButton()
         }
-
-        return newLength <= 15
+        return true
     }
 
-    @IBAction func submitButton(_ sender: UIButton) {
+    @objc func submitButton() {
+        view.endEditing(true)
+        banner.hide()
+
+        let newPassword = passwordField.textField.text ?? ""
+        let confirmPassword = confirmPasswordField.textField.text ?? ""
+
+        let passwordError = FWAuthValidation.passwordError(newPassword)
+        passwordField.setError(passwordError)
+        var confirmError: String?
+        if confirmPassword.isEmpty {
+            confirmError = "Confirm your new password."
+        } else if newPassword != confirmPassword {
+            confirmError = "Passwords don’t match."
+        }
+        confirmPasswordField.setError(confirmError)
+        guard passwordError == nil, confirmError == nil else { return }
+
+        guard let resetToken = resetToken else {
+            banner.show(.CommonError.techError, style: .error)
+            return
+        }
+
         showLoader()
-        guard let newPassword = passwordTextField.text, !newPassword.isEmpty, let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty, let resetToken = resetToken else {
-            hideLoader()
-            showAlert(title: "", message: "Please enter valid password", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-            return
-        }
-
-        if newPassword.count < 8 && confirmPassword.count < 8 {
-            hideLoader()
-            showAlert(title: "", message: "Password should be at least 8 character long", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-            return
-        }
-
-        if newPassword != confirmPassword {
-            hideLoader()
-            showAlert(title: "", message: "One of the password is not matching", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-            return
-        }
-
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.resetPassword,
             payload: APIPayload.resetPassword(resetToken: resetToken, password: newPassword, confirmPassword: confirmPassword).toDictionary(),
@@ -83,31 +106,28 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 
             self?.hideLoader()
             if let errorMessage = error {
-                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                self?.banner.show(FWAuthValidation.friendly(errorMessage), style: .error)
                 return
             }
 
             guard let apiResponse = response else {
-                self?.showAlert(title: "", message: .CommonError.techError, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                self?.banner.show(.CommonError.techError, style: .error)
                 return
             }
 
             if let response = apiResponse as? SuccessResponseModel {
                 if response.code.lowercased() == "success" {
-                    self?.showAlert(title: "", message: "Reset password success", actions: [UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                        self?.coordinator?.popToRootView()
-                    })])
+                    LoginViewController.pendingSuccessNotice = "Password updated. Sign in with your new password."
+                    self?.coordinator?.popToRootView()
                 } else {
-                    self?.showAlert(title: "", message: response.message.isEmpty ? .CommonError.techError : response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                    self?.banner.show(response.message.isEmpty ? .CommonError.techError : response.message, style: .error)
                 }
             }
         }
     }
 
-    // A convenience method to instantiate from the storyboard
+    // Kept so existing call sites keep compiling; the screen is now built in code.
     static func instantiate() -> ResetPasswordViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewController") as! ResetPasswordViewController
-        return viewController
+        return ResetPasswordViewController()
     }
 }

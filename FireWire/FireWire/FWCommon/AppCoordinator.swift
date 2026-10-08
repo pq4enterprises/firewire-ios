@@ -167,6 +167,9 @@ class AppCoordinator: BaseCoordinator {
         modal.onForgotPassword = { [weak loginCoordinator] in
             loginCoordinator?.navigateToForgotPassword()
         }
+        modal.onNeedsVerification = { [weak loginCoordinator] email in
+            loginCoordinator?.navigateToVerifyEmail(email: email, origin: .login)
+        }
         modal.modalPresentationStyle = .overFullScreen
         modal.modalTransitionStyle = .crossDissolve
         top.present(modal, animated: true)

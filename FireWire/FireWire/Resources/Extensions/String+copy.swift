@@ -14,7 +14,7 @@ public extension String {
     enum Login {
         public static let registerText = "Don’t have an Account? Register"
         public static let register = "Register"
-        public static let termsAndConditionsText = "By register or logging into an account you are agreeing with our Terms and Conditions"
+        public static let termsAndConditionsText = "By registering or logging into an account you agree to our Terms and Conditions"
         public static let termsAndConditions = "Terms and Conditions"
     }
 

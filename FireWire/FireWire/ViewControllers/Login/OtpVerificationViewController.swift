@@ -3,84 +3,103 @@
 //  FireWire
 //
 //  Created by Sujitha Palanisamy on 11/01/25.
+//  Rebuilt on FireWireTheme (2026 auth redesign): step 2 of 3 of the reset
+//  flow. One 6-digit field (one-time-code autofill) replaces the six boxes.
 //
 
 import UIKit
 
-class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var value1Text: UITextField!
-    @IBOutlet var value2Text: UITextField!
-    @IBOutlet var value3Text: UITextField!
-    @IBOutlet var value4Text: UITextField!
-    @IBOutlet var value5Text: UITextField!
-    @IBOutlet var value6Text: UITextField!
-    @IBOutlet var verifyOtpInfo: UILabel!
-
-    var otpTextFields: [UITextField] = []
+class OtpVerificationViewController: FWAuthScreenController, UITextFieldDelegate {
     var coordinator: LoginCoordinator?
     var email: String?
 
+    override var analyticsScreenName: String? { "Forgot Password" }
+
+    private let codeField = FWAuthField(caption: "Verification code", placeholder: "••••••", kind: .code)
+    private let resendControl = FWResendControl()
+    private let banner = FWBanner()
+    private let verifyButton = FWPrimaryButton(title: "Verify code")
+    private let codeLength = 6
+    private var isSubmitting = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        buildLayout()
+        resendControl.start()
     }
 
-    func setupUI() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-
-        otpTextFields = [value1Text, value2Text, value3Text, value4Text, value5Text, value6Text]
-        otpTextFields.forEach { $0.delegate = self }
-        otpTextFields.forEach { $0.keyboardType = .numberPad }
-
-        value1Text.becomeFirstResponder()
-
-        if let email {
-            let maskedEmail = email.maskEmail
-            verifyOtpInfo.text = String(format: .VerifyOtp.info, maskedEmail)
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        codeField.textField.becomeFirstResponder()
     }
 
-    @IBAction func backButtonTap(_ sender: UIButton) {
+    private func buildLayout() {
+        installTopBar(title: "Reset password") { [weak self] in self?.coordinator?.popView() }
+
+        let form = UIStackView()
+        form.axis = .vertical
+        form.isLayoutMarginsRelativeArrangement = true
+        form.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 20, trailing: 12)
+
+        form.addArrangedSubview(FWAuthStepHeader(step: 2, title: "Enter the code"))
+        form.setCustomSpacing(12, after: form.arrangedSubviews.last!)
+
+        let card = FWAuthCard()
+        let masked = email?.maskEmail ?? "your email"
+        let info = UILabel()
+        info.numberOfLines = 0
+        info.adjustsFontForContentSizeCategory = true
+        let text = NSMutableAttributedString(
+            string: "We sent a 6-digit code to ",
+            attributes: [.font: FWAuthFont.body, .foregroundColor: FireWireTheme.text])
+        text.append(NSAttributedString(string: masked, attributes: [.font: FWAuthFont.bodyStrong, .foregroundColor: FireWireTheme.text]))
+        text.append(NSAttributedString(string: ". It expires in 10 minutes.", attributes: [.font: FWAuthFont.body, .foregroundColor: FireWireTheme.text]))
+        info.attributedText = text
+        card.stack.addArrangedSubview(info)
+        card.stack.addArrangedSubview(codeField)
+        card.stack.addArrangedSubview(resendControl)
+        card.stack.setCustomSpacing(8, after: codeField)
+        card.stack.addArrangedSubview(banner)
+        form.addArrangedSubview(card)
+        form.setCustomSpacing(16, after: card)
+
+        verifyButton.addTarget(self, action: #selector(verifyTap), for: .touchUpInside)
+        form.addArrangedSubview(verifyButton)
+        content.addArrangedSubview(form)
+
+        resendControl.onResend = { [weak self] in self?.requestOtp() }
+        codeField.textField.delegate = self
+        codeField.textField.addTarget(self, action: #selector(codeChanged), for: .editingChanged)
+    }
+
+    @objc private func codeChanged() {
+        codeField.setError(nil)
+        banner.hide()
+        let digits = (codeField.textField.text ?? "").filter(\.isNumber)
+        if digits.count > codeLength { codeField.textField.text = String(digits.prefix(codeLength)) }
+        if digits.count == codeLength { submitOtp() }
+    }
+
+    @objc private func verifyTap() {
+        submitOtp()
+    }
+
+    @objc func backButtonTap() {
         coordinator?.popView()
     }
 
-    @IBAction func resentOTPTap(_ sender: UIButton) {
+    @objc func resentOTPTap() {
         requestOtp()
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var boolSubmitOtp = false
-        guard string.count <= 1 else {
-            return false
-        }
-
-        guard let currentIndex = otpTextFields.firstIndex(of: textField) else {
-            return true
-        }
-
-        if string.count > 0, textField.text?.count == 0 {
-            if currentIndex < otpTextFields.count - 1 {
-                otpTextFields[currentIndex + 1].becomeFirstResponder()
-            } else {
-                otpTextFields[currentIndex].resignFirstResponder()
-                boolSubmitOtp = true
-            }
-        } else if string.isEmpty, textField.text?.count == 1 {
-            if currentIndex > 0 {
-                otpTextFields[currentIndex - 1].becomeFirstResponder()
-            }
-        }
-
-        textField.text = string
-        if boolSubmitOtp { submitOtp() }
-        return false
+        // Digits only (pasted codes may carry spaces); length is clamped in codeChanged.
+        return string.isEmpty || string.filter(\.isNumber).count == string.filter { !$0.isWhitespace }.count
     }
 
-    // A convenience method to instantiate from the storyboard
+    // Kept so existing call sites keep compiling; the screen is now built in code.
     static func instantiate() -> OtpVerificationViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtpVerificationViewController") as! OtpVerificationViewController
-        return viewController
+        return OtpVerificationViewController()
     }
 }
 
@@ -88,50 +107,61 @@ class OtpVerificationViewController: UIViewController, UITextFieldDelegate {
 
 extension OtpVerificationViewController {
     func submitOtp() {
-        showLoader()
-
+        guard !isSubmitting else { return }
         guard let email = email else { return }
 
-        let otp = otpTextFields.compactMap { $0.text }.joined()
-        if otp.count == otpTextFields.count {
-            APIRequest().callApi(
-                apiEndPoint: APIEndpoints.verifyOtp,
-                payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
-                expect: VerifyOtpResponseModel.self
-            ) { [weak self] response, _, error in
-                self?.hideLoader()
+        let otp = (codeField.textField.text ?? "").filter(\.isNumber)
+        guard otp.count == codeLength else {
+            codeField.setError("Enter the 6-digit code from the email.")
+            return
+        }
 
-                if let errorMessage = error {
-                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                    return
-                }
+        view.endEditing(true)
+        banner.hide()
+        isSubmitting = true
+        showLoader()
 
-                guard let apiResponse = response as? VerifyOtpResponseModel else {
-                    let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
-                    self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                    return
-                }
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.verifyOtp,
+            payload: APIPayload.verifyOtp(email: email, otp: otp).toDictionary(),
+            expect: VerifyOtpResponseModel.self
+        ) { [weak self] response, _, error in
+            self?.hideLoader()
+            self?.isSubmitting = false
 
-                if apiResponse.code != "success" {
-                    self?.showAlert(title: "", message: apiResponse.message, actions: [UIAlertAction(title: "Ok", style: .cancel){_ in
-                        self?.otpTextFields.forEach { $0.text = "" }
-                    }])
-                    return
-                }
+            if let errorMessage = error {
+                self?.banner.show(FWAuthValidation.friendly(errorMessage), style: .error)
+                return
+            }
 
-                if let otpData = apiResponse.data {
-                    self?.coordinator?.navigateToResetPassword(token: otpData.resetToken)
-                } else {
-                    self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
-                }
+            guard let apiResponse = response as? VerifyOtpResponseModel else {
+                let errorMessage = (response == nil) ? "Invalid request" : "Unexpected response format"
+                self?.banner.show(errorMessage, style: .error)
+                return
+            }
+
+            if apiResponse.code != "success" {
+                let message = apiResponse.code == "invalid_otp"
+                    ? "That code isn’t right or has expired. Check the email or request a new one."
+                    : apiResponse.message
+                self?.codeField.textField.text = ""
+                self?.banner.show(message, style: .error)
+                self?.codeField.textField.becomeFirstResponder()
+                return
+            }
+
+            if let otpData = apiResponse.data {
+                self?.coordinator?.navigateToResetPassword(token: otpData.resetToken)
+            } else {
+                self?.banner.show(.CommonError.techError, style: .error)
             }
         }
     }
 
     func requestOtp() {
-        showLoader()
-
         guard let email = email else { return }
+        banner.hide()
+        resendControl.showSending()
 
         APIRequest().callApi(
             apiEndPoint: APIEndpoints.forgotPassword,
@@ -139,20 +169,23 @@ extension OtpVerificationViewController {
             expect: ForgotPasswordResponseModel.self
         ) { [weak self] response, _, error in
 
-            self?.hideLoader()
+            self?.resendControl.start()
             if let errorMessage = error {
-                self?.showAlert(title: "", message: errorMessage, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                self?.banner.show(FWAuthValidation.friendly(errorMessage), style: .error)
                 return
             }
 
             guard let apiResponse = response else {
-                self?.showAlert(title: "", message: "Technical error, please try again!", actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                self?.banner.show(.CommonError.techError, style: .error)
                 return
             }
 
             if let response = apiResponse as? ForgotPasswordResponseModel {
-                if response.code.lowercased() != "success" {
-                    self?.showAlert(title: "", message: response.message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+                if response.code.lowercased() == "success" {
+                    self?.codeField.textField.text = ""
+                    self?.banner.show("A new code is on its way.", style: .success)
+                } else {
+                    self?.banner.show(response.message, style: .error)
                 }
             }
         }
