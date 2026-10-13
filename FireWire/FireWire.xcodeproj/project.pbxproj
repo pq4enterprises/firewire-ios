@@ -1886,7 +1886,7 @@
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 121000;
+				CURRENT_PROJECT_VERSION = 121100;
 				DEVELOPMENT_TEAM = GZ55QHPVX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
@@ -1898,7 +1898,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 12.1.0;
+				MARKETING_VERSION = 12.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1915,7 +1915,7 @@
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 121000;
+				CURRENT_PROJECT_VERSION = 121100;
 				DEVELOPMENT_TEAM = GZ55QHPVX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
@@ -1927,7 +1927,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 12.1.0;
+				MARKETING_VERSION = 12.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2065,7 +2065,7 @@
 				CODE_SIGN_ENTITLEMENTS = FireWire/FireWire.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 121000;
+				CURRENT_PROJECT_VERSION = 121100;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = GZ55QHPVX2;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2083,7 +2083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.1.0;
+				MARKETING_VERSION = 12.1.1;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2106,7 +2106,7 @@
 				CODE_SIGN_ENTITLEMENTS = FireWire/FireWire.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 121000;
+				CURRENT_PROJECT_VERSION = 121100;
 				DEVELOPMENT_TEAM = GZ55QHPVX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FireWire/Info.plist;
@@ -2123,7 +2123,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.1.0;
+				MARKETING_VERSION = 12.1.1;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbf.app13822684;
 				PRODUCT_NAME = "$(TARGET_NAME)";
