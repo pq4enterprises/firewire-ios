@@ -171,6 +171,40 @@ final class ChipFlowView: UIView {
     }
 }
 
+/// One legend entry (8pt swatch + label) with an explicit intrinsic size so it
+/// can live inside a ChipFlowView and wrap with its siblings.
+final class LegendItemView: UIView {
+    private let swatch = UIView()
+    private let label = UILabel()
+    private let dot: CGFloat = 8
+    private let gap: CGFloat = 4
+
+    init(title: String, color: UIColor) {
+        super.init(frame: .zero)
+        swatch.backgroundColor = color
+        swatch.layer.cornerRadius = 2
+        label.text = title
+        label.font = .systemFont(ofSize: 9.5, weight: .bold)
+        label.textColor = IncidentTheme.muted
+        addSubview(swatch)
+        addSubview(label)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override var intrinsicContentSize: CGSize {
+        let l = label.intrinsicContentSize
+        return CGSize(width: dot + gap + l.width, height: max(dot, l.height))
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let l = label.intrinsicContentSize
+        swatch.frame = CGRect(x: 0, y: (bounds.height - dot) / 2, width: dot, height: dot)
+        label.frame = CGRect(x: dot + gap, y: (bounds.height - l.height) / 2, width: l.width, height: l.height)
+    }
+}
+
 /// The Hybrid / Street / Satellite pill control overlaid on the map card.
 final class MapTypeSelector: UIView {
     var onSelectionChanged: ((Int) -> Void)?
@@ -269,7 +303,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     private let unitsCard = UIView()
     private let unitsCountBadge = PaddedLabel()
-    private let unitsLegendStack = UIStackView()
+    /// Wrapping legend (a locality may define more categories than fit one row).
+    private let unitsLegendStack = ChipFlowView()
     private let unitsChipsView = ChipFlowView()
     private let unitsEmptyLabel = UILabel()
 
@@ -679,13 +714,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         unitsTitle.setContentCompressionResistancePriority(.required, for: .horizontal)
 
-        unitsLegendStack.axis = .horizontal
         unitsLegendStack.spacing = 10
-        unitsLegendStack.alignment = .center
-        for category in [UnitCategory.engine, .truckRescue, .marine, .chief, .soc] {
-            unitsLegendStack.addArrangedSubview(makeLegendItem(category))
-        }
-        unitsLegendStack.addArrangedSubview(UIView())
+        unitsLegendStack.setChips([UnitCategory.engine, .truckRescue, .marine, .chief, .soc].map { makeLegendItem($0) })
 
         let headerRow = UIStackView(arrangedSubviews: [unitsTitle, unitsCountBadge, UIView()])
         headerRow.axis = .horizontal
@@ -716,24 +746,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     private func makeLegendItem(title: String, color: UIColor) -> UIView {
-        let swatch = UIView()
-        swatch.backgroundColor = color
-        swatch.layer.cornerRadius = 2
-        NSLayoutConstraint.activate([
-            swatch.widthAnchor.constraint(equalToConstant: 8),
-            swatch.heightAnchor.constraint(equalToConstant: 8),
-        ])
-
-        let label = UILabel()
-        label.text = title
-        label.font = .systemFont(ofSize: 9.5, weight: .bold)
-        label.textColor = IncidentTheme.muted
-
-        let stack = UIStackView(arrangedSubviews: [swatch, label])
-        stack.axis = .horizontal
-        stack.spacing = 4
-        stack.alignment = .center
-        return stack
+        LegendItemView(title: title, color: color)
     }
 
     /// Chip colors: the server's per-locality scheme when the response carries
@@ -759,18 +772,14 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
     /// Legend from the server scheme (nil = the static classifier legend).
     private func rebuildLegend(server: [UnitLegendModel]?) {
-        unitsLegendStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         if let server {
-            for item in server {
+            unitsLegendStack.setChips(server.map { item in
                 let color = FireWireTheme.color(light: item.color, dark: item.colorDark, fallback: UnitCategory.other.legendColor)
-                unitsLegendStack.addArrangedSubview(makeLegendItem(title: item.label ?? "", color: color))
-            }
+                return makeLegendItem(title: item.label ?? "", color: color)
+            })
         } else {
-            for category in [UnitCategory.engine, .truckRescue, .marine, .chief, .soc] {
-                unitsLegendStack.addArrangedSubview(makeLegendItem(category))
-            }
+            unitsLegendStack.setChips([UnitCategory.engine, .truckRescue, .marine, .chief, .soc].map { makeLegendItem($0) })
         }
-        unitsLegendStack.addArrangedSubview(UIView())
     }
 
     // MARK: Data binding
