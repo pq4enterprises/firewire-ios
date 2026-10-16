@@ -33,6 +33,11 @@ struct IncidentDetailModel: Codable {
     var commentCount, likeCount: Int
     let points: [Point]?
     var isLiked: Bool = false
+    /// Server-resolved unit chip colors (12.1.2+). nil on older servers, in which
+    /// case the hardcoded UnitCategory classifier is the fallback.
+    let respondingUnitColors: [UnitColorModel]?
+    let unitLegend: [UnitLegendModel]?
+    let unitColorsConfigured: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -41,6 +46,7 @@ struct IncidentDetailModel: Codable {
         case commentCount, likeCount
         case points
         case isLiked
+        case respondingUnitColors, unitLegend, unitColorsConfigured
     }
 
     init(from decoder: Decoder) throws {
@@ -68,6 +74,9 @@ struct IncidentDetailModel: Codable {
         featuredImageUrl = try container.decodeIfPresent(String.self, forKey: .featuredImageUrl)
         subLocalityName = try container.decodeIfPresent(String.self, forKey: .subLocalityName)
         points = try container.decodeIfPresent([Point].self, forKey: .points)
+        respondingUnitColors = try? container.decodeIfPresent([UnitColorModel].self, forKey: .respondingUnitColors)
+        unitLegend = try? container.decodeIfPresent([UnitLegendModel].self, forKey: .unitLegend)
+        unitColorsConfigured = try? container.decodeIfPresent(Bool.self, forKey: .unitColorsConfigured)
 
         // Handle the isLiked flag with a default value if not present
         isLiked = (try? container.decode(Bool.self, forKey: .isLiked)) ?? false
@@ -107,3 +116,20 @@ struct PostTwitter: Codable {
     let checked: Bool?
 }
 
+/// One resolved unit chip color from the server. Hex is #RRGGBB or #RRGGBBAA.
+struct UnitColorModel: Codable {
+    let unit: String?
+    let bg: String?
+    let fg: String?
+    let bgDark: String?
+    let fgDark: String?
+    let category: String?
+}
+
+/// One legend entry (category label + swatch color) from the server.
+struct UnitLegendModel: Codable {
+    let key: String?
+    let label: String?
+    let color: String?
+    let colorDark: String?
+}

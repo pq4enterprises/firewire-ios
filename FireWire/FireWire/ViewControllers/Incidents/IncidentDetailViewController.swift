@@ -712,8 +712,12 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     }
 
     private func makeLegendItem(_ category: UnitCategory) -> UIView {
+        makeLegendItem(title: category.legendTitle, color: category.legendColor)
+    }
+
+    private func makeLegendItem(title: String, color: UIColor) -> UIView {
         let swatch = UIView()
-        swatch.backgroundColor = category.legendColor
+        swatch.backgroundColor = color
         swatch.layer.cornerRadius = 2
         NSLayoutConstraint.activate([
             swatch.widthAnchor.constraint(equalToConstant: 8),
@@ -721,7 +725,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         ])
 
         let label = UILabel()
-        label.text = category.legendTitle
+        label.text = title
         label.font = .systemFont(ofSize: 9.5, weight: .bold)
         label.textColor = IncidentTheme.muted
 
@@ -732,17 +736,41 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         return stack
     }
 
-    private func makeUnitChip(_ unitName: String) -> UIView {
-        let category = UnitCategory.classify(unitName)
+    /// Chip colors: the server's per-locality scheme when the response carries
+    /// `respondingUnitColors` (12.1.2+), otherwise the hardcoded classifier.
+    private func makeUnitChip(_ unitName: String, serverColors: [String: UnitColorModel]?) -> UIView {
         let chip = PaddedLabel()
         chip.text = unitName
         chip.font = .systemFont(ofSize: 12, weight: .bold)
-        chip.textColor = category.chipText
-        chip.backgroundColor = category.chipBackground
+        if let serverColors {
+            let c = serverColors[unitName]
+            chip.textColor = FireWireTheme.color(light: c?.fg, dark: c?.fgDark, fallback: UnitCategory.other.chipText)
+            chip.backgroundColor = FireWireTheme.color(light: c?.bg, dark: c?.bgDark, fallback: UnitCategory.other.chipBackground)
+        } else {
+            let category = UnitCategory.classify(unitName)
+            chip.textColor = category.chipText
+            chip.backgroundColor = category.chipBackground
+        }
         chip.layer.cornerRadius = 7
         chip.layer.masksToBounds = true
         chip.insets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
         return chip
+    }
+
+    /// Legend from the server scheme (nil = the static classifier legend).
+    private func rebuildLegend(server: [UnitLegendModel]?) {
+        unitsLegendStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        if let server {
+            for item in server {
+                let color = FireWireTheme.color(light: item.color, dark: item.colorDark, fallback: UnitCategory.other.legendColor)
+                unitsLegendStack.addArrangedSubview(makeLegendItem(title: item.label ?? "", color: color))
+            }
+        } else {
+            for category in [UnitCategory.engine, .truckRescue, .marine, .chief, .soc] {
+                unitsLegendStack.addArrangedSubview(makeLegendItem(category))
+            }
+        }
+        unitsLegendStack.addArrangedSubview(UIView())
     }
 
     // MARK: Data binding
@@ -811,8 +839,22 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         unitsCountBadge.text = "\(units.count)"
         unitsCountBadge.isHidden = units.isEmpty
         unitsEmptyLabel.isHidden = !units.isEmpty
-        unitsLegendStack.isHidden = units.isEmpty
-        unitsChipsView.setChips(units.map { makeUnitChip($0) })
+
+        // Server-resolved colors win when present; the legend then comes from the
+        // locality's scheme and is hidden when the locality has none (all gray).
+        var serverColors: [String: UnitColorModel]? = nil
+        if let list = incidentDetail.respondingUnitColors {
+            serverColors = Dictionary(list.compactMap { c -> (String, UnitColorModel)? in
+                guard let u = c.unit?.trimmingCharacters(in: .whitespacesAndNewlines).uppercased(), !u.isEmpty else { return nil }
+                return (u, c)
+            }, uniquingKeysWith: { first, _ in first })
+            rebuildLegend(server: incidentDetail.unitLegend ?? [])
+            unitsLegendStack.isHidden = units.isEmpty || (incidentDetail.unitLegend ?? []).isEmpty
+        } else {
+            rebuildLegend(server: nil)
+            unitsLegendStack.isHidden = units.isEmpty
+        }
+        unitsChipsView.setChips(units.map { makeUnitChip($0, serverColors: serverColors) })
 
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()

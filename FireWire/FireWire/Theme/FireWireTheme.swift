@@ -92,6 +92,32 @@ enum FireWireTheme {
     /// Solid swatch used in the map legend (chip background is tinted).
     static let unitSOCLegend = UIColor(rgb: 0xE0842F)
 
+    // MARK: Server-resolved unit colors (12.1.2+)
+
+    /// Parses CSS hex (#RRGGBB or #RRGGBBAA). nil for anything else, so a bad
+    /// value from the portal can never crash the detail screen.
+    static func color(fromHex hex: String?) -> UIColor? {
+        guard var h = hex?.trimmingCharacters(in: .whitespacesAndNewlines) else { return nil }
+        if h.hasPrefix("#") { h.removeFirst() }
+        guard h.count == 6 || h.count == 8, let v = UInt64(h, radix: 16) else { return nil }
+        let r, g, b, a: CGFloat
+        if h.count == 8 {
+            r = CGFloat((v >> 24) & 0xFF) / 255; g = CGFloat((v >> 16) & 0xFF) / 255
+            b = CGFloat((v >> 8) & 0xFF) / 255; a = CGFloat(v & 0xFF) / 255
+        } else {
+            r = CGFloat((v >> 16) & 0xFF) / 255; g = CGFloat((v >> 8) & 0xFF) / 255
+            b = CGFloat(v & 0xFF) / 255; a = 1
+        }
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+
+    /// Dynamic color from a light hex and an optional dark hex (falls back to light).
+    static func color(light: String?, dark: String?, fallback: UIColor) -> UIColor {
+        guard let l = color(fromHex: light) else { return fallback }
+        let d = color(fromHex: dark) ?? l
+        return UIColor(light: l, dark: d)
+    }
+
     static let unitOtherBackground = FireWireTheme.surface2
     static let unitOtherText = FireWireTheme.muted
 
