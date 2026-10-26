@@ -28,6 +28,12 @@ class LoginCoordinator: BaseCoordinator {
         let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
         addChildCoordinator(homeCoordinator)
         homeCoordinator.start()
+
+        // Direct sign-in path (does not go through AppCoordinator.navigateToHome):
+        // an offer code redeemed before signing in becomes Premium right here.
+        Task {
+            await SubscriptionManager.shared.syncEntitlementsIfNeeded()
+        }
     }
 
     func navigateToForgotPassword(){
