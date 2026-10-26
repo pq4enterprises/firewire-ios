@@ -55,8 +55,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        // An offer code redeemed in the App Store (relaunch email link) shows up as a
+        // current entitlement the next time the app is in front; report it so the
+        // account flips to premium without a RESTORE PURCHASES tap.
+        Task {
+            await SubscriptionManager.shared.syncEntitlementsIfNeeded()
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

@@ -43,6 +43,11 @@ class AppCoordinator: BaseCoordinator {
         addChildCoordinator(homeCoordinator)
         homeCoordinator.parentCoordinator = self
         homeCoordinator.start()
+
+        // Covers "redeemed the offer code first, then installed and signed in".
+        Task {
+            await SubscriptionManager.shared.syncEntitlementsIfNeeded()
+        }
     }
 
     override func backToParentCoordinator() {

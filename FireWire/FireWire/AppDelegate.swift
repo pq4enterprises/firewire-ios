@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSNotificationClickListen
         // Remote config fetch interval for firebase
         VersionChecker.fetchRemoteConfig()
 
+        // Offer codes redeemed outside the app (App Store link / redeem sheet)
+        SubscriptionManager.shared.startTransactionObserver()
+
         return true
     }
 

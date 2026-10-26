@@ -56,6 +56,7 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     /// Card-styled views whose CGColor borders need refreshing on theme change.
     private var borderedViews: [UIView] = []
     private var rowActions: [() -> Void] = []
+    private var premiumObserver: NSObjectProtocol?
 
     // MARK: Lifecycle
 
@@ -65,6 +66,20 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
 
         Task {
             await SubscriptionManager.shared.fetchProducts()
+        }
+
+        // Posted by SubscriptionManager after an offer-code / external transaction
+        // has been reported to the server, so the card flips while on screen.
+        premiumObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name("PremiumStatusChanged"), object: nil, queue: .main
+        ) { [weak self] _ in
+            self?.updatePremiumInfo()
+        }
+    }
+
+    deinit {
+        if let premiumObserver {
+            NotificationCenter.default.removeObserver(premiumObserver)
         }
     }
 
@@ -318,6 +333,15 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         restoreButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
         restoreButton.addTarget(self, action: #selector(restorePurchasesTap), for: .touchUpInside)
         premiumStack.addArrangedSubview(restoreButton)
+
+        // Relaunch promo: opens the App Store offer-code sheet (StoreKit, iOS 16+).
+        let offerCodeButton = UIButton(type: .system)
+        offerCodeButton.setTitle("HAVE AN OFFER CODE?", for: .normal)
+        offerCodeButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .heavy)
+        offerCodeButton.tintColor = FireWireTheme.darkRed
+        offerCodeButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        offerCodeButton.addTarget(self, action: #selector(offerCodeTap), for: .touchUpInside)
+        premiumStack.addArrangedSubview(offerCodeButton)
     }
 
     private func renderSubscribedCard() {
@@ -604,6 +628,18 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     @objc private func restorePurchasesTap() {
         Task {
             await SubscriptionManager.shared.restorePurchases()
+        }
+    }
+
+    @objc private func offerCodeTap() {
+        Analytics.logEvent("offer_code_button_tapped", parameters: [
+            AnalyticsParameterScreenName: "ios_my_account"
+        ])
+        guard let windowScene = view.window?.windowScene else { return }
+        // The redeemed transaction arrives via Transaction.updates and is reported
+        // by SubscriptionManager; the PremiumStatusChanged observer refreshes the card.
+        Task {
+            try? await AppStore.presentOfferCodeRedeemSheet(in: windowScene)
         }
     }
 
