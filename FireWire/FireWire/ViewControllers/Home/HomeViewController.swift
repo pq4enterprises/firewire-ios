@@ -206,7 +206,10 @@ extension HomeViewController: MaterialShowcaseDelegate {
         showCase4.delegate = self
         showCase5.delegate = self
 
-        ShowcaseManager.shared.startSequence([showCase1, showCase2!, showCase3, showCase4, showCase5]) {
+        // showCase2 is nil when the segmented control has no view for the
+        // News segment yet; skip it instead of force-unwrapping.
+        let showcases = [showCase1, showCase2, showCase3, showCase4, showCase5].compactMap { $0 }
+        ShowcaseManager.shared.startSequence(showcases) {
             if let drawerVC = self.incidentHomeVC?.drawerContentViewController as? IncidentListViewController {
                 drawerVC.showTutorial()
             }
@@ -215,8 +218,12 @@ extension HomeViewController: MaterialShowcaseDelegate {
 
     func segmentView(from segmentedControl: UISegmentedControl, at index: Int) -> UIView? {
         guard index < segmentedControl.numberOfSegments else { return nil }
-        let segmentViews = segmentedControl.subviews.sorted { $0.frame.minX < $1.frame.minX }
-        return segmentViews.reversed()[index]
+        // UISegmentedControl's private subview layout is not guaranteed to
+        // match numberOfSegments (e.g. before first layout), so bounds-check
+        // the actual subview array rather than trusting the segment count.
+        let segmentViews = Array(segmentedControl.subviews.sorted { $0.frame.minX < $1.frame.minX }.reversed())
+        guard segmentViews.indices.contains(index) else { return nil }
+        return segmentViews[index]
     }
 
     func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {

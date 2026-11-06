@@ -715,8 +715,7 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
 
     @objc private func regionHeaderTap(_ sender: UIButton) {
         let section = sender.tag
-        guard section < viewModel.items.count else { return }
-        let region = viewModel.items[section].localityName
+        guard let region = group(at: section)?.localityName else { return }
         if expandedRegions.contains(region) {
             expandedRegions.remove(region)
         } else {
@@ -725,9 +724,26 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
     }
 
-    // MARK: Playback control (logic carried over verbatim)
+    // MARK: Playback control (logic carried over from the old screen)
+    //
+    // Everything here is keyed by feed *id*, never by a captured IndexPath.
+    // `viewModel.items` is rebuilt wholesale on every fetch (pagination,
+    // refresh), so an IndexPath captured at cell-configure time or before an
+    // alert was answered can point past the end of the new list.
 
-    private func feedTapped(_ feedData: FeedListData, indexPath: IndexPath? = nil) {
+    /// Entry point for a row / play-button tap. Resolves the feed by id
+    /// against the *current* list at tap time; if it has gone (list refetched
+    /// underneath a stale cell), the table is resynced and the tap ignored.
+    private func feedTapped(withID id: String) {
+        guard let feed = feed(withID: id) else {
+            tableView.reloadData()
+            updateConsole()
+            return
+        }
+        feedTapped(feed)
+    }
+
+    private func feedTapped(_ feedData: FeedListData) {
         Analytics.logEvent("radio_feed_tapped", parameters: [
             "feed_title": feedData.name,
         ])
@@ -736,36 +752,31 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
             showAlert(
                 title: "Stop Listening",
                 message: "Are you sure you want to stop listening?",
-                actions: [UIAlertAction(title: "Stop Listening", style: .default, handler: { _ in
-                    self.stopListeningToFeed(indexPath: indexPath ?? self.getIndexOfPlayingFeed())
+                actions: [UIAlertAction(title: "Stop Listening", style: .default, handler: { [weak self] _ in
+                    self?.stopListeningToFeed()
                 })],
                 cancel: true)
         } else {
             guard unlockPremiumFeatureIfValid() == false else { return }
-            guard let indexPath = indexPath ?? indexPathOfFeed(withID: feedData.id) else { return }
             startListeningToFeed(
                 id: feedData.id,
                 title: feedData.name,
-                urlString: feedData.url,
-                indexPath: indexPath)
+                urlString: feedData.url)
         }
     }
 
-    func startListeningToFeed(id: String, title: String, urlString: String, indexPath: IndexPath) {
+    func startListeningToFeed(id: String, title: String, urlString: String) {
         if let url = URL(string: urlString) {
             // if audio is already playing stop & start playing new
-            if let playingFeedIndex = getIndexOfPlayingFeed() {
-                viewModel.items[playingFeedIndex.section].feedList[playingFeedIndex.row].isPlaying = false
-            }
-
-            viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = true
+            clearPlayingFlags()
+            updatePlayingState(forFeedID: id, isPlaying: true)
 
             AudioManager.shared.streamAudioFromURL(url: url, feedTitle: title)
             AppManager.shared.currentScannerIDListeningTO = id
             playbackStartDate = Date()
 
             // Keep the live row visible if its group was collapsed.
-            expandedRegions.insert(viewModel.items[indexPath.section].localityName)
+            expandRegionOfActiveFeed()
             tableView.reloadData()
             updateConsole()
         } else {
@@ -776,10 +787,8 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         }
     }
 
-    func stopListeningToFeed(indexPath: IndexPath?) {
-        if let indexPath {
-            viewModel.items[indexPath.section].feedList[indexPath.row].isPlaying = false
-        }
+    func stopListeningToFeed() {
+        clearPlayingFlags()
 
         AppManager.shared.currentScannerIDListeningTO = nil
         AudioManager.shared.stopStreaming()
@@ -790,23 +799,38 @@ class ScannerViewController: UIViewController, FeedListViewDelegate {
         updateConsole()
     }
 
-    func getIndexOfPlayingFeed() -> IndexPath? {
-        for sectionIndex in 0 ..< viewModel.items.count {
-            let feedList = viewModel.items[sectionIndex].feedList
-            if let rowIndex = feedList.firstIndex(where: { $0.isPlaying == true }) {
-                return IndexPath(row: rowIndex, section: sectionIndex)
+    /// Clears `isPlaying` on every row (there should only ever be one, but a
+    /// refetch merge can leave stragglers).
+    private func clearPlayingFlags() {
+        for sectionIndex in viewModel.items.indices {
+            for rowIndex in viewModel.items[sectionIndex].feedList.indices
+            where viewModel.items[sectionIndex].feedList[rowIndex].isPlaying {
+                viewModel.items[sectionIndex].feedList[rowIndex].isPlaying = false
+            }
+        }
+    }
+
+    private func feed(withID id: String) -> FeedListData? {
+        for group in viewModel.items {
+            if let feed = group.feedList.first(where: { $0.id == id }) {
+                return feed
             }
         }
         return nil
     }
 
-    private func indexPathOfFeed(withID id: String) -> IndexPath? {
-        for sectionIndex in 0 ..< viewModel.items.count {
-            if let rowIndex = viewModel.items[sectionIndex].feedList.firstIndex(where: { $0.id == id }) {
-                return IndexPath(row: rowIndex, section: sectionIndex)
-            }
-        }
-        return nil
+    // MARK: Bounds-checked accessors for table-view callbacks
+
+    private func group(at section: Int) -> FeedGroupedData? {
+        let groups = viewModel.items
+        guard groups.indices.contains(section) else { return nil }
+        return groups[section]
+    }
+
+    private func feed(at indexPath: IndexPath) -> FeedListData? {
+        guard let group = group(at: indexPath.section),
+              group.feedList.indices.contains(indexPath.row) else { return nil }
+        return group.feedList[indexPath.row]
     }
 }
 
@@ -818,12 +842,12 @@ extension ScannerViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let group = viewModel.items[section]
+        guard let group = group(at: section) else { return 0 }
         return expandedRegions.contains(group.localityName) ? group.feedList.count : 0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let group = viewModel.items[section]
+        guard let group = group(at: section) else { return nil }
         let expanded = expandedRegions.contains(group.localityName)
 
         let container = UIView()
@@ -929,18 +953,26 @@ extension ScannerViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: ScannerFeedCell.identifier,
             for: indexPath) as! ScannerFeedCell
-        let feed = viewModel.items[indexPath.section].feedList[indexPath.row]
+        guard let feed = feed(at: indexPath) else {
+            // Data source moved underneath the table; render an inert row
+            // rather than crash. The next reloadData() resyncs it.
+            cell.onPlayTap = nil
+            return cell
+        }
         cell.configure(with: feed)
+        // Capture only the id: the cell may outlive this configure pass
+        // (list refetched, rows shifted), so resolve the feed at tap time.
+        let feedID = feed.id
         cell.onPlayTap = { [weak self] in
-            self?.feedTapped(feed, indexPath: indexPath)
+            self?.feedTapped(withID: feedID)
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let feedData = viewModel.items[indexPath.section].feedList[indexPath.row]
-        feedTapped(feedData, indexPath: indexPath)
+        guard let feedData = feed(at: indexPath) else { return }
+        feedTapped(withID: feedData.id)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -974,6 +1006,12 @@ final class ScannerFeedCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         buildUI()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Never let a recycled cell fire a tap for the row it used to show.
+        onPlayTap = nil
     }
 
     @available(*, unavailable)
