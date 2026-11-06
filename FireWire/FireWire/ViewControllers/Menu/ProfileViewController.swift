@@ -58,6 +58,11 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     private var rowActions: [() -> Void] = []
     private var premiumObserver: NSObjectProtocol?
 
+    /// Right-aligned current value on the MAP TYPE row ("HYBRID" etc.).
+    private let mapTypeValueLabel = UILabel()
+    private var mapTypeObserver: NSObjectProtocol?
+    private static let mapTypeRowTitle = "MAP TYPE"
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -75,11 +80,22 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         ) { [weak self] _ in
             self?.updatePremiumInfo()
         }
+
+        // Keeps the MAP TYPE row's value in step when the cache changes under us
+        // (profile reload after login, or a revert after a failed save).
+        mapTypeObserver = NotificationCenter.default.addObserver(
+            forName: MapTypePreference.didChangeNotification, object: nil, queue: .main
+        ) { [weak self] _ in
+            self?.updateMapTypeRow()
+        }
     }
 
     deinit {
         if let premiumObserver {
             NotificationCenter.default.removeObserver(premiumObserver)
+        }
+        if let mapTypeObserver {
+            NotificationCenter.default.removeObserver(mapTypeObserver)
         }
     }
 
@@ -488,6 +504,7 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         let rows: [(title: String, systemImage: String, action: () -> Void)] = [
             ("EDIT PROFILE", "person", { [weak self] in self?.updateProfileTap() }),
             ("AREAS & ALERTS", "bell", { [weak self] in self?.areasAlertsTap() }),
+            (Self.mapTypeRowTitle, "map", { [weak self] in self?.mapTypeTap() }),
             ("TERMS OF SERVICE", "doc.text", { [weak self] in
                 self?.coordinator?.openURL(APIEndpoints.termsAndConditionUrl)
             }),
@@ -533,11 +550,31 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
 
                 label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 14),
                 label.centerYAnchor.constraint(equalTo: card.centerYAnchor),
-                label.trailingAnchor.constraint(lessThanOrEqualTo: chevron.leadingAnchor, constant: -8),
 
                 chevron.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -16),
                 chevron.centerYAnchor.constraint(equalTo: card.centerYAnchor),
             ])
+
+            if row.title == Self.mapTypeRowTitle {
+                // Current choice sits between the title and the chevron.
+                mapTypeValueLabel.font = .systemFont(ofSize: 13, weight: .bold)
+                mapTypeValueLabel.textColor = FireWireTheme.muted
+                mapTypeValueLabel.textAlignment = .right
+                mapTypeValueLabel.setContentHuggingPriority(.required, for: .horizontal)
+                mapTypeValueLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+                mapTypeValueLabel.translatesAutoresizingMaskIntoConstraints = false
+                card.addSubview(mapTypeValueLabel)
+                NSLayoutConstraint.activate([
+                    mapTypeValueLabel.trailingAnchor.constraint(equalTo: chevron.leadingAnchor, constant: -8),
+                    mapTypeValueLabel.centerYAnchor.constraint(equalTo: card.centerYAnchor),
+                    label.trailingAnchor.constraint(lessThanOrEqualTo: mapTypeValueLabel.leadingAnchor, constant: -8),
+                ])
+                updateMapTypeRow()
+                card.isAccessibilityElement = true
+                card.accessibilityTraits = .button
+            } else {
+                label.trailingAnchor.constraint(lessThanOrEqualTo: chevron.leadingAnchor, constant: -8).isActive = true
+            }
 
             card.tag = index
             rowActions.append(row.action)
@@ -587,6 +624,75 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
             }
         } else {
             coordinator?.navigateToUpdateProfile()
+        }
+    }
+
+    // MARK: Map type
+
+    private func updateMapTypeRow() {
+        let preference = MapTypePreference.current
+        mapTypeValueLabel.text = preference.displayTitle
+        mapTypeValueLabel.superview?.accessibilityLabel = "Map type, \(preference.displayTitle.capitalized)"
+        mapTypeValueLabel.superview?.accessibilityHint = "Double tap to choose the default map type"
+    }
+
+    private func mapTypeTap() {
+        let currentPreference = MapTypePreference.current
+        let sheet = UIAlertController(
+            title: "Map Type",
+            message: "Default for every map in the app.",
+            preferredStyle: .actionSheet)
+
+        // STREET / SATELLITE / HYBRID in the order the ticket names them.
+        for preference in [MapTypePreference.standard, .satellite, .hybrid] {
+            let isCurrent = preference == currentPreference
+            let title = isCurrent ? "\(preference.displayTitle)  ✓" : preference.displayTitle
+            let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+                self?.selectMapType(preference)
+            }
+            action.accessibilityLabel = isCurrent
+                ? "\(preference.displayTitle.capitalized), selected"
+                : preference.displayTitle.capitalized
+            sheet.addAction(action)
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        // iPad: anchor the popover to the row.
+        if let popover = sheet.popoverPresentationController {
+            let anchor: UIView = mapTypeValueLabel.superview ?? view
+            popover.sourceView = anchor
+            popover.sourceRect = anchor.bounds
+        }
+        present(sheet, animated: true)
+    }
+
+    private func selectMapType(_ preference: MapTypePreference) {
+        let previous = MapTypePreference.stored
+        guard preference != MapTypePreference.current || previous == nil else { return }
+
+        Analytics.logEvent("map_type_changed", parameters: [
+            AnalyticsParameterScreenName: "ios_my_account",
+            "map_type": preference.rawValue,
+        ])
+
+        // Local first so every open map (and this row) flips immediately…
+        MapTypePreference.store(preference)
+        updateMapTypeRow()
+
+        // …then persist on the account. On failure, roll back so the cache never
+        // disagrees with the server for longer than one request.
+        if viewModel == nil {
+            viewModel = MyAccountViewModel()
+            viewModel?.delegate = self
+        }
+        viewModel?.updateMapType(preference) { [weak self] errorMessage in
+            guard let self, let errorMessage else { return }
+            MapTypePreference.store(previous)
+            self.updateMapTypeRow()
+            self.showAlert(
+                title: "Map type not saved",
+                message: errorMessage,
+                actions: [UIAlertAction(title: "Ok", style: .cancel)])
         }
     }
 

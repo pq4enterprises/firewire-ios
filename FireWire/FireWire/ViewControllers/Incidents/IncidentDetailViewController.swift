@@ -330,11 +330,31 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         FWLoaderView.shared.showLoader(on: view)
 
         NotificationCenter.default.addObserver(self, selector: #selector(newCommentAdded(_:)), name: .newCommentAdded, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(mapTypePreferenceChanged),
+            name: MapTypePreference.didChangeNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: MapTypePreference.didChangeNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: .newCommentAdded, object: nil)
+    }
+
+    /// The account-wide default changed (My Account → MAP TYPE). Re-sync this
+    /// map and its pill; the pill itself remains a per-screen override.
+    @objc private func mapTypePreferenceChanged() {
+        applyPreferredMapType()
+    }
+
+    private func applyPreferredMapType() {
+        guard mapView != nil else { return }
+        let preference = MapTypePreference.current
+        mapView.mapType = preference.gmsMapType
+        mapTypeSelector.setSelectedIndex(preference.selectorIndex)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -820,8 +840,9 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             let mapManager = MapManager()
             mapView = mapManager.setupMapView(frame: mapContainer.bounds)
             mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            mapView.mapType = .hybrid
-            mapTypeSelector.setSelectedIndex(0)
+            // Start from the user's default (My Account → MAP TYPE); the pill
+            // below is a temporary override for this screen only.
+            applyPreferredMapType()
             mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
             mapContainer.addSubview(mapView)
 
@@ -951,18 +972,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         present(activityViewController, animated: true)
     }
 
+    /// Pill tapped on the map card. Deliberately NOT persisted — the account
+    /// default lives in My Account → MAP TYPE.
     func mapTypeChanged(to index: Int) {
         guard mapView != nil else { return }
-        switch index {
-        case 0:
-            mapView.mapType = .hybrid
-        case 1:
-            mapView.mapType = .normal
-        case 2:
-            mapView.mapType = .satellite
-        default:
-            mapView.mapType = .normal
-        }
+        let order = MapTypePreference.selectorOrder
+        let preference = order.indices.contains(index) ? order[index] : .standard
+        mapView.mapType = preference.gmsMapType
     }
 
     @objc func feedButtonTap() {

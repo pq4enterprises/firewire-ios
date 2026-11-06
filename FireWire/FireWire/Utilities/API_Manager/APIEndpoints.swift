@@ -68,6 +68,7 @@ enum APIPayload {
     case resetPassword(resetToken: String, password: String, confirmPassword: String)
     case favouriteIncident(userId: String, incidentId: String, type: String)
     case updateUserProfile(_ model: UpdateProfileRequestModel)
+    case updateMapType(mapType: String)
     case incidentList(_ model: IncidentRequestModel)
     case incidentLocalityList(_ model: IncidentLocalityRequestModel)
     case addComment(_ model: AddCommentRequestModel)
@@ -108,6 +109,9 @@ enum APIPayload {
                 "title": model.title,
                 "img": model.img
             ]
+        case let .updateMapType(mapType):
+            // Partial PUT api/app/user/profile — the server whitelists this field.
+            return ["mapType": mapType]
         case let .incidentList(model):
             var dictionary: [String: Any] = [
                 "sortBy": model.sortBy,

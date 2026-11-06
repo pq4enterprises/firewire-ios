@@ -8,6 +8,95 @@
 import Foundation
 import GoogleMaps
 
+// MARK: - MapTypePreference
+
+/// The user's default map type, chosen in My Account → MAP TYPE and mirrored by
+/// the server's `mapType` profile field (`"standard" | "satellite" | "hybrid"`).
+///
+/// Cached locally per signed-in user (`mapType_<userID>`) so it survives
+/// relaunches and never leaks between accounts on a shared device. Every map in
+/// the app reads `current` when it is created and listens for
+/// `didChangeNotification` so an already-visible map updates in place.
+enum MapTypePreference: String, CaseIterable {
+    case standard
+    case satellite
+    case hybrid
+
+    /// Used when nothing has been chosen yet (the 2026 redesign default).
+    static let `default`: MapTypePreference = .hybrid
+
+    /// Posted on the main queue after the stored preference changes.
+    static let didChangeNotification = Notification.Name("MapTypePreferenceChanged")
+
+    /// The order the detail screen's HYBRID / STREET / SATELLITE pill uses.
+    static let selectorOrder: [MapTypePreference] = [.hybrid, .standard, .satellite]
+
+    /// Label shown in the app — the server's "standard" is called STREET.
+    var displayTitle: String {
+        switch self {
+        case .standard: return "STREET"
+        case .satellite: return "SATELLITE"
+        case .hybrid: return "HYBRID"
+        }
+    }
+
+    var gmsMapType: GMSMapViewType {
+        switch self {
+        case .standard: return .normal
+        case .satellite: return .satellite
+        case .hybrid: return .hybrid
+        }
+    }
+
+    /// Index into `selectorOrder` (the detail screen's pill).
+    var selectorIndex: Int {
+        MapTypePreference.selectorOrder.firstIndex(of: self) ?? 0
+    }
+
+    private static func storageKey(for userID: String?) -> String? {
+        guard let userID, !userID.isEmpty else { return nil }
+        return "mapType_\(userID)"
+    }
+
+    /// The signed-in user's stored choice, or `nil` when nothing is stored.
+    static var stored: MapTypePreference? {
+        guard let key = storageKey(for: FWUserDefaults().userID),
+              let raw = UserDefaults.standard.string(forKey: key)
+        else { return nil }
+        return MapTypePreference(rawValue: raw)
+    }
+
+    /// The effective preference: the stored choice, else `default`.
+    static var current: MapTypePreference {
+        stored ?? .default
+    }
+
+    /// Persists the choice for the signed-in user (`nil` clears it) and, when the
+    /// effective value changed, tells every open map to re-style itself.
+    static func store(_ preference: MapTypePreference?) {
+        guard let key = storageKey(for: FWUserDefaults().userID) else { return }
+        let before = current
+        if let preference {
+            UserDefaults.standard.set(preference.rawValue, forKey: key)
+        } else {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+        guard before != current else { return }
+        let post = { NotificationCenter.default.post(name: didChangeNotification, object: nil) }
+        Thread.isMainThread ? post() : DispatchQueue.main.async(execute: post)
+    }
+
+    /// Mirrors the `mapType` value from a profile response into the local cache.
+    /// An explicit `null`/unknown value clears the cache (back to `default`); a
+    /// response without the field at all (older API) leaves the cache alone.
+    static func sync(with profile: UserProfileData) {
+        guard profile.mapTypeFieldPresent else { return }
+        store(profile.mapType.flatMap { MapTypePreference(rawValue: $0.lowercased()) })
+    }
+}
+
+// MARK: - MapManager
+
 class MapManager {
 
     var mapView: GMSMapView!
@@ -16,9 +105,10 @@ class MapManager {
     func setupMapView(frame: CGRect, zoom: Float = 15.0) -> GMSMapView {
         mapView = GMSMapView()
         mapView.frame = frame
-        // Default the feed map to hybrid (satellite + labels) per the 2026
-        // redesign; any user-facing map-type toggle still applies on top.
-        mapView.mapType = .hybrid
+        // Start from the user's default map type (My Account → MAP TYPE; hybrid
+        // when unset). Screens observe MapTypePreference.didChangeNotification
+        // to re-style a map that is already on screen.
+        mapView.mapType = MapTypePreference.current.gmsMapType
 
         //addIncidentMarkers()
         loadMapStyle()
