@@ -36,6 +36,8 @@ enum APIEndpoints {
     static let updatePassword = "api/app/auth/update-password"
     static let setSelectedArea = "api/app/user/area"
     static let setNotificationArea = "api/app/user/notification"
+    /// Per-locality alert picker (iteration 1): GET current types/units, PUT selection.
+    static let alertFilters = "api/app/alert-filters/%@"
     static let submitSubscriptionDetails = "api/app/payment"
     static let refreshToken = "api/app/auth/token/refresh"
     static let appLinks = "api/app/link"
