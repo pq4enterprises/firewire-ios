@@ -50,6 +50,10 @@ class AreasAlertsViewController: UIViewController {
     /// Card-styled views whose CGColor borders need refreshing on theme change.
     private var borderedViews: [UIView] = []
 
+    /// Set when the per-locality alert picker was opened from here; the
+    /// preserved unit / type selection is re-read on return (see view model).
+    private var needsNotificationRefresh = false
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -63,6 +67,10 @@ class AreasAlertsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateSoundLabel() // refresh after returning from the sounds screen
+        if needsNotificationRefresh {
+            needsNotificationRefresh = false
+            viewModel.refreshNotificationLocalities()
+        }
         if isOnboarding {
             navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         }
@@ -321,7 +329,8 @@ class AreasAlertsViewController: UIViewController {
         // Not uppercased — matches the mockup, which keeps this helper in
         // sentence case.
         let helperLabel = UILabel()
-        helperLabel.text = "Toggle an area into your feed, then use the bell to get push alerts for it. Feed without alerts is fine."
+        helperLabel.text = "Toggle an area into your feed, then use the bell to get push alerts for it. Feed without alerts is fine.\n"
+            + "Alerts: pick areas here, then types & units per area."
         helperLabel.font = .systemFont(ofSize: 11, weight: .medium)
         helperLabel.textColor = FireWireTheme.muted
         helperLabel.numberOfLines = 0
@@ -542,7 +551,76 @@ class AreasAlertsViewController: UIViewController {
                 rowIndex: rowIndex,
                 isLast: rowIndex == group.rows.count - 1))
         }
+        rowsStack.addArrangedSubview(typesUnitsRow(for: group, groupIndex: groupIndex))
         return card
+    }
+
+    /// Group footer — one tap into the per-locality alert picker
+    /// (incident types + units). Premium-gated like the ALERT switches.
+    private func typesUnitsRow(for group: AreasAlertsViewModel.RegionGroup, groupIndex: Int) -> UIView {
+        let row = UIView()
+
+        let separator = UIView()
+        separator.backgroundColor = FireWireTheme.hairline
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(separator)
+
+        let icon = UIImageView(image: UIImage(
+            systemName: "slider.horizontal.3",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)))
+        icon.tintColor = FireWireTheme.red
+        icon.contentMode = .scaleAspectFit
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(icon)
+
+        let label = UILabel()
+        label.text = "TYPES & UNITS"
+        label.font = .systemFont(ofSize: 13, weight: .heavy)
+        label.textColor = FireWireTheme.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(label)
+
+        let chevron = UIImageView(image: UIImage(
+            systemName: "chevron.right",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)))
+        chevron.tintColor = FireWireTheme.muted
+        chevron.contentMode = .scaleAspectFit
+        chevron.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(chevron)
+
+        let button = UIButton(type: .custom)
+        button.tag = groupIndex
+        button.accessibilityLabel = "Types and units for \(group.name)"
+        button.addTarget(self, action: #selector(typesUnitsTap(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(button)
+
+        NSLayoutConstraint.activate([
+            row.heightAnchor.constraint(equalToConstant: 50),
+
+            separator.topAnchor.constraint(equalTo: row.topAnchor),
+            separator.leadingAnchor.constraint(equalTo: row.leadingAnchor),
+            separator.trailingAnchor.constraint(equalTo: row.trailingAnchor),
+            separator.heightAnchor.constraint(equalToConstant: 1),
+
+            icon.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 14),
+            icon.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+            icon.widthAnchor.constraint(equalToConstant: 18),
+
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8),
+            label.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+
+            label.trailingAnchor.constraint(lessThanOrEqualTo: chevron.leadingAnchor, constant: -8),
+
+            chevron.trailingAnchor.constraint(equalTo: row.trailingAnchor, constant: -16),
+            chevron.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+
+            button.topAnchor.constraint(equalTo: row.topAnchor),
+            button.leadingAnchor.constraint(equalTo: row.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: row.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: row.bottomAnchor),
+        ])
+        return row
     }
 
     private func areaRowView(
@@ -660,6 +738,18 @@ class AreasAlertsViewController: UIViewController {
         }
 
         viewModel.toggleAlert(groupIndex: groupIndex, rowIndex: rowIndex)
+    }
+
+    @objc private func typesUnitsTap(_ sender: UIButton) {
+        let groupIndex = sender.tag
+        guard groupIndex < viewModel.groups.count else { return }
+
+        // Same premium gate as switching an ALERT on.
+        if unlockPremiumFeatureIfValid() { return }
+
+        let group = viewModel.groups[groupIndex]
+        needsNotificationRefresh = true
+        coordinator?.navigateToAlertFilters(localityId: group.localityId, localityName: group.name)
     }
 
     @objc private func selectAllTap(_ sender: UIButton) {

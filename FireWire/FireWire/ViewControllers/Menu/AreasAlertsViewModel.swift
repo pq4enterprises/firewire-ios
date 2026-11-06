@@ -110,6 +110,18 @@ final class AreasAlertsViewModel {
         }
     }
 
+    /// Re-reads the notification locality list after the per-locality alert
+    /// picker (AlertFiltersViewController) has written new unit / incident-type
+    /// filters, so `alertPayload` re-sends the fresh selection instead of the
+    /// snapshot taken when this screen loaded. Sub-locality alert state is left
+    /// alone — the user may have unsaved toggles on screen.
+    func refreshNotificationLocalities() {
+        fetchLocalities(.notification) { [weak self] result, _ in
+            guard let self, let result else { return }
+            self.notificationLocalities = result
+        }
+    }
+
     private func buildGroups(areaData: [LocalityResponseData], notificationData: [LocalityResponseData]) {
         notificationLocalities = notificationData
 
