@@ -58,6 +58,10 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     private var rowActions: [() -> Void] = []
     private var premiumObserver: NSObjectProtocol?
 
+    /// "Version X.Y.Z (build N)" footer under the account rows; tap copies it.
+    private let versionLabel = UILabel()
+    private var versionCopiedResetWorkItem: DispatchWorkItem?
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -115,6 +119,7 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         buildProfileHeader()
         buildPremiumCard()
         buildAccountRows()
+        buildVersionFooter()
     }
 
     private func buildHeaderBar() {
@@ -548,6 +553,66 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
             contentStack.addArrangedSubview(card)
             contentStack.setCustomSpacing(10, after: card)
         }
+    }
+
+    // MARK: Version footer
+
+    /// Human-readable app version read from the bundle, e.g.
+    /// "Version 12.1.3 (build 121300)". Same Info.plist keys VersionChecker uses.
+    static var appVersionString: String {
+        let info = Bundle.main.infoDictionary
+        let version = info?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+        let build = info?["CFBundleVersion"] as? String ?? "0"
+        return "Version \(version) (build \(build))"
+    }
+
+    private func buildVersionFooter() {
+        versionLabel.text = Self.appVersionString
+        versionLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        versionLabel.textColor = FireWireTheme.muted
+        versionLabel.textAlignment = .center
+        versionLabel.numberOfLines = 1
+        versionLabel.adjustsFontSizeToFitWidth = true
+        versionLabel.minimumScaleFactor = 0.8
+        versionLabel.isUserInteractionEnabled = true
+        versionLabel.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(versionTap)))
+
+        versionLabel.isAccessibilityElement = true
+        versionLabel.accessibilityTraits = .button
+        versionLabel.accessibilityLabel = Self.appVersionString
+        versionLabel.accessibilityHint = "Double tap to copy the app version"
+
+        // Breathing room after the last account row (its custom spacing is 10).
+        if let lastRow = contentStack.arrangedSubviews.last {
+            contentStack.setCustomSpacing(22, after: lastRow)
+        }
+        contentStack.addArrangedSubview(versionLabel)
+        versionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24).isActive = true
+    }
+
+    @objc private func versionTap() {
+        let text = Self.appVersionString
+        UIPasteboard.general.string = text
+
+        let haptic = UIImpactFeedbackGenerator(style: .light)
+        haptic.prepare()
+        haptic.impactOccurred()
+
+        versionCopiedResetWorkItem?.cancel()
+        UIView.transition(with: versionLabel, duration: 0.15, options: .transitionCrossDissolve) {
+            self.versionLabel.text = "Copied"
+        }
+        UIAccessibility.post(notification: .announcement, argument: "Version copied")
+
+        let reset = DispatchWorkItem { [weak self] in
+            guard let self else { return }
+            UIView.transition(with: self.versionLabel, duration: 0.15, options: .transitionCrossDissolve) {
+                self.versionLabel.text = text
+            }
+        }
+        versionCopiedResetWorkItem = reset
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: reset)
     }
 
     // MARK: Data
