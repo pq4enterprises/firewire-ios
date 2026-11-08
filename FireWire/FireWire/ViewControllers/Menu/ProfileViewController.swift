@@ -57,6 +57,9 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     private var borderedViews: [UIView] = []
     private var rowActions: [() -> Void] = []
     private var premiumObserver: NSObjectProtocol?
+    /// Role captured when a purchase/restore starts, so the post-purchase
+    /// "choose alerts" prompt only fires on a real basic → premium change.
+    private var roleBeforePurchase: String?
 
     /// "Version X.Y.Z (build N)" footer under the account rows; tap copies it.
     private let versionLabel = UILabel()
@@ -826,6 +829,7 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
     func purchaseTransactionCompleted(success: Bool, transaction: Transaction?, failureMessage: String?) {
         DispatchQueue.main.async {
             if success {
+                self.roleBeforePurchase = FWUserDefaults().userRole
                 self.showLoader()
                 self.viewModel?.submitPayment(transaction: transaction)
             } else {
@@ -843,6 +847,16 @@ class ProfileViewController: UIViewController, SubscriptionManagerDelegate, MyAc
         if status {
             updateUserInfo()
             updatePremiumInfo()
+        }
+
+        // Purchase reported + role refreshed: offer the alert picker instead of
+        // the plain "Ok" confirmation (falls back to it when the role did not change).
+        if status, message == MyAccountViewModel.subscriptionSuccessMessage {
+            let previousRole = roleBeforePurchase
+            roleBeforePurchase = nil
+            PremiumAlertsPrompt.shared.presentAfterPurchase(
+                from: self, coordinator: coordinator, roleBeforePurchase: previousRole)
+            return
         }
 
         if !message.isEmpty {

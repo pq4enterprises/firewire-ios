@@ -51,6 +51,9 @@
 		BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
 		BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD4000042E70DDDD00000004 /* AlertFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000012E70DDDD00000001 /* AlertFiltersViewController.swift */; };
+		BD4000052E70DDDD00000005 /* AlertFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000022E70DDDD00000002 /* AlertFiltersViewModel.swift */; };
+		BD4000062E70DDDD00000006 /* PremiumAlertsPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000032E70DDDD00000003 /* PremiumAlertsPrompt.swift */; };
 		BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
 		BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B01085DA2E12F74E00981475 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */; };
@@ -286,6 +289,9 @@
 		BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */; };
 		BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60CC0000000001 /* ScannerViewController.swift */; };
 		BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */; };
+		BD4000072E70DDDD00000007 /* AlertFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000012E70DDDD00000001 /* AlertFiltersViewController.swift */; };
+		BD4000082E70DDDD00000008 /* AlertFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000022E70DDDD00000002 /* AlertFiltersViewModel.swift */; };
+		BD4000092E70DDDD00000009 /* PremiumAlertsPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4000032E70DDDD00000003 /* PremiumAlertsPrompt.swift */; };
 		BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000012E60BBBB00000001 /* ProfileViewController.swift */; };
 		BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3000022E60BBBB00000002 /* EditProfileViewController.swift */; };
 		B0B1AEF22D4F8DB6007371A9 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B0B1AE872D4F8DB6007371A9 /* OneSignalFramework */; };
@@ -457,6 +463,9 @@
 		BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewController.swift; sourceTree = "<group>"; };
 		BD3000012E60CC0000000001 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasAlertsViewModel.swift; sourceTree = "<group>"; };
+		BD4000012E70DDDD00000001 /* AlertFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFiltersViewController.swift; sourceTree = "<group>"; };
+		BD4000022E70DDDD00000002 /* AlertFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFiltersViewModel.swift; sourceTree = "<group>"; };
+		BD4000032E70DDDD00000003 /* PremiumAlertsPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumAlertsPrompt.swift; sourceTree = "<group>"; };
 		BD3000012E60BBBB00000001 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BD3000022E60BBBB00000002 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B01085D92E12F73A00981475 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
@@ -828,6 +837,8 @@
 			children = (
 				BD2000012E40BBBB00000001 /* AreasAlertsViewController.swift */,
 				BD2000022E40BBBB00000002 /* AreasAlertsViewModel.swift */,
+				BD4000022E70DDDD00000002 /* AlertFiltersViewModel.swift */,
+				BD4000012E70DDDD00000001 /* AlertFiltersViewController.swift */,
 				BD3000012E60BBBB00000001 /* ProfileViewController.swift */,
 				BD3000022E60BBBB00000002 /* EditProfileViewController.swift */,
 				B0F98C9F2D4D48CA006B8861 /* FeedbackViewController.swift */,
@@ -1042,6 +1053,7 @@
 			children = (
 				B06B38F82DC5EE410010B8BA /* ShowcaseManager.swift */,
 				B027AE512D792D4F00F8BF4A /* FWUserDefaults.swift */,
+				BD4000032E70DDDD00000003 /* PremiumAlertsPrompt.swift */,
 				B0E87A0E2D731DDC00BF0CC2 /* AppManager.swift */,
 				B0E87A0A2D731BE000BF0CC2 /* AudioManager */,
 				B00EDAF12D5D10A1000370CE /* LocalNotifications.swift */,
@@ -1626,6 +1638,9 @@
 				BD2000032E40BBBB00000003 /* AreasAlertsViewController.swift in Sources */,
 				BD3000022E60CC0000000002 /* ScannerViewController.swift in Sources */,
 				BD2000042E40BBBB00000004 /* AreasAlertsViewModel.swift in Sources */,
+				BD4000042E70DDDD00000004 /* AlertFiltersViewController.swift in Sources */,
+				BD4000052E70DDDD00000005 /* AlertFiltersViewModel.swift in Sources */,
+				BD4000062E70DDDD00000006 /* PremiumAlertsPrompt.swift in Sources */,
 				BD3000032E60BBBB00000003 /* ProfileViewController.swift in Sources */,
 				BD3000042E60BBBB00000004 /* EditProfileViewController.swift in Sources */,
 			);
@@ -1778,6 +1793,9 @@
 				BD2000052E40BBBB00000005 /* AreasAlertsViewController.swift in Sources */,
 				BD3000032E60CC0000000003 /* ScannerViewController.swift in Sources */,
 				BD2000062E40BBBB00000006 /* AreasAlertsViewModel.swift in Sources */,
+				BD4000072E70DDDD00000007 /* AlertFiltersViewController.swift in Sources */,
+				BD4000082E70DDDD00000008 /* AlertFiltersViewModel.swift in Sources */,
+				BD4000092E70DDDD00000009 /* PremiumAlertsPrompt.swift in Sources */,
 				BD3000052E60BBBB00000005 /* ProfileViewController.swift in Sources */,
 				BD3000062E60BBBB00000006 /* EditProfileViewController.swift in Sources */,
 			);

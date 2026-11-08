@@ -15,6 +15,11 @@ protocol MyAccountViewDelegate: AnyObject {
 final class MyAccountViewModel {
     public var delegate: MyAccountViewDelegate?
 
+    /// Delivered through `dataLoaded` once a purchase has been reported and the
+    /// profile role refreshed; ProfileViewController keys the post-purchase
+    /// alerts prompt off it.
+    static let subscriptionSuccessMessage = "Your premium subscription is success!"
+
     func submitPayment(transaction: Transaction?) {
         guard let transaction, let userId = FWUserDefaults().userID else {
             delegate?.dataLoaded(status: false, message: "Required payment details not available")
@@ -93,7 +98,7 @@ final class MyAccountViewModel {
             }
             MapTypePreference.sync(with: userData)
 
-            self?.delegate?.dataLoaded(status: true, message: forSubscription ? "Your premium subscription is success!" : "" )
+            self?.delegate?.dataLoaded(status: true, message: forSubscription ? Self.subscriptionSuccessMessage : "" )
         }
     }
 

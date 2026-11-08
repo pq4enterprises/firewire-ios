@@ -16,6 +16,10 @@ class HomeCoordinator: BaseCoordinator {
         homeViewController.appCoordinator = parentCoordinator
         homeViewController.coordinator = self
         pushViewController(homeViewController, animated: true)
+
+        // Arms the "You're Premium → choose alerts" prompt for this session
+        // (watches PremiumStatusChanged for the basic → premium transition).
+        PremiumAlertsPrompt.shared.startObserving(coordinator: self)
     }
 
     func navigateToIncidentDetail(_ incidentID: String, openComments: Bool = false, subLocalityName: String? = nil){
@@ -57,6 +61,14 @@ class HomeCoordinator: BaseCoordinator {
         let areasAlertsViewController = AreasAlertsViewController.instantiate()
         areasAlertsViewController.coordinator = self
         pushViewController(areasAlertsViewController, animated: true)
+    }
+
+    /// Per-locality alert picker (incident types + units) — iteration 1.
+    func navigateToAlertFilters(localityId: String, localityName: String){
+        let alertFiltersViewController = AlertFiltersViewController(
+            localityId: localityId, localityName: localityName)
+        alertFiltersViewController.coordinator = self
+        pushViewController(alertFiltersViewController, animated: true)
     }
 
     func navigateToNotificationSounds(){
