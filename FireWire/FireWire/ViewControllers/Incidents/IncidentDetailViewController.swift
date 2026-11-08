@@ -84,15 +84,10 @@ enum UnitCategory: CaseIterable {
         }
     }
 
+    /// Black or white by WCAG contrast against the chip background, resolved
+    /// per appearance — never a fixed per-category color.
     var chipText: UIColor {
-        switch self {
-        case .engine: return FireWireTheme.unitEngineText
-        case .truckRescue: return FireWireTheme.unitTruckRescueText
-        case .marine: return FireWireTheme.unitMarineText
-        case .chief: return FireWireTheme.unitChiefText
-        case .soc: return FireWireTheme.unitSOCText
-        case .other: return FireWireTheme.unitOtherText
-        }
+        FireWireTheme.contrastingText(on: chipBackground)
     }
 
     var legendColor: UIColor {
@@ -777,8 +772,13 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         chip.font = .systemFont(ofSize: 12, weight: .bold)
         if let serverColors {
             let c = serverColors[unitName]
-            chip.textColor = FireWireTheme.color(light: c?.fg, dark: c?.fgDark, fallback: UnitCategory.other.chipText)
-            chip.backgroundColor = FireWireTheme.color(light: c?.bg, dark: c?.bgDark, fallback: UnitCategory.other.chipBackground)
+            let background = FireWireTheme.color(light: c?.bg, dark: c?.bgDark, fallback: UnitCategory.other.chipBackground)
+            chip.backgroundColor = background
+            // Missing/invalid fg or fgDark → automatic contrast on the actual bg, not gray.
+            chip.textColor = FireWireTheme.unitText(
+                light: c?.fg, dark: c?.fgDark,
+                hasDarkBackground: FireWireTheme.color(fromHex: c?.bgDark) != nil,
+                on: background)
         } else {
             let category = UnitCategory.classify(unitName)
             chip.textColor = category.chipText

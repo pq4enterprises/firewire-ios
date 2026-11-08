@@ -73,24 +73,64 @@ enum FireWireTheme {
     // sync with the Android UnitCategory implementation. The classifier
     // itself currently lives in IncidentDetailViewController (UnitCategory).
 
+    // Chip TEXT is never hardcoded: UnitCategory.chipText derives it from the
+    // background with contrastingText(on:) so every chip reads in light and dark.
+
     static let unitEngineBackground = UIColor(rgb: 0x1C1C1E)
-    static let unitEngineText = UIColor.white
-
     static let unitTruckRescueBackground = FireWireTheme.red
-    static let unitTruckRescueText = UIColor.black
-
     static let unitMarineBackground = UIColor(rgb: 0x17B26A)
-    static let unitMarineText = UIColor.black
-
     static let unitChiefBackground = UIColor(rgb: 0xF7C948)
-    static let unitChiefText = UIColor.black
-
     static let unitSOCBackground = UIColor(
         light: UIColor(rgb: 0xFCF0E4),
         dark: UIColor(rgb: 0xE0842F).withAlphaComponent(0.20))
-    static let unitSOCText = UIColor(light: 0xB5661F, dark: 0xF2B47C)
     /// Solid swatch used in the map legend (chip background is tinted).
     static let unitSOCLegend = UIColor(rgb: 0xE0842F)
+
+    // MARK: Contrast (WCAG 2.x) — pure helpers first, UIColor wrappers after
+
+    /// Relative luminance of an opaque sRGB color, components 0...1. Pure.
+    static func relativeLuminance(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGFloat {
+        func lin(_ c: CGFloat) -> CGFloat { c <= 0.03928 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4) }
+        return 0.2126 * lin(red) + 0.7152 * lin(green) + 0.0722 * lin(blue)
+    }
+
+    /// Relative luminance of a 0xRRGGBB value. Pure.
+    static func relativeLuminance(rgb: Int) -> CGFloat {
+        relativeLuminance(
+            red: CGFloat((rgb >> 16) & 0xFF) / 255,
+            green: CGFloat((rgb >> 8) & 0xFF) / 255,
+            blue: CGFloat(rgb & 0xFF) / 255)
+    }
+
+    /// WCAG contrast ratio between two relative luminances (1...21). Pure.
+    static func contrastRatio(luminance a: CGFloat, _ b: CGFloat) -> CGFloat {
+        let (hi, lo) = a > b ? (a, b) : (b, a)
+        return (hi + 0.05) / (lo + 0.05)
+    }
+
+    /// True when black text contrasts at least as well as white on a
+    /// background of the given luminance (same rule as the server's
+    /// autoTextColor, so fallback chips match server-resolved ones). Pure.
+    static func prefersBlackText(onLuminance l: CGFloat) -> Bool {
+        contrastRatio(luminance: l, 0) >= contrastRatio(luminance: l, 1)
+    }
+
+    /// True when black text reads better than white on an opaque 0xRRGGBB. Pure.
+    static func prefersBlackText(onRGB rgb: Int) -> Bool {
+        prefersBlackText(onLuminance: relativeLuminance(rgb: rgb))
+    }
+
+    /// Black or white, whichever reads better on `background`. Dynamic colors
+    /// are resolved per trait collection, so the answer is right in light and
+    /// dark. A translucent background (the SOC tint) is composited over
+    /// `backdrop` — the card surface — before measuring.
+    static func contrastingText(on background: UIColor, over backdrop: UIColor = FireWireTheme.surface) -> UIColor {
+        UIColor { traits in
+            let bg = background.resolvedColor(with: traits).composited(over: backdrop.resolvedColor(with: traits))
+            let (r, g, b) = bg.rgbComponents
+            return prefersBlackText(onLuminance: relativeLuminance(red: r, green: g, blue: b)) ? .black : .white
+        }
+    }
 
     // MARK: Server-resolved unit colors (12.1.2+)
 
@@ -116,6 +156,25 @@ enum FireWireTheme {
         guard let l = color(fromHex: light) else { return fallback }
         let d = color(fromHex: dark) ?? l
         return UIColor(light: l, dark: d)
+    }
+
+    /// Chip text for server-resolved colors. An explicit, valid `fg` / `fgDark`
+    /// wins; anything missing or malformed gets automatic contrast against
+    /// `background` (the chip's dynamic bg) instead of a gray fallback. With no
+    /// dark background the dark chip is the light chip, so the light `fg` still
+    /// applies there.
+    static func unitText(light: String?, dark: String?, hasDarkBackground: Bool, on background: UIColor) -> UIColor {
+        let l = color(fromHex: light), d = color(fromHex: dark)
+        let auto = contrastingText(on: background)
+        return UIColor { traits in
+            if traits.userInterfaceStyle == .dark {
+                if let d { return d }
+                if !hasDarkBackground, let l { return l }
+            } else if let l {
+                return l
+            }
+            return auto.resolvedColor(with: traits)
+        }
     }
 
     static let unitOtherBackground = FireWireTheme.surface2
@@ -187,6 +246,24 @@ extension UIColor {
         self.init { traits in
             traits.userInterfaceStyle == .dark ? dark : light
         }
+    }
+
+    /// sRGB components 0...1 (grayscale colors are widened). Alpha is dropped.
+    var rgbComponents: (red: CGFloat, green: CGFloat, blue: CGFloat) {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        if getRed(&r, green: &g, blue: &b, alpha: &a) { return (r, g, b) }
+        var w: CGFloat = 0
+        if getWhite(&w, alpha: &a) { return (w, w, w) }
+        return (0, 0, 0)
+    }
+
+    /// Source-over composite of a (possibly translucent) color onto an opaque backdrop.
+    func composited(over backdrop: UIColor) -> UIColor {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        if a >= 1 { return self }
+        let (br, bg, bb) = backdrop.rgbComponents
+        return UIColor(red: r * a + br * (1 - a), green: g * a + bg * (1 - a), blue: b * a + bb * (1 - a), alpha: 1)
     }
 }
 
