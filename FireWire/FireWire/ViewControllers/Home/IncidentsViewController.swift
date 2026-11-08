@@ -142,10 +142,23 @@ class IncidentsViewController: UIViewController, FilterAreaDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapContentView.addSubview(mapView)
 
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(mapTypePreferenceChanged),
+            name: MapTypePreference.didChangeNotification, object: nil)
+
         // Force layout update after adding the subview
         DispatchQueue.main.async {
             self.mapView.frame = self.mapContentView.bounds
         }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    /// My Account → MAP TYPE changed while this map exists: restyle in place.
+    @objc private func mapTypePreferenceChanged() {
+        mapView?.mapType = MapTypePreference.current.gmsMapType
     }
 
     func setupIncidentList() {

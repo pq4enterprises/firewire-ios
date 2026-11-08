@@ -52,6 +52,7 @@ final class UpdateProfileViewModel {
             if let profileImage = userData.img {
                 FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
             }
+            MapTypePreference.sync(with: userData)
 
             self?.delegate?.dataLoaded(userData)
         }
@@ -100,6 +101,7 @@ final class UpdateProfileViewModel {
                 if let profileImage = userData.img {
                     FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
                 }
+                MapTypePreference.sync(with: userData)
             }
         }
     }

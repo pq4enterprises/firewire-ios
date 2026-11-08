@@ -75,6 +75,8 @@ final class LoginViewModel {
                 if let profileImage = userData.img {
                     FWUserDefaults.setStringForKey(key: .userImageKey, value: profileImage)
                 }
+                // Pull the account's default map type onto this device.
+                MapTypePreference.sync(with: userData)
             }
         }
     }

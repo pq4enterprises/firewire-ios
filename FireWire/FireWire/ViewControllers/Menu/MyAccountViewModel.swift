@@ -91,8 +91,38 @@ final class MyAccountViewModel {
             if let userRole = userData.role {
                 FWUserDefaults.setStringForKey(key: .userRoleKey, value: userRole)
             }
+            MapTypePreference.sync(with: userData)
 
             self?.delegate?.dataLoaded(status: true, message: forSubscription ? "Your premium subscription is success!" : "" )
+        }
+    }
+
+    /// Saves the default map type on the server (PUT api/app/user/profile with
+    /// just `mapType`). The caller has already stored and applied it locally;
+    /// `completion` runs on the main queue with `nil` on success or an error
+    /// message to show.
+    func updateMapType(_ preference: MapTypePreference, completion: @escaping (String?) -> Void) {
+        let payload = APIPayload.updateMapType(mapType: preference.rawValue).toDictionary()
+
+        APIRequest().callApi(
+            apiEndPoint: APIEndpoints.userProfile,
+            payload: payload as JSON,
+            expect: SuccessResponseModel.self,
+            requestType: APIConstants.PUT
+        ) { response, _, error in
+            if let error {
+                completion(error)
+                return
+            }
+            guard let apiResponse = response as? SuccessResponseModel else {
+                completion("Couldn't save map type, try again later")
+                return
+            }
+            if apiResponse.code.lowercased() == "success" || apiResponse.code.isEmpty {
+                completion(nil)
+            } else {
+                completion(apiResponse.message.isEmpty ? "Couldn't save map type" : apiResponse.message)
+            }
         }
     }
 
