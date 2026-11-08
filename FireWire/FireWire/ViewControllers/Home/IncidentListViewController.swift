@@ -62,7 +62,10 @@ class IncidentListViewController: UIViewController {
 
     private static let updatedTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
+        // 24-hour clock; en_US_POSIX keeps the device 12/24h setting from
+        // rewriting the pattern.
+        formatter.dateFormat = "HH:mm"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
 

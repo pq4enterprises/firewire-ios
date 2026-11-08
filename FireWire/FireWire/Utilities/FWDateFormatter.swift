@@ -21,8 +21,10 @@ class FWDateFormatter {
 
         // Initialize the output date formatter with the desired format
         outputDateFormatter = DateFormatter()
-        outputDateFormatter.dateFormat = "dd MMM | hh:mm a"
-        outputDateFormatter.locale = Locale(identifier: "en_US") // Optional: Locale for AM/PM format
+        // 24-hour clock everywhere (iteration 1). en_US_POSIX pins the pattern so
+        // the device's 12/24-hour setting cannot rewrite "HH" back to "h a".
+        outputDateFormatter.dateFormat = "dd MMM | HH:mm"
+        outputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
 
     // Method to convert an ISO 8601 string into the custom format
