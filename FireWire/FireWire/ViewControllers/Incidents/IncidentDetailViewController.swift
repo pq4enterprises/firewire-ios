@@ -200,7 +200,9 @@ final class LegendItemView: UIView {
     }
 }
 
-/// The Hybrid / Street / Satellite pill control overlaid on the map card.
+/// The Hybrid / Street / Satellite pill control overlaid on the hero map
+/// (top-left). Fixed dark-glass styling in both appearances: it always sits on
+/// map imagery, never on a themed surface.
 final class MapTypeSelector: UIView {
     var onSelectionChanged: ((Int) -> Void)?
 
@@ -209,8 +211,9 @@ final class MapTypeSelector: UIView {
 
     init(titles: [String]) {
         super.init(frame: .zero)
-        backgroundColor = UIColor(white: 0, alpha: 0.5)
-        layer.cornerRadius = 9
+        backgroundColor = UIColor(rgb: 0x0F1115).withAlphaComponent(0.85)
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(white: 1, alpha: 0.14).cgColor
         layer.masksToBounds = true
 
         let stack = UIStackView()
@@ -230,7 +233,6 @@ final class MapTypeSelector: UIView {
             button.setTitle(title, for: .normal)
             button.titleLabel?.font = .systemFont(ofSize: 11, weight: .bold)
             button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-            button.layer.cornerRadius = 7
             button.layer.masksToBounds = true
             button.tag = index
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
@@ -242,6 +244,13 @@ final class MapTypeSelector: UIView {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Capsule: the group and each segment are fully rounded.
+        layer.cornerRadius = bounds.height / 2
+        buttons.forEach { $0.layer.cornerRadius = $0.bounds.height / 2 }
+    }
 
     func setSelectedIndex(_ index: Int) {
         selectedIndex = index
@@ -258,15 +267,15 @@ final class MapTypeSelector: UIView {
     private func updateSelection() {
         for button in buttons {
             let isSelected = button.tag == selectedIndex
-            button.backgroundColor = isSelected ? .white : .clear
-            button.setTitleColor(isSelected ? UIColor(rgb: 0x15161B) : .white, for: .normal)
+            button.backgroundColor = isSelected ? FireWireTheme.red : .clear
+            button.setTitleColor(isSelected ? .white : UIColor(white: 1, alpha: 0.78), for: .normal)
         }
     }
 }
 
 // MARK: - View controller
 
-class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate {
+class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate, UIScrollViewDelegate {
     var coordinator: HomeCoordinator?
     var viewModel: IncidentDetailViewModel?
 
@@ -292,9 +301,47 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     private let incidentDesc = UILabel()
     private let incidentImageView = UIImageView()
 
-    private let mapCard = UIView()
+    // Map hero: edge-to-edge under the header; the cards scroll over its
+    // bottom edge and it collapses to a dimmed strip (never fully hidden).
+    private enum Hero {
+        /// Expanded map height (reduced on short screens, see `updateHeroMetrics`).
+        static let maxHeight: CGFloat = 380
+        /// Collapsed strip height.
+        static let minHeight: CGFloat = 120
+        /// How far the summary card overlaps the map's bottom edge, expanded.
+        static let overlap: CGFloat = 56
+        /// Same, once the map has collapsed to the strip.
+        static let collapsedOverlap: CGFloat = 30
+        /// Dim overlay alpha when fully collapsed.
+        static let maxDim: CGFloat = 0.45
+        /// Space kept clear at the top of the map for the overlay controls.
+        static let controlsInset: CGFloat = 44
+        /// Opening zoom: as close as possible while the nearest firehouse pin
+        /// is still in view, within these limits (17 = the old fixed zoom).
+        static let closestZoom: Float = 17
+        static let widestZoom: Float = 14
+    }
+
     private let mapContainer = UIView()
+    private let mapDimView = UIView()
+    private let mapBottomShade = UIView()
+    private let mapBottomShadeLayer = CAGradientLayer()
     private let mapTypeSelector = MapTypeSelector(titles: ["HYBRID", "STREET", "SATELLITE"])
+    private let panoramaButton = UIButton(type: .system)
+    /// Clips the scrolling cards to the card column below the map's visible part.
+    private let cardsClipView = UIView()
+    private var mapHeightConstraint: NSLayoutConstraint!
+    private var cardsClipTopConstraint: NSLayoutConstraint!
+    private var expandedMapHeight: CGFloat = Hero.maxHeight
+    private var mapManager: MapManager?
+
+    // 360° view: a free metadata probe decides whether the button shows; the
+    // (billable) panorama itself is only ever created when the button is tapped.
+    private let panoramaService = GMSPanoramaService()
+    private var panoramaProbeStarted = false
+
+    private let progressionCard = UIView()
+    private let progressionRows = UIStackView()
 
     private let unitsCard = UIView()
     private let unitsCountBadge = PaddedLabel()
@@ -367,7 +414,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         super.traitCollectionDidChange(previousTraitCollection)
         // CGColor-based borders don't auto-update with dark mode
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            [summaryCard, mapCard, unitsCard].forEach {
+            [summaryCard, progressionCard, unitsCard].forEach {
                 $0.layer.borderColor = IncidentTheme.hairline.cgColor
             }
         }
@@ -388,10 +435,17 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
         buildHeaderBar()
         buildBottomBar()
+        buildMapHero()
         buildScrollContent()
         buildSummaryCard()
-        buildMapCard()
+        buildProgressionCard()
         buildUnitsCard()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mapBottomShadeLayer.frame = mapBottomShade.bounds
+        updateHeroMetrics()
     }
 
     private var headerBar = UIView()
@@ -568,28 +622,193 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         incidentComments.setContentHuggingPriority(.required, for: .horizontal)
     }
 
+    private func buildMapHero() {
+        mapContainer.backgroundColor = IncidentTheme.surface2
+        mapContainer.clipsToBounds = true
+        mapContainer.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mapContainer)
+
+        // Soft shade under the overlapping summary card (the cards themselves
+        // are clipped to their column, so they cannot cast a shadow upward).
+        mapBottomShade.isUserInteractionEnabled = false
+        mapBottomShade.translatesAutoresizingMaskIntoConstraints = false
+        mapBottomShadeLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0, alpha: 0.38).cgColor]
+        mapBottomShade.layer.addSublayer(mapBottomShadeLayer)
+        mapContainer.addSubview(mapBottomShade)
+
+        // Dims the map as it collapses; the controls stay above it.
+        mapDimView.backgroundColor = .black
+        mapDimView.alpha = 0
+        mapDimView.isUserInteractionEnabled = false
+        mapDimView.translatesAutoresizingMaskIntoConstraints = false
+        mapContainer.addSubview(mapDimView)
+
+        mapTypeSelector.translatesAutoresizingMaskIntoConstraints = false
+        mapTypeSelector.isHidden = true // shown with the map
+        mapTypeSelector.onSelectionChanged = { [weak self] index in
+            self?.mapTypeChanged(to: index)
+        }
+        mapContainer.addSubview(mapTypeSelector)
+
+        var panoramaConfig = UIButton.Configuration.filled()
+        panoramaConfig.baseBackgroundColor = .white
+        panoramaConfig.baseForegroundColor = UIColor(rgb: 0x15161B)
+        panoramaConfig.cornerStyle = .capsule
+        panoramaConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
+        panoramaConfig.attributedTitle = AttributedString(
+            "360\u{00B0} VIEW",
+            attributes: AttributeContainer([.font: UIFont.systemFont(ofSize: 11, weight: .heavy)]))
+        panoramaButton.configuration = panoramaConfig
+        panoramaButton.layer.shadowColor = UIColor.black.cgColor
+        panoramaButton.layer.shadowOpacity = 0.4
+        panoramaButton.layer.shadowRadius = 6
+        panoramaButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        panoramaButton.accessibilityLabel = "360 degree street view"
+        panoramaButton.isHidden = true // until the coverage probe succeeds
+        panoramaButton.addTarget(self, action: #selector(panoramaButtonTap), for: .touchUpInside)
+        panoramaButton.translatesAutoresizingMaskIntoConstraints = false
+        mapContainer.addSubview(panoramaButton)
+
+        mapHeightConstraint = mapContainer.heightAnchor.constraint(equalToConstant: expandedMapHeight)
+
+        NSLayoutConstraint.activate([
+            mapContainer.topAnchor.constraint(equalTo: headerBar.bottomAnchor),
+            mapContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapHeightConstraint,
+
+            mapBottomShade.leadingAnchor.constraint(equalTo: mapContainer.leadingAnchor),
+            mapBottomShade.trailingAnchor.constraint(equalTo: mapContainer.trailingAnchor),
+            mapBottomShade.bottomAnchor.constraint(equalTo: mapContainer.bottomAnchor),
+            mapBottomShade.heightAnchor.constraint(equalToConstant: 110),
+
+            mapDimView.topAnchor.constraint(equalTo: mapContainer.topAnchor),
+            mapDimView.leadingAnchor.constraint(equalTo: mapContainer.leadingAnchor),
+            mapDimView.trailingAnchor.constraint(equalTo: mapContainer.trailingAnchor),
+            mapDimView.bottomAnchor.constraint(equalTo: mapContainer.bottomAnchor),
+
+            mapTypeSelector.leadingAnchor.constraint(equalTo: mapContainer.leadingAnchor, constant: 12),
+            mapTypeSelector.topAnchor.constraint(equalTo: mapContainer.topAnchor, constant: 12),
+
+            panoramaButton.trailingAnchor.constraint(equalTo: mapContainer.trailingAnchor, constant: -12),
+            panoramaButton.centerYAnchor.constraint(equalTo: mapTypeSelector.centerYAnchor),
+        ])
+    }
+
     private func buildScrollContent() {
+        // The cards live in a column that is clipped (with the cards' own
+        // corner radius) just below the visible part of the map. Everything
+        // above that line belongs to the map, so the map stays interactive and
+        // content never scrolls over the collapsed strip's controls.
+        cardsClipView.clipsToBounds = true
+        cardsClipView.layer.cornerRadius = 16
+        cardsClipView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        cardsClipView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(cardsClipView)
+
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.alwaysBounceVertical = true
-        view.addSubview(scrollView)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.delegate = self
+        cardsClipView.addSubview(scrollView)
 
         contentStack.axis = .vertical
         contentStack.spacing = 10
         contentStack.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(contentStack)
 
+        cardsClipTopConstraint = cardsClipView.topAnchor.constraint(
+            equalTo: mapContainer.bottomAnchor, constant: -Hero.overlap)
+
         NSLayoutConstraint.activate([
+            cardsClipTopConstraint,
+            cardsClipView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            cardsClipView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            cardsClipView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
+
+            // The scroll view keeps a fixed frame (header → bottom bar) so the
+            // content does not jump while the clip line follows the map.
             scrollView.topAnchor.constraint(equalTo: headerBar.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: cardsClipView.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: cardsClipView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
 
-            contentStack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 12),
-            contentStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 12),
-            contentStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -12),
+            contentStack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentStack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -12),
-            contentStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -24),
+            contentStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
         ])
+
+        let restInset = expandedMapHeight - Hero.overlap
+        scrollView.contentInset.top = restInset
+        scrollView.contentOffset = CGPoint(x: 0, y: -restInset)
+    }
+
+    // MARK: Map hero collapse
+
+    /// Picks the expanded map height for this screen (380pt, less on short
+    /// devices so the summary card is still on screen) and re-applies the hero.
+    private func updateHeroMetrics() {
+        let available = bottomBar.frame.minY - headerBar.frame.maxY
+        guard available > 0 else { return }
+        let target = min(Hero.maxHeight, max(260, floor(available * 0.6)))
+        if abs(target - expandedMapHeight) > 0.5 {
+            let scrolled = scrollView.contentOffset.y + scrollView.contentInset.top
+            expandedMapHeight = target
+            let restInset = target - Hero.overlap
+            scrollView.contentInset.top = restInset
+            scrollView.contentOffset.y = scrolled - restInset
+        }
+        updateHero()
+    }
+
+    /// Drives the map height, the cards' clip line, the dim overlay and the
+    /// map padding from the scroll position. The clip line always coincides
+    /// with the top of the scrolled content until the map is fully collapsed.
+    private func updateHero() {
+        guard mapHeightConstraint != nil, cardsClipTopConstraint != nil else { return }
+        let expanded = expandedMapHeight
+        // 0 at rest, positive once the cards are pushed up, negative on pull-down.
+        let scrolled = scrollView.contentOffset.y + scrollView.contentInset.top
+
+        let height: CGFloat
+        let overlap: CGFloat
+        let progress: CGFloat
+        if scrolled <= 0 {
+            height = expanded - scrolled // stretch with the pull-down bounce
+            overlap = Hero.overlap
+            progress = 0
+        } else {
+            // Scroll distance over which the map goes from expanded to strip.
+            let distance = expanded - Hero.overlap + Hero.collapsedOverlap - Hero.minHeight
+            progress = min(1, scrolled / max(distance, 1))
+            height = expanded - progress * (expanded - Hero.minHeight)
+            overlap = Hero.overlap - progress * (Hero.overlap - Hero.collapsedOverlap)
+        }
+
+        if abs(mapHeightConstraint.constant - height) > 0.01 {
+            mapHeightConstraint.constant = height
+        }
+        if abs(cardsClipTopConstraint.constant + overlap) > 0.01 {
+            cardsClipTopConstraint.constant = -overlap
+        }
+        mapDimView.alpha = Hero.maxDim * progress
+
+        // Keep the camera target and the Google attribution inside the part of
+        // the map that is not covered by the cards or the overlay controls.
+        if let mapView {
+            let padding = UIEdgeInsets(top: Hero.controlsInset, left: 0, bottom: overlap + 4, right: 0)
+            if abs(mapView.padding.bottom - padding.bottom) > 0.5 || mapView.padding.top != padding.top {
+                mapView.padding = padding
+            }
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView === self.scrollView else { return }
+        updateHero()
     }
 
     private func buildSummaryCard() {
@@ -682,30 +901,91 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         ])
     }
 
-    private func buildMapCard() {
-        IncidentTheme.cardStyle(mapCard)
-        mapCard.layer.masksToBounds = true
-        mapCard.heightAnchor.constraint(equalToConstant: 166).isActive = true
-        contentStack.addArrangedSubview(mapCard)
+    private func buildProgressionCard() {
+        IncidentTheme.cardStyle(progressionCard)
+        progressionCard.isHidden = true // only once the title has changed
+        contentStack.addArrangedSubview(progressionCard)
 
-        mapContainer.translatesAutoresizingMaskIntoConstraints = false
-        mapCard.addSubview(mapContainer)
+        let title = UILabel()
+        title.text = "INCIDENT PROGRESSION"
+        title.font = .systemFont(ofSize: 15, weight: .heavy)
+        title.textColor = IncidentTheme.text
 
-        mapTypeSelector.translatesAutoresizingMaskIntoConstraints = false
-        mapTypeSelector.onSelectionChanged = { [weak self] index in
-            self?.mapTypeChanged(to: index)
-        }
-        mapCard.addSubview(mapTypeSelector)
+        progressionRows.axis = .vertical
+        progressionRows.spacing = 0 // rows touch so the connector is continuous
+
+        let cardStack = UIStackView(arrangedSubviews: [title, progressionRows])
+        cardStack.axis = .vertical
+        cardStack.spacing = 7
+        cardStack.translatesAutoresizingMaskIntoConstraints = false
+        progressionCard.addSubview(cardStack)
 
         NSLayoutConstraint.activate([
-            mapContainer.topAnchor.constraint(equalTo: mapCard.topAnchor),
-            mapContainer.leadingAnchor.constraint(equalTo: mapCard.leadingAnchor),
-            mapContainer.trailingAnchor.constraint(equalTo: mapCard.trailingAnchor),
-            mapContainer.bottomAnchor.constraint(equalTo: mapCard.bottomAnchor),
-
-            mapTypeSelector.trailingAnchor.constraint(equalTo: mapCard.trailingAnchor, constant: -8),
-            mapTypeSelector.bottomAnchor.constraint(equalTo: mapCard.bottomAnchor, constant: -8),
+            cardStack.topAnchor.constraint(equalTo: progressionCard.topAnchor, constant: 12),
+            cardStack.leadingAnchor.constraint(equalTo: progressionCard.leadingAnchor, constant: 14),
+            cardStack.trailingAnchor.constraint(equalTo: progressionCard.trailingAnchor, constant: -14),
+            cardStack.bottomAnchor.constraint(equalTo: progressionCard.bottomAnchor, constant: -9),
         ])
+    }
+
+    /// Rows newest first: 24h time, dot + connector, title badge (latest in
+    /// brand red, earlier titles muted). Title and timestamp only.
+    private func rebuildProgression(_ entries: [ProgressionEntry]) {
+        progressionRows.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        progressionCard.isHidden = entries.count < 2
+        guard entries.count >= 2 else { return }
+
+        let formatter = FWDateFormatter()
+        for (index, entry) in entries.enumerated() {
+            let isLatest = index == 0
+
+            let time = UILabel()
+            time.text = entry.at.flatMap { formatter.formatTimeString($0) } ?? "--:--"
+            time.font = .monospacedSystemFont(ofSize: 11, weight: .semibold)
+            time.textColor = IncidentTheme.muted
+
+            let rail = ProgressionRailView(
+                isLatest: isLatest,
+                connectsUp: index > 0,
+                connectsDown: index < entries.count - 1)
+
+            let badge = PaddedLabel()
+            badge.text = (entry.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+            badge.font = .systemFont(ofSize: 11, weight: .heavy)
+            badge.textColor = isLatest ? .white : IncidentTheme.muted
+            badge.backgroundColor = isLatest ? IncidentTheme.red : IncidentTheme.surface2
+            badge.layer.cornerRadius = 6
+            badge.layer.masksToBounds = true
+            badge.insets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+            badge.lineBreakMode = .byTruncatingTail
+
+            let row = UIView()
+            [time, rail, badge].forEach {
+                $0.translatesAutoresizingMaskIntoConstraints = false
+                row.addSubview($0)
+            }
+            NSLayoutConstraint.activate([
+                row.heightAnchor.constraint(greaterThanOrEqualToConstant: 34),
+
+                time.leadingAnchor.constraint(equalTo: row.leadingAnchor),
+                time.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+                time.widthAnchor.constraint(equalToConstant: 42),
+
+                rail.leadingAnchor.constraint(equalTo: time.trailingAnchor, constant: 4),
+                rail.topAnchor.constraint(equalTo: row.topAnchor),
+                rail.bottomAnchor.constraint(equalTo: row.bottomAnchor),
+                rail.widthAnchor.constraint(equalToConstant: 16),
+
+                badge.leadingAnchor.constraint(equalTo: rail.trailingAnchor, constant: 8),
+                badge.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+                badge.trailingAnchor.constraint(lessThanOrEqualTo: row.trailingAnchor),
+                badge.topAnchor.constraint(greaterThanOrEqualTo: row.topAnchor, constant: 4),
+                badge.bottomAnchor.constraint(lessThanOrEqualTo: row.bottomAnchor, constant: -4),
+            ])
+            row.isAccessibilityElement = true
+            row.accessibilityLabel = "\(time.text ?? ""), \(badge.text ?? "")"
+            progressionRows.addArrangedSubview(row)
+        }
     }
 
     private func buildUnitsCard() {
@@ -837,21 +1117,31 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             : favouriteButton.setImage(FWImage.favIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
 
         if mapView == nil {
-            let mapManager = MapManager()
-            mapView = mapManager.setupMapView(frame: mapContainer.bounds)
+            let manager = MapManager()
+            mapManager = manager
+            // setupMapView applies the user's default map type (My Account →
+            // MAP TYPE) and the dark map style; the pill on the map is a
+            // temporary override for this screen only.
+            mapView = manager.setupMapView(frame: mapContainer.bounds)
             mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            // Start from the user's default (My Account → MAP TYPE); the pill
-            // below is a temporary override for this screen only.
+            mapView.delegate = self
             applyPreferredMapType()
-            mapManager.addMarkers(mapModel: viewModel?.markersList ?? [])
-            mapContainer.addSubview(mapView)
+            manager.addMarkers(mapModel: viewModel?.markersList ?? [])
+            mapContainer.insertSubview(mapView, at: 0)
+            mapTypeSelector.isHidden = false
+            updateHero() // map padding for the current scroll position
 
-            // focus on first marker (the incident itself)
-            if let markers = viewModel?.markersList, !markers.isEmpty {
-                let camera = GMSCameraPosition.camera(withTarget: markers[0].coordinates, zoom: 17.0)
-                mapView.animate(to: camera)
+            // Centered on the incident, zoomed to keep the nearest firehouse in view.
+            if let incident = viewModel?.incidentCoordinate ?? viewModel?.markersList.first?.coordinates {
+                mapView.camera = GMSCameraPosition(target: incident, zoom: openingZoom(around: incident))
             }
         }
+
+        if let coordinate = viewModel?.incidentCoordinate {
+            probePanoramaIfNeeded(at: coordinate)
+        }
+
+        rebuildProgression(viewModel?.progressionNewestFirst ?? [])
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
             incidentImageView.isHidden = false
@@ -896,19 +1186,37 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         }
     }
 
-    func fitMarkersToMap() {
-        guard let viewModel, !viewModel.markersList.isEmpty else { return }
+    /// The closest zoom (≤ 17) at which the nearest firehouse pin still fits in
+    /// the uncovered part of the hero map, never wider than zoom 14.
+    private func openingZoom(around incident: CLLocationCoordinate2D) -> Float {
+        let distances = (viewModel?.markersList ?? [])
+            .filter { $0.markerType == .points }
+            .map { GMSGeometryDistance(incident, $0.coordinates) }
+        guard let nearest = distances.min(), nearest > 1 else { return Hero.closestZoom }
 
-        var bounds = GMSCoordinateBounds()
+        // Radius (pt) around the incident that is clear of the controls, the
+        // card overlap and the pin's own label.
+        let clearHeight = expandedMapHeight - Hero.overlap - Hero.controlsInset
+        let radius = max(80, min(view.bounds.width, clearHeight) / 2 - 36)
+        let metersPerPointAtZoom0 = 156_543.03392 * cos(incident.latitude * .pi / 180)
+        let zoom = log2(metersPerPointAtZoom0 * Double(radius) / nearest)
+        guard zoom.isFinite else { return Hero.closestZoom }
+        return min(Hero.closestZoom, max(Hero.widestZoom, Float(zoom)))
+    }
 
-        for item in viewModel.markersList {
-            let position = CLLocationCoordinate2D(latitude: item.coordinates.latitude, longitude: item.coordinates.longitude)
-            bounds = bounds.includingCoordinate(position)
+    /// Asks Street View whether a panorama exists near the incident (metadata
+    /// only — no panorama is created) and reveals the 360° button if so.
+    private func probePanoramaIfNeeded(at coordinate: CLLocationCoordinate2D) {
+        guard !panoramaProbeStarted else { return }
+        panoramaProbeStarted = true
+        panoramaService.requestPanoramaNearCoordinate(coordinate) { [weak self] panorama, _ in
+            DispatchQueue.main.async {
+                guard let self, panorama != nil else { return }
+                self.panoramaButton.alpha = 0
+                self.panoramaButton.isHidden = false
+                UIView.animate(withDuration: 0.2) { self.panoramaButton.alpha = 1 }
+            }
         }
-
-        // Update the camera position to fit the markers with a padding
-        let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
-        mapView.animate(with: update)
     }
 
     // MARK: Actions
@@ -972,7 +1280,43 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         present(activityViewController, animated: true)
     }
 
-    /// Pill tapped on the map card. Deliberately NOT persisted — the account
+    /// 360° VIEW tapped: this is the only place a panorama is created.
+    @objc private func panoramaButtonTap() {
+        guard let detail = viewModel?.incidentDetail, let coordinate = viewModel?.incidentCoordinate else { return }
+        Analytics.logEvent("incident_360_opened", parameters: [
+            "incident_id": detail.id,
+        ])
+        let panorama = IncidentPanoramaViewController(coordinate: coordinate, caption: detail.address)
+        panorama.modalPresentationStyle = .fullScreen
+        present(panorama, animated: true)
+    }
+
+    /// `action` is "pin" (firehouse pin tapped, callout shown) or "directions"
+    /// (callout tapped, maps app opened).
+    private func logFirehouseTapped(_ firehouse: MapMarkerModel, action: String) {
+        var parameters: [String: Any] = [
+            "incident_id": viewModel?.incidentDetail?.id ?? "",
+            "firehouse": firehouse.title,
+            "action": action,
+        ]
+        if let miles = firehouse.distanceMiles {
+            parameters["distance_miles"] = miles
+        }
+        Analytics.logEvent("incident_firehouse_tapped", parameters: parameters)
+    }
+
+    /// Driving directions to a firehouse: Google Maps when installed, else Apple Maps.
+    private func openDirections(to firehouse: MapMarkerModel) {
+        let destination = "\(firehouse.coordinates.latitude),\(firehouse.coordinates.longitude)"
+        if let probe = URL(string: "comgooglemaps://"), UIApplication.shared.canOpenURL(probe),
+           let url = URL(string: "comgooglemaps://?daddr=\(destination)&directionsmode=driving") {
+            UIApplication.shared.open(url)
+        } else if let url = URL(string: "https://maps.apple.com/?daddr=\(destination)&dirflg=d") {
+            UIApplication.shared.open(url)
+        }
+    }
+
+    /// Pill tapped on the hero map. Deliberately NOT persisted — the account
     /// default lives in My Account → MAP TYPE.
     func mapTypeChanged(to index: Int) {
         guard mapView != nil else { return }
@@ -1018,5 +1362,256 @@ extension IncidentDetailViewController {
     func error(message: String) {
         FWLoaderView.shared.hideLoader()
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "Ok", style: .cancel)])
+    }
+}
+
+// MARK: Map delegate (firehouse pins)
+
+extension IncidentDetailViewController: GMSMapViewDelegate {
+    private func firehouseModel(for marker: GMSMarker) -> MapMarkerModel? {
+        guard let item = marker.userData as? MapMarkerModel, item.markerType == .points else { return nil }
+        return item
+    }
+
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let firehouse = firehouseModel(for: marker) {
+            logFirehouseTapped(firehouse, action: "pin")
+        }
+        return false // default behaviour: center the pin and show its callout
+    }
+
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        guard let firehouse = firehouseModel(for: marker) else { return nil } // incident pin: stock callout
+        return FirehouseCalloutView(
+            name: firehouse.title,
+            detail: marker.snippet ?? "",
+            traits: traitCollection,
+            maxWidth: min(260, mapView.bounds.width - 48))
+    }
+
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        guard let firehouse = firehouseModel(for: marker) else { return }
+        logFirehouseTapped(firehouse, action: "directions")
+        openDirections(to: firehouse)
+    }
+}
+
+// MARK: - Progression timeline rail
+
+/// The dot + thin vertical connector between the time and the title badge of
+/// one progression row. Rows are stacked with no gap so connectors join up.
+final class ProgressionRailView: UIView {
+    private let halo = UIView()
+    private let dot = UIView()
+    private let lineUp = UIView()
+    private let lineDown = UIView()
+    private let dotSize: CGFloat = 8
+    private let haloSize: CGFloat = 14
+
+    init(isLatest: Bool, connectsUp: Bool, connectsDown: Bool) {
+        super.init(frame: .zero)
+        isUserInteractionEnabled = false
+        [lineUp, lineDown].forEach {
+            $0.backgroundColor = FireWireTheme.hairline
+            addSubview($0)
+        }
+        lineUp.isHidden = !connectsUp
+        lineDown.isHidden = !connectsDown
+
+        halo.backgroundColor = FireWireTheme.red.withAlphaComponent(0.25)
+        halo.layer.cornerRadius = haloSize / 2
+        halo.isHidden = !isLatest
+        addSubview(halo)
+
+        dot.backgroundColor = isLatest ? FireWireTheme.red : FireWireTheme.muted
+        dot.layer.cornerRadius = dotSize / 2
+        addSubview(dot)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let center = CGPoint(x: bounds.midX, y: bounds.midY)
+        dot.frame = CGRect(x: center.x - dotSize / 2, y: center.y - dotSize / 2, width: dotSize, height: dotSize)
+        halo.frame = CGRect(x: center.x - haloSize / 2, y: center.y - haloSize / 2, width: haloSize, height: haloSize)
+        let gap: CGFloat = haloSize / 2 + 2
+        lineUp.frame = CGRect(x: center.x - 1, y: 0, width: 2, height: max(0, center.y - gap))
+        lineDown.frame = CGRect(x: center.x - 1, y: center.y + gap, width: 2, height: max(0, bounds.height - center.y - gap))
+    }
+}
+
+// MARK: - Firehouse callout
+
+/// Info window for a firehouse pin: name, "0.4 mi · address" and a DIRECTIONS
+/// prompt. Google Maps snapshots this view, so it is sized up front and the
+/// tap is handled by `mapView(_:didTapInfoWindowOf:)`.
+final class FirehouseCalloutView: UIView {
+    init(name: String, detail: String, traits: UITraitCollection, maxWidth: CGFloat) {
+        super.init(frame: .zero)
+        // Not in a window when snapshotted: pin the appearance explicitly.
+        overrideUserInterfaceStyle = traits.userInterfaceStyle
+        backgroundColor = FireWireTheme.surface.resolvedColor(with: traits)
+        layer.cornerRadius = 12
+        layer.borderWidth = 1
+        layer.borderColor = FireWireTheme.hairline.resolvedColor(with: traits).cgColor
+        layer.masksToBounds = true
+
+        let nameLabel = UILabel()
+        nameLabel.text = name.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        nameLabel.font = .systemFont(ofSize: 13, weight: .heavy)
+        nameLabel.textColor = FireWireTheme.text.resolvedColor(with: traits)
+        nameLabel.numberOfLines = 2
+
+        let detailLabel = UILabel()
+        detailLabel.text = detail
+        detailLabel.font = .systemFont(ofSize: 11.5, weight: .semibold)
+        detailLabel.textColor = FireWireTheme.muted.resolvedColor(with: traits)
+        detailLabel.numberOfLines = 2
+        detailLabel.isHidden = detail.isEmpty
+
+        let directionsLabel = UILabel()
+        directionsLabel.text = "DIRECTIONS"
+        directionsLabel.font = .systemFont(ofSize: 11, weight: .heavy)
+        directionsLabel.textColor = FireWireTheme.red
+
+        let stack = UIStackView(arrangedSubviews: [nameLabel, detailLabel, directionsLabel])
+        stack.axis = .vertical
+        stack.alignment = .leading
+        stack.spacing = 3
+        stack.setCustomSpacing(7, after: detailLabel.isHidden ? nameLabel : detailLabel)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stack)
+
+        let inset: CGFloat = 11
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: topAnchor, constant: inset - 1),
+            stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(inset - 1)),
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset + 1),
+            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(inset + 1)),
+        ])
+
+        let content = stack.systemLayoutSizeFitting(
+            CGSize(width: maxWidth - 2 * (inset + 1), height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .fittingSizeLevel,
+            verticalFittingPriority: .fittingSizeLevel)
+        let width = min(maxWidth, max(120, ceil(content.width) + 2 * (inset + 1)))
+        let fitted = stack.systemLayoutSizeFitting(
+            CGSize(width: width - 2 * (inset + 1), height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel)
+        frame = CGRect(x: 0, y: 0, width: width, height: ceil(fitted.height) + 2 * (inset - 1))
+        layoutIfNeeded()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+}
+
+// MARK: - 360° street-level view
+
+/// Full-screen Street View panorama near the incident, with a close button and
+/// the address as a caption. Creating the panorama is a billable Maps event,
+/// so this controller is only ever instantiated from the 360° VIEW button.
+final class IncidentPanoramaViewController: UIViewController, GMSPanoramaViewDelegate {
+    private let coordinate: CLLocationCoordinate2D
+    private let caption: String
+    private var didOrientCamera = false
+    private let statusLabel = UILabel()
+
+    init(coordinate: CLLocationCoordinate2D, caption: String) {
+        self.coordinate = coordinate
+        self.caption = caption
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+
+        let panoramaView = GMSPanoramaView(frame: view.bounds)
+        panoramaView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        panoramaView.delegate = self
+        view.addSubview(panoramaView)
+        panoramaView.moveNearCoordinate(coordinate)
+
+        statusLabel.text = "STREET VIEW IS NOT AVAILABLE HERE"
+        statusLabel.font = .systemFont(ofSize: 13, weight: .bold)
+        statusLabel.textColor = UIColor(white: 1, alpha: 0.8)
+        statusLabel.textAlignment = .center
+        statusLabel.numberOfLines = 0
+        statusLabel.isHidden = true
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(statusLabel)
+
+        let closeButton = UIButton(type: .system)
+        closeButton.setImage(
+            UIImage(systemName: "xmark",
+                    withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold)),
+            for: .normal)
+        closeButton.tintColor = .white
+        closeButton.backgroundColor = UIColor(rgb: 0x0F1115).withAlphaComponent(0.85)
+        closeButton.layer.cornerRadius = 20
+        closeButton.layer.borderWidth = 1
+        closeButton.layer.borderColor = UIColor(white: 1, alpha: 0.14).cgColor
+        closeButton.accessibilityLabel = "Close"
+        closeButton.addTarget(self, action: #selector(closeTap), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(closeButton)
+
+        let captionLabel = PaddedLabel()
+        captionLabel.text = caption.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        captionLabel.font = .systemFont(ofSize: 13, weight: .heavy)
+        captionLabel.textColor = .white
+        captionLabel.textAlignment = .center
+        captionLabel.numberOfLines = 2
+        captionLabel.backgroundColor = UIColor(rgb: 0x0F1115).withAlphaComponent(0.85)
+        captionLabel.layer.cornerRadius = 12
+        captionLabel.layer.masksToBounds = true
+        captionLabel.insets = UIEdgeInsets(top: 9, left: 14, bottom: 9, right: 14)
+        captionLabel.isHidden = (captionLabel.text ?? "").isEmpty
+        captionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(captionLabel)
+
+        NSLayoutConstraint.activate([
+            closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 14),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            closeButton.widthAnchor.constraint(equalToConstant: 40),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
+
+            // Sits above the Street View attribution in the bottom corners.
+            captionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            captionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -34),
+            captionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 20),
+            captionLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
+
+            statusLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            statusLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            statusLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+        ])
+    }
+
+    @objc private func closeTap() {
+        dismiss(animated: true)
+    }
+
+    // Face the incident the first time a panorama loads.
+    func panoramaView(_ view: GMSPanoramaView, didMoveTo panorama: GMSPanorama?) {
+        guard let panorama, !didOrientCamera else { return }
+        didOrientCamera = true
+        statusLabel.isHidden = true
+        guard GMSGeometryDistance(panorama.coordinate, coordinate) > 3 else { return }
+        let heading = GMSGeometryHeading(panorama.coordinate, coordinate)
+        view.camera = GMSPanoramaCamera(heading: heading, pitch: 0, zoom: 1)
+    }
+
+    func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
+        statusLabel.isHidden = false
     }
 }

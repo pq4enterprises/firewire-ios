@@ -38,6 +38,9 @@ struct IncidentDetailModel: Codable {
     let respondingUnitColors: [UnitColorModel]?
     let unitLegend: [UnitLegendModel]?
     let unitColorsConfigured: Bool?
+    /// Title history, oldest first (`[{version, title, at}]`). Absent on API
+    /// builds that predate the progression endpoint, so it decodes leniently.
+    let progression: [ProgressionEntry]?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -47,6 +50,7 @@ struct IncidentDetailModel: Codable {
         case points
         case isLiked
         case respondingUnitColors, unitLegend, unitColorsConfigured
+        case progression
     }
 
     init(from decoder: Decoder) throws {
@@ -77,6 +81,7 @@ struct IncidentDetailModel: Codable {
         respondingUnitColors = try? container.decodeIfPresent([UnitColorModel].self, forKey: .respondingUnitColors)
         unitLegend = try? container.decodeIfPresent([UnitLegendModel].self, forKey: .unitLegend)
         unitColorsConfigured = try? container.decodeIfPresent(Bool.self, forKey: .unitColorsConfigured)
+        progression = try? container.decodeIfPresent([ProgressionEntry].self, forKey: .progression)
 
         // Handle the isLiked flag with a default value if not present
         isLiked = (try? container.decode(Bool.self, forKey: .isLiked)) ?? false
@@ -92,10 +97,53 @@ struct Point: Codable {
     let name: String?
     let notes: String?
     let deleted: Bool
+    /// Straight-line distance from the incident, in miles. The server sorts
+    /// `points` nearest first. nil on API builds that predate the field.
+    let distanceMiles: Double?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case locality, latitude, longitude, address, name, notes, deleted
+        case locality, latitude, longitude, address, name, notes, deleted, distanceMiles
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        locality = try container.decodeIfPresent(String.self, forKey: .locality)
+        latitude = try container.decodeIfPresent(String.self, forKey: .latitude)
+        longitude = try container.decodeIfPresent(String.self, forKey: .longitude)
+        address = try container.decodeIfPresent(String.self, forKey: .address)
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        notes = try container.decodeIfPresent(String.self, forKey: .notes)
+        deleted = try container.decode(Bool.self, forKey: .deleted)
+        // Additive field: a missing or oddly-typed value must never fail the
+        // whole incident decode.
+        if let miles = try? container.decodeIfPresent(Double.self, forKey: .distanceMiles) {
+            distanceMiles = miles
+        } else if let text = try? container.decodeIfPresent(String.self, forKey: .distanceMiles) {
+            distanceMiles = Double(text)
+        } else {
+            distanceMiles = nil
+        }
+    }
+}
+
+/// One entry of the incident's title history ("10-75" → "ALL HANDS" → …).
+struct ProgressionEntry: Codable {
+    let version: Int?
+    let title: String?
+    /// ISO-8601 UTC timestamp of the title change.
+    let at: String?
+
+    enum CodingKeys: String, CodingKey {
+        case version, title, at
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        version = try? container.decodeIfPresent(Int.self, forKey: .version)
+        title = try? container.decodeIfPresent(String.self, forKey: .title)
+        at = try? container.decodeIfPresent(String.self, forKey: .at)
     }
 }
 

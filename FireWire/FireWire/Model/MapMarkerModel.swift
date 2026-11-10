@@ -19,4 +19,6 @@ struct MapMarkerModel {
     let address: String
     let markerType: MarkerType
     let createdAt: String
+    /// Firehouse pins only: miles from the incident (server-computed), when known.
+    var distanceMiles: Double? = nil
 }

@@ -21,6 +21,7 @@
 		<string>whatsapp</string>
 		<string>instagram</string>
 		<string>twitter</string>
+		<string>comgooglemaps</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
