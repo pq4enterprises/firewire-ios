@@ -249,7 +249,8 @@ final class MapTypeSelector: UIView {
         super.layoutSubviews()
         // Capsule: the group and each segment are fully rounded.
         layer.cornerRadius = bounds.height / 2
-        buttons.forEach { $0.layer.cornerRadius = $0.bounds.height / 2 }
+        // (segments are inset 3pt; their own bounds may not be laid out yet)
+        buttons.forEach { $0.layer.cornerRadius = max(0, bounds.height - 6) / 2 }
     }
 
     func setSelectedIndex(_ index: Int) {
