@@ -337,7 +337,7 @@ class AlertFiltersViewController: UIViewController {
         if invalid, !all {
             subtitle = "Pick at least one, or switch All back on"
         } else if all {
-            subtitle = "Alerts for every \(section == .types ? "incident type" : "unit") in this area"
+            subtitle = "Every \(section == .types ? "incident type" : "unit") alerts you. Turn off to choose."
         } else {
             subtitle = "Only the \(section == .types ? "incident types" : "units") you pick below"
         }
