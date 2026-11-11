@@ -200,16 +200,30 @@ final class LegendItemView: UIView {
     }
 }
 
-/// The Hybrid / Street / Satellite pill control overlaid on the hero map
-/// (top-left). Fixed dark-glass styling in both appearances: it always sits on
-/// map imagery, never on a themed surface.
+/// The pill control overlaid on the hero map (top-left): the selectable map
+/// types (HYBRID / STREET / SATELLITE) followed by locked premium teasers
+/// (360 / 3D). Locked segments never take the selection; they only report the
+/// tap. Fixed dark-glass styling in both appearances: it always sits on map
+/// imagery, never on a themed surface.
 final class MapTypeSelector: UIView {
     var onSelectionChanged: ((Int) -> Void)?
+    /// Index into `lockedTitles` of the locked segment that was tapped.
+    var onLockedSegmentTapped: ((Int) -> Void)?
 
+    /// Font size / horizontal segment padding, roomiest first. `fit(toWidth:)`
+    /// picks the first that keeps all segments on one line.
+    private static let metricTiers: [(fontSize: CGFloat, padding: CGFloat)] = [(11, 9), (10.5, 6), (10.5, 4)]
+
+    private let titles: [String]
+    private let selectableCount: Int
     private var buttons: [UIButton] = []
+    private var tier = 0
+    private var fittedWidth: CGFloat = -1
     private(set) var selectedIndex = 0
 
-    init(titles: [String]) {
+    init(titles: [String], lockedTitles: [String] = []) {
+        self.titles = titles + lockedTitles
+        selectableCount = titles.count
         super.init(frame: .zero)
         backgroundColor = UIColor(rgb: 0x0F1115).withAlphaComponent(0.85)
         layer.borderWidth = 1
@@ -228,18 +242,18 @@ final class MapTypeSelector: UIView {
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -3),
         ])
 
-        for (index, title) in titles.enumerated() {
+        for (index, title) in self.titles.enumerated() {
             let button = UIButton(type: .system)
-            button.setTitle(title, for: .normal)
-            button.titleLabel?.font = .systemFont(ofSize: 11, weight: .bold)
-            button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
             button.layer.masksToBounds = true
             button.tag = index
+            if isLocked(index) {
+                button.accessibilityLabel = "\(title), coming soon to Premium"
+            }
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             buttons.append(button)
             stack.addArrangedSubview(button)
         }
-        updateSelection()
+        applyMetrics()
     }
 
     @available(*, unavailable)
@@ -254,22 +268,68 @@ final class MapTypeSelector: UIView {
     }
 
     func setSelectedIndex(_ index: Int) {
+        guard index < selectableCount else { return }
         selectedIndex = index
         updateSelection()
     }
 
+    /// Shrinks type and padding (never below 10.5pt bold) until every segment
+    /// fits on one line within `width`.
+    func fit(toWidth width: CGFloat) {
+        guard width > 0, width != fittedWidth else { return }
+        fittedWidth = width
+        for candidate in Self.metricTiers.indices {
+            tier = candidate
+            applyMetrics()
+            if systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width <= width { break }
+        }
+    }
+
+    private func isLocked(_ index: Int) -> Bool { index >= selectableCount }
+
     @objc private func buttonTapped(_ sender: UIButton) {
+        if isLocked(sender.tag) {
+            // Locked teaser: the current map type stays selected.
+            onLockedSegmentTapped?(sender.tag - selectableCount)
+            return
+        }
         guard sender.tag != selectedIndex else { return }
         selectedIndex = sender.tag
         updateSelection()
         onSelectionChanged?(selectedIndex)
     }
 
+    private func applyMetrics() {
+        let padding = Self.metricTiers[tier].padding
+        buttons.forEach { $0.contentEdgeInsets = UIEdgeInsets(top: 6, left: padding, bottom: 6, right: padding) }
+        updateSelection()
+        invalidateIntrinsicContentSize()
+    }
+
     private func updateSelection() {
+        let font = UIFont.systemFont(ofSize: Self.metricTiers[tier].fontSize, weight: .bold)
         for button in buttons {
-            let isSelected = button.tag == selectedIndex
+            let index = button.tag
+            let isSelected = index == selectedIndex
             button.backgroundColor = isSelected ? FireWireTheme.red : .clear
-            button.setTitleColor(isSelected ? .white : UIColor(white: 1, alpha: 0.78), for: .normal)
+
+            let locked = isLocked(index)
+            // Locked teasers read slightly muted next to the selectable types.
+            let color: UIColor = isSelected ? .white : UIColor(white: 1, alpha: locked ? 0.55 : 0.78)
+            let title = NSMutableAttributedString()
+            if locked,
+               let lock = UIImage(
+                   systemName: "lock.fill",
+                   withConfiguration: UIImage.SymbolConfiguration(pointSize: font.pointSize - 2.5, weight: .bold)) {
+                title.append(NSAttributedString(attachment: NSTextAttachment(
+                    image: lock.withTintColor(color, renderingMode: .alwaysOriginal))))
+                title.append(NSAttributedString(string: "\u{2009}"))
+            }
+            title.append(NSAttributedString(string: titles[index]))
+            title.addAttributes(
+                [.font: font, .foregroundColor: color],
+                range: NSRange(location: 0, length: title.length))
+            button.setAttributedTitle(title, for: .normal)
         }
     }
 }
@@ -302,6 +362,36 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     private let incidentDesc = UILabel()
     private let incidentImageView = UIImageView()
 
+    /// Premium features teased as locked segments of the map pill. Tapping one
+    /// only shows a "Coming soon" alert — nothing is loaded for them (no
+    /// Street View is shipped on this screen).
+    private enum PremiumTeaser: CaseIterable {
+        case view360
+        case scene3D
+
+        var segmentTitle: String {
+            switch self {
+            case .view360: return "360"
+            case .scene3D: return "3D"
+            }
+        }
+
+        /// `feature` parameter of `incident_premium_teaser_tapped`.
+        var analyticsValue: String {
+            switch self {
+            case .view360: return "360"
+            case .scene3D: return "3d"
+            }
+        }
+
+        var message: String {
+            switch self {
+            case .view360: return "360\u{00B0} street view is coming soon to Fire Wire Premium."
+            case .scene3D: return "3D scene view is coming soon to Fire Wire Premium."
+            }
+        }
+    }
+
     // Map hero: edge-to-edge under the header; the cards scroll over its
     // bottom edge and it collapses to a dimmed strip (never fully hidden).
     private enum Hero {
@@ -327,19 +417,15 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     private let mapDimView = UIView()
     private let mapBottomShade = UIView()
     private let mapBottomShadeLayer = CAGradientLayer()
-    private let mapTypeSelector = MapTypeSelector(titles: ["HYBRID", "STREET", "SATELLITE"])
-    private let panoramaButton = UIButton(type: .system)
+    private let mapTypeSelector = MapTypeSelector(
+        titles: ["HYBRID", "STREET", "SATELLITE"],
+        lockedTitles: PremiumTeaser.allCases.map(\.segmentTitle))
     /// Clips the scrolling cards to the card column below the map's visible part.
     private let cardsClipView = UIView()
     private var mapHeightConstraint: NSLayoutConstraint!
     private var cardsClipTopConstraint: NSLayoutConstraint!
     private var expandedMapHeight: CGFloat = Hero.maxHeight
     private var mapManager: MapManager?
-
-    // 360° view: a free metadata probe decides whether the button shows; the
-    // (billable) panorama itself is only ever created when the button is tapped.
-    private let panoramaService = GMSPanoramaService()
-    private var panoramaProbeStarted = false
 
     private let progressionCard = UIView()
     private let progressionRows = UIStackView()
@@ -446,6 +532,8 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         mapBottomShadeLayer.frame = mapBottomShade.bounds
+        // Keep all five pill segments on one line within the map's side margins.
+        mapTypeSelector.fit(toWidth: mapContainer.bounds.width - 24)
         updateHeroMetrics()
     }
 
@@ -649,26 +737,11 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         mapTypeSelector.onSelectionChanged = { [weak self] index in
             self?.mapTypeChanged(to: index)
         }
+        mapTypeSelector.onLockedSegmentTapped = { [weak self] index in
+            guard PremiumTeaser.allCases.indices.contains(index) else { return }
+            self?.premiumTeaserTapped(PremiumTeaser.allCases[index])
+        }
         mapContainer.addSubview(mapTypeSelector)
-
-        var panoramaConfig = UIButton.Configuration.filled()
-        panoramaConfig.baseBackgroundColor = .white
-        panoramaConfig.baseForegroundColor = UIColor(rgb: 0x15161B)
-        panoramaConfig.cornerStyle = .capsule
-        panoramaConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
-        panoramaConfig.attributedTitle = AttributedString(
-            "360\u{00B0} VIEW",
-            attributes: AttributeContainer([.font: UIFont.systemFont(ofSize: 11, weight: .heavy)]))
-        panoramaButton.configuration = panoramaConfig
-        panoramaButton.layer.shadowColor = UIColor.black.cgColor
-        panoramaButton.layer.shadowOpacity = 0.4
-        panoramaButton.layer.shadowRadius = 6
-        panoramaButton.layer.shadowOffset = CGSize(width: 0, height: 3)
-        panoramaButton.accessibilityLabel = "360 degree street view"
-        panoramaButton.isHidden = true // until the coverage probe succeeds
-        panoramaButton.addTarget(self, action: #selector(panoramaButtonTap), for: .touchUpInside)
-        panoramaButton.translatesAutoresizingMaskIntoConstraints = false
-        mapContainer.addSubview(panoramaButton)
 
         mapHeightConstraint = mapContainer.heightAnchor.constraint(equalToConstant: expandedMapHeight)
 
@@ -690,9 +763,7 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
 
             mapTypeSelector.leadingAnchor.constraint(equalTo: mapContainer.leadingAnchor, constant: 12),
             mapTypeSelector.topAnchor.constraint(equalTo: mapContainer.topAnchor, constant: 12),
-
-            panoramaButton.trailingAnchor.constraint(equalTo: mapContainer.trailingAnchor, constant: -12),
-            panoramaButton.centerYAnchor.constraint(equalTo: mapTypeSelector.centerYAnchor),
+            mapTypeSelector.trailingAnchor.constraint(lessThanOrEqualTo: mapContainer.trailingAnchor, constant: -12),
         ])
     }
 
@@ -1138,10 +1209,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
             }
         }
 
-        if let coordinate = viewModel?.incidentCoordinate {
-            probePanoramaIfNeeded(at: coordinate)
-        }
-
         rebuildProgression(viewModel?.progressionNewestFirst ?? [])
 
         if let imageUrlString = incidentDetail.featuredImageUrl, let imageUrl = URL(string: imageUrlString) {
@@ -1205,21 +1272,6 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         return min(Hero.closestZoom, max(Hero.widestZoom, Float(zoom)))
     }
 
-    /// Asks Street View whether a panorama exists near the incident (metadata
-    /// only — no panorama is created) and reveals the 360° button if so.
-    private func probePanoramaIfNeeded(at coordinate: CLLocationCoordinate2D) {
-        guard !panoramaProbeStarted else { return }
-        panoramaProbeStarted = true
-        panoramaService.requestPanoramaNearCoordinate(coordinate) { [weak self] panorama, _ in
-            DispatchQueue.main.async {
-                guard let self, panorama != nil else { return }
-                self.panoramaButton.alpha = 0
-                self.panoramaButton.isHidden = false
-                UIView.animate(withDuration: 0.2) { self.panoramaButton.alpha = 1 }
-            }
-        }
-    }
-
     // MARK: Actions
 
     @objc func toggleLabel() {
@@ -1281,15 +1333,20 @@ class IncidentDetailViewController: UIViewController, IncidentDetailViewDelegate
         present(activityViewController, animated: true)
     }
 
-    /// 360° VIEW tapped: this is the only place a panorama is created.
-    @objc private func panoramaButtonTap() {
-        guard let detail = viewModel?.incidentDetail, let coordinate = viewModel?.incidentCoordinate else { return }
-        Analytics.logEvent("incident_360_opened", parameters: [
-            "incident_id": detail.id,
+    /// A locked 360 / 3D segment was tapped: the map and the selection are left
+    /// alone; basic users also get a route to the paywall.
+    private func premiumTeaserTapped(_ teaser: PremiumTeaser) {
+        Analytics.logEvent("incident_premium_teaser_tapped", parameters: [
+            "feature": teaser.analyticsValue,
         ])
-        let panorama = IncidentPanoramaViewController(coordinate: coordinate, caption: detail.address)
-        panorama.modalPresentationStyle = .fullScreen
-        present(panorama, animated: true)
+        let alert = UIAlertController(title: "Coming soon", message: teaser.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        if FWUserDefaults().userRole == "basic_user" {
+            alert.addAction(UIAlertAction(title: "See Premium", style: .default) { [weak self] _ in
+                self?.coordinator?.navigateToSubscriptionInfo()
+            })
+        }
+        present(alert, animated: true)
     }
 
     /// `action` is "pin" (firehouse pin tapped, callout shown) or "directions"
@@ -1513,8 +1570,9 @@ final class FirehouseCalloutView: UIView {
 // MARK: - 360° street-level view
 
 /// Full-screen Street View panorama near the incident, with a close button and
-/// the address as a caption. Creating the panorama is a billable Maps event,
-/// so this controller is only ever instantiated from the 360° VIEW button.
+/// the address as a caption. Creating the panorama is a billable Maps event.
+/// NOT REACHABLE right now: Street View is not shipped (the map pill's 360
+/// segment is a locked "coming soon" teaser), so nothing instantiates this.
 final class IncidentPanoramaViewController: UIViewController, GMSPanoramaViewDelegate {
     private let coordinate: CLLocationCoordinate2D
     private let caption: String
