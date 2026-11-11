@@ -38,6 +38,24 @@ class FWDateFormatter {
         return outputDateFormatter.string(from: date)
     }
 
+    /// "HH:mm" (24-hour, device time zone) for timeline rows such as the
+    /// incident progression card. Accepts timestamps with or without
+    /// fractional seconds.
+    func formatTimeString(_ isoDateString: String) -> String? {
+        var date = inputDateFormatter.date(from: isoDateString)
+        if date == nil {
+            let iso = ISO8601DateFormatter()
+            iso.formatOptions = [.withInternetDateTime]
+            date = iso.date(from: isoDateString)
+        }
+        guard let date else { return nil }
+
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return timeFormatter.string(from: date)
+    }
+
     func formatDateWithPOSIX(_ isoDateString: String) -> String? {
         let posixFormatter = DateFormatter()
         posixFormatter.dateFormat = inputDateFormatter.dateFormat

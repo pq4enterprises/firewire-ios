@@ -154,7 +154,11 @@ class MapManager {
                     traits: mapView?.traitCollection ?? .current)
                 marker.icon = composed.image
                 marker.groundAnchor = composed.groundAnchor
+                marker.snippet = FirehouseMarker.snippet(distanceMiles: item.distanceMiles, address: item.address)
             }
+            // Lets a screen's GMSMapViewDelegate tell firehouse pins from the
+            // incident pin (and reach the coordinates) without title matching.
+            marker.userData = item
             marker.map = mapView
             markers.append(marker)
         }
@@ -194,6 +198,28 @@ enum FirehouseMarker {
     /// Pin bounding width/height (excluding label). ~26 x 33pt drawn area.
     private static var pinWidth: CGFloat { headRadius * 2 + borderWidth }
     private static var pinHeight: CGFloat { headRadius * 2.5 + borderWidth + 3 }
+
+    // MARK: Callout text
+
+    /// Info-window snippet: "0.4 mi · 74 Middagh St". Either part may be missing
+    /// (older API builds send no distance).
+    static func snippet(distanceMiles: Double?, address: String) -> String {
+        var parts: [String] = []
+        if let text = distanceText(distanceMiles) {
+            parts.append(text)
+        }
+        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmed.isEmpty {
+            parts.append(trimmed)
+        }
+        return parts.joined(separator: " \u{00B7} ")
+    }
+
+    /// "0.4 mi" — one decimal, POSIX-formatted so the separator is always a dot.
+    static func distanceText(_ miles: Double?) -> String? {
+        guard let miles, miles.isFinite, miles >= 0 else { return nil }
+        return String(format: "%.1f mi", locale: Locale(identifier: "en_US_POSIX"), miles)
+    }
 
     // MARK: Composition
 

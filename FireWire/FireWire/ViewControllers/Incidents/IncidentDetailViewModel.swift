@@ -40,6 +40,10 @@ final class IncidentDetailViewModel {
     }
 
     func createMarkerCoordinates(incidentDetail: IncidentDetailModel) {
+        // The detail is re-fetched whenever the screen reappears; rebuild the
+        // list instead of appending duplicates. Index 0 stays the incident.
+        markersList.removeAll()
+
         if let lat = Double(incidentDetail.latitude), let lon = Double(incidentDetail.longitude) {
             let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             let mapModel = MapMarkerModel(incidentId: incidentDetail.id, coordinates: coordinates, title: incidentDetail.field1Value ?? "", address: incidentDetail.address, markerType: .incident, createdAt: incidentDetail.createdAt)
@@ -50,12 +54,26 @@ final class IncidentDetailViewModel {
             for point in points {
                 if let latitude = point.latitude, let longitude = point.longitude, let lat = Double(latitude), let lon = Double(longitude) {
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    let mapModel = MapMarkerModel(incidentId: point.id, coordinates: coordinates, title: point.name ?? "", address: point.address ?? "", markerType: .points, createdAt: "")
+                    let mapModel = MapMarkerModel(incidentId: point.id, coordinates: coordinates, title: point.name ?? "", address: point.address ?? "", markerType: .points, createdAt: "", distanceMiles: point.distanceMiles)
                     self.markersList.append(mapModel)
                 }
             }
         }
         self.delegate?.dataReceived()
+    }
+
+    /// Title history for the progression card, newest first. Empty unless the
+    /// incident has had at least two titles (the card is hidden otherwise).
+    var progressionNewestFirst: [ProgressionEntry] {
+        let entries = (incidentDetail?.progression ?? []).filter {
+            !($0.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+        return entries.count >= 2 ? Array(entries.reversed()) : []
+    }
+
+    /// The incident's own coordinate (first marker), when it has a valid one.
+    var incidentCoordinate: CLLocationCoordinate2D? {
+        markersList.first(where: { $0.markerType == .incident })?.coordinates
     }
 
     func postIncidentDetailViewCount() {
